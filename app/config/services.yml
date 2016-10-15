@@ -4,6 +4,14 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    http_client:
+        class: GuzzleHttp\Client
+    contributors_crawler:
+        class: AppBundle\ContributorsDataCrawler
+        arguments:
+            - "@http_client"
+    crawler_orchestrator:
+        class: AppBundle\CrawlerOrchestrator
+        arguments:
+            - "@contributors_crawler"
+            - "%kernel.root_dir%"
