@@ -31,15 +31,19 @@ class CrawlerOrchestrator
     public function updateData()
     {
         $versions = ['2.0', '2.1', '2.2'];
-        
+
+        $serie = [];
+
         $fs = new Filesystem();
-        
+
         foreach ($versions as $version) {
             $result = $this->crawler->getData($version);
 
             print $this->rootDir.$version . "\n";
-
+            $serie[$version] = $result;
             $fs->dumpFile($this->rootDir.'trends/raw/contributors/'.$version, $result);
         }
+
+        $fs->dumpFile($this->rootDir.'trends/raw/contributors/serie', json_encode($serie, JSON_PRETTY_PRINT));
     }
 }
