@@ -1,4 +1,6 @@
 symfony-trends
 ==============
 
-A Symfony project created on October 14, 2016, 9:43 pm.
+TODO
+
+1. Get contributor count using GitHub API https://developer.github.com/v3/repos/statistics/
