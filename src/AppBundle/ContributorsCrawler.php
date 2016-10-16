@@ -4,7 +4,7 @@ namespace AppBundle;
 
 use GuzzleHttp\ClientInterface;
 
-class ContributorsDataCrawler
+class ContributorsCrawler
 {
     /**
      * @var ClientInterface

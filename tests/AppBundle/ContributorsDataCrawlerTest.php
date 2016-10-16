@@ -3,7 +3,7 @@
 
 namespace Tests\AppBundle;
 
-use AppBundle\ContributorsDataCrawler;
+use AppBundle\ContributorsCrawler;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -32,7 +32,7 @@ Symfony is the result of the work of many people who made the code better
         $handler = HandlerStack::create($mock);
         $client = new Client(['handler' => $handler]);
 
-        $crawler = new ContributorsDataCrawler($client);
+        $crawler = new ContributorsCrawler($client);
 
         $this->assertEquals(3, $crawler->getData('any'));
     }

@@ -7,11 +7,16 @@ services:
     http_client:
         class: GuzzleHttp\Client
     contributors_crawler:
-        class: AppBundle\ContributorsDataCrawler
+        class: AppBundle\ContributorsCrawler
+        arguments:
+            - "@http_client"
+    doc_contributors_crawler:
+        class: AppBundle\DocContributorsCrawler
         arguments:
             - "@http_client"
     crawler_orchestrator:
         class: AppBundle\CrawlerOrchestrator
         arguments:
             - "@contributors_crawler"
+            - "@doc_contributors_crawler"
             - "%kernel.root_dir%"
