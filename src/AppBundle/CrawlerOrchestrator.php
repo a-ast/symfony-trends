@@ -30,7 +30,7 @@ class CrawlerOrchestrator
 
     public function updateData()
     {
-        $versions = ['2.0', '2.1', '2.2'];
+        $versions = ['2.0', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7', '2.8', '3.0', '3.1'];
 
         $serie = [];
 
@@ -40,10 +40,14 @@ class CrawlerOrchestrator
             $result = $this->crawler->getData($version);
 
             print $this->rootDir.$version . "\n";
-            $serie[$version] = $result;
+            $serie[] = [
+                'text' => $version,
+                'value' => $result,
+            ];
+
             $fs->dumpFile($this->rootDir.'trends/raw/contributors/'.$version, $result);
         }
 
-        $fs->dumpFile($this->rootDir.'trends/raw/contributors/serie', json_encode($serie, JSON_PRETTY_PRINT));
+        $fs->dumpFile($this->rootDir.'trends/raw/contributors/serie.json', json_encode($serie, JSON_PRETTY_PRINT));
     }
 }
