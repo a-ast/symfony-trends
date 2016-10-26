@@ -1,22 +1,46 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-
 services:
     http_client:
         class: GuzzleHttp\Client
-    contributors_crawler:
-        class: AppBundle\ContributorsCrawler
-        arguments:
-            - "@http_client"
-    doc_contributors_crawler:
-        class: AppBundle\DocContributorsCrawler
-        arguments:
-            - "@http_client"
     crawler_orchestrator:
         class: AppBundle\CrawlerOrchestrator
         arguments:
-            - "@contributors_crawler"
-            - "@doc_contributors_crawler"
-            - "%kernel.root_dir%"
+            - '@crawler.contributor_count'
+            - '@crawler.contributor_page'
+            - '%kernel.root_dir%'
+    #################################
+    # Data crawlers
+    #################################
+    crawler.contributor_count:
+        class: AppBundle\Crawler\ContributorCountCrawler
+        arguments:
+            - '@http_client'
+            - '@repository.project_version'
+    crawler.contributor_page:
+        class: AppBundle\Crawler\ContributorPageCrawler
+        arguments:
+            - '@http_client'
+            - '@repository.contributor'
+    crawler.git_log:
+        class: AppBundle\Crawler\GitLogCrawler
+        arguments:
+            - '@repository.contributor'
+            - '@repository.contribution'
+            - '%kernel.root_dir%'
+
+    #################################
+    # Data providers
+    #################################
+    provider.contributor_intersection:
+        class: AppBundle\Provider\ContributorIntersectionProvider
+        arguments:
+            - '@repository.contribution'
+            - '@repository.project'
+    provider.commit_count_distribution:
+        class: AppBundle\Provider\CommitCountDistribution
+        arguments:
+            - '@repository.contribution'
+            - '@repository.project'
+    provider.contributors_per_version:
+        class: AppBundle\Provider\ContributorsPerVersion
+        arguments:
+            - '@repository.project_version'

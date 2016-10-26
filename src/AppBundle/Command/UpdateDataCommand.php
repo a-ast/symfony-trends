@@ -24,9 +24,12 @@ class UpdateDataCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $crawler = $this->getContainer()->get('crawler.contributor_count');
+        $crawler->getData();
+
         /** @var CrawlerOrchestrator $orchestrator */
-        $orchestrator = $this->getContainer()->get('crawler_orchestrator');
-        
-        $orchestrator->updateData();
+//        $orchestrator = $this->getContainer()->get('crawler_orchestrator');
+//
+//        $orchestrator->updateData();
     }
 }
