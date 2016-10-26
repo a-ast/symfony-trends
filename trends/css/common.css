@@ -1,0 +1,51 @@
+body {
+    font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.bar-chart rect {
+    fill: #08c;
+}
+
+.bar-chart .bar-label {
+    fill: white;
+    font-size: 14px;
+    text-anchor: middle;
+}
+
+.bar-chart rect:hover {
+    fill: #005580;
+}
+
+/*.axis--x path {*/
+    /*display: none;*/
+/*}*/
+
+.axis text {
+    font: 15px sans-serif;
+    fill: #005580;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x-axis-label {
+    font-size: 19px;
+    font-weight: bold;
+    fill: #005580;
+}

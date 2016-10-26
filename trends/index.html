@@ -2,93 +2,38 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
-    <style>
 
-        .chart rect {
-            fill: steelblue;
-        }
+    <title>Symfony Trends</title>
 
-        .chart text {
-            fill: white;
-            font: bold 14px sans-serif;
-            text-anchor: middle;
-        }
-
-        .chart rect:hover {
-            fill: green;
-        }
-
-        .axis--x path {
-            display: none;
-        }
-
-        .axis text {
-            font: 14px sans-serif;
-            fill: steelblue;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/venn/venn.js"></script>
+    <script src="js/bar-chart.js"></script>
+    <!-- https://github.com/benfred/venn.js -->
+    <script src="js/venn-contributors.js"></script>
 
 </head>
 
 <h1>Symfony Trends</h1>
 
-<h2>Contributor growth per version</h2>
+<h2>Contributor count per version</h2>
+<div id="chart1" class="bar-chart" width="960" height="500"></div>
 
-<svg class="chart" width="960" height="500"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<h2>How many developers contribute to different projects</h2>
+<div id="chart2" class="venn-diagramm" width="960" height="500"></div>
+
+<h2>Number of developers who made certain count of commits to Symfony</h2>
+<div id="chart3" class="bar-chart" width="960" height="500"></div>
+
+<h2>Number of developers who made certain count of commits to Symfony docs</h2>
+<div id="chart4" class="bar-chart" width="960" height="500"></div>
+
 <script>
 
-    var chart = d3.select(".chart");
-
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +chart.attr("width") - margin.left - margin.right,
-        height = +chart.attr("height") - margin.top - margin.bottom;
-
-    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-        y = d3.scaleLinear().rangeRound([height, 0]);
-
-
-    d3.json("raw/contributors/serie.json", function(error, data) {
-        if (error) throw error;
-
-        var xScale = x.domain(data.map(function(d) { return d.text; }));
-        y.domain([0, d3.max(data, function(d) { return d.value; })]);
-
-        var bar = chart.selectAll("g")
-                .data(data)
-                .enter().append("g")
-                .attr("transform", function(d) { return "translate(" + x(d.text) + ",0)"; });
-
-        bar.append("rect")
-                .attr("y", function(d) { return y(d.value); })
-                .attr("height", function(d) { return height - y(d.value); })
-                .attr("width", x.bandwidth());
-
-        bar.append("text")
-                .attr("x", x.bandwidth() / 2)
-                .attr("y", function(d) { return y(d.value) + 3; })
-                .attr("dy", ".75em")
-                .text(function(d) { return d.value; });
-
-        //d3.svg.axis().tickSize(0);
-
-        var xAxis = d3.axisBottom().scale(xScale);
-
-        chart.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
-
-    });
+    drawBarChart("#chart1", "data/contributors_per_version_1.json", "Symfony version");
+    drawVennContributors("#chart2", "data/contributor_intersection.json");
+    drawBarChart("#chart3", "data/commit_count_distribution_1.json", "Commit count");
+    drawBarChart("#chart4", "data/commit_count_distribution_2.json", "Commit count");
 
 </script>
 
