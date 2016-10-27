@@ -7,7 +7,7 @@ use AppBundle\Entity\Project;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ProjectRepository;
 
-class ContributorIntersectionProvider
+class ContributorIntersection implements ProviderInterface
 {
     /**
      * @var ContributionRepository

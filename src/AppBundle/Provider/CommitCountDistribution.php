@@ -6,7 +6,7 @@ namespace AppBundle\Provider;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ProjectRepository;
 
-class CommitCountDistribution
+class CommitCountDistribution implements ProviderInterface
 {
     /**
      * @var ContributionRepository

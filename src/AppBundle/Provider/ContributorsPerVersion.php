@@ -6,7 +6,7 @@ namespace AppBundle\Provider;
 use AppBundle\Entity\ProjectVersion;
 use AppBundle\Repository\ProjectVersionRepository;
 
-class ContributorsPerVersion
+class ContributorsPerVersion implements ProviderInterface
 {
     /**
      * @var ProjectVersionRepository
