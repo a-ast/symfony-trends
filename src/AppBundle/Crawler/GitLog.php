@@ -34,11 +34,11 @@ class GitLog implements CrawlerInterface
         $this->contributionRepository = $contributionRepository;
     }
 
-    public function getData($projectId)
+    public function getData(array $options = [])
     {
         //$contents = file($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId));
 
-        $newEmails = [];
+        $projectId = $options['project_id'];
 
         $fileHandle = fopen($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId), 'r');
 
