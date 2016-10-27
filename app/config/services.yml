@@ -1,27 +1,21 @@
 services:
     http_client:
         class: GuzzleHttp\Client
-    crawler_orchestrator:
-        class: AppBundle\CrawlerOrchestrator
-        arguments:
-            - '@crawler.contributor_count'
-            - '@crawler.contributor_page'
-            - '%kernel.root_dir%'
     #################################
     # Data crawlers
     #################################
     crawler.contributor_count:
-        class: AppBundle\Crawler\ContributorCountCrawler
+        class: AppBundle\Crawler\ContributorCount
         arguments:
             - '@http_client'
             - '@repository.project_version'
     crawler.contributor_page:
-        class: AppBundle\Crawler\ContributorPageCrawler
+        class: AppBundle\Crawler\ContributorPage
         arguments:
             - '@http_client'
             - '@repository.contributor'
     crawler.git_log:
-        class: AppBundle\Crawler\GitLogCrawler
+        class: AppBundle\Crawler\GitLog
         arguments:
             - '@repository.contributor'
             - '@repository.contribution'
@@ -31,7 +25,7 @@ services:
     # Data providers
     #################################
     provider.contributor_intersection:
-        class: AppBundle\Provider\ContributorIntersectionProvider
+        class: AppBundle\Provider\ContributorIntersection
         arguments:
             - '@repository.contribution'
             - '@repository.project'
