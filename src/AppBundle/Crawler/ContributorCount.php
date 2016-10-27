@@ -6,7 +6,7 @@ use AppBundle\Entity\ProjectVersion;
 use AppBundle\Repository\ProjectVersionRepository;
 use GuzzleHttp\ClientInterface;
 
-class ContributorCountCrawler
+class ContributorCount implements CrawlerInterface
 {
     /**
      * @var ClientInterface
@@ -43,7 +43,7 @@ class ContributorCountCrawler
         }
     }
 
-    public function getContributorCount($version)
+    protected function getContributorCount($version)
     {
         $uri = sprintf('https://raw.githubusercontent.com/symfony/symfony/v%s.0/CONTRIBUTORS.md', $version);
 

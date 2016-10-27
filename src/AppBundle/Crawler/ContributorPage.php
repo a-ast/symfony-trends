@@ -6,7 +6,7 @@ use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ContributorPageCrawler
+class ContributorPage implements CrawlerInterface
 {
     /**
      * @var ClientInterface

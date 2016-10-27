@@ -8,7 +8,7 @@ use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 
-class GitLogCrawler
+class GitLog implements CrawlerInterface
 {
     /**
      * @var ContributorRepository
