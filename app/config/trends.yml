@@ -10,5 +10,11 @@ parameters:
             service: '@crawler.git_log'
             options:
                 project_id: 1
-                url_format: 'https://raw.githubusercontent.com/symfony/symfony/v%s.0/CONTRIBUTORS.md'
 
+    providers:
+        contributors_per_version:
+            service: '@provider.contributors_per_version'
+        contributors_intersection:
+            service: '@provider.contributors_per_version'
+        commit_count_distribution:
+            service: '@provider.commit_count_distribution'
