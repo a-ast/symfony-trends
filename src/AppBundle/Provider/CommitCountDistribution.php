@@ -28,7 +28,7 @@ class CommitCountDistribution implements ProviderInterface
         $this->projectRepository = $projectRepository;
     }
 
-    public function getData()
+    public function getData(array $options = [])
     {
         $commitCounts = $this->contributionRepository->getContributorsCommitCounts(1);
 
