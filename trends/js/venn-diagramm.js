@@ -3,8 +3,9 @@ function drawVennContributors(containerSelector, dataPath) {
     var chart = d3.select(containerSelector);
 
     var vennChart = venn.VennDiagram()
-        .width(+chart.attr("width"))
-        .height(+chart.attr("height"));
+        .width(parseInt(chart.style("width")))
+        .height(parseInt(chart.style("height")));
+
 
     d3.json(dataPath, function (error, data) {
         if (error) throw error;

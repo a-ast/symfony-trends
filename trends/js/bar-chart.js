@@ -3,8 +3,8 @@ function drawBarChart(containerSelector, dataPath, xAxisLabel) {
     var chartContainer = d3.select(containerSelector),
 
         chart = chartContainer.append("svg")
-            .attr("width", +chartContainer.attr("width"))
-            .attr("height", +chartContainer.attr("height"));
+            .attr("width", parseInt(chartContainer.style("width")))
+            .attr("height", parseInt(chartContainer.style("height")));
 
     var margin = {top: 20, right: 20, bottom: 40, left: 40},
         width = +chart.attr("width") - margin.left - margin.right,

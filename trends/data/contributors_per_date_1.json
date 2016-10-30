@@ -1,0 +1,9967 @@
+[
+    {
+        "date": "2010-01-04",
+        "value": 1,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-01-05",
+        "value": 4,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-01-11",
+        "value": 5,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-11",
+        "value": 6,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-17",
+        "value": 1,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-02-19",
+        "value": 8,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-20",
+        "value": 10,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-21",
+        "value": 11,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-22",
+        "value": 12,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-24",
+        "value": 2,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-02-25",
+        "value": 14,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-02-26",
+        "value": 15,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-03-08",
+        "value": 16,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-03-09",
+        "value": 17,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-03-21",
+        "value": 3,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-03-28",
+        "value": 18,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-04",
+        "value": 19,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-07",
+        "value": 20,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-08",
+        "value": 4,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-04-09",
+        "value": 21,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-14",
+        "value": 22,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-20",
+        "value": 23,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-04-21",
+        "value": 24,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-05-04",
+        "value": 25,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-05-14",
+        "value": 26,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-05-17",
+        "value": 27,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-05-21",
+        "value": 28,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-05-25",
+        "value": 29,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-06-05",
+        "value": 5,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-06-08",
+        "value": 30,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-06-13",
+        "value": 31,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-06-21",
+        "value": 7,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-06-22",
+        "value": 33,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-06-30",
+        "value": 34,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-01",
+        "value": 8,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-07-01",
+        "value": 35,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-04",
+        "value": 36,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-05",
+        "value": 37,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-06",
+        "value": 39,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-06",
+        "value": 9,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-07-08",
+        "value": 40,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-21",
+        "value": 10,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-07-28",
+        "value": 41,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-07-30",
+        "value": 11,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-07-31",
+        "value": 12,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-08-24",
+        "value": 42,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-02",
+        "value": 14,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-09-03",
+        "value": 15,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-09-07",
+        "value": 44,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-10",
+        "value": 45,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-10",
+        "value": 16,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-09-13",
+        "value": 17,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-09-20",
+        "value": 46,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-22",
+        "value": 18,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-09-22",
+        "value": 47,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-27",
+        "value": 48,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-09-29",
+        "value": 49,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-02",
+        "value": 19,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-10-05",
+        "value": 20,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-10-06",
+        "value": 21,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-10-08",
+        "value": 51,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-11",
+        "value": 52,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-12",
+        "value": 53,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-13",
+        "value": 54,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-16",
+        "value": 55,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-21",
+        "value": 58,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-10-25",
+        "value": 22,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-10-27",
+        "value": 60,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-01",
+        "value": 61,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-07",
+        "value": 62,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-10",
+        "value": 63,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-14",
+        "value": 64,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-15",
+        "value": 23,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-11-17",
+        "value": 24,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-11-20",
+        "value": 65,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-22",
+        "value": 25,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-11-22",
+        "value": 66,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-27",
+        "value": 67,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-11-30",
+        "value": 69,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-04",
+        "value": 70,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-05",
+        "value": 71,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-07",
+        "value": 26,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-12-12",
+        "value": 27,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-12-16",
+        "value": 72,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-21",
+        "value": 28,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-12-22",
+        "value": 73,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-24",
+        "value": 74,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-26",
+        "value": 75,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-28",
+        "value": 76,
+        "seriesId": "1"
+    },
+    {
+        "date": "2010-12-29",
+        "value": 29,
+        "seriesId": "2"
+    },
+    {
+        "date": "2010-12-30",
+        "value": 77,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-01",
+        "value": 78,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-02",
+        "value": 79,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-05",
+        "value": 30,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-06",
+        "value": 80,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-07",
+        "value": 81,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-07",
+        "value": 31,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-09",
+        "value": 82,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-09",
+        "value": 33,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-10",
+        "value": 34,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-10",
+        "value": 83,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-11",
+        "value": 85,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-12",
+        "value": 86,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-13",
+        "value": 35,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-14",
+        "value": 87,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-15",
+        "value": 88,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-17",
+        "value": 89,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-21",
+        "value": 90,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-22",
+        "value": 36,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-24",
+        "value": 93,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-25",
+        "value": 94,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-29",
+        "value": 95,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-30",
+        "value": 96,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-01-30",
+        "value": 38,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-01-31",
+        "value": 97,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-01",
+        "value": 98,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-04",
+        "value": 99,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-05",
+        "value": 40,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-05",
+        "value": 101,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-06",
+        "value": 104,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-06",
+        "value": 43,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-07",
+        "value": 106,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-08",
+        "value": 108,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-12",
+        "value": 110,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-13",
+        "value": 111,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-14",
+        "value": 114,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-16",
+        "value": 115,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-17",
+        "value": 117,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-18",
+        "value": 44,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-18",
+        "value": 119,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-20",
+        "value": 121,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-20",
+        "value": 46,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-21",
+        "value": 122,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-21",
+        "value": 48,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-23",
+        "value": 52,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-02-24",
+        "value": 124,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-25",
+        "value": 125,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-02-28",
+        "value": 54,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-01",
+        "value": 55,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-02",
+        "value": 126,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-03",
+        "value": 128,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-03",
+        "value": 56,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-04",
+        "value": 129,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-05",
+        "value": 134,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-05",
+        "value": 58,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-06",
+        "value": 136,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-06",
+        "value": 59,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-07",
+        "value": 62,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-07",
+        "value": 137,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-08",
+        "value": 63,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-09",
+        "value": 140,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-10",
+        "value": 64,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-10",
+        "value": 144,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-11",
+        "value": 65,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-11",
+        "value": 146,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-13",
+        "value": 147,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-14",
+        "value": 149,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-14",
+        "value": 66,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-15",
+        "value": 151,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-17",
+        "value": 152,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-18",
+        "value": 68,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-18",
+        "value": 153,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-19",
+        "value": 154,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-19",
+        "value": 69,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-22",
+        "value": 70,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-22",
+        "value": 156,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-23",
+        "value": 71,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-24",
+        "value": 158,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-25",
+        "value": 72,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-25",
+        "value": 159,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-28",
+        "value": 161,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-29",
+        "value": 73,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-03-30",
+        "value": 162,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-03-31",
+        "value": 75,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-01",
+        "value": 163,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-04",
+        "value": 77,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-07",
+        "value": 164,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-08",
+        "value": 78,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-12",
+        "value": 165,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-13",
+        "value": 80,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-14",
+        "value": 166,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-15",
+        "value": 81,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-16",
+        "value": 167,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-17",
+        "value": 168,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-18",
+        "value": 82,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-19",
+        "value": 169,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-20",
+        "value": 84,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-21",
+        "value": 170,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-21",
+        "value": 85,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-22",
+        "value": 86,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-26",
+        "value": 87,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-26",
+        "value": 172,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-27",
+        "value": 88,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-04-27",
+        "value": 173,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-04-28",
+        "value": 175,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-01",
+        "value": 176,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-02",
+        "value": 177,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-03",
+        "value": 179,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-04",
+        "value": 181,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-04",
+        "value": 89,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-05",
+        "value": 91,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-06",
+        "value": 183,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-07",
+        "value": 92,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-07",
+        "value": 184,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-08",
+        "value": 93,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-09",
+        "value": 186,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-10",
+        "value": 95,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-11",
+        "value": 188,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-11",
+        "value": 97,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-12",
+        "value": 98,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-13",
+        "value": 189,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-13",
+        "value": 101,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-14",
+        "value": 102,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-15",
+        "value": 105,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-15",
+        "value": 190,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-16",
+        "value": 193,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-16",
+        "value": 106,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-17",
+        "value": 107,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-18",
+        "value": 194,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-19",
+        "value": 195,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-21",
+        "value": 196,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-22",
+        "value": 197,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-23",
+        "value": 201,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-23",
+        "value": 109,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-24",
+        "value": 205,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-24",
+        "value": 110,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-25",
+        "value": 207,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-27",
+        "value": 209,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-27",
+        "value": 112,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-28",
+        "value": 210,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-28",
+        "value": 113,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-29",
+        "value": 115,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-05-30",
+        "value": 211,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-05-31",
+        "value": 116,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-01",
+        "value": 212,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-01",
+        "value": 118,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-06",
+        "value": 213,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-06",
+        "value": 119,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-07",
+        "value": 120,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-08",
+        "value": 121,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-08",
+        "value": 214,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-09",
+        "value": 215,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-10",
+        "value": 217,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-11",
+        "value": 219,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-12",
+        "value": 220,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-14",
+        "value": 122,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-15",
+        "value": 123,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-16",
+        "value": 125,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-19",
+        "value": 126,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-21",
+        "value": 223,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-22",
+        "value": 129,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-23",
+        "value": 224,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-24",
+        "value": 225,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-25",
+        "value": 132,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-27",
+        "value": 134,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-28",
+        "value": 135,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-28",
+        "value": 227,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-29",
+        "value": 228,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-06-29",
+        "value": 136,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-06-30",
+        "value": 137,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-01",
+        "value": 138,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-02",
+        "value": 139,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-04",
+        "value": 140,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-04",
+        "value": 230,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-05",
+        "value": 141,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-06",
+        "value": 142,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-06",
+        "value": 233,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-08",
+        "value": 143,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-08",
+        "value": 234,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-09",
+        "value": 237,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-09",
+        "value": 144,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-10",
+        "value": 243,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-11",
+        "value": 246,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-12",
+        "value": 249,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-13",
+        "value": 250,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-13",
+        "value": 145,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-14",
+        "value": 251,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-15",
+        "value": 252,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-15",
+        "value": 146,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-16",
+        "value": 147,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-18",
+        "value": 148,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-19",
+        "value": 254,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-19",
+        "value": 149,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-20",
+        "value": 256,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-21",
+        "value": 151,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-22",
+        "value": 152,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-23",
+        "value": 258,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-25",
+        "value": 153,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-26",
+        "value": 260,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-27",
+        "value": 262,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-27",
+        "value": 154,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-28",
+        "value": 264,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-29",
+        "value": 155,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-29",
+        "value": 265,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-30",
+        "value": 266,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-07-30",
+        "value": 157,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-07-31",
+        "value": 158,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-01",
+        "value": 267,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-01",
+        "value": 159,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-02",
+        "value": 160,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-02",
+        "value": 268,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-04",
+        "value": 270,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-05",
+        "value": 161,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-09",
+        "value": 271,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-09",
+        "value": 163,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-10",
+        "value": 274,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-11",
+        "value": 164,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-11",
+        "value": 275,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-12",
+        "value": 276,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-12",
+        "value": 165,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-13",
+        "value": 277,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-14",
+        "value": 279,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-15",
+        "value": 167,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-15",
+        "value": 280,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-20",
+        "value": 281,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-22",
+        "value": 282,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-25",
+        "value": 283,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-26",
+        "value": 168,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-28",
+        "value": 284,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-30",
+        "value": 285,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-08-30",
+        "value": 169,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-08-31",
+        "value": 170,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-01",
+        "value": 286,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-02",
+        "value": 172,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-03",
+        "value": 173,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-04",
+        "value": 287,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-05",
+        "value": 288,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-06",
+        "value": 289,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-09",
+        "value": 290,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-10",
+        "value": 291,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-11",
+        "value": 174,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-13",
+        "value": 175,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-13",
+        "value": 292,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-14",
+        "value": 293,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-15",
+        "value": 294,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-16",
+        "value": 295,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-17",
+        "value": 176,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-20",
+        "value": 177,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-21",
+        "value": 296,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-22",
+        "value": 297,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-22",
+        "value": 179,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-23",
+        "value": 298,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-24",
+        "value": 299,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-25",
+        "value": 301,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-26",
+        "value": 304,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-26",
+        "value": 180,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-09-28",
+        "value": 306,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-09-30",
+        "value": 307,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-02",
+        "value": 181,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-05",
+        "value": 182,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-09",
+        "value": 183,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-09",
+        "value": 309,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-10",
+        "value": 184,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-11",
+        "value": 185,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-12",
+        "value": 186,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-13",
+        "value": 187,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-14",
+        "value": 189,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-14",
+        "value": 310,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-15",
+        "value": 191,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-16",
+        "value": 311,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-18",
+        "value": 313,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-19",
+        "value": 192,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-21",
+        "value": 193,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-22",
+        "value": 194,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-22",
+        "value": 314,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-23",
+        "value": 195,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-24",
+        "value": 196,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-24",
+        "value": 315,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-25",
+        "value": 198,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-10-25",
+        "value": 316,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-26",
+        "value": 317,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-27",
+        "value": 318,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-28",
+        "value": 319,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-30",
+        "value": 320,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-10-31",
+        "value": 199,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-01",
+        "value": 200,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-01",
+        "value": 321,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-03",
+        "value": 201,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-04",
+        "value": 202,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-04",
+        "value": 322,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-08",
+        "value": 203,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-09",
+        "value": 204,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-10",
+        "value": 205,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-10",
+        "value": 323,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-11",
+        "value": 324,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-11",
+        "value": 206,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-12",
+        "value": 325,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-12",
+        "value": 207,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-13",
+        "value": 326,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-14",
+        "value": 208,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-14",
+        "value": 327,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-15",
+        "value": 209,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-16",
+        "value": 328,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-17",
+        "value": 212,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-20",
+        "value": 329,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-22",
+        "value": 330,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-23",
+        "value": 213,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-23",
+        "value": 331,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-24",
+        "value": 332,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-26",
+        "value": 214,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-27",
+        "value": 333,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-28",
+        "value": 215,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-28",
+        "value": 334,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-29",
+        "value": 335,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-11-29",
+        "value": 216,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-11-30",
+        "value": 336,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-01",
+        "value": 217,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-02",
+        "value": 218,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-05",
+        "value": 337,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-06",
+        "value": 338,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-08",
+        "value": 339,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-08",
+        "value": 219,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-09",
+        "value": 340,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-10",
+        "value": 341,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-12",
+        "value": 343,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-13",
+        "value": 221,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-14",
+        "value": 344,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-17",
+        "value": 222,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-18",
+        "value": 345,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-21",
+        "value": 346,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-22",
+        "value": 223,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-23",
+        "value": 347,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-25",
+        "value": 348,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-26",
+        "value": 224,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-28",
+        "value": 351,
+        "seriesId": "1"
+    },
+    {
+        "date": "2011-12-29",
+        "value": 225,
+        "seriesId": "2"
+    },
+    {
+        "date": "2011-12-29",
+        "value": 355,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-01",
+        "value": 356,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-03",
+        "value": 226,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-04",
+        "value": 227,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-04",
+        "value": 357,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-05",
+        "value": 359,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-05",
+        "value": 229,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-06",
+        "value": 231,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-07",
+        "value": 232,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-08",
+        "value": 234,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-09",
+        "value": 235,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-10",
+        "value": 360,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-10",
+        "value": 236,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-13",
+        "value": 362,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-15",
+        "value": 237,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-17",
+        "value": 363,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-17",
+        "value": 240,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-19",
+        "value": 364,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-19",
+        "value": 241,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-20",
+        "value": 242,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-21",
+        "value": 244,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-23",
+        "value": 365,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-23",
+        "value": 246,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-24",
+        "value": 366,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-25",
+        "value": 248,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-26",
+        "value": 250,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-27",
+        "value": 251,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-27",
+        "value": 367,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-01-29",
+        "value": 252,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-30",
+        "value": 253,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-31",
+        "value": 255,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-01-31",
+        "value": 368,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-01",
+        "value": 370,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-03",
+        "value": 371,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-06",
+        "value": 372,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-07",
+        "value": 373,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-08",
+        "value": 256,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-09",
+        "value": 257,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-11",
+        "value": 374,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-12",
+        "value": 258,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-14",
+        "value": 375,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-15",
+        "value": 259,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-15",
+        "value": 376,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-16",
+        "value": 260,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-16",
+        "value": 377,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-18",
+        "value": 261,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-20",
+        "value": 378,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-21",
+        "value": 379,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-22",
+        "value": 263,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-22",
+        "value": 381,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-25",
+        "value": 265,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-02-28",
+        "value": 382,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-29",
+        "value": 384,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-02-29",
+        "value": 267,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-01",
+        "value": 385,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-01",
+        "value": 269,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-03",
+        "value": 386,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-04",
+        "value": 388,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-06",
+        "value": 270,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-06",
+        "value": 390,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-07",
+        "value": 391,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-07",
+        "value": 272,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-09",
+        "value": 392,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-10",
+        "value": 394,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-11",
+        "value": 396,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-12",
+        "value": 399,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-12",
+        "value": 273,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-13",
+        "value": 275,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-14",
+        "value": 400,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-14",
+        "value": 276,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-15",
+        "value": 402,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-16",
+        "value": 405,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-19",
+        "value": 277,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-19",
+        "value": 406,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-20",
+        "value": 278,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-21",
+        "value": 409,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-22",
+        "value": 279,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-23",
+        "value": 411,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-24",
+        "value": 280,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-24",
+        "value": 412,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-25",
+        "value": 281,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-03-26",
+        "value": 413,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-29",
+        "value": 416,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-03-31",
+        "value": 417,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-03",
+        "value": 282,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-04",
+        "value": 418,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-05",
+        "value": 419,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-06",
+        "value": 422,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-09",
+        "value": 283,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-09",
+        "value": 423,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-10",
+        "value": 424,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-10",
+        "value": 284,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-12",
+        "value": 287,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-13",
+        "value": 426,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-13",
+        "value": 290,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-14",
+        "value": 427,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-15",
+        "value": 428,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-16",
+        "value": 429,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-17",
+        "value": 291,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-18",
+        "value": 432,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-18",
+        "value": 292,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-19",
+        "value": 435,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-20",
+        "value": 293,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-20",
+        "value": 437,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-23",
+        "value": 438,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-04-23",
+        "value": 295,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-26",
+        "value": 296,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-30",
+        "value": 299,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-04-30",
+        "value": 439,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-02",
+        "value": 442,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-02",
+        "value": 301,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-03",
+        "value": 302,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-03",
+        "value": 445,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-04",
+        "value": 303,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-06",
+        "value": 446,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-07",
+        "value": 305,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-09",
+        "value": 447,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-10",
+        "value": 448,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-11",
+        "value": 451,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-11",
+        "value": 306,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-12",
+        "value": 452,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-14",
+        "value": 308,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-14",
+        "value": 454,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-16",
+        "value": 309,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-16",
+        "value": 455,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-17",
+        "value": 456,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-18",
+        "value": 310,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-18",
+        "value": 461,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-19",
+        "value": 311,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-20",
+        "value": 314,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-21",
+        "value": 315,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-21",
+        "value": 463,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-22",
+        "value": 465,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-22",
+        "value": 317,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-25",
+        "value": 318,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-25",
+        "value": 466,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-28",
+        "value": 467,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-29",
+        "value": 468,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-29",
+        "value": 321,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-05-31",
+        "value": 470,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-05-31",
+        "value": 322,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-02",
+        "value": 471,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-03",
+        "value": 323,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-07",
+        "value": 324,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-08",
+        "value": 473,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-09",
+        "value": 326,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-12",
+        "value": 327,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-13",
+        "value": 475,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-13",
+        "value": 328,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-14",
+        "value": 329,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-15",
+        "value": 331,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-16",
+        "value": 476,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-18",
+        "value": 333,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-19",
+        "value": 477,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-20",
+        "value": 478,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-20",
+        "value": 335,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-23",
+        "value": 480,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-25",
+        "value": 481,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-26",
+        "value": 336,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-26",
+        "value": 484,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-27",
+        "value": 337,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-06-27",
+        "value": 485,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-28",
+        "value": 486,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-06-29",
+        "value": 339,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-02",
+        "value": 487,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-02",
+        "value": 341,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-03",
+        "value": 488,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-03",
+        "value": 344,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-05",
+        "value": 345,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-05",
+        "value": 489,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-06",
+        "value": 491,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-07",
+        "value": 492,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-09",
+        "value": 346,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-09",
+        "value": 494,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-10",
+        "value": 495,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-11",
+        "value": 496,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-12",
+        "value": 497,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-14",
+        "value": 501,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-16",
+        "value": 502,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-17",
+        "value": 348,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-18",
+        "value": 349,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-19",
+        "value": 505,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-19",
+        "value": 350,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-20",
+        "value": 508,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-21",
+        "value": 510,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-22",
+        "value": 351,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-24",
+        "value": 353,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-24",
+        "value": 511,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-25",
+        "value": 512,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-26",
+        "value": 514,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-07-30",
+        "value": 354,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-07-31",
+        "value": 355,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-01",
+        "value": 357,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-02",
+        "value": 358,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-03",
+        "value": 359,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-03",
+        "value": 515,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-05",
+        "value": 516,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-05",
+        "value": 360,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-06",
+        "value": 517,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-07",
+        "value": 518,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-07",
+        "value": 361,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-10",
+        "value": 519,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-13",
+        "value": 522,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-13",
+        "value": 362,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-14",
+        "value": 523,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-15",
+        "value": 363,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-15",
+        "value": 524,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-17",
+        "value": 525,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-21",
+        "value": 526,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-22",
+        "value": 527,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-23",
+        "value": 528,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-24",
+        "value": 364,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-24",
+        "value": 529,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-26",
+        "value": 530,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-26",
+        "value": 365,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-28",
+        "value": 531,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-29",
+        "value": 366,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-29",
+        "value": 532,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-30",
+        "value": 367,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-08-30",
+        "value": 534,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-08-31",
+        "value": 535,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-01",
+        "value": 536,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-02",
+        "value": 537,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-03",
+        "value": 538,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-03",
+        "value": 368,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-04",
+        "value": 539,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-04",
+        "value": 369,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-05",
+        "value": 370,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-06",
+        "value": 371,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-07",
+        "value": 372,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-07",
+        "value": 541,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-08",
+        "value": 373,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-09",
+        "value": 542,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-10",
+        "value": 375,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-10",
+        "value": 543,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-11",
+        "value": 376,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-12",
+        "value": 544,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-14",
+        "value": 377,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-16",
+        "value": 545,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-16",
+        "value": 378,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-17",
+        "value": 547,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-19",
+        "value": 379,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-20",
+        "value": 549,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-22",
+        "value": 380,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-23",
+        "value": 381,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-24",
+        "value": 383,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-25",
+        "value": 384,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-25",
+        "value": 550,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-26",
+        "value": 385,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-27",
+        "value": 386,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-27",
+        "value": 555,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-09-28",
+        "value": 387,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-29",
+        "value": 388,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-30",
+        "value": 389,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-09-30",
+        "value": 556,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-01",
+        "value": 557,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-01",
+        "value": 390,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-02",
+        "value": 558,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-02",
+        "value": 391,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-04",
+        "value": 393,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-04",
+        "value": 562,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-05",
+        "value": 563,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-05",
+        "value": 394,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-06",
+        "value": 395,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-06",
+        "value": 564,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-07",
+        "value": 566,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-08",
+        "value": 567,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-08",
+        "value": 397,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-09",
+        "value": 568,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-09",
+        "value": 399,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-10",
+        "value": 400,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-11",
+        "value": 401,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-11",
+        "value": 569,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-12",
+        "value": 402,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-14",
+        "value": 403,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-16",
+        "value": 570,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-18",
+        "value": 405,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-18",
+        "value": 571,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-19",
+        "value": 572,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-21",
+        "value": 406,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-22",
+        "value": 407,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-24",
+        "value": 573,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-25",
+        "value": 575,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-26",
+        "value": 576,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-26",
+        "value": 408,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-27",
+        "value": 577,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-28",
+        "value": 409,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-29",
+        "value": 578,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-10-30",
+        "value": 411,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-10-31",
+        "value": 412,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-01",
+        "value": 581,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-03",
+        "value": 413,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-04",
+        "value": 582,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-05",
+        "value": 416,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-06",
+        "value": 417,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-07",
+        "value": 584,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-08",
+        "value": 418,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-09",
+        "value": 586,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-12",
+        "value": 419,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-12",
+        "value": 587,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-14",
+        "value": 590,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-15",
+        "value": 420,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-17",
+        "value": 421,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-18",
+        "value": 592,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-19",
+        "value": 594,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-20",
+        "value": 595,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-21",
+        "value": 422,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-21",
+        "value": 597,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-24",
+        "value": 426,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-24",
+        "value": 600,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-25",
+        "value": 428,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-11-26",
+        "value": 602,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-29",
+        "value": 603,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-11-29",
+        "value": 430,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-02",
+        "value": 605,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-03",
+        "value": 431,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-03",
+        "value": 607,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-04",
+        "value": 608,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-04",
+        "value": 432,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-06",
+        "value": 434,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-08",
+        "value": 435,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-10",
+        "value": 610,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-11",
+        "value": 436,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-11",
+        "value": 612,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-12",
+        "value": 623,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-13",
+        "value": 626,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-14",
+        "value": 632,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-15",
+        "value": 437,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-16",
+        "value": 633,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-17",
+        "value": 438,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-18",
+        "value": 634,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-19",
+        "value": 636,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-19",
+        "value": 439,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-21",
+        "value": 637,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-22",
+        "value": 638,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-24",
+        "value": 639,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-24",
+        "value": 440,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-25",
+        "value": 441,
+        "seriesId": "2"
+    },
+    {
+        "date": "2012-12-25",
+        "value": 641,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-28",
+        "value": 643,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-29",
+        "value": 644,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-31",
+        "value": 647,
+        "seriesId": "1"
+    },
+    {
+        "date": "2012-12-31",
+        "value": 442,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-02",
+        "value": 648,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-04",
+        "value": 443,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-04",
+        "value": 649,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-09",
+        "value": 444,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-10",
+        "value": 664,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-11",
+        "value": 671,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-12",
+        "value": 673,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-13",
+        "value": 674,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-13",
+        "value": 446,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-14",
+        "value": 448,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-14",
+        "value": 677,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-15",
+        "value": 678,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-15",
+        "value": 450,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-16",
+        "value": 453,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-16",
+        "value": 680,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-18",
+        "value": 454,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-18",
+        "value": 682,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-21",
+        "value": 458,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-23",
+        "value": 459,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-25",
+        "value": 684,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-26",
+        "value": 460,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-27",
+        "value": 685,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-01-28",
+        "value": 461,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-01-31",
+        "value": 686,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-01",
+        "value": 462,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-01",
+        "value": 687,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-02",
+        "value": 688,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-02",
+        "value": 463,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-04",
+        "value": 690,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-05",
+        "value": 464,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-07",
+        "value": 691,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-08",
+        "value": 693,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-11",
+        "value": 465,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-12",
+        "value": 694,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-13",
+        "value": 466,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-14",
+        "value": 696,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-15",
+        "value": 697,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-15",
+        "value": 467,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-19",
+        "value": 699,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-19",
+        "value": 468,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-21",
+        "value": 702,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-21",
+        "value": 469,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-22",
+        "value": 703,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-23",
+        "value": 470,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-25",
+        "value": 704,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-25",
+        "value": 472,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-26",
+        "value": 705,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-02-26",
+        "value": 474,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-02-28",
+        "value": 706,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-01",
+        "value": 707,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-02",
+        "value": 709,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-05",
+        "value": 475,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-05",
+        "value": 711,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-06",
+        "value": 713,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-07",
+        "value": 476,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-08",
+        "value": 715,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-08",
+        "value": 478,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-10",
+        "value": 716,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-10",
+        "value": 480,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-12",
+        "value": 718,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-12",
+        "value": 481,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-14",
+        "value": 483,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-15",
+        "value": 485,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-15",
+        "value": 719,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-16",
+        "value": 720,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-17",
+        "value": 486,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-18",
+        "value": 487,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-19",
+        "value": 721,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-19",
+        "value": 488,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-20",
+        "value": 724,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-22",
+        "value": 489,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-23",
+        "value": 490,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-25",
+        "value": 725,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-25",
+        "value": 492,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-26",
+        "value": 727,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-27",
+        "value": 729,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-28",
+        "value": 493,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-30",
+        "value": 730,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-03-30",
+        "value": 500,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-03-31",
+        "value": 503,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-01",
+        "value": 504,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-01",
+        "value": 731,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-03",
+        "value": 505,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-04",
+        "value": 506,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-05",
+        "value": 507,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-05",
+        "value": 735,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-06",
+        "value": 737,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-08",
+        "value": 741,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-08",
+        "value": 509,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-09",
+        "value": 510,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-09",
+        "value": 743,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-10",
+        "value": 744,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-11",
+        "value": 747,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-11",
+        "value": 511,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-12",
+        "value": 749,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-12",
+        "value": 513,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-13",
+        "value": 514,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-14",
+        "value": 750,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-14",
+        "value": 515,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-16",
+        "value": 517,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-17",
+        "value": 752,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-17",
+        "value": 518,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-18",
+        "value": 519,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-19",
+        "value": 753,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-20",
+        "value": 522,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-20",
+        "value": 756,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-21",
+        "value": 762,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-22",
+        "value": 765,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-22",
+        "value": 524,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-23",
+        "value": 766,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-23",
+        "value": 525,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-25",
+        "value": 527,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-25",
+        "value": 768,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-26",
+        "value": 528,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-28",
+        "value": 769,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-04-29",
+        "value": 529,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-04-30",
+        "value": 770,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-01",
+        "value": 530,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-03",
+        "value": 531,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-03",
+        "value": 771,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-04",
+        "value": 532,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-05",
+        "value": 533,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-06",
+        "value": 537,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-07",
+        "value": 773,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-09",
+        "value": 774,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-10",
+        "value": 538,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-10",
+        "value": 775,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-11",
+        "value": 776,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-12",
+        "value": 539,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-13",
+        "value": 540,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-13",
+        "value": 779,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-14",
+        "value": 542,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-15",
+        "value": 780,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-17",
+        "value": 781,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-17",
+        "value": 544,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-18",
+        "value": 782,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-19",
+        "value": 784,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-19",
+        "value": 545,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-20",
+        "value": 546,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-21",
+        "value": 547,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-22",
+        "value": 548,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-22",
+        "value": 785,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-24",
+        "value": 787,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-26",
+        "value": 788,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-27",
+        "value": 789,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-29",
+        "value": 791,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-29",
+        "value": 549,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-30",
+        "value": 552,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-05-31",
+        "value": 793,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-05-31",
+        "value": 553,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-03",
+        "value": 794,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-03",
+        "value": 555,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-04",
+        "value": 796,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-04",
+        "value": 558,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-05",
+        "value": 559,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-06",
+        "value": 560,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-07",
+        "value": 800,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-08",
+        "value": 561,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-10",
+        "value": 562,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-10",
+        "value": 801,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-11",
+        "value": 563,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-11",
+        "value": 802,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-12",
+        "value": 565,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-12",
+        "value": 803,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-13",
+        "value": 804,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-14",
+        "value": 805,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-15",
+        "value": 566,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-16",
+        "value": 569,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-16",
+        "value": 807,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-17",
+        "value": 808,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-18",
+        "value": 809,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-19",
+        "value": 810,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-19",
+        "value": 570,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-20",
+        "value": 573,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-22",
+        "value": 811,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-06-23",
+        "value": 574,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-25",
+        "value": 575,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-26",
+        "value": 577,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-06-28",
+        "value": 578,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-02",
+        "value": 813,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-03",
+        "value": 814,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-04",
+        "value": 816,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-05",
+        "value": 818,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-08",
+        "value": 819,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-09",
+        "value": 820,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-10",
+        "value": 821,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-11",
+        "value": 822,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-11",
+        "value": 579,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-13",
+        "value": 580,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-13",
+        "value": 824,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-14",
+        "value": 825,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-16",
+        "value": 581,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-19",
+        "value": 826,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-20",
+        "value": 827,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-23",
+        "value": 582,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-24",
+        "value": 828,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-24",
+        "value": 585,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-25",
+        "value": 586,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-07-25",
+        "value": 832,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-26",
+        "value": 835,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-07-29",
+        "value": 587,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-02",
+        "value": 836,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-02",
+        "value": 588,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-03",
+        "value": 837,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-06",
+        "value": 589,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-07",
+        "value": 838,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-07",
+        "value": 593,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-08",
+        "value": 594,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-09",
+        "value": 595,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-10",
+        "value": 839,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-11",
+        "value": 840,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-12",
+        "value": 842,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-12",
+        "value": 596,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-14",
+        "value": 843,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-14",
+        "value": 597,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-15",
+        "value": 844,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-16",
+        "value": 845,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-18",
+        "value": 599,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-19",
+        "value": 847,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-19",
+        "value": 601,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-20",
+        "value": 848,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-21",
+        "value": 602,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-22",
+        "value": 850,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-25",
+        "value": 851,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-26",
+        "value": 852,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-28",
+        "value": 604,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-08-28",
+        "value": 853,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-29",
+        "value": 855,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-08-30",
+        "value": 856,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-01",
+        "value": 857,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-02",
+        "value": 858,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-03",
+        "value": 605,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-04",
+        "value": 859,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-04",
+        "value": 606,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-05",
+        "value": 861,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-06",
+        "value": 608,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-06",
+        "value": 862,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-08",
+        "value": 863,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-09",
+        "value": 865,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-10",
+        "value": 867,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-11",
+        "value": 609,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-12",
+        "value": 868,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-13",
+        "value": 610,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-14",
+        "value": 870,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-18",
+        "value": 612,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-19",
+        "value": 871,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-19",
+        "value": 613,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-24",
+        "value": 614,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-09-24",
+        "value": 872,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-25",
+        "value": 873,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-27",
+        "value": 874,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-09-30",
+        "value": 876,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-01",
+        "value": 878,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-02",
+        "value": 616,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-03",
+        "value": 617,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-03",
+        "value": 879,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-04",
+        "value": 618,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-04",
+        "value": 881,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-05",
+        "value": 619,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-06",
+        "value": 883,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-07",
+        "value": 620,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-07",
+        "value": 885,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-08",
+        "value": 886,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-08",
+        "value": 622,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-09",
+        "value": 623,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-10",
+        "value": 625,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-11",
+        "value": 887,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-13",
+        "value": 888,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-16",
+        "value": 627,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-17",
+        "value": 890,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-17",
+        "value": 628,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-18",
+        "value": 891,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-19",
+        "value": 629,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-19",
+        "value": 892,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-20",
+        "value": 630,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-21",
+        "value": 631,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-22",
+        "value": 632,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-23",
+        "value": 893,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-24",
+        "value": 894,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-25",
+        "value": 896,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-25",
+        "value": 634,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-28",
+        "value": 635,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-29",
+        "value": 897,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-30",
+        "value": 899,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-10-30",
+        "value": 636,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-10-31",
+        "value": 637,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-01",
+        "value": 638,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-03",
+        "value": 900,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-05",
+        "value": 639,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-05",
+        "value": 903,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-06",
+        "value": 904,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-07",
+        "value": 905,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-07",
+        "value": 640,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-08",
+        "value": 641,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-09",
+        "value": 906,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-13",
+        "value": 642,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-13",
+        "value": 907,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-15",
+        "value": 643,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-15",
+        "value": 908,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-17",
+        "value": 909,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-17",
+        "value": 644,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-18",
+        "value": 645,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-18",
+        "value": 910,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-19",
+        "value": 911,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-20",
+        "value": 646,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-21",
+        "value": 912,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-21",
+        "value": 648,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-22",
+        "value": 914,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-23",
+        "value": 916,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-24",
+        "value": 917,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-25",
+        "value": 919,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-26",
+        "value": 920,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-27",
+        "value": 650,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-11-28",
+        "value": 921,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-29",
+        "value": 922,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-11-29",
+        "value": 651,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-01",
+        "value": 653,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-01",
+        "value": 923,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-02",
+        "value": 654,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-03",
+        "value": 655,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-04",
+        "value": 924,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-04",
+        "value": 656,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-05",
+        "value": 925,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-05",
+        "value": 658,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-06",
+        "value": 659,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-06",
+        "value": 926,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-07",
+        "value": 660,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-08",
+        "value": 662,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-08",
+        "value": 927,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-09",
+        "value": 663,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-10",
+        "value": 928,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-11",
+        "value": 929,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-12",
+        "value": 931,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-12",
+        "value": 664,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-14",
+        "value": 937,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-14",
+        "value": 669,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-15",
+        "value": 670,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-15",
+        "value": 938,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-16",
+        "value": 939,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-17",
+        "value": 942,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-18",
+        "value": 672,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-19",
+        "value": 673,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-19",
+        "value": 944,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-25",
+        "value": 945,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-26",
+        "value": 674,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-27",
+        "value": 947,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-28",
+        "value": 676,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-28",
+        "value": 948,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-30",
+        "value": 949,
+        "seriesId": "1"
+    },
+    {
+        "date": "2013-12-31",
+        "value": 678,
+        "seriesId": "2"
+    },
+    {
+        "date": "2013-12-31",
+        "value": 951,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-02",
+        "value": 679,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-03",
+        "value": 680,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-03",
+        "value": 952,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-05",
+        "value": 681,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-06",
+        "value": 954,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-06",
+        "value": 683,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-07",
+        "value": 955,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-07",
+        "value": 684,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-08",
+        "value": 957,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-09",
+        "value": 958,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-09",
+        "value": 686,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-10",
+        "value": 959,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-11",
+        "value": 687,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-12",
+        "value": 960,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-13",
+        "value": 688,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-14",
+        "value": 690,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-15",
+        "value": 692,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-16",
+        "value": 961,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-17",
+        "value": 967,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-18",
+        "value": 693,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-19",
+        "value": 968,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-20",
+        "value": 971,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-21",
+        "value": 972,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-22",
+        "value": 694,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-22",
+        "value": 973,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-23",
+        "value": 974,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-24",
+        "value": 695,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-24",
+        "value": 976,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-25",
+        "value": 977,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-27",
+        "value": 696,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-27",
+        "value": 980,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-28",
+        "value": 981,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-01-28",
+        "value": 697,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-29",
+        "value": 698,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-01-29",
+        "value": 982,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-01",
+        "value": 983,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-02",
+        "value": 984,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-02",
+        "value": 699,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-04",
+        "value": 701,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-04",
+        "value": 987,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-05",
+        "value": 704,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-06",
+        "value": 705,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-07",
+        "value": 707,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-08",
+        "value": 708,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-09",
+        "value": 988,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-10",
+        "value": 709,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-11",
+        "value": 989,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-11",
+        "value": 712,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-16",
+        "value": 990,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-16",
+        "value": 713,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-17",
+        "value": 991,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-18",
+        "value": 992,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-21",
+        "value": 993,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-22",
+        "value": 995,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-23",
+        "value": 996,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-24",
+        "value": 997,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-24",
+        "value": 714,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-25",
+        "value": 715,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-26",
+        "value": 716,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-27",
+        "value": 717,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-02-27",
+        "value": 999,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-02-28",
+        "value": 718,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-03",
+        "value": 719,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-04",
+        "value": 1001,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-04",
+        "value": 720,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-05",
+        "value": 721,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-11",
+        "value": 722,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-12",
+        "value": 725,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-13",
+        "value": 726,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-13",
+        "value": 1002,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-15",
+        "value": 1004,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-18",
+        "value": 1005,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-18",
+        "value": 727,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-19",
+        "value": 728,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-21",
+        "value": 730,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-24",
+        "value": 1006,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-25",
+        "value": 1008,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-26",
+        "value": 1009,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-27",
+        "value": 1011,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-03-28",
+        "value": 731,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-03-28",
+        "value": 1012,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-01",
+        "value": 1014,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-04",
+        "value": 733,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-07",
+        "value": 1015,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-07",
+        "value": 736,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-08",
+        "value": 737,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-09",
+        "value": 1019,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-10",
+        "value": 738,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-10",
+        "value": 1020,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-11",
+        "value": 1021,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-11",
+        "value": 739,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-12",
+        "value": 740,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-13",
+        "value": 1022,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-14",
+        "value": 1023,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-14",
+        "value": 741,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-17",
+        "value": 742,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-17",
+        "value": 1025,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-18",
+        "value": 1026,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-20",
+        "value": 1027,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-25",
+        "value": 1029,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-25",
+        "value": 743,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-26",
+        "value": 744,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-27",
+        "value": 746,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-28",
+        "value": 747,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-04-29",
+        "value": 1032,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-04-30",
+        "value": 748,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-02",
+        "value": 1035,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-03",
+        "value": 1036,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-03",
+        "value": 749,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-05",
+        "value": 750,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-06",
+        "value": 751,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-07",
+        "value": 1038,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-07",
+        "value": 752,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-09",
+        "value": 1039,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-09",
+        "value": 753,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-13",
+        "value": 754,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-14",
+        "value": 1040,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-20",
+        "value": 1041,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-20",
+        "value": 755,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-21",
+        "value": 756,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-21",
+        "value": 1042,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-22",
+        "value": 1044,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-23",
+        "value": 1045,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-26",
+        "value": 758,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-28",
+        "value": 759,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-29",
+        "value": 760,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-05-31",
+        "value": 1046,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-05-31",
+        "value": 761,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-02",
+        "value": 1047,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-03",
+        "value": 1050,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-05",
+        "value": 1051,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-06",
+        "value": 762,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-06",
+        "value": 1053,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-08",
+        "value": 1054,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-09",
+        "value": 763,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-09",
+        "value": 1055,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-10",
+        "value": 764,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-10",
+        "value": 1056,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-11",
+        "value": 766,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-11",
+        "value": 1057,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-12",
+        "value": 1059,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-12",
+        "value": 767,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-13",
+        "value": 770,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-13",
+        "value": 1060,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-15",
+        "value": 1061,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-16",
+        "value": 1062,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-17",
+        "value": 1063,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-18",
+        "value": 1064,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-21",
+        "value": 771,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-23",
+        "value": 772,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-25",
+        "value": 1066,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-26",
+        "value": 773,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-26",
+        "value": 1067,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-06-27",
+        "value": 774,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-06-30",
+        "value": 1068,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-01",
+        "value": 1069,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-02",
+        "value": 1070,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-03",
+        "value": 1071,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-04",
+        "value": 775,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-04",
+        "value": 1072,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-05",
+        "value": 1079,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-06",
+        "value": 1080,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-07",
+        "value": 1081,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-08",
+        "value": 1082,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-09",
+        "value": 1083,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-09",
+        "value": 777,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-11",
+        "value": 778,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-13",
+        "value": 1085,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-15",
+        "value": 779,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-16",
+        "value": 1086,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-17",
+        "value": 1088,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-18",
+        "value": 1090,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-18",
+        "value": 780,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-19",
+        "value": 1091,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-19",
+        "value": 781,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-20",
+        "value": 1092,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-24",
+        "value": 782,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-25",
+        "value": 784,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-27",
+        "value": 1093,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-28",
+        "value": 1094,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-29",
+        "value": 1096,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-29",
+        "value": 786,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-30",
+        "value": 1098,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-07-30",
+        "value": 787,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-07-31",
+        "value": 788,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-01",
+        "value": 789,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-03",
+        "value": 1099,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-04",
+        "value": 1102,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-05",
+        "value": 790,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-05",
+        "value": 1103,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-06",
+        "value": 1104,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-06",
+        "value": 791,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-07",
+        "value": 1106,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-07",
+        "value": 792,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-08",
+        "value": 1108,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-08",
+        "value": 794,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-11",
+        "value": 795,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-11",
+        "value": 1109,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-12",
+        "value": 1111,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-12",
+        "value": 796,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-13",
+        "value": 797,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-15",
+        "value": 1112,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-16",
+        "value": 798,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-18",
+        "value": 799,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-18",
+        "value": 1113,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-19",
+        "value": 1114,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-20",
+        "value": 800,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-22",
+        "value": 1117,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-22",
+        "value": 802,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-24",
+        "value": 803,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-24",
+        "value": 1118,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-25",
+        "value": 804,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-26",
+        "value": 1121,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-27",
+        "value": 1124,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-08-27",
+        "value": 805,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-28",
+        "value": 806,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-08-29",
+        "value": 1125,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-01",
+        "value": 1126,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-02",
+        "value": 1127,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-03",
+        "value": 807,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-05",
+        "value": 1128,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-06",
+        "value": 1129,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-07",
+        "value": 1130,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-08",
+        "value": 1132,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-08",
+        "value": 808,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-09",
+        "value": 1133,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-10",
+        "value": 1134,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-10",
+        "value": 809,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-11",
+        "value": 810,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-12",
+        "value": 1135,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-12",
+        "value": 811,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-16",
+        "value": 1136,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-17",
+        "value": 812,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-18",
+        "value": 1137,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-18",
+        "value": 814,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-19",
+        "value": 815,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-20",
+        "value": 816,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-22",
+        "value": 1138,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-23",
+        "value": 1141,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-23",
+        "value": 817,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-24",
+        "value": 1142,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-26",
+        "value": 1145,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-27",
+        "value": 818,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-09-28",
+        "value": 1146,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-09-29",
+        "value": 819,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-02",
+        "value": 821,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-03",
+        "value": 822,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-04",
+        "value": 1148,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-05",
+        "value": 823,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-07",
+        "value": 825,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-07",
+        "value": 1151,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-08",
+        "value": 1152,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-08",
+        "value": 826,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-09",
+        "value": 1153,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-09",
+        "value": 829,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-14",
+        "value": 1154,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-15",
+        "value": 1155,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-18",
+        "value": 1156,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-20",
+        "value": 831,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-21",
+        "value": 835,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-22",
+        "value": 1158,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-22",
+        "value": 836,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-23",
+        "value": 837,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-24",
+        "value": 1159,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-10-24",
+        "value": 839,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-25",
+        "value": 840,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-27",
+        "value": 841,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-28",
+        "value": 844,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-29",
+        "value": 845,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-10-31",
+        "value": 1160,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-01",
+        "value": 1161,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-03",
+        "value": 1162,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-04",
+        "value": 1163,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-04",
+        "value": 846,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-05",
+        "value": 1164,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-08",
+        "value": 847,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-09",
+        "value": 1165,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-10",
+        "value": 1166,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-11",
+        "value": 850,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-11",
+        "value": 1170,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-12",
+        "value": 1171,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-12",
+        "value": 852,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-13",
+        "value": 853,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-15",
+        "value": 1172,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-16",
+        "value": 1173,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-18",
+        "value": 1175,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-18",
+        "value": 854,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-20",
+        "value": 855,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-23",
+        "value": 1176,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-25",
+        "value": 1179,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-27",
+        "value": 1180,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-27",
+        "value": 856,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-28",
+        "value": 858,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-29",
+        "value": 1206,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-11-29",
+        "value": 866,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-30",
+        "value": 867,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-11-30",
+        "value": 1209,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-02",
+        "value": 868,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-03",
+        "value": 1210,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-03",
+        "value": 869,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-04",
+        "value": 871,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-04",
+        "value": 1212,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-05",
+        "value": 872,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-05",
+        "value": 1213,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-07",
+        "value": 1215,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-08",
+        "value": 873,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-08",
+        "value": 1217,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-09",
+        "value": 874,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-09",
+        "value": 1219,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-10",
+        "value": 875,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-11",
+        "value": 1220,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-11",
+        "value": 877,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-12",
+        "value": 879,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-13",
+        "value": 881,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-15",
+        "value": 1224,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-16",
+        "value": 883,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-17",
+        "value": 884,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-19",
+        "value": 1225,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-22",
+        "value": 885,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-23",
+        "value": 1228,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-27",
+        "value": 887,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-29",
+        "value": 1231,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-29",
+        "value": 889,
+        "seriesId": "2"
+    },
+    {
+        "date": "2014-12-30",
+        "value": 1232,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-31",
+        "value": 1233,
+        "seriesId": "1"
+    },
+    {
+        "date": "2014-12-31",
+        "value": 890,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-01",
+        "value": 1234,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-01",
+        "value": 891,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-02",
+        "value": 892,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-03",
+        "value": 1235,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-05",
+        "value": 1236,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-06",
+        "value": 894,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-07",
+        "value": 895,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-07",
+        "value": 1238,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-08",
+        "value": 1241,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-08",
+        "value": 896,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-09",
+        "value": 1242,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-11",
+        "value": 897,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-13",
+        "value": 899,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-15",
+        "value": 901,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-16",
+        "value": 1243,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-16",
+        "value": 902,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-19",
+        "value": 903,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-20",
+        "value": 906,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-21",
+        "value": 1245,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-22",
+        "value": 1246,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-23",
+        "value": 907,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-26",
+        "value": 1247,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-26",
+        "value": 908,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-28",
+        "value": 1248,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-29",
+        "value": 1249,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-01-29",
+        "value": 909,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-01-31",
+        "value": 1250,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-02",
+        "value": 1252,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-03",
+        "value": 1253,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-04",
+        "value": 910,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-05",
+        "value": 911,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-06",
+        "value": 1255,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-06",
+        "value": 913,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-07",
+        "value": 1256,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-07",
+        "value": 914,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-08",
+        "value": 915,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-09",
+        "value": 917,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-09",
+        "value": 1258,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-10",
+        "value": 1260,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-11",
+        "value": 919,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-13",
+        "value": 920,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-13",
+        "value": 1261,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-14",
+        "value": 1263,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-16",
+        "value": 921,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-17",
+        "value": 1264,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-17",
+        "value": 922,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-18",
+        "value": 923,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-19",
+        "value": 1265,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-20",
+        "value": 924,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-23",
+        "value": 925,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-25",
+        "value": 1266,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-26",
+        "value": 926,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-02-27",
+        "value": 1267,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-02-28",
+        "value": 1268,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-02",
+        "value": 1269,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-03",
+        "value": 1270,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-05",
+        "value": 1271,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-06",
+        "value": 927,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-06",
+        "value": 1272,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-08",
+        "value": 1274,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-10",
+        "value": 1275,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-10",
+        "value": 928,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-11",
+        "value": 1276,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-15",
+        "value": 1277,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-16",
+        "value": 1279,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-16",
+        "value": 929,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-17",
+        "value": 930,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-19",
+        "value": 1281,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-20",
+        "value": 1286,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-20",
+        "value": 931,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-21",
+        "value": 932,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-23",
+        "value": 1287,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-23",
+        "value": 933,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-24",
+        "value": 934,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-24",
+        "value": 1288,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-26",
+        "value": 1289,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-03-30",
+        "value": 936,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-03-31",
+        "value": 1291,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-03",
+        "value": 1292,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-04",
+        "value": 937,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-04",
+        "value": 1293,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-05",
+        "value": 938,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-06",
+        "value": 1295,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-07",
+        "value": 1296,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-07",
+        "value": 939,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-09",
+        "value": 940,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-10",
+        "value": 942,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-11",
+        "value": 1297,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-13",
+        "value": 1299,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-15",
+        "value": 944,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-16",
+        "value": 945,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-17",
+        "value": 946,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-18",
+        "value": 1300,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-19",
+        "value": 947,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-19",
+        "value": 1301,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-20",
+        "value": 948,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-20",
+        "value": 1302,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-21",
+        "value": 949,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-22",
+        "value": 1304,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-22",
+        "value": 951,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-23",
+        "value": 1305,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-26",
+        "value": 1306,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-27",
+        "value": 952,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-27",
+        "value": 1307,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-28",
+        "value": 1308,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-04-29",
+        "value": 953,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-04-30",
+        "value": 954,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-02",
+        "value": 955,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-04",
+        "value": 956,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-05",
+        "value": 1309,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-05",
+        "value": 958,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-07",
+        "value": 1311,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-08",
+        "value": 959,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-09",
+        "value": 1312,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-10",
+        "value": 1313,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-11",
+        "value": 1314,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-13",
+        "value": 960,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-15",
+        "value": 1315,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-16",
+        "value": 961,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-18",
+        "value": 962,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-19",
+        "value": 1316,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-19",
+        "value": 963,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-20",
+        "value": 964,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-21",
+        "value": 965,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-23",
+        "value": 968,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-24",
+        "value": 1317,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-26",
+        "value": 1318,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-27",
+        "value": 1319,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-28",
+        "value": 970,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-05-29",
+        "value": 1320,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-05-31",
+        "value": 971,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-01",
+        "value": 1322,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-02",
+        "value": 1324,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-03",
+        "value": 1325,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-04",
+        "value": 973,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-05",
+        "value": 1326,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-05",
+        "value": 974,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-06",
+        "value": 976,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-06",
+        "value": 1328,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-07",
+        "value": 1330,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-09",
+        "value": 1332,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-11",
+        "value": 978,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-14",
+        "value": 1333,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-14",
+        "value": 979,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-15",
+        "value": 1334,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-16",
+        "value": 980,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-18",
+        "value": 1335,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-19",
+        "value": 981,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-20",
+        "value": 982,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-20",
+        "value": 1336,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-22",
+        "value": 983,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-25",
+        "value": 984,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-26",
+        "value": 986,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-26",
+        "value": 1338,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-27",
+        "value": 987,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-29",
+        "value": 988,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-06-29",
+        "value": 1339,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-06-30",
+        "value": 1341,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-01",
+        "value": 1343,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-02",
+        "value": 1344,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-02",
+        "value": 990,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-03",
+        "value": 991,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-03",
+        "value": 1345,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-05",
+        "value": 992,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-06",
+        "value": 993,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-07",
+        "value": 995,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-08",
+        "value": 1346,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-09",
+        "value": 1348,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-09",
+        "value": 996,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-10",
+        "value": 997,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-12",
+        "value": 1349,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-13",
+        "value": 998,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-14",
+        "value": 1000,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-15",
+        "value": 1350,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-15",
+        "value": 1002,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-16",
+        "value": 1004,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-17",
+        "value": 1006,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-17",
+        "value": 1351,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-21",
+        "value": 1007,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-22",
+        "value": 1008,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-23",
+        "value": 1009,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-24",
+        "value": 1010,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-28",
+        "value": 1011,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-07-28",
+        "value": 1353,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-07-31",
+        "value": 1354,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-02",
+        "value": 1012,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-04",
+        "value": 1355,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-05",
+        "value": 1013,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-07",
+        "value": 1357,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-08",
+        "value": 1358,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-09",
+        "value": 1359,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-09",
+        "value": 1014,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-10",
+        "value": 1015,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-12",
+        "value": 1016,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-12",
+        "value": 1360,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-14",
+        "value": 1361,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-19",
+        "value": 1019,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-21",
+        "value": 1020,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-23",
+        "value": 1021,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-24",
+        "value": 1362,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-08-25",
+        "value": 1022,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-29",
+        "value": 1023,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-08-29",
+        "value": 1363,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-01",
+        "value": 1364,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-02",
+        "value": 1024,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-03",
+        "value": 1365,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-04",
+        "value": 1025,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-04",
+        "value": 1366,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-08",
+        "value": 1026,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-09",
+        "value": 1028,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-09",
+        "value": 1367,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-10",
+        "value": 1368,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-11",
+        "value": 1029,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-12",
+        "value": 1369,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-13",
+        "value": 1371,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-14",
+        "value": 1373,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-14",
+        "value": 1030,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-16",
+        "value": 1375,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-18",
+        "value": 1032,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-18",
+        "value": 1376,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-19",
+        "value": 1033,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-20",
+        "value": 1034,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-20",
+        "value": 1377,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-21",
+        "value": 1035,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-23",
+        "value": 1036,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-25",
+        "value": 1037,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-09-26",
+        "value": 1378,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-27",
+        "value": 1379,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-29",
+        "value": 1380,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-09-30",
+        "value": 1038,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-01",
+        "value": 1039,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-02",
+        "value": 1381,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-02",
+        "value": 1040,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-04",
+        "value": 1382,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-05",
+        "value": 1041,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-06",
+        "value": 1042,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-07",
+        "value": 1043,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-08",
+        "value": 1384,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-09",
+        "value": 1385,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-09",
+        "value": 1044,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-11",
+        "value": 1045,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-12",
+        "value": 1046,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-12",
+        "value": 1386,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-13",
+        "value": 1047,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-15",
+        "value": 1387,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-15",
+        "value": 1048,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-16",
+        "value": 1049,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-20",
+        "value": 1050,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-21",
+        "value": 1051,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-22",
+        "value": 1388,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-24",
+        "value": 1052,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-25",
+        "value": 1053,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-27",
+        "value": 1389,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-10-27",
+        "value": 1054,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-29",
+        "value": 1055,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-10-30",
+        "value": 1391,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-01",
+        "value": 1056,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-03",
+        "value": 1392,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-04",
+        "value": 1057,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-05",
+        "value": 1058,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-07",
+        "value": 1059,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-09",
+        "value": 1393,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-11",
+        "value": 1060,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-17",
+        "value": 1395,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-20",
+        "value": 1061,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-21",
+        "value": 1062,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-23",
+        "value": 1397,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-24",
+        "value": 1398,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-25",
+        "value": 1064,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-27",
+        "value": 1400,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-11-29",
+        "value": 1066,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-11-30",
+        "value": 1067,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-01",
+        "value": 1069,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-01",
+        "value": 1401,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-02",
+        "value": 1070,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-02",
+        "value": 1402,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-03",
+        "value": 1071,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-03",
+        "value": 1406,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-04",
+        "value": 1407,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-05",
+        "value": 1075,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-06",
+        "value": 1076,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-07",
+        "value": 1409,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-07",
+        "value": 1077,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-08",
+        "value": 1080,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-08",
+        "value": 1413,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-09",
+        "value": 1415,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-10",
+        "value": 1082,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-10",
+        "value": 1416,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-11",
+        "value": 1419,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-11",
+        "value": 1084,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-12",
+        "value": 1420,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-14",
+        "value": 1421,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-15",
+        "value": 1085,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-16",
+        "value": 1087,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-16",
+        "value": 1422,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-17",
+        "value": 1423,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-17",
+        "value": 1090,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-18",
+        "value": 1091,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-20",
+        "value": 1424,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-20",
+        "value": 1092,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-21",
+        "value": 1426,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-22",
+        "value": 1093,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-22",
+        "value": 1428,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-24",
+        "value": 1429,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-25",
+        "value": 1094,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-28",
+        "value": 1095,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-29",
+        "value": 1097,
+        "seriesId": "2"
+    },
+    {
+        "date": "2015-12-31",
+        "value": 1430,
+        "seriesId": "1"
+    },
+    {
+        "date": "2015-12-31",
+        "value": 1098,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-03",
+        "value": 1431,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-04",
+        "value": 1432,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-04",
+        "value": 1101,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-06",
+        "value": 1102,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-07",
+        "value": 1434,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-07",
+        "value": 1104,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-09",
+        "value": 1435,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-10",
+        "value": 1436,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-11",
+        "value": 1437,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-12",
+        "value": 1440,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-12",
+        "value": 1106,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-13",
+        "value": 1108,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-13",
+        "value": 1441,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-14",
+        "value": 1442,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-14",
+        "value": 1109,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-15",
+        "value": 1445,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-16",
+        "value": 1110,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-18",
+        "value": 1111,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-19",
+        "value": 1448,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-19",
+        "value": 1113,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-21",
+        "value": 1114,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-21",
+        "value": 1450,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-23",
+        "value": 1451,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-25",
+        "value": 1115,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-26",
+        "value": 1454,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-26",
+        "value": 1116,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-27",
+        "value": 1118,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-27",
+        "value": 1457,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-28",
+        "value": 1458,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-29",
+        "value": 1460,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-29",
+        "value": 1119,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-30",
+        "value": 1462,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-01-30",
+        "value": 1120,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-01-31",
+        "value": 1463,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-01",
+        "value": 1123,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-03",
+        "value": 1124,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-04",
+        "value": 1125,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-05",
+        "value": 1126,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-06",
+        "value": 1127,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-07",
+        "value": 1465,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-08",
+        "value": 1467,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-09",
+        "value": 1128,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-10",
+        "value": 1130,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-11",
+        "value": 1468,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-11",
+        "value": 1132,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-14",
+        "value": 1469,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-15",
+        "value": 1133,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-15",
+        "value": 1470,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-16",
+        "value": 1471,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-16",
+        "value": 1134,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-17",
+        "value": 1137,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-18",
+        "value": 1138,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-19",
+        "value": 1140,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-19",
+        "value": 1472,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-02-22",
+        "value": 1142,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-23",
+        "value": 1143,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-02-24",
+        "value": 1473,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-01",
+        "value": 1144,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-02",
+        "value": 1146,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-02",
+        "value": 1474,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-03",
+        "value": 1147,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-04",
+        "value": 1148,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-05",
+        "value": 1475,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-06",
+        "value": 1152,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-07",
+        "value": 1476,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-09",
+        "value": 1153,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-10",
+        "value": 1154,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-11",
+        "value": 1156,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-11",
+        "value": 1478,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-12",
+        "value": 1485,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-12",
+        "value": 1157,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-13",
+        "value": 1486,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-14",
+        "value": 1160,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-14",
+        "value": 1487,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-15",
+        "value": 1488,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-16",
+        "value": 1490,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-17",
+        "value": 1162,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-17",
+        "value": 1491,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-18",
+        "value": 1163,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-19",
+        "value": 1493,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-21",
+        "value": 1495,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-22",
+        "value": 1496,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-23",
+        "value": 1497,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-23",
+        "value": 1164,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-24",
+        "value": 1165,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-26",
+        "value": 1498,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-28",
+        "value": 1499,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-29",
+        "value": 1166,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-30",
+        "value": 1167,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-03-31",
+        "value": 1500,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-03-31",
+        "value": 1168,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-01",
+        "value": 1169,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-02",
+        "value": 1501,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-02",
+        "value": 1170,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-05",
+        "value": 1503,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-06",
+        "value": 1504,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-09",
+        "value": 1171,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-10",
+        "value": 1507,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-10",
+        "value": 1173,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-11",
+        "value": 1508,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-13",
+        "value": 1509,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-16",
+        "value": 1174,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-17",
+        "value": 1510,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-18",
+        "value": 1511,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-19",
+        "value": 1512,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-19",
+        "value": 1175,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-20",
+        "value": 1176,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-21",
+        "value": 1177,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-22",
+        "value": 1513,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-27",
+        "value": 1514,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-04-27",
+        "value": 1178,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-29",
+        "value": 1179,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-30",
+        "value": 1180,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-04-30",
+        "value": 1515,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-03",
+        "value": 1181,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-04",
+        "value": 1516,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-06",
+        "value": 1182,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-08",
+        "value": 1183,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-09",
+        "value": 1185,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-09",
+        "value": 1518,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-10",
+        "value": 1186,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-12",
+        "value": 1519,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-12",
+        "value": 1188,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-13",
+        "value": 1189,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-13",
+        "value": 1522,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-16",
+        "value": 1190,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-17",
+        "value": 1523,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-18",
+        "value": 1191,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-21",
+        "value": 1524,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-21",
+        "value": 1195,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-22",
+        "value": 1196,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-23",
+        "value": 1197,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-24",
+        "value": 1525,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-25",
+        "value": 1198,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-26",
+        "value": 1201,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-26",
+        "value": 1527,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-05-30",
+        "value": 1202,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-05-31",
+        "value": 1203,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-01",
+        "value": 1528,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-01",
+        "value": 1204,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-02",
+        "value": 1205,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-05",
+        "value": 1206,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-06",
+        "value": 1529,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-09",
+        "value": 1207,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-10",
+        "value": 1208,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-11",
+        "value": 1530,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-13",
+        "value": 1209,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-13",
+        "value": 1532,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-14",
+        "value": 1210,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-16",
+        "value": 1211,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-17",
+        "value": 1534,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-18",
+        "value": 1535,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-19",
+        "value": 1212,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-20",
+        "value": 1214,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-22",
+        "value": 1215,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-22",
+        "value": 1536,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-23",
+        "value": 1216,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-24",
+        "value": 1537,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-24",
+        "value": 1217,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-25",
+        "value": 1538,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-26",
+        "value": 1220,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-28",
+        "value": 1221,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-06-30",
+        "value": 1539,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-06-30",
+        "value": 1223,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-01",
+        "value": 1224,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-05",
+        "value": 1540,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-05",
+        "value": 1226,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-06",
+        "value": 1227,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-06",
+        "value": 1541,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-07",
+        "value": 1542,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-08",
+        "value": 1544,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-09",
+        "value": 1545,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-10",
+        "value": 1228,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-11",
+        "value": 1230,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-12",
+        "value": 1546,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-18",
+        "value": 1231,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-20",
+        "value": 1547,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-21",
+        "value": 1548,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-21",
+        "value": 1232,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-23",
+        "value": 1549,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-25",
+        "value": 1550,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-26",
+        "value": 1234,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-28",
+        "value": 1551,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-29",
+        "value": 1552,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-07-29",
+        "value": 1235,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-30",
+        "value": 1236,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-07-31",
+        "value": 1238,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-02",
+        "value": 1241,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-04",
+        "value": 1242,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-05",
+        "value": 1244,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-05",
+        "value": 1554,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-07",
+        "value": 1555,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-08",
+        "value": 1246,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-09",
+        "value": 1557,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-10",
+        "value": 1247,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-10",
+        "value": 1558,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-13",
+        "value": 1248,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-16",
+        "value": 1559,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-17",
+        "value": 1250,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-18",
+        "value": 1251,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-18",
+        "value": 1561,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-20",
+        "value": 1252,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-22",
+        "value": 1562,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-22",
+        "value": 1254,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-23",
+        "value": 1256,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-24",
+        "value": 1258,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-26",
+        "value": 1565,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-26",
+        "value": 1259,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-29",
+        "value": 1260,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-08-29",
+        "value": 1566,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-08-30",
+        "value": 1261,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-04",
+        "value": 1567,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-06",
+        "value": 1568,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-06",
+        "value": 1263,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-07",
+        "value": 1569,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-13",
+        "value": 1264,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-14",
+        "value": 1570,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-16",
+        "value": 1265,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-17",
+        "value": 1267,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-20",
+        "value": 1269,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-21",
+        "value": 1571,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-22",
+        "value": 1271,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-22",
+        "value": 1573,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-25",
+        "value": 1272,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-26",
+        "value": 1273,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-09-29",
+        "value": 1574,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-09-30",
+        "value": 1575,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-10-02",
+        "value": 1274,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-03",
+        "value": 1275,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-04",
+        "value": 1576,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-10-07",
+        "value": 1276,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-08",
+        "value": 1577,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-10-10",
+        "value": 1277,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-11",
+        "value": 1579,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-10-16",
+        "value": 1278,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-16",
+        "value": 1580,
+        "seriesId": "1"
+    },
+    {
+        "date": "2016-10-19",
+        "value": 1279,
+        "seriesId": "2"
+    },
+    {
+        "date": "2016-10-21",
+        "value": 1280,
+        "seriesId": "2"
+    }
+]

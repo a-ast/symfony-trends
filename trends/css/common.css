@@ -14,6 +14,12 @@ h2 {
     font-size: 25px;
 }
 
+.chart {
+    width: 540px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
 .bar-chart rect {
     fill: #08c;
 }
@@ -48,4 +54,10 @@ h2 {
     font-size: 19px;
     font-weight: bold;
     fill: #005580;
+}
+
+.line {
+    fill: none;
+    stroke: #08c;
+    stroke-width: 2px;
 }
