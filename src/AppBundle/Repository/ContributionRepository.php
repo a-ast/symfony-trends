@@ -52,25 +52,22 @@ class ContributionRepository extends Repository
     }
 
     /**
-     * @param int $projectId
-     *
      * @return array
      */
-    public function getContributionsPerDate($projectId)
+    public function getContributionsPerDate()
     {
         $rsm = new ResultSetMapping();
         $rsm
             ->addScalarResult('date', 'date')
+            ->addScalarResult('project_id', 'project_id')
             ->addScalarResult('value', 'value');
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select date(first_commit_at) as date, count(*) as value
+            ->createNativeQuery('select date(first_commit_at) as date, project_id, count(*) as value
                             from contribution
-                            where project_id = :projectId
-                            group by date(first_commit_at)
-                            order by first_commit_at asc', $rsm)
-            ->setParameter('projectId', $projectId);
+                            group by date(first_commit_at), project_id
+                            order by first_commit_at asc', $rsm);
 
         $result = $query->getResult();
 

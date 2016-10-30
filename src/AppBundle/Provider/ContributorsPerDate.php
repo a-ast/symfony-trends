@@ -22,13 +22,23 @@ class ContributorsPerDate implements ProviderInterface
 
     public function getData(array $options = [])
     {
-        $data = $this->repository->getContributionsPerDate(1);
+        $data = $this->repository->getContributionsPerDate();
 
-        $prevDateCount = 0;
+        $totals = [];
 
         foreach ($data as &$item) {
-            $item['value'] += $prevDateCount;
-            $prevDateCount = $item['value'];
+            $projectId = $item['project_id'];
+
+            $item['seriesId'] = $projectId;
+
+            if(!isset($totals[$projectId])) {
+                $totals[$projectId] = 0;
+            };
+
+            $item['value'] += $totals[$projectId];
+            $totals[$projectId] = $item['value'];
+
+            unset($item['project_id']);
         }
 
         return $data;

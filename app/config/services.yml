@@ -25,7 +25,7 @@ services:
     # Data providers
     #################################
     provider.contributor_intersection:
-        class: AppBundle\Provider\ContributorIntersection
+        class: AppBundle\Provider\ContributorsIntersection
         arguments:
             - '@repository.contribution'
             - '@repository.project'
@@ -38,3 +38,7 @@ services:
         class: AppBundle\Provider\ContributorsPerVersion
         arguments:
             - '@repository.project_version'
+    provider.contributors_per_date:
+        class: AppBundle\Provider\ContributorsPerDate
+        arguments:
+            - '@repository.contribution'
