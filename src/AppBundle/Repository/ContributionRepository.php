@@ -50,4 +50,31 @@ class ContributionRepository extends Repository
 
         return $result;
     }
+
+    /**
+     * @param int $projectId
+     *
+     * @return array
+     */
+    public function getContributionsPerDate($projectId)
+    {
+        $rsm = new ResultSetMapping();
+        $rsm
+            ->addScalarResult('date', 'date')
+            ->addScalarResult('value', 'value');
+
+        $query = $this
+            ->getEntityManager()
+            ->createNativeQuery('select date(first_commit_at) as date, count(*) as value
+                            from contribution
+                            where project_id = :projectId
+                            group by date(first_commit_at)
+                            order by first_commit_at asc', $rsm)
+            ->setParameter('projectId', $projectId);
+
+        $result = $query->getResult();
+
+        return $result;
+    }
+
 }

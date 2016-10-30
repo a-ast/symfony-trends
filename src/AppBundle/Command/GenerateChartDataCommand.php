@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\CrawlerOrchestrator;
+use AppBundle\Provider\ProviderInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,9 +29,10 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         //$chartId = 'commit_count_distribution_1';
         //$providerName = 'provider.commit_count_distribution';        $chartId = 'commit_count_distribution_1';
 
-        $chartId = 'contributors_per_version_1';
-        $providerName = 'provider.contributors_per_version';
+        $chartId = 'contributors_per_date_1';
+        $providerName = 'provider.contributors_per_date';
 
+        /** @var ProviderInterface $provider */
         $provider = $this->getContainer()->get($providerName);
         $data = $provider->getData();
 
