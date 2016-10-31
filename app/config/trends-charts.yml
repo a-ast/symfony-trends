@@ -1,0 +1,57 @@
+parameters:
+
+    trends:
+
+        main:
+
+            contributors_per_date:
+                title: 'Contributor count per date'
+
+                service: 'provider.contributors_per_date'
+                options:
+                    projects:
+                        - symfony
+                        - symfony-docs
+                chart:
+                    type: line
+
+            contributors_per_version_symfony:
+                title: 'Symfony Contributor count per version'
+
+                service: 'provider.contributors_per_version'
+                options:
+                    projects:
+                        - symfony
+                chart:
+                    type: bar
+
+            contributors_intersection:
+                title: 'How many developers contribute to different projects'
+
+                service: 'provider.contributors_intersection'
+                options:
+                    projects:
+                        - symfony
+                        - symfony-docs
+                chart:
+                    type: venn
+
+            commit_count_distribution_symfony:
+                title: 'Number of developers who made certain count of commits to Symfony'
+
+                service: 'provider.commit_count_distribution'
+                options:
+                    projects:
+                        - symfony
+                chart:
+                    type: bar
+
+            commit_count_distribution_symfony_docs:
+                title: 'Number of developers who made certain count of commits to Symfony docs'
+
+                service: 'provider.commit_count_distribution'
+                options:
+                    projects:
+                        - symfony-docs
+                chart:
+                    type: bar

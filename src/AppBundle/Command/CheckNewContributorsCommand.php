@@ -2,7 +2,6 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\CrawlerOrchestrator;
 use AppBundle\Repository\ContributorRepository;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;

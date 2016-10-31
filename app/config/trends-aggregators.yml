@@ -1,0 +1,12 @@
+parameters:
+    aggregators:
+        contributor_count_symfony:
+            service: 'aggregator.contributor_count'
+            options:
+                project_id: 1
+                url_format: 'https://raw.githubusercontent.com/symfony/symfony/v%s.0/CONTRIBUTORS.md'
+
+        git_log:
+            service: 'aggregator.git_log'
+            options:
+                project_id: 1

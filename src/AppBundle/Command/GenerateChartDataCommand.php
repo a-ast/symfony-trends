@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Provider\ProviderInterface;
+use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -25,24 +26,46 @@ class GenerateChartDataCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-        //$chartId = 'commit_count_distribution_1';
-        //$providerName = 'provider.commit_count_distribution';        $chartId = 'commit_count_distribution_1';
-
-        $chartId = 'contributors_per_date_1';
-        $providerName = 'provider.contributors_per_date';
-
-        /** @var ProviderInterface $provider */
-        $provider = $this->getContainer()->get($providerName);
-        $data = $provider->getData();
-
-        $fs = new Filesystem();
-        $json = json_encode($data, JSON_PRETTY_PRINT);
-
         $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
 
-        $filePath = sprintf('%s/../trends/data/%s.json', $rootDir, $chartId);
+        $chartData = $this->getContainer()->getParameter('trends');
 
-        $fs->dumpFile($filePath, $json);
+        /** @var TwigEngine $twig */
+        $twig = $this->getContainer()->get('templating');
+
+        $fs = new Filesystem();
+
+        $trends = [];
+
+        foreach ($chartData as $groupId => $groupData) {
+            foreach ($groupData as $chartId => $chart) {
+                $providerId = $chart['service'];
+                $options = $chart['options'];
+
+                /** @var ProviderInterface $provider */
+                $provider = $this->getContainer()->get($providerId);
+
+                $data = $provider->getData($options);
+                $json = json_encode($data, JSON_PRETTY_PRINT);
+
+                $filePath = sprintf('%s/../trends/data/%s.json', $rootDir, $chartId);
+                $fs->dumpFile($filePath, $json);
+
+                $trends[$groupId][$chartId] = [
+                    'dataFile' => sprintf('data/%s.json', $chartId),
+                    'title' => $chart['title'],
+                    'chart' => $chart['chart'],
+                ];
+            }
+
+        }
+
+        $indexFile = $twig->render('@App/index.html.twig', ['trends' => $trends]);
+
+        $filePath = sprintf('%s/../trends/index.html', $rootDir);
+        $fs->dumpFile($filePath, $indexFile);
+
     }
+
+
 }

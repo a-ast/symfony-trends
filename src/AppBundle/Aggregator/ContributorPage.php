@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Crawler;
+namespace AppBundle\Aggregator;
 
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ContributorPage implements CrawlerInterface
+class ContributorPage implements AggregatorInterface
 {
     /**
      * @var ClientInterface
@@ -29,11 +29,11 @@ class ContributorPage implements CrawlerInterface
         $this->repository = $repository;
     }
 
-    public function process()
+    public function aggregate(array $options = [])
     {
         $url = 'http://symfony.com/contributors/code';
 
-        $contributors = $this->getData($url);
+        $contributors = $this->getContributors($url);
         $contributorNamesFromPage = array_column($contributors, 0);
 
         // Step 1. Find doubles
@@ -93,7 +93,7 @@ class ContributorPage implements CrawlerInterface
 
     }
 
-    public function getData($url)
+    public function getContributors($url)
     {
         $responseBody = (string)$this->getPageContents($url);
         $domCrawler = new Crawler($responseBody, $url);

@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services-repositories.yml }
     - { resource: services.yml }
+    - { resource: trends-charts.yml }
 
 parameters:
     locale: en

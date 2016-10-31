@@ -2,20 +2,20 @@ services:
     http_client:
         class: GuzzleHttp\Client
     #################################
-    # Data crawlers
+    # Data aggregators
     #################################
-    crawler.contributor_count:
-        class: AppBundle\Crawler\ContributorCount
+    aggregator.contributor_count:
+        class: AppBundle\Aggregator\ContributorCount
         arguments:
             - '@http_client'
             - '@repository.project_version'
-    crawler.contributor_page:
-        class: AppBundle\Crawler\ContributorPage
+    aggregator.contributor_page:
+        class: AppBundle\Aggregator\ContributorPage
         arguments:
             - '@http_client'
             - '@repository.contributor'
-    crawler.git_log:
-        class: AppBundle\Crawler\GitLog
+    aggregator.git_log:
+        class: AppBundle\Aggregator\GitLog
         arguments:
             - '@repository.contributor'
             - '@repository.contribution'
@@ -24,7 +24,7 @@ services:
     #################################
     # Data providers
     #################################
-    provider.contributor_intersection:
+    provider.contributors_intersection:
         class: AppBundle\Provider\ContributorsIntersection
         arguments:
             - '@repository.contribution'

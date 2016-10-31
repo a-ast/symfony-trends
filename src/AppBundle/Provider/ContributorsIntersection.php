@@ -29,7 +29,7 @@ class ContributorsIntersection implements ProviderInterface
         $this->projectRepository = $projectRepository;
     }
 
-    public function getData()
+    public function getData(array $options = [])
     {
         $intersections = $this->contributionRepository->getContributionIntersection();
 

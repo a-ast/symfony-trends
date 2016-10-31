@@ -1,14 +1,14 @@
 <?php
 
 
-namespace AppBundle\Crawler;
+namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 
-class GitLog implements CrawlerInterface
+class GitLog implements AggregatorInterface
 {
     /**
      * @var ContributorRepository
@@ -34,7 +34,7 @@ class GitLog implements CrawlerInterface
         $this->contributionRepository = $contributionRepository;
     }
 
-    public function getData(array $options = [])
+    public function aggregate(array $options = [])
     {
         //$contents = file($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId));
 

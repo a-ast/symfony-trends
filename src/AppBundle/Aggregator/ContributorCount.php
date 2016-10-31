@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Crawler;
+namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\ProjectVersion;
 use AppBundle\Repository\ProjectVersionRepository;
 use GuzzleHttp\ClientInterface;
 
-class ContributorCount implements CrawlerInterface
+class ContributorCount implements AggregatorInterface
 {
     /**
      * @var ClientInterface
@@ -29,7 +29,7 @@ class ContributorCount implements CrawlerInterface
         $this->repository = $repository;
     }
 
-    public function getData(array $options = [])
+    public function aggregate(array $options = [])
     {
         /** @var ProjectVersion[] $versions */
         $versions = $this->repository->findAll();
