@@ -13,22 +13,6 @@ TODO
 5. Bar chart bt first commit
 
 
-THINK
-
-Choose class name for crawler
-Goal: fetch data from remote source
-
-Crawler
-Fetcher
-Grabber
-Scraper
-Capturer -
-Extractor
-Aggregator
-Parser
-
-
-
 Charts
 
 - Contributors location (by SLI or by GitHub data)
@@ -36,3 +20,10 @@ Charts
 - Symfony bundle usage in github
 
 
+Git libs (look for remote support, only log without cloning)
+
+Seems to be the best: https://github.com/matteosister/GitElephant  https://github.com/matteosister/GitElephantBundle
+https://github.com/cpliakas/git-wrapper ?
+https://github.com/xiphux/gitphp
+https://github.com/kbjr/Git.php
+https://github.com/gitonomy/gitlib
