@@ -43,16 +43,23 @@ class ProjectVersion
     private $contributorCount = 0;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="contributor_count2", type="integer", options={"default": 0})
+     */
+    private $contributorCount2 = 0;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="released_at", type="datetime")
+     * @ORM\Column(name="released_at", type="datetime", nullable=true)
      */
     private $releasedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="started_at", type="datetime")
+     * @ORM\Column(name="started_at", type="datetime", nullable=true)
      */
     private $startedAt;
 
@@ -136,6 +143,30 @@ class ProjectVersion
     public function getContributorCount()
     {
         return $this->contributorCount;
+    }
+
+    /**
+     * Set contributorCount
+     *
+     * @param int $contributorCount
+     *
+     * @return ProjectVersion
+     */
+    public function setContributorCount2($contributorCount)
+    {
+        $this->contributorCount2 = $contributorCount;
+
+        return $this;
+    }
+
+    /**
+     * Get contributorCount
+     *
+     * @return int
+     */
+    public function getContributorCount2()
+    {
+        return $this->contributorCount2;
     }
 
     /**

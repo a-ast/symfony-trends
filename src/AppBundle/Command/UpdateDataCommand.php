@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Aggregator\AggregatorInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -23,7 +24,8 @@ class UpdateDataCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $aggregator = $this->getContainer()->get('aggregator.contributor_count');
-        $aggregator->getData();
+        /** @var AggregatorInterface $aggregator */
+        $aggregator = $this->getContainer()->get('aggregator.contributor_count2');
+        $aggregator->aggregate(['project_id' => 1]);
     }
 }

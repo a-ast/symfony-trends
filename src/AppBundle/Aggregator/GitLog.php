@@ -4,34 +4,55 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\Contribution;
+use AppBundle\Entity\ContributionHistory;
 use AppBundle\Entity\Contributor;
+use AppBundle\Repository\ContributionHistoryRepository;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 
+/**
+ * Git log aggregator
+ */
 class GitLog implements AggregatorInterface
 {
     /**
      * @var ContributorRepository
      */
     private $contributorRepository;
+
     /**
      * @var ContributionRepository
      */
     private $contributionRepository;
 
     /**
+     * @var ContributionHistoryRepository
+     */
+    private $contributionHistoryRepository;
+
+    /**
+     * @var string
+     */
+    private $rootDir;
+
+    /**
      * Constructor.
      *
      * @param ContributorRepository $contributorRepository
      * @param ContributionRepository $contributionRepository
+     * @param ContributionHistoryRepository $contributionHistoryRepository
      * @param string $rootDir
      */
-    public function __construct(ContributorRepository $contributorRepository,
-        ContributionRepository $contributionRepository, $rootDir)
+    public function __construct(
+        ContributorRepository $contributorRepository,
+        ContributionRepository $contributionRepository,
+        ContributionHistoryRepository $contributionHistoryRepository,
+        $rootDir)
     {
         $this->rootDir = $rootDir.'/../';
         $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
+        $this->contributionHistoryRepository = $contributionHistoryRepository;
     }
 
     public function aggregate(array $options = [])
@@ -40,13 +61,13 @@ class GitLog implements AggregatorInterface
 
         $projectId = $options['project_id'];
 
-        $fileHandle = fopen($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId), 'r');
+        $fileHandle = fopen($this->rootDir.sprintf('git-logs/git-log-%d.txt', $projectId), 'r');
 
         if($fileHandle === false) {
-
+            // @todo: throw exception
         }
 
-        while (($lineParts = fgetcsv($fileHandle, 5000, ', ')) !== false) {
+        while (($lineParts = fgetcsv($fileHandle, 5000, ',')) !== false) {
 
 
         // foreach ($contents as $line) {
@@ -57,8 +78,25 @@ class GitLog implements AggregatorInterface
             $dateTime = trim($lineParts[2]);
             $hash = trim($lineParts[3]);
 
-//            $contributor = $this->createOrUpdateContributor($email, $name);
-//            $this->contributorRepository->store($contributor);
+            /** @var Contributor $contributor */
+            $contributor = $this->contributorRepository->findByEmail($email);
+
+            $shouldUpdateContributors = false;
+
+            if($shouldUpdateContributors) {
+//                $contributor = $this->createOrUpdateContributor($contributor, $email, $name);
+//                $this->contributorRepository->store($contributor);
+            }
+
+            $contributionLogEntry = new ContributionHistory();
+            $contributionLogEntry
+                ->setProjectId($projectId)
+                ->setContributorId($contributor->getId())
+                ->setCommitedAt(new \DateTime($dateTime))
+                ->setCommitHash($hash);
+            $this->contributionHistoryRepository->store($contributionLogEntry);
+
+
 //
 //            $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
 //            $this->contributionRepository->store($contribution);
@@ -70,14 +108,14 @@ class GitLog implements AggregatorInterface
     }
 
     /**
+     * @param Contributor $contributor
      * @param $email
      * @param $name
      * @return Contributor
      */
-    protected function createOrUpdateContributor($email, $name)
+    protected function createOrUpdateContributor($contributor, $email, $name)
     {
-        /** @var Contributor $contributor */
-        $contributor = $this->contributorRepository->findByEmail($email);
+
 
         if (null !== $contributor) {
             if ($contributor->getName() !== $name &&

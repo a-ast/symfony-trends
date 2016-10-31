@@ -9,6 +9,13 @@ services:
         arguments:
             - '@http_client'
             - '@repository.project_version'
+
+    aggregator.contributor_count2:
+        class: AppBundle\Aggregator\ContributorCount2
+        arguments:
+            - '@repository.project_version'
+            - '@repository.contribution_history'
+
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPage
         arguments:
@@ -19,6 +26,7 @@ services:
         arguments:
             - '@repository.contributor'
             - '@repository.contribution'
+            - '@repository.contribution_history'
             - '%kernel.root_dir%'
 
     #################################
