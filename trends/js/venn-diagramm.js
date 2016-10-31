@@ -1,4 +1,4 @@
-function drawVennContributors(containerSelector, dataPath) {
+function drawVennChart(containerSelector, dataPath) {
 
     var chart = d3.select(containerSelector);
 
@@ -8,6 +8,7 @@ function drawVennContributors(containerSelector, dataPath) {
 
 
     d3.json(dataPath, function (error, data) {
+
         if (error) throw error;
 
         chart.datum(data).call(vennChart);

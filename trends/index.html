@@ -15,63 +15,78 @@
     <script src="js/line-chart.js"></script>
     <!-- https://github.com/benfred/venn.js -->
     <script src="js/venn-diagramm.js"></script>
-
 </head>
 
+<body>
+<div class="content">
 <div class="row">
     <div class="col-md-12">
         <h1>Symfony Trends</h1>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="col-md-6">
-            <h2>Contributor count per version</h2>
-            <div id="chart5" class="chart line-chart"></div>
-        </div>
 
-        <div class="col-md-6">
-            <h2>Contributor count per version</h2>
-            <div id="chart1" class="chart bar-chart"></div>
-        </div>
-    </div>
+    
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Contributor count per date</h2>
+                    <div id="contributors_per_date" class="chart line-chart"></div>
+                </div>
+                <script>
+                    drawLineChart("#contributors_per_date", "data/contributors_per_date.json", "");
+                </script>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Symfony Contributor count per version</h2>
+                    <div id="contributors_per_version_symfony" class="chart bar-chart"></div>
+                </div>
+                <script>
+                    drawBarChart("#contributors_per_version_symfony", "data/contributors_per_version_symfony.json", "");
+                </script>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>How many developers contribute to different projects</h2>
+                    <div id="contributors_intersection" class="chart venn-chart"></div>
+                </div>
+                <script>
+                    drawVennChart("#contributors_intersection", "data/contributors_intersection.json", "");
+                </script>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Number of developers who made certain count of commits to Symfony</h2>
+                    <div id="commit_count_distribution_symfony" class="chart bar-chart"></div>
+                </div>
+                <script>
+                    drawBarChart("#commit_count_distribution_symfony", "data/commit_count_distribution_symfony.json", "");
+                </script>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Number of developers who made certain count of commits to Symfony docs</h2>
+                    <div id="commit_count_distribution_symfony_docs" class="chart bar-chart"></div>
+                </div>
+                <script>
+                    drawBarChart("#commit_count_distribution_symfony_docs", "data/commit_count_distribution_symfony_docs.json", "");
+                </script>
+
+                    </div>
+
+    </body>
 </div>
-
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="col-md-6">
-            <h2>How many developers contribute to different projects</h2>
-            <div id="chart2" class="chart venn-diagramm"></div>
-        </div>
-
-        <div class="col-md-6">
-            <h2>Number of developers who made certain count of commits to Symfony</h2>
-            <div id="chart3" class="chart bar-chart"></div>
-        </div>
-
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="col-md-6">
-            <h2>Number of developers who made certain count of commits to Symfony docs</h2>
-            <div id="chart4" class="chart bar-chart"></div>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    drawBarChart("#chart1", "data/contributors_per_version_1.json", "Symfony version");
-    drawVennContributors("#chart2", "data/contributor_intersection.json");
-    drawBarChart("#chart3", "data/commit_count_distribution_1.json", "Commit count");
-    drawBarChart("#chart4", "data/commit_count_distribution_2.json", "Commit count");
-    drawLineChart("#chart5", "data/contributors_per_date_1.json", "");
-
-</script>
-
 </html>
