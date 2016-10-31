@@ -42,6 +42,19 @@ class ProjectVersion
      */
     private $contributorCount = 0;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="released_at", type="datetime")
+     */
+    private $releasedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started_at", type="datetime")
+     */
+    private $startedAt;
 
     /**
      * Get id
@@ -123,6 +136,46 @@ class ProjectVersion
     public function getContributorCount()
     {
         return $this->contributorCount;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getReleasedAt()
+    {
+        return $this->releasedAt;
+    }
+
+    /**
+     * @param \DateTime $releasedAt
+     *
+     * @return ProjectVersion
+     */
+    public function setReleasedAt($releasedAt)
+    {
+        $this->releasedAt = $releasedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartedAt()
+    {
+        return $this->startedAt;
+    }
+
+    /**
+     * @param \DateTime $startedAt
+     *
+     * @return ProjectVersion
+     */
+    public function setStartedAt($startedAt)
+    {
+        $this->startedAt = $startedAt;
+
+        return $this;
     }
 }
 
