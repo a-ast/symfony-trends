@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Symfony Trends</title>
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/venn/venn.js"></script>
+    <script src="js/bar-chart.js"></script>
+    <script src="js/line-chart.js"></script>
+    <!-- https://github.com/benfred/venn.js -->
+    <script src="js/venn-diagramm.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="row">
+    <div class="col-md-12">
+        <h1>Symfony Trends</h1>
+    </div>
+</div>
+
+{% for group in trends %}
+
+    {% set rows = group|batch(2) %}
+
+    {% for row in rows %}
+
+        <div class="row">
+
+            {% for trendId, trend in row %}
+
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>{{ trend.title }}</h2>
+                    <div id="{{ trendId }}" class="chart {{ trend.chart.type }}-chart"></div>
+                </div>
+                <script>
+                    draw{{ trend.chart.type|capitalize }}Chart("#{{ trendId }}", "{{ trend.dataFile }}", "");
+                </script>
+
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+{% endfor %}
+</body>
+</div>
+</html>
