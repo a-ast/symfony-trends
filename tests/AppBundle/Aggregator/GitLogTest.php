@@ -3,6 +3,7 @@
 namespace Tests\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GitLog;
+use AppBundle\Entity\Contribution;
 use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
@@ -165,6 +166,36 @@ class GitLogTest extends PHPUnit_Framework_TestCase
         $this->repositoryFacade
             ->findContributorByEmail(Argument::type('string'))
             ->willReturn(null);
+
+        $aggregator = $this->getGitLog();
+
+        $aggregator->aggregate($options);
+    }
+
+    public function testCreateNewContributions()
+    {
+        $options = [
+            'project_id' => 1,
+            'update_contributions' => true
+        ];
+
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+            ->willReturn(new Contributor())
+            ->shouldBeCalled(3);
+
+        $this->repositoryFacade
+            ->findOneContributionBy(Argument::type('array'))
+            ->willReturn(null)
+            ->shouldBeCalled(7);
+
+        $this->repositoryFacade
+            ->persist(Argument::type(Contribution::class))
+            ->shouldBeCalledTimes(7);
+
+        $this->repositoryFacade
+            ->flush()
+            ->shouldBeCalledTimes(7);
 
         $aggregator = $this->getGitLog();
 

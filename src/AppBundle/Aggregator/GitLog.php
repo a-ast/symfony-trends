@@ -123,15 +123,17 @@ class GitLog implements AggregatorInterface
                     throw new RuntimeException(sprintf(
                         'Contributor [%s] does not exist but contribution must be created', $name));
                 }
-            }
 
-//
-//            $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
-//            $this->contributionRepository->store($contribution);
+                $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
+
+                $this->repositoryFacade->persist($contribution);
+            }
 
             print '.';
 
-            if ($options['update_contributors'] || $options['update_contributions'] || $options['update_log']) {
+            if ($options['update_contributors'] ||
+                $options['update_contributions'] ||
+                $options['update_log']) {
                 $this->repositoryFacade->flush();
             }
         }
@@ -169,9 +171,9 @@ class GitLog implements AggregatorInterface
      *
      * @return Contribution
      */
-    protected function createOrUpdateContribution(Contributor $contributor, $projectId, $dateTime, $hash)
+    protected function createOrUpdateContribution(Contributor $contributor, $projectId, DateTime $dateTime, $hash)
     {
-        $contribution = $this->repositoryFacade->findOneBy([
+        $contribution = $this->repositoryFacade->findOneContributionBy([
                 'projectId' => $projectId,
                 'contributorId' => $contributor->getId(),
             ]
@@ -189,7 +191,7 @@ class GitLog implements AggregatorInterface
 
         if ('' === $contribution->getFirstCommitHash()) {
             $contribution
-                ->setFirstCommitAt(new DateTime($dateTime))
+                ->setFirstCommitAt($dateTime)
                 ->setFirstCommitHash($hash);
         }
 

@@ -21,7 +21,7 @@ class ContributorRepositoryFacade
     /**
      * @var ContributionLogRepository
      */
-    private $contributionHistoryRepository;
+    private $contributionLogRepository;
     /**
      * @var ObjectManager
      */
@@ -44,7 +44,7 @@ class ContributorRepositoryFacade
         $this->em = $em;
         $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
-        $this->contributionHistoryRepository = $contributionLogRepository;
+        $this->contributionLogRepository = $contributionLogRepository;
     }
 
     /**
@@ -65,5 +65,10 @@ class ContributorRepositoryFacade
     public function flush($entity = null)
     {
         $this->em->flush($entity);
+    }
+
+    public function findOneContributionBy(array $criteria)
+    {
+        return $this->contributionRepository->findOneBy($criteria);
     }
 }
