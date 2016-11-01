@@ -9,6 +9,7 @@ use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributionHistoryRepository;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
+use AppBundle\Repository\ContributorRepositoryFacade;
 use DateTime;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,43 +19,25 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class GitLog implements AggregatorInterface
 {
     /**
-     * @var ContributorRepository
-     */
-    private $contributorRepository;
-
-    /**
-     * @var ContributionRepository
-     */
-    private $contributionRepository;
-
-    /**
-     * @var ContributionHistoryRepository
-     */
-    private $contributionHistoryRepository;
-
-    /**
      * @var string
      */
     private $gitLogDir;
 
     /**
+     * @var ContributorRepositoryFacade
+     */
+    private $repositoryFacade;
+
+    /**
      * Constructor.
      *
-     * @param ContributorRepository $contributorRepository
-     * @param ContributionRepository $contributionRepository
-     * @param ContributionHistoryRepository $contributionHistoryRepository
+     * @param ContributorRepositoryFacade $repositoryFacade
      * @param string $gitLogDir
      */
-    public function __construct(
-        ContributorRepository $contributorRepository,
-        ContributionRepository $contributionRepository,
-        ContributionHistoryRepository $contributionHistoryRepository,
-        $gitLogDir)
+    public function __construct(ContributorRepositoryFacade $repositoryFacade, $gitLogDir)
     {
         $this->gitLogDir = $gitLogDir;
-        $this->contributorRepository = $contributorRepository;
-        $this->contributionRepository = $contributionRepository;
-        $this->contributionHistoryRepository = $contributionHistoryRepository;
+        $this->repositoryFacade = $repositoryFacade;
     }
 
     protected function resolveOptions(array $options)
@@ -66,13 +49,13 @@ class GitLog implements AggregatorInterface
             ->setRequired(['project_id'])
             ->setAllowedTypes('project_id', 'int')
 
-//            ->setDefined('ignore_new_contributors')
-//            ->setAllowedTypes('ignore_new_contributors', 'bool')
-//            ->setDefault('ignore_new_contributors', true)
-
             ->setDefined('update_contributors')
             ->setAllowedTypes('update_contributors', 'bool')
             ->setDefault('update_contributors', false)
+
+            ->setDefined('update_contributions')
+            ->setAllowedTypes('update_contributions', 'bool')
+            ->setDefault('update_contributions', false)
 
             ->setDefined('update_log')
             ->setAllowedTypes('update_log', 'bool')
@@ -117,16 +100,15 @@ class GitLog implements AggregatorInterface
                 }
             }
 
-            $contributor = $this->contributorRepository->findByEmail($email);
+            $contributor = $this->repositoryFacade->findContributorByEmail($email);
 
             if($options['update_contributors']) {
                 if (null === $contributor) {
                     $contributor = $this->createContributor($email, $name);
-                    $this->contributorRepository->persist($contributor);
+                    $this->repositoryFacade->persist($contributor);
                 }
 
                 $contributor->addGitName($name);
-
             }
 
 
@@ -144,7 +126,7 @@ class GitLog implements AggregatorInterface
                     ->setCommitedAt(new DateTime($dateTime))
                     ->setCommitHash($hash);
 
-                $this->contributionHistoryRepository->store($contributionLogEntry);
+                $this->repositoryFacade->persist($contributionLogEntry);
             }
 
 //
@@ -152,6 +134,10 @@ class GitLog implements AggregatorInterface
 //            $this->contributionRepository->store($contribution);
 
             print '.';
+
+            if($options['update_contributors'] || $options['update_contributions'] ||$options['update_log']) {
+                $this->repositoryFacade->flush();
+            }
         }
 
 

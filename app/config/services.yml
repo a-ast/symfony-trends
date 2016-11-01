@@ -1,10 +1,10 @@
 services:
     http_client:
         class: GuzzleHttp\Client
+
     #################################
     # Data aggregators
     #################################
-
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPage
         arguments:
@@ -13,9 +13,7 @@ services:
     aggregator.git_log:
         class: AppBundle\Aggregator\GitLog
         arguments:
-            - '@repository.contributor'
-            - '@repository.contribution'
-            - '@repository.contribution_history'
+            - '@repository_facade.contributor'
             - '%kernel.root_dir%/../git-logs/'
 
     #################################

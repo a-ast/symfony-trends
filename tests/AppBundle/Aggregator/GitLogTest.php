@@ -1,41 +1,24 @@
 <?php
 
-
 namespace Tests\AppBundle\Aggregator;
-
 
 use AppBundle\Aggregator\GitLog;
 use AppBundle\Entity\Contributor;
-use AppBundle\Repository\ContributionHistoryRepository;
-use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
+use AppBundle\Repository\ContributorRepositoryFacade;
 use PHPUnit_Framework_TestCase;
 use Prophecy\Argument;
-use Prophecy\Call\Call;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class GitLogTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var ContributorRepository|ObjectProphecy
+     * @var ContributorRepositoryFacade|ObjectProphecy
      */
-    private $contributorRepository;
-
-    /**
-     * @var ContributionRepository|ObjectProphecy
-     */
-    private $contributionRepository;
-
-    /**
-     * @var ContributionHistoryRepository|ObjectProphecy
-     */
-    private $contributionLogRepository;
+    private $repositoryFacade;
 
     protected function setUp()
     {
-        $this->contributorRepository = $this->prophesize('AppBundle\Repository\ContributorRepository');
-        $this->contributionRepository = $this->prophesize('AppBundle\Repository\ContributionRepository');
-        $this->contributionLogRepository = $this->prophesize('AppBundle\Repository\ContributionHistoryRepository');
+        $this->repositoryFacade = $this->prophesize('AppBundle\Repository\ContributorRepositoryFacade');
     }
 
     public function testOnlyIteratesContributors()
@@ -44,10 +27,13 @@ class GitLogTest extends PHPUnit_Framework_TestCase
             'project_id' => 1,
         ];
         
-        $this->contributorRepository
-            ->findByEmail(Argument::type('string'))
-            ->willReturn(new Contributor())
-            ->shouldBeCalledTimes(7);
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+                ->willReturn(new Contributor())
+                ->shouldBeCalledTimes(7);
+        $this->repositoryFacade
+            ->flush()
+                ->shouldNotBeCalled();
 
         $aggregator = $this->getGitLog();
 
@@ -61,10 +47,13 @@ class GitLogTest extends PHPUnit_Framework_TestCase
             'since_datetime' => '2010-01-04T19:00:00+01:00'
         ];
         
-        $this->contributorRepository
-            ->findByEmail(Argument::type('string'))
-            ->willReturn(new Contributor())
-            ->shouldBeCalledTimes(3);
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+                ->willReturn(new Contributor())
+                ->shouldBeCalledTimes(3);
+        $this->repositoryFacade
+            ->flush()
+            ->shouldNotBeCalled();
 
         $aggregator = $this->getGitLog();
         
@@ -78,39 +67,46 @@ class GitLogTest extends PHPUnit_Framework_TestCase
             'update_contributors' => true,
         ];
 
-        $this->contributorRepository
-            ->findByEmail(Argument::type('string'))
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
             ->will(function ($args) {
-                $c = ('fb@email.email' == $args[0]) ? new Contributor() : null;
+                $c = ('gandalf@middle-earth' == $args[0]) ? new Contributor() : null;
 
                 return $c;
             });
 
         $newContributors = [
-            'Fabian Lange' => 'fl@email.email',
-            'pborreli' => 'pb@email.email',
-            'Dennis Benkert' => 'db@email.email',
+            'Frodo Baggins' => 'frodo@shire',
+            'Samwise Gamgee' => 'sam@shire',
+            'Legolas' => 'legolas@mirkwood',
         ];
 
         foreach ($newContributors as $name => $email) {
-            $this->contributorRepository
+
+            $this->repositoryFacade
+                ->persist(Argument::type('AppBundle\Entity\Contributor'))
+                ->shouldBeCalled();
+
+            $this->repositoryFacade
                 ->persist(Argument::which('getEmail', $email))
                 ->shouldBeCalled();
 
-            $this->contributorRepository
+            $this->repositoryFacade
                 ->persist(Argument::which('getName', $name))
                 ->shouldBeCalled();
         }
+
+        $this->repositoryFacade
+            ->flush()
+            ->shouldBeCalledTimes(7);
 
         $aggregator = $this->getGitLog();
 
         $aggregator->aggregate($options);
     }
     
-    
     private function getGitLog()
     {
-        return new GitLog($this->contributorRepository->reveal(),
-            $this->contributionRepository->reveal(), $this->contributionLogRepository->reveal(), __DIR__.'/fixtures/');
+        return new GitLog($this->repositoryFacade->reveal(), __DIR__.'/fixtures/');
     }
 }

@@ -1,4 +1,8 @@
 services:
+
+    #################################
+    # Repositories
+    #################################
     repository.contributor:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
@@ -25,3 +29,14 @@ services:
         arguments:
             - AppBundle\Entity\ProjectVersion
 
+
+    #################################
+    # Repository facades
+    #################################
+    repository_facade.contributor:
+        class: AppBundle\Repository\ContributorRepositoryFacade
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@repository.contributor'
+            - '@repository.contribution'
+            - '@repository.contribution_history'

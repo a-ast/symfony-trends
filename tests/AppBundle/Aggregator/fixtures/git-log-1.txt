@@ -1,7 +1,7 @@
-Fabien Potencier, fb@email.email, 2010-01-04T15:26:20+01:00, 65d075016888e202cc20c9710800512caec77811, added some Symfony 2 components
-Fabien Potencier, fb@email.email, 2010-01-04T15:42:28+01:00, 6feaecf2fa29707703c3068fe915113597a3cfc6, added the CLI component
-Fabian Lange, fl@email.email, 2010-01-05T00:51:10+08:00, 557bb48f1b58e56d83eb186abcbbe635697c7843, my first git commit fixing some typos
-pborreli, pb@email.email, 2010-01-05T01:05:03+08:00, 3dc0d16f67ae5cc06a0d1c2a5607d6de72ef05e7, replaced double negative with true ===
-Fabien Potencier, fb@email.email, 2010-01-04T19:51:21+01:00, f7752f79a036f4a866b5674326095947696353cd, renamed Task to Command (as in Command Line Interface)
-Fabien Potencier, fb@email.email, 2010-01-04T20:01:46+01:00, 1e3e8c760ef98cfd611ce8bfd4baa8bbb4c707f5, changed the default version if nothing is provided by the developer
-Dennis Benkert, db@email.email, 2010-01-05T11:10:42+01:00, b72068744578a83a99ae3fb36a02dadf3f13fc7c, deleted phpdoc @version tag in DependencyInjection component
+Gandalf, gandalf@middle-earth, 2010-01-04T15:26:20+01:00, 65d075016888e202cc20c9710800512caec77811, added some Symfony 2 components
+Gandalf, gandalf@middle-earth, 2010-01-04T15:42:28+01:00, 6feaecf2fa29707703c3068fe915113597a3cfc6, added the CLI component
+Frodo Baggins, frodo@shire, 2010-01-05T00:51:10+08:00, 557bb48f1b58e56d83eb186abcbbe635697c7843, my first git commit fixing some typos
+Samwise Gamgee, sam@shire, 2010-01-05T01:05:03+08:00, 3dc0d16f67ae5cc06a0d1c2a5607d6de72ef05e7, replaced double negative with true ===
+Gandalf, gandalf@middle-earth, 2010-01-04T19:51:21+01:00, f7752f79a036f4a866b5674326095947696353cd, renamed Task to Command (as in Command Line Interface)
+Gandalf, gandalf@middle-earth, 2010-01-04T20:01:46+01:00, 1e3e8c760ef98cfd611ce8bfd4baa8bbb4c707f5, changed the default version if nothing is provided by the developer
+Legolas, legolas@mirkwood, 2010-01-05T11:10:42+01:00, b72068744578a83a99ae3fb36a02dadf3f13fc7c, deleted phpdoc @version tag in DependencyInjection component
