@@ -4,17 +4,6 @@ services:
     #################################
     # Data aggregators
     #################################
-    aggregator.contributor_count:
-        class: AppBundle\Aggregator\ContributorCount
-        arguments:
-            - '@http_client'
-            - '@repository.project_version'
-
-    aggregator.contributor_count2:
-        class: AppBundle\Aggregator\ContributorCount2
-        arguments:
-            - '@repository.project_version'
-            - '@repository.contribution_history'
 
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPage
@@ -42,10 +31,7 @@ services:
         arguments:
             - '@repository.contribution'
             - '@repository.project'
-    provider.contributors_per_version:
-        class: AppBundle\Provider\ContributorsPerVersion
-        arguments:
-            - '@repository.project_version'
+
     provider.contributors_per_date:
         class: AppBundle\Provider\ContributorsPerDate
         arguments:

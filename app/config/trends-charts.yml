@@ -15,15 +15,6 @@ parameters:
                 chart:
                     type: line
 
-            contributors_per_version_symfony:
-                title: 'Symfony Contributor count per version'
-
-                service: 'provider.contributors_per_version'
-                options:
-                    projects:
-                        - symfony
-                chart:
-                    type: bar
 
             contributors_intersection:
                 title: 'How many developers contribute to different projects'
