@@ -13,11 +13,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Contribution
-    repository.contribution_history:
+    repository.contribution_log:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\ContributionHistory
+            - AppBundle\Entity\ContributionLog
     repository.project:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
@@ -39,4 +39,4 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@repository.contributor'
             - '@repository.contribution'
-            - '@repository.contribution_history'
+            - '@repository.contribution_log'

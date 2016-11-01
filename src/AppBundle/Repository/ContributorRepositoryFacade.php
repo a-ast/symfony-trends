@@ -19,7 +19,7 @@ class ContributorRepositoryFacade
     private $contributionRepository;
 
     /**
-     * @var ContributionHistoryRepository
+     * @var ContributionLogRepository
      */
     private $contributionHistoryRepository;
     /**
@@ -33,18 +33,18 @@ class ContributorRepositoryFacade
      * @param ObjectManager $em
      * @param ContributorRepository $contributorRepository
      * @param ContributionRepository $contributionRepository
-     * @param ContributionHistoryRepository $contributionHistoryRepository
+     * @param ContributionLogRepository $contributionLogRepository
      */
     public function __construct(
         ObjectManager $em,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
-        ContributionHistoryRepository $contributionHistoryRepository)
+        ContributionLogRepository $contributionLogRepository)
     {
         $this->em = $em;
         $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
-        $this->contributionHistoryRepository = $contributionHistoryRepository;
+        $this->contributionHistoryRepository = $contributionLogRepository;
     }
 
     /**

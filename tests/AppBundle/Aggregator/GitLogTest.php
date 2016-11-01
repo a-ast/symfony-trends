@@ -3,7 +3,7 @@
 namespace Tests\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GitLog;
-use AppBundle\Entity\ContributionHistory;
+use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use PHPUnit_Framework_TestCase;
@@ -139,7 +139,7 @@ class GitLogTest extends PHPUnit_Framework_TestCase
             ->shouldBeCalled(3);
 
         $this->repositoryFacade
-            ->persist(Argument::type(ContributionHistory::class))
+            ->persist(Argument::type(ContributionLog::class))
             ->shouldBeCalledTimes(7);
 
         $this->repositoryFacade

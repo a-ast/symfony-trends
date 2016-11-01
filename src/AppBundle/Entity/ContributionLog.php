@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ContributionHistory
+ * Contribution log
  *
- * @ORM\Table(name="contribution_history")
+ * @ORM\Table(name="contribution_log")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionHistoryRepository")
  */
-class ContributionHistory
+class ContributionLog
 {
     /**
      * @var int
@@ -65,7 +65,7 @@ class ContributionHistory
      *
      * @param integer $projectId
      *
-     * @return ContributionHistory
+     * @return ContributionLog
      */
     public function setProjectId($projectId)
     {
@@ -89,7 +89,7 @@ class ContributionHistory
      *
      * @param integer $contributorId
      *
-     * @return ContributionHistory
+     * @return ContributionLog
      */
     public function setContributorId($contributorId)
     {
@@ -113,7 +113,7 @@ class ContributionHistory
      *
      * @param \DateTime $commitedAt
      *
-     * @return ContributionHistory
+     * @return ContributionLog
      */
     public function setCommitedAt($commitedAt)
     {
@@ -137,7 +137,7 @@ class ContributionHistory
      *
      * @param string $commitHash
      *
-     * @return ContributionHistory
+     * @return ContributionLog
      */
     public function setCommitHash($commitHash)
     {

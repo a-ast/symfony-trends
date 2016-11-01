@@ -4,7 +4,7 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\Contribution;
-use AppBundle\Entity\ContributionHistory;
+use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use DateTime;
@@ -194,11 +194,11 @@ class GitLog implements AggregatorInterface
      * @param DateTime $dateTime
      * @param string $hash
      *
-     * @return ContributionHistory
+     * @return ContributionLog
      */
     protected function createContributionLog(Contributor $contributor, $projectId, DateTime $dateTime, $hash)
     {
-        $contributionLogEntry = new ContributionHistory();
+        $contributionLogEntry = new ContributionLog();
         $contributionLogEntry
             ->setProjectId($projectId)
             ->setContributorId($contributor->getId())

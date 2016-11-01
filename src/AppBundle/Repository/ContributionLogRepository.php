@@ -5,9 +5,9 @@ namespace AppBundle\Repository;
 use DateTime;
 
 /**
- * ContributionHistoryRepository
+ * Contribution log entries
  */
-class ContributionHistoryRepository extends Repository
+class ContributionLogRepository extends Repository
 {
     /**
      * @param int $projectId
