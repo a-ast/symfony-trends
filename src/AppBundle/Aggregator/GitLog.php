@@ -109,9 +109,6 @@ class GitLog implements AggregatorInterface
             $dateTime = new DateTime(trim($lineParts[2]));
             $hash = trim($lineParts[3]);
 
-            /** @var Contributor $contributor */
-            $contributor = $this->contributorRepository->findByEmail($email);
-
             // Skip if the date less than the given one
             if('' !== $options['since_datetime']) {
                 $sinceDateTime = new DateTime($options['since_datetime']);
@@ -119,6 +116,10 @@ class GitLog implements AggregatorInterface
                     continue;
                 }
             }
+
+            /** @var Contributor $contributor */
+            $contributor = $this->contributorRepository->findByEmail($email);
+
 
             if($options['update_contributors']) {
 //                $contributor = $this->createOrUpdateContributor($contributor, $email, $name);
