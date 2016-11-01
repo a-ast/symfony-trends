@@ -53,4 +53,22 @@ class GitLogTest extends PHPUnit_Framework_TestCase
 
         $aggregator->aggregate($options);
     }
+
+    public function testAggregateOnlyIteratesContributorsSinceGivenDate()
+    {
+        $this->contributorRepository
+            ->findByEmail(Argument::type('string'))
+            ->willReturn(new Contributor())
+            ->shouldBeCalledTimes(3);
+
+        $aggregator = new GitLog($this->contributorRepository->reveal(),
+            $this->contributionRepository->reveal(), $this->contributionLogRepository->reveal(), __DIR__.'/fixtures/');
+
+        $options = [
+            'project_id' => 1,
+            'since_datetime' => '2010-01-04T19:00:00+01:00'
+        ];
+
+        $aggregator->aggregate($options);
+    }
 }
