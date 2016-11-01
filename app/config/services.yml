@@ -16,7 +16,7 @@ services:
             - '@repository.contributor'
             - '@repository.contribution'
             - '@repository.contribution_history'
-            - '%kernel.root_dir%'
+            - '%kernel.root_dir%/../git-logs/'
 
     #################################
     # Data providers

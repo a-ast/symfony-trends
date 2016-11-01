@@ -9,6 +9,8 @@ use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributionHistoryRepository;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
+use DateTime;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Git log aggregator
@@ -33,7 +35,7 @@ class GitLog implements AggregatorInterface
     /**
      * @var string
      */
-    private $rootDir;
+    private $gitLogDir;
 
     /**
      * Constructor.
@@ -41,27 +43,59 @@ class GitLog implements AggregatorInterface
      * @param ContributorRepository $contributorRepository
      * @param ContributionRepository $contributionRepository
      * @param ContributionHistoryRepository $contributionHistoryRepository
-     * @param string $rootDir
+     * @param string $gitLogDir
      */
     public function __construct(
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         ContributionHistoryRepository $contributionHistoryRepository,
-        $rootDir)
+        $gitLogDir)
     {
-        $this->rootDir = $rootDir.'/../';
+        $this->gitLogDir = $gitLogDir;
         $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
         $this->contributionHistoryRepository = $contributionHistoryRepository;
     }
 
+    protected function resolveOptions(array $options)
+    {
+        $resolver = new OptionsResolver();
+
+        // All data updates are disabled by default
+        $resolver
+            ->setRequired(['project_id'])
+            ->setAllowedTypes('project_id', 'int')
+
+            ->setDefined('ignore_new_contributors')
+            ->setAllowedTypes('ignore_new_contributors', 'bool')
+            ->setDefault('ignore_new_contributors', true)
+
+            ->setDefined('update_contributors')
+            ->setAllowedTypes('update_contributors', 'bool')
+            ->setDefault('update_contributors', false)
+
+            ->setDefined('update_log')
+            ->setAllowedTypes('update_log', 'bool')
+            ->setDefault('update_log', false)
+            
+            ->setDefined('since_datetime')
+            ->setAllowedTypes('since_datetime', 'string')
+            ->setDefault('since_datetime', '')
+        ;
+
+        return $resolver->resolve($options);
+    }
+    
     public function aggregate(array $options = [])
     {
+
+        $options = $this->resolveOptions($options);
+
         //$contents = file($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId));
 
         $projectId = $options['project_id'];
 
-        $fileHandle = fopen($this->rootDir.sprintf('git-logs/git-log-%d.txt', $projectId), 'r');
+        $fileHandle = fopen($this->gitLogDir.sprintf('git-log-%d.txt', $projectId), 'r');
 
         if($fileHandle === false) {
             // @todo: throw exception
@@ -69,41 +103,38 @@ class GitLog implements AggregatorInterface
 
         while (($lineParts = fgetcsv($fileHandle, 5000, ',')) !== false) {
 
-
-        // foreach ($contents as $line) {
-
             //$lineParts = explode(', ', $line);
             $name = trim($lineParts[0]);
             $email = trim($lineParts[1]);
-            $dateTime = trim($lineParts[2]);
+            $dateTime = new DateTime(trim($lineParts[2]));
             $hash = trim($lineParts[3]);
 
             /** @var Contributor $contributor */
             $contributor = $this->contributorRepository->findByEmail($email);
 
-            $shouldUpdateContributors = false;
+            // Skip if the date less than the given one
+            if('' !== $options['since_datetime']) {
+                $sinceDateTime = new DateTime($options['since_datetime']);
+                if($dateTime <= $sinceDateTime) {
+                    continue;
+                }
+            }
 
-            if($shouldUpdateContributors) {
+            if($options['update_contributors']) {
 //                $contributor = $this->createOrUpdateContributor($contributor, $email, $name);
 //                $this->contributorRepository->store($contributor);
             }
 
-            $date = new \DateTime($dateTime);
-            $date26 = new \DateTime('2014-11-28 16:59:01');
-            if($date <= $date26) {
-                continue;
+
+            if($options['update_log']) {
+                $contributionLogEntry = new ContributionHistory();
+                $contributionLogEntry
+                    ->setProjectId($projectId)
+                    ->setContributorId($contributor->getId())
+                    ->setCommitedAt(new DateTime($dateTime))
+                    ->setCommitHash($hash);
+                $this->contributionHistoryRepository->store($contributionLogEntry);
             }
-
-
-
-            $contributionLogEntry = new ContributionHistory();
-            $contributionLogEntry
-                ->setProjectId($projectId)
-                ->setContributorId($contributor->getId())
-                ->setCommitedAt(new \DateTime($dateTime))
-                ->setCommitHash($hash);
-            $this->contributionHistoryRepository->store($contributionLogEntry);
-
 
 //
 //            $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
@@ -130,7 +161,7 @@ class GitLog implements AggregatorInterface
                 !in_array($name, $contributor->getGitNames())
             ) {
                 $contributor->setGitNames(array_filter(array_merge($contributor->getGitNames(), [$name])));
-                $contributor->setUpdatedAt(new \DateTime());
+                $contributor->setUpdatedAt(new DateTime());
             }
 
         } else {
@@ -143,8 +174,8 @@ class GitLog implements AggregatorInterface
                 ->setGitNames([''])
                 ->setCountries([''])
                 ->setCommitCount(1)
-                ->setCreatedAt(new \DateTime())
-                ->setUpdatedAt(new \DateTime());
+                ->setCreatedAt(new DateTime())
+                ->setUpdatedAt(new DateTime());
 
         }
 
@@ -180,7 +211,7 @@ class GitLog implements AggregatorInterface
 
         if ('' === $contribution->getFirstCommitHash()) {
             $contribution
-                ->setFirstCommitAt(new \DateTime($dateTime))
+                ->setFirstCommitAt(new DateTime($dateTime))
                 ->setFirstCommitHash($hash);
         }
 
