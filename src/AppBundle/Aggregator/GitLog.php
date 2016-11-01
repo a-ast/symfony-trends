@@ -66,9 +66,9 @@ class GitLog implements AggregatorInterface
             ->setRequired(['project_id'])
             ->setAllowedTypes('project_id', 'int')
 
-            ->setDefined('ignore_new_contributors')
-            ->setAllowedTypes('ignore_new_contributors', 'bool')
-            ->setDefault('ignore_new_contributors', true)
+//            ->setDefined('ignore_new_contributors')
+//            ->setAllowedTypes('ignore_new_contributors', 'bool')
+//            ->setDefault('ignore_new_contributors', true)
 
             ->setDefined('update_contributors')
             ->setAllowedTypes('update_contributors', 'bool')
@@ -103,7 +103,6 @@ class GitLog implements AggregatorInterface
 
         while (($lineParts = fgetcsv($fileHandle, 5000, ',')) !== false) {
 
-            //$lineParts = explode(', ', $line);
             $name = trim($lineParts[0]);
             $email = trim($lineParts[1]);
             $dateTime = new DateTime(trim($lineParts[2]));
@@ -112,28 +111,39 @@ class GitLog implements AggregatorInterface
             // Skip if the date less than the given one
             if('' !== $options['since_datetime']) {
                 $sinceDateTime = new DateTime($options['since_datetime']);
+
                 if($dateTime <= $sinceDateTime) {
                     continue;
                 }
             }
 
-            /** @var Contributor $contributor */
             $contributor = $this->contributorRepository->findByEmail($email);
 
-
             if($options['update_contributors']) {
-//                $contributor = $this->createOrUpdateContributor($contributor, $email, $name);
-//                $this->contributorRepository->store($contributor);
+                if (null === $contributor) {
+                    $contributor = $this->createContributor($email, $name);
+                    $this->contributorRepository->persist($contributor);
+                }
+
+                $contributor->addGitName($name);
+
             }
 
 
             if($options['update_log']) {
+
+                if (null === $contributor) {
+                    // todo throw exception and test it
+                }
+
+
                 $contributionLogEntry = new ContributionHistory();
                 $contributionLogEntry
                     ->setProjectId($projectId)
                     ->setContributorId($contributor->getId())
                     ->setCommitedAt(new DateTime($dateTime))
                     ->setCommitHash($hash);
+
                 $this->contributionHistoryRepository->store($contributionLogEntry);
             }
 
@@ -148,37 +158,23 @@ class GitLog implements AggregatorInterface
     }
 
     /**
-     * @param Contributor $contributor
      * @param $email
      * @param $name
+     *
      * @return Contributor
      */
-    protected function createOrUpdateContributor($contributor, $email, $name)
+    protected function createContributor($email, $name)
     {
-
-
-        if (null !== $contributor) {
-            if ($contributor->getName() !== $name &&
-                !in_array($name, $contributor->getGitNames())
-            ) {
-                $contributor->setGitNames(array_filter(array_merge($contributor->getGitNames(), [$name])));
-                $contributor->setUpdatedAt(new DateTime());
-            }
-
-        } else {
-
-            $contributor = new Contributor();
-            $contributor
-                ->setEmail($email)
-                ->setName($name)
-                ->setGitEmails([''])
-                ->setGitNames([''])
-                ->setCountries([''])
-                ->setCommitCount(1)
-                ->setCreatedAt(new DateTime())
-                ->setUpdatedAt(new DateTime());
-
-        }
+        $contributor = new Contributor();
+        $contributor
+            ->setEmail($email)
+            ->setName($name)
+            ->setGitEmails([''])
+            ->setGitNames([''])
+            ->setCountries([''])
+            ->setCommitCount(1)
+            ->setCreatedAt(new DateTime())
+            ->setUpdatedAt(new DateTime());
 
         return $contributor;
     }

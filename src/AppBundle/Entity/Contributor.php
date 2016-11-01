@@ -178,6 +178,22 @@ class Contributor
     }
 
     /**
+     * Add new git name
+     *
+     * @param string $name
+     *
+     * @return Contributor
+     */
+    public function addGitName($name)
+    {
+        if ($this->getName() !== $name && !in_array($name, $this->getGitNames())) {
+            $this->setGitNames(ArrayUtils::trimMerge($this->getGitNames(), $name));
+        }
+
+        return $this;
+    }
+
+    /**
      * Set sensiolabsLogin
      *
      * @param string $sensiolabsLogin

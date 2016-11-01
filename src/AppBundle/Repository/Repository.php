@@ -9,6 +9,11 @@ use Doctrine\ORM\EntityRepository;
  */
 abstract class Repository extends EntityRepository
 {
+    /**
+     * @param null $object
+     *
+     * @deprecated Use a combination of persist/flush
+     */
     public function store($object = null)
     {
         if(null !== $object) {
@@ -21,6 +26,16 @@ abstract class Repository extends EntityRepository
     public function remove($object = null)
     {
         $this->getEntityManager()->remove($object);
+        $this->getEntityManager()->flush($object);
+    }
+
+    public function persist($object)
+    {
+        $this->getEntityManager()->persist($object);
+    }
+
+    public function flush($object)
+    {
         $this->getEntityManager()->flush($object);
     }
 }
