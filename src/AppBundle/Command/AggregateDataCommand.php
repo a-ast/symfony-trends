@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class UpdateDataCommand extends ContainerAwareCommand
+class AggregateDataCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}
@@ -15,8 +15,8 @@ class UpdateDataCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('trends:data:update')
-            ->setDescription('Update raw data');
+            ->setName('trends:data:aggregate')
+            ->setDescription('Aggregate data from external sources.');
     }
 
     /**
