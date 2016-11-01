@@ -21,10 +21,10 @@ class ContributionHistoryRepository extends Repository
         $qb = $this->createQueryBuilder('c')
             ->select('count(distinct c.contributorId)')
             ->where('c.projectId = :projectId')
-            //->andWhere('c.commitedAt > :startedAt')
+            ->andWhere('c.commitedAt > :startedAt')
             ->andWhere('c.commitedAt <= :finishedAt')
             ->setParameter('projectId', $projectId)
-            //->setParameter('startedAt', $startedAt)
+            ->setParameter('startedAt', $startedAt)
             ->setParameter('finishedAt', $finishedAt)
         ;
 

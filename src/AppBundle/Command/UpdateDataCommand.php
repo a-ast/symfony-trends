@@ -26,6 +26,7 @@ class UpdateDataCommand extends ContainerAwareCommand
     {
         /** @var AggregatorInterface $aggregator */
         $aggregator = $this->getContainer()->get('aggregator.contributor_count2');
-        $aggregator->aggregate(['project_id' => 1]);
+        //$aggregator = $this->getContainer()->get('aggregator.git_log');
+        $aggregator->aggregate(['project_id' => 27]);
     }
 }

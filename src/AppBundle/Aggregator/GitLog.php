@@ -88,6 +88,14 @@ class GitLog implements AggregatorInterface
 //                $this->contributorRepository->store($contributor);
             }
 
+            $date = new \DateTime($dateTime);
+            $date26 = new \DateTime('2014-11-28 16:59:01');
+            if($date <= $date26) {
+                continue;
+            }
+
+
+
             $contributionLogEntry = new ContributionHistory();
             $contributionLogEntry
                 ->setProjectId($projectId)
