@@ -6,9 +6,6 @@ namespace AppBundle\Aggregator;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\ContributionHistory;
 use AppBundle\Entity\Contributor;
-use AppBundle\Repository\ContributionHistoryRepository;
-use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use DateTime;
 use RuntimeException;
@@ -49,27 +46,22 @@ class GitLog implements AggregatorInterface
         $resolver
             ->setRequired(['project_id'])
             ->setAllowedTypes('project_id', 'int')
-
             ->setDefined('update_contributors')
             ->setAllowedTypes('update_contributors', 'bool')
             ->setDefault('update_contributors', false)
-
             ->setDefined('update_contributions')
             ->setAllowedTypes('update_contributions', 'bool')
             ->setDefault('update_contributions', false)
-
             ->setDefined('update_log')
             ->setAllowedTypes('update_log', 'bool')
             ->setDefault('update_log', false)
-            
             ->setDefined('since_datetime')
             ->setAllowedTypes('since_datetime', 'string')
-            ->setDefault('since_datetime', '')
-        ;
+            ->setDefault('since_datetime', '');
 
         return $resolver->resolve($options);
     }
-    
+
     public function aggregate(array $options = [])
     {
 
@@ -81,7 +73,7 @@ class GitLog implements AggregatorInterface
 
         $fileHandle = fopen($this->gitLogDir.sprintf('git-log-%d.txt', $projectId), 'r');
 
-        if($fileHandle === false) {
+        if ($fileHandle === false) {
             // @todo: throw exception
         }
 
@@ -93,17 +85,17 @@ class GitLog implements AggregatorInterface
             $hash = trim($lineParts[3]);
 
             // Skip if the date less than the given one
-            if('' !== $options['since_datetime']) {
+            if ('' !== $options['since_datetime']) {
                 $sinceDateTime = new DateTime($options['since_datetime']);
 
-                if($dateTime <= $sinceDateTime) {
+                if ($dateTime <= $sinceDateTime) {
                     continue;
                 }
             }
 
             $contributor = $this->repositoryFacade->findContributorByEmail($email);
 
-            if($options['update_contributors']) {
+            if ($options['update_contributors']) {
                 if (null === $contributor) {
                     $contributor = $this->createContributor($email, $name);
                     $this->repositoryFacade->persist($contributor);
@@ -113,7 +105,7 @@ class GitLog implements AggregatorInterface
             }
 
 
-            if($options['update_log']) {
+            if ($options['update_log']) {
 
                 if (null === $contributor) {
                     throw new RuntimeException(sprintf(
@@ -136,7 +128,7 @@ class GitLog implements AggregatorInterface
 
             print '.';
 
-            if($options['update_contributors'] || $options['update_contributions'] ||$options['update_log']) {
+            if ($options['update_contributors'] || $options['update_contributions'] || $options['update_log']) {
                 $this->repositoryFacade->flush();
             }
         }
@@ -176,10 +168,9 @@ class GitLog implements AggregatorInterface
      */
     protected function createOrUpdateContribution(Contributor $contributor, $projectId, $dateTime, $hash)
     {
-        $contribution = $this->contributionRepository->findOneBy(
-            [
+        $contribution = $this->repositoryFacade->findOneBy([
                 'projectId' => $projectId,
-                'contributorId' => $contributor->getId()
+                'contributorId' => $contributor->getId(),
             ]
         );
 
