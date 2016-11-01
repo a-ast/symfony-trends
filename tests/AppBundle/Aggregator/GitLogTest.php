@@ -3,6 +3,7 @@
 namespace Tests\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GitLog;
+use AppBundle\Entity\ContributionHistory;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use PHPUnit_Framework_TestCase;
@@ -84,7 +85,7 @@ class GitLogTest extends PHPUnit_Framework_TestCase
         foreach ($newContributors as $name => $email) {
 
             $this->repositoryFacade
-                ->persist(Argument::type('AppBundle\Entity\Contributor'))
+                ->persist(Argument::type(Contributor::class))
                 ->shouldBeCalled();
 
             $this->repositoryFacade
@@ -104,7 +105,52 @@ class GitLogTest extends PHPUnit_Framework_TestCase
 
         $aggregator->aggregate($options);
     }
-    
+
+    /**
+     * @expectedException \RuntimeException
+     */
+    public function testThrowsExceptionIfNoContributorByUpdatingLog()
+    {
+        $options = [
+            'project_id' => 1,
+            'update_contributors' => false,
+            'update_log' => true,
+        ];
+
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+            ->willReturn(null);
+
+        $aggregator = $this->getGitLog();
+
+        $aggregator->aggregate($options);
+    }
+
+    public function testCreateNewLogEntries()
+    {
+        $options = [
+            'project_id' => 1,
+            'update_log' => true
+        ];
+
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+            ->willReturn(new Contributor())
+            ->shouldBeCalled(3);
+
+        $this->repositoryFacade
+            ->persist(Argument::type(ContributionHistory::class))
+            ->shouldBeCalledTimes(7);
+
+        $this->repositoryFacade
+            ->flush()
+            ->shouldBeCalledTimes(7);
+
+        $aggregator = $this->getGitLog();
+
+        $aggregator->aggregate($options);
+    }
+
     private function getGitLog()
     {
         return new GitLog($this->repositoryFacade->reveal(), __DIR__.'/fixtures/');

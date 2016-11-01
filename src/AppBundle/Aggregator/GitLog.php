@@ -112,12 +112,7 @@ class GitLog implements AggregatorInterface
                         'Contributor [%s] does not exist but contribution log entry must be created', $name));
                 }
 
-                $contributionLogEntry = new ContributionHistory();
-                $contributionLogEntry
-                    ->setProjectId($projectId)
-                    ->setContributorId($contributor->getId())
-                    ->setCommitedAt(new DateTime($dateTime))
-                    ->setCommitHash($hash);
+                $contributionLogEntry = $this->createContributionLog($contributor, $projectId, $dateTime, $hash);
 
                 $this->repositoryFacade->persist($contributionLogEntry);
             }
@@ -191,5 +186,25 @@ class GitLog implements AggregatorInterface
         }
 
         return $contribution;
+    }
+
+    /**
+     * @param Contributor $contributor
+     * @param int $projectId
+     * @param DateTime $dateTime
+     * @param string $hash
+     *
+     * @return ContributionHistory
+     */
+    protected function createContributionLog(Contributor $contributor, $projectId, DateTime $dateTime, $hash)
+    {
+        $contributionLogEntry = new ContributionHistory();
+        $contributionLogEntry
+            ->setProjectId($projectId)
+            ->setContributorId($contributor->getId())
+            ->setCommitedAt($dateTime)
+            ->setCommitHash($hash);
+
+        return $contributionLogEntry;
     }
 }
