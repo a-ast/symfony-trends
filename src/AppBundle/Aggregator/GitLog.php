@@ -11,6 +11,7 @@ use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use DateTime;
+use RuntimeException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -115,9 +116,9 @@ class GitLog implements AggregatorInterface
             if($options['update_log']) {
 
                 if (null === $contributor) {
-                    // todo throw exception and test it
+                    throw new RuntimeException(sprintf(
+                        'Contributor [%s] does not exist but contribution log entry must be created', $name));
                 }
-
 
                 $contributionLogEntry = new ContributionHistory();
                 $contributionLogEntry
