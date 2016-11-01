@@ -117,6 +117,14 @@ class GitLog implements AggregatorInterface
                 $this->repositoryFacade->persist($contributionLogEntry);
             }
 
+            if ($options['update_contributions']) {
+
+                if (null === $contributor) {
+                    throw new RuntimeException(sprintf(
+                        'Contributor [%s] does not exist but contribution must be created', $name));
+                }
+            }
+
 //
 //            $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
 //            $this->contributionRepository->store($contribution);

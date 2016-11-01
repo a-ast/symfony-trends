@@ -151,6 +151,26 @@ class GitLogTest extends PHPUnit_Framework_TestCase
         $aggregator->aggregate($options);
     }
 
+    /**
+     * @expectedException \RuntimeException
+     */
+    public function testThrowsExceptionIfNoContributorByUpdatingContributions()
+    {
+        $options = [
+            'project_id' => 1,
+            'update_contributors' => false,
+            'update_contributions' => true,
+        ];
+
+        $this->repositoryFacade
+            ->findContributorByEmail(Argument::type('string'))
+            ->willReturn(null);
+
+        $aggregator = $this->getGitLog();
+
+        $aggregator->aggregate($options);
+    }
+
     private function getGitLog()
     {
         return new GitLog($this->repositoryFacade->reveal(), __DIR__.'/fixtures/');
