@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Contribution log
  *
  * @ORM\Table(name="contribution_log")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionHistoryRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionLogRepository")
  */
 class ContributionLog
 {
