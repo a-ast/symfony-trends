@@ -3,7 +3,6 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Entity\Contribution;
 use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
@@ -46,15 +45,15 @@ class GitLog implements AggregatorInterface
         $resolver
             ->setRequired(['project_id'])
             ->setAllowedTypes('project_id', 'int')
+
             ->setDefined('update_contributors')
             ->setAllowedTypes('update_contributors', 'bool')
             ->setDefault('update_contributors', false)
-            ->setDefined('update_contributions')
-            ->setAllowedTypes('update_contributions', 'bool')
-            ->setDefault('update_contributions', false)
+
             ->setDefined('update_log')
             ->setAllowedTypes('update_log', 'bool')
             ->setDefault('update_log', false)
+
             ->setDefined('since_datetime')
             ->setAllowedTypes('since_datetime', 'string')
             ->setDefault('since_datetime', '');
@@ -64,7 +63,6 @@ class GitLog implements AggregatorInterface
 
     public function aggregate(array $options = [])
     {
-
         $options = $this->resolveOptions($options);
 
         $projectId = $options['project_id'];
@@ -125,36 +123,20 @@ class GitLog implements AggregatorInterface
                 $this->repositoryFacade->persist($contributionLogEntry);
             }
 
-            if ($options['update_contributions']) {
-
-                if (null === $contributor) {
-                    throw new RuntimeException(sprintf(
-                        'Contributor [%s] does not exist but contribution must be created', $name));
-                }
-
-                $contribution = $this->createOrUpdateContribution($contributor, $projectId, $dateTime, $hash);
-
-                $this->repositoryFacade->persist($contribution);
-            }
-
             print '.';
             $i++;
 
 
-            if ($options['update_contributors'] ||
-                $options['update_contributions'] ||
-                $options['update_log'] && ($i % $batchSize) == 0) {
+            if (($options['update_contributors'] ||
+                $options['update_log']) && ($i % $batchSize) === 0) {
                 $this->repositoryFacade->flush();
-
             }
-
-            unset($dateTime);
-            unset($contributor);
-            unset($contribution);
-            unset($contributionLogEntry);
         }
 
-
+        if ($options['update_contributors'] ||
+            $options['update_log']) {
+            $this->repositoryFacade->flush();
+        }
     }
 
     /**
@@ -177,42 +159,6 @@ class GitLog implements AggregatorInterface
             ->setUpdatedAt(new DateTime());
 
         return $contributor;
-    }
-
-    /**
-     * @param $contributor
-     * @param $projectId
-     * @param $dateTime
-     * @param $hash
-     *
-     * @return Contribution
-     */
-    protected function createOrUpdateContribution(Contributor $contributor, $projectId, DateTime $dateTime, $hash)
-    {
-        $contribution = $this->repositoryFacade->findOneContributionBy([
-                'projectId' => $projectId,
-                'contributorId' => $contributor->getId(),
-            ]
-        );
-
-        if (null === $contribution) {
-            $contribution = new Contribution();
-            $contribution
-                ->setProjectId($projectId)
-                ->setContributorId($contributor->getId())
-                ->setCommitCount(0);
-        }
-
-//        $commitCount = $contribution->getCommitCount();
-//        $contribution->setCommitCount($commitCount+1);
-
-        if ('' === $contribution->getFirstCommitHash()) {
-            $contribution
-                ->setFirstCommitAt($dateTime)
-                ->setFirstCommitHash($hash);
-        }
-
-        return $contribution;
     }
 
     /**

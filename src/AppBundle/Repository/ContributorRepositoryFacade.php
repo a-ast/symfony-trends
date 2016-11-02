@@ -14,11 +14,6 @@ class ContributorRepositoryFacade
     private $contributorRepository;
 
     /**
-     * @var ContributionRepository
-     */
-    private $contributionRepository;
-
-    /**
      * @var ContributionLogRepository
      */
     private $contributionLogRepository;
@@ -32,18 +27,15 @@ class ContributorRepositoryFacade
      *
      * @param ObjectManager $em
      * @param ContributorRepository $contributorRepository
-     * @param ContributionRepository $contributionRepository
      * @param ContributionLogRepository $contributionLogRepository
      */
     public function __construct(
         ObjectManager $em,
         ContributorRepository $contributorRepository,
-        ContributionRepository $contributionRepository,
         ContributionLogRepository $contributionLogRepository)
     {
         $this->em = $em;
         $this->contributorRepository = $contributorRepository;
-        $this->contributionRepository = $contributionRepository;
         $this->contributionLogRepository = $contributionLogRepository;
     }
 
@@ -66,10 +58,5 @@ class ContributorRepositoryFacade
     {
         $this->em->flush();
         $this->em->clear();
-    }
-
-    public function findOneContributionBy(array $criteria)
-    {
-        return $this->contributionRepository->findOneBy($criteria);
     }
 }

@@ -100,7 +100,7 @@ class GitLogTest extends PHPUnit_Framework_TestCase
 
         $this->repositoryFacade
             ->flush()
-            ->shouldBeCalledTimes(7);
+            ->shouldBeCalledTimes(1);
 
         $aggregator = $this->getGitLog();
 
@@ -114,7 +114,6 @@ class GitLogTest extends PHPUnit_Framework_TestCase
     {
         $options = [
             'project_id' => 1,
-            'update_contributors' => false,
             'update_log' => true,
         ];
 
@@ -145,57 +144,7 @@ class GitLogTest extends PHPUnit_Framework_TestCase
 
         $this->repositoryFacade
             ->flush()
-            ->shouldBeCalledTimes(7);
-
-        $aggregator = $this->getGitLog();
-
-        $aggregator->aggregate($options);
-    }
-
-    /**
-     * @expectedException \RuntimeException
-     */
-    public function testThrowsExceptionIfNoContributorByUpdatingContributions()
-    {
-        $options = [
-            'project_id' => 1,
-            'update_contributors' => false,
-            'update_contributions' => true,
-        ];
-
-        $this->repositoryFacade
-            ->findContributorByEmail(Argument::type('string'))
-            ->willReturn(null);
-
-        $aggregator = $this->getGitLog();
-
-        $aggregator->aggregate($options);
-    }
-
-    public function testCreateNewContributions()
-    {
-        $options = [
-            'project_id' => 1,
-            'update_contributions' => true
-        ];
-
-        $this->repositoryFacade
-            ->findContributorByEmail(Argument::type('string'))
-            ->willReturn(new Contributor())
-            ->shouldBeCalled(3);
-
-        $this->repositoryFacade
-            ->findOneContributionBy(Argument::type('array'))
-            ->willReturn(null)
-            ->shouldBeCalled(7);
-
-        $this->repositoryFacade
-            ->persist(Argument::type(Contribution::class))
-            ->shouldBeCalledTimes(7);
-
-        $this->repositoryFacade
-            ->flush()
-            ->shouldBeCalledTimes(7);
+            ->shouldBeCalledTimes(1);
 
         $aggregator = $this->getGitLog();
 
