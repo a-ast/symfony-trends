@@ -1,7 +1,16 @@
 parameters:
     aggregators:
 
-        git_log:
+        git_log_symfony:
             service: 'aggregator.git_log'
             options:
                 project_id: 1
+                update_contributions: true
+                update_log: true
+
+        git_log_symfony_docs:
+            service: 'aggregator.git_log'
+            options:
+                project_id: 2
+                update_contributions: true
+                update_log: true
