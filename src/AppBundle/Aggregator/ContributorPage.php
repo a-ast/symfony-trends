@@ -3,9 +3,9 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\ContributorExtractor;
+use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\ClientInterface;
-use Symfony\Component\DomCrawler\Crawler;
 
 class ContributorPage implements AggregatorInterface
 {
@@ -29,8 +29,11 @@ class ContributorPage implements AggregatorInterface
      * @param ContributorExtractor $extractor
      * @param ContributorRepository $repository
      */
-    public function __construct(ClientInterface $httpClient, ContributorExtractor $extractor, ContributorRepository $repository)
-    {
+    public function __construct(
+        ClientInterface $httpClient,
+        ContributorExtractor $extractor,
+        ContributorRepository $repository
+    ) {
         $this->httpClient = $httpClient;
         $this->repository = $repository;
         $this->extractor = $extractor;
@@ -38,17 +41,81 @@ class ContributorPage implements AggregatorInterface
 
     public function aggregate(array $options = [])
     {
-        $url = 'http://symfony.com/contributors/code';
+        $url = $options['url'];
 
         $contributors = $this->getContributors($url);
-        //$contributorNamesFromPage = array_column($contributors, 0);
 
-        var_dump($contributors);
+        $i = 0;
+        foreach ($contributors as $contributor) {
+            if ('' !== $contributor['sensiolabs_url']) {
+                $i++;
+            }
+        }
+
+        $notFoundNames = [];
+        $ambiguousNames = [];
+        $unmatchedNames = [];
+        $processedCount = 0;
+
+        foreach ($contributors as $contributor) {
+            if ('' === $contributor['sensiolabs_url']) {
+                continue;
+            }
+
+            $name = $contributor['name'];
+            $sensiolabsLogin = $this->getSensiolabsLoginFromUrl($contributor['sensiolabs_url']);
+
+            $existingContributors = $this->repository->findByName($name);
+
+            if (0 === count($existingContributors)) {
+                $notFoundNames[] = $name;
+
+                continue;
+            }
+
+            $existingContributors = array_filter($existingContributors,
+                function(Contributor $contributor) use ($sensiolabsLogin){
+                    return $sensiolabsLogin !== $contributor->getSensiolabsLogin();
+                });
+
+            if (count($existingContributors) > 1) {
+
+                $ambiguousNames[] = $name;
+
+                continue;
+            }
+
+            if (0 === count($existingContributors)) {
+                continue;
+            }
+
+            $existingContributor = current($existingContributors);
+
+            if ('' !== $existingContributor->getSensiolabsLogin()) {
+
+                if ($sensiolabsLogin !== $existingContributor->getSensiolabsLogin()) {
+                    $unmatchedNames[] = $name;
+                }
+                continue;
+            }
+
+            $existingContributor->setSensiolabsLogin($sensiolabsLogin);
+            $processedCount++;
+        }
+
+        $this->repository->flush();
+
+        return [
+            'Not found names' => $notFoundNames,
+            'Ambiguous names' => $ambiguousNames,
+            'Unmatched names' => $unmatchedNames,
+            'Processed contributors' => $processedCount,
+        ];
     }
 
-    public function getContributors($url)
+    protected function getContributors($url)
     {
-        $responseBody = (string)$this->getPageContents($url);
+        $responseBody = $this->getPageContents($url);
 
         $contributors = $this->extractor->extract($responseBody);
 
@@ -57,7 +124,7 @@ class ContributorPage implements AggregatorInterface
 
     /**
      * @param $uri
-     * @return \Psr\Http\Message\StreamInterface
+     * @return string
      */
     protected function getPageContents($uri)
     {
@@ -65,67 +132,7 @@ class ContributorPage implements AggregatorInterface
 
         $responseBody = $response->getBody();
 
-        return $responseBody;
-    }
-
-    private function getTextAfter($text, $substring)
-    {
-        if (false !== ($pos = strpos($text, $substring))) {
-            return substr($text, $pos + strlen($substring));
-        }
-
-        return '';
-    }
-
-    /**
-     * @param $contributorNames
-     *
-     * @return array
-     */
-    protected function checkDoubles($contributorNames)
-    {
-        $frequencyOnPage = array_count_values($contributorNames);
-        $doublesOnPage = array_filter($frequencyOnPage, function($frequency) {
-            return $frequency > 0;
-        });
-        ksort($doublesOnPage);
-
-        $doublesInDb = $this->repository->getDoubles();
-
-        $diff = [];
-
-        foreach ($doublesInDb as $name => $count) {
-            if(!isset($doublesOnPage[$name]) || $doublesOnPage[$name] !== $count) {
-                $diff['db_page'][] = [
-                    'name' => $name,
-                    'on_page' => isset($doublesOnPage[$name]) ? $doublesOnPage[$name] : 0,
-                    'in_db' => $count,
-                ];
-            }
-        }
-
-        foreach ($doublesOnPage as $name => $count) {
-            if(!isset($doublesInDb[$name]) || $doublesInDb[$name] !== $count) {
-                $diff['page_db'][] = [
-                    'name' => $name,
-                    'in_db' => isset($doublesInDb[$name]) ? $doublesInDb[$name] : 0,
-                    'on_page' => $count,
-                ];
-            }
-        }
-
-        return $diff;
-    }
-
-    /**
-     * @param mixed $item
-     * @param array $array
-     *
-     * @return mixed
-     */
-    protected function findArrayItem($item, array &$array)
-    {
-        return array_search(strtolower($item), array_map('strtolower', $array));
+        return (string)$responseBody;
     }
 
     /**
@@ -133,7 +140,7 @@ class ContributorPage implements AggregatorInterface
      */
     protected function analyzeNames($contributorNamesFromPage)
     {
-// Step 1. Find doubles
+        // Step 1. Find doubles
         $diff = $this->checkDoubles($contributorNamesFromPage);
         foreach ($diff['page_db'] as $item) {
             print(sprintf('%s on page: %d  in db: %d',
@@ -181,4 +188,70 @@ class ContributorPage implements AggregatorInterface
 
         print $i.PHP_EOL;
     }
+
+    /**
+     * @param $contributorNames
+     *
+     * @return array
+     */
+    protected function checkDoubles($contributorNames)
+    {
+        $frequencyOnPage = array_count_values($contributorNames);
+        $doublesOnPage = array_filter($frequencyOnPage, function ($frequency) {
+            return $frequency > 0;
+        });
+        ksort($doublesOnPage);
+
+        $doublesInDb = $this->repository->getDoubles();
+
+        $diff = [];
+
+        foreach ($doublesInDb as $name => $count) {
+            if (!isset($doublesOnPage[$name]) || $doublesOnPage[$name] !== $count) {
+                $diff['db_page'][] = [
+                    'name' => $name,
+                    'on_page' => isset($doublesOnPage[$name]) ? $doublesOnPage[$name] : 0,
+                    'in_db' => $count,
+                ];
+            }
+        }
+
+        foreach ($doublesOnPage as $name => $count) {
+            if (!isset($doublesInDb[$name]) || $doublesInDb[$name] !== $count) {
+                $diff['page_db'][] = [
+                    'name' => $name,
+                    'in_db' => isset($doublesInDb[$name]) ? $doublesInDb[$name] : 0,
+                    'on_page' => $count,
+                ];
+            }
+        }
+
+        return $diff;
+    }
+
+    /**
+     * @param mixed $item
+     * @param array $array
+     *
+     * @return mixed
+     */
+    protected function findArrayItem($item, array &$array)
+    {
+        return array_search(strtolower($item), array_map('strtolower', $array));
+    }
+
+    private function getTextAfter($text, $substring)
+    {
+        if (false !== ($pos = strpos($text, $substring))) {
+            return substr($text, $pos + strlen($substring));
+        }
+
+        return '';
+    }
+
+    private function getSensiolabsLoginFromUrl($url)
+    {
+        return $this->getTextAfter($url, 'https://connect.sensiolabs.com/profile/');
+    }
+
 }

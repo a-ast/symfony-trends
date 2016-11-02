@@ -33,18 +33,18 @@ services:
         class: AppBundle\Provider\ContributorsIntersection
         lazy: true
         arguments:
-            - '@repository.contribution'
+            - '@repository.contribution_log'
             - '@repository.project'
 
     provider.commit_count_distribution:
         class: AppBundle\Provider\CommitCountDistribution
         lazy: true
         arguments:
-            - '@repository.contribution'
+            - '@repository.contribution_log'
             - '@repository.project'
 
     provider.contributors_per_date:
         class: AppBundle\Provider\ContributorsPerDate
         lazy: true
         arguments:
-            - '@repository.contribution'
+            - '@repository.contribution_log'

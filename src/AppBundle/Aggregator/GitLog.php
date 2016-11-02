@@ -137,6 +137,8 @@ class GitLog implements AggregatorInterface
             $options['update_log']) {
             $this->repositoryFacade->flush();
         }
+
+        return [];
     }
 
     /**

@@ -18,4 +18,9 @@ parameters:
         contributor_page_symfony:
             service: 'aggregator.contributor_page'
             options:
-                project_id: 1
+                url: 'http://symfony.com/contributors/code'
+
+        contributor_page_symfony_docs:
+            service: 'aggregator.contributor_page'
+            options:
+                url: 'http://symfony.com/contributors/doc'

@@ -34,7 +34,7 @@ abstract class Repository extends EntityRepository
         $this->getEntityManager()->persist($object);
     }
 
-    public function flush($object)
+    public function flush($object = null)
     {
         $this->getEntityManager()->flush($object);
     }

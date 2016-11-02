@@ -40,8 +40,23 @@ class AggregateDataCommand extends ContainerAwareCommand
         /** @var AggregatorInterface $aggregator */
         $aggregator = $this->getContainer()->get($aggregatorData['service']);
 
-        $aggregator->aggregate($aggregators[$aggregatorName]['options']);
+        $result = $aggregator->aggregate($aggregatorData['options']);
 
         $output->writeln(sprintf('<info>%s: aggregation finished.</info>', $aggregatorName));
+        $output->writeln('');
+
+        foreach ($result as $resultKey => $resultItem) {
+            if(is_array($resultItem)) {
+                $output->writeln(sprintf('%s:', $resultKey));
+                foreach ($resultItem as $resultSubKey => $resultSubItem) {
+                    $output->writeln(sprintf('     %s: %s', $resultSubKey, $resultSubItem));
+                }
+
+                continue;
+            }
+
+            $output->writeln(sprintf('%s: %s', $resultKey, $resultItem));
+
+        }
     }
 }
