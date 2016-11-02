@@ -67,17 +67,25 @@ class GitLog implements AggregatorInterface
 
         $options = $this->resolveOptions($options);
 
-        //$contents = file($this->rootDir.sprintf('trends/git-log-%d.txt', $projectId));
-
         $projectId = $options['project_id'];
 
-        $fileHandle = fopen($this->gitLogDir.sprintf('git-log-%d.txt', $projectId), 'r');
+        $contents = file($this->gitLogDir.sprintf('git-log-%d.txt', $projectId));
 
-        if ($fileHandle === false) {
-            // @todo: throw exception
-        }
 
-        while (($lineParts = fgetcsv($fileHandle, 5000, ',')) !== false) {
+//        $fileHandle = fopen($this->gitLogDir.sprintf('git-log-%d.txt', $projectId), 'r');
+//
+//        if ($fileHandle === false) {
+//            // @todo: throw exception
+//        }
+//
+//        while (($lineParts = fgetcsv($fileHandle, 5000, ',')) !== false) {
+
+        $i = 0;
+        $batchSize = 500;
+
+        foreach ($contents as $line) {
+
+            $lineParts = explode(',', $line);
 
             $name = trim($lineParts[0]);
             $email = trim($lineParts[1]);
@@ -130,12 +138,20 @@ class GitLog implements AggregatorInterface
             }
 
             print '.';
+            $i++;
+
 
             if ($options['update_contributors'] ||
                 $options['update_contributions'] ||
-                $options['update_log']) {
+                $options['update_log'] && ($i % $batchSize) == 0) {
                 $this->repositoryFacade->flush();
+
             }
+
+            unset($dateTime);
+            unset($contributor);
+            unset($contribution);
+            unset($contributionLogEntry);
         }
 
 
@@ -187,7 +203,8 @@ class GitLog implements AggregatorInterface
                 ->setCommitCount(0);
         }
 
-        $contribution->setCommitCount($contribution->getCommitCount() + 1);
+//        $commitCount = $contribution->getCommitCount();
+//        $contribution->setCommitCount($commitCount+1);
 
         if ('' === $contribution->getFirstCommitHash()) {
             $contribution

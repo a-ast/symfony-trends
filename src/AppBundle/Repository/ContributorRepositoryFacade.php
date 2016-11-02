@@ -62,9 +62,10 @@ class ContributorRepositoryFacade
         $this->em->persist($entity);
     }
 
-    public function flush($entity = null)
+    public function flush()
     {
-        $this->em->flush($entity);
+        $this->em->flush();
+        $this->em->clear();
     }
 
     public function findOneContributionBy(array $criteria)
