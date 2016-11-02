@@ -14,9 +14,9 @@ services:
     #################################
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPage
-        lazy: true
         arguments:
             - '@http_client'
+            - '@helper.contributor_extractor'
             - '@repository.contributor'
 
     aggregator.git_log:
