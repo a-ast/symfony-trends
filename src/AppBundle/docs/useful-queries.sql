@@ -25,3 +25,15 @@ from contribution_log
 where project_id = 1
 group by contributor_id
 order by min(commited_at) asc;
+
+
+select first_commit_at, count(*) as contributor_count
+from (
+       select contributor_id, min(commited_at) as first_commit_at
+       from contribution_log
+       where project_id = 1
+       group by contributor_id
+     ) fc
+
+group by first_commit_at
+order by first_commit_at asc;
