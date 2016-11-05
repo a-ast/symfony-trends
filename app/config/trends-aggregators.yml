@@ -24,3 +24,7 @@ parameters:
             service: 'aggregator.contributor_page'
             options:
                 url: 'http://symfony.com/contributors/doc'
+
+        contributor_github_api:
+            service: 'aggregator.github_api'
+            options: []

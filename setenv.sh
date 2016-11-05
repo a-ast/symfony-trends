@@ -1,2 +1,4 @@
 launchctl setenv SYMFONY__DATABASE__PATH /
 launchctl setenv SYMFONY__DATABASE__NAME /
+launchctl setenv SYMFONY__GITHUB__CLIENT_ID value
+launchctl setenv SYMFONY__GITHUB__CLIENT_SECRET value

@@ -1,12 +1,19 @@
 services:
     http_client:
         class: GuzzleHttp\Client
+    github_client:
+        class: Github\Client
+
 
     #################################
     # Helpers
     #################################
     helper.contributor_extractor:
         class: AppBundle\Aggregator\Helper\ContributorExtractor
+        lazy: true
+
+    helper.github_api:
+        class: AppBundle\Aggregator\Helper\GithubApiHelper
         lazy: true
 
     #################################
@@ -25,6 +32,15 @@ services:
         arguments:
             - '@repository_facade.contributor'
             - '%kernel.root_dir%/../git-logs/'
+
+    aggregator.github_api:
+        class: AppBundle\Aggregator\GithubApi
+        lazy: true
+        arguments:
+            - '@github_client'
+            - '@repository.contributor'
+            - '%github.client_id%'
+            - '%github.client_secret%'
 
     #################################
     # Data providers

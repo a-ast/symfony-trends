@@ -96,6 +96,7 @@ class ContributorPage implements AggregatorInterface
                 if ($sensiolabsLogin !== $existingContributor->getSensiolabsLogin()) {
                     $unmatchedNames[] = $name;
                 }
+
                 continue;
             }
 

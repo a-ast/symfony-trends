@@ -364,5 +364,13 @@ class Contributor
     {
         return ArrayUtils::trimMerge($this->getName(), $this->getGitNames());
     }
+
+    /**
+     * @return string[]
+     */
+    public function getAllEmails()
+    {
+        return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
+    }
 }
 
