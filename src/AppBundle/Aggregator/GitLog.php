@@ -157,7 +157,7 @@ class GitLog implements AggregatorInterface
             ->setGitEmails([''])
             ->setGitNames([''])
             ->setCountries([''])
-            ->setCommitCount(1)
+            ->setSensiolabsPageError(0)
             ->setCreatedAt(new DateTime())
             ->setUpdatedAt(new DateTime());
 
