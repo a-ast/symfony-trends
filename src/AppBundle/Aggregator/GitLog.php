@@ -5,6 +5,7 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
+use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use DateTime;
 use RuntimeException;
@@ -61,7 +62,7 @@ class GitLog implements AggregatorInterface
         return $resolver->resolve($options);
     }
 
-    public function aggregate(array $options = [])
+    public function aggregate(array $options, ProgressInterface $progress = null)
     {
         $options = $this->resolveOptions($options);
 
