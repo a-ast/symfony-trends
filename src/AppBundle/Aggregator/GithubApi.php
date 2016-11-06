@@ -46,10 +46,7 @@ class GithubApi implements AggregatorInterface
      */
     public function aggregate(array $options, ProgressInterface $progress = null)
     {
-        //$this->apiClient->authenticate();
-
-
-        // @todo: replace to email and logins and names only
+        // @todo: replace to get records with emails, logins and names only
         $contributors = $this->repository->findAll();
         $progress->start(count($contributors));
 
