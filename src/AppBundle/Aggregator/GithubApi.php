@@ -3,71 +3,52 @@
 
 namespace AppBundle\Aggregator;
 
+use AppBundle\Aggregator\Helper\GithubApiClient;
 use AppBundle\Entity\Contributor;
+use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
-use Github;
 
 class GithubApi implements AggregatorInterface
 {
     /**
-     * @var string
-     */
-    private $clientId;
-
-    /**
-     * @var string
-     */
-    private $clientSecret;
-
-    /**
-     * @var Github\Client
-     */
-    private $client;
-
-    /**
      * @var ContributorRepository
      */
     private $repository;
-
     /**
-     * @var integer
+     * @var GithubApiClient
      */
-    private $searchLimit = 0;
+    private $apiClient;
 
     /**
      * Constructor.
      *
-     * @param Github\Client $client
+     * @param GithubApiClient $apiClient
      * @param ContributorRepository $repository
-     * @param string $clientId
-     * @param string $clientSecret
      */
     public function __construct(
-        Github\Client $client,
-        ContributorRepository $repository,
-        $clientId,
-        $clientSecret
+        GithubApiClient $apiClient,
+        ContributorRepository $repository
     ) {
-        $this->client = $client;
         $this->repository = $repository;
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+        $this->apiClient = $apiClient;
     }
 
 
     /**
      * @param array $options
      *
+     * @param ProgressInterface $progress
+     *
      * @return array
      */
-    public function aggregate(array $options = [])
+    public function aggregate(array $options, ProgressInterface $progress = null)
     {
-        $this->authenticate();
+        //$this->apiClient->authenticate();
 
-        $this->searchLimit = $this->client->api('rate_limit')->getSearchLimit();
 
         // @todo: replace to email and logins and names only
         $contributors = $this->repository->findAll();
+        $progress->start(count($contributors));
 
         $report = [
             'email' => ['found' => 0, 'ambiguous' => 0],
@@ -79,24 +60,38 @@ class GithubApi implements AggregatorInterface
         /** @var Contributor $contributor */
         foreach ($contributors as $contributor) {
 
-            foreach ($contributor->getGitEmails() as $email) {
-                $usersByEmail = $this->findUser($email);
+            $progress->advance();
+
+            foreach ($contributor->getAllEmails() as $email) {
+
+                $usersByEmail = $this->apiClient->findUser($email);
                 $searchResult = $this->processSearchResults($usersByEmail, 'email', $report);
+
+                if($searchResult) {
+                    continue(2);
+                }
+            }
+
+            foreach ($contributor->getAllNames() as $name) {
+
+                $usersByName = $this->apiClient->findUser($name);
+                $searchResult = $this->processSearchResults($usersByName, 'name', $report);
+
+                if($searchResult) {
+                    continue(2);
+                }
+            }
+
+            $login = $contributor->getSensiolabsLogin();
+
+            if('' !== $login) {
+                $usersByLogin = $this->apiClient->findUser($login);
+                $searchResult = $this->processSearchResults($usersByLogin, 'login', $report);
 
                 if($searchResult) {
                     continue;
                 }
             }
-
-            foreach ($contributor->getGitNames() as $name) {
-                $usersByName = $this->findUser($name);
-                $searchResult = $this->processSearchResults($usersByName, 'name', $report);
-            }
-
-            $usersByLogin = $this->findUser($contributor->getSensiolabsLogin());
-            $searchResult = $this->processSearchResults($usersByLogin, 'login', $report);
-
-            // @todo: search by all names
 
 
 //            $email = isset($contributor['email']) ? $contributor['email'] : '';
@@ -118,53 +113,9 @@ class GithubApi implements AggregatorInterface
         return $report;
     }
 
-    /**
-     * @return array
-     */
-    protected function getContributors()
-    {
-        $repoApi = $this->client->api('repo');
-        $paginator = new Github\ResultPager($this->client);
-        $result = $paginator->fetchAll($repoApi, 'contributors', ['symfony', 'symfony']);
-
-        return $result;
-    }
-
-    protected function authenticate()
-    {
-        $this->client->authenticate($this->clientId, $this->clientSecret, Github\Client::AUTH_URL_CLIENT_ID);
-    }
-
-    /**
-     * @param string $term
-     *
-     * @return array
-     */
-    protected function findUser($term)
-    {
-        if(0 === $this->searchLimit) {
-            do {
-                sleep(10);
-                print 's';
-                $this->searchLimit = $this->client->api('rate_limit')->getSearchLimit();
-
-            } while (0 === $this->searchLimit);
-        }
 
 
-        try {
-            $results = $this->client->api('search')->users($term);
-        } catch (\Exception $exception) {
-            $results = [
-                'total_count' => 0,
-                'error' => $exception->getMessage(),
-            ];
-        }
 
-        $this->searchLimit--;
-
-        return $results;
-    }
 
     public function processSearchResults(array $results, $typeOfSearch, array &$report)
     {

@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Aggregator\AggregatorInterface;
+use AppBundle\Helper\ProgressBar;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -40,13 +41,25 @@ class AggregateDataCommand extends ContainerAwareCommand
         /** @var AggregatorInterface $aggregator */
         $aggregator = $this->getContainer()->get($aggregatorData['service']);
 
-        $result = $aggregator->aggregate($aggregatorData['options']);
+        $progressBar = new ProgressBar($output);
+
+        $result = $aggregator->aggregate($aggregatorData['options'], $progressBar);
 
         $output->writeln(sprintf('<info>%s: aggregation finished.</info>', $aggregatorName));
+
+        $this->outputResults($output, $result);
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @param $result
+     */
+    protected function outputResults(OutputInterface $output, $result)
+    {
         $output->writeln('');
 
         foreach ($result as $resultKey => $resultItem) {
-            if(is_array($resultItem)) {
+            if (is_array($resultItem)) {
                 $output->writeln(sprintf('%s:', $resultKey));
                 foreach ($resultItem as $resultSubKey => $resultSubItem) {
                     $output->writeln(sprintf('     %s: %s', $resultSubKey, $resultSubItem));

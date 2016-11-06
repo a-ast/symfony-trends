@@ -3,7 +3,12 @@ services:
         class: GuzzleHttp\Client
     github_client:
         class: Github\Client
-
+    github_api_client:
+        class: AppBundle\Aggregator\Helper\GithubApiClient
+        arguments:
+            - '@http_client'
+            - '%github.client_id%'
+            - '%github.client_secret%'
 
     #################################
     # Helpers
@@ -13,8 +18,12 @@ services:
         lazy: true
 
     helper.github_api:
-        class: AppBundle\Aggregator\Helper\GithubApiHelper
+        class: AppBundle\Aggregator\Helper\GithubApiAdapter
         lazy: true
+        arguments:
+            - '@github_client'
+            - '%github.client_id%'
+            - '%github.client_secret%'
 
     #################################
     # Data aggregators
@@ -37,10 +46,9 @@ services:
         class: AppBundle\Aggregator\GithubApi
         lazy: true
         arguments:
-            - '@github_client'
+            - '@github_api_client'
             - '@repository.contributor'
-            - '%github.client_id%'
-            - '%github.client_secret%'
+
 
     #################################
     # Data providers
