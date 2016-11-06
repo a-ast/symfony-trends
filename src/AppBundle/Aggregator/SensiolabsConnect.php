@@ -6,8 +6,7 @@ use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
 use AppBundle\Client\PageGetterInterface;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
-use GuzzleHttp\ClientInterface;
-use Symfony\Component\DomCrawler\Crawler;
+use GuzzleHttp\Exception\ClientException;
 
 class SensiolabsConnect implements AggregatorInterface
 {
@@ -52,24 +51,44 @@ class SensiolabsConnect implements AggregatorInterface
             $progress->advance();
 
             $login = $contributor->getSensiolabsLogin();
+
+            $progress->setMessage($login);
+
             $url = $this->getProfileUrl($login);
 
-            $crawler = $this->httpClient->getPageDom($url);
+            try {
+                $crawler = $this->httpClient->getPageDom($url);
+            } catch (ClientException $e) {
+                $contributor->setSensiolabsPageError($e->getCode());
+
+                continue;
+            }
+
             $data = $this->extractor->extract($crawler);
 
             if('' != $contributor->getGithubLogin() &&
                 $data['github_login'] !== $contributor->getGithubLogin()
             ) {
-                $report['unmatchedGuthubLogins'][] = $data['github_login'];
+                $report['unmatchedGuthubLogins'][] = sprintf('Id: %d, github login: [%s]',
+                    $contributor->getId(), $data['github_login']);
 
                 continue;
             }
 
-            $contributor
-                ->setGithubLogin($data['github_login'])
-                ->setSensiolabsCity($data['city'])
-                ->setSensiolabsCountry($data['country']);
+            if ('' !== $data['github_login']) {
+                $contributor->setGithubLogin($data['github_login']);
+            }
+
+            if ('' !== $data['city']) {
+                $contributor->setSensiolabsCity($data['city']);
+            }
+
+            if ('' !== $data['country']) {
+                $contributor->setSensiolabsCountry($data['country']);
+            }
         }
+
+        $this->repository->flush();
 
         return $report;
     }
