@@ -40,8 +40,8 @@ twig:
 doctrine:
     dbal:
         driver:   pdo_sqlite
-        dbname:   "%database.name%"
-        path:     "%database.path%"
+        dbname:   "%database_name%"
+        path:     "%database_path%"
         charset:  UTF8
 
     orm:
