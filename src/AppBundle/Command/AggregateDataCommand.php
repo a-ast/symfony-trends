@@ -41,11 +41,11 @@ class AggregateDataCommand extends ContainerAwareCommand
         /** @var AggregatorInterface $aggregator */
         $aggregator = $this->getContainer()->get($aggregatorData['service']);
 
-        $progressBar = new ProgressBar($output);
+        $progressBar = $this->getProgressBar($output);
 
         $result = $aggregator->aggregate($aggregatorData['options'], $progressBar);
 
-        $output->writeln(sprintf('<info>%s: aggregation finished.</info>', $aggregatorName));
+        $output->writeln(PHP_EOL.sprintf('<info>%s: aggregation finished.</info>', $aggregatorName));
 
         $this->outputResults($output, $result);
     }
@@ -71,5 +71,19 @@ class AggregateDataCommand extends ContainerAwareCommand
             $output->writeln(sprintf('%s: %s', $resultKey, $resultItem));
 
         }
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @return ProgressBar
+     */
+    protected function getProgressBar(OutputInterface $output)
+    {
+        $progressBar = new ProgressBar($output);
+        $progressBar->setMessage('');
+        $progressBar->setMessage('');
+        $progressBar->setFormat(' %current%/%max% [%bar%] %message%');
+
+        return $progressBar;
     }
 }
