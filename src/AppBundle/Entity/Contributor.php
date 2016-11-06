@@ -91,9 +91,9 @@ class Contributor
     /**
      * @var int
      *
-     * @ORM\Column(name="commit_count", type="integer", options={"default": 0})
+     * @ORM\Column(name="sensiolabs_page_error", type="integer", options={"default": 0})
      */
-    private $commitCount = 0;
+    private $sensiolabsPageError = 0;
 
     /**
      * @var string
@@ -354,19 +354,19 @@ class Contributor
     /**
      * @return int
      */
-    public function getCommitCount()
+    public function getSensiolabsPageError()
     {
-        return $this->commitCount;
+        return $this->sensiolabsPageError;
     }
 
     /**
-     * @param int $commitCount
+     * @param int $sensiolabsPageError
      *
      * @return Contributor
      */
-    public function setCommitCount($commitCount)
+    public function setSensiolabsPageError($sensiolabsPageError)
     {
-        $this->commitCount = $commitCount;
+        $this->sensiolabsPageError = $sensiolabsPageError;
 
         return $this;
     }
