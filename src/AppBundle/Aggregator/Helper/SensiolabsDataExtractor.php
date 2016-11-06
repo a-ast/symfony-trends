@@ -3,20 +3,20 @@
 
 namespace AppBundle\Aggregator\Helper;
 
+use AppBundle\Aggregator\GithubApi;
+use AppBundle\Util\StringUtils;
+use Prophecy\Util\StringUtil;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SensiolabsDataExtractor
 {
     /**
-     * @param string $html
-     * @param string $url
+     * @param Crawler $crawler
      *
      * @return array
      */
-    public function extract($html, $url)
+    public function extract(Crawler $crawler)
     {
-        $crawler = new Crawler($html, $url);
-
         $node = $crawler->filterXPath('//p[@itemprop="address"]/span[@itemprop="addressLocality"]');
         $city = $node->text();
 
@@ -25,13 +25,14 @@ class SensiolabsDataExtractor
 
         $node = $crawler->filterXPath('//section/ul[@class="tags unstyled"]');
 
-        $link = $crawler->selectLink('Github')->link();
+        $link = $node->selectLink('Github')->link();
         $githubUrl = $link->getUri();
 
         return [
             'city' => $city,
             'country' => $country,
-            'github' => $githubUrl,
+            'github_url' => $githubUrl,
+            'github_login' => StringUtils::textAfter($githubUrl, GithubApi::PROFILE_URL),
         ];
     }
 }
