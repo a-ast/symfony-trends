@@ -1,6 +1,6 @@
 services:
     http_client:
-        class: GuzzleHttp\Client
+        class: AppBundle\Client\HttpClient
     github_client:
         class: Github\Client
     github_api_client:
