@@ -5,7 +5,6 @@ namespace AppBundle\Aggregator\Helper;
 
 use AppBundle\Aggregator\GithubApi;
 use AppBundle\Util\StringUtils;
-use Prophecy\Util\StringUtil;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SensiolabsDataExtractor
@@ -18,21 +17,30 @@ class SensiolabsDataExtractor
     public function extract(Crawler $crawler)
     {
         $node = $crawler->filterXPath('//p[@itemprop="address"]/span[@itemprop="addressLocality"]');
-        $city = $node->text();
+        $city = (0 !== $node->count()) ? $node->text() : '';
 
         $node = $crawler->filterXPath('//p[@itemprop="address"]/span[@itemprop="addressCountry"]');
-        $country = $node->text();
+        $country = (0 !== $node->count()) ? $node->text() : '';
 
         $node = $crawler->filterXPath('//section/ul[@class="tags unstyled"]');
 
-        $link = $node->selectLink('Github')->link();
-        $githubUrl = $link->getUri();
+        $githubUrl = '';
+        $githubLogin = '';
+
+        if (0 !== $node->count()) {
+            $link = $node->selectLink('Github');
+
+            if (0 !== $link->count()) {
+                $githubUrl = $link->link()->getUri();
+                $githubLogin = StringUtils::textAfter($githubUrl, GithubApi::PROFILE_URL);
+            }
+        }
 
         return [
             'city' => $city,
             'country' => $country,
             'github_url' => $githubUrl,
-            'github_login' => StringUtils::textAfter($githubUrl, GithubApi::PROFILE_URL),
+            'github_login' => $githubLogin,
         ];
     }
 }
