@@ -96,6 +96,20 @@ class Contributor
     private $commitCount = 0;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="sensiolabs_country", type="string", length=255, options={"default": ""})
+     */
+    private $sensiolabsCountry = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sensiolabs_city", type="string", length=255, options={"default": ""})
+     */
+    private $sensiolabsCity = '';
+
+    /**
      * Get id
      *
      * @return int
@@ -371,6 +385,46 @@ class Contributor
     public function getAllEmails()
     {
         return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
+    }
+
+    /**
+     * @return string
+     */
+    public function getSensiolabsCountry()
+    {
+        return $this->sensiolabsCountry;
+    }
+
+    /**
+     * @param string $sensiolabsCountry
+     *
+     * @return Contributor
+     */
+    public function setSensiolabsCountry($sensiolabsCountry)
+    {
+        $this->sensiolabsCountry = $sensiolabsCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSensiolabsCity()
+    {
+        return $this->sensiolabsCity;
+    }
+
+    /**
+     * @param string $sensiolabsCity
+     *
+     * @return Contributor
+     */
+    public function setSensiolabsCity($sensiolabsCity)
+    {
+        $this->sensiolabsCity = $sensiolabsCity;
+
+        return $this;
     }
 }
 
