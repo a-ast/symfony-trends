@@ -70,14 +70,15 @@ class GithubApiClient
 
     /**
      * @param string $searchTerm
+     * @param $searchType
      *
      * @return array
      */
-    public function findUser($searchTerm)
+    public function findUser($searchTerm, $searchType)
     {
         $response = $this->httpClient->request('GET', 'https://api.github.com/search/users', [
             'query' => [
-                'q' => $searchTerm,
+                'q' => sprintf('%s in:%s type:user', $searchTerm, $searchType),
                 'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
 
@@ -104,7 +105,7 @@ class GithubApiClient
             sleep($timeToSleep);
 
             // @todo: how to protect from eternal loop?
-            return $this->findUser($searchTerm);
+            return $this->findUser($searchTerm, $searchType);
         }
 
         $data = json_decode($response->getBody(), true);
