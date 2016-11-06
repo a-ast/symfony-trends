@@ -25,7 +25,7 @@ class BackupSqliteFileCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $path = $this->getContainer()->getParameter('database.path');
+        $path = $this->getContainer()->getParameter('database_path');
         $now = new \DateTime();
         $newPath = $path.'.'.$now->format(DATE_W3C);
 
