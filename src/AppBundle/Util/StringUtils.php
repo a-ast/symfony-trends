@@ -19,4 +19,15 @@ class StringUtils
 
         return '';
     }
+
+    /**
+     * @param string $text
+     * @param string $substring
+     *
+     * @return bool
+     */
+    public static function contains($text, $substring)
+    {
+        return (false !== strpos($text, $substring));
+    }
 }

@@ -15,4 +15,10 @@ class StringUtilsTest extends PHPUnit_Framework_TestCase
         $textAfter = StringUtils::textAfter('A wizard is never late, nor is he early.', 'Fly, you fools!');
         $this->assertEquals('', $textAfter);
     }
+
+    public function testContains()
+    {
+        $this->assertTrue(StringUtils::contains('A wizard is never late', 'never'));
+        $this->assertFalse(StringUtils::contains('A wizard is forever late', 'never'));
+    }
 }
