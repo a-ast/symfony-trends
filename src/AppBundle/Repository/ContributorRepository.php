@@ -85,16 +85,16 @@ class ContributorRepository extends Repository
     }
 
     /**
-     * @return string[]
+     * @return Contributor[]
      */
     public function findWithSensiolabsLogin()
     {
         $qb = $this->createQueryBuilder('c')
             ->select()
-            ->where('c.sensiolabsLogin IS NOT NULL')
+            ->where('c.sensiolabsLogin != \'\'')
         ;
 
-        $result = $qb->getQuery()->getArrayResult();
+        $result = $qb->getQuery()->getResult();
 
         return $result;
     }
