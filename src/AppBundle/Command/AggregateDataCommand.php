@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\Dumper\YamlDumper;
+use Symfony\Component\Yaml\Yaml;
 
 class AggregateDataCommand extends ContainerAwareCommand
 {
@@ -58,19 +60,9 @@ class AggregateDataCommand extends ContainerAwareCommand
     {
         $output->writeln('');
 
-        foreach ($result as $resultKey => $resultItem) {
-            if (is_array($resultItem)) {
-                $output->writeln(sprintf('%s:', $resultKey));
-                foreach ($resultItem as $resultSubKey => $resultSubItem) {
-                    $output->writeln(sprintf('     %s: %s', $resultSubKey, $resultSubItem));
-                }
+        $yaml = Yaml::dump($result, 4);
 
-                continue;
-            }
-
-            $output->writeln(sprintf('%s: %s', $resultKey, $resultItem));
-
-        }
+        $output->writeln($yaml);
     }
 
     /**
