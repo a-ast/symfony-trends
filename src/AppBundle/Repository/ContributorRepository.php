@@ -98,4 +98,20 @@ class ContributorRepository extends Repository
 
         return $result;
     }
+
+    /**
+     * @return Contributor[]
+     */
+    public function findWithoutGithubLogin($limit)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select()
+            ->where('c.githubLogin = \'\'')
+            ->setMaxResults($limit)
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }
