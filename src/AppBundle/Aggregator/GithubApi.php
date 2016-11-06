@@ -10,6 +10,9 @@ use AppBundle\Repository\ContributorRepository;
 
 class GithubApi implements AggregatorInterface
 {
+
+    const PROFILE_URL = 'https://github.com/';
+
     /**
      * @var ContributorRepository
      */

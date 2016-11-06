@@ -5,8 +5,9 @@ namespace AppBundle\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Kevinrob\GuzzleCache\CacheMiddleware;
+use Symfony\Component\DomCrawler\Crawler;
 
-class HttpClient extends Client
+class HttpClient extends Client implements PageGetterInterface
 {
     /**
      * Constructor.
@@ -17,5 +18,19 @@ class HttpClient extends Client
         $stack->push(new CacheMiddleware(), 'cache');
 
         parent::__construct(['handler' => $stack]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getPageDom($url)
+    {
+        $response = $this->request('GET', $url);
+
+        $responseBody = (string)$response->getBody();
+
+        $crawler = new Crawler($responseBody, $url);
+
+        return $crawler;
     }
 }

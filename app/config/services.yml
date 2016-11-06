@@ -17,6 +17,10 @@ services:
         class: AppBundle\Aggregator\Helper\ContributorExtractor
         lazy: true
 
+    helper.sensiolabs_data_extractor:
+        class: AppBundle\Aggregator\Helper\SensiolabsDataExtractor
+        lazy: true
+
     helper.github_api:
         class: AppBundle\Aggregator\Helper\GithubApiAdapter
         lazy: true
@@ -54,6 +58,7 @@ services:
         lazy: true
         arguments:
             - '@http_client'
+            - '@helper.sensiolabs_data_extractor'
             - '@repository.contributor'
 
     #################################

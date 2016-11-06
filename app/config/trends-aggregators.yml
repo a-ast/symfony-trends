@@ -25,6 +25,10 @@ parameters:
             options:
                 url: 'http://symfony.com/contributors/doc'
 
-        contributor_github_api:
+        github_api:
             service: 'aggregator.github_api'
+            options: []
+
+        sensiolabs_connect:
+            service: 'aggregator.sensiolabs_connect'
             options: []
