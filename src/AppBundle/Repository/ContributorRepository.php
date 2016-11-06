@@ -83,4 +83,19 @@ class ContributorRepository extends Repository
 
         return $names;
     }
+
+    /**
+     * @return string[]
+     */
+    public function findWithSensiolabsLogin()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select()
+            ->where('c.sensiolabsLogin IS NOT NULL')
+        ;
+
+        $result = $qb->getQuery()->getArrayResult();
+
+        return $result;
+    }
 }

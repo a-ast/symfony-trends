@@ -13,7 +13,7 @@ class ContributorExtractorTest extends PHPUnit_Framework_TestCase
     public function testExtractNameAndUrls()
     {
         $extractor = new ContributorExtractor();
-        $html = file_get_contents(__DIR__.'/../fixtures/contributor-pages/contributors.html');
+        $html = file_get_contents(__DIR__.'/../fixtures/contributors.html');
 
         $contributors = $extractor->extract($html);
 

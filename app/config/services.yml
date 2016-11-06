@@ -49,6 +49,12 @@ services:
             - '@github_api_client'
             - '@repository.contributor'
 
+    aggregator.sensiolabs_connect:
+        class: AppBundle\Aggregator\SensiolabsConnect
+        lazy: true
+        arguments:
+            - '@http_client'
+            - '@repository.contributor'
 
     #################################
     # Data providers
