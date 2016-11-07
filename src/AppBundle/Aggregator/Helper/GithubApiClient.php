@@ -5,6 +5,7 @@ namespace AppBundle\Aggregator\Helper;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class GithubApiClient
 {
@@ -96,13 +97,7 @@ class GithubApiClient
         if(403 === $response->getStatusCode()) {
             print 's';
 
-            $responseDate = new \DateTime($response->getHeaderLine('Date'));
-            $current = $responseDate->getTimestamp();
-            $reset = (int)$response->getHeaderLine('X-RateLimit-Reset');
-
-            $timeToSleep = $reset - $current;
-
-            sleep($timeToSleep);
+            $this->waitForRateLimitRecovery($response);
 
             // @todo: how to protect from eternal loop?
             return $this->findUser($searchTerm, $searchType);
@@ -113,5 +108,59 @@ class GithubApiClient
         $requestLimit = $response->getHeaderLine('X-RateLimit-Remaining');
 
         return $data;
+    }
+
+    /**
+     * @param string $userName
+     *
+     * @return array|bool
+     */
+    public function getUser($userName)
+    {
+        $response = $this->httpClient->request('GET', 'https://api.github.com/users/'.$userName, [
+            'query' => [
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+            ],
+            'http_errors' => false,
+        ]);
+
+        // Unprocessed entity
+        if(404 === $response->getStatusCode()) {
+            return false;
+        }
+
+        // Unprocessed entity
+        if(422 === $response->getStatusCode()) {
+            throw new UnprocessableEntityHttpException($response->getReasonPhrase());
+        }
+
+        // Request limit exceeded
+        if(403 === $response->getStatusCode()) {
+            print 's';
+
+            $this->waitForRateLimitRecovery($response);
+
+            // @todo: how to protect from eternal loop?
+            return $this->getUser($userName);
+        }
+
+        $data = json_decode($response->getBody(), true);
+
+        return $data;
+    }
+
+    /**
+     * @param $response
+     */
+    protected function waitForRateLimitRecovery($response)
+    {
+        $responseDate = new \DateTime($response->getHeaderLine('Date'));
+        $current = $responseDate->getTimestamp();
+        $reset = (int)$response->getHeaderLine('X-RateLimit-Reset');
+
+        $timeToSleep = $reset - $current;
+
+        sleep($timeToSleep);
     }
 }

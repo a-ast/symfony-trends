@@ -7,6 +7,7 @@ use AppBundle\Aggregator\Helper\GithubApiClient;
 use AppBundle\Entity\Contributor;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
+use AppBundle\Util\StringUtils;
 
 class GithubApi implements AggregatorInterface
 {
@@ -47,14 +48,11 @@ class GithubApi implements AggregatorInterface
     public function aggregate(array $options, ProgressInterface $progress = null)
     {
         // @todo: replace to get records with emails, logins and names only
-        $contributors = $this->repository->findAll();
+        $contributors = $this->repository->findWithoutGithubLogin(300);
         $progress->start(count($contributors));
 
         $report = [
-            'email' => ['found' => 0, 'ambiguous' => 0],
-            'login' => ['found' => 0, 'ambiguous' => 0],
-            'name' => ['found' => 0, 'ambiguous' => 0],
-            'errors' => []
+            'notFoundCount' => 0,
         ];
 
         /** @var Contributor $contributor */
@@ -64,70 +62,78 @@ class GithubApi implements AggregatorInterface
 
             foreach ($contributor->getAllEmails() as $email) {
 
-                $usersByEmail = $this->apiClient->findUser($email);
-                $searchResult = $this->processSearchResults($usersByEmail, 'email', $report);
+                $usersByEmail = $this->apiClient->findUser($email, 'email');
+                $searchResult = $this->processSearchResults($email, $usersByEmail, 'email', $report);
 
-                if($searchResult) {
+                if(false !== $searchResult) {
+
+                    $contributor->setGithubLogin($searchResult);
+
                     continue(2);
                 }
             }
 
             foreach ($contributor->getAllNames() as $name) {
+                // if name is not complex (only one word), skip it
+                if(!StringUtils::contains($name, ' ')) {
+                    continue;
+                }
 
-                $usersByName = $this->apiClient->findUser($name);
-                $searchResult = $this->processSearchResults($usersByName, 'name', $report);
+                $usersByName = $this->apiClient->findUser($name, 'fullname');
+                $searchResult = $this->processSearchResults($name, $usersByName, 'fullname', $report);
 
-                if($searchResult) {
+                if(false !== $searchResult) {
+
+                    if (in_array($searchResult, $contributor->getAllNames())) {
+                        $contributor->setGithubLogin($searchResult);
+                    } else {
+                        $report['fullname']['doubtful'][$contributor->getEmail()] = sprintf('found github: %s, sensiolabs: %s', $searchResult, $contributor->getSensiolabsLogin());
+
+                        // @todo: write full answer from API to compare visually
+                    }
+
                     continue(2);
                 }
             }
 
-            $login = $contributor->getSensiolabsLogin();
 
-            if('' !== $login) {
-                $usersByLogin = $this->apiClient->findUser($login);
-                $searchResult = $this->processSearchResults($usersByLogin, 'login', $report);
+            foreach ($contributor->getAllNames() as $knownName) {
 
-                if($searchResult) {
-                    continue;
+                $userByLogin = $this->apiClient->getUser($knownName);
+
+                if(false !== $userByLogin) {
+
+                    if(in_array($userByLogin['name'], $contributor->getAllNames())) {
+                        $report['login']['found'] = sprintf('found github login: %s, sensiolabs login: %s, github name %s, stored name: %s',
+                            $userByLogin['login'], $contributor->getSensiolabsLogin(), $userByLogin['name'], $contributor->getName());
+                    }
+
+                    // @todo: write full answer from API to compare visually
                 }
+
             }
 
+            $report['notFoundCount']++;
 
-//            $email = isset($contributor['email']) ? $contributor['email'] : '';
-//            $login = $contributor['login'];
-//
-//            $user = $this->client->api('user')->show($login);
-//            $name = isset($user['name']) ? $user['name'] : '';
-//
-//            if (isset($user['email'])) {
-//                $email = $user['email'];
-//            }
-
-
-            $report['notFound'][] = sprintf('email: [%s]', $contributor->getEmail());
-
-            print '.';
         }
+
+        $this->repository->flush();
 
         return $report;
     }
 
-
-
-
-
-    public function processSearchResults(array $results, $typeOfSearch, array &$report)
+    public function processSearchResults($searchTerm, array $results, $typeOfSearch, array &$report)
     {
         if(1 === $results['total_count']) {
-            $report[$typeOfSearch]['found']++;
-
-            // @todo: process item or just return it
-            return true;
+            return $results['items'][0]['login'];
         }
 
         if($results['total_count'] >= 2) {
-            $report[$typeOfSearch]['ambiguous']++;
+            foreach ($results['items'] as $item) {
+                if($searchTerm === $item['login']) {
+                    return $item['login'];
+                }
+            }
         }
 
         if(isset($results['error'])) {
