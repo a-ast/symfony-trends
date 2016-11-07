@@ -37,3 +37,9 @@ from (
 
 group by first_commit_at
 order by first_commit_at asc;
+
+-- Contributor count per country
+select sensiolabs_country, count(*) as cnt
+from contributor
+group by sensiolabs_country
+order by cnt desc;
