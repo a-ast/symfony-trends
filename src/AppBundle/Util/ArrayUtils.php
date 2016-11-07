@@ -5,11 +5,21 @@ namespace AppBundle\Util;
 
 class ArrayUtils
 {
-    public static function trimMerge($array1, $array2)
+    /**
+     * Merges values to one array and removes empty items.
+     *
+     * @param mixed[] ...$values
+     *
+     * @return array
+     */
+    public static function trimMerge(...$values)
     {
-        $a1 = (!is_array($array1)) ? [$array1] : $array1;
-        $a2 = (!is_array($array2)) ? [$array2] : $array2;
+        $result = [];
+        foreach ($values as $value) {
+            $array = (!is_array($value)) ? [$value] : $value;
+            $result = array_merge($result, $array);
+        }
 
-        return array_filter(array_merge($a1, $a2));
+        return array_filter($result);
     }
 }
