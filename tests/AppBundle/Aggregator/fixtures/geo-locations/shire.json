@@ -1,0 +1,33 @@
+{
+  "results": [
+    {
+      "address_components": [
+        {
+          "long_name": "Westfarthing",
+          "short_name": "Westfarthing",
+          "types": [
+            "locality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Shire",
+          "short_name": "Shire",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Middle-earth",
+          "short_name": "ME",
+          "types": [
+            "country",
+            "political"
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "OK"
+}
