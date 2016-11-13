@@ -29,6 +29,10 @@ parameters:
             service: 'aggregator.github_api'
             options: []
 
+        github_user_data:
+            service: 'aggregator.github_user_data'
+            options: []
+
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'
             options: []

@@ -17,7 +17,9 @@ class HttpClient extends Client implements PageGetterInterface
         $stack = HandlerStack::create();
         $stack->push(new CacheMiddleware(), 'cache');
 
-        parent::__construct(['handler' => $stack]);
+        parent::__construct([
+            'handler' => $stack,
+        ]);
     }
 
     /**

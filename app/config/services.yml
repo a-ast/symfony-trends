@@ -9,6 +9,10 @@ services:
             - '@http_client'
             - '%github.client_id%'
             - '%github.client_secret%'
+    geolocation_api_client:
+        class: AppBundle\Aggregator\Helper\GeolocationApiClient
+        arguments:
+            - '@http_client'
 
     #################################
     # Helpers
@@ -51,6 +55,14 @@ services:
         lazy: true
         arguments:
             - '@github_api_client'
+            - '@repository.contributor'
+
+    aggregator.github_user_data:
+        class: AppBundle\Aggregator\GithubUserData
+        lazy: true
+        arguments:
+            - '@github_api_client'
+            - '@geolocation_api_client'
             - '@repository.contributor'
 
     aggregator.sensiolabs_connect:

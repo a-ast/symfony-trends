@@ -4,10 +4,11 @@
 namespace AppBundle\Aggregator\Helper;
 
 use GuzzleHttp\ClientInterface;
+use Exception;
 
 class GeolocationApiClient
 {
-    const BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json';
+    const BASE_URI = 'http://maps.googleapis.com/maps/api/geocode/json';
     
     /**
      * @var ClientInterface
@@ -32,7 +33,7 @@ class GeolocationApiClient
     public function findCountry($address)
     {
         $response = $this->httpClient->request('GET', self::BASE_URI, [
-            'address' => $address,
+            'query' => ['address' => $address],
             'http_errors' => false,
         ]);
 
@@ -44,14 +45,21 @@ class GeolocationApiClient
         
         $firstResult = array_pop($data['results']);
 
+        $partialMatch = isset($firstResult['partial_match']) && true === $firstResult['partial_match'];
+
         $country = '';
 
-        foreach ($firstResult['address_components'] as $location) {
-            if(in_array('country', $location['types'])) {
-                $country = $location['long_name'];
+        if (isset($firstResult['address_components'])) {
+            foreach ($firstResult['address_components'] as $location) {
+                if (in_array('country', $location['types'])) {
+                    $country = $location['long_name'];
+                }
             }
         }
 
-        return $country;
+        return [
+            'country' => $country,
+            'exact_match' => !$partialMatch,
+        ];
     }
 }
