@@ -106,6 +106,7 @@ class GithubApiClient
         $data = json_decode($response->getBody(), true);
 
         $requestLimit = $response->getHeaderLine('X-RateLimit-Remaining');
+        $data['request_limit'] = $requestLimit;
 
         return $data;
     }
@@ -146,6 +147,9 @@ class GithubApiClient
         }
 
         $data = json_decode($response->getBody(), true);
+
+        $requestLimit = $response->getHeaderLine('X-RateLimit-Remaining');
+        $data['request_limit'] = $requestLimit;
 
         return $data;
     }

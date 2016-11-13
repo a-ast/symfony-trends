@@ -39,7 +39,7 @@ class GithubApiClientTest extends PHPUnit_Framework_TestCase
         $httpClient = new Client(['handler' => $handler]);
 
         $apiClient = new GithubApiClient($httpClient, 'client_id', 'client_secret');
-        $searchResults = $apiClient->findUser('Legolas');
+        $searchResults = $apiClient->findUser('Legolas', 'user');
 
         $this->assertEquals(1, $searchResults['total_count']);
         $this->assertEquals(10, $searchResults['request_limit']);
