@@ -44,6 +44,7 @@ class AggregateDataCommand extends ContainerAwareCommand
         $aggregator = $this->getContainer()->get($aggregatorData['service']);
 
         $progressBar = $this->getProgressBar($output);
+        ProgressBar::getPlaceholderFormatterDefinition('current');
 
         $result = $aggregator->aggregate($aggregatorData['options'], $progressBar);
 
