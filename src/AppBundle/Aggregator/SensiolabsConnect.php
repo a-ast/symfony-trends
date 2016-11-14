@@ -66,7 +66,7 @@ class SensiolabsConnect implements AggregatorInterface
 
             $data = $this->extractor->extract($crawler);
 
-            if('' != $contributor->getGithubLogin() &&
+            if('' !== $contributor->getGithubLogin() &&
                 $data['github_login'] !== $contributor->getGithubLogin()
             ) {
                 $report['unmatchedGuthubLogins'][] = sprintf('Id: %d, github login: [%s]',
@@ -79,12 +79,8 @@ class SensiolabsConnect implements AggregatorInterface
                 $contributor->setGithubLogin($data['github_login']);
             }
 
-            if ('' !== $data['city']) {
-                $contributor->setSensiolabsCity($data['city']);
-            }
-
             if ('' !== $data['country']) {
-                $contributor->setSensiolabsCountry($data['country']);
+                $contributor->setCountry($data['country']);
             }
         }
 

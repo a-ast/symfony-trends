@@ -156,7 +156,6 @@ class GitLog implements AggregatorInterface
             ->setName($name)
             ->setGitEmails([''])
             ->setGitNames([''])
-            ->setCountries([''])
             ->setSensiolabsPageError(0)
             ->setCreatedAt(new DateTime())
             ->setUpdatedAt(new DateTime());

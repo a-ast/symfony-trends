@@ -34,12 +34,7 @@ class SensiolabsConnectTest extends PHPUnit_Framework_TestCase
                 ->willReturn($login);
 
             $contributor
-                ->setSensiolabsCountry($contributorData['country'])
-                ->willReturn($contributor)
-                ->shouldBeCalled();
-
-            $contributor
-                ->setSensiolabsCity($contributorData['city'])
+                ->setCountry($contributorData['country'])
                 ->willReturn($contributor)
                 ->shouldBeCalled();
 

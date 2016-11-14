@@ -100,7 +100,7 @@ class GithubUserData implements AggregatorInterface
                 continue;
             }
 
-            $contributor->setSensiolabsCountry($country);
+            $contributor->setCountry($country);
 
             $report['foundCount']++;
         }

@@ -68,13 +68,6 @@ class Contributor
     private $githubLogin = '';
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="github_id", type="integer", options={"default": 0})
-     */
-    private $githubId = 0;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255, options={"default": ""})
@@ -82,32 +75,11 @@ class Contributor
     private $country = '';
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="countries", type="simple_array", options={"default": ""})
-     */
-    private $countries = [];
-
-    /**
      * @var int
      *
      * @ORM\Column(name="sensiolabs_page_error", type="integer", options={"default": 0})
      */
     private $sensiolabsPageError = 0;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sensiolabs_country", type="string", length=255, options={"default": ""})
-     */
-    private $sensiolabsCountry = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sensiolabs_city", type="string", length=255, options={"default": ""})
-     */
-    private $sensiolabsCity = '';
 
     /**
      * Get id
@@ -280,30 +252,6 @@ class Contributor
     }
 
     /**
-     * Set githubId
-     *
-     * @param integer $githubId
-     *
-     * @return Contributor
-     */
-    public function setGithubId($githubId)
-    {
-        $this->githubId = $githubId;
-
-        return $this;
-    }
-
-    /**
-     * Get githubId
-     *
-     * @return int
-     */
-    public function getGithubId()
-    {
-        return $this->githubId;
-    }
-
-    /**
      * Set country
      *
      * @param string $country
@@ -325,30 +273,6 @@ class Contributor
     public function getCountry()
     {
         return $this->country;
-    }
-
-    /**
-     * Set countries
-     *
-     * @param array $countries
-     *
-     * @return Contributor
-     */
-    public function setCountries($countries)
-    {
-        $this->countries = $countries;
-
-        return $this;
-    }
-
-    /**
-     * Get countries
-     *
-     * @return array
-     */
-    public function getCountries()
-    {
-        return $this->countries;
     }
 
     /**
@@ -385,46 +309,6 @@ class Contributor
     public function getAllEmails()
     {
         return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
-    }
-
-    /**
-     * @return string
-     */
-    public function getSensiolabsCountry()
-    {
-        return $this->sensiolabsCountry;
-    }
-
-    /**
-     * @param string $sensiolabsCountry
-     *
-     * @return Contributor
-     */
-    public function setSensiolabsCountry($sensiolabsCountry)
-    {
-        $this->sensiolabsCountry = $sensiolabsCountry;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSensiolabsCity()
-    {
-        return $this->sensiolabsCity;
-    }
-
-    /**
-     * @param string $sensiolabsCity
-     *
-     * @return Contributor
-     */
-    public function setSensiolabsCity($sensiolabsCity)
-    {
-        $this->sensiolabsCity = $sensiolabsCity;
-
-        return $this;
     }
 }
 
