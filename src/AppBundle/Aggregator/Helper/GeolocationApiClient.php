@@ -8,7 +8,7 @@ use Exception;
 
 class GeolocationApiClient
 {
-    const BASE_URI = 'http://maps.googleapis.com/maps/api/geocode/json';
+    const BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json';
     
     /**
      * @var ClientInterface
@@ -16,13 +16,20 @@ class GeolocationApiClient
     private $httpClient;
 
     /**
+     * @var string
+     */
+    private $apiKey;
+
+    /**
      * Constructor.
      *
      * @param ClientInterface $httpClient
+     * @param string $apiKey
      */
-    public function __construct(ClientInterface $httpClient)
+    public function __construct(ClientInterface $httpClient, $apiKey)
     {
         $this->httpClient = $httpClient;
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -33,7 +40,10 @@ class GeolocationApiClient
     public function findCountry($address)
     {
         $response = $this->httpClient->request('GET', self::BASE_URI, [
-            'query' => ['address' => $address],
+            'query' => [
+                'address' => $address,
+                'key' => $this->apiKey,
+            ],
             'http_errors' => false,
         ]);
 

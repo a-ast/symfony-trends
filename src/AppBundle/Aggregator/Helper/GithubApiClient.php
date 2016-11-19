@@ -112,6 +112,49 @@ class GithubApiClient
     }
 
     /**
+     *
+     * @param $repo
+     * @param int $page
+     *
+     * @return array
+     */
+    public function getCommits($repo, $page = 1)
+    {
+        $uri = sprintf('https://api.github.com/repos/%s/commits', $repo);
+
+        $response = $this->httpClient->request('GET', $uri, [
+            'query' => [
+                'page' => $page,
+                'until' => '2016-09-19T10:40:17',
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
+
+            ],
+            //'headers' => ['Authorization' => sprintf('token %s', $this->authenticationToken)],
+            'http_errors' => false,
+        ]);
+
+
+        // Request limit exceeded
+        if(403 === $response->getStatusCode()) {
+            print 's';
+
+            $this->waitForRateLimitRecovery($response);
+
+            // @todo: how to protect from eternal loop?
+            return $this->getCommits($repo, $page);
+        }
+
+        $data = json_decode($response->getBody(), true);
+
+//        $requestLimit = $response->getHeaderLine('X-RateLimit-Remaining');
+//        $data['request_limit'] = $requestLimit;
+
+        return $data;
+    }
+
+
+    /**
      * @param string $userName
      *
      * @return array|bool
