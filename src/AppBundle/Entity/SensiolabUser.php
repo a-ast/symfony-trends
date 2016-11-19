@@ -7,12 +7,12 @@ use AppBundle\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Contributor
+ * SensiolabUser
  *
- * @ORM\Table(name="contributor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributorRepository")
+ * @ORM\Table(name="sensiolab_user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabUserRepository")
  */
-class Contributor
+class SensiolabUser
 {
     use TimestampTrait;
 
@@ -47,25 +47,11 @@ class Contributor
     private $name;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="git_names", type="simple_array")
-     */
-    private $gitNames = [];
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="sensiolabs_login", type="string", length=255, options={"default": ""})
+     * @ORM\Column(name="login", type="string", length=255, options={"default": ""})
      */
-    private $sensiolabsLogin = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="github_login", type="string", length=255, options={"default": ""})
-     */
-    private $githubLogin = '';
+    private $login = '';
 
     /**
      * @var string
@@ -77,9 +63,9 @@ class Contributor
     /**
      * @var int
      *
-     * @ORM\Column(name="sensiolabs_page_error", type="integer", options={"default": 0})
+     * @ORM\Column(name="profile_page_error", type="integer", options={"default": 0})
      */
-    private $sensiolabsPageError = 0;
+    private $profilePageError = 0;
 
     /**
      * Get id
@@ -96,7 +82,7 @@ class Contributor
      *
      * @param string $email
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
     public function setEmail($email)
     {
@@ -120,7 +106,7 @@ class Contributor
      *
      * @param string $name
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
     public function setName($name)
     {
@@ -140,67 +126,27 @@ class Contributor
     }
 
     /**
-     * Set otherNames
+     * Set login
      *
-     * @param array $gitNames
+     * @param string $login
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
-    public function setGitNames($gitNames)
+    public function setLogin($login)
     {
-        $this->gitNames = $gitNames;
+        $this->login = $login;
 
         return $this;
     }
 
     /**
-     * Get otherNames
-     *
-     * @return array
-     */
-    public function getGitNames()
-    {
-        return $this->gitNames;
-    }
-
-    /**
-     * Add new git name
-     *
-     * @param string $name
-     *
-     * @return Contributor
-     */
-    public function addGitName($name)
-    {
-        if ($this->getName() !== $name && !in_array($name, $this->getGitNames())) {
-            $this->setGitNames(ArrayUtils::trimMerge($this->getGitNames(), $name));
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set sensiolabsLogin
-     *
-     * @param string $sensiolabsLogin
-     *
-     * @return Contributor
-     */
-    public function setSensiolabsLogin($sensiolabsLogin)
-    {
-        $this->sensiolabsLogin = $sensiolabsLogin;
-
-        return $this;
-    }
-
-    /**
-     * Get sensiolabsLogin
+     * Get login
      *
      * @return string
      */
-    public function getSensiolabsLogin()
+    public function getLogin()
     {
-        return $this->sensiolabsLogin;
+        return $this->login;
     }
 
     /**
@@ -208,7 +154,7 @@ class Contributor
      *
      * @param array $gitEmails
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
     public function setGitEmails($gitEmails)
     {
@@ -232,35 +178,11 @@ class Contributor
     }
 
     /**
-     * Set githubLogin
-     *
-     * @param string $githubLogin
-     *
-     * @return Contributor
-     */
-    public function setGithubLogin($githubLogin)
-    {
-        $this->githubLogin = $githubLogin;
-
-        return $this;
-    }
-
-    /**
-     * Get githubLogin
-     *
-     * @return string
-     */
-    public function getGithubLogin()
-    {
-        return $this->githubLogin;
-    }
-
-    /**
      * Set country
      *
      * @param string $country
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
     public function setCountry($country)
     {
@@ -282,29 +204,21 @@ class Contributor
     /**
      * @return int
      */
-    public function getSensiolabsPageError()
+    public function getProfilePageError()
     {
-        return $this->sensiolabsPageError;
+        return $this->profilePageError;
     }
 
     /**
-     * @param int $sensiolabsPageError
+     * @param int $profilePageError
      *
-     * @return Contributor
+     * @return SensiolabUser
      */
-    public function setSensiolabsPageError($sensiolabsPageError)
+    public function setProfilePageError($profilePageError)
     {
-        $this->sensiolabsPageError = $sensiolabsPageError;
+        $this->profilePageError = $profilePageError;
 
         return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getAllNames()
-    {
-        return ArrayUtils::trimMerge($this->getName(), $this->getGitNames(), $this->getSensiolabsLogin());
     }
 
     /**

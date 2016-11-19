@@ -25,6 +25,17 @@ services:
             - AppBundle\Entity\ProjectVersion
 
 
+    repository.contributor2:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Contributor2
+    repository.contribution2:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Contribution2
+
     #################################
     # Repository facades
     #################################

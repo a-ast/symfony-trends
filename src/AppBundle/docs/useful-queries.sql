@@ -5,6 +5,12 @@ where project_id = 1
 group by contributor_id
 order by cnt desc;
 
+select c.name, count(cn.id) as cnt
+from contribution2 cn
+  left join contributor2 c on c.id = cn.contributor_id
+group by c.name
+order by cnt desc;
+
 
 -- Get contributor count in date intervals
 select v.label, count(distinct c.contributor_id)

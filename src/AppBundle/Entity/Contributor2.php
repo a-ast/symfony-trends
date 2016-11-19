@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contributor
  *
- * @ORM\Table(name="contributor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributorRepository")
+ * @ORM\Table(name="contributor2")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Contributor2Repository")
  */
-class Contributor
+class Contributor2
 {
     use TimestampTrait;
 
@@ -24,6 +24,21 @@ class Contributor
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="github_id", type="integer", nullable=true)
+     */
+    private $githubId;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="github_login", type="string", length=255, options={"default": ""})
+     */
+    private $githubLogin = '';
 
     /**
      * @var string
@@ -56,30 +71,9 @@ class Contributor
     /**
      * @var string
      *
-     * @ORM\Column(name="sensiolabs_login", type="string", length=255, options={"default": ""})
-     */
-    private $sensiolabsLogin = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="github_login", type="string", length=255, options={"default": ""})
-     */
-    private $githubLogin = '';
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="country", type="string", length=255, options={"default": ""})
      */
     private $country = '';
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="sensiolabs_page_error", type="integer", options={"default": 0})
-     */
-    private $sensiolabsPageError = 0;
 
     /**
      * Get id
@@ -92,11 +86,31 @@ class Contributor
     }
 
     /**
+     * @return string
+     */
+    public function getGithubId()
+    {
+        return $this->githubId;
+    }
+
+    /**
+     * @param int $githubId
+     *
+     * @return $this
+     */
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    /**
      * Set email
      *
      * @param string $email
      *
-     * @return Contributor
+     * @return $this
      */
     public function setEmail($email)
     {
@@ -120,7 +134,7 @@ class Contributor
      *
      * @param string $name
      *
-     * @return Contributor
+     * @return $this
      */
     public function setName($name)
     {
@@ -144,10 +158,14 @@ class Contributor
      *
      * @param array $gitNames
      *
-     * @return Contributor
+     * @return $this
      */
     public function setGitNames($gitNames)
     {
+        if (0 === count($gitNames)) {
+            $gitNames = [''];
+        }
+
         $this->gitNames = $gitNames;
 
         return $this;
@@ -168,11 +186,11 @@ class Contributor
      *
      * @param string $name
      *
-     * @return Contributor
+     * @return $this
      */
     public function addGitName($name)
     {
-        if ($this->getName() !== $name && !in_array($name, $this->getGitNames())) {
+        if (!in_array($name, $this->getAllNames())) {
             $this->setGitNames(ArrayUtils::trimMerge($this->getGitNames(), $name));
         }
 
@@ -180,35 +198,11 @@ class Contributor
     }
 
     /**
-     * Set sensiolabsLogin
-     *
-     * @param string $sensiolabsLogin
-     *
-     * @return Contributor
-     */
-    public function setSensiolabsLogin($sensiolabsLogin)
-    {
-        $this->sensiolabsLogin = $sensiolabsLogin;
-
-        return $this;
-    }
-
-    /**
-     * Get sensiolabsLogin
-     *
-     * @return string
-     */
-    public function getSensiolabsLogin()
-    {
-        return $this->sensiolabsLogin;
-    }
-
-    /**
-     * Set otherEmails
+     * Set gitEmails
      *
      * @param array $gitEmails
      *
-     * @return Contributor
+     * @return $this
      */
     public function setGitEmails($gitEmails)
     {
@@ -222,7 +216,7 @@ class Contributor
     }
 
     /**
-     * Get otherEmails
+     * Get gitEmails
      *
      * @return array
      */
@@ -232,11 +226,27 @@ class Contributor
     }
 
     /**
+     * Add new git email
+     *
+     * @param string $email
+     *
+     * @return $this
+     */
+    public function addGitEmail($email)
+    {
+        if (!in_array($email, $this->getAllEmails())) {
+            $this->setGitEmails(ArrayUtils::trimMerge($this->getGitEmails(), $email));
+        }
+
+        return $this;
+    }    
+    
+    /**
      * Set githubLogin
      *
      * @param string $githubLogin
      *
-     * @return Contributor
+     * @return $this
      */
     public function setGithubLogin($githubLogin)
     {
@@ -260,7 +270,7 @@ class Contributor
      *
      * @param string $country
      *
-     * @return Contributor
+     * @return $this
      */
     public function setCountry($country)
     {
@@ -280,31 +290,11 @@ class Contributor
     }
 
     /**
-     * @return int
-     */
-    public function getSensiolabsPageError()
-    {
-        return $this->sensiolabsPageError;
-    }
-
-    /**
-     * @param int $sensiolabsPageError
-     *
-     * @return Contributor
-     */
-    public function setSensiolabsPageError($sensiolabsPageError)
-    {
-        $this->sensiolabsPageError = $sensiolabsPageError;
-
-        return $this;
-    }
-
-    /**
      * @return string[]
      */
     public function getAllNames()
     {
-        return ArrayUtils::trimMerge($this->getName(), $this->getGitNames(), $this->getSensiolabsLogin());
+        return ArrayUtils::trimMerge($this->getName(), $this->getGitNames());
     }
 
     /**

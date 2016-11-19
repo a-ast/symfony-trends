@@ -33,6 +33,10 @@ parameters:
             service: 'aggregator.github_user_data'
             options: []
 
+        github_commit_history:
+            service: 'aggregator.github_commit_history'
+            options: []
+
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'
             options: []

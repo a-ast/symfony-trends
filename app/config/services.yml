@@ -13,6 +13,7 @@ services:
         class: AppBundle\Aggregator\Helper\GeolocationApiClient
         arguments:
             - '@http_client'
+            - '%geocoding.api_key%'
 
     #################################
     # Helpers
@@ -64,6 +65,15 @@ services:
             - '@github_api_client'
             - '@geolocation_api_client'
             - '@repository.contributor'
+
+    aggregator.github_commit_history:
+        class: AppBundle\Aggregator\GithubCommitHistory
+        lazy: true
+        arguments:
+            - '@github_api_client'
+            - '@geolocation_api_client'
+            - '@repository.contribution2'
+            - '@repository.contributor2'
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
