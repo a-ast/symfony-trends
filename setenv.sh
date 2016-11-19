@@ -1,4 +1,5 @@
-launchctl setenv SYMFONY__DATABASE__PATH /
-launchctl setenv SYMFONY__DATABASE__NAME /
-launchctl setenv SYMFONY__GITHUB__CLIENT_ID value
-launchctl setenv SYMFONY__GITHUB__CLIENT_SECRET value
+export SYMFONY__DATABASE_PATH="/"
+export SYMFONY__DATABASE_NAME="/"
+export SYMFONY__GITHUB__CLIENT_ID=""
+export SYMFONY__GITHUB__CLIENT_SECRET=""
+export SYMFONY__GEOCODING__API_KEY=""
