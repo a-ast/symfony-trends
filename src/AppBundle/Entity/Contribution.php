@@ -7,7 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contribution log
  *
- * @ORM\Table(name="contribution")
+ * @ORM\Table(
+ *      name="contribution",
+ *      indexes={
+ *          @ORM\Index(
+ *              name="idx_project_id",
+ *              columns={"project_id"}
+ *          ),
+ *          @ORM\Index(
+ *              name="idx_contributor_id",
+ *              columns={"contributor_id"}
+ *          )
+ *      }
+ * )
+ *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionRepository")
  */
 class Contribution
