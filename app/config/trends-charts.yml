@@ -46,3 +46,13 @@ parameters:
                         - symfony-docs
                 chart:
                     type: bar
+
+            contributors_per_country_symfony:
+                title: 'Where Symfony contributors live and work'
+
+                service: 'provider.contributors_per_country'
+                options:
+                    projects:
+                        - symfony
+                chart:
+                    type: map

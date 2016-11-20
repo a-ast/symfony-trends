@@ -92,3 +92,9 @@ services:
         lazy: true
         arguments:
             - '@repository.contribution'
+
+    provider.contributors_per_country:
+        class: AppBundle\Provider\ContributorsPerCountry
+        lazy: true
+        arguments:
+            - '@repository.contributor'
