@@ -5,7 +5,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Contribution
+ * Contribution log
+ *
+ * @ORM\Table(name="contribution")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionRepository")
  */
 class Contribution
 {
@@ -33,25 +36,18 @@ class Contribution
     private $contributorId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="commit_count", type="integer", options={"default": 0})
-     */
-    private $commitCount = 0;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="first_commit_at", type="datetime")
+     * @ORM\Column(name="commited_at", type="datetime")
      */
-    private $firstCommitAt;
+    private $commitedAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="first_commit_hash", type="string", length=255)
+     * @ORM\Column(name="commit_hash", type="string", length=255)
      */
-    private $firstCommitHash = '';
+    private $commitHash;
 
 
     /**
@@ -69,7 +65,7 @@ class Contribution
      *
      * @param integer $projectId
      *
-     * @return Contribution
+     * @return $this
      */
     public function setProjectId($projectId)
     {
@@ -93,7 +89,7 @@ class Contribution
      *
      * @param integer $contributorId
      *
-     * @return Contribution
+     * @return $this
      */
     public function setContributorId($contributorId)
     {
@@ -113,71 +109,51 @@ class Contribution
     }
 
     /**
-     * Set firstCommitAt
+     * Set commitedAt
      *
-     * @param \DateTime $firstCommitAt
+     * @param \DateTime $commitedAt
      *
-     * @return Contribution
+     * @return $this
      */
-    public function setFirstCommitAt($firstCommitAt)
+    public function setCommitedAt($commitedAt)
     {
-        $this->firstCommitAt = $firstCommitAt;
+        $this->commitedAt = $commitedAt;
 
         return $this;
     }
 
     /**
-     * Get firstCommitAt
+     * Get commitedAt
      *
      * @return \DateTime
      */
-    public function getFirstCommitAt()
+    public function getCommitedAt()
     {
-        return $this->firstCommitAt;
+        return $this->commitedAt;
     }
 
     /**
-     * Set firstCommitHash
+     * Set commitHash
      *
-     * @param string $firstCommitHash
+     * @param string $commitHash
      *
-     * @return Contribution
+     * @return $this
      */
-    public function setFirstCommitHash($firstCommitHash)
+    public function setCommitHash($commitHash)
     {
-        $this->firstCommitHash = $firstCommitHash;
+        $this->commitHash = $commitHash;
 
         return $this;
     }
 
     /**
-     * Get firstCommitHash
+     * Get commitHash
      *
      * @return string
      */
-    public function getFirstCommitHash()
+    public function getCommitHash()
     {
-        return $this->firstCommitHash;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCommitCount()
-    {
-        return $this->commitCount;
-    }
-
-    /**
-     * @param int $commitCount
-     *
-     * @return Contribution
-     */
-    public function setCommitCount($commitCount)
-    {
-        $this->commitCount = $commitCount;
-
-        return $this;
+        return $this->commitHash;
     }
 }
 

@@ -29,6 +29,40 @@ class ContributorRepository extends Repository
     }
 
     /**
+     * @param $login
+     *
+     * @return Contributor|null
+     */
+    public function findByLogin($login)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select()
+            ->andWhere('c.githubLogin = :login')
+            ->setParameter('login', $login);
+
+        $result = $qb->getQuery()->getOneOrNullResult();
+
+        return $result;
+    }
+
+    /**
+     * @param $id
+     *
+     * @return Contributor|null
+     */
+    public function findByGithubId($id)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select()
+            ->andWhere('c.githubId = :id')
+            ->setParameter('id', $id);
+
+        $result = $qb->getQuery()->getOneOrNullResult();
+
+        return $result;
+    }
+
+    /**
      * @param $name
      *
      * @return Contributor[]

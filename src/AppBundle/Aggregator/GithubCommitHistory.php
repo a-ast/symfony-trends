@@ -5,11 +5,11 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\GeolocationApiClient;
 use AppBundle\Aggregator\Helper\GithubApiClient;
-use AppBundle\Entity\Contribution2;
-use AppBundle\Entity\Contributor2;
+use AppBundle\Entity\Contribution;
+use AppBundle\Entity\Contributor;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Repository\Contribution2Repository;
-use AppBundle\Repository\Contributor2Repository;
+use AppBundle\Repository\ContributionRepository;
+use AppBundle\Repository\ContributorRepository;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -18,11 +18,11 @@ class GithubCommitHistory implements AggregatorInterface
      */
     private $apiClient;
     /**
-     * @var Contribution2Repository
+     * @var ContributionRepository
      */
     private $contributionRepository;
     /**
-     * @var Contributor2Repository
+     * @var ContributorRepository
      */
     private $contributorRepository;
     /**
@@ -35,11 +35,11 @@ class GithubCommitHistory implements AggregatorInterface
      *
      * @param GithubApiClient $apiClient
      * @param GeolocationApiClient $geolocationApiClient
-     * @param Contribution2Repository $contributionRepository
-     * @param Contributor2Repository $contributorRepository
+     * @param ContributionRepository $contributionRepository
+     * @param ContributorRepository $contributorRepository
      */
     public function __construct(GithubApiClient $apiClient, GeolocationApiClient $geolocationApiClient,
-        Contribution2Repository $contributionRepository, Contributor2Repository $contributorRepository)
+        ContributionRepository $contributionRepository, ContributorRepository $contributorRepository)
     {
         $this->apiClient = $apiClient;
         $this->geolocationApiClient = $geolocationApiClient;
@@ -106,7 +106,7 @@ class GithubCommitHistory implements AggregatorInterface
                 }
 
                 if (null === $contributor) {
-                    $contributor = new Contributor2();
+                    $contributor = new Contributor();
                     $contributor
                         ->setEmail($email)
                         ->setGitEmails([])
@@ -144,7 +144,7 @@ class GithubCommitHistory implements AggregatorInterface
                 $this->contributorRepository->flush($contributor);
 
                 // Save contribution
-                $contribution = new Contribution2();
+                $contribution = new Contribution();
                 $contribution
                     ->setProjectId($projectId)
                     ->setContributorId($contributor->getId())
