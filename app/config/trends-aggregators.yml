@@ -1,20 +1,6 @@
 parameters:
     aggregators:
 
-        git_log_symfony:
-            service: 'aggregator.git_log'
-            options:
-                project_id: 1
-                update_contributions: false
-                update_log: true
-
-        git_log_symfony_docs:
-            service: 'aggregator.git_log'
-            options:
-                project_id: 2
-                update_contributions: false
-                update_log: true
-
         contributor_page_symfony:
             service: 'aggregator.contributor_page'
             options:
@@ -39,4 +25,8 @@ parameters:
 
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'
+            options: []
+
+        sensiolabs_user_updater:
+            service: 'aggregator.sensiolabs_user_updater'
             options: []
