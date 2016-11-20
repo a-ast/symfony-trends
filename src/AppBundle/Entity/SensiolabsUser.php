@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Traits\TimestampTrait;
-use AppBundle\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,20 +30,6 @@ class SensiolabsUser
      * @ORM\Column(name="contributor_id", type="integer", nullable=true)
      */
     private $contributorId = 0;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-    private $email;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="git_emails", type="simple_array")
-     */
-    private $gitEmails = [];
 
     /**
      * @var string
@@ -85,27 +70,23 @@ class SensiolabsUser
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return $this
+     * @return int
      */
-    public function setEmail($email)
+    public function getContributorId()
     {
-        $this->email = $email;
-
-        return $this;
+        return $this->contributorId;
     }
 
     /**
-     * Get email
+     * @param int $contributorId
      *
-     * @return string
+     * @return $this
      */
-    public function getEmail()
+    public function setContributorId($contributorId)
     {
-        return $this->email;
+        $this->contributorId = $contributorId;
+
+        return $this;
     }
 
     /**
@@ -157,34 +138,6 @@ class SensiolabsUser
     }
 
     /**
-     * Set otherEmails
-     *
-     * @param array $gitEmails
-     *
-     * @return $this
-     */
-    public function setGitEmails($gitEmails)
-    {
-        if (0 === count($gitEmails)) {
-            $gitEmails = [''];
-        }
-
-        $this->gitEmails = $gitEmails;
-
-        return $this;
-    }
-
-    /**
-     * Get otherEmails
-     *
-     * @return array
-     */
-    public function getGitEmails()
-    {
-        return $this->gitEmails;
-    }
-
-    /**
      * Set country
      *
      * @param string $country
@@ -224,34 +177,6 @@ class SensiolabsUser
     public function setProfilePageError($profilePageError)
     {
         $this->profilePageError = $profilePageError;
-
-        return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getAllEmails()
-    {
-        return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
-    }
-
-    /**
-     * @return int
-     */
-    public function getContributorId()
-    {
-        return $this->contributorId;
-    }
-
-    /**
-     * @param int $contributorId
-     *
-     * @return $this
-     */
-    public function setContributorId($contributorId)
-    {
-        $this->contributorId = $contributorId;
 
         return $this;
     }
