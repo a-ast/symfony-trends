@@ -14,8 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
  *          @ORM\Index(
  *              name="idx_sensiolabs_user_contributor_id",
  *              columns={"contributor_id"}
+ *          ),
+ *          @ORM\Index(
+ *              name="idx_sensiolabs_user_country",
+ *              columns={"country"}
  *          )
  *      }
+ *
  * )
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabsUserRepository")

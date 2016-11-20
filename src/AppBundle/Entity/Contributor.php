@@ -9,7 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contributor
  *
- * @ORM\Table(name="contributor")
+ * @ORM\Table(
+ *      name="contributor",
+ *      indexes={
+ *          @ORM\Index(
+ *              name="idx_contributor_country",
+ *              columns={"country"}
+ *          )
+ *      }
+ * )
+ *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributorRepository")
  */
 class Contributor
