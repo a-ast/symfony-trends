@@ -44,13 +44,6 @@ services:
             - '@helper.contributor_extractor'
             - '@repository.contributor'
 
-    aggregator.github_api:
-        class: AppBundle\Aggregator\GithubApi
-        lazy: true
-        arguments:
-            - '@github_api_client'
-            - '@repository.contributor'
-
     aggregator.github_user_data:
         class: AppBundle\Aggregator\GithubUserData
         lazy: true
@@ -75,13 +68,6 @@ services:
         arguments:
             - '@http_client'
             - '@helper.sensiolabs_data_extractor'
-            - '@repository.contributor'
-
-    aggregator.sensiolabs_user_updater:
-        class: AppBundle\Aggregator\SensiolabsUserUpdater
-        lazy: true
-        arguments:
-            - '@repository.sensiolabs_user'
             - '@repository.contributor'
 
     #################################
