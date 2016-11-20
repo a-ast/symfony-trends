@@ -76,6 +76,13 @@ services:
             - '@helper.sensiolabs_data_extractor'
             - '@repository.contributor'
 
+    aggregator.sensiolabs_user_updater:
+        class: AppBundle\Aggregator\SensiolabsUserUpdater
+        lazy: true
+        arguments:
+            - '@repository.sensiolabs_user'
+            - '@repository.contributor'
+
     #################################
     # Data providers
     #################################

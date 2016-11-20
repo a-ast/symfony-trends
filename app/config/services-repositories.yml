@@ -27,3 +27,8 @@ services:
         arguments:
             - AppBundle\Entity\Contribution
 
+    repository.sensiolabs_user:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\SensiolabsUser
