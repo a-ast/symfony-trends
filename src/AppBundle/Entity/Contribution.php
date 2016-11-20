@@ -51,7 +51,7 @@ class Contribution
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="commited_at", type="datetime")
+     * @ORM\Column(name="commited_at", type="datetimetz")
      */
     private $commitedAt;
 
