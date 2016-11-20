@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
@@ -102,7 +103,7 @@ class ContributionRepository extends Repository
     /**
      * @param int $projectId
      *
-     * @return DateTime
+     * @return DateTimeImmutable
      */
     public function getLastCommitDate($projectId)
     {
@@ -113,6 +114,6 @@ class ContributionRepository extends Repository
 
         $result = $qb->getQuery()->getSingleScalarResult();
 
-        return new \DateTimeImmutable($result);
+        return new DateTimeImmutable($result);
     }
 }
