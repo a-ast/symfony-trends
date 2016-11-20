@@ -98,4 +98,21 @@ class ContributionRepository extends Repository
 
         return (int)$result[1];
     }
+
+    /**
+     * @param int $projectId
+     *
+     * @return DateTime
+     */
+    public function getLastCommitDate($projectId)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('MAX(c.commitedAt)')
+            ->where('c.projectId = :id')
+            ->setParameter('id', $projectId);
+
+        $result = $qb->getQuery()->getSingleScalarResult();
+
+        return new \DateTimeImmutable($result);
+    }
 }
