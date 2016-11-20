@@ -60,12 +60,19 @@ class GenerateChartDataCommand extends ContainerAwareCommand
                 $fs->dumpFile($filePath, $json);
 
                 $trends[$groupId][$chartId] = [
+                    'id' => $chartId,
                     'dataFile' => sprintf('data/%s.json', $chartId),
                     'title' => $chart['title'],
                     'chart' => $chart['chart'],
                 ];
-            }
 
+                if ('map' === $chart['chart']['type']) {
+                    $embeddedFile = $twig->render('@App/embedded.html.twig', ['trend' => $trends[$groupId][$chartId]]);
+
+                    $filePath = sprintf('%s/../trends/%s.html', $rootDir, $chartId);
+                    $fs->dumpFile($filePath, $embeddedFile);
+                }
+            }
         }
 
         $indexFile = $twig->render('@App/index.html.twig', ['trends' => $trends]);

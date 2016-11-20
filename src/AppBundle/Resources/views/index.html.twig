@@ -38,11 +38,16 @@
 
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>{{ trend.title }}</h2>
-                    <div id="{{ trendId }}" class="chart {{ trend.chart.type }}-chart"></div>
+
+                    {% if trend.chart.type != 'map' %}
+                        <div id="{{ trend.id }}" class="chart {{ trend.chart.type }}-chart"></div>
+                        <script>
+                            draw{{ trend.chart.type|capitalize }}Chart("#{{ trend.id }}", "{{ trend.dataFile }}", "");
+                        </script>
+                    {% else %}
+                        <iframe src="{{ trend.id }}.html" id="{{ trend.id }}" class="chart" scrolling="no"></iframe>
+                    {% endif %}
                 </div>
-                <script>
-                    draw{{ trend.chart.type|capitalize }}Chart("#{{ trendId }}", "{{ trend.dataFile }}", "");
-                </script>
 
             {% endfor %}
         </div>
