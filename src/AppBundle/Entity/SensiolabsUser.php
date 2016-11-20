@@ -26,6 +26,13 @@ class SensiolabsUser
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="contributor_id", type="integer")
+     */
+    private $contributorId = 0;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
@@ -82,7 +89,7 @@ class SensiolabsUser
      *
      * @param string $email
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setEmail($email)
     {
@@ -106,7 +113,7 @@ class SensiolabsUser
      *
      * @param string $name
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setName($name)
     {
@@ -130,7 +137,7 @@ class SensiolabsUser
      *
      * @param string $login
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setLogin($login)
     {
@@ -154,7 +161,7 @@ class SensiolabsUser
      *
      * @param array $gitEmails
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setGitEmails($gitEmails)
     {
@@ -182,7 +189,7 @@ class SensiolabsUser
      *
      * @param string $country
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setCountry($country)
     {
@@ -212,7 +219,7 @@ class SensiolabsUser
     /**
      * @param int $profilePageError
      *
-     * @return SensiolabsUser
+     * @return $this
      */
     public function setProfilePageError($profilePageError)
     {
@@ -227,6 +234,26 @@ class SensiolabsUser
     public function getAllEmails()
     {
         return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
+    }
+
+    /**
+     * @return int
+     */
+    public function getContributorId()
+    {
+        return $this->contributorId;
+    }
+
+    /**
+     * @param int $contributorId
+     *
+     * @return $this
+     */
+    public function setContributorId($contributorId)
+    {
+        $this->contributorId = $contributorId;
+
+        return $this;
     }
 }
 
