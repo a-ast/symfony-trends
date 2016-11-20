@@ -3,12 +3,6 @@ services:
     #################################
     # Repositories
     #################################
-    repository.contributor:
-        class: Doctrine\ORM\EntityRepository
-        factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments:
-            - AppBundle\Entity\Contributor
-
     repository.project:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
@@ -21,13 +15,13 @@ services:
         arguments:
             - AppBundle\Entity\ProjectVersion
 
-    repository.contributor2:
+    repository.contributor:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Contributor2
 
-    repository.contribution2:
+    repository.contribution:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
