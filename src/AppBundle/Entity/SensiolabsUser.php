@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SensiolabUser
  *
- * @ORM\Table(name="sensiolab_user")
+ * @ORM\Table(name="sensiolabs_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabUserRepository")
  */
-class SensiolabUser
+class SensiolabsUser
 {
     use TimestampTrait;
 
@@ -82,7 +82,7 @@ class SensiolabUser
      *
      * @param string $email
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setEmail($email)
     {
@@ -106,7 +106,7 @@ class SensiolabUser
      *
      * @param string $name
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setName($name)
     {
@@ -130,7 +130,7 @@ class SensiolabUser
      *
      * @param string $login
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setLogin($login)
     {
@@ -154,7 +154,7 @@ class SensiolabUser
      *
      * @param array $gitEmails
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setGitEmails($gitEmails)
     {
@@ -182,7 +182,7 @@ class SensiolabUser
      *
      * @param string $country
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setCountry($country)
     {
@@ -212,7 +212,7 @@ class SensiolabUser
     /**
      * @param int $profilePageError
      *
-     * @return SensiolabUser
+     * @return SensiolabsUser
      */
     public function setProfilePageError($profilePageError)
     {
