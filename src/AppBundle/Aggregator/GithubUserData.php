@@ -57,7 +57,7 @@ class GithubUserData implements AggregatorInterface
     public function aggregate(array $options, ProgressInterface $progress = null)
     {
 
-        $contributors = $this->repository->findWithoutLocation(3000);
+        $contributors = $this->repository->findAll();
         //$progress->start(count($contributors));
 
         $report = [
@@ -80,32 +80,36 @@ class GithubUserData implements AggregatorInterface
             $user = $this->githubApi->getUser($login);
 
             if(!isset($user['location'])) {
+                print '.';
                 continue;
             }
 
-            $countryData = $this->geolocationApi->findCountry($user['location']);
-            $country = $countryData['country'];
+            $contributor->setGithubLocation($user['location']);
+            print '*';
 
-            if (!$countryData['exact_match']) {
-                $report['notMatched'][] = sprintf('ID: %d, name: %s, github location: %s, found country: %s',
-                    $contributor->getId(), $contributor->getName(), $user['location'], $country);
-
-                continue;
-            }
-
-            if ('' === $country) {
-                $report['notFound'][] = sprintf('ID: %d, name: %s, github location: %s',
-                    $contributor->getId(), $contributor->getName(), $user['location']);
-
-                continue;
-            }
-
-            $contributor->setCountry($country);
+//            $countryData = $this->geolocationApi->findCountry($user['location']);
+//            $country = $countryData['country'];
+//
+//            if (!$countryData['exact_match']) {
+//                $report['notMatched'][] = sprintf('ID: %d, name: %s, github location: %s, found country: %s',
+//                    $contributor->getId(), $contributor->getName(), $user['location'], $country);
+//
+//                continue;
+//            }
+//
+//            if ('' === $country) {
+//                $report['notFound'][] = sprintf('ID: %d, name: %s, github location: %s',
+//                    $contributor->getId(), $contributor->getName(), $user['location']);
+//
+//                continue;
+//            }
+//
+//            $contributor->setCountry($country);
 
             $report['foundCount']++;
         }
 
-        //$this->repository->flush();
+        $this->repository->flush();
 
         return $report;
     }
