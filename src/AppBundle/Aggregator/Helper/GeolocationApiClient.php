@@ -8,8 +8,9 @@ use Exception;
 
 class GeolocationApiClient
 {
-    const BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json';
-    
+    const BASE_URI = 'http://maps.googleapis.com/maps/api/geocode/json';
+    const BASE_HTTPS_URI = 'https://maps.googleapis.com/maps/api/geocode/json';
+
     /**
      * @var ClientInterface
      */
@@ -39,15 +40,23 @@ class GeolocationApiClient
      */
     public function findCountry($address)
     {
-        $response = $this->httpClient->request('GET', self::BASE_URI, [
-            'query' => [
-                'address' => $address,
-                'key' => $this->apiKey,
-            ],
-            'http_errors' => false,
-        ]);
+        $query = [
+            'address' => $address,
+            'key' => $this->apiKey,
+        ];
 
-        $data = json_decode($response->getBody(), true);
+//        $response = $this->httpClient->request('GET', self::BASE_URI, [
+//            'query' => $query,
+//            'http_errors' => false,
+//        ]);
+//
+//        $data = json_decode($response->getBody(), true);
+
+        $queryString = http_build_query($query);
+        $url = self::BASE_HTTPS_URI.'?'.$queryString;
+
+        $contents = file_get_contents($url);
+        $data = json_decode($contents, true);
 
         if(0 === count($data['results'])) {
             // @todo    
@@ -66,6 +75,7 @@ class GeolocationApiClient
                 }
             }
         }
+        print '['.$country.']';
 
         return [
             'country' => $country,
