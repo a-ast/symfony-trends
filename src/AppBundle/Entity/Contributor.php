@@ -76,6 +76,13 @@ class Contributor
     private $country = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="github_location", type="string", length=255, options={"default": ""})
+     */
+    private $githubLocation = '';
+
+    /**
      * Get id
      *
      * @return int
@@ -303,6 +310,26 @@ class Contributor
     public function getAllEmails()
     {
         return ArrayUtils::trimMerge($this->getEmail(), $this->getGitEmails());
+    }
+
+    /**
+     * @return string
+     */
+    public function getGithubLocation()
+    {
+        return $this->githubLocation;
+    }
+
+    /**
+     * @param string $githubLocation
+     *
+     * @return $this;
+     */
+    public function setGithubLocation($githubLocation)
+    {
+        $this->githubLocation = $githubLocation;
+
+        return $this;
     }
 }
 
