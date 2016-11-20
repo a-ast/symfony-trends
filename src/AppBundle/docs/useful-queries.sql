@@ -11,6 +11,19 @@ from contribution2 cn
 group by c.name
 order by cnt desc;
 
+-- Get all countries by project
+select c.country, s.country
+from contributor c
+  left join sensiolabs_user s on s.contributor_id = c.id
+where
+  (c.country != '' OR s.country != '') and
+  exists (
+      select cn.id
+      from contribution cn
+      where cn.project_id = 2 and cn.contributor_id = c.id
+  );
+
+
 
 -- Get contributor count in date intervals
 select v.label, count(distinct c.contributor_id)
