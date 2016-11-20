@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * SensiolabUser
  *
  * @ORM\Table(name="sensiolabs_user")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabUserRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabsUserRepository")
  */
 class SensiolabsUser
 {
