@@ -4,8 +4,6 @@ namespace Tests\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GitLogDeprecated;
 use AppBundle\Entity\Contribution;
-use AppBundle\Entity\Contribution;
-use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
 use PHPUnit_Framework_TestCase;

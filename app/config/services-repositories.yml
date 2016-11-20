@@ -19,11 +19,11 @@ services:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Contributor2
+            - AppBundle\Entity\Contributor
 
     repository.contribution:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Contribution2
+            - AppBundle\Entity\Contribution
 
