@@ -7,9 +7,11 @@ use AppBundle\Aggregator\Helper\GeolocationApiClient;
 use AppBundle\Aggregator\Helper\GithubApiClient;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
+use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
+use AppBundle\Repository\ProjectRepository;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -31,22 +33,30 @@ class GithubCommitHistory implements AggregatorInterface
     private $geolocationApiClient;
 
     /**
+     * @var ProjectRepository
+     */
+    private $projectRepository;
+
+    /**
      * Constructor.
      *
      * @param GithubApiClient $apiClient
      * @param GeolocationApiClient $geolocationApiClient
+     * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param ContributorRepository $contributorRepository
      */
-    public function __construct(GithubApiClient $apiClient, GeolocationApiClient $geolocationApiClient,
+    public function __construct(GithubApiClient $apiClient,
+        GeolocationApiClient $geolocationApiClient,
+        ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository, ContributorRepository $contributorRepository)
     {
         $this->apiClient = $apiClient;
         $this->geolocationApiClient = $geolocationApiClient;
         $this->contributionRepository = $contributionRepository;
         $this->contributorRepository = $contributorRepository;
+        $this->projectRepository = $projectRepository;
     }
-
 
     /**
      * @inheritdoc
@@ -55,10 +65,15 @@ class GithubCommitHistory implements AggregatorInterface
     {
         $page = 1;
 
-        $projectId = 2;
-        $projectRepo = 'symfony/symfony-docs';
+        $projectId = $options['project_id'];
+        /** @var Project $project */
+        $project = $this->projectRepository->find($projectId);
+        $projectRepo = $project->getGithubPath();
 
-        while ($commits = $this->apiClient->getCommits($projectRepo, $page)) {
+        $lastCommitDate = $this->contributionRepository->getLastCommitDate($projectId);
+        $sinceDate = $lastCommitDate->modify('+1 sec');
+
+        while ($commits = $this->apiClient->getCommits($projectRepo, $sinceDate, $page)) {
 
             foreach ($commits as $commit) {
 

@@ -19,9 +19,15 @@ parameters:
             service: 'aggregator.github_user_data'
             options: []
 
-        github_commit_history:
+        github_commits_symfony:
             service: 'aggregator.github_commit_history'
-            options: []
+            options:
+                project_id: 1
+
+        github_commits_symfony_docs:
+            service: 'aggregator.github_commit_history'
+            options:
+                project_id: 2
 
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'

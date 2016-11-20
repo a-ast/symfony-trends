@@ -65,6 +65,7 @@ services:
         arguments:
             - '@github_api_client'
             - '@geolocation_api_client'
+            - '@repository.project'
             - '@repository.contribution'
             - '@repository.contributor'
 
