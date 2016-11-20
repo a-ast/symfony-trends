@@ -62,3 +62,24 @@ select sensiolabs_country, count(*) as cnt
 from contributor
 group by sensiolabs_country
 order by cnt desc;
+
+
+-- Merge records
+
+UPDATE contribution SET contributor_id = 243 WHERE contributor_id = 201;
+DELETE FROM contributor WHERE contributor_id = 201;
+
+UPDATE contribution SET contributor_id = 1778 WHERE contributor_id = 2134;
+UPDATE contribution SET contributor_id = 1778 WHERE contributor_id = 2204;
+DELETE FROM contributor WHERE contributor_id = 2134;
+DELETE FROM contributor WHERE contributor_id = 2204;
+
+-- FIND all geocoding mistakes
+select c.github_login, c.github_location, c.country, s.country, s.login
+from contributor c
+  left join sensiolabs_user s on s.contributor_id = c.id
+where
+  c.country != s.country and c.country != ''
+order by github_location;
+
+
