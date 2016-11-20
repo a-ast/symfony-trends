@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Symfony Trends</title>
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <!-- https://github.com/markmarkoh/datamaps -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="js/datamap/datamaps.world.min.js"></script>
+    <script src="js/map-chart.js"></script>
+</head>
+
+<body>
+
+    <div id="contributors_per_country_symfony" class="chart"></div>
+    <script>
+        drawMapChart("#contributors_per_country_symfony", "data/contributors_per_country_symfony.json", "");
+    </script>
+
+
+</body>
+</html>
