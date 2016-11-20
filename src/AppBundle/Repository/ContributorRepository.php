@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Contributor;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * ContributorRepository
@@ -162,6 +163,37 @@ class ContributorRepository extends Repository
         ;
 
         $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContributionsPerCountry()
+    {
+        $rsm = new ResultSetMapping();
+        $rsm
+            ->addScalarResult('id', 'id')
+            ->addScalarResult('iso_1', 'iso_1')
+            ->addScalarResult('iso_2', 'iso_2');
+
+        $query = $this
+            ->getEntityManager()
+            ->createNativeQuery('select c.id, cn1.iso3 as iso_1, cn2.iso3 as iso_2
+                                    from contributor c
+                                      left join sensiolabs_user s on s.contributor_id = c.id
+                                      left join country cn1 on cn1.name = c.country
+                                      left join country cn2 on cn2.name = s.country
+                                    where
+                                      (c.country != \'\' OR s.country != \'\') and
+                                      exists (
+                                          select cn.id
+                                          from contribution cn
+                                          where cn.project_id = 2 and cn.contributor_id = c.id
+                                      )', $rsm);
+
+        $result = $query->getResult();
 
         return $result;
     }
