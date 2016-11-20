@@ -28,7 +28,7 @@ class SensiolabsUser
     /**
      * @var int
      *
-     * @ORM\Column(name="contributor_id", type="integer")
+     * @ORM\Column(name="contributor_id", type="integer", nullable=true)
      */
     private $contributorId = 0;
 
