@@ -8,7 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SensiolabUser
  *
- * @ORM\Table(name="sensiolabs_user")
+ * @ORM\Table(
+ *      name="sensiolabs_user",
+ *      indexes={
+ *          @ORM\Index(
+ *              name="idx_sensiolabs_user_contributor_id",
+ *              columns={"contributor_id"}
+ *          )
+ *      }
+ * )
+ *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SensiolabsUserRepository")
  */
 class SensiolabsUser
@@ -27,7 +36,7 @@ class SensiolabsUser
     /**
      * @var int
      *
-     * @ORM\Column(name="contributor_id", type="integer", nullable=true)
+     * @ORM\Column(name="contributor_id", type="integer", nullable=false, unique=true)
      */
     private $contributorId = 0;
 
