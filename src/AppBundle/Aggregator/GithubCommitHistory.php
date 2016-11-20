@@ -55,8 +55,8 @@ class GithubCommitHistory implements AggregatorInterface
     {
         $page = 1;
 
-        $projectId = 1;
-        $projectRepo = 'symfony/symfony';
+        $projectId = 2;
+        $projectRepo = 'symfony/symfony-docs';
 
         while ($commits = $this->apiClient->getCommits($projectRepo, $page)) {
 
@@ -91,8 +91,8 @@ class GithubCommitHistory implements AggregatorInterface
                     $email = isset($user['email']) ? $user['email'] : $commitEmail;
 
                     if (isset($user['location'])) {
-                        //$countryData = $this->geolocationApiClient->findCountry($user['location']);
-                        //$country = $countryData['country'];
+                        $countryData = $this->geolocationApiClient->findCountry($user['location']);
+                        $country = $countryData['country'];
                     }
                 }
 
