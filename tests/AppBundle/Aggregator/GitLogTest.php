@@ -2,8 +2,9 @@
 
 namespace Tests\AppBundle\Aggregator;
 
-use AppBundle\Aggregator\GitLog;
+use AppBundle\Aggregator\GitLogDeprecated;
 use AppBundle\Entity\Contribution;
+use AppBundle\Entity\Contribution2;
 use AppBundle\Entity\ContributionLog;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepositoryFacade;
@@ -139,7 +140,7 @@ class GitLogTest extends PHPUnit_Framework_TestCase
             ->shouldBeCalled(3);
 
         $this->repositoryFacade
-            ->persist(Argument::type(ContributionLog::class))
+            ->persist(Argument::type(Contribution2::class))
             ->shouldBeCalledTimes(7);
 
         $this->repositoryFacade
@@ -153,6 +154,6 @@ class GitLogTest extends PHPUnit_Framework_TestCase
 
     private function getGitLog()
     {
-        return new GitLog($this->repositoryFacade->reveal(), __DIR__.'/fixtures/');
+        return new GitLogDeprecated($this->repositoryFacade->reveal(), __DIR__.'/fixtures/');
     }
 }

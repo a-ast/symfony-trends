@@ -3,7 +3,7 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Entity\ContributionLog;
+use AppBundle\Entity\Contribution2;
 use AppBundle\Entity\Contributor;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepositoryFacade;
@@ -13,8 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Git log aggregator
+ *
+ * @deprecated
  */
-class GitLog implements AggregatorInterface
+class GitLogDeprecated implements AggregatorInterface
 {
     /**
      * @var string
@@ -169,11 +171,11 @@ class GitLog implements AggregatorInterface
      * @param DateTime $dateTime
      * @param string $hash
      *
-     * @return ContributionLog
+     * @return Contribution2
      */
     protected function createContributionLog(Contributor $contributor, $projectId, DateTime $dateTime, $hash)
     {
-        $contributionLogEntry = new ContributionLog();
+        $contributionLogEntry = new Contribution2();
         $contributionLogEntry
             ->setProjectId($projectId)
             ->setContributorId($contributor->getId())

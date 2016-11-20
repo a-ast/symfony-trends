@@ -8,40 +8,28 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Contributor
-    repository.contribution_log:
-        class: Doctrine\ORM\EntityRepository
-        factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments:
-            - AppBundle\Entity\ContributionLog
+
     repository.project:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Project
+
     repository.project_version:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\ProjectVersion
 
-
     repository.contributor2:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Contributor2
+
     repository.contribution2:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - AppBundle\Entity\Contribution2
 
-    #################################
-    # Repository facades
-    #################################
-    repository_facade.contributor:
-        class: AppBundle\Repository\ContributorRepositoryFacade
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@repository.contributor'
-            - '@repository.contribution_log'

@@ -44,13 +44,6 @@ services:
             - '@helper.contributor_extractor'
             - '@repository.contributor'
 
-    aggregator.git_log:
-        class: AppBundle\Aggregator\GitLog
-        lazy: true
-        arguments:
-            - '@repository_facade.contributor'
-            - '%kernel.root_dir%/../git-logs/'
-
     aggregator.github_api:
         class: AppBundle\Aggregator\GithubApi
         lazy: true
