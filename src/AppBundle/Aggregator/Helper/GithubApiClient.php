@@ -3,6 +3,7 @@
 
 namespace AppBundle\Aggregator\Helper;
 
+use DateTimeImmutable;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
@@ -113,26 +114,32 @@ class GithubApiClient
 
     /**
      *
-     * @param $repo
+     * @param string $repo
+     * @param DateTimeImmutable $sinceDateTime
      * @param int $page
      *
      * @return array
      */
-    public function getCommits($repo, $page = 1)
+    public function getCommits($repo, DateTimeImmutable $sinceDateTime = null, $page = 1)
     {
         $uri = sprintf('https://api.github.com/repos/%s/commits', $repo);
 
-        $response = $this->httpClient->request('GET', $uri, [
-            'query' => [
-                'page' => $page,
-                'until' => '2016-09-19T10:40:17',
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
+        $query = [
+            'page' => $page,
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+        ];
 
-            ],
+        if (null !== $sinceDateTime) {
+            $query['since'] = $sinceDateTime->format('Y-m-d\TH:i:s\Z');
+        }
+
+        $response = $this->httpClient->request('GET', $uri, [
+            'query' => $query,
             //'headers' => ['Authorization' => sprintf('token %s', $this->authenticationToken)],
             'http_errors' => false,
         ]);
+
 
 
         // Request limit exceeded
