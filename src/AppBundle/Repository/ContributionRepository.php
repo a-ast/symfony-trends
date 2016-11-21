@@ -14,22 +14,28 @@ class ContributionRepository extends Repository
     /**
      * @return array
      */
-    public function getContributionIntersection()
+    public function getContributorProjectIntersection()
     {
         $rsm = new ResultSetMapping();
         $rsm
             ->addScalarResult('project_ids', 'project_ids')
-            ->addScalarResult('cnt', 'cnt');
+            ->addScalarResult('contributor_count', 'contributor_count');
 
         $query = $this
                     ->getEntityManager()
-                    ->createNativeQuery('select project_ids, count(*) as cnt
-                        from (
-                            select contributor_id, group_concat(project_id) as project_ids
-                            from contribution
-                            group by contributor_id
-                        )
-                        group by project_ids', $rsm);
+                    ->createNativeQuery(
+                        'select project_ids, count(*) as contributor_count
+                            from (
+                                select contributor_id, group_concat(project_id) as project_ids
+                                from (
+                                    select distinct contributor_id, project_id
+                                    from contribution
+                                    order by project_id asc
+                                )
+                                group by contributor_id
+                            )
+                            group by project_ids',
+                        $rsm);
 
         $result = $query->getResult();
 
@@ -66,10 +72,10 @@ class ContributionRepository extends Repository
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select date(first_commit_at) as date, project_id, count(*) as value
+            ->createNativeQuery('select date(commited_at) as date, project_id, count(*) as value
                             from contribution
-                            group by date(first_commit_at), project_id
-                            order by first_commit_at asc', $rsm);
+                            group by date(commited_at), project_id
+                            order by commited_at asc', $rsm);
 
         $result = $query->getResult();
 

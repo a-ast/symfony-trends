@@ -33,6 +33,16 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>How many developers contribute to different projects</h2>
+
+                                            <div id="contributors_intersection" class="chart venn-chart"></div>
+                        <script>
+                            drawVennChart("#contributors_intersection", "data/contributors_intersection.json", "");
+                        </script>
+                                    </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Where Symfony contributors live and work</h2>
 
                                             <iframe src="contributors_per_country_symfony.html" id="contributors_per_country_symfony" class="chart" scrolling="no"></iframe>

@@ -1,26 +1,26 @@
 [
     {
-        "label": "Symfony (1580)",
+        "label": "Symfony (1604)",
         "color": "#08c",
-        "size": 1580,
+        "size": 1604,
         "sets": [
             "1"
         ]
     },
     {
-        "label": "Symfony docs (1280)",
+        "label": "Symfony docs (1284)",
         "color": "#7aba20",
-        "size": 1280,
+        "size": 1284,
         "sets": [
             "2"
         ]
     },
     {
-        "size": 504,
+        "size": 506,
         "sets": [
             "1",
             "2"
         ],
-        "label": "504"
+        "label": "506"
     }
 ]

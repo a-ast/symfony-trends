@@ -1,3 +1,18 @@
+-- Verifiied: intersections of projects
+select project_ids, count(*) as contributor_count
+from (
+  select contributor_id, group_concat(project_id) as project_ids
+  from (
+    select distinct contributor_id, project_id
+    from contribution
+    order by project_id asc
+  )
+  group by contributor_id
+)
+group by project_ids;
+
+
+
 -- Get contributors for a project sorted by number of contributions
 select contributor_id, count(*) as cnt
 from contribution_log

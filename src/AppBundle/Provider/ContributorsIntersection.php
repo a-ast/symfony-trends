@@ -31,7 +31,7 @@ class ContributorsIntersection implements ProviderInterface
 
     public function getData(array $options = [])
     {
-        $intersections = $this->contributionRepository->getContributionIntersection();
+        $intersections = $this->contributionRepository->getContributorProjectIntersection();
 
         /** @var Project[] $projects */
         $projects = $this->projectRepository->findAll();
@@ -49,11 +49,11 @@ class ContributorsIntersection implements ProviderInterface
             $setProjects = explode(',', $intersection['project_ids']);
 
             if(count($setProjects) > 1) {
-               $data[$intersection['project_ids']]['size'] = (int)$intersection['cnt'];
+               $data[$intersection['project_ids']]['size'] = (int)$intersection['contributor_count'];
             };
 
             foreach ($setProjects as $setProject) {
-                $data[$setProject]['size'] += (int)$intersection['cnt'];
+                $data[$setProject]['size'] += (int)$intersection['contributor_count'];
             }
 
         }
