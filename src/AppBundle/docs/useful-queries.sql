@@ -14,11 +14,11 @@ group by project_ids;
 
 
 -- Get contributors for a project sorted by number of contributions
-select contributor_id, count(*) as cnt
-from contribution_log
+select contributor_id, count(*) as contribution_count
+from contribution
 where project_id = 1
 group by contributor_id
-order by cnt desc;
+order by contribution_count desc;
 
 select c.name, count(cn.id) as cnt
 from contribution2 cn

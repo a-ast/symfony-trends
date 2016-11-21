@@ -47,14 +47,25 @@ class ContributionRepository extends Repository
      *
      * @return array
      */
-    public function getContributorsCommitCounts($projectId)
+    public function getContributorCommitCounts($projectId)
     {
-        $qb = $this->createQueryBuilder('c')
-            ->select('c.contributorId', 'c.commitCount')
-            ->andWhere('c.projectId = :projectId')
-            ->setParameter('projectId', $projectId);
+        $rsm = new ResultSetMapping();
+        $rsm
+            ->addScalarResult('contributor_id', 'contributor_id')
+            ->addScalarResult('contribution_count', 'contribution_count');
 
-        $result = $qb->getQuery()->getArrayResult();
+        $query = $this
+            ->getEntityManager()
+            ->createNativeQuery(
+                'select contributor_id, count(*) as contribution_count
+                    from contribution
+                    where project_id = :project_id
+                    group by contributor_id
+                    order by contribution_count asc;',
+                $rsm)
+            ->setParameter('project_id', $projectId);
+
+        $result = $query->getResult();
 
         return $result;
     }
@@ -68,11 +79,11 @@ class ContributionRepository extends Repository
         $rsm
             ->addScalarResult('date', 'date')
             ->addScalarResult('project_id', 'project_id')
-            ->addScalarResult('value', 'value');
+            ->addScalarResult('contribution_count', 'contribution_count');
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select date(commited_at) as date, project_id, count(*) as value
+            ->createNativeQuery('select date(commited_at) as date, project_id, count(*) as contribution_count
                             from contribution
                             group by date(commited_at), project_id
                             order by commited_at asc', $rsm);

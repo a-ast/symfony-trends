@@ -30,7 +30,9 @@ class CommitCountDistribution implements ProviderInterface
 
     public function getData(array $options = [])
     {
-        $commitCounts = $this->contributionRepository->getContributorsCommitCounts(1);
+        $projectId = $options['project_id'];
+
+        $commitCounts = $this->contributionRepository->getContributorCommitCounts($projectId);
 
         $intervals = [
             [1],
@@ -52,7 +54,7 @@ class CommitCountDistribution implements ProviderInterface
         }
 
         foreach ($commitCounts as $item) {
-            $count = $item['commitCount'];
+            $count = (int)$item['contribution_count'];
             foreach ($intervals as $intervalIndex => &$interval) {
 
                 switch(count($interval)) {

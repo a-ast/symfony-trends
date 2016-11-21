@@ -35,9 +35,10 @@ class ContributorsPerDate implements ProviderInterface
                 $totals[$projectId] = 0;
             };
 
-            $item['value'] += $totals[$projectId];
-            $totals[$projectId] = $item['value'];
+            $totals[$projectId] += $item['contribution_count'];
+            $item['value'] = $totals[$projectId];
 
+            unset($item['contribution_count']);
             unset($item['project_id']);
         }
 

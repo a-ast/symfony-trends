@@ -33,6 +33,16 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit number growth</h2>
+
+                                            <div id="commit_number_growth_per_date" class="chart line-chart"></div>
+                        <script>
+                            drawLineChart("#commit_number_growth_per_date", "data/commit_number_growth_per_date.json", "");
+                        </script>
+                                    </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>How many developers contribute to different projects</h2>
 
                                             <div id="contributors_intersection" class="chart venn-chart"></div>
@@ -40,6 +50,36 @@
                             drawVennChart("#contributors_intersection", "data/contributors_intersection.json", "");
                         </script>
                                     </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Number of developers who made certain count of commits to Symfony</h2>
+
+                                            <div id="commit_count_distribution_symfony" class="chart bar-chart"></div>
+                        <script>
+                            drawBarChart("#commit_count_distribution_symfony", "data/commit_count_distribution_symfony.json", "");
+                        </script>
+                                    </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Number of developers who made certain count of commits to Symfony docs</h2>
+
+                                            <div id="commit_count_distribution_symfony_docs" class="chart bar-chart"></div>
+                        <script>
+                            drawBarChart("#commit_count_distribution_symfony_docs", "data/commit_count_distribution_symfony_docs.json", "");
+                        </script>
+                                    </div>
+
+                    </div>
+
+    
+        <div class="row">
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
