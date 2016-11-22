@@ -48,7 +48,7 @@ class CommitCountDistribution implements ProviderInterface
 
         foreach ($intervals as $intervalIndex => $interval) {
             $data[$intervalIndex] = [
-                'text' => $this->getIntervalLabel($interval),
+                'label' => $this->getIntervalLabel($interval),
                 'value' => 0,
             ];
         }

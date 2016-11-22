@@ -1,37 +1,37 @@
 [
     {
         "project_id": "2",
-        "value": "273",
-        "text": "2010"
+        "label": "2010",
+        "value": "273"
     },
     {
         "project_id": "2",
-        "value": "2106",
-        "text": "2011"
+        "label": "2011",
+        "value": "2106"
     },
     {
         "project_id": "2",
-        "value": "2415",
-        "text": "2012"
+        "label": "2012",
+        "value": "2415"
     },
     {
         "project_id": "2",
-        "value": "2706",
-        "text": "2013"
+        "label": "2013",
+        "value": "2706"
     },
     {
         "project_id": "2",
-        "value": "2806",
-        "text": "2014"
+        "label": "2014",
+        "value": "2806"
     },
     {
         "project_id": "2",
-        "value": "2840",
-        "text": "2015"
+        "label": "2015",
+        "value": "2840"
     },
     {
         "project_id": "2",
-        "value": "2194",
-        "text": "2016"
+        "label": "2016",
+        "value": "2194"
     }
 ]

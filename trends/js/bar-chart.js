@@ -17,13 +17,13 @@ function drawBarChart(containerSelector, dataPath, xAxisLabel) {
     d3.json(dataPath, function(error, data) {
         if (error) throw error;
 
-        var xScale = x.domain(data.map(function(d) { return d.text; }));
+        var xScale = x.domain(data.map(function(d) { return d.label; }));
         y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
         var bar = chart.selectAll("g")
             .data(data)
             .enter().append("g")
-            .attr("transform", function(d) { return "translate(" + x(d.text) + ",0)"; });
+            .attr("transform", function(d) { return "translate(" + x(d.label) + ",0)"; });
 
         bar.append("rect")
             .attr("y", function(d) { return y(d.value); })

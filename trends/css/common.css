@@ -42,7 +42,7 @@ h2 {
     /*display: none;*/
 /*}*/
 
-.axis text {
+.axis label {
     font: 15px sans-serif;
     fill: #005580;
 }

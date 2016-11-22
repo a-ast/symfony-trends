@@ -28,10 +28,10 @@ class ContributionsPerDate implements ProviderInterface
         $data = $this->repository->getContributionsPerDate($projects, $interval);
 
         foreach ($data as &$item) {
+            $item['label'] = $item['date'];
             $item['value'] = $item['contribution_count'];
-            $item['text'] = $item['date'];
-            unset($item['contribution_count']);
             unset($item['date']);
+            unset($item['contribution_count']);
         }
 
         return $data;
