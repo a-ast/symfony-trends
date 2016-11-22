@@ -22,11 +22,11 @@ function drawVennChart(containerSelector, dataPath) {
         d3.selectAll(containerSelector + " .venn-circle")
             .on("mouseover", function(d, i) {
                 var node = d3.select(this).transition();
-                node.select("path").style("fill-opacity", d.sets.length == 1 ? .4 : .1);
+                node.select("path").style("stroke", "#08c");
             })
             .on("mouseout", function(d, i) {
                 var node = d3.select(this).transition();
-                node.select("path").style("fill-opacity", d.sets.length == 1 ? .25 : .0);
+                node.select("path").style("stroke", "none");
 
             });
 

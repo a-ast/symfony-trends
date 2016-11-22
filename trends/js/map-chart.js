@@ -44,7 +44,7 @@ function drawMapChart(containerSelector, dataPath, xAxisLabel) {
                     return geo['fillColor'] || '#fff';
                 },
                 // only change border
-                highlightBorderColor: '#ccefff',
+                highlightBorderColor: '#08c',
                 // show desired information in tooltip
                 popupTemplate: function(geo, data) {
                     // don't show tooltip if country don't present in dataset
