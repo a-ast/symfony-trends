@@ -15,6 +15,7 @@ TODO
 
 Charts
 
+- People to contributed monthly (most likele showing new contributors)
 - Contributors location (by SLI or by GitHub data)
 - Forks by version
 - Symfony bundle usage in github
