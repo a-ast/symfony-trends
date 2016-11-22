@@ -92,6 +92,13 @@ class Contributor
     private $githubLocation = '';
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_core_member", type="boolean", options={"default": "0"})
+     */
+    private $isCoreMember = false;
+
+    /**
      * Get id
      *
      * @return int
@@ -339,6 +346,26 @@ class Contributor
         $this->githubLocation = $githubLocation;
 
         return $this;
+    }
+
+    /**
+     * @param boolean $isCoreMember
+     *
+     * @return $this
+     */
+    public function setCoreMember($isCoreMember)
+    {
+        $this->isCoreMember = $isCoreMember;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isCoreMember()
+    {
+        return $this->isCoreMember;
     }
 }
 
