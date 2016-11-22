@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Util\DateUtils;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\Query\ResultSetMapping;
@@ -73,8 +74,10 @@ class ContributionRepository extends Repository
     /**
      * @return array
      */
-    public function getContributionsPerDate()
+    public function getContributionsPerDate(array $projects, $interval)
     {
+        $intervalFormat = DateUtils::getIntervalFormat($interval);
+
         $rsm = new ResultSetMapping();
         $rsm
             ->addScalarResult('date', 'date')
@@ -83,10 +86,14 @@ class ContributionRepository extends Repository
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select date(commited_at) as date, project_id, count(*) as contribution_count
+            ->createNativeQuery('select strftime(:format, commited_at) as date, project_id, count(*) as contribution_count
                             from contribution
-                            group by date(commited_at), project_id
-                            order by commited_at asc', $rsm);
+                            where project_id in (:projectIds)
+                            group by strftime(:format, commited_at), project_id
+                            order by commited_at asc', $rsm)
+            ->setParameter('format', $intervalFormat)
+            ->setParameter('projectIds', $projects)
+        ;
 
         $result = $query->getResult();
 
@@ -133,4 +140,6 @@ class ContributionRepository extends Repository
 
         return new DateTimeImmutable($result);
     }
+
+
 }

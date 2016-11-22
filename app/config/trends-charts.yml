@@ -4,17 +4,17 @@ parameters:
 
         main:
 
-            commit_number_growth_per_date:
-                title: 'Commit number growth'
-
-                service: 'provider.contributors_per_date'
-                options:
-                    projects:
-                        - symfony
-                        - symfony-docs
-                chart:
-                    type: line
-
+#            commit_number_growth_per_date:
+#                title: 'Commit number growth'
+#
+#                service: 'provider.contributors_per_date'
+#                options:
+#                    projects:
+#                        - symfony
+#                        - symfony-docs
+#                chart:
+#                    type: line
+#
             contributors_intersection:
                 title: 'How many developers contribute to different projects'
 
@@ -53,3 +53,25 @@ parameters:
                         - symfony
                 chart:
                     type: map
+
+            contributions_per_date_yearly_symfony:
+                title: 'Commit count to Symfony per year'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 1
+                    interval: yearly
+                chart:
+                    type: bar
+
+            contributions_per_date_yearly_symfony_doc:
+                title: 'Commit count to Symfony documentation per year'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 2
+                    interval: yearly
+                chart:
+                    type: bar

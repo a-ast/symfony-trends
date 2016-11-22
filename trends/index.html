@@ -33,16 +33,6 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit number growth</h2>
-
-                                            <div id="commit_number_growth_per_date" class="chart line-chart"></div>
-                        <script>
-                            drawLineChart("#commit_number_growth_per_date", "data/commit_number_growth_per_date.json", "");
-                        </script>
-                                    </div>
-
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>How many developers contribute to different projects</h2>
 
                                             <div id="contributors_intersection" class="chart venn-chart"></div>
@@ -50,11 +40,6 @@
                             drawVennChart("#contributors_intersection", "data/contributors_intersection.json", "");
                         </script>
                                     </div>
-
-                    </div>
-
-    
-        <div class="row">
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
@@ -66,6 +51,11 @@
                         </script>
                                     </div>
 
+                    </div>
+
+    
+        <div class="row">
+
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Number of developers who made certain count of commits to Symfony docs</h2>
@@ -76,6 +66,13 @@
                         </script>
                                     </div>
 
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Where Symfony contributors live and work</h2>
+
+                                            <iframe src="contributors_per_country_symfony.html" id="contributors_per_country_symfony" class="chart" scrolling="no"></iframe>
+                                    </div>
+
                     </div>
 
     
@@ -83,9 +80,22 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Where Symfony contributors live and work</h2>
+                    <h2>Commit count to Symfony count year</h2>
 
-                                            <iframe src="contributors_per_country_symfony.html" id="contributors_per_country_symfony" class="chart" scrolling="no"></iframe>
+                                            <div id="contributions_per_date_yearly_symfony" class="chart bar-chart"></div>
+                        <script>
+                            drawBarChart("#contributions_per_date_yearly_symfony", "data/contributions_per_date_yearly_symfony.json", "");
+                        </script>
+                                    </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony documentation per year</h2>
+
+                                            <div id="contributions_per_date_yearly_symfony_doc" class="chart bar-chart"></div>
+                        <script>
+                            drawBarChart("#contributions_per_date_yearly_symfony_doc", "data/contributions_per_date_yearly_symfony_doc.json", "");
+                        </script>
                                     </div>
 
                     </div>

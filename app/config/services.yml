@@ -98,3 +98,9 @@ services:
         lazy: true
         arguments:
             - '@repository.contributor'
+
+    provider.contributions_per_date:
+        class: AppBundle\Provider\ContributionsPerDate
+        lazy: true
+        arguments:
+            - '@repository.contribution'
