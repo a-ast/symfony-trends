@@ -15,6 +15,17 @@ parameters:
 #                chart:
 #                    type: line
 #
+
+            contributors_per_country_symfony:
+                title: 'Where Symfony contributors live and work'
+
+                service: 'provider.contributors_per_country'
+                options:
+                    projects:
+                        - symfony
+                chart:
+                    type: map
+
             contributors_intersection:
                 title: 'How many developers contribute to different projects'
 
@@ -27,7 +38,7 @@ parameters:
                     type: venn
 
             commit_count_distribution_symfony:
-                title: 'Number of developers who made certain count of commits to Symfony'
+                title: 'Number of developers who made certain count of commits to <b>Symfony</b>'
 
                 service: 'provider.commit_count_distribution'
                 options:
@@ -44,15 +55,7 @@ parameters:
                 chart:
                     type: bar
 
-            contributors_per_country_symfony:
-                title: 'Where Symfony contributors live and work'
 
-                service: 'provider.contributors_per_country'
-                options:
-                    projects:
-                        - symfony
-                chart:
-                    type: map
 
             contributions_per_date_yearly_symfony:
                 title: 'Commit count to Symfony per year'

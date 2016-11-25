@@ -11,6 +11,12 @@ from (
 )
 group by project_ids;
 
+-- Count of contributor per project
+select project_id, count(distinct contributor_id) as contribution_count
+from contribution
+group by project_id
+order by contribution_count desc;
+
 
 
 -- Get contributors for a project sorted by number of contributions
