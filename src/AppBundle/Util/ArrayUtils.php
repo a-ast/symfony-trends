@@ -22,4 +22,17 @@ class ArrayUtils
 
         return array_filter($result);
     }
+
+    /**
+     * @param array $array
+     * @param string|int $columnName
+     *
+     * @return array
+     */
+    public static function castArrayColumnToInt(&$array, $columnName)
+    {
+        return array_map(function ($value) {
+            return (int)$value;
+        }, array_column($array, $columnName));
+    }
 }

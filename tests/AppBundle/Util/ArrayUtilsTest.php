@@ -16,4 +16,17 @@ class ArrayUtilsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['a', 'c', 'd', 'e', 'f'], array_values(ArrayUtils::trimMerge('a', ['', 'c'], 'd', ['e', 'f'])));
         $this->assertEquals(['a', 'b', 'c', 'e', 'f'], array_values(ArrayUtils::trimMerge('a', ['b', 'c'], false, ['e', 'f'])));
     }
+
+    public function testCastArrayColumnToInt()
+    {
+        $array = [
+            ['name' => 'a', 'value' => '10'],
+            ['name' => 'b', 'value' => '20'],
+            ['name' => 'c', 'value' => '86'],
+        ];
+
+        $this->assertEquals([10, 20, 86], ArrayUtils::castArrayColumnToInt($array, 'value'));
+
+
+    }
 }
