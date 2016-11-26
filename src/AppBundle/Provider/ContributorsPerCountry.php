@@ -2,6 +2,7 @@
 
 namespace AppBundle\Provider;
 
+use AppBundle\Chart\ChartMap;
 use AppBundle\Repository\ContributorRepository;
 
 class ContributorsPerCountry implements ProviderInterface
@@ -28,7 +29,7 @@ class ContributorsPerCountry implements ProviderInterface
 
         foreach ($data as $item) {
             if (!$item['iso_1'] && !$item['iso_2']) {
-                throw new \LogicException(sprintf('ISO 3 code for country is not defined, check contributor with id %d.', $item['id']));
+                throw new \LogicException(sprintf('ISO code for country is not defined, check contributor with id %d.', $item['id']));
             }
 
             if ($item['iso_1']) {
@@ -43,14 +44,44 @@ class ContributorsPerCountry implements ProviderInterface
         $result = [];
 
         foreach ($counts as $iso => $count) {
-            $result[] = [$iso, $count];
+            $result[] = ['iso' => $iso, 'value' => $count];
         }
 
-        return $result;
+        $chart = new ChartMap($options['chart']);
+        $chart->addSeries($result);
+
+        return $chart;
     }
 
     public function getChart(array $options = [])
     {
-        // TODO: Implement getChart() method.
+        $data = $this->repository->getContributionsPerCountry();
+
+        $combined = [];
+
+        foreach ($data as $item) {
+            if (!$item['iso_1'] && !$item['iso_2']) {
+                throw new \LogicException(sprintf('ISO code for country is not defined, check contributor with id %d.', $item['id']));
+            }
+
+            if ($item['iso_1']) {
+                $combined[] = $item['iso_1'];
+            } elseif ($item['iso_2']) {
+                $combined[] = $item['iso_2'];
+            }
+        }
+
+        $counts = array_count_values($combined);
+
+        $result = [];
+
+        foreach ($counts as $iso => $count) {
+            $result[] = ['iso' => $iso, 'value' => $count];
+        }
+
+        $chart = new ChartMap($options['chart']);
+        $chart->addSeries($result);
+
+        return $chart;
     }
 }

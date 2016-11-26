@@ -10,7 +10,7 @@ class Highcharts implements FormatterInterface
     /**
      * @inheritdoc
      */
-    public function format(Chart $chart)
+    public function format($chart)
     {
         $data = [
             'chart' => [
@@ -21,6 +21,9 @@ class Highcharts implements FormatterInterface
             ],
             'credits' => [
                 'enabled' => false,
+            ],
+            'legend' => [
+                'enabled' => (1 < count($chart->getSeries())),
             ],
             'xAxis' => [],
             'yAxis' => [

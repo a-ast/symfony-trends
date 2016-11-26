@@ -180,7 +180,7 @@ class ContributorRepository extends Repository
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select c.id, cn1.iso3 as iso_1, cn2.iso3 as iso_2
+            ->createNativeQuery('select c.id, cn1.iso2 as iso_1, cn2.iso2 as iso_2
                                     from contributor c
                                       left join sensiolabs_user s on s.contributor_id = c.id
                                       left join country cn1 on cn1.name = c.country

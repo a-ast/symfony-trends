@@ -37,6 +37,9 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         /** @var FormatterInterface $formatter */
         $formatter = $this->getContainer()->get('formatter.highcharts');
 
+        /** @var FormatterInterface $formatter */
+        $mapFormatter = $this->getContainer()->get('formatter.highmaps');
+
         /** @var TwigEngine $twig */
         $twig = $this->getContainer()->get('templating');
 
@@ -59,8 +62,11 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
                 $chart = $provider->getChart($options);
                 //$data = $provider->getData($options);
-
-                $data = $formatter->format($chart);
+                if ('map' === $options['chart']['type']) {
+                    $data = $mapFormatter->format($chart);
+                } else {
+                    $data = $formatter->format($chart);
+                }
 
                 $json = json_encode($data, JSON_PRETTY_PRINT);
 

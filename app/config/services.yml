@@ -77,6 +77,10 @@ services:
         class: AppBundle\Formatter\Highcharts
         lazy: true
 
+    formatter.highmaps:
+        class: AppBundle\Formatter\Highmaps
+        lazy: true
+
     provider.contributors_intersection:
         class: AppBundle\Provider\ContributorsIntersection
         lazy: true

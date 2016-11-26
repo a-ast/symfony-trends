@@ -13,5 +13,5 @@ interface FormatterInterface
      *
      * @return array
      */
-    public function format(Chart $chart);
+    public function format($chart);
 }

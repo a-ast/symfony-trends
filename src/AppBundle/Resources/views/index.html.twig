@@ -9,8 +9,11 @@
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/common.css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
 </head>
 
 <body>
@@ -31,20 +34,23 @@
 
             {% for trendId, trend in row %}
 
+                {% set prefix = '' %}
+                {% if trend.chart.type == 'map' %}
+                    {% set prefix = 'map' %}
+                {% endif %}
+
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>{{ trend.title }}</h2>
 
-                    {% if trend.chart.type != 'map' %}
-                        <div id="{{ trend.id }}" class="chart {{ trend.chart.type }}-chart"></div>
-                        <script>
 
-                            $.getJSON('{{ trend.dataFile }}', function(data) {
-                                var chart = new Highcharts.Chart('{{ trend.id }}', data);
-                            });
-                        </script>
-                    {% else %}
-                        <iframe src="{{ trend.id }}.html" id="{{ trend.id }}" class="chart" scrolling="no"></iframe>
-                    {% endif %}
+                    <div id="{{ trend.id }}" class="chart {{ trend.chart.type }}-chart"></div>
+                    <script>
+
+                        $.getJSON('{{ trend.dataFile }}', function(data) {
+                            new Highcharts.{{ prefix }}Chart('{{ trend.id }}', data);
+                        });
+                    </script>
+
                 </div>
 
             {% endfor %}

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Chart;
 
-class Chart
+class Chart implements ChartInterface
 {
     /**
      * @var string
