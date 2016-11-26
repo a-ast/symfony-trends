@@ -80,12 +80,6 @@ class GenerateChartDataCommand extends ContainerAwareCommand
                     'chart' => $chartView['options']['chart'],
                 ];
 
-                if ('map' === $chartView['options']['chart']['type']) {
-                    $embeddedFile = $twig->render('@App/embedded.html.twig', ['trend' => $trends[$groupId][$chartId]]);
-
-                    $filePath = sprintf('%s/../trends/%s.html', $rootDir, $chartId);
-                    $fs->dumpFile($filePath, $embeddedFile);
-                }
             }
         }
 
