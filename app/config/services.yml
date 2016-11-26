@@ -95,12 +95,6 @@ services:
             - '@repository.contribution'
             - '@repository.project'
 
-    provider.contributors_per_date:
-        class: AppBundle\Provider\ContributorsPerDate
-        lazy: true
-        arguments:
-            - '@repository.contribution'
-
     provider.contributors_per_country:
         class: AppBundle\Provider\ContributorsPerCountry
         lazy: true

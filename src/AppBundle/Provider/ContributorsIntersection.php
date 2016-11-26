@@ -29,7 +29,7 @@ class ContributorsIntersection implements ProviderInterface
         $this->projectRepository = $projectRepository;
     }
 
-    public function getData(array $options = [])
+    public function getChart(array $options = [])
     {
         $intersections = $this->contributionRepository->getContributorProjectIntersection();
 
@@ -49,7 +49,7 @@ class ContributorsIntersection implements ProviderInterface
             $setProjects = explode(',', $intersection['project_ids']);
 
             if(count($setProjects) > 1) {
-               $data[$intersection['project_ids']]['size'] = (int)$intersection['contributor_count'];
+                $data[$intersection['project_ids']]['size'] = (int)$intersection['contributor_count'];
             };
 
             foreach ($setProjects as $setProject) {
@@ -68,10 +68,5 @@ class ContributorsIntersection implements ProviderInterface
         }
 
         return array_values($data);
-    }
-
-    public function getChart(array $options = [])
-    {
-        // TODO: Implement getChart() method.
     }
 }

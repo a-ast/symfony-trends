@@ -4,19 +4,6 @@ parameters:
 
         main:
 
-#           # Not supprted
-#           commit_number_growth_per_date:
-#                title: 'Commit number growth'
-#
-#                service: 'provider.contributors_per_date'
-#                options:
-#                    projects:
-#                        - symfony
-#                        - symfony-docs
-#                chart:
-#                    type: line
-#
-
             contributors_per_country_symfony:
                 title: 'Where Symfony contributors live and work'
 
