@@ -73,6 +73,10 @@ services:
     #################################
     # Data providers
     #################################
+    formatter.highcharts:
+        class: AppBundle\Formatter\Highcharts
+        lazy: true
+
     provider.contributors_intersection:
         class: AppBundle\Provider\ContributorsIntersection
         lazy: true

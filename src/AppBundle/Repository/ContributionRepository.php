@@ -72,25 +72,34 @@ class ContributionRepository extends Repository
     }
 
     /**
+     * @param array $projects
+     * @param string $interval
+     *
      * @return array
      */
     public function getContributionsPerDate(array $projects, $interval)
     {
-        $intervalFormat = DateUtils::getIntervalFormat($interval);
+        $intervalFormat = DateUtils::getDbIntervalFormat($interval);
 
         $rsm = new ResultSetMapping();
         $rsm
             ->addScalarResult('date', 'date')
             ->addScalarResult('project_id', 'project_id')
-            ->addScalarResult('contribution_count', 'contribution_count');
+            ->addScalarResult('contribution_count', 'contribution_count')
+            ->addScalarResult('core_team_contribution_count', 'core_team_contribution_count');
 
         $query = $this
             ->getEntityManager()
-            ->createNativeQuery('select strftime(:format, commited_at) as date, project_id, count(*) as contribution_count
-                            from contribution
-                            where project_id in (:projectIds)
-                            group by strftime(:format, commited_at), project_id
-                            order by commited_at asc', $rsm)
+            ->createNativeQuery('select 
+                                    strftime(:format, commited_at) as date, project_id, 
+                                    count(*) as contribution_count,
+                                    sum(c.is_core_member) as core_team_contribution_count
+                                from contribution cn
+                                left join contributor c on cn.contributor_id = c.id 
+                                where project_id in (:projectIds)
+                                group by strftime(:format, commited_at), project_id
+                                order by commited_at asc
+                                ', $rsm)
             ->setParameter('format', $intervalFormat)
             ->setParameter('projectIds', $projects)
         ;

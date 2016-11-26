@@ -69,4 +69,9 @@ class ContributorsIntersection implements ProviderInterface
 
         return array_values($data);
     }
+
+    public function getChart(array $options = [])
+    {
+        // TODO: Implement getChart() method.
+    }
 }

@@ -44,4 +44,9 @@ class ContributorsPerDate implements ProviderInterface
 
         return $data;
     }
+
+    public function getChart(array $options = [])
+    {
+        // TODO: Implement getChart() method.
+    }
 }

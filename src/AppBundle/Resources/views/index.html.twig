@@ -9,13 +9,8 @@
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/common.css" />
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="js/venn/venn.js"></script>
-    <script src="js/bar-chart.js"></script>
-    <script src="js/line-chart.js"></script>
-    <script src="js/map-chart.js"></script>
-    <!-- https://github.com/benfred/venn.js -->
-    <script src="js/venn-diagramm.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
@@ -42,7 +37,10 @@
                     {% if trend.chart.type != 'map' %}
                         <div id="{{ trend.id }}" class="chart {{ trend.chart.type }}-chart"></div>
                         <script>
-                            draw{{ trend.chart.type|capitalize }}Chart("#{{ trend.id }}", "{{ trend.dataFile }}", "");
+
+                            $.getJSON('{{ trend.dataFile }}', function(data) {
+                                var chart = new Highcharts.Chart('{{ trend.id }}', data);
+                            });
                         </script>
                     {% else %}
                         <iframe src="{{ trend.id }}.html" id="{{ trend.id }}" class="chart" scrolling="no"></iframe>

@@ -48,4 +48,9 @@ class ContributorsPerCountry implements ProviderInterface
 
         return $result;
     }
+
+    public function getChart(array $options = [])
+    {
+        // TODO: Implement getChart() method.
+    }
 }

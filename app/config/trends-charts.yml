@@ -4,7 +4,8 @@ parameters:
 
         main:
 
-#            commit_number_growth_per_date:
+#           # Not supprted
+#           commit_number_growth_per_date:
 #                title: 'Commit number growth'
 #
 #                service: 'provider.contributors_per_date'
@@ -16,35 +17,39 @@ parameters:
 #                    type: line
 #
 
-            contributors_per_country_symfony:
-                title: 'Where Symfony contributors live and work'
+#            contributors_per_country_symfony:
+#                title: 'Where Symfony contributors live and work'
+#
+#                service: 'provider.contributors_per_country'
+#                options:
+#                    projects:
+#                        - symfony
+#                chart:
+#                    type: map
+#
+#            contributors_intersection:
+#                title: 'How many developers contribute to different projects'
+#
+#                service: 'provider.contributors_intersection'
+#                options:
+#                    projects:
+#                        - symfony
+#                        - symfony-docs
+#                chart:
+#                    type: venn
 
-                service: 'provider.contributors_per_country'
-                options:
-                    projects:
-                        - symfony
-                chart:
-                    type: map
 
-            contributors_intersection:
-                title: 'How many developers contribute to different projects'
-
-                service: 'provider.contributors_intersection'
-                options:
-                    projects:
-                        - symfony
-                        - symfony-docs
-                chart:
-                    type: venn
+            ###################################
+            ############# Ready ###############
 
             commit_count_distribution_symfony:
-                title: 'Number of developers who made certain count of commits to <b>Symfony</b>'
+                title: 'Number of developers who made certain count of commits to Symfony'
 
                 service: 'provider.commit_count_distribution'
                 options:
                     project_id: 1
-                chart:
-                    type: bar
+                    chart:
+                        type: column
 
             commit_count_distribution_symfony_docs:
                 title: 'Number of developers who made certain count of commits to Symfony docs'
@@ -52,10 +57,8 @@ parameters:
                 service: 'provider.commit_count_distribution'
                 options:
                     project_id: 2
-                chart:
-                    type: bar
-
-
+                    chart:
+                        type: column
 
             contributions_per_date_yearly_symfony:
                 title: 'Commit count to Symfony per year'
@@ -64,9 +67,9 @@ parameters:
                 options:
                     projects:
                         - 1
-                    interval: yearly
-                chart:
-                    type: bar
+                    interval: year
+                    chart:
+                        type: column
 
             contributions_per_date_yearly_symfony_doc:
                 title: 'Commit count to Symfony documentation per year'
@@ -75,6 +78,22 @@ parameters:
                 options:
                     projects:
                         - 2
-                    interval: yearly
-                chart:
-                    type: bar
+                    interval: year
+                    chart:
+                        type: column
+
+
+
+            contributions_per_date_monthly_symfony:
+                title: 'Commit count to Symfony per month'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 1
+                    interval: month
+                    chart:
+                        type: area
+                        sub-type: stair-step
+                        x-axis:
+                            type: datetime

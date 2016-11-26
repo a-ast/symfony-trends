@@ -2,7 +2,11 @@
 
 namespace AppBundle\Provider;
 
+use AppBundle\Chart\Chart;
 use AppBundle\Repository\ContributionRepository;
+use AppBundle\Util\ArrayUtils;
+use AppBundle\Util\DateUtils;
+use DateTime;
 
 class ContributionsPerDate implements ProviderInterface
 {
@@ -35,5 +39,30 @@ class ContributionsPerDate implements ProviderInterface
         }
 
         return $data;
+    }
+
+    public function getChart(array $options = [])
+    {
+        $projects = $options['projects'];
+        $interval = $options['interval'];
+
+        $series1 = [];
+        $series2 = [];
+
+        $data = $this->repository->getContributionsPerDate($projects, $interval);
+
+        foreach ($data as $item) {
+            $date = DateUtils::getDateTime($item['date'], $interval);
+            $series1[] = [$date, (int)$item['contribution_count']];
+            $series2[] = [$date, (int)$item['core_team_contribution_count']];
+        }
+
+        $chart = new Chart($options['chart']);
+        $chart
+            ->addSeries($series1)
+            ->addSeries($series2)
+        ;
+
+        return $chart;
     }
 }

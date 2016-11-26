@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Formatter\FormatterInterface;
 use AppBundle\Provider\ProviderInterface;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -33,6 +34,9 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $chartData = $this->getContainer()->getParameter('trends');
 
+        /** @var FormatterInterface $formatter */
+        $formatter = $this->getContainer()->get('formatter.highcharts');
+
         /** @var TwigEngine $twig */
         $twig = $this->getContainer()->get('templating');
 
@@ -41,19 +45,23 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         $trends = [];
 
         foreach ($chartData as $groupId => $groupData) {
-            foreach ($groupData as $chartId => $chart) {
+            foreach ($groupData as $chartId => $chartView) {
 
                 if (0 !== count($chartsToGenerate) && !in_array($chartId, $chartsToGenerate)) {
                     continue;
                 }
 
-                $providerId = $chart['service'];
-                $options = $chart['options'];
+                $providerId = $chartView['service'];
+                $options = $chartView['options'];
 
                 /** @var ProviderInterface $provider */
                 $provider = $this->getContainer()->get($providerId);
 
-                $data = $provider->getData($options);
+                $chart = $provider->getChart($options);
+                //$data = $provider->getData($options);
+
+                $data = $formatter->format($chart);
+
                 $json = json_encode($data, JSON_PRETTY_PRINT);
 
                 $filePath = sprintf('%s/../trends/data/%s.json', $rootDir, $chartId);
@@ -62,11 +70,11 @@ class GenerateChartDataCommand extends ContainerAwareCommand
                 $trends[$groupId][$chartId] = [
                     'id' => $chartId,
                     'dataFile' => sprintf('data/%s.json', $chartId),
-                    'title' => $chart['title'],
-                    'chart' => $chart['chart'],
+                    'title' => $chartView['title'],
+                    'chart' => $chartView['options']['chart'],
                 ];
 
-                if ('map' === $chart['chart']['type']) {
+                if ('map' === $chartView['options']['chart']['type']) {
                     $embeddedFile = $twig->render('@App/embedded.html.twig', ['trend' => $trends[$groupId][$chartId]]);
 
                     $filePath = sprintf('%s/../trends/%s.html', $rootDir, $chartId);
