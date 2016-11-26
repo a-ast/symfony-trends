@@ -122,6 +122,27 @@
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony documentation per year</h2>
+
+
+                    <div id="contributions_per_date_yearly_symfony_doc2" class="chart area-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_yearly_symfony_doc2.json', function(data) {
+                            new Highcharts.Chart('contributions_per_date_yearly_symfony_doc2', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Commit count to Symfony per month</h2>
 
 

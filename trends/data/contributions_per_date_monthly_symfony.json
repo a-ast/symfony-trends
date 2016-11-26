@@ -20,6 +20,11 @@
             "text": null
         }
     },
+    "plotOptions": {
+        "area": {
+            "step": "right"
+        }
+    },
     "series": [
         {
             "data": [
@@ -356,7 +361,6 @@
                     191
                 ]
             ],
-            "step": "left",
             "name": "All contributors"
         },
         {
@@ -694,7 +698,6 @@
                     159
                 ]
             ],
-            "step": "left",
             "name": "Core team"
         }
     ]

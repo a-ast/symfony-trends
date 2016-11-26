@@ -28,6 +28,9 @@
             "text": null
         }
     },
+    "plotOptions": {
+        "area": []
+    },
     "series": [
         {
             "data": [

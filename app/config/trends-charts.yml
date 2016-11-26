@@ -69,7 +69,17 @@ parameters:
                     chart:
                         type: column
 
+            contributions_per_date_yearly_symfony_doc2:
+                title: 'Commit count to Symfony documentation per year'
 
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 2
+                    interval: year
+                    chart:
+                        type: area
+                        sub-type: stair-step
 
             contributions_per_date_monthly_symfony:
                 title: 'Commit count to Symfony per month'

@@ -30,7 +30,16 @@ class Highcharts implements FormatterInterface
                 'endOnTick' => false,
                 'title' => ['text' => null],
             ],
+            'plotOptions' => [
+                'area' => [
+
+                ],
+            ],
         ];
+
+        if ('stair-step' === $chart->getSubType()) {
+            $data['plotOptions']['area']['step'] = 'right';
+        }
 
 
         if ('datetime' === $chart->getXAxisType()) {
@@ -40,6 +49,16 @@ class Highcharts implements FormatterInterface
         foreach ($chart->getSeries() as $seriesIndex => $series) {
             $seriesView = [];
 
+            // In order to correctly draw step area, prepend a series with a copy of the first series element (with empty title)
+            if ('stair-step' === $chart->getSubType() && 'datetime' !== $chart->getXAxisType()) {
+                $firstElement = $series[0];
+                $firstElement[0] = '';
+
+                array_unshift($series, $firstElement);
+
+            }
+
+            // @todo: move it to serializer
             if ('datetime' === $chart->getXAxisType()) {
                 array_walk($series, function (&$item) {
                     $item[0] = 1000 * $item[0]->format('U');
@@ -55,9 +74,7 @@ class Highcharts implements FormatterInterface
 
             $seriesView['data'] = $series;
 
-            if ('stair-step' === $chart->getSubType()) {
-                $seriesView['step'] = 'left';
-            }
+
 
             if (isset($chart->getSeriesNames()[$seriesIndex])) {
                 $seriesView['name'] = $chart->getSeriesNames()[$seriesIndex];
