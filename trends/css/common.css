@@ -25,7 +25,7 @@ h2 {
 }
 
 .bar-chart rect {
-    fill: #53A3CC;
+    /*fill: #53A3CC;*/
 }
 
 .bar-chart .bar-label {

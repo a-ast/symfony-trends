@@ -1,30 +1,38 @@
-[
-    {
-        "label": "1",
-        "value": 889
+{
+    "chart": {
+        "type": "column"
     },
-    {
-        "label": "2",
-        "value": 238
+    "title": {
+        "text": null
     },
-    {
-        "label": "3-5",
-        "value": 198
+    "credits": {
+        "enabled": false
     },
-    {
-        "label": "5-10",
-        "value": 129
+    "xAxis": {
+        "categories": [
+            "1",
+            "2",
+            "3-5",
+            "5-10",
+            "10-30",
+            "30-200",
+            "200+"
+        ]
     },
-    {
-        "label": "10-30",
-        "value": 92
+    "yAxis": {
+        "endOnTick": false
     },
-    {
-        "label": "30-200",
-        "value": 47
-    },
-    {
-        "label": "200+",
-        "value": 11
-    }
-]
+    "series": [
+        {
+            "data": [
+                889,
+                238,
+                198,
+                129,
+                92,
+                47,
+                11
+            ]
+        }
+    ]
+}
