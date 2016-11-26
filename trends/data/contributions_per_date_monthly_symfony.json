@@ -15,7 +15,10 @@
         "type": "datetime"
     },
     "yAxis": {
-        "endOnTick": false
+        "endOnTick": false,
+        "title": {
+            "text": null
+        }
     },
     "series": [
         {

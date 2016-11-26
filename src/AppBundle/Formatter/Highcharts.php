@@ -28,6 +28,7 @@ class Highcharts implements FormatterInterface
             'xAxis' => [],
             'yAxis' => [
                 'endOnTick' => false,
+                'title' => ['text' => null],
             ],
         ];
 

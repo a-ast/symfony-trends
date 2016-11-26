@@ -12,7 +12,9 @@ Architecture:
 
 1. Rethink chart generation: return series list from provider 
    (SeriesProvider)
-   
+2. Simplify generator command
+3. Simplify Formatter (think about serializer)
+
 Charts
 
 - People to contributed monthly (most likele showing new contributors)
