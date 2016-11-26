@@ -42,8 +42,8 @@ class ContributionsPerDate implements ProviderInterface
 
         $chart = new Chart($options['chart']);
         $chart
-            ->addSeries($series1)
-            ->addSeries($series2)
+            ->addSeries($series1, 'All contributors')
+            ->addSeries($series2, 'Core team')
         ;
 
         return $chart;

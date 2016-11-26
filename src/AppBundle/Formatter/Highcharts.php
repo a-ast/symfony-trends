@@ -36,7 +36,7 @@ class Highcharts implements FormatterInterface
             $data['xAxis']['type'] = 'datetime';
         }
 
-        foreach ($chart->getSeries() as $series) {
+        foreach ($chart->getSeries() as $seriesIndex => $series) {
             $seriesView = [];
 
             if ('datetime' === $chart->getXAxisType()) {
@@ -56,6 +56,10 @@ class Highcharts implements FormatterInterface
 
             if ('stair-step' === $chart->getSubType()) {
                 $seriesView['step'] = 'left';
+            }
+
+            if (isset($chart->getSeriesNames()[$seriesIndex])) {
+                $seriesView['name'] = $chart->getSeriesNames()[$seriesIndex];
             }
 
             $data['series'][] = $seriesView;

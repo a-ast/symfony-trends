@@ -27,7 +27,12 @@ class Chart implements ChartInterface
     /**
      * @var array
      */
-    private $xAxis;
+    private $xAxis = [];
+
+    /**
+     * @var array
+     */
+    private $seriesNames = [];
 
     /**
      * Constructor.
@@ -86,11 +91,16 @@ class Chart implements ChartInterface
     /**
      * @param array $series
      *
+     * @param string $name
      * @return $this
      */
-    public function addSeries(array $series)
+    public function addSeries(array $series, $name = '')
     {
         $this->series[] = $series;
+
+        if ('' !== $name) {
+            $this->seriesNames[] = $name;
+        }
 
         return $this;
     }
@@ -129,5 +139,13 @@ class Chart implements ChartInterface
     public function getXAxisType()
     {
         return (isset($this->xAxis['type'])) ? $this->xAxis['type'] : '';
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeriesNames()
+    {
+        return $this->seriesNames;
     }
 }

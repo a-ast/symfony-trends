@@ -353,7 +353,8 @@
                     191
                 ]
             ],
-            "step": "left"
+            "step": "left",
+            "name": "All contributors"
         },
         {
             "data": [
@@ -690,7 +691,8 @@
                     159
                 ]
             ],
-            "step": "left"
+            "step": "left",
+            "name": "Core team"
         }
     ]
 }
