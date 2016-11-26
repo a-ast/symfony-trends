@@ -8,6 +8,9 @@
     "credits": {
         "enabled": false
     },
+    "legend": {
+        "enabled": false
+    },
     "xAxis": {
         "categories": [
             "1",

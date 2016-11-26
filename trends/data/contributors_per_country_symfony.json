@@ -1,282 +1,313 @@
-[
-    [
-        "DEU",
-        118
-    ],
-    [
-        "MAR",
-        7
-    ],
-    [
-        "RUS",
-        28
-    ],
-    [
-        "CAN",
-        23
-    ],
-    [
-        "UKR",
-        25
-    ],
-    [
-        "NOR",
-        8
-    ],
-    [
-        "FRA",
-        181
-    ],
-    [
-        "CZE",
-        10
-    ],
-    [
-        "BLR",
-        8
-    ],
-    [
-        "KAZ",
-        3
-    ],
-    [
-        "BRA",
-        8
-    ],
-    [
-        "SVN",
-        2
-    ],
-    [
-        "TUR",
-        6
-    ],
-    [
-        "ROU",
-        7
-    ],
-    [
-        "LTU",
-        8
-    ],
-    [
-        "ESP",
-        51
-    ],
-    [
-        "CHE",
-        29
-    ],
-    [
-        "USA",
-        112
-    ],
-    [
-        "GBR",
-        78
-    ],
-    [
-        "POL",
-        33
-    ],
-    [
-        "CUB",
-        4
-    ],
-    [
-        "ISR",
-        2
-    ],
-    [
-        "NLD",
-        63
-    ],
-    [
-        "AUT",
-        11
-    ],
-    [
-        "ITA",
-        22
-    ],
-    [
-        "VEN",
-        2
-    ],
-    [
-        "BEL",
-        25
-    ],
-    [
-        "IND",
-        9
-    ],
-    [
-        "CHN",
-        6
-    ],
-    [
-        "HUN",
-        5
-    ],
-    [
-        "JPN",
-        12
-    ],
-    [
-        "PHL",
-        4
-    ],
-    [
-        "SWE",
-        7
-    ],
-    [
-        "TUN",
-        4
-    ],
-    [
-        "TWN",
-        1
-    ],
-    [
-        "PER",
-        2
-    ],
-    [
-        "FIN",
-        6
-    ],
-    [
-        "JOR",
-        1
-    ],
-    [
-        "AFG",
-        2
-    ],
-    [
-        "ARG",
-        5
-    ],
-    [
-        "AUS",
-        20
-    ],
-    [
-        "BGD",
-        2
-    ],
-    [
-        "BIH",
-        1
-    ],
-    [
-        "BGR",
-        1
-    ],
-    [
-        "CHL",
-        3
-    ],
-    [
-        "COL",
-        2
-    ],
-    [
-        "HRV",
-        1
-    ],
-    [
-        "DNK",
-        2
-    ],
-    [
-        "ECU",
-        1
-    ],
-    [
-        "EGY",
-        2
-    ],
-    [
-        "EST",
-        3
-    ],
-    [
-        "GRC",
-        2
-    ],
-    [
-        "GTM",
-        2
-    ],
-    [
-        "HKG",
-        1
-    ],
-    [
-        "IDN",
-        2
-    ],
-    [
-        "IRN",
-        1
-    ],
-    [
-        "IRL",
-        4
-    ],
-    [
-        "LVA",
-        2
-    ],
-    [
-        "LUX",
-        2
-    ],
-    [
-        "MYS",
-        1
-    ],
-    [
-        "MLT",
-        1
-    ],
-    [
-        "MYT",
-        1
-    ],
-    [
-        "NZL",
-        4
-    ],
-    [
-        "PAK",
-        1
-    ],
-    [
-        "PRT",
-        8
-    ],
-    [
-        "SRB",
-        3
-    ],
-    [
-        "SGP",
-        1
-    ],
-    [
-        "SVK",
-        3
-    ],
-    [
-        "ZAF",
-        2
-    ],
-    [
-        "URY",
-        2
+{
+    "chart": {
+        "type": "map",
+        "map": "custom\/world"
+    },
+    "title": {
+        "text": null
+    },
+    "credits": {
+        "enabled": false
+    },
+    "legend": {
+        "enabled": false
+    },
+    "colorAxis": {
+        "min": 1
+    },
+    "plotOptions": {
+        "map": {
+            "joinBy": [
+                "iso-a2",
+                "iso"
+            ],
+            "nullColor": "#fff"
+        }
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "iso": "DE",
+                    "value": 118
+                },
+                {
+                    "iso": "MA",
+                    "value": 7
+                },
+                {
+                    "iso": "RU",
+                    "value": 28
+                },
+                {
+                    "iso": "CA",
+                    "value": 23
+                },
+                {
+                    "iso": "UA",
+                    "value": 25
+                },
+                {
+                    "iso": "NO",
+                    "value": 8
+                },
+                {
+                    "iso": "FR",
+                    "value": 181
+                },
+                {
+                    "iso": "CZ",
+                    "value": 10
+                },
+                {
+                    "iso": "BY",
+                    "value": 8
+                },
+                {
+                    "iso": "KZ",
+                    "value": 3
+                },
+                {
+                    "iso": "BR",
+                    "value": 8
+                },
+                {
+                    "iso": "SI",
+                    "value": 2
+                },
+                {
+                    "iso": "TR",
+                    "value": 6
+                },
+                {
+                    "iso": "RO",
+                    "value": 7
+                },
+                {
+                    "iso": "LT",
+                    "value": 8
+                },
+                {
+                    "iso": "ES",
+                    "value": 51
+                },
+                {
+                    "iso": "CH",
+                    "value": 29
+                },
+                {
+                    "iso": "US",
+                    "value": 112
+                },
+                {
+                    "iso": "GB",
+                    "value": 78
+                },
+                {
+                    "iso": "PL",
+                    "value": 33
+                },
+                {
+                    "iso": "CU",
+                    "value": 4
+                },
+                {
+                    "iso": "IL",
+                    "value": 2
+                },
+                {
+                    "iso": "NL",
+                    "value": 63
+                },
+                {
+                    "iso": "AT",
+                    "value": 11
+                },
+                {
+                    "iso": "IT",
+                    "value": 22
+                },
+                {
+                    "iso": "VE",
+                    "value": 2
+                },
+                {
+                    "iso": "BE",
+                    "value": 25
+                },
+                {
+                    "iso": "IN",
+                    "value": 9
+                },
+                {
+                    "iso": "CN",
+                    "value": 6
+                },
+                {
+                    "iso": "HU",
+                    "value": 5
+                },
+                {
+                    "iso": "JP",
+                    "value": 12
+                },
+                {
+                    "iso": "PH",
+                    "value": 4
+                },
+                {
+                    "iso": "SE",
+                    "value": 7
+                },
+                {
+                    "iso": "TN",
+                    "value": 4
+                },
+                {
+                    "iso": "TW",
+                    "value": 1
+                },
+                {
+                    "iso": "PE",
+                    "value": 2
+                },
+                {
+                    "iso": "FI",
+                    "value": 6
+                },
+                {
+                    "iso": "JO",
+                    "value": 1
+                },
+                {
+                    "iso": "AF",
+                    "value": 2
+                },
+                {
+                    "iso": "AR",
+                    "value": 5
+                },
+                {
+                    "iso": "AU",
+                    "value": 20
+                },
+                {
+                    "iso": "BD",
+                    "value": 2
+                },
+                {
+                    "iso": "BA",
+                    "value": 1
+                },
+                {
+                    "iso": "BG",
+                    "value": 1
+                },
+                {
+                    "iso": "CL",
+                    "value": 3
+                },
+                {
+                    "iso": "CO",
+                    "value": 2
+                },
+                {
+                    "iso": "HR",
+                    "value": 1
+                },
+                {
+                    "iso": "DK",
+                    "value": 2
+                },
+                {
+                    "iso": "EC",
+                    "value": 1
+                },
+                {
+                    "iso": "EG",
+                    "value": 2
+                },
+                {
+                    "iso": "EE",
+                    "value": 3
+                },
+                {
+                    "iso": "GR",
+                    "value": 2
+                },
+                {
+                    "iso": "GT",
+                    "value": 2
+                },
+                {
+                    "iso": "HK",
+                    "value": 1
+                },
+                {
+                    "iso": "ID",
+                    "value": 2
+                },
+                {
+                    "iso": "IR",
+                    "value": 1
+                },
+                {
+                    "iso": "IE",
+                    "value": 4
+                },
+                {
+                    "iso": "LV",
+                    "value": 2
+                },
+                {
+                    "iso": "LU",
+                    "value": 2
+                },
+                {
+                    "iso": "MY",
+                    "value": 1
+                },
+                {
+                    "iso": "MT",
+                    "value": 1
+                },
+                {
+                    "iso": "YT",
+                    "value": 1
+                },
+                {
+                    "iso": "NZ",
+                    "value": 4
+                },
+                {
+                    "iso": "PK",
+                    "value": 1
+                },
+                {
+                    "iso": "PT",
+                    "value": 8
+                },
+                {
+                    "iso": "RS",
+                    "value": 3
+                },
+                {
+                    "iso": "SG",
+                    "value": 1
+                },
+                {
+                    "iso": "SK",
+                    "value": 3
+                },
+                {
+                    "iso": "ZA",
+                    "value": 2
+                },
+                {
+                    "iso": "UY",
+                    "value": 2
+                }
+            ]
+        }
     ]
-]
+}
