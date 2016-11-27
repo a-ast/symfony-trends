@@ -13,7 +13,8 @@
         "enabled": false
     },
     "colorAxis": {
-        "min": 1
+        "min": 1,
+        "type": "logarithmic"
     },
     "plotOptions": {
         "map": {

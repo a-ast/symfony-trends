@@ -14,6 +14,7 @@ Architecture:
 1. Rethink chart generation: return series list from provider 
    (SeriesProvider)
 2. Simplify generator command
+2. Merge Highcharts and Highmaps formatters
 3. Simplify Formatter (think about serializer)
 4. Get rid of categories (always calc it from combination of series)
 

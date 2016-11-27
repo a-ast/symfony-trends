@@ -28,6 +28,7 @@ class Highmaps implements FormatterInterface
             ],
             'colorAxis' => [
                 'min' => 1,
+                'type' => 'logarithmic',
             ],
             'plotOptions' => [
                 'map' => [
