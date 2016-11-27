@@ -28,6 +28,19 @@ parameters:
 
             ###################################
             ############# Ready ###############
+            contributions_per_date_yearly:
+                title: 'Commit count to Symfony framework and documentation per year'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 1
+                        - 2
+                    interval: year
+                    include_core_team_commits: false
+                    chart:
+                        type: column
+
 
             commit_count_distribution_symfony:
                 title: 'Number of developers who made certain count of commits to Symfony'
@@ -47,39 +60,7 @@ parameters:
                     chart:
                         type: column
 
-            contributions_per_date_yearly_symfony:
-                title: 'Commit count to Symfony per year'
 
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - 1
-                    interval: year
-                    chart:
-                        type: column
-
-            contributions_per_date_yearly_symfony_doc:
-                title: 'Commit count to Symfony documentation per year'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - 2
-                    interval: year
-                    chart:
-                        type: column
-
-            contributions_per_date_yearly_symfony_doc2:
-                title: 'Commit count to Symfony documentation per year'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - 2
-                    interval: year
-                    chart:
-                        type: area
-                        sub-type: stair-step
 
             contributions_per_date_monthly_symfony:
                 title: 'Commit count to Symfony per month'
@@ -89,8 +70,53 @@ parameters:
                     projects:
                         - 1
                     interval: month
+                    include_core_team_commits: true
                     chart:
                         type: area
                         sub-type: stair-step
                         x-axis:
                             type: datetime
+
+
+            contributions_per_date_yearly_symfony:
+                title: 'Commit count to Symfony per year'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 1
+                    interval: year
+                    include_core_team_commits: true
+                    chart:
+                        type: area
+                        sub-type: stair-step
+
+
+            contributions_per_date_monthly_symfony_docs:
+                title: 'Commit count to Symfony documentation per month'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 2
+                    interval: month
+                    include_core_team_commits: true
+                    chart:
+                        type: area
+                        sub-type: stair-step
+                        x-axis:
+                            type: datetime
+
+
+            contributions_per_date_yearly_symfony_docs:
+                title: 'Commit count to Symfony documentation per year'
+
+                service: 'provider.contributions_per_date'
+                options:
+                    projects:
+                        - 2
+                    interval: year
+                    include_core_team_commits: true
+                    chart:
+                        type: area
+                        sub-type: stair-step

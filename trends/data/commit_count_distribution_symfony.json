@@ -9,7 +9,8 @@
         "enabled": false
     },
     "legend": {
-        "enabled": false
+        "enabled": false,
+        "verticalAlign": "top"
     },
     "xAxis": {
         "tickLength": 0,

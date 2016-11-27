@@ -3,9 +3,10 @@ TODO
 
 Beta
 
-0. Define chart colors, remove redundant symbols
+0. Define chart colors
 0. Output labels with data
-0. 
+0. Improve on hover
+0. Improve tooltips
 1. Crawl twig and silex
 2. Consider the idea to add empty item as a first element of 
    steped area (maybe got it as a special type)

@@ -26,25 +26,35 @@ class ContributionsPerDate implements ProviderInterface
 
     public function getChart(array $options = [])
     {
-        $projects = $options['projects'];
+        $projectIds = $options['projects'];
         $interval = $options['interval'];
+        $includeCoreTeamCommits = (bool)$options['include_core_team_commits'];
 
-        $series1 = [];
-        $series2 = [];
+        $series = [];
 
-        $data = $this->repository->getContributionsPerDate($projects, $interval);
+        $data = $this->repository->getContributionsPerDate($projectIds, $interval);
 
         foreach ($data as $item) {
             $date = DateUtils::getDateTime($item['date'], $interval);
-            $series1[] = [$date, (int)$item['contribution_count']];
-            $series2[] = [$date, (int)$item['core_team_contribution_count']];
+
+            foreach ($projectIds as $projectId) {
+                if ((int)$item['project_id'] !== $projectId) {
+                    continue;
+                }
+                $commitCount =  (int)$item['contribution_count'];
+                $series[$projectId][] = [$date, $commitCount];
+
+                if (true === $includeCoreTeamCommits) {
+                    $coreCommitCount = (int)$item['core_team_contribution_count'];
+                    $series[$projectId.' core'][] = [$date, $coreCommitCount];
+                }
+            }
         }
 
         $chart = new Chart($options['chart']);
-        $chart
-            ->addSeries($series1, 'All contributors')
-            ->addSeries($series2, 'Core team')
-        ;
+        foreach ($series as $key => $item) {
+            $chart->addSeries($item, $key);
+        }
 
         return $chart;
     }

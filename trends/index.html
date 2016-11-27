@@ -48,6 +48,27 @@
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony framework and documentation per year</h2>
+
+
+                    <div id="contributions_per_date_yearly" class="chart column-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_yearly.json', function(data) {
+                            new Highcharts.Chart('contributions_per_date_yearly', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Number of developers who made certain count of commits to Symfony</h2>
 
 
@@ -61,11 +82,6 @@
 
                 </div>
 
-                    </div>
-
-    
-        <div class="row">
-
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
@@ -77,59 +93,6 @@
 
                         $.getJSON('data/commit_count_distribution_symfony_docs.json', function(data) {
                             new Highcharts.Chart('commit_count_distribution_symfony_docs', data);
-                        });
-                    </script>
-
-                </div>
-
-            
-                                
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony per year</h2>
-
-
-                    <div id="contributions_per_date_yearly_symfony" class="chart column-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributions_per_date_yearly_symfony.json', function(data) {
-                            new Highcharts.Chart('contributions_per_date_yearly_symfony', data);
-                        });
-                    </script>
-
-                </div>
-
-                    </div>
-
-    
-        <div class="row">
-
-            
-                                
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony documentation per year</h2>
-
-
-                    <div id="contributions_per_date_yearly_symfony_doc" class="chart column-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributions_per_date_yearly_symfony_doc.json', function(data) {
-                            new Highcharts.Chart('contributions_per_date_yearly_symfony_doc', data);
-                        });
-                    </script>
-
-                </div>
-
-            
-                                
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony documentation per year</h2>
-
-
-                    <div id="contributions_per_date_yearly_symfony_doc2" class="chart area-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributions_per_date_yearly_symfony_doc2.json', function(data) {
-                            new Highcharts.Chart('contributions_per_date_yearly_symfony_doc2', data);
                         });
                     </script>
 
@@ -151,6 +114,59 @@
 
                         $.getJSON('data/contributions_per_date_monthly_symfony.json', function(data) {
                             new Highcharts.Chart('contributions_per_date_monthly_symfony', data);
+                        });
+                    </script>
+
+                </div>
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony per year</h2>
+
+
+                    <div id="contributions_per_date_yearly_symfony" class="chart area-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_yearly_symfony.json', function(data) {
+                            new Highcharts.Chart('contributions_per_date_yearly_symfony', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony documentation per month</h2>
+
+
+                    <div id="contributions_per_date_monthly_symfony_docs" class="chart area-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_monthly_symfony_docs.json', function(data) {
+                            new Highcharts.Chart('contributions_per_date_monthly_symfony_docs', data);
+                        });
+                    </script>
+
+                </div>
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony documentation per year</h2>
+
+
+                    <div id="contributions_per_date_yearly_symfony_docs" class="chart area-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_yearly_symfony_docs.json', function(data) {
+                            new Highcharts.Chart('contributions_per_date_yearly_symfony_docs', data);
                         });
                     </script>
 

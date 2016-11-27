@@ -24,6 +24,7 @@ class Highcharts implements FormatterInterface
             ],
             'legend' => [
                 'enabled' => (1 < count($chart->getSeries())),
+                'verticalAlign' => 'top',
             ],
             'xAxis' => [
                 'tickLength' => 0,
@@ -57,7 +58,6 @@ class Highcharts implements FormatterInterface
                 $firstElement[0] = '';
 
                 array_unshift($series, $firstElement);
-
             }
 
             // @todo: move it to serializer

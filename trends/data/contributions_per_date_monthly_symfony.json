@@ -9,7 +9,8 @@
         "enabled": false
     },
     "legend": {
-        "enabled": true
+        "enabled": true,
+        "verticalAlign": "top"
     },
     "xAxis": {
         "tickLength": 0,
@@ -365,7 +366,7 @@
                     191
                 ]
             ],
-            "name": "All contributors"
+            "name": 1
         },
         {
             "data": [
@@ -702,7 +703,7 @@
                     159
                 ]
             ],
-            "name": "Core team"
+            "name": "1 core"
         }
     ]
 }

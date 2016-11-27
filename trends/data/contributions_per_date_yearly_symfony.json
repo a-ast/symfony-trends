@@ -1,6 +1,6 @@
 {
     "chart": {
-        "type": "column"
+        "type": "area"
     },
     "title": {
         "text": null
@@ -9,11 +9,13 @@
         "enabled": false
     },
     "legend": {
-        "enabled": true
+        "enabled": true,
+        "verticalAlign": "top"
     },
     "xAxis": {
         "tickLength": 0,
         "categories": [
+            "",
             "2010",
             "2011",
             "2012",
@@ -33,12 +35,17 @@
         "area": {
             "marker": {
                 "enabled": false
-            }
+            },
+            "step": "right"
         }
     },
     "series": [
         {
             "data": [
+                [
+                    "",
+                    1500
+                ],
                 [
                     "2010",
                     1500
@@ -68,10 +75,14 @@
                     3845
                 ]
             ],
-            "name": "All contributors"
+            "name": 1
         },
         {
             "data": [
+                [
+                    "",
+                    1055
+                ],
                 [
                     "2010",
                     1055
@@ -101,7 +112,7 @@
                     3116
                 ]
             ],
-            "name": "Core team"
+            "name": "1 core"
         }
     ]
 }
