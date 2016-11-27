@@ -1,6 +1,6 @@
 {
     "chart": {
-        "type": "area"
+        "type": "column"
     },
     "title": {
         "text": null
@@ -15,7 +15,6 @@
     "xAxis": {
         "tickLength": 0,
         "categories": [
-            "",
             "2010",
             "2011",
             "2012",
@@ -35,17 +34,12 @@
         "area": {
             "marker": {
                 "enabled": false
-            },
-            "step": "right"
+            }
         }
     },
     "series": [
         {
             "data": [
-                [
-                    "",
-                    1500
-                ],
                 [
                     "2010",
                     1500
@@ -75,44 +69,40 @@
                     3845
                 ]
             ],
-            "name": "All contributors"
+            "name": "Symfony"
         },
         {
             "data": [
                 [
-                    "",
-                    1055
-                ],
-                [
                     "2010",
-                    1055
+                    273
                 ],
                 [
                     "2011",
-                    3785
+                    2106
                 ],
                 [
                     "2012",
-                    2971
+                    2415
                 ],
                 [
                     "2013",
-                    2743
+                    2706
                 ],
                 [
                     "2014",
-                    2574
+                    2806
                 ],
                 [
                     "2015",
-                    3937
+                    2840
                 ],
                 [
                     "2016",
-                    3116
+                    2194
                 ]
             ],
-            "name": "Core team"
+            "name": "Symfony docs"
         }
     ]
 }
