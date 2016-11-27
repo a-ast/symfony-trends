@@ -13,17 +13,17 @@ parameters:
                         - symfony
                     chart:
                         type: map
-#
-#            contributors_intersection:
-#                title: 'How many developers contribute to different projects'
-#
-#                service: 'provider.contributors_intersection'
-#                options:
-#                    projects:
-#                        - symfony
-#                        - symfony-docs
-#                chart:
-#                    type: venn
+
+            contributors_intersection:
+                title: 'How many developers contribute to different projects'
+
+                service: 'provider.contributors_intersection'
+                options:
+                    projects:
+                        - symfony
+                        - symfony-docs
+                    chart:
+                        type: pie
 
 
             ###################################

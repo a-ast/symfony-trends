@@ -65,7 +65,7 @@ class Highcharts implements FormatterInterface
                     $item[0] = 1000 * $item[0]->format('U');
                 });
 
-            } elseif ('' === $chart->getXAxisType()) {
+            } elseif ('' === $chart->getXAxisType() && 'pie' !== $chart->getType()) {
                 array_walk($series, function (&$item) {
                     if (0 < count($item) && $item[0] instanceof DateTime) {
                         $item[0] = $item[0]->format('Y');

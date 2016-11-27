@@ -17,18 +17,12 @@
 </head>
 
 <body>
-
-<div class="row header">
+<div class="content">
+<div class="row">
     <div class="col-md-12">
-        <h1>Symfony Trends <sup>beta</sup></h1>
-        <p class="sub-header">Statistics for Symfony framework and related projects</p>
-
+        <h1>Symfony Trends</h1>
     </div>
 </div>
-
-<div class="content">
-
-
 
 
     
@@ -54,6 +48,27 @@
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>How many developers contribute to different projects</h2>
+
+
+                    <div id="contributors_intersection" class="chart pie-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributors_intersection.json', function(data) {
+                            new Highcharts.Chart('contributors_intersection', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Commit count to Symfony framework and documentation per year</h2>
 
 
@@ -66,11 +81,6 @@
                     </script>
 
                 </div>
-
-                    </div>
-
-    
-        <div class="row">
 
             
                                 
@@ -88,6 +98,11 @@
 
                 </div>
 
+                    </div>
+
+    
+        <div class="row">
+
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
@@ -103,11 +118,6 @@
                     </script>
 
                 </div>
-
-                    </div>
-
-    
-        <div class="row">
 
             
                                 
@@ -125,6 +135,11 @@
 
                 </div>
 
+                    </div>
+
+    
+        <div class="row">
+
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
@@ -141,11 +156,6 @@
 
                 </div>
 
-                    </div>
-
-    
-        <div class="row">
-
             
                                 
                 <div class="col-md-6 col-xs-12 col-sm-12">
@@ -161,6 +171,11 @@
                     </script>
 
                 </div>
+
+                    </div>
+
+    
+        <div class="row">
 
             
                                 
