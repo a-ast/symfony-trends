@@ -48,7 +48,7 @@ class ContributorsPerCountry implements ProviderInterface
         }
 
         $chart = new ChartMap($options['chart']);
-        $chart->addSeries($result);
+        $chart->addSeries($result, 'Contributors');
 
         return $chart;
     }

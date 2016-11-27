@@ -10,23 +10,23 @@ class ChartMap implements ChartInterface
     private $series = [];
 
     /**
-     * Constructor.
-     *
-     * @param array $options
+     * @var array
      */
-    public function __construct(array $options = [])
-    {
-
-    }
+    private $seriesNames = [];
 
     /**
      * @param array $series
      *
+     * @param string $name
      * @return $this
      */
-    public function addSeries(array $series)
+    public function addSeries(array $series, $name = '')
     {
         $this->series[] = $series;
+
+        if ('' !== $name) {
+            $this->seriesNames[] = $name;
+        }
 
         return $this;
     }
@@ -37,5 +37,13 @@ class ChartMap implements ChartInterface
     public function getSeries()
     {
         return $this->series;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeriesNames()
+    {
+        return $this->seriesNames;
     }
 }

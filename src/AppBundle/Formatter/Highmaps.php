@@ -38,9 +38,14 @@ class Highmaps implements FormatterInterface
             ],
         ];
 
-        foreach ($chart->getSeries() as $series) {
+        foreach ($chart->getSeries() as $seriesIndex => $series) {
             $seriesView = [];
             $seriesView['data'] = $series;
+
+            if (isset($chart->getSeriesNames()[$seriesIndex])) {
+                $seriesView['name'] = $chart->getSeriesNames()[$seriesIndex];
+            }
+
             $data['series'][] = $seriesView;
         }
 

@@ -76,8 +76,6 @@ class Highcharts implements FormatterInterface
 
             $seriesView['data'] = $series;
 
-
-
             if (isset($chart->getSeriesNames()[$seriesIndex])) {
                 $seriesView['name'] = $chart->getSeriesNames()[$seriesIndex];
             }
