@@ -25,7 +25,9 @@ class Highcharts implements FormatterInterface
             'legend' => [
                 'enabled' => (1 < count($chart->getSeries())),
             ],
-            'xAxis' => [],
+            'xAxis' => [
+                'tickLength' => 0,
+            ],
             'yAxis' => [
                 'endOnTick' => false,
                 'title' => ['text' => null],

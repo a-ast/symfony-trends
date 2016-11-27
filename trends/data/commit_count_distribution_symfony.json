@@ -12,6 +12,7 @@
         "enabled": false
     },
     "xAxis": {
+        "tickLength": 0,
         "categories": [
             "1",
             "2",

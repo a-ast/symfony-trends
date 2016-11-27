@@ -12,6 +12,7 @@
         "enabled": true
     },
     "xAxis": {
+        "tickLength": 0,
         "categories": [
             "",
             "2010",
