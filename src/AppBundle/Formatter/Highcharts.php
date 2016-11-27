@@ -44,7 +44,6 @@ class Highcharts implements FormatterInterface
             $data['plotOptions']['area']['step'] = 'right';
         }
 
-
         if ('datetime' === $chart->getXAxisType()) {
             $data['xAxis']['type'] = 'datetime';
         }
