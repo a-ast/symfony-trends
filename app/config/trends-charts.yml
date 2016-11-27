@@ -34,8 +34,8 @@ parameters:
                 service: 'provider.contributions_per_date'
                 options:
                     projects:
-                        - 1
-                        - 2
+                        - symfony
+                        - symfony-docs
                     interval: year
                     include_core_team_commits: false
                     chart:
@@ -68,7 +68,7 @@ parameters:
                 service: 'provider.contributions_per_date'
                 options:
                     projects:
-                        - 1
+                        - symfony
                     interval: month
                     include_core_team_commits: true
                     chart:
@@ -84,7 +84,7 @@ parameters:
                 service: 'provider.contributions_per_date'
                 options:
                     projects:
-                        - 1
+                        - symfony
                     interval: year
                     include_core_team_commits: true
                     chart:
@@ -98,7 +98,7 @@ parameters:
                 service: 'provider.contributions_per_date'
                 options:
                     projects:
-                        - 2
+                        - symfony-docs
                     interval: month
                     include_core_team_commits: true
                     chart:
@@ -114,7 +114,7 @@ parameters:
                 service: 'provider.contributions_per_date'
                 options:
                     projects:
-                        - 2
+                        - symfony-docs
                     interval: year
                     include_core_team_commits: true
                     chart:

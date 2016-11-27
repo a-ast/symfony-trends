@@ -3,10 +3,11 @@
 namespace AppBundle\Provider;
 
 use AppBundle\Chart\Chart;
+use AppBundle\Entity\Project;
 use AppBundle\Repository\ContributionRepository;
-use AppBundle\Util\ArrayUtils;
+use AppBundle\Repository\ProjectRepository;
 use AppBundle\Util\DateUtils;
-use DateTime;
+use AppBundle\Util\StringUtils;
 
 class ContributionsPerDate implements ProviderInterface
 {
@@ -16,17 +17,28 @@ class ContributionsPerDate implements ProviderInterface
     private $repository;
 
     /**
-     * Constructor
-     * @param ContributionRepository $repository
+     * @var ProjectRepository
      */
-    public function __construct(ContributionRepository $repository)
+    private $projectRepository;
+
+    /**
+     * Constructor.
+     *
+     * @param ContributionRepository $repository
+     * @param ProjectRepository $projectRepository
+     */
+    public function __construct(ContributionRepository $repository, ProjectRepository $projectRepository)
     {
         $this->repository = $repository;
+        $this->projectRepository = $projectRepository;
     }
 
     public function getChart(array $options = [])
     {
-        $projectIds = $options['projects'];
+        $projectLabels = $options['projects'];
+        $projects = $this->projectRepository->getProjectsByLabels($projectLabels);
+        $projectIds = array_keys($projects);
+
         $interval = $options['interval'];
         $includeCoreTeamCommits = (bool)$options['include_core_team_commits'];
 
@@ -46,16 +58,43 @@ class ContributionsPerDate implements ProviderInterface
 
                 if (true === $includeCoreTeamCommits) {
                     $coreCommitCount = (int)$item['core_team_contribution_count'];
-                    $series[$projectId.' core'][] = [$date, $coreCommitCount];
+                    $series['core-'.$projectId][] = [$date, $coreCommitCount];
                 }
             }
         }
 
         $chart = new Chart($options['chart']);
         foreach ($series as $key => $item) {
-            $chart->addSeries($item, $key);
+            $chart->addSeries($item, $this->getSeriesTitle($key, $projects, $includeCoreTeamCommits));
         }
 
         return $chart;
+    }
+
+    /**
+     * @param string $seriesKey
+     * @param array|Project[] $projects
+     * @param bool $includeCoreTeamCommits
+     *
+     * @return string
+     */
+    private function getSeriesTitle($seriesKey, array $projects, $includeCoreTeamCommits)
+    {
+        if (isset($projects[$seriesKey])) {
+            $title = $projects[$seriesKey]->getName();
+
+            if ($includeCoreTeamCommits) {
+                $title = 'All contributors';
+            }
+
+            return $title;
+        }
+
+        if (StringUtils::contains($seriesKey, 'core-') &&
+            isset($projects[StringUtils::textAfter($seriesKey, 'core-')])) {
+            return 'Core team';
+        }
+
+        return '';
     }
 }
