@@ -47,7 +47,9 @@
                 81,
                 16,
                 6
-            ]
+            ],
+            "name": "Contributor count",
+            "color": "#7aba20"
         }
     ]
 }

@@ -75,7 +75,8 @@
                     2194
                 ]
             ],
-            "name": "All contributors"
+            "name": "All contributors",
+            "color": "#7aba20"
         },
         {
             "data": [
@@ -112,7 +113,8 @@
                     1094
                 ]
             ],
-            "name": "Core team"
+            "name": "Core team",
+            "color": "#000000"
         }
     ]
 }

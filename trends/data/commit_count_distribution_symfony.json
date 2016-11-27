@@ -47,7 +47,9 @@
                 92,
                 47,
                 11
-            ]
+            ],
+            "name": "Contributor count",
+            "color": "#4cacdb"
         }
     ]
 }

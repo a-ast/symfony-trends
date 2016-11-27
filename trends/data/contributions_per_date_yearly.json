@@ -69,7 +69,8 @@
                     3845
                 ]
             ],
-            "name": "Symfony"
+            "name": "Symfony",
+            "color": "#4cacdb"
         },
         {
             "data": [
@@ -102,7 +103,8 @@
                     2194
                 ]
             ],
-            "name": "Symfony docs"
+            "name": "Symfony docs",
+            "color": "#7aba20"
         }
     ]
 }
