@@ -32,4 +32,17 @@ class ProjectRepository extends EntityRepository
 
         return $projects;
     }
+
+    /**
+     * @param string $label
+     *
+     * @return Project|null
+     */
+    public function getProjectByLabel($label)
+    {
+        /** @var Project $project */
+        $project = $this->findOneBy(['label' => $label]);
+
+        return $project;
+    }
 }
