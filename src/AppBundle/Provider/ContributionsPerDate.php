@@ -113,7 +113,7 @@ class ContributionsPerDate implements ProviderInterface
         }
 
         if ($this->isKeyOfCoreTeamSeries($seriesKey, $projects)) {
-            return '#000000';
+            return '#323038';
         }
 
         return '';
