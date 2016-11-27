@@ -85,7 +85,7 @@ class CommitCountDistribution implements ProviderInterface
         $chart = new Chart($options['chart']);
         $chart
             ->setCategories($categories)
-            ->addSeries($series);
+            ->addSeries($series, 'Contributor count');
 
         return $chart;
     }
