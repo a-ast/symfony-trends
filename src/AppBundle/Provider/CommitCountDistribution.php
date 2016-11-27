@@ -36,9 +36,10 @@ class CommitCountDistribution implements ProviderInterface
      */
     public function getChart(array $options = [])
     {
-        $projectId = $options['project_id'];
+        $projectLabel = $options['project'];
+        $project = $this->projectRepository->getProjectByLabel($projectLabel);
 
-        $commitCounts = $this->contributionRepository->getContributorCommitCounts($projectId);
+        $commitCounts = $this->contributionRepository->getContributorCommitCounts($project->getId());
 
         $intervals = [
             [1],
@@ -85,7 +86,7 @@ class CommitCountDistribution implements ProviderInterface
         $chart = new Chart($options['chart']);
         $chart
             ->setCategories($categories)
-            ->addSeries($series, 'Contributor count');
+            ->addSeries($series, 'Contributor count', $project->getColor());
 
         return $chart;
     }

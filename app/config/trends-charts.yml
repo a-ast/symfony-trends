@@ -47,7 +47,7 @@ parameters:
 
                 service: 'provider.commit_count_distribution'
                 options:
-                    project_id: 1
+                    project: symfony
                     chart:
                         type: column
 
@@ -56,7 +56,7 @@ parameters:
 
                 service: 'provider.commit_count_distribution'
                 options:
-                    project_id: 2
+                    project: symfony-docs
                     chart:
                         type: column
 
