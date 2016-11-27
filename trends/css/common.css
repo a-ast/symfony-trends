@@ -2,6 +2,23 @@ body {
     font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
 }
 
+.header {
+    background: #f0f0f0;
+    padding: 15px;
+}
+
+.header h1 {
+    margin-top: 0;
+}
+
+.header sup {
+    font-style: italic;
+}
+
+.header .sub-header {
+    color: #8B859B;
+}
+
 .content {
     padding: 15px;
 }
@@ -22,51 +39,4 @@ h2 {
     width: 540px;
     height: 300px;
     margin-bottom: 30px;
-}
-
-.bar-chart rect {
-    /*fill: #53A3CC;*/
-}
-
-.bar-chart .bar-label {
-    fill: white;
-    font-size: 14px;
-    text-anchor: middle;
-}
-
-.bar-chart rect:hover {
-    stroke: #015a87;
-}
-
-/*.axis--x path {*/
-    /*display: none;*/
-/*}*/
-
-.axis label {
-    font: 15px sans-serif;
-    fill: #005580;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.x-axis-label {
-    font-size: 19px;
-    font-weight: bold;
-    fill: #005580;
-}
-
-.line {
-    fill: none;
-    stroke: #08c;
-    stroke-width: 2px;
-}
-
-iframe {
-    overflow: hidden;
-    border: 0;
 }
