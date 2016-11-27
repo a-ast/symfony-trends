@@ -34,6 +34,6 @@ class DateUtils
             $dateTimeAsText .= '-01-01';
         }
 
-        return new DateTime($dateTimeAsText);
+        return new DateTime($dateTimeAsText, new \DateTimeZone('UTC'));
     }
 }
