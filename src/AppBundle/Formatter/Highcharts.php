@@ -37,6 +37,11 @@ class Highcharts implements FormatterInterface
                 'area' => [
                     'marker' => ['enabled' => false],
                 ],
+                'pie' => [
+                    'dataLabels' => [
+                        'format' => '{point.name}<br/>{point.y}',
+                    ],
+                ],
             ],
         ];
 

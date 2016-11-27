@@ -82,7 +82,7 @@ class ContributorsIntersection implements ProviderInterface
         }
 
         $chart = new Chart($options['chart']);
-        $chart->addSeries($series);
+        $chart->addSeries($series, 'Contributor count');
 
         return $chart;
     }

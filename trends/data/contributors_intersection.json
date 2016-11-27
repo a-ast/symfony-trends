@@ -27,6 +27,11 @@
             "marker": {
                 "enabled": false
             }
+        },
+        "pie": {
+            "dataLabels": {
+                "format": "{point.name}<br\/>{point.y}"
+            }
         }
     },
     "series": [
@@ -47,7 +52,8 @@
                     "name": "Only Symfony docs",
                     "color": "#7aba20"
                 }
-            ]
+            ],
+            "name": "Contributor count"
         }
     ]
 }

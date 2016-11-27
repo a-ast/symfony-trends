@@ -28,6 +28,11 @@
                 "enabled": false
             },
             "step": "right"
+        },
+        "pie": {
+            "dataLabels": {
+                "format": "{point.name}<br\/>{point.y}"
+            }
         }
     },
     "series": [
