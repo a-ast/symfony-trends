@@ -31,6 +31,13 @@ class Project
     /**
      * @var string
      *
+     * @ORM\Column(name="label", type="string", length=255, unique=true)
+     */
+    private $label;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="github_path", type="string", length=255, unique=true)
      */
     private $githubPath;
@@ -116,6 +123,26 @@ class Project
     public function setColor($color)
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
 
         return $this;
     }
