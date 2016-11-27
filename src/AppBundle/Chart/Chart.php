@@ -35,6 +35,11 @@ class Chart implements ChartInterface
     private $seriesNames = [];
 
     /**
+     * @var array
+     */
+    private $seriesColors = [];
+
+    /**
      * Constructor.
      *
      * @param array $options
@@ -92,14 +97,20 @@ class Chart implements ChartInterface
      * @param array $series
      *
      * @param string $name
+     * @param string $color
+     *
      * @return $this
      */
-    public function addSeries(array $series, $name = '')
+    public function addSeries(array $series, $name = '', $color = '')
     {
         $this->series[] = $series;
 
         if ('' !== $name) {
             $this->seriesNames[] = $name;
+        }
+
+        if ('' !== $color) {
+            $this->seriesColors[] = $color;
         }
 
         return $this;
@@ -147,5 +158,13 @@ class Chart implements ChartInterface
     public function getSeriesNames()
     {
         return $this->seriesNames;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSeriesColors()
+    {
+        return $this->seriesColors;
     }
 }
