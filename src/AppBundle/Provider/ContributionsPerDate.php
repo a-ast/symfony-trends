@@ -65,7 +65,9 @@ class ContributionsPerDate implements ProviderInterface
 
         $chart = new Chart($options['chart']);
         foreach ($series as $key => $item) {
-            $chart->addSeries($item, $this->getSeriesTitle($key, $projects, $includeCoreTeamCommits));
+            $seriesTitle = $this->getSeriesTitle($key, $projects, $includeCoreTeamCommits);
+            $seriesColor = $this->getSeriesColor($key, $projects, $includeCoreTeamCommits);
+            $chart->addSeries($item, $seriesTitle, $seriesColor);
         }
 
         return $chart;
@@ -90,11 +92,41 @@ class ContributionsPerDate implements ProviderInterface
             return $title;
         }
 
-        if (StringUtils::contains($seriesKey, 'core-') &&
-            isset($projects[StringUtils::textAfter($seriesKey, 'core-')])) {
+        if ($this->isKeyOfCoreTeamSeries($seriesKey, $projects)) {
             return 'Core team';
         }
 
         return '';
+    }
+
+    /**
+     * @param string $seriesKey
+     * @param array|Project[] $projects
+     * @param bool $includeCoreTeamCommits
+     *
+     * @return string
+     */
+    private function getSeriesColor($seriesKey, array $projects, $includeCoreTeamCommits)
+    {
+        if (isset($projects[$seriesKey])) {
+            return $projects[$seriesKey]->getColor();
+        }
+
+        if ($this->isKeyOfCoreTeamSeries($seriesKey, $projects)) {
+            return '#000000';
+        }
+
+        return '';
+    }
+
+    /**
+     * @param string $seriesKey
+     * @param array $projects
+     * @return bool
+     */
+    private function isKeyOfCoreTeamSeries($seriesKey, array $projects)
+    {
+        return StringUtils::contains($seriesKey, 'core-') &&
+            isset($projects[StringUtils::textAfter($seriesKey, 'core-')]);
     }
 }
