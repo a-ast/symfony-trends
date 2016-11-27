@@ -80,6 +80,10 @@ class Highcharts implements FormatterInterface
                 $seriesView['name'] = $chart->getSeriesNames()[$seriesIndex];
             }
 
+            if (isset($chart->getSeriesColors()[$seriesIndex])) {
+                $seriesView['color'] = $chart->getSeriesColors()[$seriesIndex];
+            }
+
             $data['series'][] = $seriesView;
         }
 
@@ -88,7 +92,6 @@ class Highcharts implements FormatterInterface
         } elseif ('datetime' !== $chart->getXAxisType()) {
             $data['xAxis']['categories'] = array_column($data['series'][0]['data'], 0);
         }
-
 
         return $data;
     }
