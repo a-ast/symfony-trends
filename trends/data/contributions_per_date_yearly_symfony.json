@@ -30,7 +30,11 @@
         }
     },
     "plotOptions": {
-        "area": []
+        "area": {
+            "marker": {
+                "enabled": false
+            }
+        }
     },
     "series": [
         {

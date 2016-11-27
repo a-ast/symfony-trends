@@ -34,7 +34,7 @@ class Highcharts implements FormatterInterface
             ],
             'plotOptions' => [
                 'area' => [
-
+                    'marker' => ['enabled' => false],
                 ],
             ],
         ];

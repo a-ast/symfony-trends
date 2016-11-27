@@ -23,6 +23,9 @@
     },
     "plotOptions": {
         "area": {
+            "marker": {
+                "enabled": false
+            },
             "step": "right"
         }
     },
