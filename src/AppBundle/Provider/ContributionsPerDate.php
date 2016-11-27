@@ -53,7 +53,7 @@ class ContributionsPerDate implements ProviderInterface
                 if ((int)$item['project_id'] !== $projectId) {
                     continue;
                 }
-                $commitCount =  (int)$item['contribution_count'];
+                $commitCount = (int)$item['contribution_count'];
                 $series[$projectId][] = [$date, $commitCount];
 
                 if (true === $includeCoreTeamCommits) {
