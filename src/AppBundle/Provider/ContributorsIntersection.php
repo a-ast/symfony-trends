@@ -77,7 +77,7 @@ class ContributorsIntersection implements ProviderInterface
             $series[] = [
                 'y' => (int)$item['contributor_count'],
                 'name' => $seriesTitle,
-                'color' => $seriesColor
+                'color' => $seriesColor,
             ];
         }
 
@@ -97,7 +97,7 @@ class ContributorsIntersection implements ProviderInterface
     {
         $projectsIds = explode(',', $key);
 
-        if(1 === count($projectsIds)) {
+        if (1 === count($projectsIds)) {
             return 'Only '.$projects[$key]->getName();
         };
 
@@ -114,7 +114,7 @@ class ContributorsIntersection implements ProviderInterface
     {
         $projectsIds = explode(',', $key);
 
-        if(1 === count($projectsIds)) {
+        if (1 === count($projectsIds)) {
             return $projects[$key]->getColor();
         };
 
