@@ -16,7 +16,7 @@ parameters:
                         type: pie
 
             contributions_per_date_yearly:
-                title: 'Commit count to Symfony framework and documentation per year'
+                title: 'Commit count to Symfony code and docs per year'
 
                 service: 'provider.contributions_per_date'
                 options:
@@ -30,7 +30,7 @@ parameters:
 
 
             commit_count_distribution_symfony:
-                title: 'Number of developers who made certain count of commits to Symfony'
+                title: 'Number of developers who made a certain amount of commits to Symfony code'
 
                 service: 'provider.commit_count_distribution'
                 options:
@@ -50,7 +50,7 @@ parameters:
 
 
             contributions_per_date_monthly_symfony:
-                title: 'Commit count to Symfony per month'
+                title: 'Commit count to Symfony code per month'
 
                 service: 'provider.contributions_per_date'
                 options:
@@ -66,7 +66,7 @@ parameters:
 
 
             contributions_per_date_yearly_symfony:
-                title: 'Commit count to Symfony per year'
+                title: 'Commit count to Symfony code per year'
 
                 service: 'provider.contributions_per_date'
                 options:
@@ -80,7 +80,7 @@ parameters:
 
 
             contributions_per_date_monthly_symfony_docs:
-                title: 'Commit count to Symfony documentation per month'
+                title: 'Commit count to Symfony docs per month'
 
                 service: 'provider.contributions_per_date'
                 options:
@@ -96,7 +96,7 @@ parameters:
 
 
             contributions_per_date_yearly_symfony_docs:
-                title: 'Commit count to Symfony documentation per year'
+                title: 'Commit count to Symfony docs per year'
 
                 service: 'provider.contributions_per_date'
                 options:
