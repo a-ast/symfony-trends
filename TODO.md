@@ -11,6 +11,18 @@ Beta
 
 Architecture:
 
+1. Soultion for generation of highcharts
+    * SeriesProvider/GenerateCommad generates structure like
+      options:
+            minColor: ...
+            tickWitdh
+      series:
+            ...
+    * One class with lots of methods like
+        HighchartsView.render(container, type, data)
+    * Leave only SeriesProvider and remove formatters.
+      
+      
 1. Rethink chart generation: return series list from provider 
    (SeriesProvider)
 2. Simplify generator command
