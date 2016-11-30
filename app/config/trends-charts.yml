@@ -18,15 +18,31 @@ parameters:
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'
 
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - symfony
-                        - symfony-docs
-                    interval: year
-                    include_core_team_commits: false
-                    chart:
-                        type: column
+#                service: 'provider.contributions_per_date'
+#                options:
+#                    projects:
+#                        - symfony
+#                        - symfony-docs
+#                    interval: year
+#                    include_core_team_commits: false
+                chart:
+                    type: column
+
+                series:
+                    -
+                        view: contributions_per_year
+                        filters:
+                            poject_id: 1
+                        values:
+                            - date
+                            - contribution_count
+                    -
+                        view: contributions_per_year
+                        filters:
+                            poject_id: 2
+                        values:
+                            - date
+                            - contribution_count
 
 
             commit_count_distribution_symfony:

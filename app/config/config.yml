@@ -39,9 +39,11 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_sqlite
+        driver:   pdo_pgsql
+        host:     "%database_host%"
+        port:     "%database_port%"
         dbname:   "%database_name%"
-        path:     "%database_path%"
+        user:     postgres
         charset:  UTF8
 
     orm:
