@@ -3,14 +3,18 @@
 
 namespace AppBundle\Provider;
 
+use AppBundle\Repository\DataProvider;
+
 class SeriesProvider
 {
     private $dataProvider;
 
     /**
      * Constructor.
+     *
+     * @param DataProvider $dataProvider
      */
-    public function __construct($dataProvider)
+    public function __construct(DataProvider $dataProvider)
     {
         $this->dataProvider = $dataProvider;
     }
