@@ -1,5 +1,38 @@
 function HighchartsRenderer () {
 
+    Highcharts.setOptions({
+        title: {
+            text: null
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: true,
+            verticalAlign: "top"
+        },
+        xAxis: {
+            tickLength: 0
+        },
+        yAxis: {
+            endOnTick: false,
+            title: {
+                text: null
+            }
+        },
+        plotOptions: {
+            area: {
+                marker: {
+                    enabled: false
+                }
+            },
+            pie: {
+                dataLabels: {
+                    format: "{point.name}<br\/>{point.y}"
+                }
+            }
+        }
+    });
 
 }
 
@@ -32,4 +65,4 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
     });
 }
 
-var HighchartsRenderer = new HighchartsRenderer();
+var Renderer = new HighchartsRenderer();
