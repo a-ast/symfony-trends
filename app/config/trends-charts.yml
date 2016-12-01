@@ -4,16 +4,16 @@ parameters:
 
         main:
 
-            contributors_intersection:
-                title: 'How many developers contribute to different projects'
-
-                service: 'provider.contributors_intersection'
-                options:
-                    projects:
-                        - symfony
-                        - symfony-docs
-                    chart:
-                        type: pie
+#            contributors_intersection:
+#                title: 'How many developers contribute to different projects'
+#
+#                service: 'provider.contributors_intersection'
+#                options:
+#                    projects:
+#                        - symfony
+#                        - symfony-docs
+#                    chart:
+#                        type: pie
 
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'
@@ -30,106 +30,106 @@ parameters:
 
                 series:
                     -
-                        view: contributions_per_year
+                        data_source: vw_contributions_per_year
                         filters:
-                            poject_id: 1
+                            project_id: 1
                         values:
                             - date
                             - contribution_count
                     -
-                        view: contributions_per_year
+                        data_source: vw_contributions_per_year
                         filters:
-                            poject_id: 2
+                            project_id: 2
                         values:
                             - date
                             - contribution_count
-
-
-            commit_count_distribution_symfony:
-                title: 'Number of developers who made a certain amount of commits to Symfony code'
-
-                service: 'provider.commit_count_distribution'
-                options:
-                    project: symfony
-                    chart:
-                        type: column
-
-            commit_count_distribution_symfony_docs:
-                title: 'Number of developers who made certain count of commits to Symfony docs'
-
-                service: 'provider.commit_count_distribution'
-                options:
-                    project: symfony-docs
-                    chart:
-                        type: column
-
-
-
-            contributions_per_date_monthly_symfony:
-                title: 'Commit count to Symfony code per month'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - symfony
-                    interval: month
-                    include_core_team_commits: true
-                    chart:
-                        type: area
-                        sub-type: stair-step
-                        x-axis:
-                            type: datetime
-
-
-            contributions_per_date_yearly_symfony:
-                title: 'Commit count to Symfony code per year'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - symfony
-                    interval: year
-                    include_core_team_commits: true
-                    chart:
-                        type: area
-                        sub-type: stair-step
-
-
-            contributions_per_date_monthly_symfony_docs:
-                title: 'Commit count to Symfony docs per month'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - symfony-docs
-                    interval: month
-                    include_core_team_commits: true
-                    chart:
-                        type: area
-                        sub-type: stair-step
-                        x-axis:
-                            type: datetime
-
-
-            contributions_per_date_yearly_symfony_docs:
-                title: 'Commit count to Symfony docs per year'
-
-                service: 'provider.contributions_per_date'
-                options:
-                    projects:
-                        - symfony-docs
-                    interval: year
-                    include_core_team_commits: true
-                    chart:
-                        type: area
-                        sub-type: stair-step
-
-            contributors_per_country_symfony:
-                title: 'Where Symfony contributors live and work'
-
-                service: 'provider.contributors_per_country'
-                options:
-                    projects:
-                        - symfony
-                    chart:
-                        type: map
+#
+#
+#            commit_count_distribution_symfony:
+#                title: 'Number of developers who made a certain amount of commits to Symfony code'
+#
+#                service: 'provider.commit_count_distribution'
+#                options:
+#                    project: symfony
+#                    chart:
+#                        type: column
+#
+#            commit_count_distribution_symfony_docs:
+#                title: 'Number of developers who made certain count of commits to Symfony docs'
+#
+#                service: 'provider.commit_count_distribution'
+#                options:
+#                    project: symfony-docs
+#                    chart:
+#                        type: column
+#
+#
+#
+#            contributions_per_date_monthly_symfony:
+#                title: 'Commit count to Symfony code per month'
+#
+#                service: 'provider.contributions_per_date'
+#                options:
+#                    projects:
+#                        - symfony
+#                    interval: month
+#                    include_core_team_commits: true
+#                    chart:
+#                        type: area
+#                        sub-type: stair-step
+#                        x-axis:
+#                            type: datetime
+#
+#
+#            contributions_per_date_yearly_symfony:
+#                title: 'Commit count to Symfony code per year'
+#
+#                service: 'provider.contributions_per_date'
+#                options:
+#                    projects:
+#                        - symfony
+#                    interval: year
+#                    include_core_team_commits: true
+#                    chart:
+#                        type: area
+#                        sub-type: stair-step
+#
+#
+#            contributions_per_date_monthly_symfony_docs:
+#                title: 'Commit count to Symfony docs per month'
+#
+#                service: 'provider.contributions_per_date'
+#                options:
+#                    projects:
+#                        - symfony-docs
+#                    interval: month
+#                    include_core_team_commits: true
+#                    chart:
+#                        type: area
+#                        sub-type: stair-step
+#                        x-axis:
+#                            type: datetime
+#
+#
+#            contributions_per_date_yearly_symfony_docs:
+#                title: 'Commit count to Symfony docs per year'
+#
+#                service: 'provider.contributions_per_date'
+#                options:
+#                    projects:
+#                        - symfony-docs
+#                    interval: year
+#                    include_core_team_commits: true
+#                    chart:
+#                        type: area
+#                        sub-type: stair-step
+#
+#            contributors_per_country_symfony:
+#                title: 'Where Symfony contributors live and work'
+#
+#                service: 'provider.contributors_per_country'
+#                options:
+#                    projects:
+#                        - symfony
+#                    chart:
+#                        type: map

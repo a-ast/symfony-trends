@@ -4,6 +4,7 @@ namespace AppBundle\Command;
 
 use AppBundle\Formatter\FormatterInterface;
 use AppBundle\Provider\ProviderInterface;
+use AppBundle\Provider\SeriesProvider;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -34,14 +35,11 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $chartData = $this->getContainer()->getParameter('trends');
 
-        /** @var FormatterInterface $formatter */
-        $formatter = $this->getContainer()->get('formatter.highcharts');
-
-        /** @var FormatterInterface $formatter */
-        $mapFormatter = $this->getContainer()->get('formatter.highmaps');
-
         /** @var TwigEngine $twig */
         $twig = $this->getContainer()->get('templating');
+
+        /** @var SeriesProvider $seriesProvider */
+        $seriesProvider = $this->getContainer()->get('series_provider');
 
         $fs = new Filesystem();
 
@@ -54,41 +52,31 @@ class GenerateChartDataCommand extends ContainerAwareCommand
                     continue;
                 }
 
-                $providerId = $chartView['service'];
-                $options = $chartView['options'];
+                $seriesOptions = $chartView['series'];
+                $series = $seriesProvider->getSeries($seriesOptions);
 
-                /** @var ProviderInterface $provider */
-                $provider = $this->getContainer()->get($providerId);
-
-                $chart = $provider->getChart($options);
-                //$data = $provider->getData($options);
-                if ('map' === $options['chart']['type']) {
-                    $data = $mapFormatter->format($chart);
-                } else {
-                    $data = $formatter->format($chart);
-                }
+                $data = [
+                    'options' => $chartView['chart'],
+                    'series' => $series,
+                ];
 
                 $json = json_encode($data, JSON_PRETTY_PRINT);
 
-                $filePath = sprintf('%s/../trends/data/%s.json', $rootDir, $chartId);
+                $filePath = sprintf('%s/../trends/data/%s_v2.json', $rootDir, $chartId);
                 $fs->dumpFile($filePath, $json);
 
                 $trends[$groupId][$chartId] = [
-                    'id' => $chartId,
+                    'id' => $chartId.'_v2',
                     'dataFile' => sprintf('data/%s.json', $chartId),
                     'title' => $chartView['title'],
-                    'chart' => $chartView['options']['chart'],
+                    'chart' => $chartView['chart'],
                 ];
-
             }
         }
 
         $indexFile = $twig->render('@App/index.html.twig', ['trends' => $trends]);
 
-        $filePath = sprintf('%s/../trends/index.html', $rootDir);
+        $filePath = sprintf('%s/../trends/index_v2.html', $rootDir);
         $fs->dumpFile($filePath, $indexFile);
-
     }
-
-
 }

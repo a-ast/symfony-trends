@@ -15,6 +15,14 @@ services:
             - '@http_client'
             - '%geocoding.api_key%'
 
+    data_provider:
+        class: AppBundle\Repository\DataProvider
+        autowire: true
+
+    series_provider:
+        class: AppBundle\Provider\SeriesProvider
+        autowire: true
+
     #################################
     # Helpers
     #################################

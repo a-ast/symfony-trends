@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Symfony Trends</title>
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//code.highcharts.com/highcharts.js"></script>
+    <script src="//code.highcharts.com/maps/modules/map.js"></script>
+    <script src="//code.highcharts.com/mapdata/custom/world.js"></script>
+    <script src="js/highcharts-renderer.js"></script>
+</head>
+
+<body>
+<div class="row header">
+    <div class="col-md-12">
+        <h1>Symfony Trends <sup>beta</sup></h1>
+        <p class="sub-header">Statistics for Symfony framework and related projects</p>
+
+    </div>
+</div>
+
+<div class="content">
+
+
+    
+    
+        <div class="row">
+
+            
+                                
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony code and docs per year</h2>
+
+
+                    <div id="contributions_per_date_yearly" class="chart column-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_yearly_v2.json', function(data) {
+                            var renderer = new HighchartsRenderer();
+                            renderer.columnChart('contributions_per_date_yearly', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    </div>
+</body>
+</html>
