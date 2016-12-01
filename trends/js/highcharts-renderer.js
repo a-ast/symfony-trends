@@ -10,6 +10,11 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         series.push({data: value});
     });
 
+    var categories = [];
+    data.series[0].forEach(function(value){
+        categories.push(value[0]);
+    });
+
     Highcharts.chart(container, {
         chart: {
             type: 'column'
@@ -18,7 +23,7 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
             enabled: false
         },
         xAxis: {
-
+            categories: categories
         },
         credits: {
             enabled: false
@@ -26,3 +31,5 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         series: series
     });
 }
+
+var HighchartsRenderer = new HighchartsRenderer();
