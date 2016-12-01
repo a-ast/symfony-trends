@@ -14,6 +14,7 @@
     <script src="//code.highcharts.com/highcharts.js"></script>
     <script src="//code.highcharts.com/maps/modules/map.js"></script>
     <script src="//code.highcharts.com/mapdata/custom/world.js"></script>
+    <script src="js/highcharts-renderer.js"></script>
 </head>
 
 <body>
@@ -37,11 +38,6 @@
 
             {% for trendId, trend in row %}
 
-                {% set prefix = '' %}
-                {% if trend.chart.type == 'map' %}
-                    {% set prefix = 'map' %}
-                {% endif %}
-
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>{{ trend.title }}</h2>
 
@@ -50,7 +46,7 @@
                     <script>
 
                         $.getJSON('{{ trend.dataFile }}', function(data) {
-                            new Highcharts.{{ prefix }}Chart('{{ trend.id }}', data);
+                            Renderer.{{ trend.chart.type }}Chart('{{ trend.id }}', data);
                         });
                     </script>
 

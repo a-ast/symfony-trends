@@ -34,17 +34,15 @@
         <div class="row">
 
             
-                                
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Commit count to Symfony code and docs per year</h2>
 
 
-                    <div id="contributions_per_date_yearly" class="chart column-chart"></div>
+                    <div id="contributions_per_date_yearly_v2" class="chart column-chart"></div>
                     <script>
 
                         $.getJSON('data/contributions_per_date_yearly_v2.json', function(data) {
-                            var renderer = new HighchartsRenderer();
-                            renderer.columnChart('contributions_per_date_yearly', data);
+                            Renderer.columnChart('contributions_per_date_yearly_v2', data);
                         });
                     </script>
 

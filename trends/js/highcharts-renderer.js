@@ -38,13 +38,8 @@ function HighchartsRenderer () {
 
 HighchartsRenderer.prototype.columnChart = function(container, data) {
 
-    var series = [];
-    data.series.forEach(function(value){
-        series.push({data: value});
-    });
-
     var categories = [];
-    data.series[0].forEach(function(value){
+    data.series[0].data.forEach(function(value){
         categories.push(value[0]);
     });
 
@@ -61,7 +56,7 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         credits: {
             enabled: false
         },
-        series: series
+        series: data.series
     });
 }
 

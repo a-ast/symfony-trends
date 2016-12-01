@@ -67,7 +67,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
                 $trends[$groupId][$chartId] = [
                     'id' => $chartId.'_v2',
-                    'dataFile' => sprintf('data/%s.json', $chartId),
+                    'dataFile' => sprintf('data/%s_v2.json', $chartId),
                     'title' => $chartView['title'],
                     'chart' => $chartView['chart'],
                 ];

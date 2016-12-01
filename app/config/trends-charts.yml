@@ -18,18 +18,13 @@ parameters:
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'
 
-#                service: 'provider.contributions_per_date'
-#                options:
-#                    projects:
-#                        - symfony
-#                        - symfony-docs
-#                    interval: year
-#                    include_core_team_commits: false
                 chart:
                     type: column
 
                 series:
                     -
+                        title: Symfony code
+                        color: '#4cacdb'
                         data_source: vw_contributions_per_year
                         filters:
                             project_id: 1
@@ -37,6 +32,8 @@ parameters:
                             - date
                             - contribution_count
                     -
+                        title: Symfony docs
+                        color: '#7aba20'
                         data_source: vw_contributions_per_year
                         filters:
                             project_id: 2

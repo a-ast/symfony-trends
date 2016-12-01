@@ -38,7 +38,11 @@ class SeriesProvider
                 $series[] = $seriesItem;
             }
 
-            $seriesCollection[] = $series;
+            $seriesCollection[] = [
+                'name' => $seriesConfig['title'],
+                'color' => $seriesConfig['color'],
+                'data' => $series
+            ];
         }
 
         return $seriesCollection;
