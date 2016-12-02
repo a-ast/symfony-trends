@@ -65,6 +65,26 @@
 
                     </div>
 
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Number of developers who made a certain amount of commits to Symfony code</h2>
+
+
+                    <div id="commit_count_distribution_symfony_v2" class="chart column-chart"></div>
+                    <script>
+
+                        $.getJSON('data/commit_count_distribution_symfony_v2.json', function(data) {
+                            Renderer.columnChart('commit_count_distribution_symfony_v2', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
     </div>
 </body>
 </html>
