@@ -26,7 +26,7 @@ class SeriesProvider
         foreach ($options as $seriesConfig) {
             $data = $this->dataProvider->getData($seriesConfig['data_source'], $seriesConfig['filters']);
 
-            $series = [];
+            $seriesData = [];
 
             foreach ($data as $dataItem) {
                 $seriesItem = [];
@@ -35,14 +35,20 @@ class SeriesProvider
                     $seriesItem[$fieldKey] = $dataItem[$fieldName];
                 }
 
-                $series[] = $seriesItem;
+                $seriesData[] = $seriesItem;
             }
 
-            $seriesCollection[] = [
-                'name' => $seriesConfig['title'],
-                'color' => $seriesConfig['color'],
-                'data' => $series
-            ];
+            $series = ['data' => $seriesData];
+
+            if (isset($seriesConfig['title'])) {
+                $series['name'] = $seriesConfig['title'];
+            }
+
+            if (isset($seriesConfig['color'])) {
+                $series['color'] = $seriesConfig['color'];
+            }
+
+            $seriesCollection[] = $series;
         }
 
         return $seriesCollection;

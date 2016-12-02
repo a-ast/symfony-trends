@@ -4,16 +4,20 @@ parameters:
 
         main:
 
-#            contributors_intersection:
-#                title: 'How many developers contribute to different projects'
-#
-#                service: 'provider.contributors_intersection'
-#                options:
-#                    projects:
-#                        - symfony
-#                        - symfony-docs
-#                    chart:
-#                        type: pie
+            contributors_intersection:
+                title: 'How many developers contribute to different projects'
+                chart:
+                    type: pie
+                series:
+                    -
+                        title: Contributor count
+                        data_source: vw_contributor_intersection
+                        filters: []
+
+                        values:
+                            - contributor_count
+                            - contributor_count
+                            - color
 
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'

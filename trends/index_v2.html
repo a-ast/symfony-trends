@@ -35,6 +35,21 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>How many developers contribute to different projects</h2>
+
+
+                    <div id="contributors_intersection_v2" class="chart pie-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributors_intersection_v2.json', function(data) {
+                            Renderer.pieChart('contributors_intersection_v2', data);
+                        });
+                    </script>
+
+                </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
                     <h2>Commit count to Symfony code and docs per year</h2>
 
 

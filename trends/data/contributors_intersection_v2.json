@@ -1,0 +1,27 @@
+{
+    "options": {
+        "type": "pie"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "1098",
+                    "y": 1098,
+                    "color": "#4cacdb"
+                },
+                {
+                    "name": "aaa506",
+                    "y": 506,
+                    "color": "#63b37e"
+                },
+                {
+                    "name": "778",
+                    "y": 778,
+                    "color": "#7aba20"
+                }
+            ],
+            "name": "Contributor count"
+        }
+    ]
+}

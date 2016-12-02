@@ -47,17 +47,27 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         chart: {
             type: 'column'
         },
-        title: {
-            enabled: false
-        },
         xAxis: {
             categories: categories
-        },
-        credits: {
-            enabled: false
         },
         series: data.series
     });
 }
+
+HighchartsRenderer.prototype.pieChart = function(container, data) {
+
+    // replace element with y, name, color
+    // data.series[0].data.forEach(function(value){
+    //     value['color'] = '#' + value[2];
+    // });
+
+    Highcharts.chart(container, {
+        chart: {
+            type: 'pie'
+        },
+        series: data.series
+    });
+}
+
 
 var Renderer = new HighchartsRenderer();
