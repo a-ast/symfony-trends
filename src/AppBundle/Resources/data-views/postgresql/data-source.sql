@@ -26,15 +26,24 @@ CREATE VIEW vw_contributions_per_year AS
 -- Intersections
 DROP VIEW IF EXISTS vw_contributor_intersection CASCADE;
 CREATE VIEW vw_contributor_intersection AS
-  SELECT project_ids, COUNT(*) AS contributor_count, to_hex(color::int) AS color
+  SELECT
+    project_ids,
+    project_names,
+    COUNT(*) AS contributor_count,
+    '#' || color AS color
   FROM (
-         SELECT contributor_id, string_agg(project_id::text, ','::text) as project_ids, AVG(color) AS color
+         SELECT
+           contributor_id,
+           STRING_AGG(project_id::text, ','::text) as project_ids,
+           STRING_AGG(project_name, ' and '::text) as project_names,
+           TO_HEX(AVG(HEX_TO_INT(color))::int) AS color
          from (
-                select distinct cn.contributor_id, cn.project_id, hex_to_int(p.color) AS color
-                from contribution cn
-                  left join project p ON p.id = cn.project_id
-                order by project_id asc
+                SELECT
+                  DISTINCT cn.contributor_id, cn.project_id, p.name as project_name, p.color
+                FROM contribution cn
+                  LEFT JOIN project p ON p.id = cn.project_id
+                ORDER BY project_id ASC
               ) c
          GROUP BY contributor_id
        ) gc
-  GROUP BY project_ids, color;
+  GROUP BY project_ids, project_names, color;

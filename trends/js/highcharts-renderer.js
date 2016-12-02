@@ -57,9 +57,12 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
 HighchartsRenderer.prototype.pieChart = function(container, data) {
 
     // replace element with y, name, color
-    // data.series[0].data.forEach(function(value){
-    //     value['color'] = '#' + value[2];
-    // });
+    data.series.forEach(function(series) {
+        series.data.forEach(function(item) {
+            item['y'] = item['value'];
+            delete item['value'];
+        })
+    });
 
     Highcharts.chart(container, {
         chart: {

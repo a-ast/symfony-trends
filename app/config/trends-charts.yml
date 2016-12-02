@@ -15,9 +15,9 @@ parameters:
                         filters: []
 
                         values:
-                            - contributor_count
-                            - contributor_count
-                            - color
+                            name: project_names
+                            value: contributor_count
+                            color: color
 
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'

@@ -6,18 +6,18 @@
         {
             "data": [
                 {
-                    "name": "1098",
-                    "y": 1098,
+                    "name": "Symfony code",
+                    "value": 1098,
                     "color": "#4cacdb"
                 },
                 {
-                    "name": "aaa506",
-                    "y": 506,
+                    "name": "Symfony code and Symfony docs",
+                    "value": 506,
                     "color": "#63b37e"
                 },
                 {
-                    "name": "778",
-                    "y": 778,
+                    "name": "Symfony docs",
+                    "value": 778,
                     "color": "#7aba20"
                 }
             ],
