@@ -39,8 +39,14 @@ function HighchartsRenderer () {
 HighchartsRenderer.prototype.columnChart = function(container, data) {
 
     var categories = [];
-    data.series[0].data.forEach(function(value){
-        categories.push(value[0]);
+
+    data.series.forEach(function(series) {
+        series.data.forEach(function(item) {
+            categories.push(item['name']);
+            item['y'] = item['value'];
+            delete item['name'];
+            delete item['value'];
+        })
     });
 
     Highcharts.chart(container, {

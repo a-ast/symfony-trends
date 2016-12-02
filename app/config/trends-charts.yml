@@ -33,8 +33,8 @@ parameters:
                         filters:
                             project_id: 1
                         values:
-                            - date
-                            - contribution_count
+                            name: date
+                            value: contribution_count
                     -
                         title: Symfony docs
                         color: '#7aba20'
@@ -42,8 +42,8 @@ parameters:
                         filters:
                             project_id: 2
                         values:
-                            - date
-                            - contribution_count
+                            name: date
+                            value: contribution_count
 #
 #
 #            commit_count_distribution_symfony:
