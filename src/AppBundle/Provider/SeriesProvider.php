@@ -24,15 +24,15 @@ class SeriesProvider
         $seriesCollection = [];
 
         foreach ($options as $seriesConfig) {
-            $data = $this->dataProvider->getData($seriesConfig['data_source'], $seriesConfig['filters']);
+            $data = $this->dataProvider->getData($seriesConfig['data_source'], $seriesConfig['criteria']);
 
             $seriesData = [];
 
             foreach ($data as $dataItem) {
                 $seriesItem = [];
 
-                foreach ($seriesConfig['values'] as $fieldKey => $fieldName) {
-                    $seriesItem[$fieldKey] = $dataItem[$fieldName];
+                foreach ($seriesConfig['dimensions'] as $key => $dimension) {
+                    $seriesItem[$key] = $dataItem[$dimension];
                 }
 
                 $seriesData[] = $seriesItem;

@@ -12,9 +12,9 @@ parameters:
                     -
                         title: Contributor count
                         data_source: vw_contributor_intersection
-                        filters: []
+                        criteria: []
 
-                        values:
+                        dimensions:
                             name: project_names
                             value: contributor_count
                             color: color
@@ -30,18 +30,18 @@ parameters:
                         title: Symfony code
                         color: '#4cacdb'
                         data_source: vw_contributions_per_year
-                        filters:
+                        criteria:
                             project_id: 1
-                        values:
+                        dimensions:
                             name: date
                             value: contribution_count
                     -
                         title: Symfony docs
                         color: '#7aba20'
                         data_source: vw_contributions_per_year
-                        filters:
+                        criteria:
                             project_id: 2
-                        values:
+                        dimensions:
                             name: date
                             value: contribution_count
 #

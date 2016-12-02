@@ -16,8 +16,8 @@ class SeriesProviderTest extends PHPUnit_Framework_TestCase
         $options = [
             [
                 'data_source' => 'data_view',
-                'filters' => [],
-                'values' => ['name', 'age'],
+                'criteria' => [],
+                'dimensions' => ['name', 'age'],
             ]
         ];
 
@@ -29,6 +29,7 @@ class SeriesProviderTest extends PHPUnit_Framework_TestCase
         $seriesProvider = new SeriesProvider($dataProvider->reveal());
         $collection = $seriesProvider->getSeries($options);
 
-        $this->assertEquals([[['Gandalf', 2019], ['Frodo', 33]]], $collection);
+        $expected = [['data' => [['Gandalf', 2019], ['Frodo', 33]]]];
+        $this->assertEquals($expected, $collection);
     }
 }
