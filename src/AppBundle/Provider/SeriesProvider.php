@@ -5,7 +5,7 @@ namespace AppBundle\Provider;
 
 use AppBundle\Repository\DataProvider;
 
-class SeriesProvider
+class SeriesProvider implements ProviderInterface
 {
     private $dataProvider;
 

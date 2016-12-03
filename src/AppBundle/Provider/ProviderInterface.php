@@ -4,5 +4,5 @@ namespace AppBundle\Provider;
 
 interface ProviderInterface
 {
-    public function getChart(array $options = []);
+    function getSeries(array $options);
 }
