@@ -57,7 +57,7 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         },
         series: data.series
     });
-}
+};
 
 HighchartsRenderer.prototype.stairAreaChart = function(container, data) {
 
@@ -66,13 +66,17 @@ HighchartsRenderer.prototype.stairAreaChart = function(container, data) {
     data.series.forEach(function(series) {
 
         series.data.forEach(function(item) {
-            categories.push(item['name']);
+            if (categories.indexOf(item['name']) == -1) {
+                categories.push(item['name']);
+            }
             item['y'] = item['value'];
             delete item['value'];
-        })
+        });
 
-        categories.unshift('');
-        series.data.unshift({name: '', y: series.data[0].y});
+        if (categories.indexOf('') == -1) {
+            categories.push('');
+        }
+        series.data.push({name: '', y: series.data[series.data.length-1].y});
     });
 
     Highcharts.chart(container, {
@@ -84,12 +88,44 @@ HighchartsRenderer.prototype.stairAreaChart = function(container, data) {
         },
         plotOptions: {
             area: {
-                step: 'right'
+                step: 'left'
             }
         },
         series: data.series
     });
-}
+};
+
+HighchartsRenderer.prototype.stairAreaDateTimeChart = function(container, data) {
+
+    data.series.forEach(function(series) {
+
+        series.data.forEach(function(item) {
+
+            item['x'] = Date.parse(item['date']);
+            item['y'] = item['value'];
+            delete item['date'];
+            delete item['value'];
+        });
+
+        series.data.unshift({x: series.data[0].x, y: series.data[0].y});
+    });
+
+    Highcharts.chart(container, {
+        chart: {
+            type: 'area'
+        },
+        xAxis: {
+            type: 'datetime'
+        },
+        plotOptions: {
+            area: {
+                step: 'left'
+            }
+        },
+        series: data.series
+    });
+};
+
 
 HighchartsRenderer.prototype.pieChart = function(container, data) {
 
@@ -107,7 +143,7 @@ HighchartsRenderer.prototype.pieChart = function(container, data) {
         },
         series: data.series
     });
-}
+};
 
 
 var Renderer = new HighchartsRenderer();

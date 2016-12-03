@@ -85,7 +85,7 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony code per month</h2>
+                    <h2>Commit count to Symfony code per year</h2>
 
 
                     <div id="contributions_per_date_yearly_symfony_v2" class="chart stairArea-chart"></div>
@@ -105,7 +105,7 @@
 
             
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony docs per month</h2>
+                    <h2>Commit count to Symfony docs per year</h2>
 
 
                     <div id="contributions_per_date_yearly_symfony_docs_v2" class="chart stairArea-chart"></div>
@@ -113,6 +113,41 @@
 
                         $.getJSON('data/contributions_per_date_yearly_symfony_docs_v2.json', function(data) {
                             Renderer.stairAreaChart('contributions_per_date_yearly_symfony_docs_v2', data);
+                        });
+                    </script>
+
+                </div>
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony code per month</h2>
+
+
+                    <div id="contributions_per_date_monthly_symfony_v2" class="chart stairAreaDateTime-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_monthly_symfony_v2.json', function(data) {
+                            Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony_v2', data);
+                        });
+                    </script>
+
+                </div>
+
+                    </div>
+
+    
+        <div class="row">
+
+            
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <h2>Commit count to Symfony docs per month</h2>
+
+
+                    <div id="contributions_per_date_monthly_symfony_docs_v2" class="chart stairAreaDateTime-chart"></div>
+                    <script>
+
+                        $.getJSON('data/contributions_per_date_monthly_symfony_docs_v2.json', function(data) {
+                            Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony_docs_v2', data);
                         });
                     </script>
 

@@ -9,7 +9,7 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
--- Contribution counts
+-- Contribution counts per year
 DROP VIEW IF EXISTS vw_contributions_per_year CASCADE;
 CREATE VIEW vw_contributions_per_year AS
   select
@@ -21,6 +21,21 @@ CREATE VIEW vw_contributions_per_year AS
   left join contributor c on cn.contributor_id = c.id
   group by to_char(cn.commited_at, 'YYYY'), cn.project_id
   order by date asc;
+
+-- Contribution counts per year
+DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
+CREATE VIEW vw_contributions_per_month AS
+  select
+    to_char(cn.commited_at, 'YYYY-MM-01') as date,
+    cn.project_id,
+    count(*) as contribution_count,
+    sum(cast(c.is_core_member as int)) as core_team_contribution_count
+  from contribution cn
+    left join contributor c on cn.contributor_id = c.id
+  group by date, cn.project_id
+  order by date asc;
+
+
 
 -- Intersections
 DROP VIEW IF EXISTS vw_contributor_intersection CASCADE;

@@ -70,7 +70,7 @@ parameters:
                             value: contributor_count
 
             contributions_per_date_yearly_symfony:
-                title: 'Commit count to Symfony code per month'
+                title: 'Commit count to Symfony code per year'
 
                 chart:
                     type: stairArea
@@ -96,7 +96,7 @@ parameters:
                             value: core_team_contribution_count
 
             contributions_per_date_yearly_symfony_docs:
-                title: 'Commit count to Symfony docs per month'
+                title: 'Commit count to Symfony docs per year'
 
                 chart:
                     type: stairArea
@@ -121,73 +121,61 @@ parameters:
                             name: date
                             value: core_team_contribution_count
 
-#            contributions_per_date_monthly_symfony:
-#                title: 'Commit count to Symfony code per month'
-#
-#                chart:
-#                    type: stairArea
-#                    sub-type: stair-step
-#                    x-axis:
-#                        type: datetime
-#
-#                criteria:
-#                    project_id: 1
-#                series:
-#                    -
-#                        title: Symfony code
-#                        color: '#4cacdb'
-#                        data_source: vw_contributions_per_year
-#                        criteria:
-#                            project_id: 1
-#                        dimensions:
-#                            name: bounds
-#                            value: contributor_count
 
-#
-#
-#            contributions_per_date_yearly_symfony:
-#                title: 'Commit count to Symfony code per year'
-#
-#                service: 'provider.contributions_per_date'
-#                options:
-#                    projects:
-#                        - symfony
-#                    interval: year
-#                    include_core_team_commits: true
-#                    chart:
-#                        type: area
-#                        sub-type: stair-step
-#
-#
-#            contributions_per_date_monthly_symfony_docs:
-#                title: 'Commit count to Symfony docs per month'
-#
-#                service: 'provider.contributions_per_date'
-#                options:
-#                    projects:
-#                        - symfony-docs
-#                    interval: month
-#                    include_core_team_commits: true
-#                    chart:
-#                        type: area
-#                        sub-type: stair-step
-#                        x-axis:
-#                            type: datetime
-#
-#
-#            contributions_per_date_yearly_symfony_docs:
-#                title: 'Commit count to Symfony docs per year'
-#
-#                service: 'provider.contributions_per_date'
-#                options:
-#                    projects:
-#                        - symfony-docs
-#                    interval: year
-#                    include_core_team_commits: true
-#                    chart:
-#                        type: area
-#                        sub-type: stair-step
-#
+            contributions_per_date_monthly_symfony:
+                title: 'Commit count to Symfony code per month'
+
+                chart:
+                    type: stairAreaDateTime
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#4cacdb'
+                        data_source: vw_contributions_per_month
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            date: date
+                            value: contribution_count
+
+                    -
+                        title: Core team
+                        color: '#323038'
+                        data_source: vw_contributions_per_month
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            date: date
+                            value: core_team_contribution_count
+
+            contributions_per_date_monthly_symfony_docs:
+                title: 'Commit count to Symfony docs per month'
+
+                chart:
+                    type: stairAreaDateTime
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#7aba20'
+                        data_source: vw_contributions_per_month
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            date: date
+                            value: contribution_count
+
+                    -
+                        title: Core team
+                        color: '#323038'
+                        data_source: vw_contributions_per_month
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            date: date
+                            value: core_team_contribution_count
+
 #            contributors_per_country_symfony:
 #                title: 'Where Symfony contributors live and work'
 #
