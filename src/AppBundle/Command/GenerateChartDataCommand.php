@@ -2,8 +2,6 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Formatter\FormatterInterface;
-use AppBundle\Provider\ProviderInterface;
 use AppBundle\Provider\SeriesProvider;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
