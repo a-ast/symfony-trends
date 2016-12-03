@@ -1,55 +1,23 @@
 {
-    "chart": {
+    "options": {
         "type": "pie"
-    },
-    "title": {
-        "text": null
-    },
-    "credits": {
-        "enabled": false
-    },
-    "legend": {
-        "enabled": false,
-        "verticalAlign": "top"
-    },
-    "xAxis": {
-        "tickLength": 0,
-        "categories": []
-    },
-    "yAxis": {
-        "endOnTick": false,
-        "title": {
-            "text": null
-        }
-    },
-    "plotOptions": {
-        "area": {
-            "marker": {
-                "enabled": false
-            }
-        },
-        "pie": {
-            "dataLabels": {
-                "format": "{point.name}<br\/>{point.y}"
-            }
-        }
     },
     "series": [
         {
             "data": [
                 {
-                    "y": 1098,
-                    "name": "Only Symfony code",
+                    "name": "Symfony code",
+                    "value": 1098,
                     "color": "#4cacdb"
                 },
                 {
-                    "y": 506,
-                    "name": "Contributors to both projects",
-                    "color": "#48845E"
+                    "name": "Symfony code and Symfony docs",
+                    "value": 506,
+                    "color": "#63b37e"
                 },
                 {
-                    "y": 778,
-                    "name": "Only Symfony docs",
+                    "name": "Symfony docs",
+                    "value": 778,
                     "color": "#7aba20"
                 }
             ],
