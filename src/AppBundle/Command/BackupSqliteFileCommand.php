@@ -25,6 +25,10 @@ class BackupSqliteFileCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // How to backup postgres
+        // pg_dump --port 5432 --username "postgres" --no-password  --format custom --blobs --verbose --file "/Users/Andrey/Dropbox/trends/backups/2016-12-03-2.backup"
+
+
         $path = $this->getContainer()->getParameter('database_path');
         $now = new \DateTime();
         $newPath = $path.'.'.$now->format(DATE_W3C);

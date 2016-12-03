@@ -119,3 +119,23 @@ CREATE VIEW vw_commit_count_distribution AS
     ) cn
   GROUP BY project_id, bounds
   ORDER BY contributor_count;
+
+--------------------------------------------------------
+-- Contributor countries
+--------------------------------------------------------
+DROP VIEW IF EXISTS vw_contributor_countries CASCADE;
+CREATE VIEW vw_contributor_countries AS
+  select iso, count(id) AS contributor_count from (
+     select c.id, COALESCE(NULLIF(cn1.iso2, ''), NULLIF(cn2.iso2, '')) as iso
+     from contributor c
+       left join sensiolabs_user s on s.contributor_id = c.id
+       left join country cn1 on cn1.name = c.country
+       left join country cn2 on cn2.name = s.country
+     where
+       (c.country != '' OR s.country != '') and
+       exists (
+           select cn.id
+           from contribution cn
+           where cn.contributor_id = c.id and project_id IN (1,2)
+       )) countries
+  group by iso;

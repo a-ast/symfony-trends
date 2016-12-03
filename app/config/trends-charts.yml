@@ -19,6 +19,21 @@ parameters:
                             value: contributor_count
                             color: color
 
+            contributors_per_country_symfony:
+                title: 'Where Symfony contributors live and work'
+
+                chart:
+                    type: map
+
+                series:
+                    -
+                        title: Contributor count
+                        data_source: vw_contributor_countries
+                        criteria: []
+                        dimensions:
+                            iso: iso
+                            value: contributor_count
+
             contributions_per_date_yearly:
                 title: 'Commit count to Symfony code and docs per year'
 
@@ -176,12 +191,4 @@ parameters:
                             date: date
                             value: core_team_contribution_count
 
-#            contributors_per_country_symfony:
-#                title: 'Where Symfony contributors live and work'
-#
-#                service: 'provider.contributors_per_country'
-#                options:
-#                    projects:
-#                        - symfony
-#                    chart:
-#                        type: map
+

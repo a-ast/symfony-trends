@@ -9,7 +9,7 @@ function HighchartsRenderer () {
         },
         legend: {
             enabled: true,
-            verticalAlign: "top"
+            verticalAlign: 'top'
         },
         xAxis: {
             tickLength: 0
@@ -28,7 +28,7 @@ function HighchartsRenderer () {
             },
             pie: {
                 dataLabels: {
-                    format: "{point.name}<br\/>{point.y}"
+                    format: '{point.name}<br\/>{point.y}'
                 }
             }
         }
@@ -145,5 +145,30 @@ HighchartsRenderer.prototype.pieChart = function(container, data) {
     });
 };
 
+HighchartsRenderer.prototype.mapChart = function(container, data) {
+
+    Highcharts.mapChart(container, {
+        chart: {
+            type: 'map',
+            map: 'custom/world'
+        },
+        legend: {
+            enabled: false
+        },
+        colorAxis: {
+            min: 1,
+            type: 'logarithmic',
+            minColor: '#f0faff',
+            maxColor: '#045d87'
+        },
+        plotOptions: {
+            map: {
+                nullColor: '#fff',
+                joinBy: ['iso-a2', 'iso']
+            }
+        },
+        series: data.series
+    });
+};
 
 var Renderer = new HighchartsRenderer();
