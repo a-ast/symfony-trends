@@ -69,20 +69,80 @@ parameters:
                             name: bounds
                             value: contributor_count
 
+            contributions_per_date_yearly_symfony:
+                title: 'Commit count to Symfony code per month'
+
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#4cacdb'
+                        data_source: vw_contributions_per_year
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            name: date
+                            value: contribution_count
+                    -
+                        title: Core team
+                        color: '#323038'
+                        data_source: vw_contributions_per_year
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            name: date
+                            value: core_team_contribution_count
+
+            contributions_per_date_yearly_symfony_docs:
+                title: 'Commit count to Symfony docs per month'
+
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#7aba20'
+                        data_source: vw_contributions_per_year
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            name: date
+                            value: contribution_count
+                    -
+                        title: Core team
+                        color: '#323038'
+                        data_source: vw_contributions_per_year
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            name: date
+                            value: core_team_contribution_count
+
 #            contributions_per_date_monthly_symfony:
 #                title: 'Commit count to Symfony code per month'
 #
-#                service: 'provider.contributions_per_date'
-#                options:
-#                    projects:
-#                        - symfony
-#                    interval: month
-#                    include_core_team_commits: true
-#                    chart:
-#                        type: area
-#                        sub-type: stair-step
-#                        x-axis:
-#                            type: datetime
+#                chart:
+#                    type: stairArea
+#                    sub-type: stair-step
+#                    x-axis:
+#                        type: datetime
+#
+#                criteria:
+#                    project_id: 1
+#                series:
+#                    -
+#                        title: Symfony code
+#                        color: '#4cacdb'
+#                        data_source: vw_contributions_per_year
+#                        criteria:
+#                            project_id: 1
+#                        dimensions:
+#                            name: bounds
+#                            value: contributor_count
+
 #
 #
 #            contributions_per_date_yearly_symfony:

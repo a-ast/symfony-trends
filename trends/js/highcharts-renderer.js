@@ -33,7 +33,6 @@ function HighchartsRenderer () {
             }
         }
     });
-
 }
 
 HighchartsRenderer.prototype.columnChart = function(container, data) {
@@ -55,6 +54,38 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         },
         xAxis: {
             categories: categories
+        },
+        series: data.series
+    });
+}
+
+HighchartsRenderer.prototype.stairAreaChart = function(container, data) {
+
+    var categories = [];
+
+    data.series.forEach(function(series) {
+
+        series.data.forEach(function(item) {
+            categories.push(item['name']);
+            item['y'] = item['value'];
+            delete item['value'];
+        })
+
+        categories.unshift('');
+        series.data.unshift({name: '', y: series.data[0].y});
+    });
+
+    Highcharts.chart(container, {
+        chart: {
+            type: 'area'
+        },
+        xAxis: {
+            categories: categories
+        },
+        plotOptions: {
+            area: {
+                step: 'right'
+            }
         },
         series: data.series
     });
