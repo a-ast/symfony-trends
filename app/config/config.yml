@@ -43,7 +43,7 @@ doctrine:
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
-        user:     postgres
+        user:     "%database_user%"
         charset:  UTF8
 
     orm:
