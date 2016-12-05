@@ -11,6 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ProcessBuilder;
 
 class BackupDatabaseCommand extends ContainerAwareCommand
 {
@@ -35,23 +36,13 @@ class BackupDatabaseCommand extends ContainerAwareCommand
         // pg_dump --port 5432 --username "postgres" --no-password  --format custom --blobs --verbose --file "/path/to/file/file.backup"
 
         $configFilePath = $this->getContainer()->getParameter('kernel.cache_dir').'/trends/backup-path.data';
-
         $path = $input->getOption('path') ? $input->getOption('path') : $this->getBackupDirPath($configFilePath);
 
-        $fs = new Filesystem();
-        $fs->dumpFile($configFilePath, $path);
+        $this->saveConfigFile($configFilePath, $path);
 
-        /** @var Connection $dbName */
-        $connection = $this->getContainer()->get('database_connection');
-        $dbUserName = $connection->getUsername();
-        $dbPort = $connection->getPort();
-        $dbName = $connection->getDatabase();
-        $now = new DateTime();
-        $backupPath = $path.'/'.$now->format('Y-m-d-H-i').'.backup';
+        $backupPath = $this->getBackupFilePath($path);
 
-        $commandFormat = 'pg_dump --port %s --username "%s" --no-password --format custom --blobs --verbose --file "%s" "%s"';
-        $command = sprintf($commandFormat, $dbPort, $dbUserName, $backupPath, $dbName);
-        $process = new Process($command);
+        $process = $this->createProcess($backupPath);
         $process->run();
 
         if (!$process->isSuccessful()) {
@@ -66,7 +57,7 @@ class BackupDatabaseCommand extends ContainerAwareCommand
      *
      * @return string
      */
-    protected function getBackupDirPath($configFilePath)
+    private function getBackupDirPath($configFilePath)
     {
         $fs = new Filesystem();
 
@@ -75,6 +66,59 @@ class BackupDatabaseCommand extends ContainerAwareCommand
         }
 
         $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
+
         return $rootDir.'/../var/backups';
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return Process
+     */
+    private function createProcess($path)
+    {
+        /** @var Connection $dbName */
+        $connection = $this->getContainer()->get('database_connection');
+        $dbUserName = $connection->getUsername();
+        $dbPort = $connection->getPort();
+        $dbName = $connection->getDatabase();
+
+        $builder = new ProcessBuilder();
+        $process = $builder
+            ->add('pg_dump')
+            ->add('--port')->add($dbPort)
+            ->add('--username')->add($dbUserName)
+            ->add('--no-password')
+            ->add('--format')->add('custom')
+            ->add('--blobs')
+            ->add('--verbose')
+            ->add('--file')->add($path)
+            ->add($dbName)
+            ->getProcess();
+
+        return $process;
+    }
+
+    /**
+     * @param string $configFilePath
+     *
+     * @param string $path
+     */
+    private function saveConfigFile($configFilePath, $path)
+    {
+        $fs = new Filesystem();
+        $fs->dumpFile($configFilePath, $path);
+    }
+
+    /**
+     * @param string $dir
+     *
+     * @return string
+     */
+    private function getBackupFilePath($dir)
+    {
+        $now = new DateTime();
+
+        return $dir.'/'.$now->format('Y-m-d-H-i').'.backup';
     }
 }
