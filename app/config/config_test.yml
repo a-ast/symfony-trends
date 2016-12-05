@@ -14,3 +14,12 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        driver:   pdo_pgsql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   trends_test
+        user:     "%database_user%"
+        charset:  UTF8
