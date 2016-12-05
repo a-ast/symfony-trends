@@ -28,7 +28,7 @@ trait TimestampTrait
      *
      * @return $this
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -52,7 +52,7 @@ trait TimestampTrait
      *
      * @return $this
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 

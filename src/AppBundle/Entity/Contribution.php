@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,7 +50,7 @@ class Contribution
     private $contributorId;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="commited_at", type="datetimetz")
      */
@@ -124,11 +125,11 @@ class Contribution
     /**
      * Set commitedAt
      *
-     * @param \DateTime $commitedAt
+     * @param DateTime $commitedAt
      *
      * @return $this
      */
-    public function setCommitedAt($commitedAt)
+    public function setCommitedAt(DateTime $commitedAt)
     {
         $this->commitedAt = $commitedAt;
 
