@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AppBundle\Aggregator\Helper;
+namespace AppBundle\Client;
 
 use GuzzleHttp\ClientInterface;
 use Exception;

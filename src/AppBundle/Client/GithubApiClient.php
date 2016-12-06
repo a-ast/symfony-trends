@@ -1,11 +1,10 @@
 <?php
 
 
-namespace AppBundle\Aggregator\Helper;
+namespace AppBundle\Client;
 
 use DateTimeImmutable;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Psr7\Request;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class GithubApiClient

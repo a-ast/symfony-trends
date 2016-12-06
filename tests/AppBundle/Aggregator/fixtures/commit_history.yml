@@ -24,4 +24,4 @@ AppBundle\Entity\Contribution:
         project_id: 1
         contributor_id: 1
         commited_at: "2016-09-19 11:28:39+02"
-        commit_hash: "b3592636233df304e63452f5127c65a0bf92ee57"
+        commit_hash: "hash-elrond-1"
