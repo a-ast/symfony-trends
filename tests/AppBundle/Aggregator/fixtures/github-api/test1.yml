@@ -1,4 +1,4 @@
-- sha: hash1
+- sha: hash-frodo-1
   commit:
     author:
       name: frodo.b
@@ -10,7 +10,19 @@
     id: 300
     type: User
 
-- sha: hash2
+- sha: hash-frodo-2
+  commit:
+    author:
+      name: frodo.b
+      email: frodo.b@shire
+      date: '2016-11-22T00:13:38Z'
+    message: Added doubts about my future way
+  author:
+    login: frodo
+    id: 300
+    type: User
+
+- sha: hash-sam-1
   commit:
     author:
       name: Sam

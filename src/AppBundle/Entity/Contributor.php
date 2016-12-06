@@ -317,7 +317,7 @@ class Contributor
      */
     public function getAllNames()
     {
-        return ArrayUtils::trimMerge($this->getName(), $this->getGitNames());
+        return ArrayUtils::trimMerge($this->getGithubLogin(), $this->getName(), $this->getGitNames());
     }
 
     /**

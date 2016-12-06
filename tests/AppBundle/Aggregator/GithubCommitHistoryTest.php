@@ -46,7 +46,7 @@ class GithubCommitHistoryTest extends TestCase
         $aggregator->aggregate(['project_id' => 1]);
 
         $this->assertEquals(2, RepositoryUtils::getRecordCount($this->contributorRepository));
-        $this->assertEquals(2, RepositoryUtils::getRecordCount($this->contributionRepository));
+        $this->assertEquals(3, RepositoryUtils::getRecordCount($this->contributionRepository));
 
         /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'frodo@shire']);
@@ -54,7 +54,7 @@ class GithubCommitHistoryTest extends TestCase
         $this->assertEquals('frodo', $contributor->getGithubLogin());
         $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Bag End', $contributor->getGithubLocation());
-        $this->assertEquals(['frodo.baggins@shire'], $contributor->getGitEmails());
+        $this->assertEquals(['frodo.baggins@shire', 'frodo.b@shire'], $contributor->getGitEmails());
         $this->assertEquals(['frodo.b'], $contributor->getGitNames());
 
         /** @var Contributor $contributor */
