@@ -16,7 +16,7 @@ class TestCase extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->fixtureLoader = new FixtureLoader('');
+        $this->fixtureLoader = new FixtureLoader($this->getObjectManager(), '');
     }
 
     public function getService($id)

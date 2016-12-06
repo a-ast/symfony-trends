@@ -1,0 +1,8 @@
+frodo:
+    name: Frodo
+    email: frodo@shire
+    location: Shire
+sam:
+    name: Sam
+    email: sam@shire
+    location: Shire
