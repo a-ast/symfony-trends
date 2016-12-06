@@ -7,13 +7,13 @@ services:
         class: AppBundle\Aggregator\Helper\GithubApiClient
         arguments:
             - '@http_client'
-            - '%github.client_id%'
-            - '%github.client_secret%'
+            - '%env(GITHUB_CLIENT_ID)%'
+            - '%env(GITHUB_CLIENT_SECRET)%'
     geolocation_api_client:
         class: AppBundle\Aggregator\Helper\GeolocationApiClient
         arguments:
             - '@http_client'
-            - '%geocoding.api_key%'
+            - '%env(GEOCODING_API_KEY)%'
 
     data_provider:
         class: AppBundle\Repository\DataProvider
@@ -33,14 +33,6 @@ services:
     helper.sensiolabs_data_extractor:
         class: AppBundle\Aggregator\Helper\SensiolabsDataExtractor
         lazy: true
-
-    helper.github_api:
-        class: AppBundle\Aggregator\Helper\GithubApiAdapter
-        lazy: true
-        arguments:
-            - '@github_client'
-            - '%github.client_id%'
-            - '%github.client_secret%'
 
     #################################
     # Data aggregators

@@ -14,3 +14,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    env(GITHUB_CLIENT_ID): ~
+    env(GITHUB_CLIENT_SECRET): ~
+    env(GEOCODING_API_KEY): ~
