@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\AppBundle\Aggregator\Helper;
+namespace Tests\AppBundle\Traits;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
