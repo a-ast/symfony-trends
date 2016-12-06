@@ -37,8 +37,8 @@ class GithubCommitHistoryTest extends TestCase
     public function testCreateNewContributorAndContributionInEmptyDb()
     {
         $this->fixtureLoader->loadFixtureFilesToDatabase(['orm/base.yml']);
-        $commits = $this->fixtureLoader->getFixtureData('github-api/test1.yml');
 
+        $commits = $this->fixtureLoader->getFixtureData('github-api/test1.yml');
         $users = $this->fixtureLoader->getFixtureData('github-api/users.yml');
         $locations = $this->fixtureLoader->getFixtureData('github-api/locations.yml');
 
@@ -51,7 +51,13 @@ class GithubCommitHistoryTest extends TestCase
         /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'frodo@shire']);
         $this->assertEquals('Frodo', $contributor->getName());
-        $this->assertEquals('Shire of Middle-earth', $contributor->getCountry());
+        $this->assertEquals('Shire', $contributor->getCountry());
+        $this->assertEquals('Bag End', $contributor->getGithubLocation());
+
+        /** @var Contributor $contributor */
+        $contributor = $this->contributorRepository->findOneBy(['email' => 'sam@shire']);
+        $this->assertEquals('Sam', $contributor->getName());
+        $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Shire', $contributor->getGithubLocation());
     }
 
