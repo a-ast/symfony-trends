@@ -84,6 +84,7 @@ class GithubCommitHistory implements AggregatorInterface
                 $contributor = null;
                 $githubId = null;
                 $login = '';
+                $location = '';
                 $country = '';
 
                 $name  = $commitName  = $commit['commit']['author']['name'];
@@ -110,7 +111,8 @@ class GithubCommitHistory implements AggregatorInterface
                     $email = isset($user['email']) ? $user['email'] : $commitEmail;
 
                     if (isset($user['location'])) {
-                        $countryData = $this->geolocationApiClient->findCountry($user['location']);
+                        $location = $user['location'];
+                        $countryData = $this->geolocationApiClient->findCountry($location);
                         $country = $countryData['country'];
                     }
                 }
@@ -153,6 +155,10 @@ class GithubCommitHistory implements AggregatorInterface
 
                 if (!$contributor->getCountry()) {
                     $contributor->setCountry($country);
+                }
+
+                if (!$contributor->getGithubLocation()) {
+                    $contributor->setGithubLocation($location);
                 }
 
                 $contributor->addGitName($login);

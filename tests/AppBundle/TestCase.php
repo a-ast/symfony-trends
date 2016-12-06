@@ -3,20 +3,14 @@
 namespace Tests\AppBundle;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TestCase extends KernelTestCase
 {
-    /**
-     * @var FixtureLoader
-     */
-    protected $fixtureLoader;
-
     protected function setUp()
     {
         self::bootKernel();
-
-        $this->fixtureLoader = new FixtureLoader($this->getObjectManager(), '');
     }
 
     public function getService($id)
@@ -25,9 +19,9 @@ class TestCase extends KernelTestCase
     }
 
     /**
-     * @return ObjectManager
+     * @return EntityManagerInterface
      */
-    public function getObjectManager()
+    public function getEntityManager()
     {
         return $this->getService('doctrine.orm.entity_manager');
     }

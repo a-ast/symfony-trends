@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Traits;
+namespace Tests\AppBundle\Traits;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Tests\AppBundle\FixtureLoader;

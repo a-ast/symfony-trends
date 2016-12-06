@@ -4,6 +4,7 @@ namespace Tests\AppBundle\Aggregator\Helper;
 
 use AppBundle\Aggregator\Helper\GeolocationApiClient;
 use PHPUnit_Framework_TestCase;
+use Tests\AppBundle\Traits\HttpClientAwareTrait;
 
 class GeolocationApiClientTest extends PHPUnit_Framework_TestCase
 {

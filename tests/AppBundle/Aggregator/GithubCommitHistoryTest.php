@@ -4,13 +4,17 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\GeolocationApiClient;
 use AppBundle\Aggregator\Helper\GithubApiClient;
+use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepository;
-use Tests\AppBundle\FixtureLoader;
 use Prophecy\Argument;
 use Tests\AppBundle\TestCase;
+use Tests\AppBundle\Traits\FixtureLoaderAwareTrait;
+use Tests\AppBundle\Helper\RepositoryUtils;
 
 class GithubCommitHistoryTest extends TestCase
 {
+    use FixtureLoaderAwareTrait;
+
     private $projectRepository;
     private $contributionRepository;
 
@@ -23,7 +27,7 @@ class GithubCommitHistoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->fixtureLoader->setFixtureDir(__DIR__.'/fixtures');
+        $this->initFixtureLoader($this->getEntityManager(), __DIR__.'/fixtures');
 
         $this->projectRepository = $this->getService('repository.project');
         $this->contributionRepository = $this->getService('repository.contribution');
@@ -41,12 +45,14 @@ class GithubCommitHistoryTest extends TestCase
         $aggregator = $this->getAggregator($commits, $users, $locations);
         $aggregator->aggregate(['project_id' => 1]);
 
-        $qb = $this->contributorRepository->createQueryBuilder('data');
-        $count = $qb->select('COUNT(data)')->getQuery()->getSingleScalarResult();
-        $this->assertEquals(2, $count);
+        $this->assertEquals(2, RepositoryUtils::getRecordCount($this->contributorRepository));
+        $this->assertEquals(2, RepositoryUtils::getRecordCount($this->contributionRepository));
 
+        /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'frodo@shire']);
         $this->assertEquals('Frodo', $contributor->getName());
+        $this->assertEquals('Shire of Middle-earth', $contributor->getCountry());
+        $this->assertEquals('Shire', $contributor->getGithubLocation());
     }
 
     /**
