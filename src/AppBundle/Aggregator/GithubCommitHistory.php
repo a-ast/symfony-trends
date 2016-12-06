@@ -63,16 +63,20 @@ class GithubCommitHistory implements AggregatorInterface
      */
     public function aggregate(array $options, ProgressInterface $progress = null)
     {
-        $page = 1;
-
         $projectId = $options['project_id'];
         /** @var Project $project */
         $project = $this->projectRepository->find($projectId);
+
+        if (null === $project) {
+            throw new \RuntimeException(sprintf('Project %d not found', $projectId));
+        }
+
         $projectRepo = $project->getGithubPath();
 
         $lastCommitDate = $this->contributionRepository->getLastCommitDate($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');
 
+        $page = 1;
         while ($commits = $this->apiClient->getCommits($projectRepo, $sinceDate, $page)) {
 
             foreach ($commits as $commit) {

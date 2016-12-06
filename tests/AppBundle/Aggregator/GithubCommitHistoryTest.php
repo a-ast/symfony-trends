@@ -2,26 +2,46 @@
 
 namespace AppBundle\Aggregator;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Nelmio\Alice\Fixtures;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use AppBundle\Aggregator\Helper\GeolocationApiClient;
+use AppBundle\Aggregator\Helper\GithubApiClient;
+use Tests\AppBundle\FixtureLoader;
+use Prophecy\Argument;
+use Tests\AppBundle\TestCase;
 
-class GithubCommitHistoryTest extends KernelTestCase 
+class GithubCommitHistoryTest extends TestCase
 {
     /**
-     * @var ObjectManager
+     * @expectedException \RuntimeException
      */
-    private $em;
-
-    protected function setUp()
+    public function testFailsIfProjectNotFound()
     {
-        self::bootKernel();
+        $aggregator = $this->getAggregator();
 
-        $this->em = static::$kernel->getContainer()->get('doctrine.orm.entity_manager');
+        $aggregator->aggregate(['project_id' => 42]);
+
     }
-    
-    public function testAggregate()
+
+    /**
+     * @return GithubCommitHistory
+     */
+    protected function getAggregator()
     {
-        Fixtures::load(__DIR__.'/fixtures/commit_history.yml', $this->em);
+        //Fixtures::load(__DIR__.'/fixtures/commit_history.yml', $this->getObjectManager());
+
+        $this->fixtureLoader->setFixtureDir(__DIR__.'/fixtures');
+        $commits = $this->fixtureLoader->getFixtureData('GithubApi/basic.yml');
+
+        $githubApi = $this->prophesize(GithubApiClient::class);
+        $githubApi
+            ->getCommits(Argument::cetera())
+            ->willReturn($commits);
+
+        $geoApi = $this->prophesize(GeolocationApiClient::class);
+
+        $aggregator = new GithubCommitHistory($githubApi->reveal(), $geoApi->reveal(),
+            $this->getService('repository.project'), $this->getService('repository.contribution'),
+            $this->getService('repository.contributor'));
+
+        return $aggregator;
     }
 }

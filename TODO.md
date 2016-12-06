@@ -3,32 +3,11 @@ TODO
 
 Beta
 
-1. Output labels with data
-1. Improve on hover
-1. Improve tooltips
-1. Crawl twig and silex
-1. Add column labels
+1. Tests
+    - implement ORMPurger
+    - implement database recreation with SchemaTool
 
-Architecture:
-
-1. Soultion for generation of highcharts
-    * SeriesProvider/GenerateCommad generates structure like
-      options:
-            minColor: ...
-            tickWitdh
-      series:
-            ...
-    * One class with lots of methods like
-        HighchartsView.render(container, type, data)
-    * Leave only SeriesProvider and remove formatters.
-      
-      
-1. Rethink chart generation: return series list from provider 
-   (SeriesProvider)
 2. Simplify generator command
-2. Merge Highcharts and Highmaps formatters
-3. Simplify Formatter (think about serializer)
-4. Get rid of categories (always calc it from combination of series)
 
 
 Charts
