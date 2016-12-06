@@ -1,7 +1,7 @@
 - sha: hash1
   commit:
     author:
-      name: Frodo Baggins
+      name: frodo.b
       email: frodo.baggins@shire
       date: '2016-11-22T00:13:33Z'
     message: Added thoughts about my future way

@@ -50,17 +50,21 @@ class GithubCommitHistoryTest extends TestCase
 
         /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'frodo@shire']);
-        $this->assertEquals('Frodo', $contributor->getName());
+        $this->assertEquals('Frodo Baggins', $contributor->getName());
+        $this->assertEquals('frodo', $contributor->getGithubLogin());
         $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Bag End', $contributor->getGithubLocation());
         $this->assertEquals(['frodo.baggins@shire'], $contributor->getGitEmails());
+        $this->assertEquals(['frodo.b'], $contributor->getGitNames());
 
         /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'sam@shire']);
         $this->assertEquals('Sam', $contributor->getName());
+        $this->assertEquals('sam', $contributor->getGithubLogin());
         $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Shire', $contributor->getGithubLocation());
         $this->assertEquals(['samuel@shire'], $contributor->getGitEmails());
+        $this->assertEquals([''], $contributor->getGitNames());
     }
 
     /**
