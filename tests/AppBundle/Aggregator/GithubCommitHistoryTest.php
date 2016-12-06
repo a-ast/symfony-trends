@@ -2,8 +2,8 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Aggregator\Helper\GeolocationApiClient;
-use AppBundle\Aggregator\Helper\GithubApiClient;
+use AppBundle\Client\GeolocationApiClient;
+use AppBundle\Client\GithubApiClient;
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepository;
 use Prophecy\Argument;
@@ -53,12 +53,14 @@ class GithubCommitHistoryTest extends TestCase
         $this->assertEquals('Frodo', $contributor->getName());
         $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Bag End', $contributor->getGithubLocation());
+        $this->assertEquals(['frodo.baggins@shire'], $contributor->getGitEmails());
 
         /** @var Contributor $contributor */
         $contributor = $this->contributorRepository->findOneBy(['email' => 'sam@shire']);
         $this->assertEquals('Sam', $contributor->getName());
         $this->assertEquals('Shire', $contributor->getCountry());
         $this->assertEquals('Shire', $contributor->getGithubLocation());
+        $this->assertEquals(['samuel@shire'], $contributor->getGitEmails());
     }
 
     /**
