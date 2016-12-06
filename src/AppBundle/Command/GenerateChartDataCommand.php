@@ -60,7 +60,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
                 $json = json_encode($data, JSON_PRETTY_PRINT);
 
-                $filePath = sprintf('%s/../trends/data/%s.json', $rootDir, $chartId);
+                $filePath = sprintf('%s/../web/trends/data/%s.json', $rootDir, $chartId);
                 $fs->dumpFile($filePath, $json);
 
                 $trends[$groupId][$chartId] = [
@@ -74,7 +74,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $indexFile = $twig->render('@App/index.html.twig', ['trends' => $trends]);
 
-        $filePath = sprintf('%s/../trends/index.html', $rootDir);
+        $filePath = sprintf('%s/../web/trends/index.html', $rootDir);
         $fs->dumpFile($filePath, $indexFile);
     }
 }
