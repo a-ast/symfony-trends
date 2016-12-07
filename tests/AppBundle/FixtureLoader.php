@@ -46,7 +46,7 @@ class FixtureLoader
      * @param array $fileNames
      * @param bool $append
      */
-    public function loadFixtureFilesToDatabase(array $fileNames, $append = false)
+    public function loadFixtureFiles(array $fileNames, $append = false)
     {
         if (false === $append) {
             $this->recreateDoctrineSchema();
@@ -65,7 +65,7 @@ class FixtureLoader
      * @param array $fixtures
      * @param bool $append
      */
-    public function loadFixturesToDatabase(array $fixtures, $append = false)
+    public function loadFixtures(array $fixtures, $append = false)
     {
         if (false === $append) {
             $this->recreateDoctrineSchema();

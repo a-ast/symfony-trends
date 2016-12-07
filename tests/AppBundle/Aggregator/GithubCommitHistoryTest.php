@@ -34,8 +34,8 @@ class GithubCommitHistoryTest extends TestCase
      */
     public function testAggregate(array $databaseFixtures, $commits, $expected)
     {
-        $this->getFixtureLoader()->loadFixtureFilesToDatabase($databaseFixtures['files']);
-        $this->getFixtureLoader()->loadFixturesToDatabase($databaseFixtures['entities'], true);
+        $this->getFixtureLoader()->loadFixtureFiles($databaseFixtures['files']);
+        $this->getFixtureLoader()->loadFixtures($databaseFixtures['entities'], true);
 
         $users = $this->getFixtureReader()->getFixtureData('github-api/users.yml');
         $locations = $this->getFixtureReader()->getFixtureData('github-api/locations.yml');
