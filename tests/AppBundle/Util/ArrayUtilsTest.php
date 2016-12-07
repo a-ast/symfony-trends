@@ -26,7 +26,11 @@ class ArrayUtilsTest extends PHPUnit_Framework_TestCase
         ];
 
         $this->assertEquals([10, 20, 86], ArrayUtils::castArrayColumnToInt($array, 'value'));
+    }
 
-
+    public function testTrim()
+    {
+        $array = [0 => ''];
+        $this->assertEquals([], ArrayUtils::trim($array));
     }
 }

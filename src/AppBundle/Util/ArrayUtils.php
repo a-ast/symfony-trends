@@ -35,4 +35,16 @@ class ArrayUtils
             return (int)$value;
         }, array_column($array, $columnName));
     }
+
+    /**
+     * Trims array
+     *
+     * @param $array
+     *
+     * @return array
+     */
+    public static function trim($array)
+    {
+        return array_filter($array);
+    }
 }
