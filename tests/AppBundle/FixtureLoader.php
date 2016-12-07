@@ -1,14 +1,10 @@
 <?php
 
-
 namespace Tests\AppBundle;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Nelmio\Alice\Fixtures;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Yaml\Yaml;
 
 class FixtureLoader
 {
@@ -32,17 +28,6 @@ class FixtureLoader
     {
         $this->fixtureDir = $fixtureDir;
         $this->objectManager = $objectManager;
-    }
-
-    public function getFixtureData($fileName)
-    {
-        $fullPath = $this->fixtureDir.'/'.$fileName;
-
-        $contents = file_get_contents($fullPath);
-
-        $data = Yaml::parse($contents);
-
-        return $data;
     }
 
     /**

@@ -8,13 +8,10 @@ use AppBundle\Repository\ContributorRepository;
 use Prophecy\Argument;
 use Symfony\Component\Yaml\Yaml;
 use Tests\AppBundle\TestCase;
-use Tests\AppBundle\Traits\FixtureLoaderAwareTrait;
 use Tests\AppBundle\Helper\RepositoryUtils;
 
 class GithubCommitHistoryTest extends TestCase
 {
-    use FixtureLoaderAwareTrait;
-
     private $projectRepository;
     private $contributionRepository;
 
@@ -27,8 +24,6 @@ class GithubCommitHistoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->initFixtureLoader($this->getEntityManager(), __DIR__.'/fixtures');
-
         $this->projectRepository = $this->getService('repository.project');
         $this->contributionRepository = $this->getService('repository.contribution');
         $this->contributorRepository = $this->getService('repository.contributor');
@@ -39,11 +34,11 @@ class GithubCommitHistoryTest extends TestCase
      */
     public function testAggregate(array $databaseFixtures, $commits, $expected)
     {
-        $this->fixtureLoader->loadFixtureFilesToDatabase($databaseFixtures['files']);
-        $this->fixtureLoader->loadFixturesToDatabase($databaseFixtures['entities'], true);
+        $this->getFixtureLoader()->loadFixtureFilesToDatabase($databaseFixtures['files']);
+        $this->getFixtureLoader()->loadFixturesToDatabase($databaseFixtures['entities'], true);
 
-        $users = $this->fixtureLoader->getFixtureData('github-api/users.yml');
-        $locations = $this->fixtureLoader->getFixtureData('github-api/locations.yml');
+        $users = $this->getFixtureReader()->getFixtureData('github-api/users.yml');
+        $locations = $this->getFixtureReader()->getFixtureData('github-api/locations.yml');
 
         $aggregator = $this->getAggregator($commits, $users, $locations);
         $aggregator->aggregate(['project_id' => 1]);

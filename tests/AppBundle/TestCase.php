@@ -8,9 +8,43 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class TestCase extends KernelTestCase
 {
+    /**
+     * @var FixtureLoader
+     */
+    private $fixtureLoader;
+
+    /**
+     * @var FixtureReader
+     */
+    private $fixtureReader;
+
+    /**
+     * @var string
+     */
+    private $fixtureDir = 'fixtures/';
+
     protected function setUp()
     {
         self::bootKernel();
+
+        $this->fixtureLoader = new FixtureLoader($this->getEntityManager(), $this->fixtureDir);
+        $this->fixtureReader = new FixtureReader($this->fixtureDir);
+    }
+
+    /**
+     * @return FixtureLoader
+     */
+    public function getFixtureLoader()
+    {
+        return $this->fixtureLoader;
+    }
+
+    /**
+     * @return FixtureReader
+     */
+    public function getFixtureReader()
+    {
+        return $this->fixtureReader;
     }
 
     public function getService($id)
