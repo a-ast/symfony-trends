@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contributors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Actions</th>
+                <th>Id</th>
+                <th>Githubid</th>
+                <th>Githublogin</th>
+                <th>Email</th>
+                <th>Gitemails</th>
+                <th>Name</th>
+                <th>Gitnames</th>
+                <th>Country</th>
+                <th>Githublocation</th>
+                <th>Iscoremember</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contributor in contributors %}
+            <tr>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contributor_show', { 'id': contributor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contributor_edit', { 'id': contributor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+                <td><a href="{{ path('contributor_show', { 'id': contributor.id }) }}">{{ contributor.id }}</a></td>
+                <td>{{ contributor.githubId }}</td>
+                <td>{{ contributor.githubLogin }}</td>
+                <td>{{ contributor.email }}</td>
+                <td>{{ contributor.gitEmails|join(', ') }}</td>
+                <td>{{ contributor.name }}</td>
+                <td>{{ contributor.gitNames|join(', ') }}</td>
+                <td>{{ contributor.country }}</td>
+                <td>{{ contributor.githubLocation }}</td>
+                <td>{% if contributor.isCoreMember %}Yes{% else %}No{% endif %}</td>
+                <td>{% if contributor.createdAt %}{{ contributor.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if contributor.updatedAt %}{{ contributor.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contributor_new') }}">Create a new contributor</a>
+        </li>
+    </ul>
+{% endblock %}

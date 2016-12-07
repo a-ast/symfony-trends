@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contributor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contributor.id }}</td>
+            </tr>
+            <tr>
+                <th>Githubid</th>
+                <td>{{ contributor.githubId }}</td>
+            </tr>
+            <tr>
+                <th>Githublogin</th>
+                <td>{{ contributor.githubLogin }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contributor.email }}</td>
+            </tr>
+            <tr>
+                <th>Gitemails</th>
+                <td>{{ contributor.gitEmails|join(', ') }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ contributor.name }}</td>
+            </tr>
+            <tr>
+                <th>Gitnames</th>
+                <td>{{ contributor.gitNames|join(', ') }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ contributor.country }}</td>
+            </tr>
+            <tr>
+                <th>Githublocation</th>
+                <td>{{ contributor.githubLocation }}</td>
+            </tr>
+            <tr>
+                <th>Iscoremember</th>
+                <td>{% if contributor.isCoreMember %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if contributor.createdAt %}{{ contributor.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if contributor.updatedAt %}{{ contributor.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contributor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('contributor_edit', { 'id': contributor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
