@@ -6,6 +6,7 @@ namespace Tests\AppBundle;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use Nelmio\Alice\Fixtures;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
 class FixtureLoader
@@ -56,10 +57,13 @@ class FixtureLoader
 
     /**
      * @param array $fileNames
+     * @param bool $append
      */
-    public function loadFixtureFilesToDatabase(array $fileNames)
+    public function loadFixtureFilesToDatabase(array $fileNames, $append = false)
     {
-        $this->recreateDoctrineSchema();
+        if (false === $append) {
+            $this->recreateDoctrineSchema();
+        }
 
         $dir = $this->fixtureDir;
 
@@ -68,6 +72,25 @@ class FixtureLoader
         });
 
         Fixtures::load($fileNames, $this->objectManager);
+    }
+
+    /**
+     * @param array $fixtures
+     * @param bool $append
+     */
+    public function loadFixturesToDatabase(array $fixtures, $append = false)
+    {
+        if (false === $append) {
+            $this->recreateDoctrineSchema();
+        }
+
+        $fs = new Filesystem();
+        $tmpFileName = $fs->tempnam(sys_get_temp_dir(), 'fixture');
+        $fs->dumpFile($tmpFileName, Yaml::dump($fixtures));
+
+        Fixtures::load($tmpFileName, $this->objectManager);
+
+        $fs->remove($tmpFileName);
     }
 
     /**
