@@ -4,6 +4,7 @@
 namespace Tests\AppBundle;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Nelmio\Alice\Fixtures;
 use Symfony\Component\Filesystem\Filesystem;
@@ -15,18 +16,19 @@ class FixtureLoader
      * @var string
      */
     private $fixtureDir;
+
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $objectManager;
 
     /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager
+     * @param EntityManagerInterface $objectManager
      * @param string $fixtureDir
      */
-    public function __construct(ObjectManager $objectManager, $fixtureDir)
+    public function __construct(EntityManagerInterface $objectManager, $fixtureDir)
     {
         $this->fixtureDir = $fixtureDir;
         $this->objectManager = $objectManager;
@@ -84,13 +86,9 @@ class FixtureLoader
             $this->recreateDoctrineSchema();
         }
 
-        $fs = new Filesystem();
-        $tmpFileName = $fs->tempnam(sys_get_temp_dir(), 'fixture');
-        $fs->dumpFile($tmpFileName, Yaml::dump($fixtures));
-
-        Fixtures::load($tmpFileName, $this->objectManager);
-
-        $fs->remove($tmpFileName);
+        foreach ($fixtures as $entityClassName => $fixture) {
+            Fixtures::load([$entityClassName => $fixture], $this->objectManager);
+        }
     }
 
     /**

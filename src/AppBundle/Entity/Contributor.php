@@ -59,7 +59,7 @@ class Contributor
     /**
      * @var array
      *
-     * @ORM\Column(name="git_emails", type="simple_array")
+     * @ORM\Column(name="git_emails", type="simple_array", options={"default": ""})
      */
     private $gitEmails = [];
 
@@ -201,7 +201,7 @@ class Contributor
      */
     public function getGitNames()
     {
-        return $this->gitNames;
+        return ArrayUtils::trim($this->gitNames);
     }
 
     /**
@@ -245,7 +245,7 @@ class Contributor
      */
     public function getGitEmails()
     {
-        return $this->gitEmails;
+        return ArrayUtils::trim($this->gitEmails);
     }
 
     /**

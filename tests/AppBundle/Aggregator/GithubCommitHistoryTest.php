@@ -4,9 +4,9 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Client\GeolocationApiClient;
 use AppBundle\Client\GithubApiClient;
-use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepository;
 use Prophecy\Argument;
+use Symfony\Component\Yaml\Yaml;
 use Tests\AppBundle\TestCase;
 use Tests\AppBundle\Traits\FixtureLoaderAwareTrait;
 use Tests\AppBundle\Helper\RepositoryUtils;
@@ -34,37 +34,33 @@ class GithubCommitHistoryTest extends TestCase
         $this->contributorRepository = $this->getService('repository.contributor');
     }
 
-    public function testCreateNewContributorAndContributionInEmptyDb()
+    /**
+     * @dataProvider provideTestCases
+     */
+    public function testAggregate(array $databaseFixtures, $commits, $expected)
     {
-        $this->fixtureLoader->loadFixtureFilesToDatabase(['orm/base.yml']);
+        $this->fixtureLoader->loadFixtureFilesToDatabase($databaseFixtures['files']);
+        $this->fixtureLoader->loadFixturesToDatabase($databaseFixtures['entities'], true);
 
-        $commits = $this->fixtureLoader->getFixtureData('github-api/test1.yml');
         $users = $this->fixtureLoader->getFixtureData('github-api/users.yml');
         $locations = $this->fixtureLoader->getFixtureData('github-api/locations.yml');
 
         $aggregator = $this->getAggregator($commits, $users, $locations);
         $aggregator->aggregate(['project_id' => 1]);
 
-        $this->assertEquals(2, RepositoryUtils::getRecordCount($this->contributorRepository));
-        $this->assertEquals(3, RepositoryUtils::getRecordCount($this->contributionRepository));
+        $contributors = RepositoryUtils::fetchAll($this->contributorRepository, 'email');
+        $contributions = RepositoryUtils::fetchAll($this->contributionRepository, 'commit_hash');
 
-        /** @var Contributor $contributor */
-        $contributor = $this->contributorRepository->findOneBy(['email' => 'frodo@shire']);
-        $this->assertEquals('Frodo Baggins', $contributor->getName());
-        $this->assertEquals('frodo', $contributor->getGithubLogin());
-        $this->assertEquals('Shire', $contributor->getCountry());
-        $this->assertEquals('Bag End', $contributor->getGithubLocation());
-        $this->assertEquals(['frodo.baggins@shire', 'frodo.b@shire'], $contributor->getGitEmails());
-        $this->assertEquals(['frodo.b'], $contributor->getGitNames());
+        $this->assertEqualsToFixtureData($expected['contributors'], $contributors, 'email');
+        $this->assertEqualsToFixtureData($expected['contributions'], $contributions, 'commit_hash');
 
-        /** @var Contributor $contributor */
-        $contributor = $this->contributorRepository->findOneBy(['email' => 'sam@shire']);
-        $this->assertEquals('Sam', $contributor->getName());
-        $this->assertEquals('sam', $contributor->getGithubLogin());
-        $this->assertEquals('Shire', $contributor->getCountry());
-        $this->assertEquals('Shire', $contributor->getGithubLocation());
-        $this->assertEquals(['samuel@shire'], $contributor->getGitEmails());
-        $this->assertEquals([''], $contributor->getGitNames());
+    }
+
+    public function provideTestCases()
+    {
+        $contents = file_get_contents(__DIR__.'/fixtures/github-api/test-cases.yml');
+
+        return Yaml::parse($contents);
     }
 
     /**

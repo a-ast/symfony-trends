@@ -1,0 +1,153 @@
+test_load_commit_history_to_empty_tables:
+
+    database_fixtures:
+        files:
+            - orm/base.yml
+        entities: []
+    commits:
+        - sha: hash-frodo-1
+          commit:
+              author: { id: 300, name: 'frodo.b', email: 'frodo.baggins@shire', date: '2016-11-22T00:13:33Z' }
+              message: 'Added thoughts about my future way'
+          author: { id: 300, login: frodo, type: User }
+
+        - sha: hash-frodo-2
+          commit:
+              author: { id: 300, name: 'frodo.b', email: 'frodo.b@shire', date: '2016-11-22T01:20:00Z' }
+              message: 'Added doubts about my future way'
+          author: { id: 300, login: frodo, type: User }
+
+        - sha: hash-sam-1
+          commit:
+              author: { id: 400, name: 'Sam', email: 'samuel@shire', date: '2016-11-23T11:11:11Z' }
+              message: 'Decided to go with Frodo'
+          author: { id: 400, login: sam, type: User }
+
+    expected:
+        contributors:
+            - email: 'frodo@shire'
+              name: 'Frodo Baggins'
+              github_login: 'frodo'
+              country: 'Shire'
+              github_location: 'Bag End'
+              git_emails: ['frodo.baggins@shire', 'frodo.b@shire']
+              git_names: ['frodo.b']
+
+            - email: 'sam@shire'
+              name: 'Sam'
+              github_login: 'sam'
+              country: 'Shire'
+              github_location: 'Shire'
+              git_emails: ['samuel@shire']
+              git_names: []
+        contributions:
+            - commit_hash: hash-frodo-1
+              project_id: 1
+              contributor_id: 1
+            - commit_hash: hash-frodo-2
+              project_id: 1
+              contributor_id: 1
+            - commit_hash: hash-sam-1
+              project_id: 1
+              contributor_id: 2
+
+test_load_commit_history_to_database_with_data:
+
+    database_fixtures:
+        files:
+            - orm/base.yml
+        entities:
+            AppBundle\Entity\Contributor:
+                - id: 1
+                  github_id: 100
+                  github_login: elrond
+                  email: elrond@rivendell
+                  git_emails: []
+                  name: Elrond
+                  git_names: []
+                  country: Rivendell
+                  core_member: true
+                  created_at: "2016-09-19 11:28:39+02"
+                  updated_at: "2016-09-19 11:28:39+02"
+
+                - id: 2
+                  github_id: 300
+                  github_login: frodo
+                  email: frodo@shire
+                  git_emails: []
+                  name: Frodo.B
+                  git_names: []
+                  country: 'Shire'
+                  created_at: "2016-09-19 11:28:39+02"
+                  updated_at: "2016-09-19 11:28:39+02"
+
+            AppBundle\Entity\Contribution:
+                - project_id: 1
+                  contributor_id: 1
+                  commited_at: "2016-09-19 11:28:39+02"
+                  commit_hash: "hash-elrond-1"
+                - project_id: 1
+                  contributor_id: 2
+                  commited_at: "2016-09-19 11:28:39+02"
+                  commit_hash: "hash-frodo-0"
+
+    commits:
+        - sha: hash-frodo-1
+          commit:
+              author: { id: 300, name: 'frodo.b', email: 'frodo.baggins@shire', date: '2016-11-22T00:13:33Z' }
+              message: 'Added thoughts about my future way'
+          author: { id: 300, login: frodo, type: User }
+
+        - sha: hash-frodo-2
+          commit:
+              author: { id: 300, name: 'Frodo Baggins', email: 'frodo.b@shire', date: '2016-11-22T01:20:00Z' }
+              message: 'Added doubts about my future way'
+          author: { id: 300, login: frodo, type: User }
+
+        - sha: hash-sam-1
+          commit:
+              author: { id: 400, name: 'Sam', email: 'samuel@shire', date: '2016-11-23T11:11:11Z' }
+              message: 'Decided to go with Frodo'
+          author: { id: 400, login: sam, type: User }
+
+    expected:
+        contributors:
+            - email: 'elrond@rivendell'
+              name: 'Elrond'
+              github_login: 'elrond'
+              country: 'Rivendell'
+              git_emails: []
+              git_names: []
+
+            - email: 'frodo@shire'
+              name: 'Frodo.B'
+              github_login: 'frodo'
+              country: 'Shire'
+              github_location: ''
+              git_emails: ['frodo.baggins@shire', 'frodo.b@shire']
+              git_names: ['frodo.b', 'Frodo Baggins']
+
+            - email: 'sam@shire'
+              name: 'Sam'
+              github_login: 'sam'
+              country: 'Shire'
+              github_location: 'Shire'
+              git_emails: ['samuel@shire']
+              git_names: []
+
+        contributions:
+            - commit_hash: hash-elrond-1
+              project_id: 1
+              contributor_id: 1
+            - commit_hash: hash-frodo-0
+              project_id: 1
+              contributor_id: 2
+            - commit_hash: hash-frodo-1
+              project_id: 1
+              contributor_id: 2
+            - commit_hash: hash-frodo-2
+              project_id: 1
+              contributor_id: 2
+            - commit_hash: hash-sam-1
+              project_id: 1
+              contributor_id: 3
