@@ -20,6 +20,16 @@ class GithubCommitHistoryTest extends TestCase
      */
     private $contributorRepository;
 
+    /**
+     * @var array
+     */
+    private $users;
+
+    /**
+     * @var array
+     */
+    private $locations;
+
     protected function setUp()
     {
         parent::setUp();
@@ -27,20 +37,23 @@ class GithubCommitHistoryTest extends TestCase
         $this->projectRepository = $this->getService('repository.project');
         $this->contributionRepository = $this->getService('repository.contribution');
         $this->contributorRepository = $this->getService('repository.contributor');
+
+        $this->users = $this->getFixtureReader()->getFixtureData('github-api/users.yml');
+        $this->locations = $this->getFixtureReader()->getFixtureData('github-api/locations.yml');
     }
 
     /**
      * @dataProvider provideTestCases
+     *
+     * @param array $databaseFixtures
+     * @param array $commits
+     * @param array $expected
      */
     public function testAggregate(array $databaseFixtures, $commits, $expected)
     {
-        $this->getFixtureLoader()->loadFixtureFiles($databaseFixtures['files']);
-        $this->getFixtureLoader()->loadFixtures($databaseFixtures['entities'], true);
+        $this->getFixtureLoader()->load($databaseFixtures);
 
-        $users = $this->getFixtureReader()->getFixtureData('github-api/users.yml');
-        $locations = $this->getFixtureReader()->getFixtureData('github-api/locations.yml');
-
-        $aggregator = $this->getAggregator($commits, $users, $locations);
+        $aggregator = $this->getAggregator($commits);
         $aggregator->aggregate(['project_id' => 1]);
 
         $contributors = RepositoryUtils::fetchAll($this->contributorRepository, 'email');
@@ -63,7 +76,7 @@ class GithubCommitHistoryTest extends TestCase
      */
     public function testFailsIfProjectNotFound()
     {
-        $aggregator = $this->getAggregator([], [], []);
+        $aggregator = $this->getAggregator([]);
 
         $aggregator->aggregate(['project_id' => 42]);
     }
@@ -73,8 +86,11 @@ class GithubCommitHistoryTest extends TestCase
      *
      * @return GithubCommitHistory
      */
-    protected function getAggregator(array $commitHistory, array $users, array $locations)
+    protected function getAggregator(array $commitHistory)
     {
+        $users = $this->users;
+        $locations = $this->locations;
+
         $githubApi = $this->prophesize(GithubApiClient::class);
         $githubApi
             ->getCommits(Argument::cetera())
