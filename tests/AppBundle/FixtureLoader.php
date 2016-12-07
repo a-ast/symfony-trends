@@ -77,6 +77,23 @@ class FixtureLoader
     }
 
     /**
+     * Load fixtures from associative array with keys: files, entities
+     *
+     * @param array $fixtures
+     * @param bool $append
+     */
+    public function load(array $fixtures, $append = false)
+    {
+        if (isset($fixtures['files'])) {
+            $this->loadFixtureFiles($fixtures['files'], $append);
+        }
+
+        if (isset($fixtures['entities'])) {
+            $this->loadFixtures($fixtures['entities'], isset($fixtures['files']));
+        }
+    }
+
+    /**
      * Creates schema for doctrine entities
      *
      * @throws \Doctrine\ORM\Tools\ToolsException
