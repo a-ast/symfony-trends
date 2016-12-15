@@ -10,8 +10,10 @@
                 <th>Id</th>
                 <th>Githubid</th>
                 <th>Githublogin</th>
+                {% if is_granted('ROLE_CHECKER') %}
                 <th>Email</th>
                 <th>Gitemails</th>
+                {% endif %}
                 <th>Name</th>
                 <th>Gitnames</th>
                 <th>Country</th>
@@ -37,8 +39,12 @@
                 <td><a href="{{ path('contributor_show', { 'id': contributor.id }) }}">{{ contributor.id }}</a></td>
                 <td>{{ contributor.githubId }}</td>
                 <td>{{ contributor.githubLogin }}</td>
+
+                {% if is_granted('ROLE_CHECKER') %}
                 <td>{{ contributor.email }}</td>
                 <td>{{ contributor.gitEmails|join(', ') }}</td>
+                {% endif %}
+
                 <td>{{ contributor.name }}</td>
                 <td>{{ contributor.gitNames|join(', ') }}</td>
                 <td>{{ contributor.country }}</td>

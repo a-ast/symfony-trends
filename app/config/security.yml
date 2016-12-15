@@ -5,8 +5,17 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
-
+            memory:
+                users:
+                    aa:
+                        password: $2y$13$xdfb1uS8RmJv8hu7pJa0uePH2T/ZcpDeM3INebsecj2TQPvgHhKEa
+                        roles: [ROLE_ADMIN, ROLE_CHECKER]
+                    bb:
+                        password: $2y$13$eJnUMI2OiMTnzITFFEuhSOV2gqk7K3/snhxdzS3SHF47IegyfqBm.
+                        roles: ROLE_CHECKER
+    encoders:
+            Symfony\Component\Security\Core\User\User:
+                algorithm: bcrypt
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -14,11 +23,16 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            anonymous: []
+            logout:
+                path: /logout
+            form_login:
+                login_path: /login
+                check_path: /login
+    access_control:
+        -
+            path: ^/(.*)/(edit|new)
+            roles: [ROLE_ADMIN]
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_CHECKER }
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

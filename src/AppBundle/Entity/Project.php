@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
@@ -46,6 +47,8 @@ class Project
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=100, options={"default": ""})
+     *
+     * @Assert\Length(max=7)
      */
     private $color = '';
 

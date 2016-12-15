@@ -1,8 +1,5 @@
-admin:
+main:
     resource: "@AppBundle/Controller/"
     type:     annotation
-
-frontend:
-    path: /trends/
-    defaults: { _controller: AppBundle:Index:index}
-
+logout:
+    path: /logout

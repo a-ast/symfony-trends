@@ -10,27 +10,29 @@
                 <td>{{ contributor.id }}</td>
             </tr>
             <tr>
-                <th>Githubid</th>
+                <th>Github id</th>
                 <td>{{ contributor.githubId }}</td>
             </tr>
             <tr>
-                <th>Githublogin</th>
+                <th>Github login</th>
                 <td>{{ contributor.githubLogin }}</td>
             </tr>
+            {% if is_granted('ROLE_CHECKER') %}
             <tr>
                 <th>Email</th>
                 <td>{{ contributor.email }}</td>
             </tr>
             <tr>
-                <th>Gitemails</th>
+                <th>Git Emails</th>
                 <td>{{ contributor.gitEmails|join(', ') }}</td>
             </tr>
+            {% endif %}
             <tr>
                 <th>Name</th>
                 <td>{{ contributor.name }}</td>
             </tr>
             <tr>
-                <th>Gitnames</th>
+                <th>Git Names</th>
                 <td>{{ contributor.gitNames|join(', ') }}</td>
             </tr>
             <tr>
@@ -38,19 +40,19 @@
                 <td>{{ contributor.country }}</td>
             </tr>
             <tr>
-                <th>Githublocation</th>
+                <th>Github location</th>
                 <td>{{ contributor.githubLocation }}</td>
             </tr>
             <tr>
-                <th>Iscoremember</th>
+                <th>Core member?</th>
                 <td>{% if contributor.isCoreMember %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Createdat</th>
+                <th>Created</th>
                 <td>{% if contributor.createdAt %}{{ contributor.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Updatedat</th>
+                <th>Updated</th>
                 <td>{% if contributor.updatedAt %}{{ contributor.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>

@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
+{% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', _self] %}
 
 {% block body %}
+<div class="row">
+    <div class="col-md-6 col-xs-12 col-sm-12">
     <h1>Contributor creation</h1>
 
     {{ form_start(form) }}
@@ -13,4 +16,6 @@
             <a href="{{ path('contributor_index') }}">Back to the list</a>
         </li>
     </ul>
+    </div>
+</div>
 {% endblock %}

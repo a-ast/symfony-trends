@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,9 +24,11 @@ class ContributorType extends AbstractType
             ->add('gitNames')
             ->add('country')
             ->add('githubLocation')
-            ->add('isCoreMember')
-            ->add('createdAt')
-            ->add('updatedAt')        ;
+            ->add('isCoreMember', CheckboxType::class, [
+                'label' => 'Core member'
+            ])
+            ->add('createdAt', DateType::class, array('widget' => 'single_text'))
+            ->add('updatedAt', DateType::class);
     }
     
     /**
@@ -35,6 +39,7 @@ class ContributorType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Contributor'
         ));
+
     }
 
     /**
@@ -42,7 +47,7 @@ class ContributorType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_contributor';
+        return 'contributor';
     }
 
 

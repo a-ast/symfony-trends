@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Traits\TimestampTrait;
 use AppBundle\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contributor

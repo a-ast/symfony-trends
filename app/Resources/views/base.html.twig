@@ -3,11 +3,26 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="/trends/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    {% block menu %}
+        <a href="{{ path('project_index') }}">Projects</a>
+        <a href="{{ path('contributor_index') }}">Contributors</a>
+        {% if (is_granted('IS_AUTHENTICATED_REMEMBERED')) %}
+            <a href="{{ path('logout') }}">Log out</a>
+        {% else %}
+            <a href="{{ path('login') }}">Log in</a>
+        {% endif %}
+    {% endblock %}
+    <div class="content">
+
+    {% block body %}
+    {% endblock %}
+    </div>
+
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

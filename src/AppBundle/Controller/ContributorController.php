@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Contributor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Contributor controller.
@@ -63,7 +64,7 @@ class ContributorController extends Controller
      * @Route("/{id}", name="contributor_show")
      * @Method("GET")
      */
-    public function showAction(Contributor $contributor)
+    public function showAction(Contributor $contributor, $_format, $_locale)
     {
         $deleteForm = $this->createDeleteForm($contributor);
 
