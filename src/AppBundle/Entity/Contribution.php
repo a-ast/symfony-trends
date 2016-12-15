@@ -50,6 +50,20 @@ class Contribution
     private $contributorId;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", options={"default": ""})
+     */
+    private $message = '';
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_maintenance_commit", type="boolean", options={"default": false})
+     */
+    private $isMaintenanceCommit = false;
+
+    /**
      * @var DateTime
      *
      * @ORM\Column(name="commited_at", type="datetimetz")
@@ -168,6 +182,46 @@ class Contribution
     public function getCommitHash()
     {
         return $this->commitHash;
+    }
+
+    /**
+     * @param string $message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param boolean $isMaintenanceCommit
+     *
+     * @return $this
+     */
+    public function setIsMaintenanceCommit($isMaintenanceCommit)
+    {
+        $this->isMaintenanceCommit = $isMaintenanceCommit;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsMaintenanceCommit()
+    {
+        return $this->isMaintenanceCommit;
     }
 }
 
