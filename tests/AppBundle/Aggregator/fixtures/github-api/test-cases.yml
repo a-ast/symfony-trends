@@ -44,12 +44,15 @@ test_load_commit_history_to_empty_tables:
             - commit_hash: hash-frodo-1
               project_id: 1
               contributor_id: 1
+              message: 'Added thoughts about my future way'
             - commit_hash: hash-frodo-2
               project_id: 1
               contributor_id: 1
+              message: 'Added doubts about my future way'
             - commit_hash: hash-sam-1
               project_id: 1
               contributor_id: 2
+              message: 'Decided to go with Frodo'
 
 test_load_commit_history_to_database_with_data:
 
@@ -68,8 +71,8 @@ test_load_commit_history_to_database_with_data:
                     git_names: []
                     country: Rivendell
                     core_member: true
-                    created_at: "2016-09-19 11:28:39+02"
-                    updated_at: "2016-09-19 11:28:39+02"
+                    created_at: '2016-09-19 11:28:39+02'
+                    updated_at: '2016-09-19 11:28:39+02'
 
                 c1:
                     id: 2
@@ -80,20 +83,22 @@ test_load_commit_history_to_database_with_data:
                     name: Frodo.B
                     git_names: []
                     country: 'Shire'
-                    created_at: "2016-09-19 11:28:39+02"
-                    updated_at: "2016-09-19 11:28:39+02"
+                    created_at: '2016-09-19 11:28:39+02'
+                    updated_at: '2016-09-19 11:28:39+02'
 
             AppBundle\Entity\Contribution:
                 c0:
                     project_id: 1
                     contributor_id: 1
-                    commited_at: "2016-09-19 11:28:39+02"
-                    commit_hash: "hash-elrond-1"
+                    commited_at: '2016-09-19 11:28:39+02'
+                    commit_hash: 'hash-elrond-0'
+                    message: 'The Sea calls us home'
                 c1:
                     project_id: 1
                     contributor_id: 2
-                    commited_at: "2016-09-19 11:28:39+02"
-                    commit_hash: "hash-frodo-0"
+                    commited_at: '2016-09-19 11:28:39+02'
+                    commit_hash: 'hash-frodo-0'
+                    message: 'Go back, Sam. I''m going to Mordor alone.'
 
     commits:
         - sha: hash-frodo-1
@@ -140,18 +145,23 @@ test_load_commit_history_to_database_with_data:
               git_names: []
 
         contributions:
-            - commit_hash: hash-elrond-1
+            - commit_hash: hash-elrond-0
               project_id: 1
               contributor_id: 1
+              message: 'The Sea calls us home'
             - commit_hash: hash-frodo-0
               project_id: 1
               contributor_id: 2
+              message: 'Go back, Sam. I''m going to Mordor alone.'
             - commit_hash: hash-frodo-1
               project_id: 1
               contributor_id: 2
+              message: 'Added thoughts about my future way'
             - commit_hash: hash-frodo-2
               project_id: 1
               contributor_id: 2
+              message: 'Added doubts about my future way'
             - commit_hash: hash-sam-1
               project_id: 1
               contributor_id: 3
+              message: 'Decided to go with Frodo'

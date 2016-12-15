@@ -174,6 +174,7 @@ class GithubCommitHistory implements AggregatorInterface
                     ->setProjectId($projectId)
                     ->setContributorId($contributor->getId())
                     ->setCommitHash($commit['sha'])
+                    ->setMessage($commit['commit']['message'])
                     ->setCommitedAt(new \DateTime($commit['commit']['author']['date']))
                 ;
 
