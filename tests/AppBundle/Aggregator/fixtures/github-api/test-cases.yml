@@ -32,7 +32,6 @@ test_load_commit_history_to_empty_tables:
               github_location: 'Bag End'
               git_emails: ['frodo.baggins@shire', 'frodo.b@shire']
               git_names: ['frodo.b']
-
             - email: 'sam@shire'
               name: 'Sam'
               github_login: 'sam'
@@ -40,6 +39,7 @@ test_load_commit_history_to_empty_tables:
               github_location: 'Shire'
               git_emails: ['samuel@shire']
               git_names: []
+
         contributions:
             - commit_hash: hash-frodo-1
               project_id: 1
@@ -58,38 +58,42 @@ test_load_commit_history_to_database_with_data:
             - orm/base.yml
         entities:
             AppBundle\Entity\Contributor:
-                - id: 1
-                  github_id: 100
-                  github_login: elrond
-                  email: elrond@rivendell
-                  git_emails: []
-                  name: Elrond
-                  git_names: []
-                  country: Rivendell
-                  core_member: true
-                  created_at: "2016-09-19 11:28:39+02"
-                  updated_at: "2016-09-19 11:28:39+02"
+                c0:
+                    id: 1
+                    github_id: 100
+                    github_login: elrond
+                    email: elrond@rivendell
+                    git_emails: []
+                    name: Elrond
+                    git_names: []
+                    country: Rivendell
+                    core_member: true
+                    created_at: "2016-09-19 11:28:39+02"
+                    updated_at: "2016-09-19 11:28:39+02"
 
-                - id: 2
-                  github_id: 300
-                  github_login: frodo
-                  email: frodo@shire
-                  git_emails: []
-                  name: Frodo.B
-                  git_names: []
-                  country: 'Shire'
-                  created_at: "2016-09-19 11:28:39+02"
-                  updated_at: "2016-09-19 11:28:39+02"
+                c1:
+                    id: 2
+                    github_id: 300
+                    github_login: frodo
+                    email: frodo@shire
+                    git_emails: []
+                    name: Frodo.B
+                    git_names: []
+                    country: 'Shire'
+                    created_at: "2016-09-19 11:28:39+02"
+                    updated_at: "2016-09-19 11:28:39+02"
 
             AppBundle\Entity\Contribution:
-                - project_id: 1
-                  contributor_id: 1
-                  commited_at: "2016-09-19 11:28:39+02"
-                  commit_hash: "hash-elrond-1"
-                - project_id: 1
-                  contributor_id: 2
-                  commited_at: "2016-09-19 11:28:39+02"
-                  commit_hash: "hash-frodo-0"
+                c0:
+                    project_id: 1
+                    contributor_id: 1
+                    commited_at: "2016-09-19 11:28:39+02"
+                    commit_hash: "hash-elrond-1"
+                c1:
+                    project_id: 1
+                    contributor_id: 2
+                    commited_at: "2016-09-19 11:28:39+02"
+                    commit_hash: "hash-frodo-0"
 
     commits:
         - sha: hash-frodo-1
