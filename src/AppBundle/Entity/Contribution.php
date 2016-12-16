@@ -209,7 +209,7 @@ class Contribution
      *
      * @return $this
      */
-    public function setIsMaintenanceCommit($isMaintenanceCommit)
+    public function setMaintenanceCommit($isMaintenanceCommit)
     {
         $this->isMaintenanceCommit = $isMaintenanceCommit;
 
@@ -219,7 +219,7 @@ class Contribution
     /**
      * @return boolean
      */
-    public function isIsMaintenanceCommit()
+    public function isMaintenanceCommit()
     {
         return $this->isMaintenanceCommit;
     }
