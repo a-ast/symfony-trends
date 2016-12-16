@@ -4,7 +4,7 @@
 namespace Tests\AppBundle\Aggregator\Helper;
 
 
-use AppBundle\Aggregator\Helper\GithubApiClient;
+use AppBundle\Client\GithubApiClient;
 use PHPUnit_Framework_TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

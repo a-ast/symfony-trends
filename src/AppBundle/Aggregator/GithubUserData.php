@@ -3,8 +3,8 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Aggregator\Helper\GeolocationApiClient;
-use AppBundle\Aggregator\Helper\GithubApiClient;
+use AppBundle\Client\GeolocationApiClient;
+use AppBundle\Client\GithubApiClient;
 use AppBundle\Entity\Contributor;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;

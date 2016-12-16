@@ -4,13 +4,13 @@ services:
     github_client:
         class: Github\Client
     github_api_client:
-        class: AppBundle\Aggregator\Helper\GithubApiClient
+        class: AppBundle\Client\GithubApiClient
         arguments:
             - '@http_client'
             - '%env(GITHUB_CLIENT_ID)%'
             - '%env(GITHUB_CLIENT_SECRET)%'
     geolocation_api_client:
-        class: AppBundle\Aggregator\Helper\GeolocationApiClient
+        class: AppBundle\Client\GeolocationApiClient
         arguments:
             - '@http_client'
             - '%env(GEOCODING_API_KEY)%'
