@@ -13,5 +13,7 @@ class RegexUtilsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(RegexUtils::match('Frodo Baggins', ['(udu)', '(odo)']));
         $this->assertTrue(RegexUtils::match('Frodo Baggins', ['(UDU)', '(ODO)']));
         $this->assertFalse(RegexUtils::match('Frodo Baggins', ['(ada)', '(ede)']));
+        $this->assertTrue(RegexUtils::match('Frodo said: "I wish the ring had never come to me"', ['^Frodo said: "']));
+        $this->assertTrue(RegexUtils::match('Frodo # Baggins', ['^Frodo #']));
     }
 }
