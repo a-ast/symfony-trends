@@ -12,6 +12,7 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
+use AppBundle\Util\RegexUtils;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -19,14 +20,17 @@ class GithubCommitHistory implements AggregatorInterface
      * @var GithubApiClient
      */
     private $apiClient;
+
     /**
      * @var ContributionRepository
      */
     private $contributionRepository;
+
     /**
      * @var ContributorRepository
      */
     private $contributorRepository;
+
     /**
      * @var GeolocationApiClient
      */
@@ -38,6 +42,11 @@ class GithubCommitHistory implements AggregatorInterface
     private $projectRepository;
 
     /**
+     * @var array
+     */
+    private $maintenanceCommitPatterns;
+
+    /**
      * Constructor.
      *
      * @param GithubApiClient $apiClient
@@ -45,17 +54,21 @@ class GithubCommitHistory implements AggregatorInterface
      * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param ContributorRepository $contributorRepository
+     * @param array $maintenanceCommitPatterns
      */
     public function __construct(GithubApiClient $apiClient,
         GeolocationApiClient $geolocationApiClient,
         ProjectRepository $projectRepository,
-        ContributionRepository $contributionRepository, ContributorRepository $contributorRepository)
+        ContributionRepository $contributionRepository,
+        ContributorRepository $contributorRepository,
+        array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
         $this->geolocationApiClient = $geolocationApiClient;
         $this->contributionRepository = $contributionRepository;
         $this->contributorRepository = $contributorRepository;
         $this->projectRepository = $projectRepository;
+        $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
     }
 
     /**
@@ -170,11 +183,13 @@ class GithubCommitHistory implements AggregatorInterface
 
                 // Save contribution
                 $contribution = new Contribution();
+                $commitMessage = $commit['commit']['message'];
                 $contribution
                     ->setProjectId($projectId)
                     ->setContributorId($contributor->getId())
                     ->setCommitHash($commit['sha'])
-                    ->setMessage($commit['commit']['message'])
+                    ->setMessage($commitMessage)
+                    ->setMaintenanceCommit($this->isMaintenanceCommit($commitMessage))
                     ->setCommitedAt(new \DateTime($commit['commit']['author']['date']))
                 ;
 
@@ -188,5 +203,15 @@ class GithubCommitHistory implements AggregatorInterface
 
             $page++;
         }
+    }
+
+    /**
+     * @param string $commitMessage
+     *
+     * @return bool
+     */
+    private function isMaintenanceCommit($commitMessage)
+    {
+        return RegexUtils::match($commitMessage, $this->maintenanceCommitPatterns);
     }
 }

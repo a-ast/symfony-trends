@@ -8,6 +8,25 @@ imports:
 
 parameters:
     locale: en
+    maintenance_commit_patterns:
+        - '^minor #'
+        - '^bug #'
+        - '^feature #'
+        - '^merged branch'
+        - '^Merge branch'
+        - '^merged '
+        - '^Merge remote-tracking branch'
+        - '^Merge pull request #'
+        - '^updated VERSION'
+        - '^update CONTRIBUTORS'
+        - '^updated CHANGELOG'
+        - '^bumped Symfony version to'
+        - '^updated version to'
+        - '^fix merge'
+        - '^fixed merge'
+        - '^fixed bad merge'
+        - '^Revert "'
+        - '^Revert #'
 
 framework:
     secret:          "%secret%"

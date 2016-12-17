@@ -61,6 +61,7 @@ services:
             - '@repository.project'
             - '@repository.contribution'
             - '@repository.contributor'
+            - '%maintenance_commit_patterns%'
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
