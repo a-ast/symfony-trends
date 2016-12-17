@@ -34,8 +34,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $chartData = $this->getContainer()->getParameter('trends');
 
-        /** @var TwigEngine $twig */
-        $twig = $this->getContainer()->get('templating');
+
 
         /** @var SeriesProvider $seriesProvider */
         $seriesProvider = $this->getContainer()->get('series_provider');
@@ -77,10 +76,26 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         $contributionRepository = $this->getContainer()->get('repository.contribution');
         $lastCommitDate = $contributionRepository->getLastCommitDate(1);
 
+        $this->dumpPage('index', ['trends' => $trends, 'last_update_time' => $lastCommitDate]);
 
-        $indexFile = $twig->render('::index.html.twig', ['trends' => $trends, 'last_update_time' => $lastCommitDate]);
+    }
 
-        $filePath = sprintf('%s/../web/trends/index.html', $rootDir);
+    /**
+     * @param string $templateId
+     * @param array $data
+     */
+    private function dumpPage($templateId, array $data)
+    {
+        $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
+
+        /** @var TwigEngine $twig */
+        $twig = $this->getContainer()->get('templating');
+
+        $indexFile = $twig->render(sprintf('::%s.html.twig', $templateId), $data);
+
+        $filePath = sprintf('%s/../web/trends/%s.html', $rootDir, $templateId);
+
+        $fs = new Filesystem();
         $fs->dumpFile($filePath, $indexFile);
     }
 }
