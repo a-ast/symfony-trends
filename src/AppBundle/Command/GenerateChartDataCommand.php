@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Provider\SeriesProvider;
+use AppBundle\Repository\ContributionRepository;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -72,7 +73,12 @@ class GenerateChartDataCommand extends ContainerAwareCommand
             }
         }
 
-        $indexFile = $twig->render('@App/index.html.twig', ['trends' => $trends]);
+        /** @var ContributionRepository $contributionRepository */
+        $contributionRepository = $this->getContainer()->get('repository.contribution');
+        $lastCommitDate = $contributionRepository->getLastCommitDate(1);
+
+
+        $indexFile = $twig->render('::index.html.twig', ['trends' => $trends, 'last_update_time' => $lastCommitDate]);
 
         $filePath = sprintf('%s/../web/trends/index.html', $rootDir);
         $fs->dumpFile($filePath, $indexFile);

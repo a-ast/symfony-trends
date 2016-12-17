@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Symfony Trends{% endblock %}</title>
+
+    {% block stylesheets %}
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+</head>
+
+<body>
+
+{% block header %}{% endblock %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>
