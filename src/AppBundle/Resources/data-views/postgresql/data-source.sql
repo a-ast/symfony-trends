@@ -28,12 +28,12 @@ CREATE VIEW vw_contributions_per_year AS
 DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
 CREATE VIEW vw_contributions_per_month AS
   select
-    to_char(cn.commited_at, 'YYYY-MM-01') as date,
-    cn.project_id,
-    count(*) as contribution_count,
-    sum(cast(c.is_core_member as int)) as core_team_contribution_count
+      to_char(cn.commited_at, 'YYYY-MM-01') as date,
+      cn.project_id,
+      count(*) as contribution_count,
+      sum(cast(c.is_core_member as int)) as core_team_contribution_count
   from contribution cn
-    left join contributor c on cn.contributor_id = c.id
+      left join contributor c on cn.contributor_id = c.id
   where is_maintenance_commit = FALSE
   group by date, cn.project_id
   order by date asc;
@@ -110,6 +110,9 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
+--------------------------------------------------------
+-- Commit count distribution
+--------------------------------------------------------
 DROP VIEW IF EXISTS vw_commit_count_distribution CASCADE;
 CREATE VIEW vw_commit_count_distribution AS
   SELECT project_id, get_range_bounds_description(get_range_bounds(contribution_count, ARRAY[[1,1],[2,2],[3,5],[5,10],[10,30],[30,200],[200,null]])) as bounds, count(*) as contributor_count
@@ -123,6 +126,7 @@ CREATE VIEW vw_commit_count_distribution AS
     ) cn
   GROUP BY project_id, bounds
   ORDER BY contributor_count;
+
 
 --------------------------------------------------------
 -- Contributor countries
@@ -143,3 +147,20 @@ CREATE VIEW vw_contributor_countries AS
            where cn.contributor_id = c.id and project_id IN (1,2)
        )) countries
   group by iso;
+
+
+--------------------------------------------------------
+-- Maintenance commit counts per year
+--------------------------------------------------------
+DROP VIEW IF EXISTS vw_maintenance_contributions_per_year CASCADE;
+CREATE VIEW vw_maintenance_contributions_per_year AS
+  select
+      to_char(cn.commited_at, 'YYYY') as date,
+      cn.project_id,
+      count(*) as contribution_count,
+      SUM(cn.is_maintenance_commit::int) as maintenance_commit_count
+  from contribution cn
+  group by
+      to_char(cn.commited_at, 'YYYY'),
+      cn.project_id
+  order by date asc;

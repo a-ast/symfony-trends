@@ -191,4 +191,54 @@ parameters:
                             date: date
                             value: core_team_contribution_count
 
+            maintenance_commits_per_year_symfony:
+                title: 'Commit count to Symfony code per year comparing to maintenance commit count'
 
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All commits
+                        color: '#4cacdb'
+                        data_source: vw_maintenance_contributions_per_year
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            name: date
+                            value: contribution_count
+                    -
+                        title: Maintenance commits
+                        color: '#7c7c7c'
+                        data_source: vw_maintenance_contributions_per_year
+                        criteria:
+                            project_id: 1
+                        dimensions:
+                            name: date
+                            value: maintenance_commit_count
+
+            maintenance_commits_per_year_symfony_docs:
+                title: 'Commit count to Symfony docs per year comparing to maintenance commit count'
+
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All commits
+                        color: '#7aba20'
+                        data_source: vw_maintenance_contributions_per_year
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            name: date
+                            value: contribution_count
+                    -
+                        title: Maintenance commits
+                        color: '#7c7c7c'
+                        data_source: vw_maintenance_contributions_per_year
+                        criteria:
+                            project_id: 2
+                        dimensions:
+                            name: date
+                            value: maintenance_commit_count
