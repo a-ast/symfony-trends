@@ -18,11 +18,13 @@ CREATE VIEW vw_contributions_per_year AS
       count(*) as contribution_count,
       sum(cast(c.is_core_member as int)) as core_team_contribution_count
   from contribution cn
-  left join contributor c on cn.contributor_id = c.id
+    left join contributor c on cn.contributor_id = c.id
+  where is_maintenance_commit = FALSE
   group by to_char(cn.commited_at, 'YYYY'), cn.project_id
   order by date asc;
 
--- Contribution counts per year
+
+-- Contribution counts per month
 DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
 CREATE VIEW vw_contributions_per_month AS
   select
@@ -32,6 +34,7 @@ CREATE VIEW vw_contributions_per_month AS
     sum(cast(c.is_core_member as int)) as core_team_contribution_count
   from contribution cn
     left join contributor c on cn.contributor_id = c.id
+  where is_maintenance_commit = FALSE
   group by date, cn.project_id
   order by date asc;
 
@@ -114,6 +117,7 @@ CREATE VIEW vw_commit_count_distribution AS
     (
       SELECT project_id, contributor_id, count(*) as contribution_count
       FROM contribution
+      WHERE is_maintenance_commit = FALSE
       GROUP BY project_id, contributor_id
       ORDER BY contribution_count ASC
     ) cn
