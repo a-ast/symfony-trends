@@ -1,0 +1,75 @@
+{
+    "options": {
+        "type": "stairArea"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 1500
+                },
+                {
+                    "name": "2011",
+                    "value": 6412
+                },
+                {
+                    "name": "2012",
+                    "value": 4571
+                },
+                {
+                    "name": "2013",
+                    "value": 3744
+                },
+                {
+                    "name": "2014",
+                    "value": 3356
+                },
+                {
+                    "name": "2015",
+                    "value": 4765
+                },
+                {
+                    "name": "2016",
+                    "value": 4261
+                }
+            ],
+            "name": "All commits",
+            "color": "#4cacdb"
+        },
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 6
+                },
+                {
+                    "name": "2011",
+                    "value": 922
+                },
+                {
+                    "name": "2012",
+                    "value": 1719
+                },
+                {
+                    "name": "2013",
+                    "value": 1687
+                },
+                {
+                    "name": "2014",
+                    "value": 1677
+                },
+                {
+                    "name": "2015",
+                    "value": 2607
+                },
+                {
+                    "name": "2016",
+                    "value": 2531
+                }
+            ],
+            "name": "Maintenance commits",
+            "color": "#7c7c7c"
+        }
+    ]
+}
