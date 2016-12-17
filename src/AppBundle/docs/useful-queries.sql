@@ -1,3 +1,17 @@
+-- Filter maintenance messages
+select c.name, cn.message
+from contribution cn
+  left join contributor c on c.id = cn.contributor_id
+where
+  (message LIKe 'minor #%' OR
+   message LIKe 'bug #%' OR
+   message LIKe 'feature #%' OR
+   message LIKe 'merged branch %' OR
+   message LIKe 'Merge branch %')
+  and c.is_core_member = false
+;
+
+
 -- Verifiied: intersections of projects
 select project_ids, count(*) as contributor_count
 from (
