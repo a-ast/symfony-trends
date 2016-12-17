@@ -24,7 +24,8 @@ function HighchartsRenderer () {
             area: {
                 marker: {
                     enabled: false
-                }
+                },
+                lineWidth: 0
             },
             pie: {
                 dataLabels: {
