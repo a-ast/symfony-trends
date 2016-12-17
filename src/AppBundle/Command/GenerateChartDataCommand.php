@@ -75,8 +75,10 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         /** @var ContributionRepository $contributionRepository */
         $contributionRepository = $this->getContainer()->get('repository.contribution');
         $lastCommitDate = $contributionRepository->getLastCommitDate(1);
-
         $this->dumpPage('index', ['trends' => $trends, 'last_update_time' => $lastCommitDate]);
+
+        $maintenanceCommitPatterns = $this->getContainer()->getParameter('maintenance_commit_patterns');
+        $this->dumpPage('about-data', ['maintenance_commit_patterns' => $maintenanceCommitPatterns]);
 
     }
 

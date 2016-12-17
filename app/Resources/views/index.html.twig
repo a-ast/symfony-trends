@@ -9,27 +9,13 @@
 {% endblock %}
 
 
-{% block header %}
-    <div class="row header">
-        <div class="col-md-10">
-            <h1>Symfony Trends <sup>beta</sup></h1>
-            <p class="sub-header">Statistics for Symfony framework and related projects</p>
-        </div>
-        <div class="col-md-2 text-right">
-            <a href="https://twitter.com/aast_t"><img src="img/twitter.png" alt="Follow me" /></a>
-            <a href="https://www.linkedin.com/in/a-ast"><img src="img/linkedin.png" alt="Ask me" /></a>
-        </div>
-    </div>
-{% endblock %}
-
-
 {% block content %}
     <div class="content">
 
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 Last data update: {{ last_update_time|date('d.m.Y H:i T') }}.
-                <a href="data.html">More about data source.</a>
+                <a href="about-data.html">More about data source</a>.
             </div>
         </div>
 

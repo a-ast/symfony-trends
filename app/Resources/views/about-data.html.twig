@@ -1,0 +1,59 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block content %}
+    <div class="content">
+
+        <h2>Chart data sources</h2>
+
+        <table>
+            <tr>
+                <td>Contributors and commits</td>
+                <td>
+                    <ul>
+                        <li>Github API</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Contributors location</td>
+                <td>
+                    <ul>
+                        <li>Github API</li>
+                        <li>SensiolabsConnect pages</li>
+                    </ul>
+                </td>
+            </tr>
+
+        </table>
+
+        <h2>Data update frequency</h2>
+        <p>While Symfony Trends project is in beta, I do updates manually, usually once a week.</p>
+
+        <h2>Core team</h2>
+        <p>Commits of all contributors mentioned on
+            <a href="http://symfony.com/doc/current/contributing/code/core_team.html">Symfony Core Team</a> page
+            are marked on charts as 'core team commits'.
+        </p>
+
+        <h2>Maintenance commits</h2>
+            Symfony core team does a hard job maintaining git repositories.
+            Significant part of all commits is merging pull requests, bumping versions,
+            fixing and reverting stuff, etc.
+            Besides this, maintenance tools generates automatic commits.
+
+            In order to show real contributions, all maintenance commits have been filtered using these regular expressions:
+            <ul>
+                {% for pattern in maintenance_commit_patterns %}
+                    <li>{{ pattern }}</li>
+                {% endfor %}
+            </ul>
+        <p>
+
+
+        </p>
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Symfony Trends</title>
+
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    
+    </head>
+
+<body>
+
+    <div class="row header">
+        <div class="col-md-10">
+            <h1>Symfony Trends <sup>beta</sup></h1>
+            <p class="sub-header">Statistics for Symfony framework and related projects</p>
+        </div>
+        <div class="col-md-2 text-right">
+            <a href="https://twitter.com/aast_t"><img src="img/twitter.png" alt="Follow me" /></a>
+            <a href="https://www.linkedin.com/in/a-ast"><img src="img/linkedin.png" alt="Ask me" /></a>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <h2>Chart data sources</h2>
+
+        <table>
+            <tr>
+                <td>Contributors and commits</td>
+                <td>
+                    <ul>
+                        <li>Github API</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Contributors location</td>
+                <td>
+                    <ul>
+                        <li>Github API</li>
+                        <li>SensiolabsConnect pages</li>
+                    </ul>
+                </td>
+            </tr>
+
+        </table>
+
+        <h2>Data update frequency</h2>
+        <p>While Symfony Trends project is in beta, I do updates manually, usually once a week.</p>
+
+        <h2>Core team</h2>
+        <p>Commits of all contributors mentioned on
+            <a href="http://symfony.com/doc/current/contributing/code/core_team.html">Symfony Core Team</a> page
+            are marked on charts as 'core team commits'.
+        </p>
+
+        <h2>Maintenance commits</h2>
+            Symfony core team does a hard job maintaining git repositories.
+            Significant part of all commits is merging pull requests, bumping versions,
+            fixing and reverting stuff, etc.
+            Besides this, maintenance tools generates automatic commits.
+
+            In order to show real contributions, all maintenance commits have been filtered using these regular expressions:
+            <ul>
+                                    <li>^minor #</li>
+                                    <li>^bug #</li>
+                                    <li>^feature #</li>
+                                    <li>^merged branch</li>
+                                    <li>^Merge branch</li>
+                                    <li>^merged </li>
+                                    <li>^Merge remote-tracking branch</li>
+                                    <li>^Merge pull request #</li>
+                                    <li>^updated VERSION</li>
+                                    <li>^update CONTRIBUTORS</li>
+                                    <li>^updated CHANGELOG</li>
+                                    <li>^bumped Symfony version to</li>
+                                    <li>^updated version to</li>
+                                    <li>^fix merge</li>
+                                    <li>^fixed merge</li>
+                                    <li>^fixed bad merge</li>
+                                    <li>^Revert &quot;</li>
+                                    <li>^Revert #</li>
+                            </ul>
+        <p>
+
+
+        </p>
+
+
+    </div>
+
+</body>
+</html>

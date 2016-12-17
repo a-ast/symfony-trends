@@ -7,10 +7,10 @@
 
     <title>Symfony Trends</title>
 
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/common.css" />
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//code.highcharts.com/highcharts.js"></script>
     <script src="//code.highcharts.com/maps/modules/map.js"></script>
     <script src="//code.highcharts.com/mapdata/custom/world.js"></script>
@@ -18,196 +18,205 @@
 </head>
 
 <body>
-<div class="row header">
-    <div class="col-md-10">
-        <h1>Symfony Trends <sup>beta</sup></h1>
-        <p class="sub-header">Statistics for Symfony framework and related projects</p>
+
+    <div class="row header">
+        <div class="col-md-10">
+            <h1>Symfony Trends <sup>beta</sup></h1>
+            <p class="sub-header">Statistics for Symfony framework and related projects</p>
+        </div>
+        <div class="col-md-2 text-right">
+            <a href="https://twitter.com/aast_t"><img src="img/twitter.png" alt="Follow me" /></a>
+            <a href="https://www.linkedin.com/in/a-ast"><img src="img/linkedin.png" alt="Ask me" /></a>
+        </div>
     </div>
-    <div class="col-md-2 text-right">
-        <a href="https://twitter.com/aast_t"><img src="img/twitter.png" alt="Follow me" /></a>
-        <a href="https://www.linkedin.com/in/a-ast"><img src="img/linkedin.png" alt="Ask me" /></a>
-    </div>
-</div>
 
-<div class="content">
+    <div class="content">
 
-
-    
-    
         <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                Last data update: 16.12.2016 17:26 CET.
+                <a href="about-data.html">More about data source</a>.
+            </div>
+        </div>
+
+        
+            
+            
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>How many developers contribute to different projects</h2>
+
+
+                            <div id="contributors_intersection" class="chart pie-chart"></div>
+                            <script>
+
+                                $.getJSON('data/contributors_intersection.json', function(data) {
+                                    Renderer.pieChart('contributors_intersection', data);
+                                });
+                            </script>
+
+                        </div>
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Where Symfony contributors live and work</h2>
+
+
+                            <div id="contributors_per_country_symfony" class="chart map-chart"></div>
+                            <script>
+
+                                $.getJSON('data/contributors_per_country_symfony.json', function(data) {
+                                    Renderer.mapChart('contributors_per_country_symfony', data);
+                                });
+                            </script>
+
+                        </div>
+
+                                    </div>
 
             
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>How many developers contribute to different projects</h2>
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony code and docs per year</h2>
 
 
-                    <div id="contributors_intersection" class="chart pie-chart"></div>
-                    <script>
+                            <div id="contributions_per_date_yearly" class="chart column-chart"></div>
+                            <script>
 
-                        $.getJSON('data/contributors_intersection.json', function(data) {
-                            Renderer.pieChart('contributors_intersection', data);
-                        });
-                    </script>
+                                $.getJSON('data/contributions_per_date_yearly.json', function(data) {
+                                    Renderer.columnChart('contributions_per_date_yearly', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
 
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Where Symfony contributors live and work</h2>
-
-
-                    <div id="contributors_per_country_symfony" class="chart map-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributors_per_country_symfony.json', function(data) {
-                            Renderer.mapChart('contributors_per_country_symfony', data);
-                        });
-                    </script>
-
-                </div>
-
-                    </div>
-
-    
-        <div class="row">
-
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony code and docs per year</h2>
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Number of developers who made a certain amount of commits to Symfony code</h2>
 
 
-                    <div id="contributions_per_date_yearly" class="chart column-chart"></div>
-                    <script>
+                            <div id="commit_count_distribution_symfony" class="chart column-chart"></div>
+                            <script>
 
-                        $.getJSON('data/contributions_per_date_yearly.json', function(data) {
-                            Renderer.columnChart('contributions_per_date_yearly', data);
-                        });
-                    </script>
+                                $.getJSON('data/commit_count_distribution_symfony.json', function(data) {
+                                    Renderer.columnChart('commit_count_distribution_symfony', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
+
+                                    </div>
 
             
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Number of developers who made a certain amount of commits to Symfony code</h2>
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony code per year</h2>
 
 
-                    <div id="commit_count_distribution_symfony" class="chart column-chart"></div>
-                    <script>
+                            <div id="contributions_per_date_yearly_symfony" class="chart stairArea-chart"></div>
+                            <script>
 
-                        $.getJSON('data/commit_count_distribution_symfony.json', function(data) {
-                            Renderer.columnChart('commit_count_distribution_symfony', data);
-                        });
-                    </script>
+                                $.getJSON('data/contributions_per_date_yearly_symfony.json', function(data) {
+                                    Renderer.stairAreaChart('contributions_per_date_yearly_symfony', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
 
-                    </div>
-
-    
-        <div class="row">
-
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony code per year</h2>
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony docs per year</h2>
 
 
-                    <div id="contributions_per_date_yearly_symfony" class="chart stairArea-chart"></div>
-                    <script>
+                            <div id="contributions_per_date_yearly_symfony_docs" class="chart stairArea-chart"></div>
+                            <script>
 
-                        $.getJSON('data/contributions_per_date_yearly_symfony.json', function(data) {
-                            Renderer.stairAreaChart('contributions_per_date_yearly_symfony', data);
-                        });
-                    </script>
+                                $.getJSON('data/contributions_per_date_yearly_symfony_docs.json', function(data) {
+                                    Renderer.stairAreaChart('contributions_per_date_yearly_symfony_docs', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
 
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony docs per year</h2>
-
-
-                    <div id="contributions_per_date_yearly_symfony_docs" class="chart stairArea-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributions_per_date_yearly_symfony_docs.json', function(data) {
-                            Renderer.stairAreaChart('contributions_per_date_yearly_symfony_docs', data);
-                        });
-                    </script>
-
-                </div>
-
-                    </div>
-
-    
-        <div class="row">
+                                    </div>
 
             
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony code per month</h2>
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony code per month</h2>
 
 
-                    <div id="contributions_per_date_monthly_symfony" class="chart stairAreaDateTime-chart"></div>
-                    <script>
+                            <div id="contributions_per_date_monthly_symfony" class="chart stairAreaDateTime-chart"></div>
+                            <script>
 
-                        $.getJSON('data/contributions_per_date_monthly_symfony.json', function(data) {
-                            Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony', data);
-                        });
-                    </script>
+                                $.getJSON('data/contributions_per_date_monthly_symfony.json', function(data) {
+                                    Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
 
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony docs per month</h2>
-
-
-                    <div id="contributions_per_date_monthly_symfony_docs" class="chart stairAreaDateTime-chart"></div>
-                    <script>
-
-                        $.getJSON('data/contributions_per_date_monthly_symfony_docs.json', function(data) {
-                            Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony_docs', data);
-                        });
-                    </script>
-
-                </div>
-
-                    </div>
-
-    
-        <div class="row">
-
-            
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony code per year comparing to maintenance commit count</h2>
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony docs per month</h2>
 
 
-                    <div id="maintenance_commits_per_year_symfony" class="chart stairArea-chart"></div>
-                    <script>
+                            <div id="contributions_per_date_monthly_symfony_docs" class="chart stairAreaDateTime-chart"></div>
+                            <script>
 
-                        $.getJSON('data/maintenance_commits_per_year_symfony.json', function(data) {
-                            Renderer.stairAreaChart('maintenance_commits_per_year_symfony', data);
-                        });
-                    </script>
+                                $.getJSON('data/contributions_per_date_monthly_symfony_docs.json', function(data) {
+                                    Renderer.stairAreaDateTimeChart('contributions_per_date_monthly_symfony_docs', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
+
+                                    </div>
 
             
-                <div class="col-md-6 col-xs-12 col-sm-12">
-                    <h2>Commit count to Symfony docs per year comparing to maintenance commit count</h2>
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony code per year comparing to maintenance commit count</h2>
 
 
-                    <div id="maintenance_commits_per_year_symfony_docs" class="chart stairArea-chart"></div>
-                    <script>
+                            <div id="maintenance_commits_per_year_symfony" class="chart stairArea-chart"></div>
+                            <script>
 
-                        $.getJSON('data/maintenance_commits_per_year_symfony_docs.json', function(data) {
-                            Renderer.stairAreaChart('maintenance_commits_per_year_symfony_docs', data);
-                        });
-                    </script>
+                                $.getJSON('data/maintenance_commits_per_year_symfony.json', function(data) {
+                                    Renderer.stairAreaChart('maintenance_commits_per_year_symfony', data);
+                                });
+                            </script>
 
-                </div>
+                        </div>
 
-                    </div>
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Commit count to Symfony docs per year comparing to maintenance commit count</h2>
 
-    </div>
+
+                            <div id="maintenance_commits_per_year_symfony_docs" class="chart stairArea-chart"></div>
+                            <script>
+
+                                $.getJSON('data/maintenance_commits_per_year_symfony_docs.json', function(data) {
+                                    Renderer.stairAreaChart('maintenance_commits_per_year_symfony_docs', data);
+                                });
+                            </script>
+
+                        </div>
+
+                                    </div>
+
+                        </div>
+
 </body>
 </html>

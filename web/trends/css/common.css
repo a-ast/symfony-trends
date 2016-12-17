@@ -35,8 +35,22 @@ h2 {
     font-size: 25px;
 }
 
+.row {
+    margin-bottom: 30px;
+}
+
 .chart {
     width: 540px;
     height: 300px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.chart-info {
+    font-size: .8em;
+    color: #8c8c8c;
+}
+
+.content table td {
+    padding: 5px;
+    vertical-align: top;
 }
