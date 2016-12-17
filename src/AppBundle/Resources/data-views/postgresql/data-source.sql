@@ -8,14 +8,20 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
-
--- Contribution counts per year
+--------------------------------------------------------
+-- Commit counts per year
+-- Series
+-- * contribution_count
+-- * contributor_count
+-- * core_team_contribution_count
+--------------------------------------------------------
 DROP VIEW IF EXISTS vw_contributions_per_year CASCADE;
 CREATE VIEW vw_contributions_per_year AS
   select
       to_char(cn.commited_at, 'YYYY') as date,
       cn.project_id,
       count(*) as contribution_count,
+      count(DISTINCT cn.contributor_id) as contributor_count,
       sum(cast(c.is_core_member as int)) as core_team_contribution_count
   from contribution cn
     left join contributor c on cn.contributor_id = c.id
@@ -163,4 +169,26 @@ CREATE VIEW vw_maintenance_contributions_per_year AS
   group by
       to_char(cn.commited_at, 'YYYY'),
       cn.project_id
+  order by date asc;
+
+--------------------------------------------------------
+-- New contributors per year
+--------------------------------------------------------
+DROP VIEW IF EXISTS vw_new_contributors_per_year CASCADE;
+CREATE VIEW vw_new_contributors_per_year AS
+  select
+      fc.project_id,
+      to_char(fc.min_commited_at, 'YYYY') as date,
+      count(fc.contributor_id)
+  FROM (
+    select
+        cn.project_id,
+        contributor_id,
+        min(commited_at) as min_commited_at
+    from contribution cn
+    where is_maintenance_commit = FALSE
+    group by cn.project_id, contributor_id
+    order by contributor_id asc
+  ) as fc
+  group by fc.project_id, date
   order by date asc;
