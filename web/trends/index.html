@@ -216,6 +216,41 @@
 
                                     </div>
 
+            
+                <div class="row">
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Contributor count to Symfony code per year</h2>
+
+
+                            <div id="contributor_count_per_year_symfony" class="chart stairArea-chart"></div>
+                            <script>
+
+                                $.getJSON('data/contributor_count_per_year_symfony.json', function(data) {
+                                    Renderer.stairAreaChart('contributor_count_per_year_symfony', data);
+                                });
+                            </script>
+
+                        </div>
+
+                    
+                        <div class="col-md-6 col-xs-12 col-sm-12">
+                            <h2>Contributor count to Symfony docs per year</h2>
+
+
+                            <div id="contributor_count_per_year_symfony_docs" class="chart stairArea-chart"></div>
+                            <script>
+
+                                $.getJSON('data/contributor_count_per_year_symfony_docs.json', function(data) {
+                                    Renderer.stairAreaChart('contributor_count_per_year_symfony_docs', data);
+                                });
+                            </script>
+
+                        </div>
+
+                                    </div>
+
                         </div>
 
 </body>

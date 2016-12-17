@@ -242,3 +242,43 @@ parameters:
                         dimensions:
                             name: date
                             value: maintenance_commit_count
+
+            contributor_count_per_year_symfony:
+                title: 'Contributor count to Symfony code per year'
+
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#4cacdb'
+                        data_source: vw_contributions_per_year
+                        criteria:   { project_id: 1 }
+                        dimensions: { name: date, value: contributor_count }
+                    -
+                        title: New contributors
+                        color: '#FFF82A'
+                        data_source: vw_new_contributors_per_year
+                        criteria:   { project_id: 1 }
+                        dimensions: { name: date, value: contributor_count }
+
+            contributor_count_per_year_symfony_docs:
+                title: 'Contributor count to Symfony docs per year'
+
+                chart:
+                    type: stairArea
+
+                series:
+                    -
+                        title: All contributors
+                        color: '#7aba20'
+                        data_source: vw_contributions_per_year
+                        criteria:   { project_id: 2 }
+                        dimensions: { name: date, value: contributor_count }
+                    -
+                        title: New contributors
+                        color: '#FFF82A'
+                        data_source: vw_new_contributors_per_year
+                        criteria:   { project_id: 2 }
+                        dimensions: { name: date, value: contributor_count }

@@ -179,7 +179,7 @@ CREATE VIEW vw_new_contributors_per_year AS
   select
       fc.project_id,
       to_char(fc.min_commited_at, 'YYYY') as date,
-      count(fc.contributor_id)
+      count(fc.contributor_id) as contributor_count
   FROM (
     select
         cn.project_id,

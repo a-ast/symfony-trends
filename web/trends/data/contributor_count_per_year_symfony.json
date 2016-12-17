@@ -1,0 +1,75 @@
+{
+    "options": {
+        "type": "stairArea"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 79
+                },
+                {
+                    "name": "2011",
+                    "value": 324
+                },
+                {
+                    "name": "2012",
+                    "value": 419
+                },
+                {
+                    "name": "2013",
+                    "value": 443
+                },
+                {
+                    "name": "2014",
+                    "value": 420
+                },
+                {
+                    "name": "2015",
+                    "value": 323
+                },
+                {
+                    "name": "2016",
+                    "value": 294
+                }
+            ],
+            "name": "All contributors",
+            "color": "#4cacdb"
+        },
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 79
+                },
+                {
+                    "name": "2011",
+                    "value": 287
+                },
+                {
+                    "name": "2012",
+                    "value": 305
+                },
+                {
+                    "name": "2013",
+                    "value": 303
+                },
+                {
+                    "name": "2014",
+                    "value": 282
+                },
+                {
+                    "name": "2015",
+                    "value": 186
+                },
+                {
+                    "name": "2016",
+                    "value": 175
+                }
+            ],
+            "name": "New contributors",
+            "color": "#FFF82A"
+        }
+    ]
+}
