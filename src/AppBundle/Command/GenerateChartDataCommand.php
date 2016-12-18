@@ -30,56 +30,14 @@ class GenerateChartDataCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
-        $chartsToGenerate = $input->getArgument('charts');
 
         $chartData = $this->getContainer()->getParameter('trends');
 
+//        $chartsToGenerate = $input->getArgument('charts');
+//        $this->generateJson($chartData, $chartsToGenerate, $rootDir);
 
-
-        /** @var SeriesProvider $seriesProvider */
-        $seriesProvider = $this->getContainer()->get('series_provider');
-
-        $fs = new Filesystem();
-
-        $trends = [];
-
-        foreach ($chartData as $groupId => $groupData) {
-            foreach ($groupData as $chartId => $chartView) {
-
-                if (0 !== count($chartsToGenerate) && !in_array($chartId, $chartsToGenerate)) {
-                    continue;
-                }
-
-                $seriesOptions = $chartView['series'];
-                $series = $seriesProvider->getSeries($seriesOptions);
-
-                $data = [
-                    'options' => $chartView['chart'],
-                    'series' => $series,
-                ];
-
-                $json = json_encode($data, JSON_PRETTY_PRINT);
-
-                $filePath = sprintf('%s/../web/trends/data/%s.json', $rootDir, $chartId);
-                $fs->dumpFile($filePath, $json);
-
-                $trends[$groupId][$chartId] = [
-                    'id' => $chartId,
-                    'dataFile' => sprintf('data/%s.json', $chartId),
-                    'title' => $chartView['title'],
-                    'chart' => $chartView['chart'],
-                ];
-            }
-        }
-
-        /** @var ContributionRepository $contributionRepository */
-        $contributionRepository = $this->getContainer()->get('repository.contribution');
-        $lastCommitDate = $contributionRepository->getLastCommitDate(1);
-        $this->dumpPage('index', ['trends' => $trends, 'last_update_time' => $lastCommitDate]);
-
-        $maintenanceCommitPatterns = $this->getContainer()->getParameter('maintenance_commit_patterns');
-        $this->dumpPage('about-data', ['maintenance_commit_patterns' => $maintenanceCommitPatterns]);
-
+        $layoutData = $this->getContainer()->getParameter('trends-layout');
+        $this->generateHtml($layoutData, $chartData);
     }
 
     /**
@@ -99,5 +57,63 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $fs = new Filesystem();
         $fs->dumpFile($filePath, $indexFile);
+    }
+
+    /**
+     * @param array $chartData
+     * @param array $chartsToGenerate
+     * @param string $rootDir
+     */
+    protected function generateJson(array $chartData, array $chartsToGenerate, $rootDir)
+    {
+        /** @var SeriesProvider $seriesProvider */
+        $seriesProvider = $this->getContainer()->get('series_provider');
+
+        $fs = new Filesystem();
+
+        foreach ($chartData as $chartId => $chartDefinition) {
+
+            if (0 !== count($chartsToGenerate) && !in_array($chartId, $chartsToGenerate)) {
+                continue;
+            }
+
+            $seriesOptions = $chartDefinition['series'];
+            $series = $seriesProvider->getSeries($seriesOptions);
+
+            $data = [
+                'options' => ['type' => $chartDefinition['type']],
+                'series' => $series,
+            ];
+
+            $json = json_encode($data, JSON_PRETTY_PRINT);
+
+            $filePath = sprintf('%s/../web/trends/data/%s.json', $rootDir, $chartId);
+            $fs->dumpFile($filePath, $json);
+        }
+    }
+
+    private function generateHtml(array $layoutData, array $chartData)
+    {
+        /** @var ContributionRepository $contributionRepository */
+        $contributionRepository = $this->getContainer()->get('repository.contribution');
+
+        // @todo: unhardcode project id
+        $lastCommitDate = $contributionRepository->getLastCommitDate(1);
+        $this->dumpPage('index', [
+            'blocks' => $layoutData['index'],
+            'charts' => $chartData,
+            'last_update_time' => $lastCommitDate
+        ]);
+
+        $maintenanceCommitPatterns = $this->getContainer()->getParameter('maintenance_commit_patterns');
+        $this->dumpPage('about-data', ['maintenance_commit_patterns' => $maintenanceCommitPatterns]);
+
+
+//        $trends[$groupId][$chartId] = [
+//            'id' => $chartId,
+//            'dataFile' => sprintf('data/%s.json', $chartId),
+//            'title' => $chartView['title'],
+//            'chart' => $chartView['chart'],
+//        ];
     }
 }

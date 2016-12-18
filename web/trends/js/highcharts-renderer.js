@@ -36,6 +36,36 @@ function HighchartsRenderer () {
     });
 }
 
+
+
+HighchartsRenderer.prototype.drawChart = function(container, data) {
+
+    switch(data.options.type) {
+        case "column":
+            this.columnChart(container, data);
+            break;
+
+        case "stairArea":
+            this.stairAreaChart(container, data);
+            break;
+
+        case "stairAreaDateTime":
+            this.stairAreaDateTimeChart(container, data);
+            break;
+
+        case "pie":
+            this.pieChart(container, data);
+            break;
+
+        case "map":
+            this.mapChart(container, data);
+            break;
+
+        default:
+            this.columnChart(container, data);
+    }
+};
+
 HighchartsRenderer.prototype.columnChart = function(container, data) {
 
     var categories = [];
@@ -126,7 +156,6 @@ HighchartsRenderer.prototype.stairAreaDateTimeChart = function(container, data) 
         series: data.series
     });
 };
-
 
 HighchartsRenderer.prototype.pieChart = function(container, data) {
 

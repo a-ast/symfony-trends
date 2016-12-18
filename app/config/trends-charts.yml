@@ -2,283 +2,211 @@ parameters:
 
     trends:
 
-        main:
+        contributors_intersection:
+            title: 'How many developers contribute to different projects'
+            type: pie
+            series:
+                -
+                    title: Contributor count
+                    data_source: vw_contributor_intersection
+                    criteria: {}
+                    dimensions: { name: project_names, value: contributor_count, color: color }
 
-            contributors_intersection:
-                title: 'How many developers contribute to different projects'
-                chart:
-                    type: pie
-                series:
-                    -
-                        title: Contributor count
-                        data_source: vw_contributor_intersection
-                        criteria: []
+        contributors_per_country_symfony:
+            title: 'Where Symfony contributors live and work'
+            type: map
+            series:
+                -
+                    title: Contributor count
+                    data_source: vw_contributor_countries
+                    criteria: {}
+                    dimensions: { iso: iso, value: contributor_count }
 
-                        dimensions:
-                            name: project_names
-                            value: contributor_count
-                            color: color
+        contributions_per_date_yearly:
+            title: 'Commit count to Symfony code and docs per year'
+            type: column
+            series:
+                -
+                    title: Symfony code
+                    color: '#4cacdb'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: contribution_count }
+                -
+                    title: Symfony docs
+                    color: '#7aba20'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: contribution_count }
 
-            contributors_per_country_symfony:
-                title: 'Where Symfony contributors live and work'
+        commit_count_distribution_symfony:
+            title: 'Number of developers who made a certain amount of commits to Symfony code'
+            type: column
+            series:
+                -
+                    title: Symfony code
+                    color: '#4cacdb'
+                    data_source: vw_commit_count_distribution
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: bounds, value: contributor_count }
+                -
+                    title: Symfony docs
+                    color: '#7aba20'
+                    data_source: vw_commit_count_distribution
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: bounds, value: contributor_count }
 
-                chart:
-                    type: map
+        contributions_per_date_yearly_symfony:
+            title: 'Commit count to Symfony code per year'
+            type: stairArea
+            series:
+                -
+                    title: All contributors
+                    color: '#4cacdb'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: contribution_count }
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: core_team_contribution_count }
 
-                series:
-                    -
-                        title: Contributor count
-                        data_source: vw_contributor_countries
-                        criteria: []
-                        dimensions:
-                            iso: iso
-                            value: contributor_count
-
-            contributions_per_date_yearly:
-                title: 'Commit count to Symfony code and docs per year'
-
-                chart:
-                    type: column
-
-                series:
-                    -
-                        title: Symfony code
-                        color: '#4cacdb'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: date
-                            value: contribution_count
-                    -
-                        title: Symfony docs
-                        color: '#7aba20'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: date
-                            value: contribution_count
-
-            commit_count_distribution_symfony:
-                title: 'Number of developers who made a certain amount of commits to Symfony code'
-                chart:
-                    type: column
-                series:
-                    -
-                        title: Symfony code
-                        color: '#4cacdb'
-                        data_source: vw_commit_count_distribution
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: bounds
-                            value: contributor_count
-                    -
-                        title: Symfony docs
-                        color: '#7aba20'
-                        data_source: vw_commit_count_distribution
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: bounds
-                            value: contributor_count
-
-            contributions_per_date_yearly_symfony:
-                title: 'Commit count to Symfony code per year'
-
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All contributors
-                        color: '#4cacdb'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: date
-                            value: contribution_count
-                    -
-                        title: Core team
-                        color: '#323038'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: date
-                            value: core_team_contribution_count
-
-            contributions_per_date_yearly_symfony_docs:
-                title: 'Commit count to Symfony docs per year'
-
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All contributors
-                        color: '#7aba20'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: date
-                            value: contribution_count
-                    -
-                        title: Core team
-                        color: '#323038'
-                        data_source: vw_contributions_per_year
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: date
-                            value: core_team_contribution_count
+        contributions_per_date_yearly_symfony_docs:
+            title: 'Commit count to Symfony docs per year'
+            type: stairArea
+            series:
+                -
+                    title: All contributors
+                    color: '#7aba20'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: contribution_count }
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: core_team_contribution_count }
 
 
-            contributions_per_date_monthly_symfony:
-                title: 'Commit count to Symfony code per month'
+        contributions_per_date_monthly_symfony:
+            title: 'Commit count to Symfony code per month'
 
-                chart:
-                    type: stairAreaDateTime
+            type: stairAreaDateTime
 
-                series:
-                    -
-                        title: All contributors
-                        color: '#4cacdb'
-                        data_source: vw_contributions_per_month
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            date: date
-                            value: contribution_count
+            series:
+                -
+                    title: All contributors
+                    color: '#4cacdb'
+                    data_source: vw_contributions_per_month
+                    criteria:   { project_id: 1 }
+                    dimensions: { date: date, value: contribution_count }
 
-                    -
-                        title: Core team
-                        color: '#323038'
-                        data_source: vw_contributions_per_month
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            date: date
-                            value: core_team_contribution_count
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: vw_contributions_per_month
+                    criteria:   { project_id: 1 }
+                    dimensions: { date: date, value: core_team_contribution_count }
 
-            contributions_per_date_monthly_symfony_docs:
-                title: 'Commit count to Symfony docs per month'
+        contributions_per_date_monthly_symfony_docs:
+            title: 'Commit count to Symfony docs per month'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: All contributors
+                    color: '#7aba20'
+                    data_source: vw_contributions_per_month
+                    criteria:   { project_id: 2 }
+                    dimensions: { date: date, value: contribution_count }
 
-                chart:
-                    type: stairAreaDateTime
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: vw_contributions_per_month
+                    criteria:   { project_id: 2 }
+                    dimensions: { date: date, value: core_team_contribution_count }
 
-                series:
-                    -
-                        title: All contributors
-                        color: '#7aba20'
-                        data_source: vw_contributions_per_month
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            date: date
-                            value: contribution_count
+        maintenance_commits_per_year_symfony:
+            title: 'Commit count to Symfony code per year comparing to maintenance commit count'
+            type: stairArea
+            series:
+                -
+                    title: All commits
+                    color: '#4cacdb'
+                    data_source: vw_maintenance_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: contribution_count }
+                -
+                    title: Maintenance commits
+                    color: '#7c7c7c'
+                    data_source: vw_maintenance_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: maintenance_commit_count }
 
-                    -
-                        title: Core team
-                        color: '#323038'
-                        data_source: vw_contributions_per_month
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            date: date
-                            value: core_team_contribution_count
+        maintenance_commits_per_year_symfony_docs:
+            title: 'Commit count to Symfony docs per year comparing to maintenance commit count'
+            type: stairArea
+            series:
+                -
+                    title: All commits
+                    color: '#7aba20'
+                    data_source: vw_maintenance_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: contribution_count }
+                -
+                    title: Maintenance commits
+                    color: '#7c7c7c'
+                    data_source: vw_maintenance_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: maintenance_commit_count }
 
-            maintenance_commits_per_year_symfony:
-                title: 'Commit count to Symfony code per year comparing to maintenance commit count'
+        contributor_count_per_year_symfony:
+            title: 'Contributor count to Symfony code per year'
+            type: stairArea
+            series:
+                -
+                    title: All contributors
+                    color: '#4cacdb'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: contributor_count }
+                -
+                    title: New contributors
+                    color: '#FFF82A'
+                    data_source: vw_new_contributors_per_year
+                    criteria:   { project_id: 1 }
+                    dimensions: { name: date, value: contributor_count }
 
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All commits
-                        color: '#4cacdb'
-                        data_source: vw_maintenance_contributions_per_year
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: date
-                            value: contribution_count
-                    -
-                        title: Maintenance commits
-                        color: '#7c7c7c'
-                        data_source: vw_maintenance_contributions_per_year
-                        criteria:
-                            project_id: 1
-                        dimensions:
-                            name: date
-                            value: maintenance_commit_count
-
-            maintenance_commits_per_year_symfony_docs:
-                title: 'Commit count to Symfony docs per year comparing to maintenance commit count'
-
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All commits
-                        color: '#7aba20'
-                        data_source: vw_maintenance_contributions_per_year
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: date
-                            value: contribution_count
-                    -
-                        title: Maintenance commits
-                        color: '#7c7c7c'
-                        data_source: vw_maintenance_contributions_per_year
-                        criteria:
-                            project_id: 2
-                        dimensions:
-                            name: date
-                            value: maintenance_commit_count
-
-            contributor_count_per_year_symfony:
-                title: 'Contributor count to Symfony code per year'
-
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All contributors
-                        color: '#4cacdb'
-                        data_source: vw_contributions_per_year
-                        criteria:   { project_id: 1 }
-                        dimensions: { name: date, value: contributor_count }
-                    -
-                        title: New contributors
-                        color: '#FFF82A'
-                        data_source: vw_new_contributors_per_year
-                        criteria:   { project_id: 1 }
-                        dimensions: { name: date, value: contributor_count }
-
-            contributor_count_per_year_symfony_docs:
-                title: 'Contributor count to Symfony docs per year'
-
-                chart:
-                    type: stairArea
-
-                series:
-                    -
-                        title: All contributors
-                        color: '#7aba20'
-                        data_source: vw_contributions_per_year
-                        criteria:   { project_id: 2 }
-                        dimensions: { name: date, value: contributor_count }
-                    -
-                        title: New contributors
-                        color: '#FFF82A'
-                        data_source: vw_new_contributors_per_year
-                        criteria:   { project_id: 2 }
-                        dimensions: { name: date, value: contributor_count }
+        contributor_count_per_year_symfony_docs:
+            title: 'Contributor count to Symfony docs per year'
+            type: stairArea
+            series:
+                -
+                    title: All contributors
+                    color: '#7aba20'
+                    data_source: vw_contributions_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: contributor_count }
+                -
+                    title: New contributors
+                    color: '#FFF82A'
+                    data_source: vw_new_contributors_per_year
+                    criteria:   { project_id: 2 }
+                    dimensions: { name: date, value: contributor_count }
+    trends-layout:
+        index:
+             - { chart: contributors_intersection }
+             - { chart: contributors_per_country_symfony }
+             - { chart: contributions_per_date_yearly }
+             - { chart: commit_count_distribution_symfony }
+             - { chart: contributions_per_date_yearly_symfony }
+             - { chart: contributions_per_date_yearly_symfony_docs }
+             - { chart: contributions_per_date_monthly_symfony }
+             - { chart: contributions_per_date_monthly_symfony_docs }
+             - { chart: maintenance_commits_per_year_symfony }
+             - { chart: maintenance_commits_per_year_symfony_docs }
+             - { chart: contributor_count_per_year_symfony }
+             - { chart: contributor_count_per_year_symfony_docs }

@@ -19,34 +19,38 @@
             </div>
         </div>
 
-        {% for group in trends %}
 
-            {% set rows = group|batch(2) %}
+        {% set rows = blocks|batch(2) %}
 
-            {% for row in rows %}
+        {% for row in rows %}
 
-                <div class="row">
+            <div class="row">
 
-                    {% for trendId, trend in row %}
+                {% for block in row %}
 
-                        <div class="col-md-6 col-xs-12 col-sm-12">
-                            <h2>{{ trend.title }}</h2>
+                    <div class="col-md-6 col-xs-12 col-sm-12">
+                        <h2>{{ charts[block.chart].title }}</h2>
 
 
-                            <div id="{{ trend.id }}" class="chart {{ trend.chart.type }}-chart"></div>
-                            <script>
+                        <div id="{{ block.chart }}" class="chart"></div>
 
-                                $.getJSON('{{ trend.dataFile }}', function(data) {
-                                    Renderer.{{ trend.chart.type }}Chart('{{ trend.id }}', data);
-                                });
-                            </script>
+                    </div>
 
-                        </div>
+                {% endfor %}
+            </div>
 
-                    {% endfor %}
-                </div>
-
-            {% endfor %}
         {% endfor %}
     </div>
+
+    <script>
+
+        $(function() {
+            $( ".chart" ).each(function( index, element ) {
+                $.getJSON('data/' + element.id + '.json', function(data) {
+                    Renderer.drawChart(element.id, data);
+                });
+            });
+        });
+
+    </script>
 {% endblock %}
