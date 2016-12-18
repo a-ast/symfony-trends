@@ -8,6 +8,7 @@ use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -21,7 +22,8 @@ class GenerateChartDataCommand extends ContainerAwareCommand
         $this
             ->setName('trends:data:generate')
             ->setDescription('Generate files for charts')
-            ->addArgument('charts', InputArgument::IS_ARRAY);
+            ->addArgument('charts', InputArgument::IS_ARRAY)
+            ->addOption('type', null, InputOption::VALUE_REQUIRED, 'What should be regenerated?', 'all');
     }
 
     /**
@@ -30,14 +32,19 @@ class GenerateChartDataCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
-
         $chartData = $this->getContainer()->getParameter('trends');
 
-//        $chartsToGenerate = $input->getArgument('charts');
-//        $this->generateJson($chartData, $chartsToGenerate, $rootDir);
+        $type = $input->getOption('type');
 
-        $layoutData = $this->getContainer()->getParameter('trends-layout');
-        $this->generateHtml($layoutData, $chartData);
+        if (in_array($type, ['all', 'charts'])) {
+            $chartsToGenerate = $input->getArgument('charts');
+            $this->generateJson($chartData, $chartsToGenerate, $rootDir);
+        }
+
+        if (in_array($type, ['all', 'pages'])) {
+            $layoutData = $this->getContainer()->getParameter('trends-layout');
+            $this->generateHtml($layoutData, $chartData);
+        }
     }
 
     /**
@@ -107,13 +114,5 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $maintenanceCommitPatterns = $this->getContainer()->getParameter('maintenance_commit_patterns');
         $this->dumpPage('about-data', ['maintenance_commit_patterns' => $maintenanceCommitPatterns]);
-
-
-//        $trends[$groupId][$chartId] = [
-//            'id' => $chartId,
-//            'dataFile' => sprintf('data/%s.json', $chartId),
-//            'title' => $chartView['title'],
-//            'chart' => $chartView['chart'],
-//        ];
     }
 }
