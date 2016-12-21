@@ -47,4 +47,23 @@ class ArrayUtils
     {
         return array_filter($array);
     }
+
+    /**
+     * Return first non empty item
+     *
+     * @param array $array
+     * @param string $default
+     *
+     * @return mixed|string
+     */
+    public static function getFirstNonEmptyElement(array $array, $default = '')
+    {
+        foreach ($array as $item) {
+            if ('' !== $item) {
+                return $item;
+            }
+        }
+
+        return $default;
+    }
 }

@@ -33,4 +33,11 @@ class ArrayUtilsTest extends PHPUnit_Framework_TestCase
         $array = [0 => ''];
         $this->assertEquals([], ArrayUtils::trim($array));
     }
+
+    public function testGetFirstNonEmptyElement()
+    {
+        $this->assertEquals('a', ArrayUtils::getFirstNonEmptyElement(['a', 'b']));
+        $this->assertEquals('b', ArrayUtils::getFirstNonEmptyElement(['', 'b']));
+        $this->assertEquals('default', ArrayUtils::getFirstNonEmptyElement(['', ''], 'default'));
+    }
 }
