@@ -99,6 +99,22 @@ class Contributor
     private $isCoreMember = false;
 
     /**
+     * Constructor.
+     *
+     * @param string $email
+     */
+    public function __construct($email)
+    {
+        $this->email = $email;
+
+        $this->gitEmails = [];
+        $this->gitNames = [];
+
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
      * Get id
      *
      * @return int
