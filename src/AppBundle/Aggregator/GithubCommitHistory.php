@@ -155,7 +155,7 @@ class GithubCommitHistory implements AggregatorInterface
             $contributor = new Contributor($email);
         }
         $contributor->setFromGithub($commit, $user);
-        $this->contributorRepository->addContributor($contributor);
+        $this->contributorRepository->saveContributor($contributor);
 
         return $contributor;
     }

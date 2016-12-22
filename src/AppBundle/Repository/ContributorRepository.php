@@ -153,7 +153,7 @@ class ContributorRepository extends Repository
         return $result;
     }
 
-    public function addContributor(Contributor $contributor)
+    public function saveContributor(Contributor $contributor)
     {
         if (0 === count($contributor->getGitEmails())) {
             $contributor->setGitEmails(['']);
