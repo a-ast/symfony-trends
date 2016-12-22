@@ -1,8 +1,6 @@
 services:
     http_client:
         class: AppBundle\Client\HttpClient
-    github_client:
-        class: Github\Client
     github_api_client:
         class: AppBundle\Client\GithubApiClient
         arguments:
@@ -17,7 +15,7 @@ services:
     api_facade:
         class: AppBundle\Client\ApiFacade
         arguments:
-            - '@github_client'
+            - '@github_api_client'
             - '@geolocation_api_client'
 
     data_provider:
@@ -27,6 +25,16 @@ services:
     series_provider:
         class: AppBundle\Provider\SeriesProvider
         autowire: true
+
+    factory.contributor:
+        class: AppBundle\Factory\ContributorFactory
+
+    builder.contributor:
+        class: AppBundle\Builder\ContributorBuilder
+        arguments:
+            - '@repository.contributor'
+            - '@factory.contributor'
+            - '@api_facade'
 
     #################################
     # Helpers
@@ -61,11 +69,10 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistory
         lazy: true
         arguments:
-            - '@api_facade'
             - '@github_api_client'
+            - '@builder.contributor'
             - '@repository.project'
             - '@repository.contribution'
-            - '@repository.contributor'
             - '%maintenance_commit_patterns%'
 
     aggregator.sensiolabs_connect:
@@ -75,41 +82,3 @@ services:
             - '@http_client'
             - '@helper.sensiolabs_data_extractor'
             - '@repository.contributor'
-
-    #################################
-    # Data providers
-    #################################
-    formatter.highcharts:
-        class: AppBundle\Formatter\Highcharts
-        lazy: true
-
-    formatter.highmaps:
-        class: AppBundle\Formatter\Highmaps
-        lazy: true
-
-    provider.contributors_intersection:
-        class: AppBundle\Provider\ContributorsIntersection
-        lazy: true
-        arguments:
-            - '@repository.contribution'
-            - '@repository.project'
-
-    provider.commit_count_distribution:
-        class: AppBundle\Provider\CommitCountDistribution
-        lazy: true
-        arguments:
-            - '@repository.contribution'
-            - '@repository.project'
-
-    provider.contributors_per_country:
-        class: AppBundle\Provider\ContributorsPerCountry
-        lazy: true
-        arguments:
-            - '@repository.contributor'
-
-    provider.contributions_per_date:
-        class: AppBundle\Provider\ContributionsPerDate
-        lazy: true
-        arguments:
-            - '@repository.contribution'
-            - '@repository.project'

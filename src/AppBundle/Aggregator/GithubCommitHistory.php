@@ -1,19 +1,15 @@
 <?php
 
-
 namespace AppBundle\Aggregator;
 
-use AppBundle\Client\ApiFacade;
+use AppBundle\Builder\ContributorBuilder;
 use AppBundle\Client\GithubApiClient;
 use AppBundle\Entity\Contribution;
-use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
-use AppBundle\Util\ArrayUtils;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -23,14 +19,14 @@ class GithubCommitHistory implements AggregatorInterface
     private $apiClient;
 
     /**
+     * @var ContributorBuilder
+     */
+    private $contributorBuilder;
+
+    /**
      * @var ContributionRepository
      */
     private $contributionRepository;
-
-    /**
-     * @var ContributorRepository
-     */
-    private $contributorRepository;
 
     /**
      * @var ProjectRepository
@@ -43,34 +39,26 @@ class GithubCommitHistory implements AggregatorInterface
     private $maintenanceCommitPatterns;
 
     /**
-     * @var ApiFacade
-     */
-    private $apiFacade;
-
-    /**
      * Constructor.
      *
-     * @param ApiFacade $apiFacade
      * @param GithubApiClient $apiClient
+     * @param ContributorBuilder $contributorBuilder
      * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
-     * @param ContributorRepository $contributorRepository
      * @param array $maintenanceCommitPatterns
      */
     public function __construct(
-        ApiFacade $apiFacade,
         GithubApiClient $apiClient,
+        ContributorBuilder $contributorBuilder,
         ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository,
-        ContributorRepository $contributorRepository,
         array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
         $this->contributionRepository = $contributionRepository;
-        $this->contributorRepository = $contributorRepository;
         $this->projectRepository = $projectRepository;
         $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
-        $this->apiFacade = $apiFacade;
+        $this->contributorBuilder = $contributorBuilder;
     }
 
     /**
@@ -98,7 +86,7 @@ class GithubCommitHistory implements AggregatorInterface
 
                 $commit = new GithubCommit($commitData);
 
-                $contributor = $this->createContributor($commit);
+                $contributor = $this->contributorBuilder->buildFromGithubCommit($commit);
                 $contribution = $this->createContribution($commit, $projectId, $contributor->getId());
 
                 $this->contributionRepository->clear();
@@ -112,6 +100,7 @@ class GithubCommitHistory implements AggregatorInterface
 
     /**
      * @param $projectId
+     *
      * @return \DateTimeImmutable
      */
     protected function getSinceDate($projectId)
@@ -120,44 +109,6 @@ class GithubCommitHistory implements AggregatorInterface
         $sinceDate = $lastCommitDate->modify('+1 sec');
 
         return $sinceDate;
-    }
-
-    /**
-     * @param GithubCommit $commit
-     *
-     * @return Contributor
-     */
-    private function createContributor(GithubCommit $commit)
-    {
-        $contributor = null;
-        $user = null;
-        $userEmails = [$commit->getCommitterEmail()];
-
-        if (null !== $commit->getCommitterId()) {
-            $contributor = $this->contributorRepository->findByGithubId($commit->getCommitterId());
-        }
-
-        // if contributor is not found or github id is not set,
-        // but login is present
-        if ((null === $contributor || null === $contributor->getGithubId()) && '' !== $commit->getCommitterLogin()) {
-            $user = $this->apiFacade->getGithubUserWithLocation($commit->getCommitterLogin());
-            array_unshift($userEmails, $user->getEmail());
-        }
-
-        // if contributor not found by id, try to find it by email
-        if (null === $contributor) {
-            $contributor = $this->contributorRepository->findByEmails($userEmails);
-        }
-
-        $email = ArrayUtils::getFirstNonEmptyElement($userEmails);
-
-        if (null === $contributor) {
-            $contributor = new Contributor($email);
-        }
-        $contributor->setFromGithub($commit, $user);
-        $this->contributorRepository->saveContributor($contributor);
-
-        return $contributor;
     }
 
     /**

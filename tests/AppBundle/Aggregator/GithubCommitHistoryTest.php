@@ -106,11 +106,12 @@ class GithubCommitHistoryTest extends TestCase
             });
 
         $aggregator = new GithubCommitHistory(
-            $githubApiFacade->reveal(),
             $githubApi->reveal(),
+            $this->getService('builder.contributor'),
             $this->projectRepository,
             $this->contributionRepository,
-            $this->contributorRepository, []);
+            []);
+
 
         return $aggregator;
     }
