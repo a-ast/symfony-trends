@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use AppBundle\Traits\TimestampTrait;
 use AppBundle\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
@@ -201,10 +203,6 @@ class Contributor
      */
     public function setGitNames($gitNames)
     {
-        if (0 === count($gitNames)) {
-            $gitNames = [''];
-        }
-
         $this->gitNames = $gitNames;
 
         return $this;
@@ -245,10 +243,6 @@ class Contributor
      */
     public function setGitEmails($gitEmails)
     {
-        if (0 === count($gitEmails)) {
-            $gitEmails = [''];
-        }
-
         $this->gitEmails = $gitEmails;
 
         return $this;
@@ -382,6 +376,72 @@ class Contributor
     public function isCoreMember()
     {
         return $this->isCoreMember;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     *
+     * @return $this
+     */
+    public function setFromGithubCommit(GithubCommit $commit)
+    {
+        if (!$this->githubLogin) {
+            $this->setGithubLogin($commit->getCommitterLogin());
+        }
+
+        if (!$this->githubId) {
+            $this->setGithubId($commit->getCommitterId());
+        }
+
+        if (!$this->getName()) {
+            $this->setName($commit->getCommitterName());
+        }
+
+        $this->addGitName($commit->getCommitterName());
+        $this->addGitName($commit->getCommitterLogin());
+        $this->addGitEmail($commit->getCommitterEmail()); // in case it is not added yet
+
+        return $this;
+    }
+
+    /**
+     * @param GithubUser $user
+     *
+     * @return $this
+     */
+    public function setFromGithubUser(GithubUser $user)
+    {
+        if (!$this->getName()) {
+            $this->setName($user->getName());
+        }
+
+        if (!$this->getCountry()) {
+            $this->setCountry($user->getCountry());
+        }
+
+        if (!$this->getGithubLocation()) {
+            $this->setGithubLocation($user->getLocation());
+        }
+
+        $this->addGitEmail($user->getEmail());
+
+        return $this;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     * @param GithubUser|null $user
+     *
+     * @return $this
+     */
+    public function setFromGithub(GithubCommit $commit, GithubUser $user = null)
+    {
+        if (null !== $user) {
+            $this->setFromGithubUser($user);
+        }
+        $this->setFromGithubCommit($commit);
+
+        return $this;
     }
 }
 

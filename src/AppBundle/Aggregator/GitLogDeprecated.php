@@ -145,27 +145,6 @@ class GitLogDeprecated implements AggregatorInterface
     }
 
     /**
-     * @param $email
-     * @param $name
-     *
-     * @return Contributor
-     */
-    protected function createContributor($email, $name)
-    {
-        $contributor = new Contributor();
-        $contributor
-            ->setEmail($email)
-            ->setName($name)
-            ->setGitEmails([''])
-            ->setGitNames([''])
-            ->setSensiolabsPageError(0)
-            ->setCreatedAt(new DateTime())
-            ->setUpdatedAt(new DateTime());
-
-        return $contributor;
-    }
-
-    /**
      * @param Contributor $contributor
      * @param int $projectId
      * @param DateTime $dateTime

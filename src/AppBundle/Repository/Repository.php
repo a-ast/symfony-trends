@@ -11,8 +11,6 @@ abstract class Repository extends EntityRepository
 {
     /**
      * @param null $object
-     *
-     * @deprecated Use a combination of persist/flush
      */
     public function store($object = null)
     {

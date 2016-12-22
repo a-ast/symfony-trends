@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Contributor;
+use AppBundle\Util\ArrayUtils;
 
 /**
  * ContributorRepository
@@ -26,6 +27,26 @@ class ContributorRepository extends Repository
         $result = $qb->getQuery()->getOneOrNullResult();
 
         return $result;
+    }
+
+    /**
+     * @param array $emails
+     *
+     * @return Contributor|null
+     */
+    public function findByEmails(array $emails)
+    {
+        $emails = ArrayUtils::trim($emails);
+
+        foreach ($emails as $email) {
+            $contributor = $this->findByEmail($email);
+
+            if (null !== $contributor) {
+                return $contributor;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -130,5 +151,19 @@ class ContributorRepository extends Repository
         $result = $qb->getQuery()->getResult();
 
         return $result;
+    }
+
+    public function addContributor(Contributor $contributor)
+    {
+        if (0 === count($contributor->getGitEmails())) {
+            $contributor->setGitEmails(['']);
+        }
+
+        if (0 === count($contributor->getGitNames())) {
+            $contributor->setGitNames(['']);
+        }
+
+        $this->persist($contributor);
+        $this->flush($contributor);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Model\GithubCommit;
+use AppBundle\Util\RegexUtils;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -77,6 +79,19 @@ class Contribution
      */
     private $commitHash;
 
+    /**
+     * Constructor.
+     *
+     * @param int $projectId
+     * @param int $contributorId
+     * @param string $commitHash
+     */
+    public function __construct($projectId, $contributorId, $commitHash)
+    {
+        $this->projectId = $projectId;
+        $this->commitHash = $commitHash;
+        $this->contributorId = $contributorId;
+    }
 
     /**
      * Get id
@@ -222,6 +237,22 @@ class Contribution
     public function isMaintenanceCommit()
     {
         return $this->isMaintenanceCommit;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     * @param array $maintenanceCommitPatterns
+     *
+     * @return $this
+     */
+    public function setFromGithubCommit(GithubCommit $commit, array $maintenanceCommitPatterns)
+    {
+        $isMaintenanceCommit = RegexUtils::match($commit->getMessage(), $maintenanceCommitPatterns);
+
+        return $this
+            ->setMessage($commit->getMessage())
+            ->setMaintenanceCommit($isMaintenanceCommit)
+            ->setCommitedAt($commit->getDate());
     }
 }
 

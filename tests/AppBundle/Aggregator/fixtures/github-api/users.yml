@@ -2,7 +2,9 @@ frodo:
     name: Frodo Baggins
     email: frodo@shire
     location: 'Bag End'
+    country: Shire
 sam:
     name: Sam
     email: sam@shire
     location: Shire
+    country: Shire

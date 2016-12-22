@@ -14,6 +14,11 @@ services:
         arguments:
             - '@http_client'
             - '%env(GEOCODING_API_KEY)%'
+    api_facade:
+        class: AppBundle\Client\ApiFacade
+        arguments:
+            - '@github_client'
+            - '@geolocation_api_client'
 
     data_provider:
         class: AppBundle\Repository\DataProvider
@@ -56,8 +61,8 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistory
         lazy: true
         arguments:
+            - '@api_facade'
             - '@github_api_client'
-            - '@geolocation_api_client'
             - '@repository.project'
             - '@repository.contribution'
             - '@repository.contributor'

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AppBundle\Model;
 
 class GithubUser
@@ -8,36 +7,42 @@ class GithubUser
     /**
      * @var string
      */
-    private $name;
+    private $name = '';
 
     /**
      * @var string
      */
-    private $email;
+    private $email = '';
 
     /**
      * @var string
      */
-    private $location;
+    private $location = '';
 
     /**
      * @var string
      */
-    private $country;
+    private $country = '';
 
     /**
-     * Constructor.
+     * Constructor
+     *
      * @param string $name
      * @param string $email
      * @param string $location
      * @param string $country
      */
-    public function __construct($name, $email, $location, $country)
+    public function __construct($name = '', $email = '', $location = '', $country = '')
     {
         $this->name = $name;
         $this->email = $email;
         $this->location = $location;
         $this->country = $country;
+    }
+
+    public static function createFromArray(array $data)
+    {
+        return new self($data['name'], $data['email'], $data['location'], $data['country']);
     }
 
     /**
@@ -55,7 +60,6 @@ class GithubUser
     {
         return $this->email;
     }
-
 
     /**
      * @return string

@@ -2,8 +2,10 @@
 
 namespace AppBundle\Aggregator;
 
+use AppBundle\Client\ApiFacade;
 use AppBundle\Client\GeolocationApiClient;
 use AppBundle\Client\GithubApiClient;
+use AppBundle\Model\GithubUser;
 use AppBundle\Repository\ContributorRepository;
 use Prophecy\Argument;
 use Symfony\Component\Yaml\Yaml;
@@ -95,21 +97,20 @@ class GithubCommitHistoryTest extends TestCase
         $githubApi
             ->getCommits(Argument::cetera())
             ->willReturn($commitHistory, null);
-        $githubApi
-            ->getUser(Argument::type('string'))
+
+        $githubApiFacade = $this->prophesize(ApiFacade::class);
+        $githubApiFacade
+            ->getGithubUserWithLocation(Argument::type('string'))
             ->will(function ($args) use ($users) {
-                return $users[$args[0]];
+                return GithubUser::createFromArray($users[$args[0]]);
             });
 
-        $geoApi = $this->prophesize(GeolocationApiClient::class);
-        $geoApi
-            ->findCountry(Argument::type('string'))
-            ->will(function ($args) use ($locations) {
-                return $locations[$args[0]];
-            });
-
-        $aggregator = new GithubCommitHistory($githubApi->reveal(), $geoApi->reveal(),
-            $this->projectRepository, $this->contributionRepository, $this->contributorRepository);
+        $aggregator = new GithubCommitHistory(
+            $githubApiFacade->reveal(),
+            $githubApi->reveal(),
+            $this->projectRepository,
+            $this->contributionRepository,
+            $this->contributorRepository, []);
 
         return $aggregator;
     }

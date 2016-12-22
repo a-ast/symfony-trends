@@ -3,16 +3,17 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Client\GeolocationApiClient;
+use AppBundle\Client\ApiFacade;
 use AppBundle\Client\GithubApiClient;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
-use AppBundle\Util\RegexUtils;
+use AppBundle\Util\ArrayUtils;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -32,11 +33,6 @@ class GithubCommitHistory implements AggregatorInterface
     private $contributorRepository;
 
     /**
-     * @var GeolocationApiClient
-     */
-    private $geolocationApiClient;
-
-    /**
      * @var ProjectRepository
      */
     private $projectRepository;
@@ -47,28 +43,34 @@ class GithubCommitHistory implements AggregatorInterface
     private $maintenanceCommitPatterns;
 
     /**
+     * @var ApiFacade
+     */
+    private $apiFacade;
+
+    /**
      * Constructor.
      *
+     * @param ApiFacade $apiFacade
      * @param GithubApiClient $apiClient
-     * @param GeolocationApiClient $geolocationApiClient
      * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param ContributorRepository $contributorRepository
      * @param array $maintenanceCommitPatterns
      */
-    public function __construct(GithubApiClient $apiClient,
-        GeolocationApiClient $geolocationApiClient,
+    public function __construct(
+        ApiFacade $apiFacade,
+        GithubApiClient $apiClient,
         ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository,
         ContributorRepository $contributorRepository,
         array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
-        $this->geolocationApiClient = $geolocationApiClient;
         $this->contributionRepository = $contributionRepository;
         $this->contributorRepository = $contributorRepository;
         $this->projectRepository = $projectRepository;
         $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
+        $this->apiFacade = $apiFacade;
     }
 
     /**
@@ -86,117 +88,20 @@ class GithubCommitHistory implements AggregatorInterface
 
         $projectRepo = $project->getGithubPath();
 
-        $lastCommitDate = $this->contributionRepository->getLastCommitDate($projectId);
-        $sinceDate = $lastCommitDate->modify('+1 sec');
+        $sinceDate = $this->getSinceDate($projectId);
 
         $page = 1;
+
         while ($commits = $this->apiClient->getCommits($projectRepo, $sinceDate, $page)) {
 
-            foreach ($commits as $commit) {
+            foreach ($commits as $commitData) {
 
-                $contributor = null;
-                $githubId = null;
-                $login = '';
-                $location = '';
-                $country = '';
+                $commit = new GithubCommit($commitData);
 
-                $name  = $commitName  = $commit['commit']['author']['name'];
-                $email = $commitEmail = $commit['commit']['author']['email'];
+                $contributor = $this->createContributor($commit);
+                $contribution = $this->createContribution($commit, $projectId, $contributor->getId());
 
-                if (null !== $commit['author'] && isset($commit['author']['id'])) {
-                    $githubId = $commit['author']['id'];
-                    $contributor = $this->contributorRepository->findByGithubId($githubId);
-
-                    if (null !== $contributor) {
-                        print '.';
-                    }
-                }
-
-                // if contributor is not found or github id is not set,
-                // but login is present
-                if ((null === $contributor || null === $contributor->getGithubId()) &&
-                    null !== $commit['author'] && isset($commit['author']['login'])) {
-
-                    $login = $commit['author']['login'];
-                    $user = $this->apiClient->getUser($login);
-
-                    $name = isset($user['name']) ? $user['name'] : $commitName;
-                    $email = isset($user['email']) ? $user['email'] : $commitEmail;
-
-                    if (isset($user['location'])) {
-                        $location = $user['location'];
-                        $countryData = $this->geolocationApiClient->findCountry($location);
-                        $country = $countryData['country'];
-                    }
-                }
-
-                // if contributor not found by id, try to find by email
-                if (null === $contributor) {
-                    $contributor = $this->contributorRepository->findByEmail($email);
-
-                    if (null !== $contributor) {
-                        print 'e';
-                    }
-                }
-
-                if (null === $contributor) {
-                    $contributor = new Contributor();
-                    $contributor
-                        ->setEmail($email)
-                        ->setGitEmails([])
-                        ->setGitNames([])
-                        ->setCreatedAt(new \DateTime())
-                        ->setUpdatedAt(new \DateTime())
-                    ;
-
-                    $this->contributorRepository->persist($contributor);
-
-                    print 'n';
-                }
-
-                if (!$contributor->getGithubLogin()) {
-                    $contributor->setGithubLogin($login);
-                }
-
-                if (!$contributor->getGithubId()) {
-                    $contributor->setGithubId($githubId);
-                }
-
-                if (!$contributor->getName()) {
-                    $contributor->setName($name);
-                }
-
-                if (!$contributor->getCountry()) {
-                    $contributor->setCountry($country);
-                }
-
-                if (!$contributor->getGithubLocation()) {
-                    $contributor->setGithubLocation($location);
-                }
-
-                $contributor->addGitName($login);
-                $contributor->addGitName($commitName);
-                $contributor->addGitEmail($email); // in case it is not added yet
-                $contributor->addGitEmail($commitEmail);
-
-                $this->contributorRepository->flush($contributor);
-
-                // Save contribution
-                $contribution = new Contribution();
-                $commitMessage = $commit['commit']['message'];
-                $contribution
-                    ->setProjectId($projectId)
-                    ->setContributorId($contributor->getId())
-                    ->setCommitHash($commit['sha'])
-                    ->setMessage($commitMessage)
-                    ->setMaintenanceCommit($this->isMaintenanceCommit($commitMessage))
-                    ->setCommitedAt(new \DateTime($commit['commit']['author']['date']))
-                ;
-
-                $this->contributionRepository->persist($contribution);
-                $this->contributionRepository->flush($contribution);
                 $this->contributionRepository->clear();
-
                 unset($contributor);
                 unset($contribution);
             }
@@ -206,12 +111,68 @@ class GithubCommitHistory implements AggregatorInterface
     }
 
     /**
-     * @param string $commitMessage
-     *
-     * @return bool
+     * @param $projectId
+     * @return \DateTimeImmutable
      */
-    private function isMaintenanceCommit($commitMessage)
+    protected function getSinceDate($projectId)
     {
-        return RegexUtils::match($commitMessage, $this->maintenanceCommitPatterns);
+        $lastCommitDate = $this->contributionRepository->getLastCommitDate($projectId);
+        $sinceDate = $lastCommitDate->modify('+1 sec');
+
+        return $sinceDate;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     *
+     * @return Contributor
+     */
+    private function createContributor(GithubCommit $commit)
+    {
+        $contributor = null;
+        $user = null;
+        $userEmails = [$commit->getCommitterEmail()];
+
+        if (null !== $commit->getCommitterId()) {
+            $contributor = $this->contributorRepository->findByGithubId($commit->getCommitterId());
+        }
+
+        // if contributor is not found or github id is not set,
+        // but login is present
+        if ((null === $contributor || null === $contributor->getGithubId()) && '' !== $commit->getCommitterLogin()) {
+            $user = $this->apiFacade->getGithubUserWithLocation($commit->getCommitterLogin());
+            array_unshift($userEmails, $user->getEmail());
+        }
+
+        // if contributor not found by id, try to find it by email
+        if (null === $contributor) {
+            $contributor = $this->contributorRepository->findByEmails($userEmails);
+        }
+
+        $email = ArrayUtils::getFirstNonEmptyElement($userEmails);
+
+        if (null === $contributor) {
+            $contributor = new Contributor($email);
+        }
+        $contributor->setFromGithub($commit, $user);
+        $this->contributorRepository->addContributor($contributor);
+
+        return $contributor;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     * @param int $projectId
+     * @param int $contributorId
+     *
+     * @return Contribution
+     */
+    private function createContribution(GithubCommit $commit, $projectId, $contributorId)
+    {
+        $contribution = new Contribution($projectId, $contributorId, $commit->getHash());
+        $contribution->setFromGithubCommit($commit, $this->maintenanceCommitPatterns);
+        $this->contributionRepository->store($contribution);
+
+        return $contribution;
     }
 }
