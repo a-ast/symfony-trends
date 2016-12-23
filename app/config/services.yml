@@ -63,6 +63,15 @@ services:
             - '@repository.contributor'
             - '%maintenance_commit_patterns%'
 
+    aggregator.github_commit_history_checker:
+        class: AppBundle\Aggregator\GithubCommitHistoryChecker
+        lazy: true
+        arguments:
+            - '@github_api_client'
+            - '@repository.project'
+            - '@repository.contributor'
+
+
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
         lazy: true
