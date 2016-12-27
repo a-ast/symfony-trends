@@ -55,10 +55,10 @@ class GithubCommitHistory implements AggregatorInterface
         array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
+        $this->contributorBuilder = $contributorBuilder;
         $this->contributionRepository = $contributionRepository;
         $this->projectRepository = $projectRepository;
         $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
-        $this->contributorBuilder = $contributorBuilder;
     }
 
     /**

@@ -3,9 +3,13 @@
 namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GithubCommitHistory;
+use AppBundle\Builder\ContributorBuilder;
 use AppBundle\Client\GeolocationApiClient;
 use AppBundle\Client\GithubApiClient;
+use AppBundle\Entity\Contribution;
+use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
+use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
@@ -19,35 +23,42 @@ use Tests\AppBundle\FixtureReader;
 class GithubCommitHistorySpec extends ObjectBehavior
 {
     function let(GithubApiClient $githubApi,
-        GeolocationApiClient $geoApi,
-        ProjectRepository $projectRepository,
+        ContributorBuilder $contributorBuilder,
         ContributionRepository $contributionRepository,
-        ContributorRepository $contributorRepository)
+        ProjectRepository $projectRepository)
     {
-        $this->beConstructedWith($githubApi, $geoApi, $projectRepository, $contributionRepository, $contributorRepository, []);
+        $this->beConstructedWith($githubApi, $contributorBuilder, $projectRepository, $contributionRepository, []);
+    }
 
+    private function initDependencies(GithubApiClient $githubApi,
+        ContributorBuilder $contributorBuilder,
+        ContributionRepository $contributionRepository,
+        ProjectRepository $projectRepository,
+        Project $project,
+        Contributor $contributor)
+    {
         $commits = [
+            [
+                'sha' => 'hash-frodo-1',
+                'commit' =>
                     [
-                        'sha' => 'hash-frodo-1',
-                        'commit' =>
-                            [
-                                'author' =>
-                                    [
-                                        'id' => 300,
-                                        'name' => 'frodo.b',
-                                        'email' => 'frodo.baggins@shire',
-                                        'date' => '2016-11-22T00:13:33Z',
-                                    ],
-                                'message' => 'Added thoughts about my future way',
-                            ],
                         'author' =>
                             [
                                 'id' => 300,
-                                'login' => 'frodo',
-                                'type' => 'User',
+                                'name' => 'frodo.b',
+                                'email' => 'frodo.baggins@shire',
+                                'date' => '2016-11-22T00:13:33Z',
                             ],
+                        'message' => 'Added thoughts about my future way',
                     ],
-                ];
+                'author' =>
+                    [
+                        'id' => 300,
+                        'login' => 'frodo',
+                        'type' => 'User',
+                    ],
+            ]
+        ];
 
         $users = [
             [
@@ -59,32 +70,55 @@ class GithubCommitHistorySpec extends ObjectBehavior
 
         $githubApi
             ->getCommits(Argument::cetera())
-            ->willReturn($commits);
+            ->willReturn($commits, null);
 
         $githubApi
             ->getUser(Argument::type('string'))
             ->willReturn($users[0]);
 
-        $geoApi
-            ->findCountry(Argument::type('string'))
-            ->willReturn(['country' => 'Shire']);
+        $contributorBuilder
+            ->buildFromGithubCommit(Argument::type(GithubCommit::class))
+            ->willReturn($contributor);
+
+        $contributor
+            ->getId()
+            ->willReturn(100);
+
+        $project
+            ->getGithubPath()
+            ->willReturn('github/path');
 
         $projectRepository
             ->find(Argument::any())
-            ->willReturn(new Project());
+            ->willReturn($project);
 
         $contributionRepository
-            ->getLastCommitDate(Argument::any())
+            ->getLastCommitDate(Argument::type('integer'))
             ->willReturn(new \DateTimeImmutable('2016-01-01 00:00:00'));
+
+        $contributionRepository
+            ->store(Argument::any())
+            ->shouldBeCalled();
+
+        $contributionRepository
+            ->clear()
+            ->shouldBeCalled();
     }
+
 
     function it_is_initializable()
     {
         $this->shouldHaveType(GithubCommitHistory::class);
     }
 
-    function it_returns_aggregated_data()
+    function it_returns_aggregated_data(GithubApiClient $githubApi,
+        ContributorBuilder $contributorBuilder,
+        ContributionRepository $contributionRepository,
+        ProjectRepository $projectRepository,
+        Project $project,
+        Contributor $contributor)
     {
+        $this->initDependencies($githubApi, $contributorBuilder, $contributionRepository, $projectRepository, $project, $contributor);
         $report = $this->aggregate(['project_id' => 1]);
     }
 }
