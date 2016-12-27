@@ -30,4 +30,15 @@ class StringUtils
     {
         return (false !== strpos($text, $substring));
     }
+
+    /**
+     * @param string $text
+     * @param string $substring
+     *
+     * @return bool
+     */
+    public static function startsWith($text, $substring)
+    {
+        return (0 === strpos($text, $substring));
+    }
 }
