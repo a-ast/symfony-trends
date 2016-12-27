@@ -1,0 +1,216 @@
+{
+    "options": {
+        "type": "map"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "iso": "AE",
+                    "value": 1
+                },
+                {
+                    "iso": "AF",
+                    "value": 2
+                },
+                {
+                    "iso": "AR",
+                    "value": 2
+                },
+                {
+                    "iso": "AT",
+                    "value": 3
+                },
+                {
+                    "iso": "AU",
+                    "value": 1
+                },
+                {
+                    "iso": "BA",
+                    "value": 1
+                },
+                {
+                    "iso": "BE",
+                    "value": 11
+                },
+                {
+                    "iso": "BG",
+                    "value": 1
+                },
+                {
+                    "iso": "BR",
+                    "value": 3
+                },
+                {
+                    "iso": "BY",
+                    "value": 1
+                },
+                {
+                    "iso": "CA",
+                    "value": 4
+                },
+                {
+                    "iso": "CH",
+                    "value": 6
+                },
+                {
+                    "iso": "CL",
+                    "value": 1
+                },
+                {
+                    "iso": "CN",
+                    "value": 2
+                },
+                {
+                    "iso": "CU",
+                    "value": 2
+                },
+                {
+                    "iso": "CZ",
+                    "value": 14
+                },
+                {
+                    "iso": "DE",
+                    "value": 44
+                },
+                {
+                    "iso": "DK",
+                    "value": 2
+                },
+                {
+                    "iso": "ES",
+                    "value": 12
+                },
+                {
+                    "iso": "FI",
+                    "value": 1
+                },
+                {
+                    "iso": "FR",
+                    "value": 85
+                },
+                {
+                    "iso": "GB",
+                    "value": 31
+                },
+                {
+                    "iso": "GR",
+                    "value": 2
+                },
+                {
+                    "iso": "HU",
+                    "value": 3
+                },
+                {
+                    "iso": "ID",
+                    "value": 1
+                },
+                {
+                    "iso": "IE",
+                    "value": 2
+                },
+                {
+                    "iso": "IL",
+                    "value": 1
+                },
+                {
+                    "iso": "IN",
+                    "value": 2
+                },
+                {
+                    "iso": "IT",
+                    "value": 9
+                },
+                {
+                    "iso": "JE",
+                    "value": 1
+                },
+                {
+                    "iso": "JO",
+                    "value": 1
+                },
+                {
+                    "iso": "JP",
+                    "value": 2
+                },
+                {
+                    "iso": "KZ",
+                    "value": 2
+                },
+                {
+                    "iso": "LT",
+                    "value": 7
+                },
+                {
+                    "iso": "LU",
+                    "value": 1
+                },
+                {
+                    "iso": "LV",
+                    "value": 2
+                },
+                {
+                    "iso": "MA",
+                    "value": 6
+                },
+                {
+                    "iso": "MY",
+                    "value": 1
+                },
+                {
+                    "iso": "NL",
+                    "value": 30
+                },
+                {
+                    "iso": "NO",
+                    "value": 4
+                },
+                {
+                    "iso": "PL",
+                    "value": 15
+                },
+                {
+                    "iso": "PT",
+                    "value": 4
+                },
+                {
+                    "iso": "RO",
+                    "value": 8
+                },
+                {
+                    "iso": "RU",
+                    "value": 18
+                },
+                {
+                    "iso": "SE",
+                    "value": 4
+                },
+                {
+                    "iso": "SI",
+                    "value": 1
+                },
+                {
+                    "iso": "SK",
+                    "value": 2
+                },
+                {
+                    "iso": "TR",
+                    "value": 1
+                },
+                {
+                    "iso": "UA",
+                    "value": 16
+                },
+                {
+                    "iso": "US",
+                    "value": 34
+                },
+                {
+                    "iso": "YT",
+                    "value": 1
+                }
+            ],
+            "name": "Contributor count"
+        }
+    ]
+}

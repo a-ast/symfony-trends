@@ -18,8 +18,18 @@ parameters:
             series:
                 -
                     title: Contributor count
-                    data_source: vw_contributor_countries
-                    criteria: {}
+                    data_source: fn_contributor_countries
+                    criteria: { year: null }
+                    dimensions: { iso: iso, value: contributor_count }
+
+        contributors_per_country_symfony_2016:
+            title: 'Where Symfony contributors live and work in 2016'
+            type: map
+            series:
+                -
+                    title: Contributor count
+                    data_source: fn_contributor_countries
+                    criteria: { year: 2016 }
                     dimensions: { iso: iso, value: contributor_count }
 
         contributions_per_date_yearly:
@@ -211,3 +221,4 @@ parameters:
              - { chart: maintenance_commits_per_year_symfony_docs }
              - { chart: contributor_count_per_year_symfony }
              - { chart: contributor_count_per_year_symfony_docs }
+             - { chart: contributors_per_country_symfony_2016 }
