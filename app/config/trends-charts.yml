@@ -196,6 +196,7 @@ parameters:
                     data_source: vw_new_contributors_per_year
                     criteria:   { project_id: 2 }
                     dimensions: { name: date, value: contributor_count }
+
     trends-layout:
         index:
              - { chart: contributors_intersection }
