@@ -21,7 +21,7 @@ class BackupDatabaseCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('trends:backup-satabase')
+            ->setName('trends:backup-database')
             ->setDescription('Backup database')
             ->addOption('path', 'p', InputOption::VALUE_REQUIRED, 'Path to store backups.')
         ;
