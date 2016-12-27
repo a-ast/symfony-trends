@@ -157,6 +157,39 @@ CREATE VIEW vw_contributor_countries AS
 
   GROUP BY iso;
 
+--------------------------------------------------------
+-- Contributor countries
+-- Parameters:
+-- * v_year - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_contributor_countries(int);
+CREATE FUNCTION fn_contributor_countries(v_year int) RETURNS table(iso text, contributor_count bigint) AS $$
+BEGIN
+  RETURN query
+  SELECT countries.iso, count(countries.id) AS contributor_count
+  FROM (
+
+     SELECT c.id, COALESCE(NULLIF(cn1.iso2, ''), NULLIF(cn2.iso2, '')) AS iso
+     FROM contributor c
+         LEFT JOIN sensiolabs_user s on s.contributor_id = c.id
+         LEFT JOIN country cn1 on cn1.name = c.country
+         LEFT JOIN country cn2 on cn2.name = s.country
+     WHERE
+         (c.country != '' OR s.country != '') AND
+         EXISTS (
+             SELECT cn.id
+             FROM contribution cn
+             WHERE
+                cn.contributor_id = c.id
+                AND project_id IN (1,2)
+                AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
+         )) countries
+
+  GROUP BY countries.iso;
+END;
+$$ LANGUAGE plpgsql;
+
+
 
 --------------------------------------------------------
 -- Maintenance commit counts per year
