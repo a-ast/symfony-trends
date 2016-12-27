@@ -19,6 +19,11 @@ class SeriesProvider implements ProviderInterface
         $this->dataProvider = $dataProvider;
     }
 
+    /**
+     * @param array $options
+     *
+     * @return array
+     */
     public function getSeries(array $options)
     {
         $seriesCollection = [];
