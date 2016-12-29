@@ -28,3 +28,10 @@ parameters:
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'
             options: []
+
+
+        # Checkers
+        github_commits_symfony_checker:
+            service: 'aggregator.github_commit_history_checker'
+            options:
+                project_id: 1
