@@ -39,14 +39,14 @@ parameters:
                 -
                     title: Symfony code
                     color: '#4cacdb'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contribution_count }
                 -
                     title: Symfony docs
                     color: '#7aba20'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contribution_count }
 
         commit_count_distribution_symfony:
@@ -73,14 +73,14 @@ parameters:
                 -
                     title: All contributors
                     color: '#4cacdb'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contribution_count }
                 -
                     title: Core team
                     color: '#323038'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: core_team_contribution_count }
 
         contributions_per_year_symfony_docs:
@@ -90,14 +90,14 @@ parameters:
                 -
                     title: All contributors
                     color: '#7aba20'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contribution_count }
                 -
                     title: Core team
                     color: '#323038'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: core_team_contribution_count }
 
 
@@ -215,8 +215,8 @@ parameters:
                 -
                     title: All contributors
                     color: '#4cacdb'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contributor_count }
                 -
                     title: New contributors
@@ -232,8 +232,8 @@ parameters:
                 -
                     title: All contributors
                     color: '#7aba20'
-                    data_source: vw_contributions_per_year
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: contributor_count }
                 -
                     title: New contributors
