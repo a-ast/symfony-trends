@@ -15,35 +15,64 @@ $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 -- * contributor_count
 -- * core_team_contribution_count
 --------------------------------------------------------
-DROP VIEW IF EXISTS vw_contributions_per_year CASCADE;
-CREATE VIEW vw_contributions_per_year AS
-  SELECT
-      to_char(cn.commited_at, 'YYYY') AS date,
-      cn.project_id,
-      count(*) AS contribution_count,
-      count(DISTINCT cn.contributor_id) AS contributor_count,
-      sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
-  FROM contribution cn
-    LEFT JOIN contributor c on cn.contributor_id = c.id
-  WHERE is_maintenance_commit = FALSE
-  GROUP BY to_char(cn.commited_at, 'YYYY'), cn.project_id
-  ORDER BY date asc;
+-- DROP VIEW IF EXISTS vw_contributions_per_year CASCADE;
+-- CREATE VIEW vw_contributions_per_year AS
+--   SELECT
+--       to_char(cn.commited_at, 'YYYY') AS date,
+--       cn.project_id,
+--       count(*) AS contribution_count,
+--       count(DISTINCT cn.contributor_id) AS contributor_count,
+--       sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
+--   FROM contribution cn
+--     LEFT JOIN contributor c on cn.contributor_id = c.id
+--   WHERE is_maintenance_commit = FALSE
+--   GROUP BY to_char(cn.commited_at, 'YYYY'), cn.project_id
+--   ORDER BY date asc;
+--
+--
+-- -- Contribution counts per month
+-- DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
+-- CREATE VIEW vw_contributions_per_month AS
+--   SELECT
+--       to_char(cn.commited_at, 'YYYY-MM-01') AS date,
+--       cn.project_id,
+--       count(*) AS contribution_count,
+--       sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
+--   FROM contribution cn
+--       LEFT JOIN contributor c on cn.contributor_id = c.id
+--   WHERE is_maintenance_commit = FALSE
+--   GROUP BY date, cn.project_id
+--   ORDER BY date asc;
 
 
--- Contribution counts per month
-DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
-CREATE VIEW vw_contributions_per_month AS
-  SELECT
-      to_char(cn.commited_at, 'YYYY-MM-01') AS date,
-      cn.project_id,
-      count(*) AS contribution_count,
-      sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
-  FROM contribution cn
-      LEFT JOIN contributor c on cn.contributor_id = c.id
-  WHERE is_maintenance_commit = FALSE
-  GROUP BY date, cn.project_id
-  ORDER BY date asc;
+--------------------------------------------------------
+-- Contribution counts
+-- Parameters:
+-- * v_date_interval_format ('YYYY-MM-01' for month)
+-- * v_year - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_contributions(text, int);
+CREATE FUNCTION fn_contributions(v_date_interval_format text, v_year int)
+    RETURNS table(date text, project_id int, contributor_count bigint, contribution_count bigint, core_team_contribution_count bigint) AS $$
+BEGIN
+    RETURN query
 
+    SELECT
+        to_char(cn.commited_at, v_date_interval_format) AS date,
+        cn.project_id,
+        count(DISTINCT cn.contributor_id) AS contributor_count,
+        count(*) AS contribution_count,
+        sum(c.is_core_member::int) AS core_team_contribution_count
+
+    FROM contribution cn
+        LEFT JOIN contributor c on cn.contributor_id = c.id
+    WHERE
+        is_maintenance_commit = FALSE
+        AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
+    GROUP BY date, cn.project_id
+    ORDER BY date asc;
+END;
+$$ LANGUAGE plpgsql;
 
 
 -- Intersections
@@ -133,30 +162,6 @@ CREATE VIEW vw_commit_count_distribution AS
     ) cn
   GROUP BY project_id, bounds
   ORDER BY contributor_count;
-
-
---------------------------------------------------------
--- Contributor countries
---------------------------------------------------------
-DROP VIEW IF EXISTS vw_contributor_countries CASCADE;
-CREATE VIEW vw_contributor_countries AS
-  SELECT iso, count(id) AS contributor_count
-  FROM (
-
-     SELECT c.id, COALESCE(NULLIF(cn1.iso2, ''), NULLIF(cn2.iso2, '')) AS iso
-     FROM contributor c
-         LEFT JOIN sensiolabs_user s on s.contributor_id = c.id
-         LEFT JOIN country cn1 on cn1.name = c.country
-         LEFT JOIN country cn2 on cn2.name = s.country
-     WHERE
-       (c.country != '' OR s.country != '') AND
-       EXISTS (
-           SELECT cn.id
-           FROM contribution cn
-           WHERE cn.contributor_id = c.id AND project_id IN (1,2)
-       )) countries
-
-  GROUP BY iso;
 
 --------------------------------------------------------
 -- Contributor countries
