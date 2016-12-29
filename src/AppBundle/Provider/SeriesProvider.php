@@ -29,7 +29,10 @@ class SeriesProvider implements ProviderInterface
         $seriesCollection = [];
 
         foreach ($options as $seriesConfig) {
-            $data = $this->dataProvider->getData($seriesConfig['data_source'], $seriesConfig['criteria']);
+
+            $limit = isset($seriesConfig['limit']) ? $seriesConfig['limit'] : null;
+
+            $data = $this->dataProvider->getData($seriesConfig['data_source'], $seriesConfig['criteria'], $limit);
 
             $seriesData = [];
 

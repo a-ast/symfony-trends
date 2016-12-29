@@ -28,10 +28,11 @@ class DataProvider
     /**
      * @param string $dataSource
      * @param array $criteria
+     * @param integer $limit
      *
      * @return array
      */
-    public function getData($dataSource, $criteria)
+    public function getData($dataSource, $criteria, $limit = null)
     {
         $queryBuilder = $this->connection->createQueryBuilder();
 
@@ -41,6 +42,10 @@ class DataProvider
             $this->configureQueryBuilderForDataFunction($queryBuilder, $dataSource, $criteria);
         } else {
             throw new RuntimeException(sprintf('Unknown type of the data source: %s', $dataSource));
+        }
+
+        if (null !== $limit) {
+            $queryBuilder->setMaxResults($limit);
         }
 
         $result = $queryBuilder->execute()->fetchAll();
