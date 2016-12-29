@@ -1,6 +1,13 @@
 TODO
 ==============
 
+Project 2016
+* build a list of charts for Javier
+* rebuild other view as functions to expose year as a parameter
+* prepare additional page for these charts
+
+
+
 Beta
 
 1. Tests

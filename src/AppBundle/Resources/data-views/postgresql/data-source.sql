@@ -228,3 +228,31 @@ CREATE VIEW vw_new_contributors_per_year AS
   ) as fc
   group by fc.project_id, date
   order by date asc;
+
+--------------------------------------------------------
+-- Contributors with their contribution counts
+-- Parameters:
+-- * v_project_id - project id
+-- * v_year       - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_contributor_contribution_counts(int, int);
+CREATE FUNCTION fn_contributor_contribution_counts(v_project_id int, v_year int)
+    RETURNS table(project_id int, name text, is_core_member bool, contribution_count bigint) AS $$
+BEGIN
+  RETURN query
+  SELECT
+      cn.project_id,
+      c.name::TEXT,
+      c.is_core_member,
+      count(*) as contribution_count
+
+  FROM contribution cn
+      LEFT JOIN contributor c on cn.contributor_id = c.id
+  WHERE
+      is_maintenance_commit = FALSE
+	    AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
+	    AND (v_project_id IS NULL OR v_project_id = cn.project_id)
+  GROUP BY cn.project_id, c.name, c.is_core_member
+  ORDER BY contribution_count DESC;
+END;
+$$ LANGUAGE plpgsql;
