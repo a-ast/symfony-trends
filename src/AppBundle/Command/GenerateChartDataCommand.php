@@ -23,7 +23,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
             ->setName('trends:data:generate')
             ->setDescription('Generate files for charts')
             ->addArgument('charts', InputArgument::IS_ARRAY)
-            ->addOption('type', null, InputOption::VALUE_REQUIRED, 'What should be regenerated?', 'all');
+            ->addOption('type', 't', InputOption::VALUE_REQUIRED, 'What should be regenerated?', 'all');
     }
 
     /**
@@ -49,9 +49,11 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
     /**
      * @param string $templateId
+     * @param string $pageId
+     *
      * @param array $data
      */
-    private function dumpPage($templateId, array $data)
+    private function dumpPage($templateId, $pageId, array $data)
     {
         $rootDir = $this->getContainer()->getParameter('kernel.root_dir');
 
@@ -60,7 +62,7 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         $indexFile = $twig->render(sprintf('::%s.html.twig', $templateId), $data);
 
-        $filePath = sprintf('%s/../web/trends/%s.html', $rootDir, $templateId);
+        $filePath = sprintf('%s/../web/trends/%s.html', $rootDir, $pageId);
 
         $fs = new Filesystem();
         $fs->dumpFile($filePath, $indexFile);
@@ -106,13 +108,27 @@ class GenerateChartDataCommand extends ContainerAwareCommand
 
         // @todo: unhardcode project id
         $lastCommitDate = $contributionRepository->getLastCommitDate(1);
-        $this->dumpPage('index', [
-            'blocks' => $layoutData['index'],
-            'charts' => $chartData,
-            'last_update_time' => $lastCommitDate
-        ]);
+
+        $menu = [];
+        foreach ($layoutData as $pageId => $page) {
+            $menu[$pageId] = $page['title'];
+        }
+
+        foreach ($layoutData as $pageId => $page) {
+            $this->dumpPage('index', $pageId, [
+                'blocks' => $page['charts'],
+                'charts' => $chartData,
+                'menu' => $menu,
+                'page_id' => $pageId,
+                'last_update_time' => $lastCommitDate
+            ]);
+        }
 
         $maintenanceCommitPatterns = $this->getContainer()->getParameter('maintenance_commit_patterns');
-        $this->dumpPage('about-data', ['maintenance_commit_patterns' => $maintenanceCommitPatterns]);
+        $this->dumpPage('about-data', 'about-data', [
+            'maintenance_commit_patterns' => $maintenanceCommitPatterns,
+            'menu' => $menu,
+            'page_id' => 'about-data'
+        ]);
     }
 }
