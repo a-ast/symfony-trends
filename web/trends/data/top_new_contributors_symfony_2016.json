@@ -1,0 +1,73 @@
+{
+    "options": {
+        "type": "column"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Robin Chalas",
+                    "value": 62
+                },
+                {
+                    "name": "Par\u00e1da J\u00f3zsef",
+                    "value": 17
+                },
+                {
+                    "name": "jwdeitch",
+                    "value": 12
+                },
+                {
+                    "name": "Julien Falque",
+                    "value": 5
+                },
+                {
+                    "name": "Andrey Astakhov",
+                    "value": 3
+                },
+                {
+                    "name": "David Maicher",
+                    "value": 3
+                },
+                {
+                    "name": "Filip Proch\u00e1zka",
+                    "value": 3
+                },
+                {
+                    "name": "Martin Mor\u00e1vek",
+                    "value": 3
+                },
+                {
+                    "name": "Master Klavi",
+                    "value": 3
+                },
+                {
+                    "name": "Michele Locati",
+                    "value": 3
+                },
+                {
+                    "name": "NateC",
+                    "value": 3
+                },
+                {
+                    "name": "Valentin Jonovs",
+                    "value": 3
+                },
+                {
+                    "name": "Alex Rock Ancelet",
+                    "value": 2
+                },
+                {
+                    "name": "Alexander Zhuravlev",
+                    "value": 2
+                },
+                {
+                    "name": "Andre Smith",
+                    "value": 2
+                }
+            ],
+            "name": "Commit count",
+            "color": "#4cacdb"
+        }
+    ]
+}

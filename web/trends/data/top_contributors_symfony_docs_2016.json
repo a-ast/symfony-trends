@@ -1,0 +1,73 @@
+{
+    "options": {
+        "type": "column"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Javier Eguiluz",
+                    "value": 224
+                },
+                {
+                    "name": "Wouter J",
+                    "value": 221
+                },
+                {
+                    "name": "Christian Flothmann",
+                    "value": 154
+                },
+                {
+                    "name": "Ryan Weaver",
+                    "value": 132
+                },
+                {
+                    "name": "Henry Snoek",
+                    "value": 23
+                },
+                {
+                    "name": "Talita Kocjan Zager",
+                    "value": 20
+                },
+                {
+                    "name": "Victor Bocharsky",
+                    "value": 16
+                },
+                {
+                    "name": "Jules Pietri",
+                    "value": 13
+                },
+                {
+                    "name": "Andrey Astakhov",
+                    "value": 12
+                },
+                {
+                    "name": "Denis Rendler",
+                    "value": 11
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "value": 11
+                },
+                {
+                    "name": "Robin Chalas",
+                    "value": 10
+                },
+                {
+                    "name": "asandjivy",
+                    "value": 9
+                },
+                {
+                    "name": "Micka\u00ebl Andrieu",
+                    "value": 8
+                },
+                {
+                    "name": "Iltar van der Berg",
+                    "value": 7
+                }
+            ],
+            "name": "Commit count",
+            "color": "#7aba20"
+        }
+    ]
+}
