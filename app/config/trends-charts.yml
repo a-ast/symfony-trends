@@ -32,7 +32,7 @@ parameters:
                     criteria: { year: 2016 }
                     dimensions: { iso: iso, value: contributor_count }
 
-        contributions_per_date_yearly:
+        contributions_per_year:
             title: 'Commit count to Symfony code and docs per year'
             type: column
             series:
@@ -66,7 +66,7 @@ parameters:
                     criteria:   { project_id: 2 }
                     dimensions: { name: bounds, value: contributor_count }
 
-        contributions_per_date_yearly_symfony:
+        contributions_per_year_symfony:
             title: 'Commit count to Symfony code per year'
             type: stairArea
             series:
@@ -83,7 +83,7 @@ parameters:
                     criteria:   { project_id: 1 }
                     dimensions: { name: date, value: core_team_contribution_count }
 
-        contributions_per_date_yearly_symfony_docs:
+        contributions_per_year_symfony_docs:
             title: 'Commit count to Symfony docs per year'
             type: stairArea
             series:
@@ -101,43 +101,78 @@ parameters:
                     dimensions: { name: date, value: core_team_contribution_count }
 
 
-        contributions_per_date_monthly_symfony:
+        contributions_per_month_symfony:
             title: 'Commit count to Symfony code per month'
-
             type: stairAreaDateTime
-
             series:
                 -
                     title: All contributors
                     color: '#4cacdb'
-                    data_source: vw_contributions_per_month
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: null }
                     dimensions: { date: date, value: contribution_count }
 
                 -
                     title: Core team
                     color: '#323038'
-                    data_source: vw_contributions_per_month
-                    criteria:   { project_id: 1 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: null }
                     dimensions: { date: date, value: core_team_contribution_count }
 
-        contributions_per_date_monthly_symfony_docs:
+        contributions_per_month_symfony_docs:
             title: 'Commit count to Symfony docs per month'
             type: stairAreaDateTime
             series:
                 -
                     title: All contributors
                     color: '#7aba20'
-                    data_source: vw_contributions_per_month
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: null }
                     dimensions: { date: date, value: contribution_count }
 
                 -
                     title: Core team
                     color: '#323038'
-                    data_source: vw_contributions_per_month
-                    criteria:   { project_id: 2 }
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: null }
                     dimensions: { date: date, value: core_team_contribution_count }
+
+        contributions_per_month_symfony_2016:
+            title: 'Commit count to Symfony code per month in 2016'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: All contributors
+                    color: '#4cacdb'
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2016 }
+                    dimensions: { date: date, value: contribution_count }
+
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: fn_contributions
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2016 }
+                    dimensions: { date: date, value: core_team_contribution_count }
+
+        contributions_per_month_symfony_docs_2016:
+            title: 'Commit count to Symfony docs per month in 2016'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: All contributors
+                    color: '#7aba20'
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2016 }
+                    dimensions: { date: date, value: contribution_count }
+
+                -
+                    title: Core team
+                    color: '#323038'
+                    data_source: fn_contributions
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2016 }
+                    dimensions: { date: date, value: core_team_contribution_count }
+
 
         maintenance_commits_per_year_symfony:
             title: 'Commit count to Symfony code per year comparing to maintenance commit count'
@@ -211,14 +246,16 @@ parameters:
         index:
              - { chart: contributors_intersection }
              - { chart: contributors_per_country_symfony }
-             - { chart: contributions_per_date_yearly }
+             - { chart: contributions_per_year }
              - { chart: commit_count_distribution_symfony }
-             - { chart: contributions_per_date_yearly_symfony }
-             - { chart: contributions_per_date_yearly_symfony_docs }
-             - { chart: contributions_per_date_monthly_symfony }
-             - { chart: contributions_per_date_monthly_symfony_docs }
+             - { chart: contributions_per_year_symfony }
+             - { chart: contributions_per_year_symfony_docs }
+             - { chart: contributions_per_month_symfony }
+             - { chart: contributions_per_month_symfony_docs }
              - { chart: maintenance_commits_per_year_symfony }
              - { chart: maintenance_commits_per_year_symfony_docs }
              - { chart: contributor_count_per_year_symfony }
              - { chart: contributor_count_per_year_symfony_docs }
              - { chart: contributors_per_country_symfony_2016 }
+             - { chart: contributions_per_month_symfony_2016 }
+             - { chart: contributions_per_month_symfony_docs_2016 }

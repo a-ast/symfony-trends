@@ -48,11 +48,12 @@ $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 --------------------------------------------------------
 -- Contribution counts
 -- Parameters:
+-- * v_project_id
 -- * v_date_interval_format ('YYYY-MM-01' for month)
 -- * v_year - year of contribution
 --------------------------------------------------------
-DROP FUNCTION IF EXISTS fn_contributions(text, int);
-CREATE FUNCTION fn_contributions(v_date_interval_format text, v_year int)
+DROP FUNCTION IF EXISTS fn_contributions(int, text, int);
+CREATE FUNCTION fn_contributions(v_project_id int, v_date_interval_format text, v_year int)
     RETURNS table(date text, project_id int, contributor_count bigint, contribution_count bigint, core_team_contribution_count bigint) AS $$
 BEGIN
     RETURN query
@@ -68,6 +69,7 @@ BEGIN
         LEFT JOIN contributor c on cn.contributor_id = c.id
     WHERE
         is_maintenance_commit = FALSE
+        AND (v_project_id IS NULL OR v_project_id = cn.project_id)
         AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
     GROUP BY date, cn.project_id
     ORDER BY date asc;
