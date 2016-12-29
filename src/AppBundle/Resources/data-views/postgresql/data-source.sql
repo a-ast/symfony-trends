@@ -225,7 +225,7 @@ CREATE VIEW vw_new_contributors_per_year AS
       FROM contribution cn
       WHERE is_maintenance_commit = FALSE
       GROUP BY cn.project_id, contributor_id
-      ORDER BY contributor_id asc
+      ORDER BY contributor_id ASC
     ) AS fc
     GROUP BY fc.project_id, date
     ORDER BY date asc;
@@ -238,22 +238,62 @@ CREATE VIEW vw_new_contributors_per_year AS
 --------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_contributor_contribution_counts(int, int);
 CREATE FUNCTION fn_contributor_contribution_counts(v_project_id int, v_year int)
-    RETURNS table(project_id int, name text, is_core_member bool, contribution_count bigint) AS $$
+    RETURNS table(project_id int, name text, contribution_count bigint, is_core_member bool) AS $$
 BEGIN
     RETURN query
     SELECT
         cn.project_id,
         c.name::TEXT,
-        c.is_core_member,
-        count(*) AS contribution_count
+        count(*) AS contribution_count,
+        c.is_core_member
 
     FROM contribution cn
-        LEFT JOIN contributor c on cn.contributor_id = c.id
+        LEFT JOIN contributor c ON cn.contributor_id = c.id
     WHERE
         is_maintenance_commit = FALSE
         AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
         AND (v_project_id IS NULL OR v_project_id = cn.project_id)
     GROUP BY cn.project_id, c.name, c.is_core_member
     ORDER BY contribution_count DESC;
+END;
+$$ LANGUAGE plpgsql;
+
+
+--------------------------------------------------------
+-- Contributors who started contributing during the given year withcontribution counts
+-- Parameters:
+-- * v_project_id - project id
+-- * v_year       - year of a first contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_new_contributor_contribution_counts(int, int);
+CREATE FUNCTION fn_new_contributor_contribution_counts(v_project_id int, v_year int)
+    RETURNS table(project_id int, name text, contribution_count bigint, is_core_member bool) AS $$
+BEGIN
+
+    RETURN query
+    SELECT
+        cn.project_id,
+        c.name::TEXT,
+        count(*) AS contribution_count,
+        c.is_core_member
+
+    FROM (
+        SELECT
+            cn.project_id,
+            cn.contributor_id,
+            cn.is_maintenance_commit,
+            first_value(cn.commited_at)
+                OVER (PARTITION BY cn.contributor_id ORDER BY cn.commited_at ASC) AS first_commited_at
+        FROM contribution cn
+        ) cn
+            LEFT JOIN contributor c ON cn.contributor_id = c.id
+
+    WHERE
+        is_maintenance_commit = FALSE
+        AND (v_year = date_part('year', cn.first_commited_at))
+        AND (v_project_id IS NULL OR v_project_id = cn.project_id)
+    GROUP BY cn.project_id, c.name, c.is_core_member
+    ORDER BY contribution_count DESC, c.name;
+
 END;
 $$ LANGUAGE plpgsql;
