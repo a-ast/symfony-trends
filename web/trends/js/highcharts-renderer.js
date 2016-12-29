@@ -83,6 +83,9 @@ HighchartsRenderer.prototype.columnChart = function(container, data) {
         chart: {
             type: 'column'
         },
+        legend: {
+            enabled: data.series.length > 1
+        },
         xAxis: {
             categories: categories
         },
