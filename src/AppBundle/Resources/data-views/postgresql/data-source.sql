@@ -17,32 +17,32 @@ $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 --------------------------------------------------------
 DROP VIEW IF EXISTS vw_contributions_per_year CASCADE;
 CREATE VIEW vw_contributions_per_year AS
-  select
-      to_char(cn.commited_at, 'YYYY') as date,
+  SELECT
+      to_char(cn.commited_at, 'YYYY') AS date,
       cn.project_id,
-      count(*) as contribution_count,
-      count(DISTINCT cn.contributor_id) as contributor_count,
-      sum(cast(c.is_core_member as int)) as core_team_contribution_count
-  from contribution cn
-    left join contributor c on cn.contributor_id = c.id
-  where is_maintenance_commit = FALSE
-  group by to_char(cn.commited_at, 'YYYY'), cn.project_id
-  order by date asc;
+      count(*) AS contribution_count,
+      count(DISTINCT cn.contributor_id) AS contributor_count,
+      sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
+  FROM contribution cn
+    LEFT JOIN contributor c on cn.contributor_id = c.id
+  WHERE is_maintenance_commit = FALSE
+  GROUP BY to_char(cn.commited_at, 'YYYY'), cn.project_id
+  ORDER BY date asc;
 
 
 -- Contribution counts per month
 DROP VIEW IF EXISTS vw_contributions_per_month CASCADE;
 CREATE VIEW vw_contributions_per_month AS
-  select
-      to_char(cn.commited_at, 'YYYY-MM-01') as date,
+  SELECT
+      to_char(cn.commited_at, 'YYYY-MM-01') AS date,
       cn.project_id,
-      count(*) as contribution_count,
-      sum(cast(c.is_core_member as int)) as core_team_contribution_count
-  from contribution cn
-      left join contributor c on cn.contributor_id = c.id
-  where is_maintenance_commit = FALSE
-  group by date, cn.project_id
-  order by date asc;
+      count(*) AS contribution_count,
+      sum(cast(c.is_core_member AS int)) AS core_team_contribution_count
+  FROM contribution cn
+      LEFT JOIN contributor c on cn.contributor_id = c.id
+  WHERE is_maintenance_commit = FALSE
+  GROUP BY date, cn.project_id
+  ORDER BY date asc;
 
 
 
@@ -57,14 +57,14 @@ CREATE VIEW vw_contributor_intersection AS
   FROM (
          SELECT
            contributor_id,
-           string_agg(project_id::text, ','::text) as project_ids,
-           string_agg(project_name, ' and '::text) as project_names,
+           string_agg(project_id::text, ','::text) AS project_ids,
+           string_agg(project_name, ' and '::text) AS project_names,
            to_hex(avg(hex_to_int(color))::int) AS color
-         from (
-                SELECT
-                  DISTINCT cn.contributor_id, cn.project_id, p.name as project_name, p.color
+         FROM (
+                SELECT 
+                    DISTINCT cn.contributor_id, cn.project_id, p.name AS project_name, p.color
                 FROM contribution cn
-                  LEFT JOIN project p ON p.id = cn.project_id
+                    LEFT JOIN project p ON p.id = cn.project_id
                 ORDER BY project_id ASC
               ) c
          GROUP BY contributor_id
@@ -82,15 +82,16 @@ BEGIN
 
   FOREACH r SLICE 1 IN ARRAY ranges
   LOOP
-    range_type := '[)';
-    IF r[1] = r[2] THEN
-      range_type := '[]';
-    END IF;
-
-    IF value <@ int8range(r[1], r[2], range_type) THEN
-      RETURN r;
-    END IF;
+      range_type := '[)';
+      IF r[1] = r[2] THEN
+          range_type := '[]';
+      END IF;
+  
+      IF value <@ int8range(r[1], r[2], range_type) THEN
+          RETURN r;
+      END IF;
   END LOOP;
+  
   RETURN ARRAY[NULL, NULL];
 
 END;
@@ -121,10 +122,10 @@ $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 --------------------------------------------------------
 DROP VIEW IF EXISTS vw_commit_count_distribution CASCADE;
 CREATE VIEW vw_commit_count_distribution AS
-  SELECT project_id, get_range_bounds_description(get_range_bounds(contribution_count, ARRAY[[1,1],[2,2],[3,5],[5,10],[10,30],[30,200],[200,null]])) as bounds, count(*) as contributor_count
+  SELECT project_id, get_range_bounds_description(get_range_bounds(contribution_count, ARRAY[[1,1],[2,2],[3,5],[5,10],[10,30],[30,200],[200,null]])) AS bounds, count(*) AS contributor_count
   FROM
     (
-      SELECT project_id, contributor_id, count(*) as contribution_count
+      SELECT project_id, contributor_id, count(*) AS contribution_count
       FROM contribution
       WHERE is_maintenance_commit = FALSE
       GROUP BY project_id, contributor_id
@@ -196,38 +197,38 @@ $$ LANGUAGE plpgsql;
 --------------------------------------------------------
 DROP VIEW IF EXISTS vw_maintenance_contributions_per_year CASCADE;
 CREATE VIEW vw_maintenance_contributions_per_year AS
-  select
-      to_char(cn.commited_at, 'YYYY') as date,
+  SELECT
+      to_char(cn.commited_at, 'YYYY') AS date,
       cn.project_id,
-      count(*) as contribution_count,
-      SUM(cn.is_maintenance_commit::int) as maintenance_commit_count
-  from contribution cn
+      count(*) AS contribution_count,
+      SUM(cn.is_maintenance_commit::int) AS maintenance_commit_count
+  FROM contribution cn
   group by
       to_char(cn.commited_at, 'YYYY'),
       cn.project_id
-  order by date asc;
+  ORDER BY date asc;
 
 --------------------------------------------------------
 -- New contributors per year
 --------------------------------------------------------
 DROP VIEW IF EXISTS vw_new_contributors_per_year CASCADE;
 CREATE VIEW vw_new_contributors_per_year AS
-  select
-      fc.project_id,
-      to_char(fc.min_commited_at, 'YYYY') as date,
-      count(fc.contributor_id) as contributor_count
-  FROM (
-    select
-        cn.project_id,
-        contributor_id,
-        min(commited_at) as min_commited_at
-    from contribution cn
-    where is_maintenance_commit = FALSE
-    group by cn.project_id, contributor_id
-    order by contributor_id asc
-  ) as fc
-  group by fc.project_id, date
-  order by date asc;
+    SELECT
+        fc.project_id,
+        to_char(fc.min_commited_at, 'YYYY') AS date,
+        count(fc.contributor_id) AS contributor_count
+    FROM (
+      SELECT
+          cn.project_id,
+          contributor_id,
+          min(commited_at) AS min_commited_at
+      FROM contribution cn
+      WHERE is_maintenance_commit = FALSE
+      GROUP BY cn.project_id, contributor_id
+      ORDER BY contributor_id asc
+    ) AS fc
+    GROUP BY fc.project_id, date
+    ORDER BY date asc;
 
 --------------------------------------------------------
 -- Contributors with their contribution counts
@@ -239,20 +240,20 @@ DROP FUNCTION IF EXISTS fn_contributor_contribution_counts(int, int);
 CREATE FUNCTION fn_contributor_contribution_counts(v_project_id int, v_year int)
     RETURNS table(project_id int, name text, is_core_member bool, contribution_count bigint) AS $$
 BEGIN
-  RETURN query
-  SELECT
-      cn.project_id,
-      c.name::TEXT,
-      c.is_core_member,
-      count(*) as contribution_count
+    RETURN query
+    SELECT
+        cn.project_id,
+        c.name::TEXT,
+        c.is_core_member,
+        count(*) AS contribution_count
 
-  FROM contribution cn
-      LEFT JOIN contributor c on cn.contributor_id = c.id
-  WHERE
-      is_maintenance_commit = FALSE
-	    AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
-	    AND (v_project_id IS NULL OR v_project_id = cn.project_id)
-  GROUP BY cn.project_id, c.name, c.is_core_member
-  ORDER BY contribution_count DESC;
+    FROM contribution cn
+        LEFT JOIN contributor c on cn.contributor_id = c.id
+    WHERE
+        is_maintenance_commit = FALSE
+        AND (v_year IS NULL OR v_year = date_part('year', cn.commited_at))
+        AND (v_project_id IS NULL OR v_project_id = cn.project_id)
+    GROUP BY cn.project_id, c.name, c.is_core_member
+    ORDER BY contribution_count DESC;
 END;
 $$ LANGUAGE plpgsql;
