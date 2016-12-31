@@ -39,7 +39,9 @@
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
         "nelmio/alice": "^2.2",
-        "phpspec/phpspec": "^3.2"
+        "phpspec/phpspec": "^3.2",
+        "behat/behat": "^3.3",
+        "behat/symfony2-extension": "^2.1"
     },
     "scripts": {
         "symfony-scripts": [
