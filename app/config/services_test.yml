@@ -1,0 +1,10 @@
+services:
+
+    github_api.fake_guzzle_client:
+        class: AppBundle\Client\FakeHttpClient
+
+    github_api.http_client:
+        class: Http\Adapter\Guzzle6\Client
+        arguments:
+            - '@github_api.fake_guzzle_client'
+
