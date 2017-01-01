@@ -2,4 +2,10 @@ default:
     suites:
         api_features:
             paths:    [ %paths.base%/features ]
-            contexts: [ ApiFeatureContext ]
+            contexts:
+                - ApiFeatureContext:
+                    client: '@github_api.github_api_client'
+
+
+    extensions:
+        Behat\Symfony2Extension: ~

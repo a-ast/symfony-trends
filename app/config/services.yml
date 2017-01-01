@@ -1,4 +1,34 @@
 services:
+
+    github_api.plugin.wait_and_retry:
+        class: AppBundle\Client\Github\WaitAndRetryPlugin
+
+    github_api.plugin.authentication:
+        class: Github\HttpClient\Plugin\Authentication
+        arguments:
+            - '%env(GITHUB_CLIENT_ID)%'
+            - '%env(GITHUB_CLIENT_SECRET)%'
+            - 'url_client_id'
+
+    github_api.http_client:
+        class: Http\Adapter\Guzzle6\Client
+
+    github_api.http_client_builder:
+        class: Github\HttpClient\Builder
+        arguments:
+            - '@github_api.http_client'
+        calls:
+            - ['addPlugin', ['@github_api.plugin.wait_and_retry']]
+            - ['addPlugin', ['@github_api.plugin.authentication']]
+
+    github_api.github_api_client:
+        class: Github\Client
+        arguments:
+            - '@github_api.http_client_builder'
+
+    #####################################
+
+
     http_client:
         class: AppBundle\Client\HttpClient
     github_api_client:
