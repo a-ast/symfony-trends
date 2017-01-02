@@ -8,3 +8,8 @@ services:
         arguments:
             - '@github_api.fake_guzzle_client'
 
+    doctrine.orm.purger:
+        class: Doctrine\Common\DataFixtures\Purger\ORMPurger
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
