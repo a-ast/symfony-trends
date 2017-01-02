@@ -5,7 +5,7 @@ namespace AppBundle\Client\Github;
 use DateTimeInterface;
 use Github\Client;
 
-class ClientAdapter
+class ClientAdapter implements ClientAdapterInterface
 {
     /**
      * @var Client
@@ -26,6 +26,8 @@ class ClientAdapter
      * @param string $repositoryPath
      * @param DateTimeInterface|null $since
      * @param int $page
+     *
+     * @return array
      */
     public function getCommitsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
@@ -35,11 +37,12 @@ class ClientAdapter
             $options['since'] = $since->format('Y-m-d\TH:i:s\Z');
         }
 
-        $this->client->api('repo')->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
+        return $this->client->api('repo')->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
     }
 
     /**
      * @param string $login
+     *
      * @return array
      */
     public function getUser($login)

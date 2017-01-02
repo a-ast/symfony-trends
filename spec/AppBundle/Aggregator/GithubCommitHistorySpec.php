@@ -50,28 +50,21 @@ class GithubCommitHistorySpec extends ObjectBehavior
         Project $project,
         Contributor $contributor)
     {
-        $commits = [
-            [
-                'sha' => 'hash-frodo-1',
-                'commit' =>
-                    [
-                        'author' =>
-                            [
-                                'id' => 300,
-                                'name' => 'frodo.b',
-                                'email' => 'frodo.baggins@shire',
-                                'date' => '2016-11-22T00:13:33Z',
-                            ],
-                        'message' => 'Added thoughts about my future way',
-                    ],
-                'author' =>
-                    [
-                        'id' => 300,
-                        'login' => 'frodo',
-                        'type' => 'User',
-                    ],
-            ]
-        ];
+        $commit = new GithubCommit([
+            'sha' => 'hash-frodo-1',
+            'commit' => [
+                'author' => [
+                    'name' => 'frodo.b',
+                    'email' => 'frodo.baggins@shire',
+                    'date' => '2016-11-22T00:13:33Z',
+                ],
+                'message' => 'Added thoughts about my future way',
+            ],
+            'author' => [
+                'id' => 300,
+                'login' => 'frodo',
+            ],
+        ]);
 
         $users = [
             [
@@ -83,7 +76,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
 
         $githubApi
             ->getCommitsByPage(Argument::cetera())
-            ->willReturn($commits, null);
+            ->willReturn([$commit], null);
 
         $githubApi
             ->getUser(Argument::type('string'))

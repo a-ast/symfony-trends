@@ -13,3 +13,6 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
 
+    github_api.client_adapter:
+        class: features\Fake\ClientAdapterFake
+

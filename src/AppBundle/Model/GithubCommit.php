@@ -58,6 +58,33 @@ class GithubCommit
     }
 
     /**
+     * @param array $data
+     *
+     * @return GithubCommit
+     */
+    public static function createFromArray(array $data)
+    {
+        $transformedData = [
+            'sha' => $data['sha'],
+            'message' => $data['message'],
+            'author' => [
+                'id' =>    $data['committer_id'],
+                'login' => $data['committer_login'],
+            ],
+            'commit' => [
+                'author' => [
+                    'name' =>  $data['committer_name'],
+                    'email' => $data['committer_email'],
+                    'date' =>  $data['date'],
+                ],
+                'message' => $data['message']
+            ],
+        ];
+
+        return new self($transformedData);
+    }
+
+    /**
      * @return string
      */
     public function getHash()
