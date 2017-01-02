@@ -34,9 +34,11 @@ class ClientAdapterSpec extends ObjectBehavior
 
     function it_should_get_page_of_commits(Commits $commitsApi)
     {
-        $commitsApi->all('valinor', 'repo', ['page' => 5, 'since' => '2015-10-21T04:29Z']);
+        $commitsApi->all('valinor', 'repo', ['page' => 5, 'since' => '2015-10-21T04:29:00Z'])->willReturn([]);
 
-        $this->getCommitsByPage('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29:00 GMT'), 5);
+        $commits = $this->getCommitsByPage('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29 GMT'), 5);
+        $commits->shouldReturn([]);
+
     }
 
     function it_should_get_user(User $userApi)
