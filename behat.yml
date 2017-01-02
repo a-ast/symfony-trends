@@ -4,7 +4,8 @@ default:
             paths:    [ %paths.base%/features ]
             contexts:
                 - ApiFeatureContext:
-                    client: '@github_api.github_api_client'
+                      dispatcher: '@event_dispatcher'
+                      client:     '@github_api.client'
 
 
     extensions:

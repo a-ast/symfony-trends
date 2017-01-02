@@ -17,11 +17,12 @@ class FakeHttpClient extends Client
     public function __construct()
     {
         $mock = new MockHandler([
-            new Response(403, ['Date' => 'Sat, 31 Dec 2016 18:53:02 GMT','X-RateLimit-Reset' => 1483211005]),
+            new Response(403, ['Date' => 'Wed, 21 Oct 2015 04:29:00 GMT', 'X-RateLimit-Reset' => 1445401800]),
+            new Response(200, []),
         ]);
 
         $handler = HandlerStack::create($mock);
 
-        parent::__construct(['handler' => $handler]);
+        parent::__construct(['handler' => $handler, 'http_errors' => false]);
     }
 }
