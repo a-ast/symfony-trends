@@ -4,7 +4,10 @@ default:
             paths:    [ %paths.base%/features ]
             contexts:
                 - ApiFeatureContext:
-                      client:     '@github_api.client'
+                      client: '@github_api.client'
+                - AggregatorFeatureContext:
+                      em:     '@doctrine.orm.entity_manager'
+                      purger: '@doctrine.orm.purger'
 
 
     extensions:
