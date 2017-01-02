@@ -4,7 +4,7 @@ namespace spec\AppBundle\Client;
 
 use AppBundle\Client\ApiFacade;
 use AppBundle\Client\GeolocationApiClient;
-use AppBundle\Client\GithubApiClient;
+use AppBundle\Client\Github\ClientAdapter;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -13,7 +13,7 @@ use Prophecy\Argument;
  */
 class ApiFacadeSpec extends ObjectBehavior
 {
-    function let(GithubApiClient $githubApi, GeolocationApiClient $geoApi)
+    function let(ClientAdapter $githubApi, GeolocationApiClient $geoApi)
     {
         $this->beConstructedWith($githubApi, $geoApi);
     }
@@ -23,7 +23,7 @@ class ApiFacadeSpec extends ObjectBehavior
         $this->shouldHaveType(ApiFacade::class);
     }
 
-    function it_returns_github_user_with_location(GithubApiClient $githubApi, GeolocationApiClient $geoApi)
+    function it_returns_github_user_with_location(ClientAdapter $githubApi, GeolocationApiClient $geoApi)
     {
         $githubApi
             ->getUser(Argument::type('string'))
@@ -40,7 +40,7 @@ class ApiFacadeSpec extends ObjectBehavior
         $user->getCountry()->shouldBe('Shire');
     }
 
-    function it_does_not_return_github_user_country_if_no_location_specified(GithubApiClient $githubApi, GeolocationApiClient $geoApi)
+    function it_does_not_return_github_user_country_if_no_location_specified(ClientAdapter $githubApi, GeolocationApiClient $geoApi)
     {
         $githubApi
             ->getUser(Argument::type('string'))

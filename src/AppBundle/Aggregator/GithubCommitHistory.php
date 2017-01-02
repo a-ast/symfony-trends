@@ -3,7 +3,7 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Builder\ContributorBuilder;
-use AppBundle\Client\GithubApiClient;
+use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
@@ -14,7 +14,7 @@ use AppBundle\Repository\ProjectRepository;
 class GithubCommitHistory implements AggregatorInterface
 {
     /**
-     * @var GithubApiClient
+     * @var ClientAdapter
      */
     private $apiClient;
 
@@ -41,14 +41,14 @@ class GithubCommitHistory implements AggregatorInterface
     /**
      * Constructor.
      *
-     * @param GithubApiClient $apiClient
+     * @param ClientAdapter $apiClient
      * @param ContributorBuilder $contributorBuilder
      * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param array $maintenanceCommitPatterns
      */
     public function __construct(
-        GithubApiClient $apiClient,
+        ClientAdapter $apiClient,
         ContributorBuilder $contributorBuilder,
         ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository,
@@ -80,7 +80,7 @@ class GithubCommitHistory implements AggregatorInterface
 
         $page = 1;
 
-        while ($commits = $this->apiClient->getCommits($projectRepo, $sinceDate, $page)) {
+        while ($commits = $this->apiClient->getCommitsByPage($projectRepo, $sinceDate, $page)) {
 
             foreach ($commits as $commitData) {
 

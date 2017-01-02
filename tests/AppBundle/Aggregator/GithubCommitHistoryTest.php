@@ -4,6 +4,7 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Client\ApiFacade;
 use AppBundle\Client\GeolocationApiClient;
+use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Client\GithubApiClient;
 use AppBundle\Model\GithubUser;
 use AppBundle\Repository\ContributorRepository;
@@ -93,9 +94,9 @@ class GithubCommitHistoryTest extends TestCase
         $users = $this->users;
         $locations = $this->locations;
 
-        $githubApi = $this->prophesize(GithubApiClient::class);
+        $githubApi = $this->prophesize(ClientAdapter::class);
         $githubApi
-            ->getCommits(Argument::cetera())
+            ->getCommitsByPage(Argument::cetera())
             ->willReturn($commitHistory, null);
 
         $githubApiFacade = $this->prophesize(ApiFacade::class);

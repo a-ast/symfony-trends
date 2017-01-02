@@ -32,6 +32,12 @@ services:
             - '@github_api.http_client_builder'
         configurator: ['@github_api.client_configurator', 'configure']
 
+    github_api.client_adapter:
+        class: AppBundle\Client\Github\ClientAdapter
+        arguments:
+            - '@github_api.client'
+
+
     #####################################
 
 
@@ -51,7 +57,7 @@ services:
     api_facade:
         class: AppBundle\Client\ApiFacade
         arguments:
-            - '@github_api_client'
+            - '@github_api.client_adapter'
             - '@geolocation_api_client'
 
     data_provider:
@@ -105,7 +111,7 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistory
         lazy: true
         arguments:
-            - '@github_api_client'
+            - '@github_api.client_adapter'
             - '@builder.contributor'
             - '@repository.project'
             - '@repository.contribution'
@@ -120,7 +126,6 @@ services:
             - '@repository.project'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
-
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
