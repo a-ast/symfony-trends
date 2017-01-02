@@ -2,12 +2,13 @@
 
 namespace AppBundle\Client;
 
+use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Model\GithubUser;
 
 class ApiFacade
 {
     /**
-     * @var GithubApiClient
+     * @var ClientAdapter
      */
     private $githubApi;
     /**
@@ -18,10 +19,10 @@ class ApiFacade
     /**
      * Constructor.
      *
-     * @param GithubApiClient $githubApi
+     * @param ClientAdapter $githubApi
      * @param GeolocationApiClient $geoApi
      */
-    public function __construct(GithubApiClient $githubApi, GeolocationApiClient $geoApi)
+    public function __construct(ClientAdapter $githubApi, GeolocationApiClient $geoApi)
     {
         $this->githubApi = $githubApi;
         $this->geoApi = $geoApi;

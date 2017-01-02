@@ -4,25 +4,21 @@ namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Builder\ContributorBuilder;
-use AppBundle\Client\GeolocationApiClient;
-use AppBundle\Client\GithubApiClient;
-use AppBundle\Entity\Contribution;
+use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Tests\AppBundle\FixtureReader;
 
 /**
  * @mixin GithubCommitHistory
  */
 class GithubCommitHistorySpec extends ObjectBehavior
 {
-    function let(GithubApiClient $githubApi,
+    function let(ClientAdapter $githubApi,
         ContributorBuilder $contributorBuilder,
         ContributionRepository $contributionRepository,
         ProjectRepository $projectRepository)
@@ -30,7 +26,24 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $this->beConstructedWith($githubApi, $contributorBuilder, $projectRepository, $contributionRepository, []);
     }
 
-    private function initDependencies(GithubApiClient $githubApi,
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(GithubCommitHistory::class);
+    }
+
+
+    function it_returns_aggregated_data(ClientAdapter $githubApi,
+        ContributorBuilder $contributorBuilder,
+        ContributionRepository $contributionRepository,
+        ProjectRepository $projectRepository,
+        Project $project,
+        Contributor $contributor)
+    {
+        $this->initDependencies($githubApi, $contributorBuilder, $contributionRepository, $projectRepository, $project, $contributor);
+        $report = $this->aggregate(['project_id' => 1]);
+    }
+
+    private function initDependencies(ClientAdapter $githubApi,
         ContributorBuilder $contributorBuilder,
         ContributionRepository $contributionRepository,
         ProjectRepository $projectRepository,
@@ -69,7 +82,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         ];
 
         $githubApi
-            ->getCommits(Argument::cetera())
+            ->getCommitsByPage(Argument::cetera())
             ->willReturn($commits, null);
 
         $githubApi
@@ -103,22 +116,5 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $contributionRepository
             ->clear()
             ->shouldBeCalled();
-    }
-
-
-    function it_is_initializable()
-    {
-        $this->shouldHaveType(GithubCommitHistory::class);
-    }
-
-    function it_returns_aggregated_data(GithubApiClient $githubApi,
-        ContributorBuilder $contributorBuilder,
-        ContributionRepository $contributionRepository,
-        ProjectRepository $projectRepository,
-        Project $project,
-        Contributor $contributor)
-    {
-        $this->initDependencies($githubApi, $contributorBuilder, $contributionRepository, $projectRepository, $project, $contributor);
-        $report = $this->aggregate(['project_id' => 1]);
     }
 }

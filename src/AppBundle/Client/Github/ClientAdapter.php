@@ -38,6 +38,15 @@ class ClientAdapter
         $this->client->api('repo')->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
     }
 
+    /**
+     * @param string $login
+     * @return array
+     */
+    public function getUser($login)
+    {
+        return $this->client->api('user')->show($login);
+    }
+
     private function getOwner($repositoryPath)
     {
         $parts = explode('/', $repositoryPath);
