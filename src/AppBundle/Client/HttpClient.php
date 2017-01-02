@@ -10,19 +10,6 @@ use Symfony\Component\DomCrawler\Crawler;
 class HttpClient extends Client implements PageGetterInterface
 {
     /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $stack = HandlerStack::create();
-        $stack->push(new CacheMiddleware(), 'cache');
-
-        parent::__construct([
-            'handler' => $stack,
-        ]);
-    }
-
-    /**
      * @inheritdoc
      */
     public function getPageDom($url)
