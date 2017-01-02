@@ -21,11 +21,6 @@ class ApiFeatureContext implements Context
     private $client;
 
     /**
-     * @var EventDispatcherInterface
-     */
-    private $dispatcher;
-
-    /**
      * @var integer|null
      */
     private $waitTime;
@@ -38,15 +33,11 @@ class ApiFeatureContext implements Context
     /**
      * Initializes context.
      *
-     * @param EventDispatcherInterface $dispatcher
      * @param Client $client
      */
-    public function __construct(EventDispatcherInterface $dispatcher, Client $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->dispatcher = $dispatcher;
-
-        $this->dispatcher->addListener('github_api.before_wait_for_rate_limit_recovery', [$this, 'onGithubApiWait']);
     }
 
     /**
@@ -61,12 +52,6 @@ class ApiFeatureContext implements Context
         } finally {
             $this->disableSleepMock();
         }
-    }
-
-
-    public function onGithubApiWait(GenericEvent $event)
-    {
-        $this->waitTime = $event->getArgument('wait');
     }
 
     /**
@@ -85,9 +70,17 @@ class ApiFeatureContext implements Context
     private function enableSleepMock()
     {
         $builder = new MockBuilder();
+
+        $self = $this;
+
         $builder->setNamespace('AppBundle\Client\Github')
             ->setName('sleep')
-            ->setFunctionProvider(new SleepFunction([]));
+            ->setFunction(
+                function ($seconds) use ($self) {
+                     $self->waitTime = $seconds;
+                }
+            );
+
 
         $this->mock = $builder->build();
         $this->mock->enable();
