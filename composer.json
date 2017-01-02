@@ -42,7 +42,8 @@
         "phpspec/phpspec": "^3.2",
         "behat/behat": "^3.3",
         "behat/symfony2-extension": "^2.1",
-        "php-mock/php-mock": "^1.0"
+        "php-mock/php-mock": "^1.0",
+        "doctrine/data-fixtures": "^1.2"
     },
     "scripts": {
         "symfony-scripts": [
