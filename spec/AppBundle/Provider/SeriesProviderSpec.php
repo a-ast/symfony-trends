@@ -24,7 +24,7 @@ class SeriesProviderSpec extends ObjectBehavior
         $this->beConstructedWith($dataProvider);
 
         $dataProvider
-            ->getData(Argument::any(), Argument::any())
+            ->getData(Argument::any(), Argument::any(), null)
             ->willReturn([['id' => 1, 'name' => 'Gandalf', 'age' => 2019], ['id' => 1, 'name' => 'Frodo', 'age' => 33]]);
 
         $options = [

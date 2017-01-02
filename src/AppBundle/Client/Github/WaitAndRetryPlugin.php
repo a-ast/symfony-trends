@@ -3,17 +3,33 @@
 namespace AppBundle\Client\Github;
 
 use Http\Client\Common\Plugin;
-use Http\Client\Exception;
 use Psr\Http\Message\RequestInterface;
 use Github\HttpClient\Message\ResponseMediator;
-use Github\Exception\ApiLimitExceedException;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
  * WaitAndRetryPlugin
  */
 class WaitAndRetryPlugin implements Plugin
 {
+    /**
+     * @var EventDispatcherInterface
+     */
+    private $dispatcher;
+
+    /**
+     * Constructor.
+     *
+     * @param EventDispatcherInterface $dispatcher
+     */
+    public function __construct(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
+
     /**
      * {@inheritdoc}
      */
@@ -49,6 +65,10 @@ class WaitAndRetryPlugin implements Plugin
 
         $timeToSleep = $reset - $current;
 
+        $event = new GenericEvent();
+        $event->setArgument('wait', $timeToSleep);
+
+        $this->dispatcher->dispatch('github_api.before_wait_for_rate_limit_recovery', $event);
         sleep($timeToSleep);
     }
 }

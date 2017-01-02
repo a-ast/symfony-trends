@@ -2,6 +2,8 @@ services:
 
     github_api.plugin.wait_and_retry:
         class: AppBundle\Client\Github\WaitAndRetryPlugin
+        arguments:
+            - '@event_dispatcher'
 
     github_api.plugin.authentication:
         class: Github\HttpClient\Plugin\Authentication
@@ -17,14 +19,18 @@ services:
         class: Github\HttpClient\Builder
         arguments:
             - '@github_api.http_client'
-        calls:
-            - ['addPlugin', ['@github_api.plugin.wait_and_retry']]
-            - ['addPlugin', ['@github_api.plugin.authentication']]
 
-    github_api.github_api_client:
+    github_api.client_configurator:
+        class: AppBundle\Client\Github\ClientConfigurator
+        arguments:
+            - '@github_api.http_client_builder'
+            - ['@github_api.plugin.wait_and_retry', '@github_api.plugin.authentication']
+
+    github_api.client:
         class: Github\Client
         arguments:
             - '@github_api.http_client_builder'
+        configurator: ['@github_api.client_configurator', 'configure']
 
     #####################################
 
