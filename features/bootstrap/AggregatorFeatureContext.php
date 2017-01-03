@@ -1,15 +1,17 @@
 <?php
 
+use Aa\ArrayDiff\Matcher\SimpleMatcher;
 use AppBundle\Aggregator\GithubCommitHistory;
-use AppBundle\Entity\Contributor;
-use AppBundle\Entity\Project;
 use AppBundle\Model\GithubCommit;
 use Behat\Behat\Context\Context;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
 use Doctrine\Common\DataFixtures\Purger\PurgerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query\ResultSetMapping;
 use features\Fake\ClientAdapterFake;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Aa\ArrayDiff\Calculator;
 
 /**
  * Defines application features from the specific context.
@@ -50,36 +52,78 @@ class AggregatorFeatureContext implements Context
     }
 
     /**
-     * @Given I have existing projects:
+     * @BeforeScenario
      *
-     * @param TableNode $projects
+     * @param BeforeScenarioScope $event
      */
-    public function existingProjects(TableNode $projects)
+    public function before(BeforeScenarioScope $event)
     {
         $this->purger->purge();
+        $this->updatePostgresqlSequences();
+    }
 
-        $query = $this->em->createNativeQuery('ALTER SEQUENCE project_id_seq RESTART;', new ResultSetMapping());
-        $query->execute();
+    /**
+     * @Given there are :entityClass entities:
+     *
+     * @param $entityClass
+     * @param TableNode $records
+     */
+    public function createEntities($entityClass, TableNode $records)
+    {
+        $propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        foreach ($projects as $projectData) {
+        foreach ($records as $record) {
 
-            $project = new Project();
-            $project
-                ->setName($projectData['name'])
-                ->setLabel($projectData['label'])
-                ->setGithubPath($projectData['path'])
-                ->setColor($projectData['color']);
+            $entity = new $entityClass();
 
-            $this->em->persist($project);
+            foreach ($record as $propertyName => $propertyValue) {
+                $propertyAccessor->setValue($entity, $propertyName, $propertyValue);
+            }
+
+            $this->em->persist($entity);
         }
 
         $this->em->flush();
     }
 
     /**
+     * @Then I should see :entityClass entities:
+     *
+     * @param string $entityClass
+     * @param TableNode $records
+     *
+     * @throws Exception
+     */
+    public function checkEntities($entityClass, TableNode $records)
+    {
+        $queryBuilder = $this->em->getRepository($entityClass)->createQueryBuilder('data');
+        $actualData = $queryBuilder->getQuery()->getArrayResult();
+
+        foreach ($actualData as &$actualRow) {
+            foreach ($actualRow as $key => $value) {
+                if (is_array($value)) {
+                    $actualRow[$key] = implode(',', $value);
+                }
+            }
+        }
+
+        $expectedData = [];
+        foreach ($records as $expectedRow) {
+            $expectedData[] = $expectedRow;
+        }
+
+        $calc = new Calculator(new SimpleMatcher());
+        $diff = $calc->calculateDiff($expectedData, $actualData);
+
+        if (0 < count($diff->getMissing()) + count($diff->getUnmatched())) {
+            throw new Exception('Expected entities are different from actual entities:'.PHP_EOL.$diff->toString());
+        }
+    }
+
+    /**
      * @Given I request commits:
      */
-    public function givenApiCommits(TableNode $commits)
+    public function iRequestCommits(TableNode $commits)
     {
         foreach ($commits as $commitData) {
             $commit = GithubCommit::createFromArray($commitData);
@@ -95,51 +139,24 @@ class AggregatorFeatureContext implements Context
         $this->aggregator->aggregate(['project_id' => 1]);
     }
 
-    /**
-     * @Then I should see these contributors in the database:
-     */
-    public function iShouldSeeTheseContributorsInTheDatabase(TableNode $expected)
+    private function updatePostgresqlSequences()
     {
-        $queryBuilder = $this->em->getRepository(Contributor::class)->createQueryBuilder('data');
-        $actualData = $queryBuilder->getQuery()->getArrayResult();
+        $query = $this->em->createNativeQuery('ALTER SEQUENCE project_id_seq RESTART;', new ResultSetMapping());
+        $query->execute();
 
-        foreach ($actualData as &$actualRow) {
-            foreach ($actualRow as $key => $value) {
-                if (is_array($value)) {
-                    $actualRow[$key] = implode(',', $value);
-                }
-            }
-        }
+        $query = $this->em->createNativeQuery('ALTER SEQUENCE contributor_id_seq RESTART;', new ResultSetMapping());
+        $query->execute();
 
-        $expectedData = [];
-        foreach ($expected as $expectedRow) {
-            $expectedData[] = $expectedRow;
-        }
+        $query = $this->em->createNativeQuery('ALTER SEQUENCE contribution_id_seq RESTART;', new ResultSetMapping());
+        $query->execute();
+    }
 
-        $missing = [];
-        $different = [];
-
-        foreach ($expectedData as $index => $expectedRow) {
-            $actualRow = $actualData[$index];
-
-            foreach ($expectedRow as $key => $value) {
-
-                if (!isset($actualRow[$key])) {
-                    $missing[] = $key;
-
-                    continue;
-                }
-
-                if ($actualRow[$key] != $expectedRow[$key]) {
-                    $different[] = sprintf('Expected: [%s], actual [%s]', $actualRow[$key], $expectedRow[$key]);
-                }
-            }
-        }
-
-        if (0 !== count($missing) || 0 !== count($different)) {
-            throw new Exception(implode(PHP_EOL, $missing).PHP_EOL.implode(PHP_EOL, $different));
-        }
-
+    /**
+     * @Given /^there are AppBundle:Project entities:$/
+     */
+    public function thereAreAppBundleProjectEntities(TableNode $table)
+    {
+        throw new PendingException();
     }
 }
 
