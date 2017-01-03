@@ -1,7 +1,7 @@
 default:
     suites:
         api_features:
-            paths:    [ %paths.base%/features ]
+            paths: [ %paths.base%/features ]
             contexts:
                 - ApiFeatureContext:
                       client: '@github_api.client'
@@ -9,7 +9,6 @@ default:
                       aggregator: '@aggregator.github_commit_history'
                       client: '@github_api.client_adapter'
                       doctrineHelper: '@behat_doctrine_helper'
-
 
     extensions:
         Behat\Symfony2Extension: ~
