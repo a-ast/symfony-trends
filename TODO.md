@@ -7,15 +7,18 @@ Project 2016
 * prepare additional page for these charts
 
 
+KW 1:
 
-Beta
+1. aggregator_github_commit_history.feature check commits in database
+2. aggregator_github_commit_history.feature Improve solution (maybe using array diff)
+3. aggregator_github_commit_history.feature more and more tests
+4. Get rid of phpunit tests
+4. extract getting countries using geocoder
 
-1. Tests
-    - implement ORMPurger
-    - implement database recreation with SchemaTool
+KW 2:
 
-2. Simplify generator command
-
+1. Inject projects in aggregators
+2. Aggregate commit changes
 
 Charts
 
@@ -32,8 +35,7 @@ Check why this commit were missing
 '999f769ba545e3eb9fb91df5e2fce7320834b9b2'
 
 
-Easiest way to test wait and retry is
-to configure hardcoded test guzzle client 
-in test env with hardcoded responses
+Improve solution for Githb API client
 
-somehow mock sleep
+* use Mock for fake responses https://github.com/php-http/mock-client
+* use bundle to simplify config http://docs.php-http.org/en/latest/integrations/symfony-bundle.html
