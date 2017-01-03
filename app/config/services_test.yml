@@ -13,6 +13,12 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
 
+    behat_doctrine_helper:
+        class: features\Helper\DoctrineHelper
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.purger'
+
     github_api.client_adapter:
         class: features\Fake\ClientAdapterFake
 

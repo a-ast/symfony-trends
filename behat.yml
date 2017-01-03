@@ -6,10 +6,9 @@ default:
                 - ApiFeatureContext:
                       client: '@github_api.client'
                 - AggregatorFeatureContext:
-                      em:     '@doctrine.orm.entity_manager'
-                      purger: '@doctrine.orm.purger'
                       aggregator: '@aggregator.github_commit_history'
                       client: '@github_api.client_adapter'
+                      doctrineHelper: '@behat_doctrine_helper'
 
 
     extensions:
