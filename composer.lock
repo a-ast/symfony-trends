@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea66925725e5e7285a80d5489bf56b61",
-    "content-hash": "7798f54e0a0d3a8bee06c991f055de83",
+    "hash": "ee3a540cdcbd49ca41065d3d506ce73b",
+    "content-hash": "6396fb550e6ab0b075e829ec842ff538",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3848,6 +3848,41 @@
     ],
     "packages-dev": [
         {
+            "name": "aa/array-diff",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AAstakhov/array-diff.git",
+                "reference": "359b320382efa55a55730569166e4e48ebcf701b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AAstakhov/array-diff/zipball/359b320382efa55a55730569166e4e48ebcf701b",
+                "reference": "359b320382efa55a55730569166e4e48ebcf701b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5 || ^7.0",
+                "symfony/yaml": "2.* || 3.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aa\\ArrayDiff\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Component for calculating difference of arrays",
+            "homepage": "https://github.com/AAstakhov/array-diff",
+            "time": "2016-05-10 21:36:42"
+        },
+        {
             "name": "behat/behat",
             "version": "v3.3.0",
             "source": {
@@ -4580,7 +4615,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "aa/array-diff": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
