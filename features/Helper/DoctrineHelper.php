@@ -6,7 +6,9 @@ namespace features\Helper;
 use Aa\ArrayDiff\Calculator;
 use Aa\ArrayDiff\Matcher\SimpleMatcher;
 use Doctrine\Common\DataFixtures\Purger\PurgerInterface;
+use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Exception;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -99,14 +101,36 @@ class DoctrineHelper
 
     private function updatePostgresqlSequences()
     {
-        $query = $this->em->createNativeQuery('ALTER SEQUENCE project_id_seq RESTART;', new ResultSetMapping());
-        $query->execute();
+        if (!$this->em->getConnection()->getDatabasePlatform() instanceof PostgreSqlPlatform) {
+            return;
+        }
 
-        $query = $this->em->createNativeQuery('ALTER SEQUENCE contributor_id_seq RESTART;', new ResultSetMapping());
-        $query->execute();
+        $sequences = $this->getSequencesNames();
 
-        $query = $this->em->createNativeQuery('ALTER SEQUENCE contribution_id_seq RESTART;', new ResultSetMapping());
-        $query->execute();
+        foreach ($sequences as $sequence) {
+            $query = $this->em->createNativeQuery(sprintf('ALTER SEQUENCE %s RESTART;', $sequence), new ResultSetMapping());
+            $query->execute();
+        }
     }
 
+    /**
+     * @return array
+     */
+    private function getSequencesNames()
+    {
+        $sequences = [];
+
+        /** @var ClassMetadata $metadata */
+        foreach ($this->em->getMetadataFactory()->getAllMetadata() as $metadata) {
+
+            if (!$metadata->isMappedSuperclass &&
+                !(isset($metadata->isEmbeddedClass) && $metadata->isEmbeddedClass) &&
+                isset($metadata->sequenceGeneratorDefinition)
+            ) {
+                $sequences[] = $metadata->sequenceGeneratorDefinition['sequenceName'];
+            }
+        }
+
+        return $sequences;
+    }
 }
