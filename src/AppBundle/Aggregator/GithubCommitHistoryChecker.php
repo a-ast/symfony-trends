@@ -83,9 +83,9 @@ class GithubCommitHistoryChecker implements AggregatorInterface
 
                 $commit = new GithubCommit($commitData);
 
-                $existingCommit = $this->contributionRepository->findOneBy(['commitHash' => $commit->getHash()]);
+                $existingCommit = $this->contributionRepository->findOneBy(['commitHash' => $commit->getSha()]);
                 if (null === $existingCommit) {
-                    print $commit->getDate()->format('Y:m:d H:i') .' '. $commit->getHash() . "\n";
+                    print $commit->getDate()->format('Y:m:d H:i') .' '. $commit->getSha() . "\n";
                 }
             }
 

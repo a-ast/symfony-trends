@@ -84,7 +84,7 @@ class AggregatorFeatureContext implements Context
     public function iRequestCommits(TableNode $commits)
     {
         foreach ($commits as $commitData) {
-            $commit = GithubCommit::createFromArray($commitData);
+            $commit = new GithubCommit($commitData);
             $this->clientAdapter->addCommit($commit);
         }
     }
