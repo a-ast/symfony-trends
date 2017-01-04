@@ -2,12 +2,15 @@
 
 namespace AppBundle\Model;
 
+use DateTimeImmutable;
+use DateTimeInterface;
+
 class GithubCommit
 {
     /**
      * @var string
      */
-    private $hash;
+    private $sha;
 
     /**
      * @var string
@@ -20,7 +23,7 @@ class GithubCommit
     private $committerEmail;
 
     /**
-     * @var \DateTime
+     * @var DateTimeInterface
      */
     private $date;
 
@@ -46,50 +49,43 @@ class GithubCommit
      */
     public function __construct(array $data)
     {
-        $this->hash = $data['sha'];
-        $this->date = new \DateTime($data['commit']['author']['date']);
-        $this->message = $data['commit']['message'];
+        $this->sha = $data['sha'];
+        $this->date = new DateTimeImmutable($data['date']);
+        $this->message = $data['message'];
 
-        $this->committerId = isset($data['author']['id']) ? $data['author']['id'] : null;
-
-        $this->committerName = isset($data['commit']['author']['name']) ? $data['commit']['author']['name'] : '';
-        $this->committerEmail = isset($data['commit']['author']['email']) ? $data['commit']['author']['email'] : '';
-        $this->committerLogin = isset($data['author']['login']) ? $data['author']['login'] : '';
+        $this->committerId = isset($data['committer_id']) ? $data['committer_id'] : null;
+        $this->committerName = isset($data['committer_name']) ? $data['committer_name'] : '';
+        $this->committerEmail = isset($data['committer_email']) ? $data['committer_email'] : '';
+        $this->committerLogin = isset($data['committer_login']) ? $data['committer_login'] : '';
     }
 
     /**
-     * @param array $data
+     * @param array $responseData
      *
      * @return GithubCommit
      */
-    public static function createFromArray(array $data)
+    public static function createFromGithubResponseData(array $responseData)
     {
-        $transformedData = [
-            'sha' => $data['sha'],
-            'message' => $data['message'],
-            'author' => [
-                'id' =>    $data['committer_id'],
-                'login' => $data['committer_login'],
-            ],
-            'commit' => [
-                'author' => [
-                    'name' =>  $data['committer_name'],
-                    'email' => $data['committer_email'],
-                    'date' =>  $data['date'],
-                ],
-                'message' => $data['message']
-            ],
+        $data = [
+            'sha' => $responseData['sha'],
+            'message' => $responseData['commit']['message'],
+            'date' => $responseData['commit']['author']['date'],
+
+            'committer_id' => isset($responseData['author']['id']) ? $responseData['author']['id'] : null,
+            'committer_name' => isset($responseData['commit']['author']['name']) ? $responseData['commit']['author']['name'] : '',
+            'committer_email' => isset($responseData['commit']['author']['email']) ? $responseData['commit']['author']['email'] : '',
+            'committer_login' => isset($responseData['author']['login']) ? $responseData['author']['login'] : '',
         ];
 
-        return new self($transformedData);
-    }
-
+        return new self($data);
+    }    
+    
     /**
      * @return string
      */
-    public function getHash()
+    public function getSha()
     {
-        return $this->hash;
+        return $this->sha;
     }
 
     /**
@@ -109,7 +105,7 @@ class GithubCommit
     }
 
     /**
-     * @return \DateTime
+     * @return DateTimeInterface
      */
     public function getDate()
     {

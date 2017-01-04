@@ -50,7 +50,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         Project $project,
         Contributor $contributor)
     {
-        $commit = new GithubCommit([
+        $commit = GithubCommit::createFromGithubResponseData([
             'sha' => 'hash-frodo-1',
             'commit' => [
                 'author' => [

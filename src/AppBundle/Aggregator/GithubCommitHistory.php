@@ -117,7 +117,7 @@ class GithubCommitHistory implements AggregatorInterface
      */
     private function createContribution(GithubCommit $commit, $projectId, $contributorId)
     {
-        $contribution = new Contribution($projectId, $contributorId, $commit->getHash());
+        $contribution = new Contribution($projectId, $contributorId, $commit->getSha());
         $contribution->setFromGithubCommit($commit, $this->maintenanceCommitPatterns);
         $this->contributionRepository->store($contribution);
 

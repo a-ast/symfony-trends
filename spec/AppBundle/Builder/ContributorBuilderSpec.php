@@ -106,7 +106,7 @@ class ContributorBuilderSpec extends ObjectBehavior
             'author' => [ 'id' => 300, 'login' => 'frodo.ext'],
         ];
 
-        return new GithubCommit($commitData);
+        return GithubCommit::createFromGithubResponseData($commitData);
     }
 
     /**

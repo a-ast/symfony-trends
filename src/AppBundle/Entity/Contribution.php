@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Util\RegexUtils;
 use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,7 +67,7 @@ class Contribution
     private $isMaintenanceCommit = false;
 
     /**
-     * @var DateTime
+     * @var DateTimeInterface
      *
      * @ORM\Column(name="commited_at", type="datetimetz")
      */
@@ -154,11 +155,11 @@ class Contribution
     /**
      * Set commitedAt
      *
-     * @param DateTime $commitedAt
+     * @param DateTimeInterface $commitedAt
      *
      * @return $this
      */
-    public function setCommitedAt(DateTime $commitedAt)
+    public function setCommitedAt(DateTimeInterface $commitedAt)
     {
         $this->commitedAt = $commitedAt;
 
