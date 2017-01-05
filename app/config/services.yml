@@ -40,26 +40,6 @@ services:
 
     #####################################
 
-
-    http_client:
-        class: AppBundle\Client\HttpClient
-    github_api_client:
-        class: AppBundle\Client\GithubApiClient
-        arguments:
-            - '@http_client'
-            - '%env(GITHUB_CLIENT_ID)%'
-            - '%env(GITHUB_CLIENT_SECRET)%'
-    geolocation_api_client:
-        class: AppBundle\Client\GeolocationApiClient
-        arguments:
-            - '@http_client'
-            - '%env(GEOCODING_API_KEY)%'
-    api_facade:
-        class: AppBundle\Client\ApiFacade
-        arguments:
-            - '@github_api.client_adapter'
-            - '@geolocation_api_client'
-
     data_provider:
         class: AppBundle\Repository\DataProvider
         autowire: true
@@ -67,16 +47,6 @@ services:
     series_provider:
         class: AppBundle\Provider\SeriesProvider
         autowire: true
-
-    factory.contributor:
-        class: AppBundle\Factory\ContributorFactory
-
-    builder.contributor:
-        class: AppBundle\Builder\ContributorBuilder
-        arguments:
-            - '@repository.contributor'
-            - '@factory.contributor'
-            - '@api_facade'
 
     #################################
     # Helpers
@@ -97,14 +67,6 @@ services:
         arguments:
             - '@http_client'
             - '@helper.contributor_extractor'
-            - '@repository.contributor'
-
-    aggregator.github_user_data:
-        class: AppBundle\Aggregator\GithubUserData
-        lazy: true
-        arguments:
-            - '@github_api_client'
-            - '@geolocation_api_client'
             - '@repository.contributor'
 
     aggregator.github_commit_history:
