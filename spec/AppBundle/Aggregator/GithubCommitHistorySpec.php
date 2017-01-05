@@ -8,7 +8,9 @@ use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use AppBundle\Repository\ContributionRepository;
+use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -19,11 +21,11 @@ use Prophecy\Argument;
 class GithubCommitHistorySpec extends ObjectBehavior
 {
     function let(ClientAdapter $githubApi,
-        ContributorBuilder $contributorBuilder,
+        ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         ProjectRepository $projectRepository)
     {
-        $this->beConstructedWith($githubApi, $contributorBuilder, $projectRepository, $contributionRepository, []);
+        $this->beConstructedWith($githubApi, $contributorRepository, $projectRepository, $contributionRepository, []);
     }
 
     function it_is_initializable()
@@ -32,18 +34,18 @@ class GithubCommitHistorySpec extends ObjectBehavior
     }
 
     function it_returns_aggregated_data(ClientAdapter $githubApi,
-        ContributorBuilder $contributorBuilder,
+        ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         ProjectRepository $projectRepository,
         Project $project,
         Contributor $contributor)
     {
-        $this->initDependencies($githubApi, $contributorBuilder, $contributionRepository, $projectRepository, $project, $contributor);
+        $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $projectRepository, $project, $contributor);
         $report = $this->aggregate(['project_id' => 1]);
     }
 
     private function initDependencies(ClientAdapter $githubApi,
-        ContributorBuilder $contributorBuilder,
+        ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         ProjectRepository $projectRepository,
         Project $project,
@@ -65,13 +67,11 @@ class GithubCommitHistorySpec extends ObjectBehavior
             ],
         ]);
 
-        $users = [
-            [
-                'name' => 'Frodo Baggins',
-                'email' => 'frodo@shire',
-                'location' => 'Bag End',
-            ]
-        ];
+        $user = GithubUser::createFromGithubResponseData([
+            'name' => 'Frodo Baggins',
+            'email' => 'frodo@shire',
+            'location' => 'Bag End',
+        ]);
 
         $githubApi
             ->getCommits(Argument::cetera())
@@ -79,15 +79,24 @@ class GithubCommitHistorySpec extends ObjectBehavior
 
         $githubApi
             ->getUser(Argument::type('string'))
-            ->willReturn($users[0]);
+            ->willReturn($user);
 
-        $contributorBuilder
-            ->buildFromGithubCommit(Argument::type(GithubCommit::class))
-            ->willReturn($contributor);
+
+        $contributorRepository
+            ->findByGithubId(300)
+            ->willReturn(null);
+
+        $contributorRepository
+            ->findByEmails(Argument::type('array'))
+            ->willReturn(null);
+
+        $contributorRepository
+            ->saveContributor(Argument::type(Contributor::class))
+            ->shouldBeCalled();
 
         $contributor
             ->getId()
-            ->willReturn(100);
+            ->willReturn(300);
 
         $project
             ->getGithubPath()

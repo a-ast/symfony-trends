@@ -4,6 +4,7 @@ namespace spec\AppBundle\Client\Github;
 
 use AppBundle\Client\Github\ClientAdapter;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use Exception;
 use Github\Api\ApiInterface;
 use Github\Api\Repo;
@@ -95,8 +96,15 @@ class ClientAdapterSpec extends ObjectBehavior
 
     function it_should_fetch_user(User $userApi)
     {
-        $userApi->show('frodo');
+        $responseData = [
+            'name' =>'frodo',
+            'email' => 'frodo@shire',
+            'location' => 'Bag End'
+        ];
 
-        $this->getUser('frodo');
+        $userApi->show('frodo')->willReturn($responseData);
+
+        $user = $this->getUser('frodo');
+        $user->shouldHaveType(GithubUser::class);
     }
 }

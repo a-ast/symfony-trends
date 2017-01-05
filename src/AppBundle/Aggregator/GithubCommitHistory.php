@@ -5,11 +5,14 @@ namespace AppBundle\Aggregator;
 use AppBundle\Builder\ContributorBuilder;
 use AppBundle\Client\Github\ClientAdapterInterface;
 use AppBundle\Entity\Contribution;
+use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
+use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
+use AppBundle\Util\ArrayUtils;
 
 class GithubCommitHistory implements AggregatorInterface
 {
@@ -19,9 +22,9 @@ class GithubCommitHistory implements AggregatorInterface
     private $apiClient;
 
     /**
-     * @var ContributorBuilder
+     * @var ContributorRepository
      */
-    private $contributorBuilder;
+    private $contributorRepository;
 
     /**
      * @var ContributionRepository
@@ -42,20 +45,20 @@ class GithubCommitHistory implements AggregatorInterface
      * Constructor.
      *
      * @param ClientAdapterInterface $apiClient
-     * @param ContributorBuilder $contributorBuilder
+     * @param ContributorRepository $contributorRepository
      * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param array $maintenanceCommitPatterns
      */
     public function __construct(
         ClientAdapterInterface $apiClient,
-        ContributorBuilder $contributorBuilder,
+        ContributorRepository $contributorRepository,
         ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository,
         array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
-        $this->contributorBuilder = $contributorBuilder;
+        $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
         $this->projectRepository = $projectRepository;
         $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
@@ -78,7 +81,7 @@ class GithubCommitHistory implements AggregatorInterface
         $sinceDate = $this->getSinceDate($projectId);
 
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
-            $contributor = $this->contributorBuilder->buildFromGithubCommit($commit);
+            $contributor = $this->createContributor($commit);
             $contribution = $this->createContribution($commit, $projectId, $contributor->getId());
 
             $this->contributionRepository->clear();
@@ -115,4 +118,41 @@ class GithubCommitHistory implements AggregatorInterface
 
         return $contribution;
     }
+
+    public function createContributor(GithubCommit $commit)
+    {
+        $contributor = null;
+        $user = null;
+        $userEmails = [$commit->getCommitterEmail()];
+
+        if (null !== $commit->getCommitterId()) {
+            $contributor = $this->contributorRepository->findByGithubId($commit->getCommitterId());
+        }
+
+        // if contributor is not found or github id is not set,
+        // but login is present
+        if ((null === $contributor || null === $contributor->getGithubId()) && '' !== $commit->getCommitterLogin()) {
+            $user = $this->apiClient->getUser($commit->getCommitterLogin());
+
+            if (null !== $user) {
+                array_unshift($userEmails, $user->getEmail());
+            }
+        }
+
+        // if contributor not found by id, try to find it by email
+        if (null === $contributor) {
+            $contributor = $this->contributorRepository->findByEmails($userEmails);
+        }
+
+        $email = ArrayUtils::getFirstNonEmptyElement($userEmails);
+
+        if (null === $contributor) {
+            $contributor = new Contributor($email);;
+        }
+        $contributor->setFromGithub($commit, $user);
+        $this->contributorRepository->saveContributor($contributor);
+
+        return $contributor;
+    }
+
 }

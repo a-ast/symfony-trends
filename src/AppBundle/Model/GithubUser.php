@@ -20,29 +20,22 @@ class GithubUser
     private $location = '';
 
     /**
-     * @var string
-     */
-    private $country = '';
-
-    /**
      * Constructor
      *
      * @param string $name
      * @param string $email
      * @param string $location
-     * @param string $country
      */
-    public function __construct($name = '', $email = '', $location = '', $country = '')
+    public function __construct($name, $email = '', $location = '')
     {
         $this->name = $name;
         $this->email = $email;
         $this->location = $location;
-        $this->country = $country;
     }
 
-    public static function createFromArray(array $data)
+    public static function createFromGithubResponseData(array $responseData)
     {
-        return new self($data['name'], $data['email'], $data['location'], $data['country']);
+        return new self($responseData['name'], $responseData['email'], $responseData['location']);
     }
 
     /**
@@ -67,13 +60,5 @@ class GithubUser
     public function getLocation()
     {
         return $this->location;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->country;
     }
 }
