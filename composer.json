@@ -1,10 +1,11 @@
 {
     "name": "a-ast/symfony-trends",
+    "description": "Data aggregator and chart generator for statistics about Symfony framework and related projects",
     "license": "proprietary",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "AppBundle\\": "src/AppBundle/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -38,8 +39,6 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0",
-        "nelmio/alice": "^2.2",
         "phpspec/phpspec": "^3.2",
         "behat/behat": "^3.3",
         "behat/symfony2-extension": "^2.1",
