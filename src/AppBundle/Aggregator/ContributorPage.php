@@ -165,7 +165,6 @@ class ContributorPage implements AggregatorInterface
                 }
             }
 
-            //print sprintf('php bin/console tr:da:fix %d -o"%s <%s>" -t""', $contributorId, $contributor['names'][0], $contributor['email']).PHP_EOL;
             $i++;
         }
 
@@ -184,10 +183,6 @@ class ContributorPage implements AggregatorInterface
                     break;
                 }
 
-            }
-
-            if (false === $found) {
-                //print sprintf('%d. %s', ++$i, $nameFromPage).PHP_EOL;
             }
         }
 
