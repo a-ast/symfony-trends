@@ -160,7 +160,7 @@ class ContributorPage implements AggregatorInterface
         $i = 0;
         foreach ($contributorNames as $contributorId => $contributor) {
             foreach ($contributor['names'] as $name) {
-                if (false !== $key = $this->findArrayItem($name, $contributorNamesFromPage)) {
+                if (false !== $this->findArrayItem($name, $contributorNamesFromPage)) {
                     continue(2);
                 }
             }
