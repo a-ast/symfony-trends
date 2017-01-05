@@ -118,7 +118,7 @@ class GithubCommitHistory implements AggregatorInterface
         return $contribution;
     }
 
-    public function createContributor(GithubCommit $commit)
+    private function createContributor(GithubCommit $commit)
     {
         $contributor = null;
         $user = null;
