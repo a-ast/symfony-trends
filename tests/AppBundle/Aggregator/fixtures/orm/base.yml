@@ -1,7 +1,0 @@
-AppBundle\Entity\Project:
-    project1:
-        id: 1
-        name: Three-rings
-        label: Three-rings
-        github_path: elrond/three-rings
-        color: '#000'
