@@ -51,7 +51,7 @@ class ClientAdapter implements ClientAdapterInterface
      *
      * @return array
      */
-    public function getCommitsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
+    private function getCommitsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
         $options = ['page' => $page];
 

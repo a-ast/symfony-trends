@@ -74,7 +74,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         ];
 
         $githubApi
-            ->getCommitsByPage(Argument::cetera())
+            ->getCommits(Argument::cetera())
             ->willReturn([$commit], null);
 
         $githubApi
