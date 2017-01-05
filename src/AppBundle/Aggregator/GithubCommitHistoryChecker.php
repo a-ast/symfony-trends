@@ -3,15 +3,11 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Client\Github\ClientAdapterInterface;
-use AppBundle\Entity\Contribution;
-use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
-use AppBundle\Util\ArrayUtils;
 
 class GithubCommitHistoryChecker implements AggregatorInterface
 {
@@ -79,7 +75,7 @@ class GithubCommitHistoryChecker implements AggregatorInterface
         $projectRepo = $project->getGithubPath();
 
         foreach ($this->apiClient->getCommits($projectRepo, null) as $commit) {
-            if(null == $commit->getAuthorId()) {
+            if(null === $commit->getAuthorId()) {
                 print '['.$commit->getCommitAuthorName().'] ['.$commit->getAuthorLogin().']'.PHP_EOL;
             }
         }
