@@ -4,7 +4,6 @@ namespace AppBundle\Client\Github;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
-use Iterator;
 
 interface ClientAdapterInterface
 {
@@ -12,7 +11,7 @@ interface ClientAdapterInterface
      * @param string $repositoryPath
      * @param DateTimeInterface|null $since
      *
-     * @return GithubCommit[]|Iterator
+     * @return GithubCommit[]|\Iterator
      */
     public function getCommits($repositoryPath, DateTimeInterface $since = null);
 
