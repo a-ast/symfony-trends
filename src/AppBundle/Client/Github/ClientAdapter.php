@@ -2,8 +2,10 @@
 
 namespace AppBundle\Client\Github;
 
+use AppBundle\Model\GithubCommit;
 use DateTimeInterface;
 use Github\Client;
+use Iterator;
 
 class ClientAdapter implements ClientAdapterInterface
 {
@@ -20,6 +22,26 @@ class ClientAdapter implements ClientAdapterInterface
     public function __construct(Client $client)
     {
         $this->client = $client;
+    }
+
+    /**
+     * @param string $repositoryPath
+     * @param DateTimeInterface|null $since
+     *
+     * @return GithubCommit[]|Iterator
+     */
+    public function getCommits($repositoryPath, DateTimeInterface $since = null)
+    {
+        $page = 1;
+
+        while ($commits = $this->getCommitsByPage($repositoryPath, $since, $page)) {
+
+            foreach ($commits as $commitData) {
+                yield GithubCommit::createFromGithubResponseData($commitData);
+            }
+
+            $page++;
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ namespace features\Fake;
 use AppBundle\Client\Github\ClientAdapterInterface;
 use AppBundle\Model\GithubCommit;
 use DateTimeInterface;
+use Iterator;
 
 class ClientAdapterFake implements ClientAdapterInterface
 {
@@ -13,6 +14,17 @@ class ClientAdapterFake implements ClientAdapterInterface
      * @var array
      */
     private $commits;
+
+    /**
+     * @param string $repositoryPath
+     * @param DateTimeInterface|null $since
+     *
+     * @return GithubCommit[]|Iterator
+     */
+    public function getCommits($repositoryPath, DateTimeInterface $since = null)
+    {
+        return new \ArrayIterator($this->commits);
+    }
 
     /**
      * @param string $repositoryPath
