@@ -6,7 +6,6 @@ use Github\Client;
 use Github\HttpClient\Builder;
 use Http\Client\Common\Plugin;
 
-
 class ClientConfigurator
 {
     /**
@@ -28,7 +27,6 @@ class ClientConfigurator
         $this->plugins = $plugins;
         $this->builder = $builder;
     }
-
 
     /**
      * @param Client $client
