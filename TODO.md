@@ -1,11 +1,11 @@
 TODO
 ==============
 
-Project 2016
-* build a list of charts for Javier
-* rebuild other view as functions to expose year as a parameter
-* prepare additional page for these charts
 
+Aggregators
+1. UserCountry (using geocoder)
+2. ContributorsPage (index contributor page, find sensiolabs user, find backlink to github)
+3. SensiolabsConnect - index all that have github link (see above), get additional info
 
 KW 1:
 
