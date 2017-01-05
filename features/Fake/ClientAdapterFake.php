@@ -5,15 +5,21 @@ namespace features\Fake;
 
 use AppBundle\Client\Github\ClientAdapterInterface;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
 
 class ClientAdapterFake implements ClientAdapterInterface
 {
     /**
-     * @var array
+     * @var GithubCommit[]|array
      */
     private $commits;
+
+    /**
+     * @var GithubUser[]|array
+     */
+    private $users;
 
     /**
      * @param string $repositoryPath
@@ -26,6 +32,9 @@ class ClientAdapterFake implements ClientAdapterInterface
         return new \ArrayIterator($this->commits);
     }
 
+    /**
+     * @param GithubCommit $commit
+     */
     public function addCommit(GithubCommit $commit)
     {
         $this->commits[] = $commit;
@@ -38,6 +47,15 @@ class ClientAdapterFake implements ClientAdapterInterface
      */
     public function getUser($login)
     {
-        // TODO: Implement getUser() method.
+        return $this->users[$login];
+    }
+
+    /**
+     * @param string $login
+     * @param GithubUser $user
+     */
+    public function addUser($login, GithubUser $user)
+    {
+        $this->users[$login] = $user;
     }
 }
