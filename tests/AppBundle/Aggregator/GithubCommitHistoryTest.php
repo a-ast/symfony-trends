@@ -103,7 +103,7 @@ class GithubCommitHistoryTest extends TestCase
         $githubApiFacade
             ->getGithubUserWithLocation(Argument::type('string'))
             ->will(function ($args) use ($users) {
-                return GithubUser::createFromArray($users[$args[0]]);
+                return GithubUser::createFromGithubResponseData($users[$args[0]]);
             });
 
         $aggregator = new GithubCommitHistory(

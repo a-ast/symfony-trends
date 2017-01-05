@@ -112,7 +112,7 @@ services:
         lazy: true
         arguments:
             - '@github_api.client_adapter'
-            - '@builder.contributor'
+            - '@repository.contributor'
             - '@repository.project'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'

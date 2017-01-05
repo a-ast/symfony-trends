@@ -2,6 +2,7 @@
 namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
 
@@ -18,7 +19,7 @@ interface ClientAdapterInterface
     /**
      * @param string $login
      *
-     * @return array
+     * @return GithubUser
      */
     public function getUser($login);
 }

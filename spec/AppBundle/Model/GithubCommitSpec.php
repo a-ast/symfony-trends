@@ -17,7 +17,7 @@ class GithubCommitSpec extends ObjectBehavior
         $this->shouldHaveType(GithubCommit::class);
     }
 
-    function it_can_be_created_from_array()
+    function it_can_be_created_from_resonse_data()
     {
         $this->beConstructedThrough('createFromGithubResponseData', [$this->getInitGithubResponseData()]);
 

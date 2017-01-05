@@ -3,6 +3,7 @@
 namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Github\Client;
 use Iterator;
@@ -65,11 +66,13 @@ class ClientAdapter implements ClientAdapterInterface
     /**
      * @param string $login
      *
-     * @return array
+     * @return GithubUser
      */
     public function getUser($login)
     {
-        return $this->client->api('user')->show($login);
+        $data = $this->client->api('user')->show($login);
+
+        return GithubUser::createFromGithubResponseData($data);
     }
 
     private function getOwner($repositoryPath)

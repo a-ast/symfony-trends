@@ -415,10 +415,6 @@ class Contributor
             $this->setName($user->getName());
         }
 
-        if (!$this->getCountry()) {
-            $this->setCountry($user->getCountry());
-        }
-
         if (!$this->getGithubLocation()) {
             $this->setGithubLocation($user->getLocation());
         }
