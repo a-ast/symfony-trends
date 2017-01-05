@@ -61,6 +61,11 @@ class DoctrineHelper
                     $propertyValue = null;
                 }
 
+                $matches = [];
+                if (preg_match('/^\[(.*)\]$/', $propertyValue, $matches)) {
+                    $propertyValue = explode(',', $matches[1]);
+                }
+
                 $propertyAccessor->setValue($entity, $propertyName, $propertyValue);
             }
 
@@ -83,19 +88,16 @@ class DoctrineHelper
         $queryBuilder = $this->em->getRepository($entityClass)->createQueryBuilder('data');
         $actualData = $queryBuilder->getQuery()->getArrayResult();
 
-        foreach ($actualData as &$actualRow) {
-            foreach ($actualRow as $key => $value) {
-                if (is_array($value)) {
-                    $actualRow[$key] = implode(',', $value);
-                }
-            }
-        }
-
         $expectedData = [];
         foreach ($records as &$expectedRow) {
             foreach ($expectedRow as $key => $value) {
                 if ('~' === $value) {
                     $expectedRow[$key] = null;
+                }
+
+                $matches = [];
+                if (preg_match('/^\[(.*)\]$/', $value, $matches)) {
+                    $expectedRow[$key] = explode(',', $matches[1]);
                 }
             }
 
