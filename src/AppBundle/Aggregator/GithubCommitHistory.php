@@ -153,5 +153,4 @@ class GithubCommitHistory implements AggregatorInterface
 
         return $contributor;
     }
-
 }

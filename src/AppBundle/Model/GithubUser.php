@@ -35,7 +35,11 @@ class GithubUser
 
     public static function createFromGithubResponseData(array $responseData)
     {
-        return new self($responseData['name'], $responseData['email'], $responseData['location']);
+        return new self(
+            $responseData['name'],
+            isset($responseData['email']) ? $responseData['email'] : '',
+            isset($responseData['location']) ? $responseData['location'] : ''
+        );
     }
 
     /**

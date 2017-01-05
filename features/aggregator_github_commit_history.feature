@@ -62,7 +62,7 @@ Feature: Github Commits Aggregator
       | 1         | 1             | No!!!   | frodo-2    |
 
 
-  Scenario: Aggregate commits of the existing contributor found by Github id
+  Scenario: Aggregate data of the existing contributor found by Github id
     Given there are "AppBundle\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails        | gitNames |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire] | [frodo1] |
@@ -76,6 +76,41 @@ Feature: Github Commits Aggregator
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails                     | gitNames        |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire,frodo2@shire] | [frodo1,frodo2] |
+
+
+  Scenario: Aggregate data of the existing contributor found by email
+    Given there are "AppBundle\Entity\Contributor" entities:
+      | email       | name  | gitEmails       | gitNames |
+      | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
+
+    And Github returns commits:
+      | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
+      | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo@shire      |
+
+    When I aggregate commits
+
+    Then I should see "AppBundle\Entity\Contributor" entities:
+      | email       | name  | gitEmails       | gitNames        |
+      | frodo@shire | frodo | [frodo.b@shire] | [frodo1,frodo2] |
+
+
+  Scenario: Aggregate data of the existing contributor found by user email
+    Given there are "AppBundle\Entity\Contributor" entities:
+      | email       | name  | gitEmails       | gitNames |
+      | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
+
+    And Github returns commits:
+      | sha     | date                 | message | commitAuthorName | commitAuthorEmail | authorId | authorLogin |
+      | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo2@shire      | 100      | Frodo       |
+    And Github returns users:
+      | login | name       | email       |
+      | Frodo | Frodo.user | frodo@shire |
+
+    When I aggregate commits
+
+    Then I should see "AppBundle\Entity\Contributor" entities:
+      | email       | name  | githubId | githubLogin | gitEmails                    | gitNames                   |
+      | frodo@shire | frodo | 100      | Frodo       | [frodo.b@shire,frodo2@shire] | [frodo1,Frodo.user,frodo2] |
 
 
   Scenario: Aggregate commits of different contributors
