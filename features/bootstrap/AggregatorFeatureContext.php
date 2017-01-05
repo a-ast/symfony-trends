@@ -2,6 +2,7 @@
 
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubUser;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
@@ -81,11 +82,22 @@ class AggregatorFeatureContext implements Context
      *
      * @param TableNode $commits
      */
-    public function iRequestCommits(TableNode $commits)
+    public function githubReturnsCommits(TableNode $commits)
     {
         foreach ($commits as $commitData) {
-            $commit = new GithubCommit($commitData);
+            $commit = new GithubCommit($this->replaceNulls($commitData));
             $this->clientAdapter->addCommit($commit);
+        }
+    }
+
+    /**
+     * @Given Github returns users:
+     */
+    public function githubReturnsUsers(TableNode $users)
+    {
+        foreach ($users as $userData) {
+            $user = new GithubUser($this->replaceNulls($userData));
+            $this->clientAdapter->addUser($userData['login'], $user);
         }
     }
 
@@ -96,5 +108,14 @@ class AggregatorFeatureContext implements Context
     {
         $this->aggregator->aggregate(['project_id' => 1]);
     }
+
+    private function replaceNulls(array $data)
+    {
+        return array_map(function($item) {
+                            return '~' === $item ? null : $item;
+                         },
+                         $data);
+    }
+
 }
 
