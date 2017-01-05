@@ -31,7 +31,6 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $this->shouldHaveType(GithubCommitHistory::class);
     }
 
-
     function it_returns_aggregated_data(ClientAdapter $githubApi,
         ContributorBuilder $contributorBuilder,
         ContributionRepository $contributionRepository,
