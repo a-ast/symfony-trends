@@ -5,8 +5,6 @@ namespace AppBundle\Aggregator;
 use AppBundle\Client\Github\ClientAdapterInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
 use AppBundle\Repository\ProjectRepository;
 
 class GithubCommitHistoryChecker implements AggregatorInterface
@@ -17,46 +15,23 @@ class GithubCommitHistoryChecker implements AggregatorInterface
     private $apiClient;
 
     /**
-     * @var ContributorRepository
-     */
-    private $contributorRepository;
-
-    /**
-     * @var ContributionRepository
-     */
-    private $contributionRepository;
-
-    /**
      * @var ProjectRepository
      */
     private $projectRepository;
 
-    /**
-     * @var array
-     */
-    private $maintenanceCommitPatterns;
 
     /**
      * Constructor.
      *
      * @param ClientAdapterInterface $apiClient
-     * @param ContributorRepository $contributorRepository
      * @param ProjectRepository $projectRepository
-     * @param ContributionRepository $contributionRepository
-     * @param array $maintenanceCommitPatterns
      */
     public function __construct(
         ClientAdapterInterface $apiClient,
-        ContributorRepository $contributorRepository,
-        ProjectRepository $projectRepository,
-        ContributionRepository $contributionRepository,
-        array $maintenanceCommitPatterns)
+        ProjectRepository $projectRepository)
     {
         $this->apiClient = $apiClient;
-        $this->contributorRepository = $contributorRepository;
-        $this->contributionRepository = $contributionRepository;
         $this->projectRepository = $projectRepository;
-        $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
     }
 
     /**

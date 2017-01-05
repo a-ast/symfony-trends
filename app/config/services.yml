@@ -86,10 +86,7 @@ services:
         lazy: true
         arguments:
             - '@github_api.client_adapter'
-            - '@repository.contributor'
             - '@repository.project'
-            - '@repository.contribution'
-            - '%maintenance_commit_patterns%'
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
