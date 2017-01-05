@@ -2,6 +2,11 @@ TODO
 ==============
 
 
+Run commit update
+Move FakeClient to features
+Rename contribution table??
+Rename aggregator to GithubCommit??
+
 Aggregators
 1. UserCountry (using geocoder)
 2. ContributorsPage (index contributor page, find sensiolabs user, find backlink to github)
