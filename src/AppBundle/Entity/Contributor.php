@@ -105,7 +105,7 @@ class Contributor
      *
      * @param string $email
      */
-    public function __construct($email)
+    public function __construct($email = '')
     {
         $this->email = $email;
 
