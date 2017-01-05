@@ -9,16 +9,20 @@ Project 2016
 
 KW 1:
 
-1. aggregator_github_commit_history.feature check commits in database
-2. aggregator_github_commit_history.feature Improve solution (maybe using array diff)
-3. aggregator_github_commit_history.feature more and more tests
-4. Get rid of phpunit tests
-4. extract getting countries using geocoder
+1. aggregator_github_commit_history.feature more and more tests
+2. Get rid of phpunit tests (chaqnge to phpspec)
+4. extract getting countries using geocoder !!!!!!!!!!!!!!!!!!!
 
 KW 2:
 
 1. Inject projects in aggregators
 2. Aggregate commit changes
+
+KW 3:
+
+1. Aggregate PRs
+
+
 
 Charts
 
