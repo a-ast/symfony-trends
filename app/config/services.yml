@@ -39,6 +39,8 @@ services:
 
 
     #####################################
+    http_client:
+        class: AppBundle\Client\HttpClient
 
     data_provider:
         class: AppBundle\Repository\DataProvider
