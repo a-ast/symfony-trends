@@ -56,6 +56,11 @@ class DoctrineHelper
             $entity = new $entityClass();
 
             foreach ($record as $propertyName => $propertyValue) {
+
+                if ('~' === $propertyValue) {
+                    $propertyValue = null;
+                }
+
                 $propertyAccessor->setValue($entity, $propertyName, $propertyValue);
             }
 
@@ -87,7 +92,13 @@ class DoctrineHelper
         }
 
         $expectedData = [];
-        foreach ($records as $expectedRow) {
+        foreach ($records as &$expectedRow) {
+            foreach ($expectedRow as $key => $value) {
+                if ('~' === $value) {
+                    $expectedRow[$key] = null;
+                }
+            }
+
             $expectedData[] = $expectedRow;
         }
 
