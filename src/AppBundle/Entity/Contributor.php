@@ -419,6 +419,7 @@ class Contributor
             $this->setGithubLocation($user->getLocation());
         }
 
+        $this->addGitName($user->getName());
         $this->addGitEmail($user->getEmail());
 
         return $this;
