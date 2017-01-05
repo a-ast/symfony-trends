@@ -96,7 +96,7 @@ class AggregatorFeatureContext implements Context
     public function githubReturnsUsers(TableNode $users)
     {
         foreach ($users as $userData) {
-            $user = new GithubUser($this->replaceNulls($userData));
+            $user = GithubUser::createFromGithubResponseData($this->replaceNulls($userData));
             $this->clientAdapter->addUser($userData['login'], $user);
         }
     }
