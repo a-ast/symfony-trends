@@ -15,12 +15,12 @@ class GithubCommit
     /**
      * @var string
      */
-    private $committerName;
+    private $commitAuthorName;
 
     /**
      * @var string
      */
-    private $committerEmail;
+    private $commitAuthorEmail;
 
     /**
      * @var DateTimeInterface
@@ -30,12 +30,12 @@ class GithubCommit
     /**
      * @var int
      */
-    private $committerId;
+    private $authorId;
 
     /**
      * @var string
      */
-    private $committerLogin;
+    private $authorLogin;
 
     /**
      * @var string
@@ -53,10 +53,10 @@ class GithubCommit
         $this->date = new DateTimeImmutable($data['date']);
         $this->message = $data['message'];
 
-        $this->committerId = isset($data['committer_id']) ? $data['committer_id'] : null;
-        $this->committerName = isset($data['committer_name']) ? $data['committer_name'] : '';
-        $this->committerEmail = isset($data['committer_email']) ? $data['committer_email'] : '';
-        $this->committerLogin = isset($data['committer_login']) ? $data['committer_login'] : '';
+        $this->authorId = isset($data['authorId']) ? $data['authorId'] : null;
+        $this->authorLogin = isset($data['authorLogin']) ? $data['authorLogin'] : '';
+        $this->commitAuthorName = isset($data['commitAuthorName']) ? $data['commitAuthorName'] : '';
+        $this->commitAuthorEmail = isset($data['commitAuthorEmail']) ? $data['commitAuthorEmail'] : '';
     }
 
     /**
@@ -71,10 +71,11 @@ class GithubCommit
             'message' => $responseData['commit']['message'],
             'date' => $responseData['commit']['author']['date'],
 
-            'committer_id' => isset($responseData['author']['id']) ? $responseData['author']['id'] : null,
-            'committer_name' => isset($responseData['commit']['author']['name']) ? $responseData['commit']['author']['name'] : '',
-            'committer_email' => isset($responseData['commit']['author']['email']) ? $responseData['commit']['author']['email'] : '',
-            'committer_login' => isset($responseData['author']['login']) ? $responseData['author']['login'] : '',
+            'commitAuthorName' => isset($responseData['commit']['author']['name']) ? $responseData['commit']['author']['name'] : '',
+            'commitAuthorEmail' => isset($responseData['commit']['author']['email']) ? $responseData['commit']['author']['email'] : '',
+
+            'authorId' => isset($responseData['author']['id']) ? $responseData['author']['id'] : null,
+            'authorLogin' => isset($responseData['author']['login']) ? $responseData['author']['login'] : '',
         ];
 
         return new self($data);
@@ -91,17 +92,17 @@ class GithubCommit
     /**
      * @return string
      */
-    public function getCommitterName()
+    public function getCommitAuthorName()
     {
-        return $this->committerName;
+        return $this->commitAuthorName;
     }
 
     /**
      * @return string
      */
-    public function getCommitterEmail()
+    public function getCommitAuthorEmail()
     {
-        return $this->committerEmail;
+        return $this->commitAuthorEmail;
     }
 
     /**
@@ -115,17 +116,17 @@ class GithubCommit
     /**
      * @return int
      */
-    public function getCommitterId()
+    public function getAuthorId()
     {
-        return $this->committerId;
+        return $this->authorId;
     }
 
     /**
      * @return string
      */
-    public function getCommitterLogin()
+    public function getAuthorLogin()
     {
-        return $this->committerLogin;
+        return $this->authorLogin;
     }
 
     /**

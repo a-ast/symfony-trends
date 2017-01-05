@@ -121,8 +121,8 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistoryChecker
         lazy: true
         arguments:
-            - '@github_api_client'
-            - '@builder.contributor'
+            - '@github_api.client_adapter'
+            - '@repository.contributor'
             - '@repository.project'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'

@@ -386,20 +386,20 @@ class Contributor
     public function setFromGithubCommit(GithubCommit $commit)
     {
         if (!$this->githubLogin) {
-            $this->setGithubLogin($commit->getCommitterLogin());
+            $this->setGithubLogin($commit->getAuthorLogin());
         }
 
         if (!$this->githubId) {
-            $this->setGithubId($commit->getCommitterId());
+            $this->setGithubId($commit->getAuthorId());
         }
 
         if (!$this->getName()) {
-            $this->setName($commit->getCommitterName());
+            $this->setName($commit->getCommitAuthorName());
         }
 
-        $this->addGitName($commit->getCommitterName());
-        $this->addGitName($commit->getCommitterLogin());
-        $this->addGitEmail($commit->getCommitterEmail()); // in case it is not added yet
+        $this->addGitName($commit->getCommitAuthorName());
+        $this->addGitName($commit->getAuthorLogin());
+        $this->addGitEmail($commit->getCommitAuthorEmail()); // in case it is not added yet
 
         return $this;
     }
