@@ -2,7 +2,6 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Builder\ContributorBuilder;
 use AppBundle\Client\Github\ClientAdapterInterface;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
@@ -123,16 +122,16 @@ class GithubCommitHistory implements AggregatorInterface
     {
         $contributor = null;
         $user = null;
-        $userEmails = [$commit->getCommitterEmail()];
+        $userEmails = [$commit->getCommitAuthorEmail()];
 
-        if (null !== $commit->getCommitterId()) {
-            $contributor = $this->contributorRepository->findByGithubId($commit->getCommitterId());
+        if (null !== $commit->getAuthorId()) {
+            $contributor = $this->contributorRepository->findByGithubId($commit->getAuthorId());
         }
 
         // if contributor is not found or github id is not set,
         // but login is present
-        if ((null === $contributor || null === $contributor->getGithubId()) && '' !== $commit->getCommitterLogin()) {
-            $user = $this->apiClient->getUser($commit->getCommitterLogin());
+        if ((null === $contributor || null === $contributor->getGithubId()) && '' !== $commit->getAuthorLogin()) {
+            $user = $this->apiClient->getUser($commit->getAuthorLogin());
 
             if (null !== $user) {
                 array_unshift($userEmails, $user->getEmail());

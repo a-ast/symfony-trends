@@ -77,7 +77,7 @@ class AggregatorFeatureContext implements Context
     }
 
     /**
-     * @Given I request commits:
+     * @Given Github returns commits:
      *
      * @param TableNode $commits
      */
