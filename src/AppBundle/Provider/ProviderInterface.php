@@ -4,5 +4,12 @@ namespace AppBundle\Provider;
 
 interface ProviderInterface
 {
-    function getSeries(array $options);
+    /**
+     * Get series
+     *
+     * @param array $options
+     *
+     * @return array
+     */
+    public function getSeries(array $options);
 }

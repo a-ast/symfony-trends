@@ -20,9 +20,7 @@ class SeriesProvider implements ProviderInterface
     }
 
     /**
-     * @param array $options
-     *
-     * @return array
+     * @inheritdoc
      */
     public function getSeries(array $options)
     {
