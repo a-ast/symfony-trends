@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use AppBundle\Model\GithubCommit;
 use AppBundle\Util\RegexUtils;
-use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(
  *      name="contribution",
+ *
  *      indexes={
  *          @ORM\Index(
  *              name="idx_project_id",
@@ -22,7 +22,11 @@ use Doctrine\ORM\Mapping as ORM;
  *              name="idx_contributor_id",
  *              columns={"contributor_id"}
  *          )
- *      }
+ *      },
+ *
+ *     uniqueConstraints={
+ *          @ORM\UniqueConstraint(name="uidx_sha",columns={"commit_hash"})
+ *     }
  * )
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionRepository")
