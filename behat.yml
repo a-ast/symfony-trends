@@ -9,6 +9,7 @@ default:
                       aggregator: '@aggregator.github_commit_history'
                       client: '@github_api.client_adapter'
                       doctrineHelper: '@behat_doctrine_helper'
+                      projectRepository: '@repository.project'
 
     extensions:
         Behat\Symfony2Extension: ~

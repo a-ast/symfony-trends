@@ -3,6 +3,7 @@
 namespace AppBundle\Traits;
 
 use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 trait TimestampTrait
@@ -24,11 +25,11 @@ trait TimestampTrait
     /**
      * Set createdAt
      *
-     * @param DateTime $createdAt
+     * @param DateTimeInterface $createdAt
      *
      * @return $this
      */
-    public function setCreatedAt(DateTime $createdAt)
+    public function setCreatedAt(DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -38,7 +39,7 @@ trait TimestampTrait
     /**
      * Get createdAt
      *
-     * @return DateTime
+     * @return DateTimeInterface
      */
     public function getCreatedAt()
     {
@@ -48,11 +49,11 @@ trait TimestampTrait
     /**
      * Set updatedAt
      *
-     * @param DateTime $updatedAt
+     * @param DateTimeInterface $updatedAt
      *
      * @return $this
      */
-    public function setUpdatedAt(DateTime $updatedAt)
+    public function setUpdatedAt(DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
@@ -62,7 +63,7 @@ trait TimestampTrait
     /**
      * Get updatedAt
      *
-     * @return DateTime
+     * @return DateTimeInterface
      */
     public function getUpdatedAt()
     {

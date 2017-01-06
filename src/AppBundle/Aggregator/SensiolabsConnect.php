@@ -4,6 +4,7 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
 use AppBundle\Client\PageGetterInterface;
+use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\Exception\ClientException;
@@ -39,7 +40,10 @@ class SensiolabsConnect implements AggregatorInterface
         $this->extractor = $extractor;
     }
 
-    public function aggregate(array $options, ProgressInterface $progress = null)
+    /**
+     * @inheritdoc
+     */
+    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
         $report = [];
 

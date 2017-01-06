@@ -17,13 +17,13 @@ parameters:
 
         github_commits_symfony:
             service: 'aggregator.github_commit_history'
-            options:
-                project_id: 1
+            projects: ['symfony']
+            options: []
 
         github_commits_symfony_docs:
             service: 'aggregator.github_commit_history'
-            options:
-                project_id: 2
+            projects: ['symfony-docs']
+            options: []
 
         sensiolabs_connect:
             service: 'aggregator.sensiolabs_connect'

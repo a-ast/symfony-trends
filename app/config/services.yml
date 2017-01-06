@@ -77,7 +77,6 @@ services:
         arguments:
             - '@github_api.client_adapter'
             - '@repository.contributor'
-            - '@repository.project'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
 

@@ -4,6 +4,7 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\ContributorExtractor;
 use AppBundle\Entity\Contributor;
+use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\ClientInterface;
@@ -43,7 +44,7 @@ class ContributorPage implements AggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(array $options, ProgressInterface $progress = null)
+    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
         $url = $options['url'];
 

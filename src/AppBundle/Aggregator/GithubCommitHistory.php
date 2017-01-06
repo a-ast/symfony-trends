@@ -10,7 +10,6 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
-use AppBundle\Repository\ProjectRepository;
 use AppBundle\Util\ArrayUtils;
 
 class GithubCommitHistory implements AggregatorInterface
@@ -31,11 +30,6 @@ class GithubCommitHistory implements AggregatorInterface
     private $contributionRepository;
 
     /**
-     * @var ProjectRepository
-     */
-    private $projectRepository;
-
-    /**
      * @var array
      */
     private $maintenanceCommitPatterns;
@@ -45,47 +39,39 @@ class GithubCommitHistory implements AggregatorInterface
      *
      * @param ClientAdapterInterface $apiClient
      * @param ContributorRepository $contributorRepository
-     * @param ProjectRepository $projectRepository
      * @param ContributionRepository $contributionRepository
      * @param array $maintenanceCommitPatterns
      */
     public function __construct(
         ClientAdapterInterface $apiClient,
         ContributorRepository $contributorRepository,
-        ProjectRepository $projectRepository,
         ContributionRepository $contributionRepository,
         array $maintenanceCommitPatterns)
     {
         $this->apiClient = $apiClient;
         $this->contributorRepository = $contributorRepository;
         $this->contributionRepository = $contributionRepository;
-        $this->projectRepository = $projectRepository;
         $this->maintenanceCommitPatterns = $maintenanceCommitPatterns;
     }
 
     /**
      * @inheritdoc
      */
-    public function aggregate(array $options, ProgressInterface $progress = null)
+    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
-        $projectId = $options['project_id'];
-        /** @var Project $project */
-        $project = $this->projectRepository->find($projectId);
-
-        if (null === $project) {
-            throw new \RuntimeException(sprintf('Project %d not found', $projectId));
-        }
-
         $projectRepo = $project->getGithubPath();
-        $sinceDate = $this->getSinceDate($projectId);
+        $sinceDate = $this->getSinceDate($project->getId());
+
+        print sprintf('Project %s since %s', $project->getName(), $sinceDate->format(DATE_W3C));
 
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
-            $contribution = $this->createContribution($commit, $projectId, $contributor->getId());
+            $contribution = $this->createContribution($commit, $project->getId(), $contributor->getId());
 
-            $this->contributionRepository->clear();
-            unset($contributor);
-            unset($contribution);
+            print '.';
+//            $this->contributionRepository->clear();
+//            unset($contributor);
+//            unset($contribution);
         }
     }
 
@@ -135,7 +121,7 @@ class GithubCommitHistory implements AggregatorInterface
         $email = ArrayUtils::getFirstNonEmptyElement($userEmails);
 
         if (null === $contributor) {
-            $contributor = new Contributor($email);;
+            $contributor = new Contributor($email);
         }
         $contributor->setFromGithub($commit, $user);
         $this->contributorRepository->saveContributor($contributor);

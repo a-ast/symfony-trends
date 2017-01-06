@@ -3,7 +3,10 @@
 namespace AppBundle\Command;
 
 use AppBundle\Aggregator\AggregatorInterface;
+use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressBar;
+use AppBundle\Repository\ProjectRepository;
+use Doctrine\ORM\EntityRepository;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -46,11 +49,17 @@ class AggregateDataCommand extends ContainerAwareCommand
         $progressBar = $this->getProgressBar($output);
         ProgressBar::getPlaceholderFormatterDefinition('current');
 
-        $result = $aggregator->aggregate($aggregatorData['options'], $progressBar);
+        $options = $aggregatorData['options'];
 
-        $output->writeln(PHP_EOL.sprintf('<info>%s: aggregation finished.</info>', $aggregatorName));
+        $projectLabels = isset($aggregatorData['projects']) ? $aggregatorData['projects'] : [];
+        $projects = $this->getProjects($projectLabels);
 
-        $this->outputResults($output, $result);
+        foreach ($projects as $project) {
+            $result = $aggregator->aggregate($project, $options, $progressBar);
+
+            $output->writeln(PHP_EOL.sprintf('<info>%s: %s aggregation finished.</info>', $project->getName(), $aggregatorName));
+            $this->outputResults($output, $result);
+        }
     }
 
     /**
@@ -78,5 +87,18 @@ class AggregateDataCommand extends ContainerAwareCommand
         $progressBar->setFormat(' %current%/%max% [%bar%] %message%');
 
         return $progressBar;
+    }
+
+    /**
+     * @param array $projectLabels
+     *
+     * @return Project[]|array
+     */
+    protected function getProjects(array $projectLabels)
+    {
+        /** @var ProjectRepository $projectRepository */
+        $projectRepository = $this->getContainer()->get('repository.project');
+
+        return $projectRepository->findByLabel($projectLabels);
     }
 }

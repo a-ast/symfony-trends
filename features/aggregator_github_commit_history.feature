@@ -10,7 +10,7 @@ Feature: Github Commits Aggregator
     Given Github returns commits:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       |
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails | gitNames |
@@ -28,7 +28,7 @@ Feature: Github Commits Aggregator
       | frodo-2 | 2016-11-23T00:00:00Z | No!!!   | frodo.b          | frodo@shire       |
       | frodo-3 | 2016-11-24T00:00:00Z | Yes!    | frodo.bag        | frodo@shire       |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails | gitNames            |
@@ -51,7 +51,7 @@ Feature: Github Commits Aggregator
       | login | name       | email            | location |
       | Frodo | Frodo.user | frodo.user@shire | Bag End  |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails          | gitNames             |
@@ -71,7 +71,7 @@ Feature: Github Commits Aggregator
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail | authorId |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo2@shire      | 100      |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails                     | gitNames        |
@@ -87,7 +87,7 @@ Feature: Github Commits Aggregator
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo@shire      |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email       | name  | gitEmails       | gitNames        |
@@ -106,7 +106,7 @@ Feature: Github Commits Aggregator
       | login | name       | email       |
       | Frodo | Frodo.user | frodo@shire |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | gitEmails                    | gitNames                   |
@@ -119,7 +119,7 @@ Feature: Github Commits Aggregator
       | frodo | 2016-11-22T00:00:00Z | Ring?!  | frodo@shire       |
       | sam   | 2016-11-24T00:00:00Z | Frodo?  | sam@shire         |
 
-    When I aggregate commits
+    When I aggregate commits for project 1
 
     And I should see "AppBundle:Contribution" entities:
       | projectId | contributorId | message | commitHash |

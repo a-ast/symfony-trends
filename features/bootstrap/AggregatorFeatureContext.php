@@ -3,6 +3,7 @@
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
+use AppBundle\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
@@ -30,17 +31,24 @@ class AggregatorFeatureContext implements Context
     private $doctrineHelper;
 
     /**
+     * @var ProjectRepository
+     */
+    private $projectRepository;
+
+    /**
      * Initializes context.
      *
      * @param GithubCommitHistory $aggregator
      * @param ClientAdapterFake $client
      * @param DoctrineHelper $doctrineHelper
+     * @param ProjectRepository $projectRepository
      */
-    public function __construct(GithubCommitHistory $aggregator, ClientAdapterFake $client, DoctrineHelper $doctrineHelper)
+    public function __construct(GithubCommitHistory $aggregator, ClientAdapterFake $client, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
     {
         $this->aggregator = $aggregator;
         $this->clientAdapter = $client;
         $this->doctrineHelper = $doctrineHelper;
+        $this->projectRepository = $projectRepository;
     }
 
     /**
@@ -102,11 +110,15 @@ class AggregatorFeatureContext implements Context
     }
 
     /**
-     * @When I aggregate commits
+     * @When I aggregate commits for project :projectId
+     *
+     * @param int $projectId
      */
-    public function iAggregateCommits()
+    public function iAggregateCommits($projectId)
     {
-        $this->aggregator->aggregate(['project_id' => 1]);
+        $project = $this->projectRepository->find($projectId);
+
+        $this->aggregator->aggregate($project, []);
     }
 
     private function replaceNulls(array $data)
