@@ -25,4 +25,21 @@ class StringUtilsSpec extends ObjectBehavior
     {
         self::startsWith('Frodo Baggings', 'Sam')->shouldReturn(false);
     }
+
+    public function it_returns_substring_after_giving_text()
+    {
+        self::textAfter('A wizard is never late, nor is he early.', 'A wizard is never late, ')->shouldReturn('nor is he early.');
+
+        self::textAfter('A wizard is never late, nor is he early.', 'Fly, you fools!')->shouldReturn('');
+    }
+
+    public function it_returns_true_if_text_contains_substring()
+    {
+        self::contains('A wizard is never late', 'never')->shouldReturn(true);
+    }
+
+    public function it_returns_false_if_text_does_not_contains_substring()
+    {
+        self::contains('A wizard is forever late', 'never')->shouldReturn(false);
+    }
 }
