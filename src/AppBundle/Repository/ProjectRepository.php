@@ -15,34 +15,20 @@ class ProjectRepository extends EntityRepository
      *
      * @return Project[]
      */
-    public function getProjectsByLabels(array $labels)
+    public function findByLabel(array $labels)
     {
-        $qb = $this->createQueryBuilder('p')
-            ->where('p.label in (:labels)')
-            ->setParameter('labels', $labels)
-        ;
-
-        $result = $qb->getQuery()->getResult();
-
         $projects = [];
-        /** @var Project $project */
-        foreach ($result as &$project) {
-            $projects[$project->getId()] = $project;
+
+        foreach ($labels as $label) {
+            $project = $this->findOneBy(['label' => $label]);
+
+            if (null === $project) {
+                throw new \InvalidArgumentException(sprintf('Project with label/alias %s does not exist.', $label));
+            }
+
+            $projects[] = $project;
         }
 
         return $projects;
-    }
-
-    /**
-     * @param string $label
-     *
-     * @return Project|null
-     */
-    public function getProjectByLabel($label)
-    {
-        /** @var Project $project */
-        $project = $this->findOneBy(['label' => $label]);
-
-        return $project;
     }
 }
