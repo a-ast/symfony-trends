@@ -62,16 +62,9 @@ class GithubCommitHistory implements AggregatorInterface
         $projectRepo = $project->getGithubPath();
         $sinceDate = $this->getSinceDate($project->getId());
 
-        print sprintf('Project %s since %s', $project->getName(), $sinceDate->format(DATE_W3C));
-
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
-            $contribution = $this->createContribution($commit, $project->getId(), $contributor->getId());
-
-            print '.';
-//            $this->contributionRepository->clear();
-//            unset($contributor);
-//            unset($contribution);
+            $this->createContribution($commit, $project->getId(), $contributor->getId());
         }
     }
 

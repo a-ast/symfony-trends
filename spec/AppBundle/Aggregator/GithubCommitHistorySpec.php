@@ -110,9 +110,5 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $contributionRepository
             ->store(Argument::any())
             ->shouldBeCalled();
-
-//        $contributionRepository
-//            ->clear()
-//            ->shouldBeCalled();
     }
 }
