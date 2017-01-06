@@ -104,20 +104,9 @@ class GithubCommitHistory implements AggregatorInterface
 
     /**
      * @param GithubCommit $commit
-     * @param int $projectId
-     * @param int $contributorId
      *
-     * @return Contribution
+     * @return Contributor
      */
-    private function createContribution(GithubCommit $commit, $projectId, $contributorId)
-    {
-        $contribution = new Contribution($projectId, $contributorId, $commit->getSha());
-        $contribution->setFromGithubCommit($commit, $this->maintenanceCommitPatterns);
-        $this->contributionRepository->store($contribution);
-
-        return $contribution;
-    }
-
     private function createContributor(GithubCommit $commit)
     {
         $contributor = null;
@@ -152,5 +141,21 @@ class GithubCommitHistory implements AggregatorInterface
         $this->contributorRepository->saveContributor($contributor);
 
         return $contributor;
+    }
+
+    /**
+     * @param GithubCommit $commit
+     * @param int $projectId
+     * @param int $contributorId
+     *
+     * @return Contribution
+     */
+    private function createContribution(GithubCommit $commit, $projectId, $contributorId)
+    {
+        $contribution = new Contribution($projectId, $contributorId, $commit->getSha());
+        $contribution->setFromGithubCommit($commit, $this->maintenanceCommitPatterns);
+        $this->contributionRepository->store($contribution);
+
+        return $contribution;
     }
 }
