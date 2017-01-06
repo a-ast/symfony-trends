@@ -31,7 +31,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 299
+                    "value": 302
+                },
+                {
+                    "name": "2017",
+                    "value": 9
                 }
             ],
             "name": "All contributors",
@@ -65,7 +69,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 178
+                    "value": 180
+                },
+                {
+                    "name": "2017",
+                    "value": 1
                 }
             ],
             "name": "New contributors",

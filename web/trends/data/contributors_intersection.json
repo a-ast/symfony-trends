@@ -7,17 +7,17 @@
             "data": [
                 {
                     "name": "Symfony code",
-                    "value": 1119,
+                    "value": 1121,
                     "color": "#4cacdb"
                 },
                 {
                     "name": "Symfony code and Symfony docs",
-                    "value": 511,
+                    "value": 512,
                     "color": "#63b37e"
                 },
                 {
                     "name": "Symfony docs",
-                    "value": 797,
+                    "value": 796,
                     "color": "#7aba20"
                 }
             ],

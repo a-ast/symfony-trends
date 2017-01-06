@@ -7,7 +7,7 @@
             "data": [
                 {
                     "name": "Robin Chalas",
-                    "value": 62
+                    "value": 65
                 },
                 {
                     "name": "Par\u00e1da J\u00f3zsef",
@@ -50,6 +50,10 @@
                     "value": 3
                 },
                 {
+                    "name": "Shin",
+                    "value": 3
+                },
+                {
                     "name": "Valentin Jonovs",
                     "value": 3
                 },
@@ -59,10 +63,6 @@
                 },
                 {
                     "name": "Alexander Zhuravlev",
-                    "value": 2
-                },
-                {
-                    "name": "Andre Smith",
                     "value": 2
                 }
             ],
