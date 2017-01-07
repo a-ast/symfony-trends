@@ -1,33 +1,18 @@
 <?php
 
 use AppBundle\Aggregator\AggregatorRegistry;
-use AppBundle\Aggregator\GithubCommitHistory;
-use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubUser;
 use AppBundle\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
-use features\Fake\GithubApi;
-use features\Fake\GeocodingApi;
+use features\Helper\ApiCollection;
 use features\Helper\DoctrineHelper;
-use Http\Mock\Client;
 
 /**
  * Defines application features from the specific context.
  */
 class AggregatorFeatureContext implements Context
 {
-    /**
-     * @var GithubCommitHistory
-     */
-    private $aggregator;
-
-    /**
-     * @var GithubApi
-     */
-    private $clientAdapter;
-
     /**
      * @var DoctrineHelper
      */
@@ -37,35 +22,33 @@ class AggregatorFeatureContext implements Context
      * @var ProjectRepository
      */
     private $projectRepository;
+
     /**
      * @var AggregatorRegistry
      */
     private $aggregatorRegistry;
 
     /**
-     * @var Client
+     * @var array
      */
-    private $geocoder;
+    private $apis;
 
     /**
      * Initializes context.
      *
-     * @param GithubCommitHistory $aggregator
      * @param AggregatorRegistry $aggregatorRegistry
-     * @param GithubApi $client
-     * @param Client $geocoder
      * @param DoctrineHelper $doctrineHelper
      * @param ProjectRepository $projectRepository
+     * @param ApiCollection $apis
      */
-    public function __construct(GithubCommitHistory $aggregator, AggregatorRegistry $aggregatorRegistry,
-        GithubApi $client, GeocodingApi $geocoder, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
+    public function __construct(AggregatorRegistry $aggregatorRegistry,
+        DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository,
+        ApiCollection $apis)
     {
-        $this->aggregator = $aggregator;
         $this->aggregatorRegistry = $aggregatorRegistry;
-        $this->clientAdapter = $client;
         $this->doctrineHelper = $doctrineHelper;
         $this->projectRepository = $projectRepository;
-        $this->geocoder = $geocoder;
+        $this->apis = $apis;
     }
 
     /**
@@ -103,38 +86,16 @@ class AggregatorFeatureContext implements Context
     }
 
     /**
-     * @Given Github returns commits:
-     *
-     * @param TableNode $commits
+     * @Given :apiName API returns :dataType data:
      */
-    public function githubReturnsCommits(TableNode $commits)
+    public function apiReturnsData($apiName, $dataType, TableNode $records)
     {
-        foreach ($commits as $commitData) {
-            $commit = new GithubCommit($this->replaceNulls($commitData));
-            $this->clientAdapter->addCommit($commit);
-        }
-    }
+        $api = $this->apis->get($apiName);
 
-    /**
-     * @Given Github returns users:
-     */
-    public function githubReturnsUsers(TableNode $users)
-    {
-        foreach ($users as $userData) {
-            $user = GithubUser::createFromGithubResponseData($this->replaceNulls($userData));
-            $this->clientAdapter->addUser($userData['login'], $user);
-        }
-    }
-
-    /**
-     * @Given Geocoding API returns :dataType data:
-     */
-    public function geocodingApiReturnsData($dataType, TableNode $records)
-    {
         foreach ($records as $record) {
             $data = $this->replaceNulls($record);
 
-            $this->geocoder->addData($dataType, $data);
+            $api->addData($dataType, $data);
         }
     }
 

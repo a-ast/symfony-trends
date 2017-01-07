@@ -24,5 +24,11 @@ services:
         class: features\Fake\GithubApi
 
     api.geocoder:
-        class: features\Fake\GeocodingApi
+        class: features\Fake\GeocoderApi
 
+
+    api.list:
+        class: features\Helper\ApiCollection
+        calls:
+            - [ add, ['Github', '@api.github']]
+            - [ add, ['Geocoder', '@api.geocoder']]

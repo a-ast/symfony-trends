@@ -6,12 +6,10 @@ default:
                 - ApiFeatureContext:
                       client: '@github_api.client'
                 - AggregatorFeatureContext:
-                      aggregator: '@aggregator.github_commit_history'
                       aggregatorRegistry: '@aggregator_registry'
-                      client: '@api.github'
-                      geocoder: '@api.geocoder'
                       doctrineHelper: '@behat_doctrine_helper'
                       projectRepository: '@repository.project'
+                      apis: '@api.list'
 
     extensions:
         Behat\Symfony2Extension: ~

@@ -52,8 +52,10 @@ class ContributorCountry implements AggregatorInterface
             $country = $address->getCountry();
             $name = $country->getName();
 
-            $contributor->setCountry($name);
-            $this->contributorRepository->saveContributor($contributor);
+            if (!empty($name)) {
+                $contributor->setCountry($name);
+                $this->contributorRepository->saveContributor($contributor);
+            }
         }
     }
 }

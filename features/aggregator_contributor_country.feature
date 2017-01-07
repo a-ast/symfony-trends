@@ -11,7 +11,7 @@ Feature: Contributor Country Aggregator
     Given there are "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country | gitEmails | gitNames |
       | frodo | Bag end        |         | []        | []       |
-    Given Geocoding API returns location data:
+    Given Geocoder API returns location data:
       | location  | country |
       | Bag end   | Shire   |
     When I aggregate "contributor countries" for project 1
@@ -26,7 +26,7 @@ Feature: Contributor Country Aggregator
     Given there are "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country | gitEmails | gitNames |
       | frodo | Bag end        | Shire   | []        | []       |
-    Given Geocoding API returns location data:
+    Given Geocoder API returns location data:
       | location  | country |
       | Bag end   | Mordor  |
     When I aggregate "contributor countries" for project 1
@@ -41,7 +41,7 @@ Feature: Contributor Country Aggregator
     Given there are "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country | gitEmails | gitNames |
       | frodo | Bag end        |         | []        | []       |
-    Given Geocoding API returns location data:
+    Given Geocoder API returns location data:
       | location     | country |
       | Minas Tirith | Gondor  |
     When I aggregate "contributor countries" for project 1

@@ -11,15 +11,7 @@ use Iterator;
 
 class GithubApi implements GithubApiInterface
 {
-    /**
-     * @var GithubCommit[]|array
-     */
-    private $commits;
-
-    /**
-     * @var GithubUser[]|array
-     */
-    private $users;
+    use FakeDataAware;
 
     /**
      * @param string $repositoryPath
@@ -29,33 +21,23 @@ class GithubApi implements GithubApiInterface
      */
     public function getCommits($repositoryPath, DateTimeInterface $since = null)
     {
-        return new \ArrayIterator($this->commits);
-    }
+        $commits = [];
+        foreach ($this->fakeData['commits'] as $item) {
+            $commits[] = new GithubCommit($item);
+        }
 
-    /**
-     * @param GithubCommit $commit
-     */
-    public function addCommit(GithubCommit $commit)
-    {
-        $this->commits[] = $commit;
+        return new \ArrayIterator($commits);
     }
 
     /**
      * @param string $login
      *
-     * @return array
+     * @return GithubUser
      */
     public function getUser($login)
     {
-        return $this->users[$login];
-    }
+        $data = $this->findBy('users', 'login', $login);
 
-    /**
-     * @param string $login
-     * @param GithubUser $user
-     */
-    public function addUser($login, GithubUser $user)
-    {
-        $this->users[$login] = $user;
+        return GithubUser::createFromGithubResponseData($data);
     }
 }

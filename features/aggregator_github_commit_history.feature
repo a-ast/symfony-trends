@@ -7,7 +7,8 @@ Feature: Github Commits Aggregator
 
 
   Scenario: Aggregate 1 commit without author information to the empty database
-    Given Github returns commits:
+    #Given Github API returns commits data:
+    Given Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       |
     When I aggregate commits for project 1
@@ -22,7 +23,7 @@ Feature: Github Commits Aggregator
 
   Scenario: Aggregate commits of one contributor without author information to the empty database
     Git names must be merged.
-    Given Github returns commits:
+    Given Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       |
       | frodo-2 | 2016-11-23T00:00:00Z | No!!!   | frodo.b          | frodo@shire       |
@@ -43,11 +44,11 @@ Feature: Github Commits Aggregator
   Scenario: Aggregate commits of one contributor with and without author information to the empty database
     Git names and emails must be merged.
     Location must be set.
-    Given Github returns commits:
+    Given Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail | authorId | authorLogin |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       | ~        |             |
       | frodo-2 | 2016-11-23T00:00:00Z | No!!!   | frodo.b          | frodo@shire       | 100      | Frodo       |
-    And Github returns users:
+    And Github API returns users data:
       | login | name       | email            | location |
       | Frodo | Frodo.user | frodo.user@shire | Bag End  |
 
@@ -67,7 +68,7 @@ Feature: Github Commits Aggregator
       | email        | name  | githubId | githubLogin | gitEmails        | gitNames |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire] | [frodo1] |
 
-    And Github returns commits:
+    And Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail | authorId |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo2@shire      | 100      |
 
@@ -83,7 +84,7 @@ Feature: Github Commits Aggregator
       | email       | name  | gitEmails       | gitNames |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
 
-    And Github returns commits:
+    And Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo@shire      |
 
@@ -99,10 +100,10 @@ Feature: Github Commits Aggregator
       | email       | name  | gitEmails       | gitNames |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
 
-    And Github returns commits:
+    And Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail | authorId | authorLogin |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo2           | frodo2@shire      | 100      | Frodo       |
-    And Github returns users:
+    And Github API returns users data:
       | login | name       | email       |
       | Frodo | Frodo.user | frodo@shire |
 
@@ -114,7 +115,7 @@ Feature: Github Commits Aggregator
 
 
   Scenario: Aggregate commits of different contributors
-    Given Github returns commits:
+    Given Github API returns commits data:
       | sha   | date                 | message | commitAuthorEmail |
       | frodo | 2016-11-22T00:00:00Z | Ring?!  | frodo@shire       |
       | sam   | 2016-11-24T00:00:00Z | Frodo?  | sam@shire         |
