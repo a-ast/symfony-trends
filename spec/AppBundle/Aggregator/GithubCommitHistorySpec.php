@@ -5,7 +5,7 @@ namespace spec\AppBundle\Aggregator;
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Builder\ContributorBuilder;
-use AppBundle\Client\Github\ClientAdapter;
+use AppBundle\Client\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Model\GithubCommit;
@@ -21,7 +21,7 @@ use Prophecy\Argument;
  */
 class GithubCommitHistorySpec extends ObjectBehavior
 {
-    function let(ClientAdapter $githubApi,
+    function let(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository)
     {
@@ -34,7 +34,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $this->shouldImplement(AggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(ClientAdapter $githubApi,
+    function it_returns_aggregated_data(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         Project $project,
@@ -44,7 +44,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         $this->aggregate($project, []);
     }
 
-    private function initDependencies(ClientAdapter $githubApi,
+    private function initDependencies(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         Project $project,

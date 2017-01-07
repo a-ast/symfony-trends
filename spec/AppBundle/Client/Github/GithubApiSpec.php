@@ -2,7 +2,7 @@
 
 namespace spec\AppBundle\Client\Github;
 
-use AppBundle\Client\Github\ClientAdapter;
+use AppBundle\Client\Github\GithubApi;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
 use Exception;
@@ -15,9 +15,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin ClientAdapter
+ * @mixin GithubApi
  */
-class ClientAdapterSpec extends ObjectBehavior
+class GithubApiSpec extends ObjectBehavior
 {
     function let(Client $client, Repo $repoApi, Commits $commitsApi, User $userApi)
     {
@@ -32,7 +32,7 @@ class ClientAdapterSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(ClientAdapter::class);
+        $this->shouldHaveType(GithubApi::class);
     }
 
     function it_should_fetch_commits(Commits $commitsApi)

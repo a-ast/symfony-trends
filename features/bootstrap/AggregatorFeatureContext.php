@@ -8,7 +8,7 @@ use AppBundle\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
-use features\Fake\ClientAdapterFake;
+use features\Fake\GithubApi;
 use features\Fake\GeocodingApi;
 use features\Helper\DoctrineHelper;
 use Http\Mock\Client;
@@ -24,7 +24,7 @@ class AggregatorFeatureContext implements Context
     private $aggregator;
 
     /**
-     * @var ClientAdapterFake
+     * @var GithubApi
      */
     private $clientAdapter;
 
@@ -52,13 +52,13 @@ class AggregatorFeatureContext implements Context
      *
      * @param GithubCommitHistory $aggregator
      * @param AggregatorRegistry $aggregatorRegistry
-     * @param ClientAdapterFake $client
+     * @param GithubApi $client
      * @param Client $geocoder
      * @param DoctrineHelper $doctrineHelper
      * @param ProjectRepository $projectRepository
      */
     public function __construct(GithubCommitHistory $aggregator, AggregatorRegistry $aggregatorRegistry,
-        ClientAdapterFake $client, GeocodingApi $geocoder, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
+        GithubApi $client, GeocodingApi $geocoder, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
     {
         $this->aggregator = $aggregator;
         $this->aggregatorRegistry = $aggregatorRegistry;

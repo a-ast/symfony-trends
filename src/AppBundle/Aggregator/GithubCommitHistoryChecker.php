@@ -2,23 +2,23 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Client\Github\ClientAdapterInterface;
+use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 
 class GithubCommitHistoryChecker implements AggregatorInterface
 {
     /**
-     * @var ClientAdapterInterface
+     * @var GithubApiInterface
      */
     private $apiClient;
 
     /**
      * Constructor.
      *
-     * @param ClientAdapterInterface $apiClient
+     * @param GithubApiInterface $apiClient
      */
-    public function __construct(ClientAdapterInterface $apiClient)
+    public function __construct(GithubApiInterface $apiClient)
     {
         $this->apiClient = $apiClient;
     }

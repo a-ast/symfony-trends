@@ -21,7 +21,7 @@ services:
 
     # Fake clients
     github_api.client_adapter:
-        class: features\Fake\ClientAdapterFake
+        class: features\Fake\GithubApi
 
     api.geocoder:
         class: features\Fake\GeocodingApi

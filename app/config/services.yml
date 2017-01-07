@@ -45,7 +45,7 @@ services:
         configurator: ['@github_api.client_configurator', 'configure']
 
     github_api.client_adapter:
-        class: AppBundle\Client\Github\ClientAdapter
+        class: AppBundle\Client\Github\GithubApi
         arguments:
             - '@github_api.client'
 

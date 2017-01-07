@@ -3,13 +3,13 @@
 
 namespace features\Fake;
 
-use AppBundle\Client\Github\ClientAdapterInterface;
+use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
 
-class ClientAdapterFake implements ClientAdapterInterface
+class GithubApi implements GithubApiInterface
 {
     /**
      * @var GithubCommit[]|array

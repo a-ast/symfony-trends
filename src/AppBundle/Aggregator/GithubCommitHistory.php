@@ -2,7 +2,7 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Client\Github\ClientAdapterInterface;
+use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
@@ -15,7 +15,7 @@ use AppBundle\Util\ArrayUtils;
 class GithubCommitHistory implements AggregatorInterface
 {
     /**
-     * @var ClientAdapterInterface
+     * @var GithubApiInterface
      */
     private $apiClient;
 
@@ -37,13 +37,13 @@ class GithubCommitHistory implements AggregatorInterface
     /**
      * Constructor.
      *
-     * @param ClientAdapterInterface $apiClient
+     * @param GithubApiInterface $apiClient
      * @param ContributorRepository $contributorRepository
      * @param ContributionRepository $contributionRepository
      * @param array $maintenanceCommitPatterns
      */
     public function __construct(
-        ClientAdapterInterface $apiClient,
+        GithubApiInterface $apiClient,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         array $maintenanceCommitPatterns)

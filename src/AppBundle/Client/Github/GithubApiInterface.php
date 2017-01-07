@@ -5,7 +5,7 @@ use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 
-interface ClientAdapterInterface
+interface GithubApiInterface
 {
     /**
      * @param string $repositoryPath

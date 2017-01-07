@@ -8,7 +8,7 @@ use DateTimeInterface;
 use Github\Client;
 use Iterator;
 
-class ClientAdapter implements ClientAdapterInterface
+class GithubApi implements GithubApiInterface
 {
     /**
      * @var Client
