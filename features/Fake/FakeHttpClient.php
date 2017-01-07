@@ -1,7 +1,6 @@
 <?php
 
-
-namespace AppBundle\Client;
+namespace features\Fake;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

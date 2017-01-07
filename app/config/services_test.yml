@@ -1,7 +1,7 @@
 services:
 
     github_api.fake_guzzle_client:
-        class: AppBundle\Client\FakeHttpClient
+        class: features\Fake\FakeHttpClient
 
     api.http_client:
         class: Http\Adapter\Guzzle6\Client

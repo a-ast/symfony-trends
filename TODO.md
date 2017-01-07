@@ -2,7 +2,6 @@ TODO
 ==============
 
 
-Run commit update
 Move FakeClient to features
 Rename contribution table??
 Rename aggregator to GithubCommit??
