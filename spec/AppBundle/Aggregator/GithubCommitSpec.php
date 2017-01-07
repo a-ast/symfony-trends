@@ -3,23 +3,21 @@
 namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\GithubCommitHistory;
-use AppBundle\Builder\ContributorBuilder;
+use AppBundle\Aggregator\GithubCommit;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
-use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubCommit as ModelGithubCommit;
 use AppBundle\Model\GithubUser;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
-use AppBundle\Repository\ProjectRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubCommitHistory
+ * @mixin GithubCommit
  */
-class GithubCommitHistorySpec extends ObjectBehavior
+class GithubCommitSpec extends ObjectBehavior
 {
     function let(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
@@ -30,7 +28,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(GithubCommitHistory::class);
+        $this->shouldHaveType(GithubCommit::class);
         $this->shouldImplement(AggregatorInterface::class);
     }
 
@@ -50,7 +48,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
         Project $project,
         Contributor $contributor)
     {
-        $commit = GithubCommit::createFromGithubResponseData([
+        $commit = ModelGithubCommit::createFromGithubResponseData([
             'sha' => 'hash-frodo-1',
             'commit' => [
                 'author' => [

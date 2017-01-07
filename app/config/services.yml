@@ -89,8 +89,8 @@ services:
         tags:
             - { name: aggregator, alias: 'contributor page'}
 
-    aggregator.github_commit_history:
-        class: AppBundle\Aggregator\GithubCommitHistory
+    aggregator.github_commit:
+        class: AppBundle\Aggregator\GithubCommit
         lazy: true
         arguments:
             - '@api.github'
@@ -109,8 +109,8 @@ services:
         tags:
             - { name: aggregator, alias: 'contributor countries'}
 
-    aggregator.github_commit_history_checker:
-        class: AppBundle\Aggregator\GithubCommitHistoryChecker
+    aggregator.github_commit_checker:
+        class: AppBundle\Aggregator\GithubCommitChecker
         lazy: true
         arguments:
             - '@api.github'

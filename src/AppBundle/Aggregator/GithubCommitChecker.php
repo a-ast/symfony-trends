@@ -6,7 +6,7 @@ use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 
-class GithubCommitHistoryChecker implements AggregatorInterface
+class GithubCommitChecker implements AggregatorInterface
 {
     /**
      * @var GithubApiInterface

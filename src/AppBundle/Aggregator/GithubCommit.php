@@ -7,12 +7,12 @@ use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubCommit as ModelGithubCommit;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Util\ArrayUtils;
 
-class GithubCommitHistory implements AggregatorInterface
+class GithubCommit implements AggregatorInterface
 {
     /**
      * @var GithubApiInterface
@@ -82,11 +82,11 @@ class GithubCommitHistory implements AggregatorInterface
     }
 
     /**
-     * @param GithubCommit $commit
+     * @param ModelGithubCommit $commit
      *
      * @return Contributor
      */
-    private function createContributor(GithubCommit $commit)
+    private function createContributor(ModelGithubCommit $commit)
     {
         $contributor = null;
         $user = null;
@@ -123,13 +123,13 @@ class GithubCommitHistory implements AggregatorInterface
     }
 
     /**
-     * @param GithubCommit $commit
+     * @param ModelGithubCommit $commit
      * @param int $projectId
      * @param int $contributorId
      *
      * @return Contribution
      */
-    private function createContribution(GithubCommit $commit, $projectId, $contributorId)
+    private function createContribution(ModelGithubCommit $commit, $projectId, $contributorId)
     {
         $contribution = new Contribution($projectId, $contributorId, $commit->getSha());
         $contribution->setFromGithubCommit($commit, $this->maintenanceCommitPatterns);
