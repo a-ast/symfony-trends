@@ -3,9 +3,11 @@
 
 namespace features\Fake;
 
-use Geocoder\Provider\Provider;
+use Geocoder\Geocoder;
+use Geocoder\Model\Address;
+use Geocoder\Model\Country;
 
-class GeocodingApi implements Provider
+class GeocodingApi implements Geocoder
 {
     /**
      * @var array
@@ -22,7 +24,12 @@ class GeocodingApi implements Provider
      */
     public function geocode($value)
     {
-        return $this->data[$value];
+        $countryName = $this->data[$value];
+
+        $address = new Address(null, null, null, null, null, null, null, null,
+            new Country($countryName, 'SR'));
+
+        return new \ArrayIterator([$address]);
     }
 
     /**
@@ -47,13 +54,5 @@ class GeocodingApi implements Provider
     public function limit($limit)
     {
         // TODO: Implement limit() method.
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getName()
-    {
-        // TODO: Implement getName() method.
     }
 }

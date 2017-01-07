@@ -105,6 +105,7 @@ services:
         lazy: true
         arguments:
             - '@api.geocoder'
+            - '@repository.contributor'
         tags:
             - { name: aggregator, alias: 'contributor countries'}
 

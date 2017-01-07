@@ -4,6 +4,8 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Repository\ContributorRepository;
+use Exception;
 use Geocoder\Geocoder;
 use Geocoder\Model\Address;
 
@@ -13,14 +15,20 @@ class ContributorCountry implements AggregatorInterface
      * @var Geocoder
      */
     private $geocoder;
+    /**
+     * @var ContributorRepository
+     */
+    private $contributorRepository;
 
     /**
      * Constructor.
      * @param Geocoder $geocoder
+     * @param ContributorRepository $contributorRepository
      */
-    public function __construct(Geocoder $geocoder)
+    public function __construct(Geocoder $geocoder, ContributorRepository $contributorRepository)
     {
         $this->geocoder = $geocoder;
+        $this->contributorRepository = $contributorRepository;
     }
 
     /**
@@ -28,26 +36,24 @@ class ContributorCountry implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
+        $contributors = $this->contributorRepository->findWithoutCountry();
 
-        // TODO: iterate contributors with location and without country
-        // think how to exclude trash locations
-        // country_id??? with WrongCountry for some countries.
+        foreach ($contributors as $contributor) {
 
-        // catch Geocoder\Exception\NoResult
-        // take first country
-        // think how to avoid: Earth, 'somewhere' etc
+            try {
+                $addresses = $this->geocoder->geocode($contributor->getGithubLocation());
+            } catch (Exception $e) {
+                continue;
+            }
 
-        $geo = $this->geocoder->geocode('The Netherlands');
+            /** @var Address $address */
+            $address = $addresses[0];
 
-        /** @var Address $address */
-        foreach ($geo as $address) {
+            $country = $address->getCountry();
+            $name = $country->getName();
 
-
-            var_dump($address);
-
-            // todo: set country_code????
-            $address->getCountry()->getName();
-
+            $contributor->setCountry($name);
+            $this->contributorRepository->saveContributor($contributor);
         }
     }
 }

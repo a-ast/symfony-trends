@@ -153,6 +153,22 @@ class ContributorRepository extends Repository
         return $result;
     }
 
+    /**
+     * @return Contributor[]
+     */
+    public function findWithoutCountry()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select()
+            ->where('c.githubLocation != \'\'')
+            ->andWhere('c.country = \'\'')
+        ;
+
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
+
     public function saveContributor(Contributor $contributor)
     {
         if (0 === count($contributor->getGitEmails())) {
