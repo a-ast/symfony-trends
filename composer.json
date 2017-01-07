@@ -35,7 +35,9 @@
         "kevinrob/guzzle-cache-middleware": "^1.4",
         "knplabs/github-api": "^2.0",
         "php-http/guzzle6-adapter": "^1.1",
-        "symfony/cache": "^3.2"
+        "symfony/cache": "^3.2",
+        "willdurand/geocoder": "dev-master",
+        "php-http/buzz-adapter": "^0.3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -44,7 +46,8 @@
         "behat/symfony2-extension": "^2.1",
         "php-mock/php-mock": "^1.0",
         "doctrine/data-fixtures": "^1.2",
-        "aa/array-diff": "dev-master"
+        "aa/array-diff": "dev-master",
+        "php-http/mock-client": "^0.3.3"
     },
     "scripts": {
         "symfony-scripts": [
