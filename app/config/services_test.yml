@@ -20,7 +20,7 @@ services:
             - '@doctrine.orm.purger'
 
     # Fake clients
-    github_api.client_adapter:
+    api.github:
         class: features\Fake\GithubApi
 
     api.geocoder:

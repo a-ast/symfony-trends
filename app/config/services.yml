@@ -44,7 +44,7 @@ services:
             - '@github_api.http_client_builder'
         configurator: ['@github_api.client_configurator', 'configure']
 
-    github_api.client_adapter:
+    api.github:
         class: AppBundle\Client\Github\GithubApi
         arguments:
             - '@github_api.client'
@@ -93,7 +93,7 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistory
         lazy: true
         arguments:
-            - '@github_api.client_adapter'
+            - '@api.github'
             - '@repository.contributor'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
@@ -113,7 +113,7 @@ services:
         class: AppBundle\Aggregator\GithubCommitHistoryChecker
         lazy: true
         arguments:
-            - '@github_api.client_adapter'
+            - '@api.github'
         tags:
             - { name: aggregator, alias: 'commits data'}
 
