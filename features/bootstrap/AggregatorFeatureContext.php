@@ -1,5 +1,6 @@
 <?php
 
+use AppBundle\Aggregator\AggregatorRegistry;
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
@@ -8,7 +9,9 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
 use features\Fake\ClientAdapterFake;
+use features\Fake\GeocodingApi;
 use features\Helper\DoctrineHelper;
+use Http\Mock\Client;
 
 /**
  * Defines application features from the specific context.
@@ -34,21 +37,35 @@ class AggregatorFeatureContext implements Context
      * @var ProjectRepository
      */
     private $projectRepository;
+    /**
+     * @var AggregatorRegistry
+     */
+    private $aggregatorRegistry;
+
+    /**
+     * @var Client
+     */
+    private $geocoder;
 
     /**
      * Initializes context.
      *
      * @param GithubCommitHistory $aggregator
+     * @param AggregatorRegistry $aggregatorRegistry
      * @param ClientAdapterFake $client
+     * @param Client $geocoder
      * @param DoctrineHelper $doctrineHelper
      * @param ProjectRepository $projectRepository
      */
-    public function __construct(GithubCommitHistory $aggregator, ClientAdapterFake $client, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
+    public function __construct(GithubCommitHistory $aggregator, AggregatorRegistry $aggregatorRegistry,
+        ClientAdapterFake $client, GeocodingApi $geocoder, DoctrineHelper $doctrineHelper, ProjectRepository $projectRepository)
     {
         $this->aggregator = $aggregator;
+        $this->aggregatorRegistry = $aggregatorRegistry;
         $this->clientAdapter = $client;
         $this->doctrineHelper = $doctrineHelper;
         $this->projectRepository = $projectRepository;
+        $this->geocoder = $geocoder;
     }
 
     /**
@@ -110,15 +127,29 @@ class AggregatorFeatureContext implements Context
     }
 
     /**
-     * @When I aggregate commits for project :projectId
+     * @Given Geocoding API returns :dataType data:
+     */
+    public function geocodingApiReturnsData($dataType, TableNode $records)
+    {
+        foreach ($records as $record) {
+            $data = $this->replaceNulls($record);
+
+            $this->geocoder->addData($dataType, $data);
+        }
+    }
+
+    /**
+     * @When I aggregate :aggregatorAlias for project :projectId
      *
      * @param int $projectId
      */
-    public function iAggregateCommits($projectId)
+    public function iAggregate($aggregatorAlias, $projectId)
     {
         $project = $this->projectRepository->find($projectId);
 
-        $this->aggregator->aggregate($project, []);
+        $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
+
+        $aggregator->aggregate($project, []);
     }
 
     private function replaceNulls(array $data)

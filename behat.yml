@@ -7,7 +7,9 @@ default:
                       client: '@github_api.client'
                 - AggregatorFeatureContext:
                       aggregator: '@aggregator.github_commit_history'
+                      aggregatorRegistry: '@aggregator_registry'
                       client: '@github_api.client_adapter'
+                      geocoder: '@api.geocoder'
                       doctrineHelper: '@behat_doctrine_helper'
                       projectRepository: '@repository.project'
 

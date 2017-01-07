@@ -1,5 +1,19 @@
 services:
 
+    api.http_client:
+        class: Http\Adapter\Guzzle6\Client
+
+    api.http_client.buzz:
+        class: Http\Adapter\Buzz\Client
+
+    api.geocoder:
+        class: Geocoder\Provider\GoogleMaps
+        arguments:
+            - '@api.http_client.buzz'
+            - null
+            - null
+            - '%env(GEOCODING_API_KEY)%'
+
     github_api.plugin.wait_and_retry:
         class: AppBundle\Client\Github\WaitAndRetryPlugin
         arguments:
@@ -12,13 +26,11 @@ services:
             - '%env(GITHUB_CLIENT_SECRET)%'
             - 'url_client_id'
 
-    github_api.http_client:
-        class: Http\Adapter\Guzzle6\Client
 
     github_api.http_client_builder:
         class: Github\HttpClient\Builder
         arguments:
-            - '@github_api.http_client'
+            - '@api.http_client'
 
     github_api.client_configurator:
         class: AppBundle\Client\Github\ClientConfigurator
@@ -64,12 +76,18 @@ services:
     #################################
     # Data aggregators
     #################################
+    aggregator_registry:
+        class: AppBundle\Aggregator\AggregatorRegistry
+
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPage
+        lazy: true
         arguments:
             - '@http_client'
             - '@helper.contributor_extractor'
             - '@repository.contributor'
+        tags:
+            - { name: aggregator, alias: 'contributor page'}
 
     aggregator.github_commit_history:
         class: AppBundle\Aggregator\GithubCommitHistory
@@ -79,13 +97,24 @@ services:
             - '@repository.contributor'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
+        tags:
+            - { name: aggregator, alias: commits}
+
+    aggregator.contributor_country:
+        class: AppBundle\Aggregator\ContributorCountry
+        lazy: true
+        arguments:
+            - '@api.geocoder'
+        tags:
+            - { name: aggregator, alias: 'contributor countries'}
 
     aggregator.github_commit_history_checker:
         class: AppBundle\Aggregator\GithubCommitHistoryChecker
         lazy: true
         arguments:
             - '@github_api.client_adapter'
-            - '@repository.project'
+        tags:
+            - { name: aggregator, alias: 'commits data'}
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnect
@@ -94,3 +123,5 @@ services:
             - '@http_client'
             - '@helper.sensiolabs_data_extractor'
             - '@repository.contributor'
+        tags:
+            - { name: aggregator, alias: 'SensiolabsConnect data'}

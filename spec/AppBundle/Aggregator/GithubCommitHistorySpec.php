@@ -2,6 +2,7 @@
 
 namespace spec\AppBundle\Aggregator;
 
+use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\GithubCommitHistory;
 use AppBundle\Builder\ContributorBuilder;
 use AppBundle\Client\Github\ClientAdapter;
@@ -30,6 +31,7 @@ class GithubCommitHistorySpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(GithubCommitHistory::class);
+        $this->shouldImplement(AggregatorInterface::class);
     }
 
     function it_returns_aggregated_data(ClientAdapter $githubApi,

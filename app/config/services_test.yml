@@ -3,7 +3,7 @@ services:
     github_api.fake_guzzle_client:
         class: AppBundle\Client\FakeHttpClient
 
-    github_api.http_client:
+    api.http_client:
         class: Http\Adapter\Guzzle6\Client
         arguments:
             - '@github_api.fake_guzzle_client'
@@ -19,6 +19,10 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@doctrine.orm.purger'
 
+    # Fake clients
     github_api.client_adapter:
         class: features\Fake\ClientAdapterFake
+
+    api.geocoder:
+        class: features\Fake\GeocodingApi
 
