@@ -7,7 +7,6 @@ Feature: Github Commits Aggregator
 
 
   Scenario: Aggregate 1 commit without author information to the empty database
-    #Given Github API returns commits data:
     Given Github API returns commits data:
       | sha     | date                 | message | commitAuthorName | commitAuthorEmail |
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       |
