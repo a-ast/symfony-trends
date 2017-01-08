@@ -34,9 +34,14 @@ parameters:
             service: 'aggregator.sensiolabs_connect'
             options: []
 
-        github_fork:
+        github_fork_symfony:
             service: 'aggregator.github_fork'
             projects: ['symfony']
+            options: []
+
+        github_fork_symfony_docs:
+            service: 'aggregator.github_fork'
+            projects: ['symfony-docs']
             options: []
 
         # Checkers

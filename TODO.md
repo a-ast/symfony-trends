@@ -13,12 +13,13 @@ Rename contribution table??
 
 ### KW 2:
 
-1. Inject projects in aggregators
-2. Aggregate commit changes
+1. Get rid of multiple trend aggregators per project
+2. Fork aggregator: check if exists to avoid removing all records by an update
 
 ### KW 3:
 
 1. Aggregate PRs
+2. Aggregate commit changes
 
 
 

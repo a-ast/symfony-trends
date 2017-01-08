@@ -1,0 +1,83 @@
+{
+    "options": {
+        "type": "stairArea"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 70
+                },
+                {
+                    "name": "2011",
+                    "value": 417
+                },
+                {
+                    "name": "2012",
+                    "value": 730
+                },
+                {
+                    "name": "2013",
+                    "value": 854
+                },
+                {
+                    "name": "2014",
+                    "value": 977
+                },
+                {
+                    "name": "2015",
+                    "value": 966
+                },
+                {
+                    "name": "2016",
+                    "value": 1147
+                },
+                {
+                    "name": "2017",
+                    "value": 20
+                }
+            ],
+            "name": "Fork count",
+            "color": "#4cacdb"
+        },
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 23
+                },
+                {
+                    "name": "2011",
+                    "value": 173
+                },
+                {
+                    "name": "2012",
+                    "value": 227
+                },
+                {
+                    "name": "2013",
+                    "value": 220
+                },
+                {
+                    "name": "2014",
+                    "value": 219
+                },
+                {
+                    "name": "2015",
+                    "value": 177
+                },
+                {
+                    "name": "2016",
+                    "value": 183
+                },
+                {
+                    "name": "2017",
+                    "value": 3
+                }
+            ],
+            "name": "Contributor fork count",
+            "color": "#9a01bc"
+        }
+    ]
+}

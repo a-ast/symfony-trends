@@ -230,7 +230,9 @@ $$ LANGUAGE plpgsql;
 
 
 --------------------------------------------------------
--- Contributors who started contributing during the given year withcontribution counts
+-- Contributors who started contributing during the given year
+-- with contribution counts
+--
 -- Parameters:
 -- * v_project_id - project id
 -- * v_year       - year of a first contribution
@@ -265,5 +267,36 @@ BEGIN
     GROUP BY cn.project_id, c.name, c.is_core_member
     ORDER BY contribution_count DESC, c.name;
 
+END;
+$$ LANGUAGE plpgsql;
+
+
+--------------------------------------------------------
+-- Forks per date
+--
+-- Parameters:
+-- * v_project_id
+-- * v_date_interval_format ('YYYY-MM-01' for month)
+-- * v_year - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_forks_per_date(int, text, int);
+CREATE FUNCTION fn_forks_per_date(v_project_id int, v_date_interval_format text, v_year int)
+    RETURNS table(date text, project_id int, fork_count bigint, contributor_fork_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        to_char(f.created_at, 'YYYY') AS date,
+        f.project_id,
+        count(f.id) as fork_count,
+        count(c.id) AS contributor_fork_count
+
+    FROM fork f
+        LEFT JOIN contributor c on c.github_id = f.owner_github_id
+    WHERE
+        (v_project_id IS NULL OR v_project_id = f.project_id)
+        AND (v_year IS NULL OR v_year = date_part('year', f.created_at))
+    GROUP BY date, f.project_id
+    ORDER BY date asc;
 END;
 $$ LANGUAGE plpgsql;
