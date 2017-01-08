@@ -95,12 +95,16 @@ class GithubApiSpec extends ObjectBehavior
     function it_should_fetch_forks(Forks $forksApi)
     {
         $responseData = [
-            'a' => 'b'
+            'id' => 1,
+            'owner' => ['id' => 100],
+            'created_at' => '2016-11-01T00:00:00Z',
+            'updated_at' => '2016-11-02T00:00:00Z',
+            'pushed_at' => '2016-11-03T00:00:00Z',
         ];
 
         $forksApi
             ->all('valinor', 'repo', ['page' => 1])
-            ->willReturn($responseData);
+            ->willReturn([$responseData]);
         $forksApi
             ->all('valinor', 'repo', ['page' => 2])
             ->willReturn([]);

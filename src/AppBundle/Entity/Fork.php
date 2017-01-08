@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,26 +44,25 @@ class Fork
     private $ownerGithubId;
 
     /**
-     * @var \DateTime
+     * @var DateTimeInterface
      *
-     * @ORM\Column(name="created_at", type="datetimetz")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTimeInterface
      *
-     * @ORM\Column(name="updated_at", type="datetimetz")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
     /**
-     * @var \DateTime
+     * @var DateTimeInterface
      *
-     * @ORM\Column(name="pushed_at", type="datetimetz")
+     * @ORM\Column(name="pushed_at", type="datetime")
      */
     private $pushedAt;
-
 
     /**
      * Get id
@@ -149,11 +149,11 @@ class Fork
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTimeInterface $createdAt
      *
      * @return Fork
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -163,7 +163,7 @@ class Fork
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTimeInterface
      */
     public function getCreatedAt()
     {
@@ -173,11 +173,11 @@ class Fork
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param DateTimeInterface $updatedAt
      *
      * @return Fork
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
@@ -187,7 +187,7 @@ class Fork
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return DateTimeInterface
      */
     public function getUpdatedAt()
     {
@@ -197,11 +197,11 @@ class Fork
     /**
      * Set pushedAt
      *
-     * @param \DateTime $pushedAt
+     * @param DateTimeInterface $pushedAt
      *
      * @return Fork
      */
-    public function setPushedAt($pushedAt)
+    public function setPushedAt(DateTimeInterface $pushedAt)
     {
         $this->pushedAt = $pushedAt;
 
@@ -211,7 +211,7 @@ class Fork
     /**
      * Get pushedAt
      *
-     * @return \DateTime
+     * @return DateTimeInterface
      */
     public function getPushedAt()
     {

@@ -132,6 +132,6 @@ services:
         lazy: true
         arguments:
             - '@api.github'
-            - '@repository.contributor'
+            - '@repository.fork'
         tags:
-            - { name: aggregator, alias: commits}
+            - { name: aggregator, alias: forks}

@@ -99,6 +99,11 @@ class DoctrineHelper
                 if (preg_match('/^\[(.*)\]$/', $value, $matches)) {
                     $expectedRow[$key] = explode(',', $matches[1]);
                 }
+
+                $matches = [];
+                if (preg_match('/^date\((.*)\)$/', $value, $matches)) {
+                    $expectedRow[$key] = new \DateTimeImmutable($matches[1]);
+                }
             }
 
             $expectedData[] = $expectedRow;
