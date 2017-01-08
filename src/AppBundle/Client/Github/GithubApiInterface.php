@@ -2,6 +2,7 @@
 namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 
@@ -21,4 +22,12 @@ interface GithubApiInterface
      * @return GithubUser
      */
     public function getUser($login);
+
+
+    /**
+     * @param string $repositoryPath
+     *
+     * @return GithubFork[]|\Iterator
+     */
+    public function getForks($repositoryPath);
 }

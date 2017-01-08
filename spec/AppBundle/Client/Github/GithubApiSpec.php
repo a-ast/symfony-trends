@@ -4,11 +4,13 @@ namespace spec\AppBundle\Client\Github;
 
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubUser;
 use Exception;
 use Github\Api\ApiInterface;
 use Github\Api\Repo;
 use Github\Api\Repository\Commits;
+use Github\Api\Repository\Forks;
 use Github\Api\User;
 use Github\Client;
 use PhpSpec\ObjectBehavior;
@@ -19,15 +21,19 @@ use Prophecy\Argument;
  */
 class GithubApiSpec extends ObjectBehavior
 {
-    function let(Client $client, Repo $repoApi, Commits $commitsApi, User $userApi)
+    function let(Client $client,
+        Repo $repoApi,
+        Commits $commitsApi,
+        User $userApi,
+        Forks $forksApi)
     {
         $this->beConstructedWith($client);
 
-        $client->api('repo')->willReturn($repoApi);
+        $client->repo()->willReturn($repoApi);
         $repoApi->commits()->willReturn($commitsApi);
+        $repoApi->forks()->willReturn($forksApi);
 
-        $client->api('user')->willReturn($userApi);
-
+        $client->user()->willReturn($userApi);
     }
 
     function it_is_initializable()
@@ -69,30 +75,8 @@ class GithubApiSpec extends ObjectBehavior
             ->willReturn([])
             ;
 
-        $this->getCommits('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29 GMT'))->shouldBeGithubCommits(4);
+        $this->getCommits('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29 GMT'))->shouldBeCollectionOf(GithubCommit::class, 4);
     }
-
-    public function getMatchers()
-    {
-        return [
-            'beGithubCommits' => function ($subject, $count) {
-                if (!$subject instanceof \Traversable) {
-                    throw new Exception('Return value should be instance of \Traversable');
-                }
-
-                $commits = iterator_to_array($subject);
-
-                foreach ($commits as $commit) {
-                    if (!$commit instanceof GithubCommit) {
-                        throw new Exception('Iterator element should be instance of GithubCommit');
-                    }
-                }
-
-                return $count === count($commits);
-            }
-        ];
-    }
-
 
     function it_should_fetch_user(User $userApi)
     {
@@ -107,4 +91,43 @@ class GithubApiSpec extends ObjectBehavior
         $user = $this->getUser('frodo');
         $user->shouldHaveType(GithubUser::class);
     }
+
+    function it_should_fetch_forks(Forks $forksApi)
+    {
+        $responseData = [
+            'a' => 'b'
+        ];
+
+        $forksApi
+            ->all('valinor', 'repo', ['page' => 1])
+            ->willReturn($responseData);
+        $forksApi
+            ->all('valinor', 'repo', ['page' => 2])
+            ->willReturn([]);
+
+        $this->getForks('valinor/repo')->shouldBeCollectionOf(GithubFork::class, 1);
+    }
+
+    public function getMatchers()
+    {
+        return [
+            'beCollectionOf' =>
+                function ($subject, $class, $count) {
+                    if (!$subject instanceof \Traversable) {
+                        throw new Exception('Return value should be instance of \Traversable');
+                    }
+
+                    $commits = iterator_to_array($subject);
+
+                    foreach ($commits as $commit) {
+                        if (!$commit instanceof $class) {
+                            throw new Exception(sprintf('Iterator element should be instance of %s', $class));
+                        }
+                    }
+
+                    return $count === count($commits);
+                }
+        ];
+    }
+
 }

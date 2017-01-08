@@ -1,34 +1,28 @@
 TODO
 ==============
 
+### To think:
 
-Move FakeClient to features
 Rename contribution table??
-Rename aggregator to GithubCommit??
 
-Aggregators
+#### Aggregators
 1. UserCountry (using geocoder)
 2. ContributorsPage (index contributor page, find sensiolabs user, find backlink to github)
 3. SensiolabsConnect - index all that have github link (see above), get additional info
 
-KW 1:
 
-1. aggregator_github_commit_history.feature more and more tests
-2. Get rid of phpunit tests (chaqnge to phpspec)
-4. extract getting countries using geocoder !!!!!!!!!!!!!!!!!!!
-
-KW 2:
+### KW 2:
 
 1. Inject projects in aggregators
 2. Aggregate commit changes
 
-KW 3:
+### KW 3:
 
 1. Aggregate PRs
 
 
 
-Charts
+# Charts
 
 - People to contributed monthly (most likely showing new contributors)
 - Forks by version

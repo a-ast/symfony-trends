@@ -2,6 +2,7 @@
 
 namespace AppBundle\Client\Github;
 
+use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
@@ -37,8 +38,8 @@ class GithubApi implements GithubApiInterface
 
         while ($commits = $this->getCommitsByPage($repositoryPath, $since, $page)) {
 
-            foreach ($commits as $commitData) {
-                yield GithubCommit::createFromGithubResponseData($commitData);
+            foreach ($commits as $commit) {
+                yield GithubCommit::createFromGithubResponseData($commit);
             }
 
             $page++;
@@ -60,7 +61,7 @@ class GithubApi implements GithubApiInterface
             $options['since'] = $since->format('Y-m-d\TH:i:s\Z');
         }
 
-        return $this->client->api('repo')->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
+        return $this->client->repo()->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
     }
 
     /**
@@ -70,7 +71,7 @@ class GithubApi implements GithubApiInterface
      */
     public function getUser($login)
     {
-        $data = $this->client->api('user')->show($login);
+        $data = $this->client->user()->show($login);
 
         return GithubUser::createFromGithubResponseData($data);
     }
@@ -87,5 +88,33 @@ class GithubApi implements GithubApiInterface
         $parts = explode('/', $repositoryPath);
 
         return $parts[1];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getForks($repositoryPath)
+    {
+        $page = 1;
+
+        while ($forks = $this->getForksByPage($repositoryPath, $page)) {
+
+            foreach ($forks as $fork) {
+                yield GithubFork::createFromGithubResponseData($fork);
+            }
+
+            $page++;
+        }
+    }
+
+    /**
+     * @param $repositoryPath
+     * @param integer $page
+     * @return array
+     */
+    protected function getForksByPage($repositoryPath, $page)
+    {
+        return $this->client->repo()->forks()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
+            ['page' => $page]);
     }
 }

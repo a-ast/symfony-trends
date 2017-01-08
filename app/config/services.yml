@@ -126,3 +126,12 @@ services:
             - '@repository.contributor'
         tags:
             - { name: aggregator, alias: 'SensiolabsConnect data'}
+
+    aggregator.github_fork:
+        class: AppBundle\Aggregator\GithubFork
+        lazy: true
+        arguments:
+            - '@api.github'
+            - '@repository.contributor'
+        tags:
+            - { name: aggregator, alias: commits}

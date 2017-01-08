@@ -20,7 +20,6 @@ class GithubFork implements AggregatorInterface
 
     public function __construct(GithubApiInterface $githubApi, ContributorRepository $contributorRepository)
     {
-        // TODO: write logic here
         $this->githubApi = $githubApi;
         $this->contributorRepository = $contributorRepository;
     }
@@ -30,6 +29,30 @@ class GithubFork implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
-        // TODO: Implement aggregate() method.
+        foreach ($this->githubApi->getForks($project->getGithubPath()) as $fork) {
+
+            $forkData = $fork->getData();
+
+            $sc = $forkData["stargazers_count"];
+            $wc = $forkData["watchers_count"];
+            $fc = $forkData["forks_count"];
+            $oic = $forkData["open_issues_count"];
+
+            $f = $forkData["forks"];
+            $oi = $forkData["open_issues"];
+            $w = $forkData["watchers"];
+            $p = $forkData["private"];
+
+            if ($fc > 0) {
+                print 'Forked: '.$forkData['full_name'].PHP_EOL;
+            }
+
+            if ($wc > 0) {
+                print 'Watched: '.$forkData['full_name'].PHP_EOL;
+            }
+
+            //print sprintf('%s %s %s %s %s %s %s %s', $sc, $wc, $w, $fc, $f, $oic, $oi, (int)$p).PHP_EOL;
+
+        }
     }
 }
