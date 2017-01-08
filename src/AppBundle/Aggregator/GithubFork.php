@@ -48,7 +48,6 @@ class GithubFork implements AggregatorInterface
                 ->setPushedAt($githubFork->getPushedAt());
 
             $this->forkRepository->persist($fork);
-
         }
 
         $this->forkRepository->flush();
