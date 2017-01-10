@@ -36,7 +36,13 @@ class GithubFork implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
+        $existingIds = $this->forkRepository->findGithubIds();
+
         foreach ($this->githubApi->getForks($project->getGithubPath()) as $githubFork) {
+
+            if (in_array($githubFork->getId(), $existingIds)) {
+                continue;
+            }
 
             $fork = new Fork();
             $fork

@@ -58,6 +58,11 @@ class GithubForkSpec extends ObjectBehavior
             ->willReturn([$fork]);
 
         $forkRepository
+            ->findGithubIds()
+            ->willReturn([])
+            ->shouldBeCalled();
+
+        $forkRepository
             ->persist(Argument::type(Fork::class))
             ->shouldBeCalled();
 
