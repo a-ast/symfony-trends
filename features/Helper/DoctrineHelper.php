@@ -56,16 +56,7 @@ class DoctrineHelper
             $entity = new $entityClass();
 
             foreach ($record as $propertyName => $propertyValue) {
-
-                if ('~' === $propertyValue) {
-                    $propertyValue = null;
-                }
-
-                $matches = [];
-                if (preg_match('/^\[(.*)\]$/', $propertyValue, $matches)) {
-                    $propertyValue = explode(',', $matches[1]);
-                }
-
+                $propertyValue = $this->processTableCellValue($propertyValue);
                 $propertyAccessor->setValue($entity, $propertyName, $propertyValue);
             }
 
@@ -91,19 +82,7 @@ class DoctrineHelper
         $expectedData = [];
         foreach ($records as &$expectedRow) {
             foreach ($expectedRow as $key => $value) {
-                if ('~' === $value) {
-                    $expectedRow[$key] = null;
-                }
-
-                $matches = [];
-                if (preg_match('/^\[(.*)\]$/', $value, $matches)) {
-                    $expectedRow[$key] = explode(',', $matches[1]);
-                }
-
-                $matches = [];
-                if (preg_match('/^date\((.*)\)$/', $value, $matches)) {
-                    $expectedRow[$key] = new \DateTimeImmutable($matches[1]);
-                }
+                $expectedRow[$key] = $this->processTableCellValue($value);
             }
 
             $expectedData[] = $expectedRow;
@@ -150,5 +129,28 @@ class DoctrineHelper
         }
 
         return $sequences;
+    }
+
+    /**
+     * @param $value
+     * @return array|\DateTimeImmutable|null
+     */
+    private function processTableCellValue($value)
+    {
+        if ('~' === $value) {
+            return null;
+        }
+
+        $matches = [];
+        if (preg_match('/^\[(.*)\]$/', $value, $matches)) {
+            return explode(',', $matches[1]);
+        }
+
+        $matches = [];
+        if (preg_match('/^date\((.*)\)$/', $value, $matches)) {
+            return new \DateTimeImmutable($matches[1]);
+        }
+
+        return $value;
     }
 }
