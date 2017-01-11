@@ -5,37 +5,36 @@ namespace AppBundle\Aggregator\Helper;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class ContributorExtractor
+class ContributorExtractor implements CrawlerExtractorInterface
 {
-    public function extract($html)
+    public function extract(Crawler $crawler)
     {
-        $domCrawler = new Crawler($html);
-
         $contributors = [];
 
-        $domCrawler
+        $crawler
             ->filterXPath('//ol[position()>1]/li')
             ->each(function(Crawler $nodeCrawler) use (&$contributors) {
 
                 $name = '';
-                $slUrl = '';
+                $url = '';
                 $nodeCrawler->filterXPath('li/text()')
                     ->each(function(Crawler $textNode) use (&$name){
                         $name .= trim($textNode->text());
                     });
 
-                if('' === $name) {
+                if ('' === $name) {
                     $urlNode = $nodeCrawler->filterXPath('li/a');
 
                     $name = trim($urlNode->text());
-                    $slUrl = trim($urlNode->attr('href'));
-
+                    $url = trim($urlNode->attr('href'));
                 }
 
-                $contributors[] = [
-                    'name' => $name,
-                    'sensiolabs_url' => $slUrl,
-                ];
+                if ('' !== $url) {
+                    $contributors[] = [
+                        'name' => $name,
+                        'url' => $url,
+                    ];
+                }
             });
 
         return $contributors;
