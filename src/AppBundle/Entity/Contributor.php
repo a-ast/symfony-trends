@@ -96,6 +96,13 @@ class Contributor
     /**
      * @var bool
      *
+     * @ORM\Column(name="is_ignored_location", type="boolean", options={"default": "0"})
+     */
+    private $isIgnoredLocation = false;
+
+    /**
+     * @var bool
+     *
      * @ORM\Column(name="is_core_member", type="boolean", options={"default": "0"})
      */
     private $isCoreMember = false;
@@ -356,6 +363,26 @@ class Contributor
         $this->githubLocation = $githubLocation;
 
         return $this;
+    }
+
+    /**
+     * @param boolean $isIgnoredLocation
+     *
+     * @return $this
+     */
+    public function setIsIgnoredLocation($isIgnoredLocation)
+    {
+        $this->isIgnoredLocation = $isIgnoredLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIgnoredLocation()
+    {
+        return $this->isIgnoredLocation;
     }
 
     /**

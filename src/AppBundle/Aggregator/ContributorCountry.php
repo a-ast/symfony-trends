@@ -7,7 +7,6 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use Exception;
 use Geocoder\Geocoder;
-use Geocoder\Model\Address;
 
 class ContributorCountry implements AggregatorInterface
 {
@@ -46,15 +45,17 @@ class ContributorCountry implements AggregatorInterface
                 continue;
             }
 
-            /** @var Address $address */
-            $address = $addresses[0];
+            $address = $addresses->first();
 
             $country = $address->getCountry();
-            $name = $country->getName();
 
-            if (!empty($name)) {
-                $contributor->setCountry($name);
-                $this->contributorRepository->saveContributor($contributor);
+            if (null !== $country->getName()) {
+                $name = $country->getName();
+
+                if (!empty($name)) {
+                    $contributor->setCountry($name);
+                    $this->contributorRepository->saveContributor($contributor);
+                }
             }
         }
     }

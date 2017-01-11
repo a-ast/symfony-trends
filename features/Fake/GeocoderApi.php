@@ -5,6 +5,7 @@ namespace features\Fake;
 
 use Geocoder\Geocoder;
 use Geocoder\Model\Address;
+use Geocoder\Model\AddressCollection;
 use Geocoder\Model\Country;
 
 class GeocoderApi implements Geocoder
@@ -23,7 +24,7 @@ class GeocoderApi implements Geocoder
         $address = new Address(null, null, null, null, null, null, null, null,
             new Country($countryName, 'SR'));
 
-        return new \ArrayIterator([$address]);
+        return new AddressCollection([$address]);
     }
 
     /**

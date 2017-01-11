@@ -6,7 +6,7 @@ Feature: Contributor Country Aggregator
       | Three-rings | Three-rings | elrond/3rings | #000  |
 
 
-  Scenario: Aggregate contributor country using Github location
+  Scenario: Aggregator sets country for a contributor using their Github location
 
     Given there are "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country | gitEmails | gitNames |
@@ -49,3 +49,32 @@ Feature: Contributor Country Aggregator
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country |
       | frodo | Bag end        |         |
+
+  Scenario: Aggregator does not set country if Geocoder API returns null as country name
+
+    Given there are "AppBundle\Entity\Contributor" entities:
+      | name  | githubLocation | country | gitEmails | gitNames |
+      | frodo | Bag end        |         | []        | []       |
+    Given Geocoder API returns location data:
+      | location | country |
+      | Bag end  | ~       |
+    When I aggregate "contributor countries" for project 1
+
+    Then I should see "AppBundle\Entity\Contributor" entities:
+      | name  | githubLocation | country |
+      | frodo | Bag end        |         |
+
+
+  Scenario: Aggregator does not set country for contributors with an "is ignored location" flag
+
+    Given there are "AppBundle\Entity\Contributor" entities:
+      | name  | githubLocation | country | isIgnoredLocation | gitEmails | gitNames |
+      | frodo | Bag end        |         | 1                 | []        | []       |
+    Given Geocoder API returns location data:
+      | location  | country |
+      | Bag end   | Shire   |
+    When I aggregate "contributor countries" for project 1
+
+    Then I should see "AppBundle\Entity\Contributor" entities:
+      | name  | githubLocation | country | isIgnoredLocation |
+      | frodo | Bag end        |         | 1                 |

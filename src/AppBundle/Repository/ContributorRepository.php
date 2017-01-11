@@ -162,6 +162,7 @@ class ContributorRepository extends Repository
             ->select()
             ->where('c.githubLocation != \'\'')
             ->andWhere('c.country = \'\'')
+            ->andWhere('c.isIgnoredLocation = false')
         ;
 
         $result = $qb->getQuery()->getResult();
