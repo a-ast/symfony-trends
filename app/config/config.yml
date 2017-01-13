@@ -1,10 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services-repositories.yml }
+    - { resource: services_repositories.yml }
     - { resource: services.yml }
-    - { resource: trends-aggregators.yml }
-    - { resource: trends-charts.yml }
+    - { resource: trends_aggregators.yml }
+    - { resource: trends_charts.yml }
 
 parameters:
     locale: en
