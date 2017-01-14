@@ -7,7 +7,8 @@ use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubUser;
 use Exception;
-use Github\Api\ApiInterface;
+use Github\Api\Issue;
+use Github\Api\PullRequest;
 use Github\Api\Repo;
 use Github\Api\Repository\Commits;
 use Github\Api\Repository\Forks;
@@ -25,13 +26,18 @@ class GithubApiSpec extends ObjectBehavior
         Repo $repoApi,
         Commits $commitsApi,
         User $userApi,
-        Forks $forksApi)
+        Forks $forksApi,
+        PullRequest $pullRequestApi,
+        Issue $issueApi)
     {
         $this->beConstructedWith($client);
 
         $client->repo()->willReturn($repoApi);
         $repoApi->commits()->willReturn($commitsApi);
         $repoApi->forks()->willReturn($forksApi);
+
+        $client->pullRequests()->willReturn($pullRequestApi);
+        $client->issues()->willReturn($issueApi);
 
         $client->user()->willReturn($userApi);
     }
@@ -110,6 +116,24 @@ class GithubApiSpec extends ObjectBehavior
             ->willReturn([]);
 
         $this->getForks('valinor/repo')->shouldBeCollectionOf(GithubFork::class, 1);
+    }
+
+    function it_should_fetch_pull_requests(PullRequest $pullRequestApi)
+    {
+        $pullRequestApi
+            ->all('valinor', 'repo', ['page' => 1])
+            ->willReturn([]);
+
+        $this->getPullRequests('valinor/repo');
+    }
+
+    function it_should_fetch_pull_issues(Issue $issueApi)
+    {
+        $issueApi
+            ->all('valinor', 'repo', ['page' => 1])
+            ->willReturn([]);
+
+        $this->getIssues('valinor/repo');
     }
 
     public function getMatchers()

@@ -6,6 +6,14 @@ services:
     api.http_client.buzz:
         class: Http\Adapter\Buzz\Client
 
+
+    api.cache:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        arguments:
+            - ''
+            - 0
+            - 'var/api_cache'
+
     api.geocoder:
         class: Geocoder\Provider\GoogleMaps
         arguments:
@@ -31,6 +39,8 @@ services:
         class: Github\HttpClient\Builder
         arguments:
             - '@api.http_client'
+        calls:
+            - ['addCache', ['@api.cache']]
 
     github_api.client_configurator:
         class: AppBundle\Client\Github\ClientConfigurator
@@ -135,3 +145,11 @@ services:
             - '@repository.fork'
         tags:
             - { name: aggregator, alias: forks}
+
+    aggregator.pull_request:
+        class: AppBundle\Aggregator\PullRequest
+        lazy: true
+        arguments:
+            - '@api.github'
+        tags:
+            - { name: aggregator, alias: 'pull requests'}

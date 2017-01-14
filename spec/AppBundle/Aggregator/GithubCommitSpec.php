@@ -64,7 +64,7 @@ class GithubCommitSpec extends ObjectBehavior
             ],
         ]);
 
-        $user = GithubUser::createFromGithubResponseData([
+        $user = GithubUser::createFromResponseData([
             'name' => 'Frodo Baggins',
             'email' => 'frodo@shire',
             'location' => 'Bag End',

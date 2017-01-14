@@ -19,7 +19,7 @@ class GithubUserSpec extends ObjectBehavior
 
     function it_can_be_created_from_resonse_data()
     {
-        $this->beConstructedThrough('createFromGithubResponseData', [[
+        $this->beConstructedThrough('createFromResponseData', [[
             'name' =>'frodo',
             'email' => 'frodo@shire',
             'location' => 'Bag End'

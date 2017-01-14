@@ -30,4 +30,18 @@ interface GithubApiInterface
      * @return GithubFork[]|\Iterator
      */
     public function getForks($repositoryPath);
+
+    /**
+     * @param $repositoryPath
+     *
+     * @return array
+     */
+    public function getPullRequests($repositoryPath);
+
+    /**
+     * @param $repositoryPath
+     *
+     * @return array
+     */
+    public function getIssues($repositoryPath);
 }

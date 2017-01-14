@@ -22,11 +22,12 @@ Rename contribution table??
 2. Aggregate commit changes
 
 
-
 # Charts
 
+- Real Contributors: x - commit count, y - age of last commit (frequency?)
+
+- PR/Issue Issue closers (rating, avarage time) 
 - People to contributed monthly (most likely showing new contributors)
-- Forks by version
 - Symfony bundle usage in github
 
 
@@ -38,7 +39,7 @@ Check why this commit were missing
 '999f769ba545e3eb9fb91df5e2fce7320834b9b2'
 
 
-Improve solution for Githb API client
+Improve solution for Github API client
 
 * use Mock for fake responses https://github.com/php-http/mock-client
 * use bundle to simplify config http://docs.php-http.org/en/latest/integrations/symfony-bundle.html

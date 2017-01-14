@@ -173,7 +173,7 @@ class Contribution
     /**
      * Get commitedAt
      *
-     * @return \DateTime
+     * @return DateTimeInterface
      */
     public function getCommitedAt()
     {

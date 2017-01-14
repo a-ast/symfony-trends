@@ -73,7 +73,7 @@ class GithubApi implements GithubApiInterface
     {
         $data = $this->client->user()->show($login);
 
-        return GithubUser::createFromGithubResponseData($data);
+        return GithubUser::createFromResponseData($data);
     }
 
     private function getOwner($repositoryPath)
@@ -112,9 +112,67 @@ class GithubApi implements GithubApiInterface
      * @param integer $page
      * @return array
      */
-    protected function getForksByPage($repositoryPath, $page)
+    private function getForksByPage($repositoryPath, $page = 1)
     {
         return $this->client->repo()->forks()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
             ['page' => $page]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getPullRequests($repositoryPath)
+    {
+        $page = 1;
+
+        while ($items = $this->getPullRequestsByPage($repositoryPath, $page)) {
+
+            foreach ($items as $item) {
+                yield $item;
+            }
+
+            $page++;
+        }
+    }
+
+    /**
+     * @param $repositoryPath
+     * @param integer $page
+     *
+     * @return array
+     */
+    private function getPullRequestsByPage($repositoryPath, $page = 1)
+    {
+        return $this->client->pullRequests()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
+            ['page' => $page, 'state' => 'all']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getIssues($repositoryPath)
+    {
+        $page = 1;
+
+        while ($items = $this->getIssuesByPage($repositoryPath, $page)) {
+
+            foreach ($items as $item) {
+                yield $item;
+            }
+
+            $page++;
+        }
+    }
+
+    /**
+     * @param $repositoryPath
+     * @param integer $page
+     *
+     * @return array
+     */
+    private function getIssuesByPage($repositoryPath, $page = 1)
+    {
+        return $this->client->issues()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
+            ['page' => $page, 'state' => 'all']);
     }
 }

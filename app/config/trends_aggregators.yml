@@ -44,6 +44,12 @@ parameters:
             projects: ['symfony-docs']
             options: []
 
+        github_pr:
+            service: 'aggregator.pull_request'
+            projects: ['symfony']
+            options: []
+
+
         # Checkers
         github_commits_symfony_checker:
             service: 'aggregator.github_commit_checker'

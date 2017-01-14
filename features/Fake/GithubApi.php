@@ -39,7 +39,7 @@ class GithubApi implements GithubApiInterface
     {
         $data = $this->findBy('users', 'login', $login);
 
-        return GithubUser::createFromGithubResponseData($data);
+        return GithubUser::createFromResponseData($data);
     }
 
     /**
@@ -55,5 +55,25 @@ class GithubApi implements GithubApiInterface
         }
 
         return new \ArrayIterator($forks);
+    }
+
+    /**
+     * @param $repositoryPath
+     *
+     * @return array
+     */
+    public function getPullRequests($repositoryPath)
+    {
+        // TODO: Implement getPullRequests() method.
+    }
+
+    /**
+     * @param $repositoryPath
+     *
+     * @return array
+     */
+    public function getIssues($repositoryPath)
+    {
+        // TODO: Implement getIssues() method.
     }
 }
