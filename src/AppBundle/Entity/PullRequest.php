@@ -39,7 +39,7 @@ class PullRequest
     /**
      * @var int
      *
-     * @ORM\Column(name="number", type="integer", unique=true)
+     * @ORM\Column(name="number", type="integer")
      */
     private $number;
 
