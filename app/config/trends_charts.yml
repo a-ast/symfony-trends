@@ -294,39 +294,28 @@ parameters:
                     dimensions: { name: name, value: contribution_count }
                     limit: 15
 
-        forks_per_date_symfony:
+        pull_requests_per_date_symfony:
             title: 'Forks of Symfony code per year'
             type: stairArea
             series:
                 -
-                    title: Fork count
+                    title: PR count
                     color: '#4cacdb'
-                    data_source: fn_forks_per_date
+                    data_source: fn_pull_requests_per_date
                     criteria:   { project_id: 1, date_format: 'YYYY', year: null }
-                    dimensions: { name: date, value: fork_count }
-                -
-                    title: Contributor fork count
-                    color: '#9a01bc'
-                    data_source: fn_forks_per_date
-                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
-                    dimensions: { name: date, value: contributor_fork_count }
+                    dimensions: { name: date, value: pr_count }
 
-        forks_per_date_symfony_docs:
+        pull_requests_per_date_symfony_docs:
             title: 'Forks of Symfony docs per year'
             type: stairArea
             series:
                 -
-                    title: Fork count
+                    title: PR count
                     color: '#7aba20'
-                    data_source: fn_forks_per_date
+                    data_source: fn_pull_requests_per_date
                     criteria:   { project_id: 2, date_format: 'YYYY', year: null }
-                    dimensions: { name: date, value: fork_count }
-                -
-                    title: Contributor fork count
-                    color: '#9a01bc'
-                    data_source: fn_forks_per_date
-                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
-                    dimensions: { name: date, value: contributor_fork_count }
+                    dimensions: { name: date, value: pr_count }
+
 
 
     trends-layout:
@@ -345,8 +334,8 @@ parameters:
                 - { chart: maintenance_commits_per_year_symfony_docs }
                 - { chart: contributor_count_per_year_symfony }
                 - { chart: contributor_count_per_year_symfony_docs }
-                - { chart: forks_per_date_symfony }
-                - { chart: forks_per_date_symfony_docs }
+                - { chart: pull_requests_per_date_symfony }
+                - { chart: pull_requests_per_date_symfony_docs }
 
         symfony:
             title: 'Symfony code'

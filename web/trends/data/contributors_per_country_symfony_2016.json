@@ -79,7 +79,7 @@
                 },
                 {
                     "iso": "ES",
-                    "value": 12
+                    "value": 13
                 },
                 {
                     "iso": "FI",
@@ -166,8 +166,12 @@
                     "value": 4
                 },
                 {
+                    "iso": "NZ",
+                    "value": 1
+                },
+                {
                     "iso": "PL",
-                    "value": 15
+                    "value": 16
                 },
                 {
                     "iso": "PT",
