@@ -33,7 +33,12 @@ class GithubUser
         $this->location = $location;
     }
 
-    public static function createFromGithubResponseData(array $responseData)
+    /**
+     * @param array $responseData
+     *
+     * @return GithubUser
+     */
+    public static function createFromResponseData(array $responseData)
     {
         return new self(
             $responseData['name'],
