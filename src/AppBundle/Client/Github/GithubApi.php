@@ -4,6 +4,7 @@ namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Github\Client;
@@ -56,10 +57,7 @@ class GithubApi implements GithubApiInterface
     private function getCommitsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
         $options = ['page' => $page];
-
-        if (null !== $since) {
-            $options['since'] = $since->format('Y-m-d\TH:i:s\Z');
-        }
+        $options = $this->addSinceOption($options, $since);
 
         return $this->client->repo()->commits()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath), $options);
     }
@@ -121,14 +119,14 @@ class GithubApi implements GithubApiInterface
     /**
      * @inheritdoc
      */
-    public function getPullRequests($repositoryPath)
+    public function getPullRequests($repositoryPath, DateTimeInterface $since = null)
     {
         $page = 1;
 
-        while ($items = $this->getPullRequestsByPage($repositoryPath, $page)) {
+        while ($items = $this->getPullRequestsByPage($repositoryPath, $since, $page)) {
 
             foreach ($items as $item) {
-                yield $item;
+                yield GithubPullRequest::createFromResponseData($item);
             }
 
             $page++;
@@ -137,14 +135,21 @@ class GithubApi implements GithubApiInterface
 
     /**
      * @param $repositoryPath
+     * @param DateTimeInterface $since
      * @param integer $page
      *
      * @return array
      */
-    private function getPullRequestsByPage($repositoryPath, $page = 1)
+    private function getPullRequestsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
-        return $this->client->pullRequests()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
-            ['page' => $page, 'state' => 'all']);
+        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc'];
+
+        $options = $this->addSinceOption($options, $since);
+
+        return $this->client->pullRequests()->all(
+            $this->getOwner($repositoryPath),
+            $this->getRepo($repositoryPath),
+            $options);
     }
 
     /**
@@ -174,5 +179,19 @@ class GithubApi implements GithubApiInterface
     {
         return $this->client->issues()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
             ['page' => $page, 'state' => 'all']);
+    }
+
+    /**
+     * @param array $options
+     * @param DateTimeInterface $since
+     * @return mixed
+     */
+    private function addSinceOption(array $options, DateTimeInterface $since = null)
+    {
+        if (null !== $since) {
+            $options['since'] = $since->format('Y-m-d\TH:i:s\Z');
+        }
+
+        return $options;
     }
 }

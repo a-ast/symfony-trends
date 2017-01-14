@@ -25,6 +25,13 @@ class PullRequest
     /**
      * @var int
      *
+     * @ORM\Column(name="project_id", type="integer")
+     */
+    private $projectId;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="github_id", type="integer", unique=true)
      */
     private $githubId;
@@ -95,35 +102,28 @@ class PullRequest
     /**
      * @var string
      *
-     * @ORM\Column(name="merge_sha", type="text", nullable=true)
+     * @ORM\Column(name="merge_sha", type="text")
      */
     private $mergeSha;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="head_sha", type="text", nullable=true)
+     * @ORM\Column(name="head_sha", type="text")
      */
     private $headSha;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="base_sha", type="text", nullable=true)
+     * @ORM\Column(name="base_sha", type="text")
      */
     private $baseSha;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="base_label", type="text", nullable=true)
-     */
-    private $baseLabel;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="base_ref", type="text", nullable=true)
+     * @ORM\Column(name="base_ref", type="text")
      */
     private $baseRef;
 
@@ -136,6 +136,30 @@ class PullRequest
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set projectId
+     *
+     * @param integer $projectId
+     *
+     * @return $this
+     */
+    public function setProjectId($projectId)
+    {
+        $this->projectId = $projectId;
+
+        return $this;
+    }
+
+    /**
+     * Get projectId
+     *
+     * @return int
+     */
+    public function getProjectId()
+    {
+        return $this->projectId;
     }
 
     /**
@@ -448,30 +472,6 @@ class PullRequest
     public function getBaseSha()
     {
         return $this->baseSha;
-    }
-
-    /**
-     * Set baseLabel
-     *
-     * @param string $baseLabel
-     *
-     * @return PullRequest
-     */
-    public function setBaseLabel($baseLabel)
-    {
-        $this->baseLabel = $baseLabel;
-
-        return $this;
-    }
-
-    /**
-     * Get baseLabel
-     *
-     * @return string
-     */
-    public function getBaseLabel()
-    {
-        return $this->baseLabel;
     }
 
     /**

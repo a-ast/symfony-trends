@@ -3,6 +3,7 @@ namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 
@@ -33,10 +34,11 @@ interface GithubApiInterface
 
     /**
      * @param $repositoryPath
+     * @param DateTimeInterface $since
      *
-     * @return array
+     * @return GithubPullRequest[]|\Iterator
      */
-    public function getPullRequests($repositoryPath);
+    public function getPullRequests($repositoryPath, DateTimeInterface $since = null);
 
     /**
      * @param $repositoryPath

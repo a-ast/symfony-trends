@@ -33,6 +33,12 @@ services:
         arguments:
             - AppBundle\Entity\SensiolabsUser
 
+    repository.pull_request:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\PullRequest
+
     repository.fork:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]

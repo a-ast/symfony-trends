@@ -46,7 +46,7 @@ parameters:
 
         github_pr:
             service: 'aggregator.pull_request'
-            projects: ['symfony']
+            projects: ['symfony', 'symfony-docs']
             options: []
 
 

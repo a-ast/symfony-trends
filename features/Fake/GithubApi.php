@@ -6,6 +6,7 @@ namespace features\Fake;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
@@ -57,15 +58,7 @@ class GithubApi implements GithubApiInterface
         return new \ArrayIterator($forks);
     }
 
-    /**
-     * @param $repositoryPath
-     *
-     * @return array
-     */
-    public function getPullRequests($repositoryPath)
-    {
-        // TODO: Implement getPullRequests() method.
-    }
+
 
     /**
      * @param $repositoryPath
@@ -75,5 +68,16 @@ class GithubApi implements GithubApiInterface
     public function getIssues($repositoryPath)
     {
         // TODO: Implement getIssues() method.
+    }
+
+    /**
+     * @param $repositoryPath
+     * @param DateTimeInterface $since
+     *
+     * @return GithubPullRequest[]|\Iterator
+     */
+    public function getPullRequests($repositoryPath, DateTimeInterface $since = null)
+    {
+        // TODO: Implement getPullRequests() method.
     }
 }

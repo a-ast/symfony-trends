@@ -300,3 +300,32 @@ BEGIN
     ORDER BY date asc;
 END;
 $$ LANGUAGE plpgsql;
+
+
+--------------------------------------------------------
+-- Pull requests per date
+--
+-- Parameters:
+-- * v_project_id
+-- * v_date_interval_format ('YYYY-MM-01' for month)
+-- * v_year - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_pull_requests_per_date(int, text, int);
+CREATE FUNCTION fn_pull_requests_per_date(v_project_id int, v_date_interval_format text, v_year int)
+    RETURNS table(date text, project_id int, pr_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        to_char(p.created_at, 'YYYY') AS date,
+        p.project_id,
+        count(p.id) as pr_count
+
+    FROM pull_request p
+    WHERE
+        (v_project_id IS NULL OR v_project_id = p.project_id)
+        AND (v_year IS NULL OR v_year = date_part('year', p.created_at))
+    GROUP BY date, p.project_id
+    ORDER BY date asc;
+END;
+$$ LANGUAGE plpgsql;

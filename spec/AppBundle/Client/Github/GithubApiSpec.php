@@ -5,6 +5,7 @@ namespace spec\AppBundle\Client\Github;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use Exception;
 use Github\Api\Issue;
@@ -98,36 +99,40 @@ class GithubApiSpec extends ObjectBehavior
         $user->shouldHaveType(GithubUser::class);
     }
 
-    function it_should_fetch_forks(Forks $forksApi)
-    {
-        $responseData = [
-            'id' => 1,
-            'owner' => ['id' => 100],
-            'created_at' => '2016-11-01T00:00:00Z',
-            'updated_at' => '2016-11-02T00:00:00Z',
-            'pushed_at' => '2016-11-03T00:00:00Z',
-        ];
-
-        $forksApi
-            ->all('valinor', 'repo', ['page' => 1])
-            ->willReturn([$responseData]);
-        $forksApi
-            ->all('valinor', 'repo', ['page' => 2])
-            ->willReturn([]);
-
-        $this->getForks('valinor/repo')->shouldBeCollectionOf(GithubFork::class, 1);
-    }
-
     function it_should_fetch_pull_requests(PullRequest $pullRequestApi)
     {
-        $pullRequestApi
-            ->all('valinor', 'repo', ['page' => 1])
-            ->willReturn([]);
+        $responseData = [
+            'id' => 100,
+            'number' => 200,
+            'state' => 'closed',
+            'title' => '[Ring] I will take the Ring...',
+            'user' => [
+                'id' => 200,
+            ],
+            'body' => '...though I do not know the way.',
+            'created_at' => '2010-01-01T00:00:00Z',
+            'updated_at' => '2010-01-02T00:00:00Z',
+            'closed_at' => '2010-01-03T00:00:00Z',
+            'merged_at' => '2010-01-04T00:00:00Z',
+            'merge_commit_sha' => 'xxx',
+            'head' => [
+                'sha' => 'yyy',
+            ],
+            'base' => [
+                'label' => 'Ring:1.0',
+                'ref' => '1.0',
+                'sha' => 'zzz',
+            ],
+        ];
 
-        $this->getPullRequests('valinor/repo');
+        $pullRequestApi
+            ->all('valinor', 'repo', Argument::type('array'))
+            ->willReturn([$responseData], []);
+
+        $this->getPullRequests('valinor/repo')->shouldBeCollectionOf(GithubPullRequest::class, 1);;
     }
 
-    function it_should_fetch_pull_issues(Issue $issueApi)
+    function it_should_fetch_issues(Issue $issueApi)
     {
         $issueApi
             ->all('valinor', 'repo', ['page' => 1])
