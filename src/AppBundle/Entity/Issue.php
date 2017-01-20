@@ -46,7 +46,7 @@ class Issue
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=50)
+     * @ORM\Column(name="state", type="text")
      */
     private $state;
 
