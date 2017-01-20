@@ -1,37 +1,14 @@
 parameters:
     aggregators:
 
-        contributor_page_symfony:
-            service: 'aggregator.contributor_page'
-            options:
-                url: 'http://symfony.com/contributors/code'
-
-        contributor_page_symfony_docs:
-            service: 'aggregator.contributor_page'
-            options:
-                url: 'http://symfony.com/contributors/doc'
-
         contributor_country:
             service: 'aggregator.contributor_country'
             projects: ['symfony']
             options: []
 
-        github_user_data:
-            service: 'aggregator.github_user_data'
-            options: []
-
-        github_commits_symfony:
+        github_commits:
             service: 'aggregator.github_commit'
-            projects: ['symfony']
-            options: []
-
-        github_commits_symfony_docs:
-            service: 'aggregator.github_commit'
-            projects: ['symfony-docs']
-            options: []
-
-        sensiolabs_connect:
-            service: 'aggregator.sensiolabs_connect'
+            projects: ['symfony', 'symfony-docs']
             options: []
 
         github_issues:

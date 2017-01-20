@@ -1,0 +1,76 @@
+{
+    "options": {
+        "type": "pie"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Feature",
+                    "value": 201
+                },
+                {
+                    "name": "Bug",
+                    "value": 182
+                },
+                {
+                    "name": "Form",
+                    "value": 156
+                },
+                {
+                    "name": "Status: Needs Review",
+                    "value": 149
+                },
+                {
+                    "name": "Enhancement",
+                    "value": 140
+                },
+                {
+                    "name": "Security",
+                    "value": 73
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 55
+                },
+                {
+                    "name": "HttpFoundation",
+                    "value": 51
+                },
+                {
+                    "name": "Validator",
+                    "value": 49
+                },
+                {
+                    "name": "Console",
+                    "value": 32
+                },
+                {
+                    "name": "RFC",
+                    "value": 29
+                },
+                {
+                    "name": "Translator",
+                    "value": 22
+                },
+                {
+                    "name": "DependencyInjection",
+                    "value": 22
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 21
+                },
+                {
+                    "name": "Routing",
+                    "value": 20
+                },
+                {
+                    "name": "HttpKernel",
+                    "value": 20
+                }
+            ],
+            "name": "Open issues"
+        }
+    ]
+}

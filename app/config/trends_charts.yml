@@ -295,7 +295,7 @@ parameters:
                     limit: 15
 
         pull_requests_per_date_symfony:
-            title: 'Forks of Symfony code per year'
+            title: 'Pull requests to Symfony code per year'
             type: stairArea
             series:
                 -
@@ -306,7 +306,7 @@ parameters:
                     dimensions: { name: date, value: pr_count }
 
         pull_requests_per_date_symfony_docs:
-            title: 'Forks of Symfony docs per year'
+            title: 'Pull requests to Symfony docs per year'
             type: stairArea
             series:
                 -
@@ -316,6 +316,46 @@ parameters:
                     criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: pr_count }
 
+
+        issues_symfony_per_label_open:
+            title: 'Open issues of Symfony code'
+            type: pie
+            series:
+                -
+                    title: Open issues
+                    data_source: fn_issue_labels
+                    criteria:   { project_id: 1, state: 'open', year: null, min_count: 20 }
+                    dimensions: { name: label, value: issue_count }
+
+        issues_symfony_per_label_closed:
+            title: 'Closed issues of Symfony code'
+            type: pie
+            series:
+                -
+                    title: Closed issues
+                    data_source: fn_issue_labels
+                    criteria:   { project_id: 1, state: 'closed', year: null, min_count: 100 }
+                    dimensions: { name: label, value: issue_count }
+
+        issues_symfony_per_label_all:
+            title: 'All issues of Symfony code'
+            type: pie
+            series:
+                -
+                    title: All issues
+                    data_source: fn_issue_labels
+                    criteria:   { project_id: 1, state: null, year: null, min_count: 100 }
+                    dimensions: { name: label, value: issue_count }
+
+        issues_symfony_per_label_all_2017:
+            title: 'All issues of Symfony code in 2017'
+            type: pie
+            series:
+                -
+                    title: All issues
+                    data_source: fn_issue_labels
+                    criteria:   { project_id: 1, state: null, year: 2017, min_count: 3 }
+                    dimensions: { name: label, value: issue_count }
 
 
     trends-layout:
@@ -336,6 +376,10 @@ parameters:
                 - { chart: contributor_count_per_year_symfony_docs }
                 - { chart: pull_requests_per_date_symfony }
                 - { chart: pull_requests_per_date_symfony_docs }
+                - { chart: issues_symfony_per_label_open }
+                - { chart: issues_symfony_per_label_closed }
+                - { chart: issues_symfony_per_label_all }
+                - { chart: issues_symfony_per_label_all_2017 }
 
         symfony:
             title: 'Symfony code'

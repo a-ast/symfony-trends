@@ -176,7 +176,7 @@ CREATE VIEW vw_maintenance_contributions_per_year AS
   group by
       to_char(cn.commited_at, 'YYYY'),
       cn.project_id
-  ORDER BY date asc;
+  ORDER BY date ASC;
 
 --------------------------------------------------------
 -- New contributors per year
@@ -198,7 +198,7 @@ CREATE VIEW vw_new_contributors_per_year AS
       ORDER BY contributor_id ASC
     ) AS fc
     GROUP BY fc.project_id, date
-    ORDER BY date asc;
+    ORDER BY date ASC;
 
 --------------------------------------------------------
 -- Contributors with their contribution counts
@@ -297,7 +297,7 @@ BEGIN
         (v_project_id IS NULL OR v_project_id = f.project_id)
         AND (v_year IS NULL OR v_year = date_part('year', f.created_at))
     GROUP BY date, f.project_id
-    ORDER BY date asc;
+    ORDER BY date ASC;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -326,6 +326,42 @@ BEGIN
         (v_project_id IS NULL OR v_project_id = p.project_id)
         AND (v_year IS NULL OR v_year = date_part('year', p.created_at))
     GROUP BY date, p.project_id
-    ORDER BY date asc;
+    ORDER BY date ASC;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+--------------------------------------------------------
+-- Issue labels
+--
+-- Parameters:
+-- * v_project_id
+-- * v_state
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_issue_labels(int, text, int, int);
+CREATE FUNCTION fn_issue_labels(v_project_id int, v_state text, v_year int, v_min_count int)
+    RETURNS table(label text, project_id int, issue_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        labels.label,
+        labels.project_id,
+        count(*) as issue_count
+    FROM
+    (
+        SELECT
+            i.id, i.project_id, i.state, i.created_at, unnest(string_to_array(i.labels, ',')) AS label
+        FROM issue i
+    ) labels
+    WHERE
+        (v_project_id IS NULL OR v_project_id = labels.project_id)
+        AND (v_state IS NULL OR v_state = labels.state)
+        AND (v_year IS NULL OR v_year = date_part('year', labels.created_at))
+    GROUP BY labels.label, labels.project_id
+    HAVING count(*) >= COALESCE(v_min_count, 1)
+    ORDER BY issue_count DESC;
+
 END;
 $$ LANGUAGE plpgsql;
