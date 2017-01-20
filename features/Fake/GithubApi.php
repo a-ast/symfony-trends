@@ -58,25 +58,18 @@ class GithubApi implements GithubApiInterface
         return new \ArrayIterator($forks);
     }
 
-
-
     /**
-     * @param $repositoryPath
-     *
-     * @return array
+     * @inheritdoc
      */
-    public function getIssues($repositoryPath)
+    public function getIssues($repositoryPath, DateTimeInterface $since = null)
     {
         // TODO: Implement getIssues() method.
     }
 
     /**
-     * @param $repositoryPath
-     * @param DateTimeInterface $since
-     *
-     * @return GithubPullRequest[]|\Iterator
+     * @inheritdoc
      */
-    public function getPullRequests($repositoryPath, DateTimeInterface $since = null)
+    public function getPullRequests($repositoryPath)
     {
         // TODO: Implement getPullRequests() method.
     }
