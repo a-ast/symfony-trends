@@ -37,11 +37,14 @@ class PullRequest implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
-        $sinceDate = $this->getSinceDate($project->getId());
+        foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $pullRequest) {
 
-        foreach ($this->githubApi->getPullRequests($project->getGithubPath(), $sinceDate) as $pullRequest) {
+            $pr = $this->repository->findOneBy(['githubId' => $pullRequest->getId()]);
+            if (null === $pr) {
+                $pr = new EntityPullRequest();
+                print 'c';
+            }
 
-            $pr = new EntityPullRequest();
             $pr
                 ->setProjectId($project->getId())
                 ->setGithubId($pullRequest->getId())
