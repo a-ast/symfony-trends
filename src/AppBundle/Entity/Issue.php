@@ -95,9 +95,9 @@ class Issue
     /**
      * @var array
      *
-     * @ORM\Column(name="labels", type="json_array")
+     * @ORM\Column(name="labels", type="simple_array")
      */
-    private $labels;
+    private $labels = [];
 
 
     /**
