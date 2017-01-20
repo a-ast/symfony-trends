@@ -1,14 +1,14 @@
 parameters:
     aggregators:
 
-        contributor_country:
-            service: 'aggregator.contributor_country'
-            projects: ['symfony']
-            options: []
-
         github_commits:
             service: 'aggregator.github_commit'
             projects: ['symfony', 'symfony-docs']
+            options: []
+
+        contributor_country:
+            service: 'aggregator.contributor_country'
+            projects: ['symfony']
             options: []
 
         github_issues:
