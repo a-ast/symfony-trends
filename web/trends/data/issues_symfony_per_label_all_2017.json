@@ -1,0 +1,60 @@
+{
+    "options": {
+        "type": "pie"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Bug",
+                    "value": 38
+                },
+                {
+                    "name": "Status: Needs Review",
+                    "value": 34
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 21
+                },
+                {
+                    "name": "Feature",
+                    "value": 11
+                },
+                {
+                    "name": "DependencyInjection",
+                    "value": 6
+                },
+                {
+                    "name": "RFC",
+                    "value": 5
+                },
+                {
+                    "name": "Form",
+                    "value": 4
+                },
+                {
+                    "name": "Console",
+                    "value": 4
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 4
+                },
+                {
+                    "name": "Cache",
+                    "value": 3
+                },
+                {
+                    "name": "Status: Reviewed",
+                    "value": 3
+                },
+                {
+                    "name": "Yaml",
+                    "value": 3
+                }
+            ],
+            "name": "All issues"
+        }
+    ]
+}

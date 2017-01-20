@@ -1,0 +1,96 @@
+{
+    "options": {
+        "type": "pie"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Form",
+                    "value": 1109
+                },
+                {
+                    "name": "Bug",
+                    "value": 1074
+                },
+                {
+                    "name": "Status: Needs Review",
+                    "value": 550
+                },
+                {
+                    "name": "Feature",
+                    "value": 534
+                },
+                {
+                    "name": "Enhancement",
+                    "value": 422
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 413
+                },
+                {
+                    "name": "Validator",
+                    "value": 371
+                },
+                {
+                    "name": "HttpFoundation",
+                    "value": 355
+                },
+                {
+                    "name": "Security",
+                    "value": 352
+                },
+                {
+                    "name": "Console",
+                    "value": 256
+                },
+                {
+                    "name": "DependencyInjection",
+                    "value": 214
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 198
+                },
+                {
+                    "name": "Routing",
+                    "value": 194
+                },
+                {
+                    "name": "HttpKernel",
+                    "value": 193
+                },
+                {
+                    "name": "Easy Pick",
+                    "value": 181
+                },
+                {
+                    "name": "Translator",
+                    "value": 170
+                },
+                {
+                    "name": "WebProfilerBundle",
+                    "value": 127
+                },
+                {
+                    "name": "Doctrine",
+                    "value": 125
+                },
+                {
+                    "name": "Process",
+                    "value": 124
+                },
+                {
+                    "name": "DX",
+                    "value": 119
+                },
+                {
+                    "name": "Yaml",
+                    "value": 114
+                }
+            ],
+            "name": "All issues"
+        }
+    ]
+}

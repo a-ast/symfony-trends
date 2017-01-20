@@ -31,7 +31,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 1293
+                    "value": 1301
+                },
+                {
+                    "name": "2017",
+                    "value": 14
                 }
             ],
             "name": "All contributors",
@@ -65,7 +69,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 536
+                    "value": 540
+                },
+                {
+                    "name": "2017",
+                    "value": 9
                 }
             ],
             "name": "Core team",

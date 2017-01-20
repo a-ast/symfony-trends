@@ -19,19 +19,19 @@
                 },
                 {
                     "name": "5-10",
-                    "value": 130
+                    "value": 131
                 },
                 {
                     "name": "3-5",
-                    "value": 201
+                    "value": 204
                 },
                 {
                     "name": "2",
-                    "value": 243
+                    "value": 242
                 },
                 {
                     "name": "1",
-                    "value": 899
+                    "value": 901
                 }
             ],
             "name": "Symfony code",
@@ -57,7 +57,7 @@
                 },
                 {
                     "name": "3-5",
-                    "value": 190
+                    "value": 191
                 },
                 {
                     "name": "2",
@@ -65,7 +65,7 @@
                 },
                 {
                     "name": "1",
-                    "value": 663
+                    "value": 665
                 }
             ],
             "name": "Symfony docs",
