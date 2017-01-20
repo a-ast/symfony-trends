@@ -16,7 +16,7 @@ class GithubPullRequestSpec extends ObjectBehavior
         $this->shouldHaveType(GithubPullRequest::class);
     }
 
-    function it_can_be_created_from_resonse_data()
+    function it_can_be_created_from_response_data()
     {
         $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
 
