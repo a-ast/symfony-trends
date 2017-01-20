@@ -4,6 +4,7 @@ namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
@@ -159,7 +160,12 @@ class GithubApi implements GithubApiInterface
         while ($items = $this->getIssuesByPage($repositoryPath, $since, $page)) {
 
             foreach ($items as $item) {
-                yield $item;
+
+                if (isset($item['pull_request'])) {
+                    continue;
+                }
+
+                yield GithubIssue::createFromResponseData($item);
             }
 
             $page++;

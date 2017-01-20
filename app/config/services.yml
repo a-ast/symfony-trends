@@ -137,14 +137,14 @@ services:
         tags:
             - { name: aggregator, alias: 'SensiolabsConnect data'}
 
-    aggregator.github_fork:
-        class: AppBundle\Aggregator\GithubFork
+    aggregator.issue:
+        class: AppBundle\Aggregator\IssueAggregator
         lazy: true
         arguments:
             - '@api.github'
-            - '@repository.fork'
+            - '@repository.issue'
         tags:
-            - { name: aggregator, alias: forks}
+            - { name: aggregator, alias: issues}
 
     aggregator.pull_request:
         class: AppBundle\Aggregator\PullRequest

@@ -5,6 +5,7 @@ namespace spec\AppBundle\Client\Github;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use Exception;
@@ -129,16 +130,62 @@ class GithubApiSpec extends ObjectBehavior
             ->all('valinor', 'repo', Argument::type('array'))
             ->willReturn([$responseData], []);
 
-        $this->getPullRequests('valinor/repo')->shouldBeCollectionOf(GithubPullRequest::class, 1);;
+        $this->getPullRequests('valinor/repo')->shouldBeCollectionOf(GithubPullRequest::class, 1);
     }
 
     function it_should_fetch_issues(Issue $issueApi)
     {
-        $issueApi
-            ->all('valinor', 'repo', ['page' => 1])
-            ->willReturn([]);
+        $responseData = [
+            'id' => 100,
+            'number' => 200,
+            'state' => 'closed',
+            'title' => '[Ring] I will take the Ring...',
+            'user' => [
+                'id' => 200,
+            ],
+            'body' => '...though I do not know the way.',
+            'created_at' => '2010-01-01T00:00:00Z',
+            'updated_at' => '2010-01-02T00:00:00Z',
+            'closed_at' => '2010-01-03T00:00:00Z',
+            'labels' => [
+                ['id' => 1, 'name' => 'Bug'],
+                ['id' => 2, 'name' => 'Feature'],
+            ]
+        ];
 
-        $this->getIssues('valinor/repo');
+        $issueApi
+            ->all('valinor', 'repo', Argument::type('array'))
+            ->willReturn([$responseData], []);
+
+        $this->getIssues('valinor/repo')->shouldBeCollectionOf(GithubIssue::class, 1);
+    }
+
+    function it_should_fetch_issues_but_ignore_pull_requests(Issue $issueApi)
+    {
+        $responseData = [
+            'id' => 100,
+            'number' => 200,
+            'state' => 'closed',
+            'title' => '[Ring] I will take the Ring...',
+            'user' => [
+                'id' => 200,
+            ],
+            'body' => '...though I do not know the way.',
+            'created_at' => '2010-01-01T00:00:00Z',
+            'updated_at' => '2010-01-02T00:00:00Z',
+            'closed_at' => '2010-01-03T00:00:00Z',
+            'labels' => [
+                ['id' => 1, 'name' => 'Bug'],
+                ['id' => 2, 'name' => 'Feature'],
+            ],
+            'pull_request' => []
+        ];
+
+        $issueApi
+            ->all('valinor', 'repo', Argument::type('array'))
+            ->willReturn([$responseData], []);
+
+        $this->getIssues('valinor/repo')->shouldHaveCount(0);
     }
 
     public function getMatchers()

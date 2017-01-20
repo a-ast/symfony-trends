@@ -4,9 +4,9 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
-use AppBundle\Entity\PullRequest as EntityPullRequest;
+use AppBundle\Entity\Issue;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Repository\PullRequestRepository;
+use AppBundle\Repository\IssueRepository;
 use DateTimeInterface;
 
 class IssueAggregator implements AggregatorInterface
@@ -16,7 +16,7 @@ class IssueAggregator implements AggregatorInterface
      */
     private $githubApi;
     /**
-     * @var PullRequestRepository
+     * @var IssueRepository
      */
     private $repository;
 
@@ -24,9 +24,9 @@ class IssueAggregator implements AggregatorInterface
      * Constructor.
      *
      * @param GithubApiInterface $githubApi
-     * @param PullRequestRepository $repository
+     * @param IssueRepository $repository
      */
-    public function __construct(GithubApiInterface $githubApi, PullRequestRepository $repository)
+    public function __construct(GithubApiInterface $githubApi, IssueRepository $repository)
     {
         $this->githubApi = $githubApi;
         $this->repository = $repository;
@@ -39,33 +39,27 @@ class IssueAggregator implements AggregatorInterface
     {
         $sinceDate = $this->getSinceDate($project->getId());
 
-        foreach ($this->githubApi->getIssues($project->getGithubPath(), $sinceDate) as $pullRequest) {
+        foreach ($this->githubApi->getIssues($project->getGithubPath(), $sinceDate) as $apiIssue) {
 
-            $pr = new EntityPullRequest();
-            $pr
+            $issue = new Issue();
+            $issue
                 ->setProjectId($project->getId())
-                ->setGithubId($pullRequest->getId())
-                ->setNumber($pullRequest->getNumber())
-                ->setState($pullRequest->getState())
-                ->setGithubUserId($pullRequest->getUserId())
+                ->setGithubId($apiIssue->getId())
+                ->setNumber($apiIssue->getNumber())
+                ->setState($apiIssue->getState())
+                ->setGithubUserId($apiIssue->getUserId())
 
-                ->setTitle($pullRequest->getTitle())
-                ->setBody($pullRequest->getBody())
+                ->setTitle($apiIssue->getTitle())
+                ->setBody($apiIssue->getBody())
 
-                ->setCreatedAt($pullRequest->getCreatedAt())
-                ->setUpdatedAt($pullRequest->getUpdatedAt())
-                ->setClosedAt($pullRequest->getClosedAt())
-                ->setMergedAt($pullRequest->getMergedAt())
-
-                ->setMergeSha($pullRequest->getMergeSha())
-                ->setHeadSha($pullRequest->getHeadSha())
-                ->setBaseSha($pullRequest->getBaseSha())
-
-                ->setBaseRef($pullRequest->getBaseRef())
+                ->setCreatedAt($apiIssue->getCreatedAt())
+                ->setUpdatedAt($apiIssue->getUpdatedAt())
+                ->setClosedAt($apiIssue->getClosedAt())
+                ->setLabels($apiIssue->getLabels())
             ;
 
             print '.';
-            $this->repository->persist($pr);
+            $this->repository->persist($issue);
         }
 
         print PHP_EOL.'Flushing...'.PHP_EOL;
@@ -79,7 +73,7 @@ class IssueAggregator implements AggregatorInterface
      */
     protected function getSinceDate($projectId)
     {
-        $lastCommitDate = $this->repository->getLastCreatedAtDate($projectId);
+        $lastCommitDate = $this->repository->getLastCreatedAt($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');
 
         return $sinceDate;

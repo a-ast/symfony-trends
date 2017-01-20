@@ -3,6 +3,7 @@ namespace AppBundle\Client\Github;
 
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
@@ -43,7 +44,7 @@ interface GithubApiInterface
      * @param $repositoryPath
      * @param DateTimeInterface $since
      *
-     * @return array
+     * @return GithubIssue[]|\Iterator
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null);
 }

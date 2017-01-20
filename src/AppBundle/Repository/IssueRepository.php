@@ -14,7 +14,7 @@ class IssueRepository extends Repository
      *
      * @return DateTimeImmutable
      */
-    public function getLastCreatedAtDate($projectId)
+    public function getLastCreatedAt($projectId)
     {
         $qb = $this->createQueryBuilder('c')
             ->select('MAX(c.createdAt)')
