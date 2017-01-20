@@ -119,14 +119,47 @@ class GithubApi implements GithubApiInterface
     /**
      * @inheritdoc
      */
-    public function getPullRequests($repositoryPath, DateTimeInterface $since = null)
+    public function getPullRequests($repositoryPath)
     {
         $page = 1;
 
-        while ($items = $this->getPullRequestsByPage($repositoryPath, $since, $page)) {
+        while ($items = $this->getPullRequestsByPage($repositoryPath, $page)) {
 
             foreach ($items as $item) {
                 yield GithubPullRequest::createFromResponseData($item);
+            }
+
+            $page++;
+        }
+    }
+
+    /**
+     * @param $repositoryPath
+     * @param integer $page
+     *
+     * @return array
+     */
+    private function getPullRequestsByPage($repositoryPath, $page = 1)
+    {
+        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc'];
+
+        return $this->client->pullRequests()->all(
+            $this->getOwner($repositoryPath),
+            $this->getRepo($repositoryPath),
+            $options);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getIssues($repositoryPath, DateTimeInterface $since = null)
+    {
+        $page = 1;
+
+        while ($items = $this->getIssuesByPage($repositoryPath, $since, $page)) {
+
+            foreach ($items as $item) {
+                yield $item;
             }
 
             $page++;
@@ -140,45 +173,13 @@ class GithubApi implements GithubApiInterface
      *
      * @return array
      */
-    private function getPullRequestsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
+    private function getIssuesByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
         $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc'];
-
         $options = $this->addSinceOption($options, $since);
 
-        return $this->client->pullRequests()->all(
-            $this->getOwner($repositoryPath),
-            $this->getRepo($repositoryPath),
-            $options);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getIssues($repositoryPath)
-    {
-        $page = 1;
-
-        while ($items = $this->getIssuesByPage($repositoryPath, $page)) {
-
-            foreach ($items as $item) {
-                yield $item;
-            }
-
-            $page++;
-        }
-    }
-
-    /**
-     * @param $repositoryPath
-     * @param integer $page
-     *
-     * @return array
-     */
-    private function getIssuesByPage($repositoryPath, $page = 1)
-    {
         return $this->client->issues()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
-            ['page' => $page, 'state' => 'all']);
+            $options);
     }
 
     /**

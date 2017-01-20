@@ -34,16 +34,16 @@ interface GithubApiInterface
 
     /**
      * @param $repositoryPath
-     * @param DateTimeInterface $since
      *
      * @return GithubPullRequest[]|\Iterator
      */
-    public function getPullRequests($repositoryPath, DateTimeInterface $since = null);
+    public function getPullRequests($repositoryPath);
 
     /**
      * @param $repositoryPath
+     * @param DateTimeInterface $since
      *
      * @return array
      */
-    public function getIssues($repositoryPath);
+    public function getIssues($repositoryPath, DateTimeInterface $since = null);
 }
