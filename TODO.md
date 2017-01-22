@@ -3,7 +3,10 @@ TODO
 
 ### To think:
 
-Rename contribution table??
+1. Rename contribution table??
+1. Fix Aggregator naming
+1. PullRequestBodyParser - extract issue number and other properties.
+
 
 #### Aggregators
 1. UserCountry (using geocoder)
