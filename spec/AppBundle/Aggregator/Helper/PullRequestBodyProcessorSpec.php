@@ -47,7 +47,9 @@ class PullRequestBodyProcessorSpec extends ObjectBehavior
     function it_gets_multiple_issue_numbers_from_body_of_new_format()
     {
         $body = "| Q             | A\r\n| Fixed tickets | #978, #654\r\n";
+        $this->getIssueNumbers($body)->shouldReturn([978, 654]);
 
+        $body = "| Q | A |\n| --- | --- |\n| Bug fix? | no |\n| Fixed tickets | #978,#654 |\n| Doc PR | - |\n";
         $this->getIssueNumbers($body)->shouldReturn([978, 654]);
     }
 
@@ -65,5 +67,10 @@ class PullRequestBodyProcessorSpec extends ObjectBehavior
         $this->getIssueNumbers($body)->shouldReturn([]);
     }
 
-    
+    function it_gets_no_issue_numbers_from_body_of_new_format_with_new_lines_instead_of_ticket_number()
+    {
+        $body = "| Q             | A\r\n| ------------- | ---\r\n| Fixed tickets | \r\n| License       | MIT\r\n|";
+
+        $this->getIssueNumbers($body)->shouldReturn([]);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Util\ArrayUtils;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -130,7 +131,7 @@ class PullRequest
     /**
      * @var array
      *
-     * @ORM\Column(name="issue_numbers", type="simple_array", options={"default": ""})
+     * @ORM\Column(name="issue_numbers", type="simple_array", nullable=true)
      */
     private $issueNumbers = [];
 
@@ -522,7 +523,7 @@ class PullRequest
      */
     public function getIssueNumbers()
     {
-        return $this->issueNumbers;
+        return ArrayUtils::trim($this->issueNumbers);
     }
 }
 

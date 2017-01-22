@@ -2,6 +2,7 @@
 
 namespace AppBundle\Aggregator;
 
+use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\PullRequest as EntityPullRequest;
@@ -19,17 +20,23 @@ class PullRequest implements AggregatorInterface
      * @var PullRequestRepository
      */
     private $repository;
+    /**
+     * @var PullRequestBodyProcessor
+     */
+    private $bodyProcessor;
 
     /**
      * Constructor.
      *
      * @param GithubApiInterface $githubApi
      * @param PullRequestRepository $repository
+     * @param PullRequestBodyProcessor $bodyProcessor
      */
-    public function __construct(GithubApiInterface $githubApi, PullRequestRepository $repository)
+    public function __construct(GithubApiInterface $githubApi, PullRequestRepository $repository, PullRequestBodyProcessor $bodyProcessor)
     {
         $this->githubApi = $githubApi;
         $this->repository = $repository;
+        $this->bodyProcessor = $bodyProcessor;
     }
 
     /**
@@ -37,38 +44,45 @@ class PullRequest implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
-        foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $pullRequest) {
 
-            $pr = $this->repository->findOneBy(['githubId' => $pullRequest->getId()]);
-            if (null === $pr) {
-                $pr = new EntityPullRequest();
+        $i = 0;
+
+        foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $apiPullRequest) {
+
+            $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
+            if (null === $pullRequest) {
+                $pullRequest = new EntityPullRequest();
                 print 'c';
             }
 
-            $pr
+            $issueNumbers = $this->bodyProcessor->getIssueNumbers($apiPullRequest->getBody());
+
+            $pullRequest
                 ->setProjectId($project->getId())
-                ->setGithubId($pullRequest->getId())
-                ->setNumber($pullRequest->getNumber())
-                ->setState($pullRequest->getState())
-                ->setGithubUserId($pullRequest->getUserId())
+                ->setGithubId($apiPullRequest->getId())
+                ->setNumber($apiPullRequest->getNumber())
+                ->setState($apiPullRequest->getState())
+                ->setGithubUserId($apiPullRequest->getUserId())
 
-                ->setTitle($pullRequest->getTitle())
-                ->setBody($pullRequest->getBody())
+                ->setTitle($apiPullRequest->getTitle())
+                ->setBody($apiPullRequest->getBody())
 
-                ->setCreatedAt($pullRequest->getCreatedAt())
-                ->setUpdatedAt($pullRequest->getUpdatedAt())
-                ->setClosedAt($pullRequest->getClosedAt())
-                ->setMergedAt($pullRequest->getMergedAt())
+                ->setCreatedAt($apiPullRequest->getCreatedAt())
+                ->setUpdatedAt($apiPullRequest->getUpdatedAt())
+                ->setClosedAt($apiPullRequest->getClosedAt())
+                ->setMergedAt($apiPullRequest->getMergedAt())
 
-                ->setMergeSha($pullRequest->getMergeSha())
-                ->setHeadSha($pullRequest->getHeadSha())
-                ->setBaseSha($pullRequest->getBaseSha())
+                ->setMergeSha($apiPullRequest->getMergeSha())
+                ->setHeadSha($apiPullRequest->getHeadSha())
+                ->setBaseSha($apiPullRequest->getBaseSha())
 
-                ->setBaseRef($pullRequest->getBaseRef())
+                ->setBaseRef($apiPullRequest->getBaseRef())
+
+                ->setIssueNumbers($issueNumbers)
             ;
 
             print '.';
-            $this->repository->persist($pr);
+            $this->repository->persist($pullRequest);
         }
 
         print PHP_EOL.'Flushing...'.PHP_EOL;

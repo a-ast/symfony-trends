@@ -14,7 +14,7 @@ class PullRequestBodyProcessor
         $patterns = [
             '/Fixes the following tickets:\s?([0-9#,\s]*)\s?\R/',
             '/Fixes the following tickets:\s?([0-9#,\s]*)$/',
-            '/\| Fixed tickets\s\|\s?([0-9#,\s]*)\s?\R/',
+            '/\| Fixed tickets\s\|\s?([0-9#,\h]*)?/',
         ];
 
         $matches = [];
