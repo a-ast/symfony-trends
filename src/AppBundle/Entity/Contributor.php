@@ -47,14 +47,14 @@ class Contributor
     /**
      * @var string
      *
-     * @ORM\Column(name="github_login", type="string", length=255, options={"default": ""})
+     * @ORM\Column(name="github_login", type="text", options={"default": ""})
      */
     private $githubLogin = '';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="text", unique=true)
      */
     private $email;
 
@@ -68,7 +68,7 @@ class Contributor
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="text", nullable=false)
      */
     private $name;
 
@@ -82,14 +82,14 @@ class Contributor
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=255, options={"default": ""})
+     * @ORM\Column(name="country", type="text", options={"default": ""})
      */
     private $country = '';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="github_location", type="string", length=255, options={"default": ""})
+     * @ORM\Column(name="github_location", type="text", options={"default": ""})
      */
     private $githubLocation = '';
 

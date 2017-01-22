@@ -1,0 +1,143 @@
+{
+    "options": {
+        "type": "bubble",
+        "xAxis": {
+            "title": "Issue count"
+        },
+        "yAxis": {
+            "title": "Pull request count"
+        }
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Nicolas Grekas",
+                    "x": 876,
+                    "y": 40
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "x": 660,
+                    "y": 49
+                },
+                {
+                    "name": "Christian Flothmann",
+                    "x": 497,
+                    "y": 12
+                },
+                {
+                    "name": "Bernhard Schussek",
+                    "x": 355,
+                    "y": 140
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "x": 312,
+                    "y": 70
+                },
+                {
+                    "name": "Victor Berchet",
+                    "x": 234,
+                    "y": 34
+                },
+                {
+                    "name": "Christophe Coevoet",
+                    "x": 227,
+                    "y": 107
+                },
+                {
+                    "name": "Jakub Zalas",
+                    "x": 206,
+                    "y": 9
+                },
+                {
+                    "name": "K\u00e9vin Dunglas",
+                    "x": 201,
+                    "y": 1
+                },
+                {
+                    "name": "Joseph Bielawski",
+                    "x": 191,
+                    "y": 3
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "x": 162,
+                    "y": 20
+                },
+                {
+                    "name": "Kris Wallsmith",
+                    "x": 160,
+                    "y": 9
+                },
+                {
+                    "name": "Abdellatif Ait boudad",
+                    "x": 152,
+                    "y": 4
+                },
+                {
+                    "name": "Wouter J",
+                    "x": 144,
+                    "y": 46
+                },
+                {
+                    "name": "Romain Neutron",
+                    "x": 144,
+                    "y": 19
+                },
+                {
+                    "name": "Maxime Steinhausser",
+                    "x": 135,
+                    "y": 9
+                },
+                {
+                    "name": "Hugo Hamon",
+                    "x": 135,
+                    "y": 22
+                },
+                {
+                    "name": "Martin Haso\u0148",
+                    "x": 132,
+                    "y": 18
+                },
+                {
+                    "name": "Gr\u00e9goire Pineau",
+                    "x": 129,
+                    "y": 31
+                },
+                {
+                    "name": "Robin Chalas",
+                    "x": 109,
+                    "y": 10
+                },
+                {
+                    "name": "Ryan Weaver",
+                    "x": 108,
+                    "y": 33
+                },
+                {
+                    "name": "Javier Eguiluz",
+                    "x": 102,
+                    "y": 168
+                },
+                {
+                    "name": "Jules Pietri",
+                    "x": 100,
+                    "y": 9
+                },
+                {
+                    "name": "Johannes",
+                    "x": 97,
+                    "y": 36
+                },
+                {
+                    "name": "Roland Franssen",
+                    "x": 91,
+                    "y": 26
+                }
+            ],
+            "name": "Contributors"
+        }
+    ]
+}

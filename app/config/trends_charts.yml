@@ -291,8 +291,8 @@ parameters:
                     color: '#7aba20'
                     data_source: fn_new_contributor_contribution_counts
                     criteria:   { project_id: 2, year: 2016 }
-                    dimensions: { name: name, value: contribution_count }
                     limit: 15
+                    dimensions: { name: name, value: contribution_count }
 
         pull_requests_per_date_symfony:
             title: 'Pull requests to Symfony code per year'
@@ -357,6 +357,20 @@ parameters:
                     criteria:   { project_id: 1, state: null, year: 2017, min_count: 3 }
                     dimensions: { name: label, value: issue_count }
 
+        contributors_symfony_with_pr_and_issue_count:
+            title: 'Top-25 contributors to Symfony code with their pr and issue counts'
+            type: bubble
+            x_axis: { title: 'Issue count' }
+            y_axis: { title: 'Pull request count' }
+            series:
+                -
+                    title: Contributors
+                    data_source: fn_contributor_pull_request_and_issue_count
+                    criteria:   { project_id: 1 }
+                    limit: 25
+                    dimensions: { name: name, x: pr_count, y: issue_count }
+
+
 
     trends-layout:
         index:
@@ -380,6 +394,7 @@ parameters:
                 - { chart: issues_symfony_per_label_closed }
                 - { chart: issues_symfony_per_label_all }
                 - { chart: issues_symfony_per_label_all_2017 }
+                - { chart: contributors_symfony_with_pr_and_issue_count }
 
         symfony:
             title: 'Symfony code'

@@ -31,6 +31,18 @@ function HighchartsRenderer () {
                 dataLabels: {
                     format: '{point.name}<br\/>{point.y}'
                 }
+            },
+            scatter: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    style: {
+                        'color': 'contrast', 'fontSize': '8px', 'textOutline': '1px 1px contrast'
+                    }
+                },
+                tooltip: {
+                    pointFormat: '{point.name}'
+                }
             }
         }
     });
@@ -59,6 +71,10 @@ HighchartsRenderer.prototype.drawChart = function(container, data) {
 
         case "map":
             this.mapChart(container, data);
+            break;
+
+        case "bubble":
+            this.bubbleChart(container, data);
             break;
 
         default:
@@ -203,5 +219,33 @@ HighchartsRenderer.prototype.mapChart = function(container, data) {
         series: data.series
     });
 };
+
+HighchartsRenderer.prototype.bubbleChart = function(container, data) {
+
+    Highcharts.chart(container, {
+        chart: {
+            type: 'scatter'
+        },
+
+        legend: {
+            enabled: data.series.length > 1
+        },
+
+        xAxis: {
+            title: {
+                text: data.options.xAxis ? data.options.xAxis.title : 'x'
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: data.options.yAxis ? data.options.yAxis.title : 'x'
+            }
+        },
+
+        series: data.series
+    });
+};
+
 
 var Renderer = new HighchartsRenderer();

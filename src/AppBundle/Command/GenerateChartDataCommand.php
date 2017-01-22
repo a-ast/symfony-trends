@@ -89,8 +89,18 @@ class GenerateChartDataCommand extends ContainerAwareCommand
             $seriesOptions = $chartDefinition['series'];
             $series = $seriesProvider->getSeries($seriesOptions);
 
+            $options = ['type' => $chartDefinition['type']];
+
+            if (isset($chartDefinition['x_axis'])) {
+                $options['xAxis'] = $chartDefinition['x_axis'];
+            }
+
+            if (isset($chartDefinition['y_axis'])) {
+                $options['yAxis'] = $chartDefinition['y_axis'];
+            }
+
             $data = [
-                'options' => ['type' => $chartDefinition['type']],
+                'options' => $options,
                 'series' => $series,
             ];
 

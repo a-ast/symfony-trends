@@ -365,3 +365,49 @@ BEGIN
 
 END;
 $$ LANGUAGE plpgsql;
+
+--------------------------------------------------------
+-- Top0contributors with pr and isuue count
+--
+-- Parameters:
+-- * v_project_id
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_contributor_pull_request_and_issue_count(int);
+CREATE FUNCTION fn_contributor_pull_request_and_issue_count(v_project_id int)
+    RETURNS table(name text, pr_count bigint, issue_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        c.name,
+        count(DISTINCT pr.number) AS pr_count,
+        count(DISTINCT i.number) AS issue_count
+
+    FROM contributor c
+    LEFT JOIN pull_request pr ON pr.github_user_id = c.github_id
+    LEFT JOIN issue i ON i.github_user_id = c.github_id
+
+    WHERE pr.project_id = v_project_id AND i.project_id = v_project_id
+    GROUP BY c.name
+    ORDER BY pr_count DESC;
+
+END;
+$$ LANGUAGE plpgsql;
+
+/*
+
+PRs made by own issues
+
+SELECT c.name, count(distinct pr_number) as pr_count, count(distinct i.number)
+FROM
+	(
+		select project_id, number as pr_number, github_user_id, unnest(string_to_array(issue_numbers, ','))::int as issue_number
+		from pull_request
+	) pr
+left join issue i on i.number = pr.issue_number AND pr.project_id = i.project_id
+left join contributor c on i.github_user_id = c.github_id
+where i.github_user_id = pr.github_user_id
+GROUP BY c.name
+order by pr_count desc
+
+ */

@@ -63,3 +63,7 @@ h2 {
     padding: 5px;
     vertical-align: top;
 }
+
+.highcharts-axis-title {
+    font-weight: bold;
+}
