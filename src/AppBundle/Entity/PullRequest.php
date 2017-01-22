@@ -127,6 +127,13 @@ class PullRequest
      */
     private $baseRef;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="issue_numbers", type="simple_array", options={"default": ""})
+     */
+    private $issueNumbers = [];
+
 
     /**
      * Get id
@@ -496,6 +503,26 @@ class PullRequest
     public function getBaseRef()
     {
         return $this->baseRef;
+    }
+
+    /**
+     * @param array $issueNumbers
+     *
+     * @return $this
+     */
+    public function setIssueNumbers(array $issueNumbers)
+    {
+        $this->issueNumbers = $issueNumbers;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getIssueNumbers()
+    {
+        return $this->issueNumbers;
     }
 }
 
