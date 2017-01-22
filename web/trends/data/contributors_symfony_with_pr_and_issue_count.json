@@ -2,10 +2,10 @@
     "options": {
         "type": "bubble",
         "xAxis": {
-            "title": "Issue count"
+            "title": "Pull request count"
         },
         "yAxis": {
-            "title": "Pull request count"
+            "title": "Issue count"
         }
     },
     "series": [

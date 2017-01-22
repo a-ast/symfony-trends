@@ -360,8 +360,8 @@ parameters:
         contributors_symfony_with_pr_and_issue_count:
             title: 'Top-25 contributors to Symfony code with their pr and issue counts'
             type: bubble
-            x_axis: { title: 'Issue count' }
-            y_axis: { title: 'Pull request count' }
+            x_axis: { title: 'Pull request count' }
+            y_axis: { title: 'Issue count' }
             series:
                 -
                     title: Contributors
