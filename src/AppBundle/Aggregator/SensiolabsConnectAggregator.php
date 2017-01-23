@@ -9,7 +9,7 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\Exception\ClientException;
 
-class SensiolabsConnect implements AggregatorInterface
+class SensiolabsConnectAggregator implements AggregatorInterface
 {
     /**
      * @var PageGetterInterface

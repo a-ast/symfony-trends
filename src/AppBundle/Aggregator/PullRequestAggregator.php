@@ -10,7 +10,7 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\PullRequestRepository;
 use DateTimeInterface;
 
-class PullRequest implements AggregatorInterface
+class PullRequestAggregator implements AggregatorInterface
 {
     /**
      * @var GithubApiInterface

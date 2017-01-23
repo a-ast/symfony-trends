@@ -3,7 +3,7 @@
 namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\GithubCommit;
+use AppBundle\Aggregator\CommitAggregator;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
@@ -15,9 +15,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubCommit
+ * @mixin CommitAggregator
  */
-class GithubCommitSpec extends ObjectBehavior
+class CommitAggregatorSpec extends ObjectBehavior
 {
     function let(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
@@ -28,7 +28,7 @@ class GithubCommitSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(GithubCommit::class);
+        $this->shouldHaveType(CommitAggregator::class);
         $this->shouldImplement(AggregatorInterface::class);
     }
 

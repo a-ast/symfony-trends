@@ -8,7 +8,7 @@ use AppBundle\Repository\ContributorRepository;
 use Exception;
 use Geocoder\Geocoder;
 
-class ContributorCountry implements AggregatorInterface
+class ContributorCountryAggregator implements AggregatorInterface
 {
     /**
      * @var Geocoder

@@ -9,7 +9,7 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use GuzzleHttp\ClientInterface;
 
-class ContributorPage implements AggregatorInterface
+class ContributorPageAggregator implements AggregatorInterface
 {
     /**
      * @var ClientInterface

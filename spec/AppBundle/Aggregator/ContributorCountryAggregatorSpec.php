@@ -3,7 +3,7 @@
 namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\ContributorCountry;
+use AppBundle\Aggregator\ContributorCountryAggregator;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Repository\ContributorRepository;
@@ -16,9 +16,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin ContributorCountry
+ * @mixin ContributorCountryAggregator
  */
-class ContributorCountrySpec extends ObjectBehavior
+class ContributorCountryAggregatorSpec extends ObjectBehavior
 {
     function let(Geocoder $geocoder,
         ContributorRepository $contributorRepository, Contributor $contributor)
@@ -34,7 +34,7 @@ class ContributorCountrySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(ContributorCountry::class);
+        $this->shouldHaveType(ContributorCountryAggregator::class);
         $this->shouldImplement(AggregatorInterface::class);
     }
 

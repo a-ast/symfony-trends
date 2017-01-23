@@ -94,7 +94,7 @@ services:
         class: AppBundle\Aggregator\AggregatorRegistry
 
     aggregator.contributor_page:
-        class: AppBundle\Aggregator\ContributorPage
+        class: AppBundle\Aggregator\ContributorPageAggregator
         lazy: true
         arguments:
             - '@http_client'
@@ -104,7 +104,7 @@ services:
             - { name: aggregator, alias: 'contributor page'}
 
     aggregator.github_commit:
-        class: AppBundle\Aggregator\GithubCommit
+        class: AppBundle\Aggregator\CommitAggregator
         lazy: true
         arguments:
             - '@api.github'
@@ -115,7 +115,7 @@ services:
             - { name: aggregator, alias: commits}
 
     aggregator.contributor_country:
-        class: AppBundle\Aggregator\ContributorCountry
+        class: AppBundle\Aggregator\ContributorCountryAggregator
         lazy: true
         arguments:
             - '@api.geocoder'
@@ -123,16 +123,8 @@ services:
         tags:
             - { name: aggregator, alias: 'contributor countries'}
 
-    aggregator.github_commit_checker:
-        class: AppBundle\Aggregator\GithubCommitChecker
-        lazy: true
-        arguments:
-            - '@api.github'
-        tags:
-            - { name: aggregator, alias: 'commits data'}
-
     aggregator.sensiolabs_connect:
-        class: AppBundle\Aggregator\SensiolabsConnect
+        class: AppBundle\Aggregator\SensiolabsConnectAggregator
         lazy: true
         arguments:
             - '@http_client'
@@ -151,7 +143,7 @@ services:
             - { name: aggregator, alias: issues}
 
     aggregator.pull_request:
-        class: AppBundle\Aggregator\PullRequest
+        class: AppBundle\Aggregator\PullRequestAggregator
         lazy: true
         arguments:
             - '@api.github'
