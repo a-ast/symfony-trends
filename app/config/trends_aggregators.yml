@@ -12,18 +12,12 @@ parameters:
             options: []
 
         github_issues:
-            service: 'aggregator.issue'
+            service: 'aggregator.github_issue'
             projects: ['symfony', 'symfony-docs']
             options: []
 
-        github_pr:
-            service: 'aggregator.pull_request'
+        github_pull_requests:
+            service: 'aggregator.github_pull_request'
             projects: ['symfony', 'symfony-docs']
             options: []
 
-
-        # Checkers
-        github_commits_symfony_checker:
-            service: 'aggregator.github_commit_checker'
-            options:
-                project_id: 1

@@ -46,7 +46,7 @@ services:
         tags:
             - { name: aggregator, alias: 'SensiolabsConnect data'}
 
-    aggregator.issue:
+    aggregator.github_issue:
         class: AppBundle\Aggregator\IssueAggregator
         lazy: true
         arguments:
@@ -55,7 +55,7 @@ services:
         tags:
             - { name: aggregator, alias: issues}
 
-    aggregator.pull_request:
+    aggregator.github_pull_request:
         class: AppBundle\Aggregator\PullRequestAggregator
         lazy: true
         arguments:
