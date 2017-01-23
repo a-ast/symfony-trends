@@ -44,9 +44,6 @@ class PullRequest implements AggregatorInterface
      */
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
-
-        $i = 0;
-
         foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $apiPullRequest) {
 
             $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
