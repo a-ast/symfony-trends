@@ -4,7 +4,6 @@ namespace spec\AppBundle\Client\Github;
 
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
@@ -13,7 +12,6 @@ use Github\Api\Issue;
 use Github\Api\PullRequest;
 use Github\Api\Repo;
 use Github\Api\Repository\Commits;
-use Github\Api\Repository\Forks;
 use Github\Api\User;
 use Github\Client;
 use PhpSpec\ObjectBehavior;
@@ -28,7 +26,6 @@ class GithubApiSpec extends ObjectBehavior
         Repo $repoApi,
         Commits $commitsApi,
         User $userApi,
-        Forks $forksApi,
         PullRequest $pullRequestApi,
         Issue $issueApi)
     {
@@ -36,7 +33,6 @@ class GithubApiSpec extends ObjectBehavior
 
         $client->repo()->willReturn($repoApi);
         $repoApi->commits()->willReturn($commitsApi);
-        $repoApi->forks()->willReturn($forksApi);
 
         $client->pullRequests()->willReturn($pullRequestApi);
         $client->issues()->willReturn($issueApi);

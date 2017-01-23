@@ -29,6 +29,8 @@ TODO
 
 - Real Contributors: x - commit count, y - age of last commit (frequency?)
 
+- Contributors vs others: x - issue count, y - smth else(?)
+
 - PR/Issue Issue closers (rating, avarage time) 
 - People to contributed monthly (most likely showing new contributors)
 - Symfony bundle usage in github

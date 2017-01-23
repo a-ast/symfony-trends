@@ -25,14 +25,6 @@ interface GithubApiInterface
      */
     public function getUser($login);
 
-
-    /**
-     * @param string $repositoryPath
-     *
-     * @return GithubFork[]|\Iterator
-     */
-    public function getForks($repositoryPath);
-
     /**
      * @param $repositoryPath
      *

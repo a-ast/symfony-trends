@@ -6,6 +6,7 @@ namespace features\Fake;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubFork;
+use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
@@ -44,26 +45,11 @@ class GithubApi implements GithubApiInterface
     }
 
     /**
-     * @param string $repositoryPath
-     *
-     * @return GithubFork[]|\Iterator
-     */
-    public function getForks($repositoryPath)
-    {
-        $forks = [];
-        foreach ($this->fakeData['forks'] as $item) {
-            $forks[] = GithubFork::createFromArray($item);
-        }
-
-        return new \ArrayIterator($forks);
-    }
-
-    /**
      * @inheritdoc
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null)
     {
-        // TODO: Implement getIssues() method.
+
     }
 
     /**

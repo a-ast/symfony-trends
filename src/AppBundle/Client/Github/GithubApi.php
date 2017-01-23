@@ -92,34 +92,6 @@ class GithubApi implements GithubApiInterface
     /**
      * @inheritdoc
      */
-    public function getForks($repositoryPath)
-    {
-        $page = 1;
-
-        while ($forks = $this->getForksByPage($repositoryPath, $page)) {
-
-            foreach ($forks as $fork) {
-                yield GithubFork::createFromGithubResponseData($fork);
-            }
-
-            $page++;
-        }
-    }
-
-    /**
-     * @param $repositoryPath
-     * @param integer $page
-     * @return array
-     */
-    private function getForksByPage($repositoryPath, $page = 1)
-    {
-        return $this->client->repo()->forks()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
-            ['page' => $page]);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getPullRequests($repositoryPath)
     {
         $page = 1;
