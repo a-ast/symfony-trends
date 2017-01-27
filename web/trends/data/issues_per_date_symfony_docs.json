@@ -1,0 +1,75 @@
+{
+    "options": {
+        "type": "stairArea"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "2011",
+                    "value": 237
+                },
+                {
+                    "name": "2012",
+                    "value": 245
+                },
+                {
+                    "name": "2013",
+                    "value": 247
+                },
+                {
+                    "name": "2014",
+                    "value": 303
+                },
+                {
+                    "name": "2015",
+                    "value": 301
+                },
+                {
+                    "name": "2016",
+                    "value": 266
+                },
+                {
+                    "name": "2017",
+                    "value": 33
+                }
+            ],
+            "name": "Issue count",
+            "color": "#7aba20"
+        },
+        {
+            "data": [
+                {
+                    "name": "2011",
+                    "value": 119
+                },
+                {
+                    "name": "2012",
+                    "value": 145
+                },
+                {
+                    "name": "2013",
+                    "value": 183
+                },
+                {
+                    "name": "2014",
+                    "value": 238
+                },
+                {
+                    "name": "2015",
+                    "value": 205
+                },
+                {
+                    "name": "2016",
+                    "value": 188
+                },
+                {
+                    "name": "2017",
+                    "value": 29
+                }
+            ],
+            "name": "Contributor issue count",
+            "color": "#1009c4"
+        }
+    ]
+}

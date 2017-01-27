@@ -281,18 +281,16 @@ $$ LANGUAGE plpgsql;
 --------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_issues_per_date(int, text, int);
 CREATE FUNCTION fn_issues_per_date(v_project_id int, v_date_interval_format text, v_year int)
-    RETURNS table(date text, project_id int, issue_count bigint, contributor_issue_count bigint) AS $$
+    RETURNS table(date text, project_id int, issue_count bigint) AS $$
 BEGIN
     RETURN query
 
     SELECT
         to_char(i.created_at, v_date_interval_format) AS date,
         i.project_id,
-        count(i.id) as issue_count,
-        count(c.id) AS contributor_issue_count
+        count(i.id) as issue_count
 
     FROM issue i
-        LEFT JOIN contributor c on c.github_id = i.github_user_id
     WHERE
         (v_project_id IS NULL OR v_project_id = i.project_id)
         AND (v_year IS NULL OR v_year = date_part('year', i.created_at))
@@ -301,6 +299,42 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
+--------------------------------------------------------
+-- Issues made by contributors per date
+--
+-- Parameters:
+-- * v_project_id
+-- * v_date_interval_format ('YYYY-MM-01' for month)
+-- * v_year - year of contribution
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_issues_of_contributors_per_date(int, text, int);
+CREATE FUNCTION fn_issues_of_contributors_per_date(v_project_id int, v_date_interval_format text, v_year int)
+    RETURNS table(date text, project_id int, issue_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        to_char(i.created_at, v_date_interval_format) AS date,
+        i.project_id,
+        count(i.id) as issue_count
+
+    FROM issue i
+        LEFT JOIN contributor c on c.github_id = i.github_user_id
+    WHERE
+        (v_project_id IS NULL OR v_project_id = i.project_id)
+        AND (v_year IS NULL OR v_year = date_part('year', i.created_at))
+        AND EXISTS (
+             SELECT cn.id
+             FROM contribution cn
+             WHERE
+                cn.contributor_id = c.id
+                AND (v_project_id IS NULL OR v_project_id = cn.project_id)
+		    )
+    GROUP BY date, i.project_id
+    ORDER BY date ASC;
+END;
+$$ LANGUAGE plpgsql;
 
 --------------------------------------------------------
 -- Pull requests per date

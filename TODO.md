@@ -4,15 +4,8 @@ TODO
 ### To think:
 
 1. Rename contribution table??
-1. Fix Aggregator naming
-1. PullRequestBodyParser - extract issue number and other properties.
 
-
-#### Aggregators
-1. UserCountry (using geocoder)
-2. ContributorsPage (index contributor page, find sensiolabs user, find backlink to github)
-3. SensiolabsConnect - index all that have github link (see above), get additional info
-
+1. Important: fix issues created by contributors - CHECK ONLY CONTRIBUTORS OF THIS PROJECT NOT ALL OF THEM!!!
 
 ### KW 2:
 
@@ -22,15 +15,24 @@ TODO
 ### KW 3:
 
 1. Aggregate PRs
-2. Aggregate commit changes
+
+### KW 4. Technical dept
+1. Features for all aggregators
+1. Implement contributor page agg (index contributor page, find sensiolabs user, find backlink to github)
+1. Implement sensiolabs connect agg (index all that have github link (see above), get additional info)
+
+### KW 5.
+1. Split bundle to lib + bundle
+1. Review contributions aggregator see https://developer.github.com/v3/pulls/comments/
+
+## KW 6.
+1. Aggregate commit changes
 
 
 # Charts
 
 - Real Contributors: x - commit count, y - age of last commit (frequency?)
-
 - Contributors vs others: x - issue count, y - smth else(?)
-
 - PR/Issue Issue closers (rating, avarage time) 
 - People to contributed monthly (most likely showing new contributors)
 - Symfony bundle usage in github

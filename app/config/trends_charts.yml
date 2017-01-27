@@ -370,7 +370,39 @@ parameters:
                     limit: 25
                     dimensions: { name: name, x: pr_count, y: issue_count }
 
+        issues_per_date_symfony:
+            title: 'Symfony code issues per year'
+            type: stairArea
+            series:
+                -
+                    title: Issue count
+                    color: '#4cacdb'
+                    data_source: fn_issues_per_date
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
+                    dimensions: { name: date, value: issue_count }
+                -
+                    title: Contributor issue count
+                    color: '#1009c4'
+                    data_source: fn_issues_of_contributors_per_date
+                    criteria:   { project_id: 1, date_format: 'YYYY', year: null }
+                    dimensions: { name: date, value: issue_count }
 
+        issues_per_date_symfony_docs:
+            title: 'Symfony docs issues per year'
+            type: stairArea
+            series:
+                -
+                    title: Issue count
+                    color: '#7aba20'
+                    data_source: fn_issues_per_date
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
+                    dimensions: { name: date, value: issue_count }
+                -
+                    title: Contributor issue count
+                    color: '#1009c4'
+                    data_source: fn_issues_of_contributors_per_date
+                    criteria:   { project_id: 2, date_format: 'YYYY', year: null }
+                    dimensions: { name: date, value: issue_count }
 
     trends-layout:
         index:
@@ -395,6 +427,8 @@ parameters:
                 - { chart: issues_symfony_per_label_all }
                 - { chart: issues_symfony_per_label_all_2017 }
                 - { chart: contributors_symfony_with_pr_and_issue_count }
+                - { chart: issues_per_date_symfony }
+                - { chart: issues_per_date_symfony_docs }
 
         symfony:
             title: 'Symfony code'
