@@ -11,6 +11,7 @@ use LogicException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\Dumper\YamlDumper;
 use Symfony\Component\Yaml\Yaml;
@@ -25,7 +26,8 @@ class AggregateDataCommand extends ContainerAwareCommand
         $this
             ->setName('trends:data:aggregate')
             ->setDescription('Aggregate data from external sources.')
-            ->addArgument('aggregator', InputArgument::REQUIRED, 'Aggregator name (see `aggregators`).')
+            ->addArgument('aggregator', InputArgument::OPTIONAL, 'Aggregator name (see `aggregators`).')
+            ->addOption('list', 'l', InputOption::VALUE_NONE, 'Output list of available aggregators')
         ;
     }
 
@@ -34,11 +36,20 @@ class AggregateDataCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $aggregatorName = $input->getArgument('aggregator');
         $aggregators = $this->getContainer()->getParameter('aggregators');
+        if (false !== $input->getOption('list')) {
+            $output->writeln('Available aggregators:');
+            foreach ($aggregators as $aggregatorName => $aggregator) {
+                $output->writeln($aggregatorName);
+            }
+
+            return;
+        }
+
+        $aggregatorName = $input->getArgument('aggregator');
 
         if(!isset($aggregators[$aggregatorName])) {
-            throw new LogicException(sprintf('Aggregator %s is not found.', $aggregatorName));
+            throw new LogicException(sprintf('Aggregator <%s> is not found.', $aggregatorName));
         }
 
         $aggregatorData = $aggregators[$aggregatorName];
