@@ -95,7 +95,7 @@ class Issue
     /**
      * @var array
      *
-     * @ORM\Column(name="labels", type="simple_array")
+     * @ORM\Column(name="labels", type="simple_array", nullable=true)
      */
     private $labels = [];
 

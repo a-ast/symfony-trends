@@ -41,7 +41,12 @@ class IssueAggregator implements AggregatorInterface
 
         foreach ($this->githubApi->getIssues($project->getGithubPath(), $sinceDate) as $apiIssue) {
 
-            $issue = new Issue();
+            $issue = $this->repository->findOneBy(['githubId' => $apiIssue->getId()]);
+            if (null === $issue) {
+                $issue = new Issue();
+                print 'c';
+            }
+
             $issue
                 ->setProjectId($project->getId())
                 ->setGithubId($apiIssue->getId())
