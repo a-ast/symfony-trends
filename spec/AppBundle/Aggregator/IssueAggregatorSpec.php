@@ -40,7 +40,8 @@ class IssueAggregatorSpec extends ObjectBehavior
      * @param GithubApiInterface $githubApi
      * @param IssueRepository $issueRepository
      */
-    protected function initDependencies(Project $project, GithubApiInterface $githubApi, IssueRepository $issueRepository)
+    protected function initDependencies(Project $project, GithubApiInterface $githubApi,
+        IssueRepository $issueRepository)
     {
         $project
             ->getId()
@@ -76,6 +77,10 @@ class IssueAggregatorSpec extends ObjectBehavior
             ->getLastCreatedAt(Argument::type('int'))
             ->willReturn(new \DateTimeImmutable('2010-10-11'))
             ->shouldBeCalled();
+
+        $issueRepository
+            ->findOneBy(Argument::type('array'))
+            ->willReturn(new Issue());
 
         $issueRepository
             ->persist(Argument::type(Issue::class))
