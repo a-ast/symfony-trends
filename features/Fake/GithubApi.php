@@ -5,9 +5,6 @@ namespace features\Fake;
 
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubFork;
-use AppBundle\Model\GithubIssue;
-use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;

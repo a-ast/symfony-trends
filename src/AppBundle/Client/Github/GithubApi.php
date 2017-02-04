@@ -2,7 +2,6 @@
 
 namespace AppBundle\Client\Github;
 
-use AppBundle\Model\GithubFork;
 use AppBundle\Model\GithubCommit;
 use AppBundle\Model\GithubIssue;
 use AppBundle\Model\GithubPullRequest;
