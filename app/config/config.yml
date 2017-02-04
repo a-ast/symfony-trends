@@ -4,7 +4,6 @@ imports:
     - { resource: services_repositories.yml }
     - { resource: services.yml }
     - { resource: services_aggregators.yml }
-    - { resource: trends_aggregators.yml }
     - { resource: trends_charts.yml }
 
 parameters:
