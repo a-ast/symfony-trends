@@ -13,14 +13,34 @@ class GithubPullRequestSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
+        $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
         $this->shouldHaveType(GithubPullRequest::class);
     }
 
     function it_can_be_created_from_response_data()
     {
         $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
-
         $this->shouldHaveType(GithubPullRequest::class);
+    }
+
+    private function getArrayData()
+    {
+        return [
+            'id' => 100,
+            'number' => 200,
+            'state' => 'closed',
+            'title' => '[Ring] I will take the Ring...',
+            'userId' => 200,
+            'body' => '...though I do not know the way.',
+            'createdAt' => '2010-01-01T00:00:00Z',
+            'updatedAt' => '2010-01-02T00:00:00Z',
+            'closedAt' => '2010-01-03T00:00:00Z',
+            'mergedAt' => '2010-01-04T00:00:00Z',
+            'mergeSha' => 'xxx',
+            'headSha' => 'yyy',
+            'baseSha' => 'zzz',
+            'baseRef' => '1.0',
+        ];
     }
 
     private function getResponseData()

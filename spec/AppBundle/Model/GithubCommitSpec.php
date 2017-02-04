@@ -13,18 +13,17 @@ class GithubCommitSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->beConstructedWith($this->getInitData());
+        $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
         $this->shouldHaveType(GithubCommit::class);
     }
 
-    function it_can_be_created_from_resonse_data()
+    function it_can_be_created_from_response_data()
     {
-        $this->beConstructedThrough('createFromGithubResponseData', [$this->getInitGithubResponseData()]);
-
+        $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
         $this->shouldHaveType(GithubCommit::class);
     }
 
-    private function getInitData()
+    private function getArrayData()
     {
         return [
             'sha' => 'hash-frodo',
@@ -38,7 +37,7 @@ class GithubCommitSpec extends ObjectBehavior
     }
 
 
-    private function getInitGithubResponseData()
+    private function getResponseData()
     {
         return [
             'sha' => 'hash-frodo',

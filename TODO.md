@@ -3,6 +3,7 @@ TODO
 
 ### To think:
 
+1. Aggregator ContributorCountru is project-agnostic, it must be specific interface or another flag to avoid run for every project.
 1. Rename contribution table??
 1. IMPORTANT: Recheck all issues (can be changed) or only last month, year?
 
@@ -10,6 +11,8 @@ TODO
 1. Features for all aggregators
 1. Implement contributor page agg (index contributor page, find sensiolabs user, find backlink to github)
 1. Implement sensiolabs connect agg (index all that have github link (see above), get additional info)
+   * use API https://github.com/sensiolabs/connect/blob/master/src/SensioLabs/Connect/Api/Entity/User.php
+   * https://connect.sensiolabs.com/about/api
 1. Get rid of aggregator config, use services directly
 
 

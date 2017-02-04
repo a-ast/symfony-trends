@@ -5,6 +5,8 @@ namespace features\Fake;
 
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Model\GithubCommit;
+use AppBundle\Model\GithubIssue;
+use AppBundle\Model\GithubPullRequest;
 use AppBundle\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
@@ -23,7 +25,7 @@ class GithubApi implements GithubApiInterface
     {
         $commits = [];
         foreach ($this->fakeData['commits'] as $item) {
-            $commits[] = new GithubCommit($item);
+            $commits[] = GithubCommit::createFromArray($item);
         }
 
         return new \ArrayIterator($commits);
@@ -46,7 +48,12 @@ class GithubApi implements GithubApiInterface
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null)
     {
+        $commits = [];
+        foreach ($this->fakeData['issues'] as $item) {
+            $commits[] = GithubIssue::createFromArray($item);
+        }
 
+        return new \ArrayIterator($commits);
     }
 
     /**
@@ -54,6 +61,11 @@ class GithubApi implements GithubApiInterface
      */
     public function getPullRequests($repositoryPath)
     {
-        // TODO: Implement getPullRequests() method.
+        $commits = [];
+        foreach ($this->fakeData['pull-requests'] as $item) {
+            $commits[] = GithubPullRequest::createFromArray($item);
+        }
+
+        return new \ArrayIterator($commits);
     }
 }

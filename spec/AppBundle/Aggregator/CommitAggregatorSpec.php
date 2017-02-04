@@ -48,7 +48,7 @@ class CommitAggregatorSpec extends ObjectBehavior
         Project $project,
         Contributor $contributor)
     {
-        $commit = ModelGithubCommit::createFromGithubResponseData([
+        $commit = ModelGithubCommit::createFromResponseData([
             'sha' => 'hash-frodo-1',
             'commit' => [
                 'author' => [

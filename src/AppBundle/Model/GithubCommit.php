@@ -43,20 +43,27 @@ class GithubCommit
     private $message;
 
     /**
-     * Constructor
-     *
-     * @param array $data
+     * Constructor.
      */
-    public function __construct(array $data)
+    private function __construct()
     {
-        $this->sha = $data['sha'];
-        $this->date = new DateTimeImmutable($data['date']);
-        $this->message = $data['message'];
+    }
 
-        $this->authorId = isset($data['authorId']) ? $data['authorId'] : null;
-        $this->authorLogin = isset($data['authorLogin']) ? $data['authorLogin'] : '';
-        $this->commitAuthorName = isset($data['commitAuthorName']) ? $data['commitAuthorName'] : '';
-        $this->commitAuthorEmail = isset($data['commitAuthorEmail']) ? $data['commitAuthorEmail'] : '';
+    public static function createFromArray(array $data)
+    {
+        $commit = new GithubCommit();
+
+        $commit->sha = $data['sha'];
+        $commit->date = new DateTimeImmutable($data['date']);
+        $commit->message = $data['message'];
+
+        $commit->authorId = isset($data['authorId']) ? $data['authorId'] : null;
+        $commit->authorLogin = isset($data['authorLogin']) ? $data['authorLogin'] : '';
+        $commit->commitAuthorName = isset($data['commitAuthorName']) ? $data['commitAuthorName'] : '';
+        $commit->commitAuthorEmail = isset($data['commitAuthorEmail']) ? $data['commitAuthorEmail'] : '';
+
+
+        return $commit;
     }
 
     /**
@@ -64,7 +71,7 @@ class GithubCommit
      *
      * @return GithubCommit
      */
-    public static function createFromGithubResponseData(array $responseData)
+    public static function createFromResponseData(array $responseData)
     {
         $data = [
             'sha' => $responseData['sha'],
@@ -78,7 +85,7 @@ class GithubCommit
             'authorLogin' => isset($responseData['author']['login']) ? $responseData['author']['login'] : '',
         ];
 
-        return new self($data);
+        return self::createFromArray($data);
     }    
     
     /**

@@ -86,6 +86,37 @@ class GithubPullRequest
 
     /**
      * @param array $data
+     *
+     * @return GithubPullRequest
+     */
+    public static function createFromArray(array $data)
+    {
+        $pullRequest = new GithubPullRequest();
+
+        $pullRequest->id = (int) $data['id'];
+        $pullRequest->number = (int) $data['number'];
+        $pullRequest->state = $data['state'];
+        $pullRequest->title = $data['title'];
+        $pullRequest->userId = (int) $data['userId'];
+        $pullRequest->body = isset($data['body']) ? $data['body'] : '';
+
+        $pullRequest->createdAt = new DateTimeImmutable($data['createdAt']);
+        $pullRequest->updatedAt = isset($data['updatedAt']) ? new DateTimeImmutable($data['updatedAt']) : null;
+        $pullRequest->closedAt = isset($data['closedAt']) ? new DateTimeImmutable($data['closedAt']) : null;
+        $pullRequest->mergedAt = isset($data['mergedAt']) ? new DateTimeImmutable($data['mergedAt']) : null;
+
+        $pullRequest->mergeSha = isset($data['mergeSha']) ? $data['mergeSha'] : '';
+        $pullRequest->headSha = isset($data['headSha']) ? $data['headSha'] : '';
+        $pullRequest->baseSha = isset($data['baseSha']) ? $data['baseSha'] : '';
+
+        $pullRequest->baseRef = isset($data['baseRef']) ? $data['baseRef'] : '';
+
+        return $pullRequest;
+    }
+
+    /**
+     * @param array $data
+     *
      * @return GithubPullRequest
      */
     public static function createFromResponseData(array $data)

@@ -40,7 +40,7 @@ class GithubApi implements GithubApiInterface
         while ($commits = $this->getCommitsByPage($repositoryPath, $since, $page)) {
 
             foreach ($commits as $commit) {
-                yield GithubCommit::createFromGithubResponseData($commit);
+                yield GithubCommit::createFromResponseData($commit);
             }
 
             $page++;

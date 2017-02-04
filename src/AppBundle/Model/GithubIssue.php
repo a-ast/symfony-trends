@@ -67,6 +67,31 @@ class GithubIssue
 
     /**
      * @param array $data
+     *
+     * @return GithubIssue
+     */
+    public static function createFromArray(array $data)
+    {
+        $issue = new GithubIssue();
+
+        $issue->id = (int) $data['id'];
+        $issue->number = (int) $data['number'];
+        $issue->state = $data['state'];
+        $issue->title = $data['title'];
+        $issue->userId = (int) $data['userId'];
+        $issue->body = isset($data['body']) ? $data['body'] : '';
+
+        $issue->createdAt = new DateTimeImmutable($data['createdAt']);
+        $issue->updatedAt = isset($data['updatedAt']) ? new DateTimeImmutable($data['updatedAt']) : null;
+        $issue->closedAt = isset($data['closedAt']) ? new DateTimeImmutable($data['closedAt']) : null;
+        $issue->labels = isset($data['labels']) ? $data['labels'] : [];
+
+        return $issue;
+    }
+
+    /**
+     * @param array $data
+     *
      * @return GithubIssue
      */
     public static function createFromResponseData(array $data)
