@@ -35,4 +35,14 @@ class AggregatorRegistry
     {
         return array_keys($this->aggregators);
     }
+
+    /**
+     * @param string $alias
+     *
+     * @return bool
+     */
+    public function has($alias)
+    {
+        return isset($this->aggregators[$alias]);
+    }
 }

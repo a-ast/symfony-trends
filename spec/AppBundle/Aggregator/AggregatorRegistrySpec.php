@@ -36,4 +36,16 @@ class AggregatorRegistrySpec extends ObjectBehavior
 
         $this->getAliases()->shouldReturn(['alias1', 'alias2']);
     }
+
+    function it_returns_true_if_aggregator_registered(AggregatorInterface $aggregator)
+    {
+        $this->register($aggregator, 'alias');
+
+        $this->has('alias')->shouldReturn(true);
+    }
+
+    function it_returns_false_if_aggregator_is_not_registered()
+    {
+        $this->has('alias')->shouldReturn(false);
+    }
 }
