@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Aggregator\AggregatorInterface;
+use AppBundle\Aggregator\AggregatorRegistry;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressBar;
 use AppBundle\Repository\ProjectRepository;
@@ -26,8 +27,8 @@ class AggregateDataCommand extends ContainerAwareCommand
         $this
             ->setName('trends:data:aggregate')
             ->setDescription('Aggregate data from external sources.')
-            ->addArgument('aggregator', InputArgument::OPTIONAL, 'Aggregator name (see `aggregators`).')
-            ->addOption('list', 'l', InputOption::VALUE_NONE, 'Output list of available aggregators')
+            ->addArgument('aggregator', InputArgument::OPTIONAL, 'Aggregator alias.')
+            ->addOption('list', 'l', InputOption::VALUE_NONE, 'Output list of available aggregator aliases.')
         ;
     }
 
@@ -36,39 +37,30 @@ class AggregateDataCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $aggregators = $this->getContainer()->getParameter('aggregators');
+        /** @var AggregatorRegistry $aggregatorRegistry */
+        $aggregatorRegistry = $this->getContainer()->get('aggregator_registry');
         if (false !== $input->getOption('list')) {
-            $output->writeln('Available aggregators:');
-            foreach ($aggregators as $aggregatorName => $aggregator) {
-                $output->writeln($aggregatorName);
-            }
+            $this->outputAvailableAggregators($aggregatorRegistry, $output);
 
             return;
         }
 
-        $aggregatorName = $input->getArgument('aggregator');
+        $aggregatorAlias = $input->getArgument('aggregator');
 
-        if(!isset($aggregators[$aggregatorName])) {
-            throw new LogicException(sprintf('Aggregator <%s> is not found.', $aggregatorName));
+        if(!$aggregatorRegistry->has($aggregatorAlias)) {
+            throw new LogicException(sprintf('Aggregator with alias <%s> not found.', $aggregatorAlias));
         }
 
-        $aggregatorData = $aggregators[$aggregatorName];
-
-        /** @var AggregatorInterface $aggregator */
-        $aggregator = $this->getContainer()->get($aggregatorData['service']);
+        $aggregator = $aggregatorRegistry->get($aggregatorAlias);
 
         $progressBar = $this->getProgressBar($output);
-        ProgressBar::getPlaceholderFormatterDefinition('current');
 
-        $options = $aggregatorData['options'];
-
-        $projectLabels = isset($aggregatorData['projects']) ? $aggregatorData['projects'] : [];
-        $projects = $this->getProjects($projectLabels);
+        $projects = $this->getProjects();
 
         foreach ($projects as $project) {
-            $result = $aggregator->aggregate($project, $options, $progressBar);
+            $result = $aggregator->aggregate($project, [], $progressBar);
 
-            $output->writeln(PHP_EOL.sprintf('<info>%s: %s aggregation finished.</info>', $project->getName(), $aggregatorName));
+            $output->writeln(PHP_EOL.sprintf('<info>%s: %s aggregation finished.</info>', $project->getName(), $aggregatorAlias));
             $this->outputResults($output, $result);
         }
     }
@@ -77,7 +69,7 @@ class AggregateDataCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @param $result
      */
-    protected function outputResults(OutputInterface $output, $result)
+    private function outputResults(OutputInterface $output, $result)
     {
         $output->writeln('');
 
@@ -90,26 +82,39 @@ class AggregateDataCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @return ProgressBar
      */
-    protected function getProgressBar(OutputInterface $output)
+    private function getProgressBar(OutputInterface $output)
     {
         $progressBar = new ProgressBar($output);
         $progressBar->setMessage('');
         $progressBar->setMessage('');
         $progressBar->setFormat(' %current%/%max% [%bar%] %message%');
 
+        ProgressBar::getPlaceholderFormatterDefinition('current');
+
         return $progressBar;
     }
 
     /**
-     * @param array $projectLabels
-     *
      * @return Project[]|array
      */
-    protected function getProjects(array $projectLabels)
+    private function getProjects()
     {
         /** @var ProjectRepository $projectRepository */
         $projectRepository = $this->getContainer()->get('repository.project');
 
-        return $projectRepository->findByLabel($projectLabels);
+        return $projectRepository->findAll();
+    }
+
+    /**
+     * @param $aggregatorRegistry
+     * @param OutputInterface $output
+     */
+    protected function outputAvailableAggregators($aggregatorRegistry, OutputInterface $output)
+    {
+        $output->writeln('Available aggregators:');
+        foreach ($aggregatorRegistry->getAliases() as $aggregatorAlias) {
+            $output->writeln($aggregatorAlias);
+        }
+        $output->writeln('');
     }
 }

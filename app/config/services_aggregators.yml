@@ -14,7 +14,7 @@ services:
             - '@helper.contributor_extractor'
             - '@repository.contributor'
         tags:
-            - { name: aggregator, alias: 'contributor page'}
+            - { name: aggregator, alias: 'contributor-pages'}
 
     aggregator.github_commit:
         class: AppBundle\Aggregator\CommitAggregator
@@ -25,7 +25,7 @@ services:
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
         tags:
-            - { name: aggregator, alias: commits}
+            - { name: aggregator, alias: 'commits'}
 
     aggregator.contributor_country:
         class: AppBundle\Aggregator\ContributorCountryAggregator
@@ -34,7 +34,7 @@ services:
             - '@api.geocoder'
             - '@repository.contributor'
         tags:
-            - { name: aggregator, alias: 'contributor countries'}
+            - { name: aggregator, alias: 'contributor-countries'}
 
     aggregator.sensiolabs_connect:
         class: AppBundle\Aggregator\SensiolabsConnectAggregator
@@ -44,7 +44,7 @@ services:
             - '@helper.sensiolabs_data_extractor'
             - '@repository.contributor'
         tags:
-            - { name: aggregator, alias: 'SensiolabsConnect data'}
+            - { name: aggregator, alias: 'sensiolabs-profiles'}
 
     aggregator.github_issue:
         class: AppBundle\Aggregator\IssueAggregator
@@ -53,7 +53,7 @@ services:
             - '@api.github'
             - '@repository.issue'
         tags:
-            - { name: aggregator, alias: issues}
+            - { name: aggregator, alias: 'issues'}
 
     aggregator.github_pull_request:
         class: AppBundle\Aggregator\PullRequestAggregator
@@ -63,4 +63,4 @@ services:
             - '@repository.pull_request'
             - '@helper.pull_request_body_processor'
         tags:
-            - { name: aggregator, alias: 'pull requests'}
+            - { name: aggregator, alias: 'pull-requests'}
