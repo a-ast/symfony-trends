@@ -27,4 +27,12 @@ class AggregatorRegistry
     {
         return $this->aggregators[$alias];
     }
+
+    /**
+     * @return array
+     */
+    public function getAliases()
+    {
+        return array_keys($this->aggregators);
+    }
 }
