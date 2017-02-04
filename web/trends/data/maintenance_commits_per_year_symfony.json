@@ -31,11 +31,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 4485
+                    "value": 4492
                 },
                 {
                     "name": "2017",
-                    "value": 307
+                    "value": 499
                 }
             ],
             "name": "All commits",
@@ -73,7 +73,7 @@
                 },
                 {
                     "name": "2017",
-                    "value": 200
+                    "value": 312
                 }
             ],
             "name": "Maintenance commits",

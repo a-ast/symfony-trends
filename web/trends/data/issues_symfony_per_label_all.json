@@ -7,59 +7,59 @@
             "data": [
                 {
                     "name": "Form",
-                    "value": 1109
+                    "value": 1115
                 },
                 {
                     "name": "Bug",
-                    "value": 1074
+                    "value": 1098
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 550
+                    "value": 565
                 },
                 {
                     "name": "Feature",
-                    "value": 534
+                    "value": 548
                 },
                 {
                     "name": "Enhancement",
-                    "value": 422
+                    "value": 424
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 413
+                    "value": 423
                 },
                 {
                     "name": "Validator",
-                    "value": 371
+                    "value": 374
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 355
+                    "value": 359
                 },
                 {
                     "name": "Security",
-                    "value": 352
+                    "value": 355
                 },
                 {
                     "name": "Console",
-                    "value": 256
+                    "value": 264
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 214
+                    "value": 222
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 198
+                    "value": 200
                 },
                 {
                     "name": "Routing",
-                    "value": 194
+                    "value": 198
                 },
                 {
                     "name": "HttpKernel",
-                    "value": 193
+                    "value": 194
                 },
                 {
                     "name": "Easy Pick",
@@ -71,11 +71,11 @@
                 },
                 {
                     "name": "WebProfilerBundle",
-                    "value": 127
+                    "value": 130
                 },
                 {
                     "name": "Doctrine",
-                    "value": 125
+                    "value": 126
                 },
                 {
                     "name": "Process",
@@ -83,11 +83,15 @@
                 },
                 {
                     "name": "DX",
-                    "value": 119
+                    "value": 120
                 },
                 {
                     "name": "Yaml",
                     "value": 114
+                },
+                {
+                    "name": "Status: Reviewed",
+                    "value": 100
                 }
             ],
             "name": "All issues"

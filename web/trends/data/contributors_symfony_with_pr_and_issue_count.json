@@ -13,17 +13,17 @@
             "data": [
                 {
                     "name": "Nicolas Grekas",
-                    "x": 876,
-                    "y": 40
+                    "x": 897,
+                    "y": 41
                 },
                 {
                     "name": "Fabien Potencier",
-                    "x": 660,
+                    "x": 662,
                     "y": 49
                 },
                 {
                     "name": "Christian Flothmann",
-                    "x": 497,
+                    "x": 503,
                     "y": 12
                 },
                 {
@@ -43,18 +43,18 @@
                 },
                 {
                     "name": "Christophe Coevoet",
-                    "x": 227,
+                    "x": 228,
                     "y": 107
+                },
+                {
+                    "name": "K\u00e9vin Dunglas",
+                    "x": 208,
+                    "y": 1
                 },
                 {
                     "name": "Jakub Zalas",
                     "x": 206,
                     "y": 9
-                },
-                {
-                    "name": "K\u00e9vin Dunglas",
-                    "x": 201,
-                    "y": 1
                 },
                 {
                     "name": "Joseph Bielawski",
@@ -78,8 +78,8 @@
                 },
                 {
                     "name": "Wouter J",
-                    "x": 144,
-                    "y": 46
+                    "x": 145,
+                    "y": 48
                 },
                 {
                     "name": "Romain Neutron",
@@ -88,8 +88,8 @@
                 },
                 {
                     "name": "Maxime Steinhausser",
-                    "x": 135,
-                    "y": 9
+                    "x": 144,
+                    "y": 10
                 },
                 {
                     "name": "Hugo Hamon",
@@ -108,22 +108,22 @@
                 },
                 {
                     "name": "Robin Chalas",
-                    "x": 109,
+                    "x": 119,
                     "y": 10
                 },
                 {
                     "name": "Ryan Weaver",
-                    "x": 108,
+                    "x": 109,
                     "y": 33
                 },
                 {
                     "name": "Javier Eguiluz",
                     "x": 102,
-                    "y": 168
+                    "y": 169
                 },
                 {
                     "name": "Jules Pietri",
-                    "x": 100,
+                    "x": 101,
                     "y": 9
                 },
                 {

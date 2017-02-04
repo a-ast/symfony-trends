@@ -7,46 +7,82 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 38
+                    "value": 62
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 34
+                    "value": 54
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 21
+                    "value": 33
                 },
                 {
                     "name": "Feature",
-                    "value": 11
+                    "value": 25
                 },
                 {
                     "name": "DependencyInjection",
+                    "value": 14
+                },
+                {
+                    "name": "Console",
+                    "value": 12
+                },
+                {
+                    "name": "Form",
+                    "value": 10
+                },
+                {
+                    "name": "HttpFoundation",
                     "value": 6
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 6
+                },
+                {
+                    "name": "Routing",
+                    "value": 6
+                },
+                {
+                    "name": "Workflow",
+                    "value": 5
                 },
                 {
                     "name": "RFC",
                     "value": 5
                 },
                 {
-                    "name": "Form",
+                    "name": "Status: Reviewed",
+                    "value": 5
+                },
+                {
+                    "name": "Validator",
                     "value": 4
                 },
                 {
-                    "name": "Console",
+                    "name": "WebProfilerBundle",
                     "value": 4
                 },
                 {
-                    "name": "FrameworkBundle",
+                    "name": "Debug",
                     "value": 4
                 },
                 {
-                    "name": "Cache",
+                    "name": "Security",
+                    "value": 4
+                },
+                {
+                    "name": "Intl",
                     "value": 3
                 },
                 {
-                    "name": "Status: Reviewed",
+                    "name": "TwigBridge",
+                    "value": 3
+                },
+                {
+                    "name": "Cache",
                     "value": 3
                 },
                 {

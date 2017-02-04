@@ -7,11 +7,11 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 201
+                    "value": 205
                 },
                 {
                     "name": "Bug",
-                    "value": 182
+                    "value": 184
                 },
                 {
                     "name": "Form",
@@ -27,46 +27,50 @@
                 },
                 {
                     "name": "Security",
-                    "value": 73
+                    "value": 74
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 55
+                    "value": 58
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 51
+                    "value": 55
                 },
                 {
                     "name": "Validator",
-                    "value": 49
+                    "value": 47
                 },
                 {
                     "name": "Console",
-                    "value": 32
+                    "value": 36
                 },
                 {
                     "name": "RFC",
-                    "value": 29
-                },
-                {
-                    "name": "Translator",
-                    "value": 22
+                    "value": 27
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 22
-                },
-                {
-                    "name": "FrameworkBundle",
-                    "value": 21
+                    "value": 23
                 },
                 {
                     "name": "Routing",
-                    "value": 20
+                    "value": 22
+                },
+                {
+                    "name": "Translator",
+                    "value": 21
                 },
                 {
                     "name": "HttpKernel",
+                    "value": 20
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 20
+                },
+                {
+                    "name": "Status: Reviewed",
                     "value": 20
                 }
             ],

@@ -47,11 +47,11 @@
                 },
                 {
                     "date": "2016-11-01",
-                    "value": 162
+                    "value": 163
                 },
                 {
                     "date": "2016-12-01",
-                    "value": 182
+                    "value": 188
                 }
             ],
             "name": "All contributors",
@@ -101,11 +101,11 @@
                 },
                 {
                     "date": "2016-11-01",
-                    "value": 81
+                    "value": 82
                 },
                 {
                     "date": "2016-12-01",
-                    "value": 83
+                    "value": 86
                 }
             ],
             "name": "Core team",

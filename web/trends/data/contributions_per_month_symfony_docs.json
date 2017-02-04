@@ -335,7 +335,11 @@
                 },
                 {
                     "date": "2017-01-01",
-                    "value": 14
+                    "value": 57
+                },
+                {
+                    "date": "2017-02-01",
+                    "value": 4
                 }
             ],
             "name": "All contributors",
@@ -673,7 +677,11 @@
                 },
                 {
                     "date": "2017-01-01",
-                    "value": 9
+                    "value": 32
+                },
+                {
+                    "date": "2017-02-01",
+                    "value": 3
                 }
             ],
             "name": "Core team",

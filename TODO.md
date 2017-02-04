@@ -7,6 +7,8 @@ TODO
 
 1. Important: fix issues created by contributors - CHECK ONLY CONTRIBUTORS OF THIS PROJECT NOT ALL OF THEM!!!
 
+1. IMPORTANT: Recheck all issues (can be changed) or only last month, year?
+
 ### KW 2:
 
 1. Get rid of multiple trend aggregators per project

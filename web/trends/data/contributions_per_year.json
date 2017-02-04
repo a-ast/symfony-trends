@@ -31,11 +31,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 1853
+                    "value": 1860
                 },
                 {
                     "name": "2017",
-                    "value": 107
+                    "value": 187
                 }
             ],
             "name": "Symfony code",
@@ -73,7 +73,7 @@
                 },
                 {
                     "name": "2017",
-                    "value": 14
+                    "value": 61
                 }
             ],
             "name": "Symfony docs",
