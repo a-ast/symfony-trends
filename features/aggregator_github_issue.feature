@@ -22,8 +22,8 @@ Feature: Github Issues Aggregator
 
   Scenario: Aggregate issues to the existing database, existing issues updated
     Given there are "AppBundle\Entity\Issue" entities:
-      | projectId | githubId | number | state  | title   | githubUserId | body         | createdAt        | updatedAt        | closedAt         | labels  |
-      | 1         | 10       | 111    | opened | Issue 1 | 100          | Issue body 1 | date(2016-11-01) | date(2016-11-02) | ~                | [L1,L2] |
+      | projectId | githubId | number | state  | title   | githubUserId | body         | createdAt        | updatedAt        | closedAt | labels  |
+      | 1         | 10       | 111    | opened | Issue 1 | 100          | Issue body 1 | date(2016-11-01) | date(2016-11-02) | ~        | [L1,L2] |
 
     And Github API returns issues data:
       | id | number | state  | title   | userId | body         | createdAt  | updatedAt  | closedAt   | labels     |
