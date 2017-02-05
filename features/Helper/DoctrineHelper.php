@@ -76,8 +76,14 @@ class DoctrineHelper
      */
     public function checkEntities($entityClass, Traversable $records)
     {
-        $queryBuilder = $this->em->getRepository($entityClass)->createQueryBuilder('data');
-        $actualData = $queryBuilder->getQuery()->getArrayResult();
+        $queryBuilder = $this->em
+            ->getRepository($entityClass)
+            ->createQueryBuilder('entity');
+
+        $actualData = $queryBuilder
+            ->orderBy('entity.id')
+            ->getQuery()
+            ->getArrayResult();
 
         $expectedData = [];
         foreach ($records as &$expectedRow) {
@@ -135,7 +141,7 @@ class DoctrineHelper
      * @param $value
      * @return array|\DateTimeImmutable|null
      */
-    private function processTableCellValue($value)
+    public function processTableCellValue($value)
     {
         if ('~' === $value) {
             return null;
