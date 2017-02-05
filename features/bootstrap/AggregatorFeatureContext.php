@@ -93,7 +93,7 @@ class AggregatorFeatureContext implements Context
         $api = $this->apis->get($apiName);
 
         foreach ($records as $record) {
-            $data = $this->replaceNulls($record);
+            $data = $this->processTableRow($record);
 
             $api->addData($dataType, $data);
         }
@@ -113,10 +113,12 @@ class AggregatorFeatureContext implements Context
         $aggregator->aggregate($project, []);
     }
 
-    private function replaceNulls(array $data)
+    private function processTableRow(array $data)
     {
-        return array_map(function($item) {
-                            return '~' === $item ? null : $item;
+        $helper = $this->doctrineHelper;
+
+        return array_map(function($item) use ($helper) {
+                            return $helper->processTableCellValue($item);
                          },
                          $data);
     }
