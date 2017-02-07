@@ -8,6 +8,7 @@ imports:
 
 parameters:
     locale: en
+    sensiolabs_profile_uri: 'https://connect.sensiolabs.com/profile/'
     maintenance_commit_patterns:
         - '^minor #'
         - '^bug #'

@@ -81,7 +81,7 @@ services:
         class: AppBundle\Aggregator\Helper\ContributorExtractor
         lazy: true
         arguments:
-          - ['https://connect.sensiolabs.com/profile/']
+          - ['%sensiolabs_profile_uri%']
 
     helper.sensiolabs_data_extractor:
         class: AppBundle\Aggregator\Helper\SensiolabsDataExtractor

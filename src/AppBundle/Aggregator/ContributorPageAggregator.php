@@ -2,43 +2,53 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Aggregator\Helper\ContributorExtractor;
+use AppBundle\Aggregator\Helper\CrawlerExtractorInterface;
+use AppBundle\Client\PageCrawler\PageCrawlerInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Repository\ContributorRepository;
+use AppBundle\Repository\SensiolabsUserRepository;
 use AppBundle\Util\StringUtils;
-use GuzzleHttp\ClientInterface;
 
 class ContributorPageAggregator implements AggregatorInterface
 {
     /**
-     * @var ClientInterface
-     */
-    private $httpClient;
-    /**
-     * @var ContributorRepository
-     */
-    private $repository;
-    /**
-     * @var ContributorExtractor
+     * @var CrawlerExtractorInterface
      */
     private $extractor;
 
     /**
+     * @var PageCrawlerInterface
+     */
+    private $pageCrawler;
+
+    /**
+     * @var SensiolabsUserRepository
+     */
+    private $repository;
+
+    /**
+     * @var string
+     */
+    private $profileUri;
+
+    /**
      * Constructor.
      *
-     * @param ClientInterface $httpClient
-     * @param ContributorExtractor $extractor
-     * @param ContributorRepository $repository
+     * @param PageCrawlerInterface $pageCrawler
+     * @param CrawlerExtractorInterface $extractor
+     * @param SensiolabsUserRepository $repository
+     * @param string $profileUri
      */
     public function __construct(
-        ClientInterface $httpClient,
-        ContributorExtractor $extractor,
-        ContributorRepository $repository
+        PageCrawlerInterface $pageCrawler,
+        CrawlerExtractorInterface $extractor,
+        SensiolabsUserRepository $repository,
+        $profileUri
     ) {
-        $this->httpClient = $httpClient;
-        $this->repository = $repository;
+        $this->pageCrawler = $pageCrawler;
         $this->extractor = $extractor;
+        $this->repository = $repository;
+        $this->profileUri = $profileUri;
     }
 
     /**
@@ -47,41 +57,32 @@ class ContributorPageAggregator implements AggregatorInterface
     public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
     {
         // @todo: get link from db
-        $url = $options['url'];
+        $url = 'http://symfony.com/contributors/code';
 
         $links = $this->getContributorLinks($url);
 
-        // @todo: iterate links, request pages or/and store sensiolabs user
+        // @todo: iterate links, extract login, save to db
 
         return null;
     }
 
-    protected function getContributorLinks($url)
+    private function getContributorLinks($uri)
     {
-        $responseBody = $this->getPageContents($url);
+        $crawler = $this->pageCrawler->getDomCrawler($uri);
 
-        $links = $this->extractor->extract($responseBody);
+        $links = $this->extractor->extract($crawler);
 
         return $links;
     }
 
     /**
-     * @param $uri
+     * @param string $uri
+     *
      * @return string
      */
-    protected function getPageContents($uri)
+    private function getSensiolabsLoginFromUri($uri)
     {
-        $response = $this->httpClient->request('GET', $uri);
-
-        $responseBody = $response->getBody();
-
-        return (string)$responseBody;
-    }
-
-
-    private function getSensiolabsLoginFromUrl($url)
-    {
-        return StringUtils::textAfter($url, 'https://connect.sensiolabs.com/profile/');
+        return StringUtils::textAfter($uri, $this->profileUri);
     }
 
 }

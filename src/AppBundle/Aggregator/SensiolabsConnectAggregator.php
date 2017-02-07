@@ -3,39 +3,44 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
+use AppBundle\Client\PageCrawler\PageCrawlerInterface;
 use AppBundle\Client\PageGetterInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
+use AppBundle\Repository\SensiolabsUserRepository;
 use GuzzleHttp\Exception\ClientException;
 
 class SensiolabsConnectAggregator implements AggregatorInterface
 {
+
     /**
-     * @var PageGetterInterface
-     */
-    private $httpClient;
-    /**
-     * @var ContributorRepository
+     * @var SensiolabsUserRepository
      */
     private $repository;
+
     /**
      * @var SensiolabsDataExtractor
      */
     private $extractor;
 
     /**
+     * @var PageCrawlerInterface
+     */
+    private $pageCrawler;
+
+    /**
      * Constructor.
      *
-     * @param PageGetterInterface $httpClient
+     * @param PageCrawlerInterface $pageCrawler
      * @param SensiolabsDataExtractor $extractor
-     * @param ContributorRepository $repository
+     * @param SensiolabsUserRepository $repository
      */
-    public function __construct(PageGetterInterface $httpClient,
+    public function __construct(PageCrawlerInterface $pageCrawler,
         SensiolabsDataExtractor $extractor,
-        ContributorRepository $repository)
+        SensiolabsUserRepository $repository)
     {
-        $this->httpClient = $httpClient;
+        $this->pageCrawler = $pageCrawler;
         $this->repository = $repository;
         $this->extractor = $extractor;
     }

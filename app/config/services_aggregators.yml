@@ -10,9 +10,10 @@ services:
         class: AppBundle\Aggregator\ContributorPageAggregator
         lazy: true
         arguments:
-            - '@http_client'
+            - '@page_crawler'
             - '@helper.contributor_extractor'
-            - '@repository.contributor'
+            - '@repository.sensiolabs_user'
+            - '%sensiolabs_profile_uri%'
         tags:
             - { name: aggregator, alias: 'contributor-pages'}
 
@@ -40,9 +41,9 @@ services:
         class: AppBundle\Aggregator\SensiolabsConnectAggregator
         lazy: true
         arguments:
-            - '@http_client'
+            - '@page_crawler'
             - '@helper.sensiolabs_data_extractor'
-            - '@repository.contributor'
+            - '@repository.sensiolabs_user'
         tags:
             - { name: aggregator, alias: 'sensiolabs-profiles'}
 
