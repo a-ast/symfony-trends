@@ -61,8 +61,10 @@ services:
 
 
     #####################################
-    http_client:
-        class: AppBundle\Client\HttpClient
+    page_crawler:
+        class: AppBundle\Client\PageCrawler\PageCrawler
+        arguments:
+            - '@api.http_client'
 
     data_provider:
         class: AppBundle\Repository\DataProvider
@@ -78,6 +80,8 @@ services:
     helper.contributor_extractor:
         class: AppBundle\Aggregator\Helper\ContributorExtractor
         lazy: true
+        arguments:
+          - ['https://connect.sensiolabs.com/profile/']
 
     helper.sensiolabs_data_extractor:
         class: AppBundle\Aggregator\Helper\SensiolabsDataExtractor

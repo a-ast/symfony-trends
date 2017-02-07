@@ -13,26 +13,23 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class ContributorExtractorSpec extends ObjectBehavior
 {
+    function let()
+    {
+        $prefixes = ['valinor://'];
+        $this->beConstructedWith($prefixes);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(ContributorExtractor::class);
         $this->shouldImplement(CrawlerExtractorInterface::class);
     }
 
-    public function it_extracts_contributor_list()
+    public function it_extracts_contributor_links()
     {
-        $crawler = new Crawler($this->getContributorPageContent());
+        $crawler = new Crawler($this->getContributorPageContent(), 'http');
 
-        $contributors = $this->extract($crawler);
-
-        $contributors[0]['name']->shouldReturn('Gandalf');
-        $contributors[0]['url']->shouldReturn('valinor://gandalf');
-
-        $contributors[1]['name']->shouldReturn('Frodo Baggins');
-        $contributors[1]['url']->shouldReturn('valinor://frodo');
-
-        $contributors[2]['name']->shouldReturn('Legolas');
-        $contributors[2]['url']->shouldReturn('valinor://legolas');
+        $this->extract($crawler)->shouldReturn(['valinor://fabpot', 'valinor://gandalf', 'valinor://frodo', 'valinor://legolas']);
     }
 
 

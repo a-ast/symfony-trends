@@ -3,40 +3,37 @@
 
 namespace AppBundle\Aggregator\Helper;
 
+use AppBundle\Util\StringUtils;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ContributorExtractor implements CrawlerExtractorInterface
 {
+    /**
+     * @var array
+     */
+    private $linkPrefixes;
+
+    public function __construct(array $linkPrefixes)
+    {
+        $this->linkPrefixes = $linkPrefixes;
+    }
+
     public function extract(Crawler $crawler)
     {
-        $contributors = [];
+        $links = $crawler->filter('a')->links();
+        $linkPrefixes = $this->linkPrefixes;
 
-        $crawler
-            ->filterXPath('//ol[position()>1]/li')
-            ->each(function(Crawler $nodeCrawler) use (&$contributors) {
+        $urls = array_map(function($item) use ($linkPrefixes) {
+            $uri = $item->getUri();
 
-                $name = '';
-                $url = '';
-                $nodeCrawler->filterXPath('li/text()')
-                    ->each(function(Crawler $textNode) use (&$name){
-                        $name .= trim($textNode->text());
-                    });
-
-                if ('' === $name) {
-                    $urlNode = $nodeCrawler->filterXPath('li/a');
-
-                    $name = trim($urlNode->text());
-                    $url = trim($urlNode->attr('href'));
+            foreach ($linkPrefixes as $linkPrefix) {
+                if (StringUtils::startsWith($uri, $linkPrefix)) {
+                    return $uri;
                 }
+            }
 
-                if ('' !== $url) {
-                    $contributors[] = [
-                        'name' => $name,
-                        'url' => $url,
-                    ];
-                }
-            });
+        }, $links);
 
-        return $contributors;
+        return array_values(array_unique(array_filter($urls)));
     }
 }
