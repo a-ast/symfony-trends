@@ -5,15 +5,15 @@ namespace AppBundle\Aggregator;
 class AggregatorRegistry
 {
     /**
-     * @var AggregatorInterface[]|array
+     * @var BaseAggregatorInterface[]|array
      */
     private $aggregators = [];
 
     /**
-     * @param AggregatorInterface $aggregator
+     * @param BaseAggregatorInterface $aggregator
      * @param string $alias
      */
-    public function register(AggregatorInterface $aggregator, $alias)
+    public function register(BaseAggregatorInterface $aggregator, $alias)
     {
         $this->aggregators[$alias] = $aggregator;
     }
@@ -21,7 +21,7 @@ class AggregatorRegistry
     /**
      * @param $alias
      *
-     * @return AggregatorInterface
+     * @return BaseAggregatorInterface
      */
     public function get($alias)
     {

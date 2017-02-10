@@ -9,7 +9,7 @@ use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\IssueRepository;
 use DateTimeInterface;
 
-class IssueAggregator implements AggregatorInterface
+class IssueAggregator implements ProjectAwareAggregatorInterface
 {
     /**
      * @var GithubApiInterface

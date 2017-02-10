@@ -48,7 +48,7 @@ class SensiolabsConnectAggregator implements AggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(array $options, ProgressInterface $progress = null)
     {
         $report = [];
 

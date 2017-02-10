@@ -12,7 +12,7 @@ use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Util\ArrayUtils;
 
-class CommitAggregator implements AggregatorInterface
+class CommitAggregator implements ProjectAwareAggregatorInterface
 {
     /**
      * @var GithubApiInterface

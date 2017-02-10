@@ -4,6 +4,7 @@ namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\IssueAggregator;
+use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Issue;
 use AppBundle\Model\GithubIssue as ModelGithubIssue;
 use AppBundle\Client\Github\GithubApiInterface;
@@ -25,7 +26,7 @@ class IssueAggregatorSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(IssueAggregator::class);
-        $this->shouldImplement(AggregatorInterface::class);
+        $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 
     function it_returns_aggregated_data(Project $project, GithubApiInterface $githubApi, IssueRepository $issueRepository)

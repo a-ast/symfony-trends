@@ -4,6 +4,7 @@ namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\CommitAggregator;
+use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
@@ -29,7 +30,7 @@ class CommitAggregatorSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(CommitAggregator::class);
-        $this->shouldImplement(AggregatorInterface::class);
+        $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 
     function it_returns_aggregated_data(GithubApi $githubApi,

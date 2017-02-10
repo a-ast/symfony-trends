@@ -4,6 +4,7 @@ namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
+use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Aggregator\PullRequestAggregator;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Repository\PullRequestRepository;
@@ -19,6 +20,6 @@ class PullRequestAggregatorSpec extends ObjectBehavior
     {
         $this->beConstructedWith($githubApi, $repository, $bodyProcessor);
         $this->shouldHaveType(PullRequestAggregator::class);
-        $this->shouldImplement(AggregatorInterface::class);
+        $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 }

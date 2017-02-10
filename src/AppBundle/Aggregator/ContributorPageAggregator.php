@@ -8,7 +8,7 @@ use AppBundle\Entity\SensiolabsUser;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 
-class ContributorPageAggregator implements AggregatorInterface
+class ContributorPageAggregator implements ProjectAwareAggregatorInterface
 {
     /**
      * @var ContributorPageApiInterface

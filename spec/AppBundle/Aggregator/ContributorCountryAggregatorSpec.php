@@ -38,8 +38,8 @@ class ContributorCountryAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(AggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(Project $project)
+    function it_returns_aggregated_data()
     {
-        $this->aggregate($project, []);
+        $this->aggregate([]);
     }
 }

@@ -5,14 +5,13 @@ namespace AppBundle\Aggregator;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 
-interface AggregatorInterface
+interface AggregatorInterface extends BaseAggregatorInterface
 {
     /**
-     * @param Project $project
      * @param array $options
      * @param ProgressInterface $progress
      *
      * @return array
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null);
+    function aggregate(array $options, ProgressInterface $progress = null);
 }

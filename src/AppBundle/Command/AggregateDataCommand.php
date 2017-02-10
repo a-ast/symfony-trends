@@ -4,6 +4,7 @@ namespace AppBundle\Command;
 
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\AggregatorRegistry;
+use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressBar;
 use AppBundle\Repository\ProjectRepository;
@@ -55,28 +56,21 @@ class AggregateDataCommand extends ContainerAwareCommand
 
         $progressBar = $this->getProgressBar($output);
 
-        $projects = $this->getProjects();
+        if ($aggregator instanceof AggregatorInterface) {
+            $result = $aggregator->aggregate([], $progressBar);
+            $this->dumpResult($output, $aggregatorAlias, $result);
 
-        foreach ($projects as $project) {
-            $result = $aggregator->aggregate($project, [], $progressBar);
+        } elseif ($aggregator instanceof ProjectAwareAggregatorInterface) {
 
-            $output->writeln(PHP_EOL.sprintf('<info>%s: %s aggregation finished.</info>', $project->getName(), $aggregatorAlias));
-            $this->outputResults($output, $result);
+            $projects = $this->getProjects();
+            foreach ($projects as $project) {
+                $result = $aggregator->aggregate($project, [], $progressBar);
+
+                $this->dumpResult($output, $project->getName().'/'.$aggregatorAlias, $result);
+            }
         }
     }
 
-    /**
-     * @param OutputInterface $output
-     * @param $result
-     */
-    private function outputResults(OutputInterface $output, $result)
-    {
-        $output->writeln('');
-
-        $yaml = Yaml::dump($result, 4);
-
-        $output->writeln($yaml);
-    }
 
     /**
      * @param OutputInterface $output
@@ -116,5 +110,19 @@ class AggregateDataCommand extends ContainerAwareCommand
             $output->writeln($aggregatorAlias);
         }
         $output->writeln('');
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @param $aggregatorTitle
+     * @param $result
+     */
+    protected function dumpResult(OutputInterface $output, $aggregatorTitle, $result)
+    {
+        $output->writeln(PHP_EOL.sprintf('<info>%s: aggregation finished.</info>', $aggregatorTitle));
+
+        $output->writeln('');
+        $yaml = Yaml::dump($result, 4);
+        $output->writeln($yaml);
     }
 }
