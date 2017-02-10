@@ -50,6 +50,13 @@ class Project
     private $color = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="contributorPageUri", type="text", options={"default": ""})
+     */
+    private $contributorPageUri = '';
+
+    /**
      * Get id
      *
      * @return int
@@ -138,11 +145,31 @@ class Project
     /**
      * @param string $label
      *
-     * @return $this
+     * @return Project
      */
     public function setLabel($label)
     {
         $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContributorPageUri()
+    {
+        return $this->contributorPageUri;
+    }
+
+    /**
+     * @param string $contributorPageUri
+     *
+     * @return Project
+     */
+    public function setContributorPageUri($contributorPageUri)
+    {
+        $this->contributorPageUri = $contributorPageUri;
 
         return $this;
     }
