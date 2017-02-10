@@ -5,7 +5,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle/"
+            "AppBundle\\": "src/AppBundle/",
+            "Aa\\ATrends\\": "src/ATrends/src/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -14,8 +15,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "features\\": "features/"
+            "features\\": "features/",
+            "spec\\Aa\\ATrends\\": "src/ATrends/spec/"
         }
     },
     "require": {

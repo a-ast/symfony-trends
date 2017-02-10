@@ -2,8 +2,7 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
-use AppBundle\Entity\Project;
+use Aa\ATrends\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Entity\SensiolabsUser;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Model\ProjectInterface;

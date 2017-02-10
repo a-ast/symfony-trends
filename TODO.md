@@ -9,7 +9,6 @@ TODO
 
 ### To think:
 
-1. Aggregator ContributorCountry is project-agnostic, it must be specific interface or another flag to avoid run for every project.
 1. Rename contribution table??
 1. IMPORTANT: Recheck all issues (can be changed) or only last month, year?
 1. Own implementation of SimpleArray? => fix nullalle issue or/and implement normal array for postgresql 
@@ -17,11 +16,14 @@ TODO
 
 ### KW 4. Technical dept
 1. Features for all aggregators
-1. Implement contributor page agg (index contributor page, find sensiolabs user, find backlink to github)
 1. Implement sensiolabs connect agg (index all that have github link (see above), get additional info)
    * use API https://github.com/sensiolabs/connect/blob/master/src/SensioLabs/Connect/Api/Entity/User.php
    * https://connect.sensiolabs.com/about/api
-!1!. Get rid of aggregator config, use services directly
+1. Introduce a way increment/full/since aggregate
+1. Think of AggregatorReport
+1. Implement useful aggregator reports
+1. Implement aggregator orchestrator/chain/...
+
 
 
 ### KW 5.

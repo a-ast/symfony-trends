@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Api\ContributorPage;
+namespace Aa\ATrends\Api\ContributorPage;
 
 use AppBundle\Aggregator\Helper\CrawlerExtractorInterface;
 use AppBundle\Client\PageCrawler\PageCrawlerInterface;

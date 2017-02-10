@@ -7,7 +7,7 @@ services:
         class: AppBundle\Aggregator\AggregatorRegistry
 
     api.contributor_page:
-        class: AppBundle\Api\ContributorPage\ContributorPageApi
+        class: Aa\ATrends\Api\ContributorPage\ContributorPageApi
         lazy: true
         arguments:
             - '@helper.contributor_extractor'

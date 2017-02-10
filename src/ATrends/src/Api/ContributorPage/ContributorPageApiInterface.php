@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Api\ContributorPage;
+namespace Aa\ATrends\Api\ContributorPage;
 
 interface ContributorPageApiInterface
 {
