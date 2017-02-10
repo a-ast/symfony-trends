@@ -14,7 +14,12 @@ trait FakeDataAware
         $this->fakeData[$dataType][] = $data;
     }
 
-    public function findBy($dataType, $propertyName, $propertyValue)
+    public function getData($dataType)
+    {
+        return $this->fakeData[$dataType];
+    }
+
+    public function findDataItemByPropertyValue($dataType, $propertyName, $propertyValue)
     {
         foreach ($this->fakeData[$dataType] as $item) {
             if ($item[$propertyName] === $propertyValue) {
