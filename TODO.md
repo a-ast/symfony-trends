@@ -1,6 +1,12 @@
 TODO
 ==============
 
+### Next steps:
+
+1. ContributorPageAggregator: iterate links, store to sensiolabs_users table.
+2. Implement phpspec and behat scenarios.
+
+
 ### To think:
 
 1. Aggregator ContributorCountry is project-agnostic, it must be specific interface or another flag to avoid run for every project.

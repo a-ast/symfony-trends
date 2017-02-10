@@ -17,7 +17,7 @@ class GeocoderApi implements Geocoder
      */
     public function geocode($value)
     {
-        $data = $this->findBy('location', 'location', $value);
+        $data = $this->findDataItemByPropertyValue('location', 'location', $value);
 
         $countryName = $data['country'];
 

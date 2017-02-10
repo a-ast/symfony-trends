@@ -38,7 +38,7 @@ class GithubApi implements GithubApiInterface
      */
     public function getUser($login)
     {
-        $data = $this->findBy('users', 'login', $login);
+        $data = $this->findDataItemByPropertyValue('users', 'login', $login);
 
         return GithubUser::createFromResponseData($data);
     }
