@@ -6,12 +6,18 @@ services:
     aggregator_registry:
         class: AppBundle\Aggregator\AggregatorRegistry
 
+    api.contributor_page:
+        class: AppBundle\Api\ContributorPage\ContributorPageApi
+        lazy: true
+        arguments:
+            - '@helper.contributor_extractor'
+            - '@page_crawler'
+
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPageAggregator
         lazy: true
         arguments:
-            - '@page_crawler'
-            - '@helper.contributor_extractor'
+            - '@api.contributor_page'
             - '@repository.sensiolabs_user'
             - '%sensiolabs_profile_uri%'
         tags:
