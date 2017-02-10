@@ -6,6 +6,7 @@ use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\Issue;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Model\ProjectInterface;
 use AppBundle\Repository\IssueRepository;
 use DateTimeInterface;
 
@@ -35,7 +36,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
     {
         $sinceDate = $this->getSinceDate($project->getId());
 

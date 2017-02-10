@@ -104,13 +104,23 @@ class AggregatorFeatureContext implements Context
      *
      * @param int $projectId
      */
-    public function iAggregate($aggregatorAlias, $projectId)
+    public function iAggregateForProject($aggregatorAlias, $projectId)
     {
         $project = $this->projectRepository->find($projectId);
 
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
         $aggregator->aggregate($project, []);
+    }
+
+    /**
+     * @When I aggregate :aggregatorAlias
+     */
+    public function iAggregate($aggregatorAlias)
+    {
+        $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
+
+        $aggregator->aggregate([]);
     }
 
     private function processTableRow(array $data)

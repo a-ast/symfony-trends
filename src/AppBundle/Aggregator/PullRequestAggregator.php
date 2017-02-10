@@ -7,6 +7,7 @@ use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\PullRequest as EntityPullRequest;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Model\ProjectInterface;
 use AppBundle\Repository\PullRequestRepository;
 use DateTimeInterface;
 
@@ -42,7 +43,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
     {
         foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $apiPullRequest) {
 

@@ -5,9 +5,9 @@ namespace AppBundle\Aggregator;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
-use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
 use AppBundle\Model\GithubCommit as ModelGithubCommit;
+use AppBundle\Model\ProjectInterface;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use AppBundle\Util\ArrayUtils;
@@ -57,7 +57,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
     {
         $projectRepo = $project->getGithubPath();
         $sinceDate = $this->getSinceDate($project->getId());

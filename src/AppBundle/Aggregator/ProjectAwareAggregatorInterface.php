@@ -2,17 +2,17 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Entity\Project;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Model\ProjectInterface;
 
 interface ProjectAwareAggregatorInterface extends BaseAggregatorInterface
 {
     /**
-     * @param Project $project
+     * @param ProjectInterface $project
      * @param array $options
      * @param ProgressInterface|null $progress
      *
      * @return mixed
      */
-    function aggregate(Project $project, array $options, ProgressInterface $progress = null);
+    function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null);
 }

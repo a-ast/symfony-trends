@@ -6,6 +6,7 @@ use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\SensiolabsUser;
 use AppBundle\Helper\ProgressInterface;
+use AppBundle\Model\ProjectInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 
 class ContributorPageAggregator implements ProjectAwareAggregatorInterface
@@ -45,7 +46,7 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(Project $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
     {
         $logins = $this->pageApi->getContributorLogins($project->getContributorPageUri(), $this->profileUri);
         $existingLogins = $this->repository->getExistingLogins($logins);

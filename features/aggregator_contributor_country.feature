@@ -14,7 +14,7 @@ Feature: Contributor Country Aggregator
     Given Geocoder API returns location data:
       | location  | country |
       | Bag end   | Shire   |
-    When I aggregate "contributor-countries" for project 1
+    When I aggregate "contributor-countries"
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country |
@@ -29,7 +29,7 @@ Feature: Contributor Country Aggregator
     Given Geocoder API returns location data:
       | location  | country |
       | Bag end   | Mordor  |
-    When I aggregate "contributor-countries" for project 1
+    When I aggregate "contributor-countries"
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country |
@@ -44,7 +44,7 @@ Feature: Contributor Country Aggregator
     Given Geocoder API returns location data:
       | location     | country |
       | Minas Tirith | Gondor  |
-    When I aggregate "contributor-countries" for project 1
+    When I aggregate "contributor-countries"
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country |
@@ -58,7 +58,7 @@ Feature: Contributor Country Aggregator
     Given Geocoder API returns location data:
       | location | country |
       | Bag end  | ~       |
-    When I aggregate "contributor-countries" for project 1
+    When I aggregate "contributor-countries"
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country |
@@ -73,7 +73,7 @@ Feature: Contributor Country Aggregator
     Given Geocoder API returns location data:
       | location  | country |
       | Bag end   | Shire   |
-    When I aggregate "contributor-countries" for project 1
+    When I aggregate "contributor-countries"
 
     Then I should see "AppBundle\Entity\Contributor" entities:
       | name  | githubLocation | country | isIgnoredLocation |
