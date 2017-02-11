@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Client\PageCrawler;
+namespace Aa\ATrends\Api\PageCrawler;
 
 use Symfony\Component\DomCrawler\Crawler;
 

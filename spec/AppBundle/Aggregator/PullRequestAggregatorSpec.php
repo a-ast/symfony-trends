@@ -6,7 +6,7 @@ use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Aggregator\PullRequestAggregator;
-use AppBundle\Client\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Repository\PullRequestRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

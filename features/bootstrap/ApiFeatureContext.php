@@ -67,7 +67,7 @@ class ApiFeatureContext implements Context
 
         $self = $this;
 
-        $builder->setNamespace('AppBundle\Client\Github')
+        $builder->setNamespace('Aa\ATrends\Api\Github')
             ->setName('sleep')
             ->setFunction(
                 function ($seconds) use ($self) {

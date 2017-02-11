@@ -3,7 +3,7 @@
 namespace Aa\ATrends\Api\ContributorPage;
 
 use AppBundle\Aggregator\Helper\CrawlerExtractorInterface;
-use AppBundle\Client\PageCrawler\PageCrawlerInterface;
+use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use Aa\ATrends\Util\StringUtils;
 
 class ContributorPageApi implements ContributorPageApiInterface

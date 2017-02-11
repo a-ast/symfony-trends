@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Client\Github;
+namespace Aa\ATrends\Api\Github;
 
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubIssue;

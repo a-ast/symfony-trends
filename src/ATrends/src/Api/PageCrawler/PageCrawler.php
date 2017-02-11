@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Client\PageCrawler;
+namespace Aa\ATrends\Api\PageCrawler;
 
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;

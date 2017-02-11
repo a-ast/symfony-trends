@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Client\Github;
+namespace Aa\ATrends\Api\Github;
 
 use Github\Client;
 use Github\HttpClient\Builder;

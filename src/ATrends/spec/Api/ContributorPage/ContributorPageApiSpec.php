@@ -5,7 +5,7 @@ namespace spec\Aa\ATrends\Api\ContributorPage;
 use AppBundle\Aggregator\Helper\ContributorExtractor;
 use Aa\Atrends\Api\ContributorPage\ContributorPageApi;
 use Aa\Atrends\Api\ContributorPage\ContributorPageApiInterface;
-use AppBundle\Client\PageCrawler\PageCrawlerInterface;
+use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DomCrawler\Crawler;

@@ -3,7 +3,7 @@
 
 namespace features\Fake;
 
-use AppBundle\Client\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubIssue;
 use Aa\ATrends\Model\GithubPullRequest;

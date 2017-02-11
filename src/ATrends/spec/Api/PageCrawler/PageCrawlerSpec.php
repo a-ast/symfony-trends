@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Client\PageCrawler;
+namespace spec\Aa\ATrends\Api\PageCrawler;
 
-use AppBundle\Client\PageCrawler\PageCrawler;
-use AppBundle\Client\PageCrawler\PageCrawlerInterface;
+use Aa\ATrends\Api\PageCrawler\PageCrawler;
+use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use Http\Client\HttpClient;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

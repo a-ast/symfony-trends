@@ -2,7 +2,7 @@
 
 namespace AppBundle\Aggregator;
 
-use AppBundle\Client\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\Issue;
 use AppBundle\Helper\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;

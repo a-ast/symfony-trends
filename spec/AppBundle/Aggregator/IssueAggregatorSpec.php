@@ -7,7 +7,7 @@ use AppBundle\Aggregator\IssueAggregator;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Issue;
 use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
-use AppBundle\Client\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Repository\IssueRepository;
 use PhpSpec\ObjectBehavior;

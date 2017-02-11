@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Client\Github;
+namespace Aa\ATrends\Api\Github;
 
 use Http\Client\Common\Plugin;
 use Psr\Http\Message\RequestInterface;

@@ -4,7 +4,7 @@ namespace spec\AppBundle\Aggregator;
 
 use AppBundle\Aggregator\CommitAggregator;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
-use AppBundle\Client\Github\GithubApi;
+use Aa\ATrends\Api\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;

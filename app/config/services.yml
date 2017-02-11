@@ -23,7 +23,7 @@ services:
             - '%env(GEOCODING_API_KEY)%'
 
     github_api.plugin.wait_and_retry:
-        class: AppBundle\Client\Github\WaitAndRetryPlugin
+        class: Aa\ATrends\Api\Github\WaitAndRetryPlugin
         arguments:
             - '@event_dispatcher'
 
@@ -43,7 +43,7 @@ services:
             - ['addCache', ['@api.cache']]
 
     github_api.client_configurator:
-        class: AppBundle\Client\Github\ClientConfigurator
+        class: Aa\ATrends\Api\Github\ClientConfigurator
         arguments:
             - '@github_api.http_client_builder'
             - ['@github_api.plugin.wait_and_retry', '@github_api.plugin.authentication']
@@ -55,14 +55,14 @@ services:
         configurator: ['@github_api.client_configurator', 'configure']
 
     api.github:
-        class: AppBundle\Client\Github\GithubApi
+        class: Aa\ATrends\Api\Github\GithubApi
         arguments:
             - '@github_api.client'
 
 
     #####################################
     page_crawler:
-        class: AppBundle\Client\PageCrawler\PageCrawler
+        class: Aa\ATrends\Api\PageCrawler\PageCrawler
         arguments:
             - '@api.http_client'
 

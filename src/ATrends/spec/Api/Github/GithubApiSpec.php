@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Client\Github;
+namespace spec\Aa\ATrends\Api\Github;
 
-use AppBundle\Client\Github\GithubApi;
+use Aa\ATrends\Api\Github\GithubApi;
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubIssue;
 use Aa\ATrends\Model\GithubPullRequest;

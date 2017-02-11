@@ -3,7 +3,7 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
-use AppBundle\Client\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\PullRequest as EntityPullRequest;
 use AppBundle\Helper\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;
