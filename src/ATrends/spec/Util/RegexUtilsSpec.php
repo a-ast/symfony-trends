@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Util;
+namespace spec\Aa\ATrends\Util;
 
-use AppBundle\Util\RegexUtils;
+use Aa\ATrends\Util\RegexUtils;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AppBundle\Util;
+namespace Aa\ATrends\Util;
 
 class StringUtils
 {

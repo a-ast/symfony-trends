@@ -10,7 +10,7 @@ use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
-use AppBundle\Util\ArrayUtils;
+use Aa\ATrends\Util\ArrayUtils;
 
 class CommitAggregator implements ProjectAwareAggregatorInterface
 {

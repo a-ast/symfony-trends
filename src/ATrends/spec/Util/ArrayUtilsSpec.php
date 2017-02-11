@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Util;
+namespace spec\Aa\ATrends\Util;
 
-use AppBundle\Util\ArrayUtils;
+use Aa\ATrends\Util\ArrayUtils;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

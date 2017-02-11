@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Util\DateUtils;
+use Aa\ATrends\Util\DateUtils;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\Query\ResultSetMapping;

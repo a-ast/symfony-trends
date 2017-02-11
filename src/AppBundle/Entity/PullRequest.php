@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Util\ArrayUtils;
+use Aa\ATrends\Util\ArrayUtils;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 

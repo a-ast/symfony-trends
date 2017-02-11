@@ -3,7 +3,7 @@
 
 namespace AppBundle\Aggregator\Helper;
 
-use AppBundle\Util\StringUtils;
+use Aa\ATrends\Util\StringUtils;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ContributorExtractor implements CrawlerExtractorInterface

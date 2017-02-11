@@ -4,7 +4,7 @@ namespace AppBundle\Command;
 
 use AppBundle\Entity\Contributor;
 use AppBundle\Repository\ContributorRepository;
-use AppBundle\Util\ArrayUtils;
+use Aa\ATrends\Util\ArrayUtils;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

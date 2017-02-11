@@ -3,7 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Contributor;
-use AppBundle\Util\ArrayUtils;
+use Aa\ATrends\Util\ArrayUtils;
 
 /**
  * ContributorRepository

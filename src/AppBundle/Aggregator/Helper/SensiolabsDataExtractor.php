@@ -4,7 +4,7 @@
 namespace AppBundle\Aggregator\Helper;
 
 use AppBundle\Aggregator\GithubApi;
-use AppBundle\Util\StringUtils;
+use Aa\ATrends\Util\StringUtils;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SensiolabsDataExtractor

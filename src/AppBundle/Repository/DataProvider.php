@@ -3,7 +3,7 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Util\StringUtils;
+use Aa\ATrends\Util\StringUtils;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use RuntimeException;
