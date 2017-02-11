@@ -1,7 +1,7 @@
 <?php
 
 use Aa\ATrends\Aggregator\AggregatorRegistry;
-use AppBundle\Repository\ProjectRepository;
+use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;

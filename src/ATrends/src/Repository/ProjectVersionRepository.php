@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace Aa\ATrends\Repository;
 
 /**
  * ProjectVersionRepository

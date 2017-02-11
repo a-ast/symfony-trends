@@ -1,26 +1,23 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace Aa\ATrends\Repository;
 
-use Aa\ATrends\Util\DateUtils;
-use DateTime;
 use DateTimeImmutable;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
- * ContributionRepository
+ * IssueRepository.
  */
-class ContributionRepository extends Repository
+class IssueRepository extends Repository
 {
     /**
      * @param int $projectId
      *
      * @return DateTimeImmutable
      */
-    public function getLastCommitDate($projectId)
+    public function getLastCreatedAt($projectId)
     {
         $qb = $this->createQueryBuilder('c')
-            ->select('MAX(c.commitedAt)')
+            ->select('MAX(c.createdAt)')
             ->where('c.projectId = :id')
             ->setParameter('id', $projectId);
 

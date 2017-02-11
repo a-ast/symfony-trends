@@ -68,8 +68,18 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        #naming_strategy: doctrine.orm.naming_strategy.underscore
+
+        entity_managers:
+            default:
+                mappings:
+                    AppBundle:
+                        type: annotation
+                    ATrends:
+                        type: annotation
+                        prefix: Aa\ATrends\
+                        dir: "%kernel.root_dir%/../src/ATrends/src/"
+                        is_bundle: false
 
 # Swiftmailer Configuration
 swiftmailer:

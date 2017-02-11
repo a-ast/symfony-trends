@@ -5,12 +5,12 @@ namespace spec\Aa\ATrends\Aggregator;
 use Aa\ATrends\Aggregator\CommitAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApi;
-use AppBundle\Entity\Contributor;
-use AppBundle\Entity\Project;
+use Aa\ATrends\Entity\Contributor;
+use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\GithubUser;
-use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
+use Aa\ATrends\Repository\ContributionRepository;
+use Aa\ATrends\Repository\ContributorRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

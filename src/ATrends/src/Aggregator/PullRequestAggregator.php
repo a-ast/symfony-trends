@@ -5,9 +5,9 @@ namespace Aa\ATrends\Aggregator;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Aggregator\PullRequestBodyProcessor;
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use AppBundle\Entity\PullRequest as EntityPullRequest;
+use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
 use Aa\ATrends\Model\ProjectInterface;
-use AppBundle\Repository\PullRequestRepository;
+use Aa\ATrends\Repository\PullRequestRepository;
 use DateTimeInterface;
 
 class PullRequestAggregator implements ProjectAwareAggregatorInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Issue
  *
  * @ORM\Table(name="issue")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IssueRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\IssueRepository")
  */
 class Issue
 {

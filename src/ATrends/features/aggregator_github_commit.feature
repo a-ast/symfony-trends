@@ -1,7 +1,7 @@
 Feature: Github Commits Aggregator
 
   Background:
-    Given there are "AppBundle\Entity\Project" entities:
+    Given there are "Aa\ATrends\Entity\Project" entities:
       | name        | label       | githubPath    | color |
       | Three-rings | Three-rings | elrond/3rings | #000  |
 
@@ -12,10 +12,10 @@ Feature: Github Commits Aggregator
       | frodo-1 | 2016-11-22T00:00:00Z | Ring?!  | frodo            | frodo@shire       |
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails | gitNames |
       | frodo@shire | frodo |          |             |                | []        | []       |
-    And I should see "AppBundle:Contribution" entities:
+    And I should see "Aa\ATrends\Entity\Contribution" entities:
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo-1    |
 
@@ -30,10 +30,10 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails | gitNames            |
       | frodo@shire | frodo |          |             |                | []        | [frodo.b,frodo.bag] |
-    And I should see "AppBundle:Contribution" entities:
+    And I should see "Aa\ATrends\Entity\Contribution" entities:
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo-1    |
       | 1         | 1             | No!!!   | frodo-2    |
@@ -53,17 +53,17 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | githubLocation | gitEmails          | gitNames             |
       | frodo@shire | frodo | 100      | Frodo       | Bag End        | [frodo.user@shire] | [Frodo.user,frodo.b] |
-    And I should see "AppBundle:Contribution" entities:
+    And I should see "Aa\ATrends\Entity\Contribution" entities:
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo-1    |
       | 1         | 1             | No!!!   | frodo-2    |
 
 
   Scenario: Aggregate data of the existing contributor found by Github id
-    Given there are "AppBundle\Entity\Contributor" entities:
+    Given there are "Aa\ATrends\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails        | gitNames |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire] | [frodo1] |
 
@@ -73,13 +73,13 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails                     | gitNames        |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire,frodo2@shire] | [frodo1,frodo2] |
 
 
   Scenario: Aggregate data of the existing contributor found by email
-    Given there are "AppBundle\Entity\Contributor" entities:
+    Given there are "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | gitEmails       | gitNames |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
 
@@ -89,13 +89,13 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | gitEmails       | gitNames        |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1,frodo2] |
 
 
   Scenario: Aggregate data of the existing contributor found by user email
-    Given there are "AppBundle\Entity\Contributor" entities:
+    Given there are "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | gitEmails       | gitNames |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1] |
 
@@ -108,7 +108,7 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    Then I should see "AppBundle\Entity\Contributor" entities:
+    Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | githubId | githubLogin | gitEmails                    | gitNames                   |
       | frodo@shire | frodo | 100      | Frodo       | [frodo.b@shire,frodo2@shire] | [frodo1,Frodo.user,frodo2] |
 
@@ -121,7 +121,7 @@ Feature: Github Commits Aggregator
 
     When I aggregate commits for project 1
 
-    And I should see "AppBundle:Contribution" entities:
+    And I should see "Aa\ATrends\Entity\Contribution" entities:
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo      |
       | 1         | 2             | Frodo?  | sam        |

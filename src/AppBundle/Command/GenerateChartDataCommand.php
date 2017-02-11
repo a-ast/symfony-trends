@@ -3,7 +3,7 @@
 namespace AppBundle\Command;
 
 use Aa\ATrends\Provider\SeriesProvider;
-use AppBundle\Repository\ContributionRepository;
+use Aa\ATrends\Repository\ContributionRepository;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;

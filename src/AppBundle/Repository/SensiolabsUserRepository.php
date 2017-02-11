@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Aa\ATrends\Repository\Repository;
+
 /**
  * ProjectRepository
  */

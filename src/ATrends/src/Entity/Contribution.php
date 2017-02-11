@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Util\RegexUtils;
@@ -29,7 +29,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributionRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\ContributionRepository")
  */
 class Contribution
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace Aa\ATrends\Repository;
 
-use AppBundle\Entity\Contributor;
+use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Util\ArrayUtils;
 
 /**

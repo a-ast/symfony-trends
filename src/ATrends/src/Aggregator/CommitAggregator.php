@@ -3,13 +3,13 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use AppBundle\Entity\Contribution;
-use AppBundle\Entity\Contributor;
+use Aa\ATrends\Entity\Contribution;
+use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\ProjectInterface;
-use AppBundle\Repository\ContributionRepository;
-use AppBundle\Repository\ContributorRepository;
+use Aa\ATrends\Repository\ContributionRepository;
+use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Util\ArrayUtils;
 
 class CommitAggregator implements ProjectAwareAggregatorInterface

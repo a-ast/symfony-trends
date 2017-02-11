@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use Aa\ATrends\Util\ArrayUtils;
 use DateTimeInterface;
@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PullRequest
  *
  * @ORM\Table(name="pull_request")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PullRequestRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\PullRequestRepository")
  */
 class PullRequest
 {

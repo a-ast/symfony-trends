@@ -3,10 +3,10 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use AppBundle\Entity\Issue;
+use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;
-use AppBundle\Repository\IssueRepository;
+use Aa\ATrends\Repository\IssueRepository;
 use DateTimeInterface;
 
 class IssueAggregator implements ProjectAwareAggregatorInterface

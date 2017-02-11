@@ -4,9 +4,9 @@ namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
-use AppBundle\Entity\Contributor;
-use AppBundle\Entity\Project;
-use AppBundle\Repository\ContributorRepository;
+use Aa\ATrends\Entity\Contributor;
+use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Repository\ContributorRepository;
 use Geocoder\Collection;
 use Geocoder\Geocoder;
 use Geocoder\Location;

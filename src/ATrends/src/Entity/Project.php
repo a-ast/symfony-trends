@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use Aa\ATrends\Model\ProjectInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Project
  *
  * @ORM\Table(name="project")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\ProjectRepository")
  */
 class Project implements ProjectInterface
 {

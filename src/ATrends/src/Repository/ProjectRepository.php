@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace Aa\ATrends\Repository;
 
-use AppBundle\Entity\Project;
+use Aa\ATrends\Entity\Project;
 use Doctrine\ORM\EntityRepository;
 
 /**

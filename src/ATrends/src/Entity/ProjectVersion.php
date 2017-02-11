@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ProjectVersion
  *
  * @ORM\Table(name="project_version")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectVersionRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\ProjectVersionRepository")
  */
 class ProjectVersion
 {

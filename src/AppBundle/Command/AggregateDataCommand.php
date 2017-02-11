@@ -6,8 +6,8 @@ use Aa\ATrends\Progress\ProgressBar;
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
-use AppBundle\Entity\Project;
-use AppBundle\Repository\ProjectRepository;
+use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Repository\ProjectRepository;
 use Doctrine\ORM\EntityRepository;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -15,7 +15,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\Dumper\YamlDumper;
 use Symfony\Component\Yaml\Yaml;
 
 class AggregateDataCommand extends ContainerAwareCommand

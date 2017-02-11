@@ -7,25 +7,25 @@ services:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Project
+            - Aa\ATrends\Entity\Project
 
     repository.project_version:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\ProjectVersion
+            - Aa\ATrends\Entity\ProjectVersion
 
     repository.contributor:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Contributor
+            - Aa\ATrends\Entity\Contributor
 
     repository.contribution:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Contribution
+            - Aa\ATrends\Entity\Contribution
 
     repository.sensiolabs_user:
         class: Doctrine\ORM\EntityRepository
@@ -37,10 +37,10 @@ services:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\PullRequest
+            - Aa\ATrends\Entity\PullRequest
 
     repository.issue:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
-            - AppBundle\Entity\Issue
+            - Aa\ATrends\Entity\Issue

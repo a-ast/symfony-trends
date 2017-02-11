@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace Aa\ATrends\Entity;
 
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubUser;
@@ -21,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      }
  * )
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContributorRepository")
+ * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\ContributorRepository")
  */
 class Contributor
 {

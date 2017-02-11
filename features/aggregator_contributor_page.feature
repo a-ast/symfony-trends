@@ -1,7 +1,7 @@
 Feature: Contributor Page Aggregator
 
   Background:
-    Given there are "AppBundle\Entity\Project" entities:
+    Given there are "Aa\ATrends\Entity\Project" entities:
       | name        | label       | githubPath    | color |
       | Three-rings | Three-rings | elrond/3rings | #000  |
 

@@ -3,7 +3,7 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Progress\ProgressInterface;
-use AppBundle\Repository\ContributorRepository;
+use Aa\ATrends\Repository\ContributorRepository;
 use Exception;
 use Geocoder\Geocoder;
 

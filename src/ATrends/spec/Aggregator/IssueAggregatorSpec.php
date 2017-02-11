@@ -5,11 +5,11 @@ namespace spec\Aa\ATrends\Aggregator;
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\IssueAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
-use AppBundle\Entity\Issue;
+use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use AppBundle\Entity\Project;
-use AppBundle\Repository\IssueRepository;
+use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Repository\IssueRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
