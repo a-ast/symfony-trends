@@ -1,9 +1,6 @@
 <?php
 
-
-namespace AppBundle\Provider;
-
-use AppBundle\Repository\DataProvider;
+namespace Aa\ATrends\Provider;
 
 class SeriesProvider implements ProviderInterface
 {

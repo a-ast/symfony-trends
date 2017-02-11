@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Provider;
+namespace spec\Aa\ATrends\Provider;
 
-use AppBundle\Provider\SeriesProvider;
-use AppBundle\Repository\DataProvider;
+use Aa\ATrends\Provider\DataProvider;
+use Aa\ATrends\Provider\SeriesProvider;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

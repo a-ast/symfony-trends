@@ -67,11 +67,11 @@ services:
             - '@api.http_client'
 
     data_provider:
-        class: AppBundle\Repository\DataProvider
+        class: Aa\ATrends\Provider\DataProvider
         autowire: true
 
     series_provider:
-        class: AppBundle\Provider\SeriesProvider
+        class: Aa\ATrends\Provider\SeriesProvider
         autowire: true
 
     #################################

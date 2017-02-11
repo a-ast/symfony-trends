@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Provider\SeriesProvider;
+use Aa\ATrends\Provider\SeriesProvider;
 use AppBundle\Repository\ContributionRepository;
 use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

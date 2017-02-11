@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Provider;
+namespace Aa\ATrends\Provider;
 
 interface ProviderInterface
 {

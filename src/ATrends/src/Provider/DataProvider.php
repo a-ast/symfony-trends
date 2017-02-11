@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AppBundle\Repository;
+namespace Aa\ATrends\Provider;
 
 use Aa\ATrends\Util\StringUtils;
 use Doctrine\DBAL\Connection;
