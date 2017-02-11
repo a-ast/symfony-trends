@@ -2,11 +2,11 @@
 
 namespace AppBundle\Command;
 
+use Aa\ATrends\Progress\ProgressBar;
 use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\AggregatorRegistry;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Project;
-use AppBundle\Helper\ProgressBar;
 use AppBundle\Repository\ProjectRepository;
 use Doctrine\ORM\EntityRepository;
 use LogicException;
@@ -83,7 +83,7 @@ class AggregateDataCommand extends ContainerAwareCommand
         $progressBar->setMessage('');
         $progressBar->setFormat(' %current%/%max% [%bar%] %message%');
 
-        ProgressBar::getPlaceholderFormatterDefinition('current');
+        //ProgressBar::getPlaceholderFormatterDefinition('current');
 
         return $progressBar;
     }

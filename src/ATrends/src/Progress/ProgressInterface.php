@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Helper;
+namespace Aa\ATrends\Progress;
 
 interface ProgressInterface
 {

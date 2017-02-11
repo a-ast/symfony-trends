@@ -1,7 +1,7 @@
 <?php
 
 
-namespace AppBundle\Helper;
+namespace Aa\ATrends\Progress;
 
 use Symfony\Component\Console\Helper\ProgressBar as BaseProgressBar;
 
