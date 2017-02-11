@@ -3,9 +3,9 @@
 namespace AppBundle\Command;
 
 use Aa\ATrends\Progress\ProgressBar;
-use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\AggregatorRegistry;
-use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorRegistry;
+use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Repository\ProjectRepository;
 use Doctrine\ORM\EntityRepository;

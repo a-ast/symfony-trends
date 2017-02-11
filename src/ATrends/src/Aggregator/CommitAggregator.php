@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\Contribution;
 use AppBundle\Entity\Contributor;
-use AppBundle\Helper\ProgressInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\ContributionRepository;

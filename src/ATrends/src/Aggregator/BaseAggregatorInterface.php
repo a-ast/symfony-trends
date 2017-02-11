@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
 interface BaseAggregatorInterface
 {

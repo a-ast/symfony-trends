@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
+use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Aggregator\PullRequestBodyProcessor;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\PullRequest as EntityPullRequest;
-use AppBundle\Helper\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\PullRequestRepository;
 use DateTimeInterface;

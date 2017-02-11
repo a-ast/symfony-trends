@@ -88,5 +88,5 @@ services:
         lazy: true
 
     helper.pull_request_body_processor:
-        class: AppBundle\Aggregator\Helper\PullRequestBodyProcessor
+        class: Aa\ATrends\Aggregator\PullRequestBodyProcessor
         lazy: true

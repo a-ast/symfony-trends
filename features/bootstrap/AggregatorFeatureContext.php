@@ -1,6 +1,6 @@
 <?php
 
-use AppBundle\Aggregator\AggregatorRegistry;
+use Aa\ATrends\Aggregator\AggregatorRegistry;
 use AppBundle\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;

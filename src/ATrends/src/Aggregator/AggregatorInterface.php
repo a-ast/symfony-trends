@@ -1,9 +1,8 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
-use AppBundle\Entity\Project;
-use AppBundle\Helper\ProgressInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 
 interface AggregatorInterface extends BaseAggregatorInterface
 {

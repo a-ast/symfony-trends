@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Aggregator\Helper;
+namespace Aa\ATrends\Aggregator;
 
 class PullRequestBodyProcessor
 {

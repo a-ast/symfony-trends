@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\AppBundle\Aggregator;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\IssueAggregator;
-use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\IssueAggregator;
+use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Issue;
 use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
 use Aa\ATrends\Api\Github\GithubApiInterface;

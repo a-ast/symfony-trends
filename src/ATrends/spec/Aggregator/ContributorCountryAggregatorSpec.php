@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Aggregator;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\ContributorCountryAggregator;
+use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
 use AppBundle\Repository\ContributorRepository;

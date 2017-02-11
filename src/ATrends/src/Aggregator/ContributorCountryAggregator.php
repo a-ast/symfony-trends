@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
-use AppBundle\Helper\ProgressInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use AppBundle\Repository\ContributorRepository;
 use Exception;
 use Geocoder\Geocoder;

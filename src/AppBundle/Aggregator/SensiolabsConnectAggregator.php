@@ -2,9 +2,10 @@
 
 namespace AppBundle\Aggregator;
 
+use Aa\ATrends\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
-use AppBundle\Helper\ProgressInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 use GuzzleHttp\Exception\ClientException;
 

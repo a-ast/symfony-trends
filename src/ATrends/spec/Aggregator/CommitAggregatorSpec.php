@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Aggregator;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\CommitAggregator;
-use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\CommitAggregator;
+use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;

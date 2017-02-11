@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Aggregator;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\AggregatorRegistry;
-use AppBundle\Aggregator\BaseAggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorRegistry;
+use Aa\ATrends\Aggregator\BaseAggregatorInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

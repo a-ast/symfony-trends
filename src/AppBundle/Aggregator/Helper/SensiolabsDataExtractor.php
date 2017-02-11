@@ -3,7 +3,7 @@
 
 namespace AppBundle\Aggregator\Helper;
 
-use AppBundle\Aggregator\GithubApi;
+use Aa\ATrends\Aggregator\GithubApi;
 use Aa\ATrends\Util\StringUtils;
 use Symfony\Component\DomCrawler\Crawler;
 

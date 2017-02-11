@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Aggregator\Helper;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
+use Aa\ATrends\Aggregator\PullRequestBodyProcessor;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

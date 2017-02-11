@@ -4,7 +4,7 @@ services:
     # Data aggregators
     #################################
     aggregator_registry:
-        class: AppBundle\Aggregator\AggregatorRegistry
+        class: Aa\ATrends\Aggregator\AggregatorRegistry
 
     api.contributor_page:
         class: AppBundle\Api\ContributorPage\ContributorPageApi
@@ -24,7 +24,7 @@ services:
             - { name: aggregator, alias: 'contributor-pages'}
 
     aggregator.github_commit:
-        class: AppBundle\Aggregator\CommitAggregator
+        class: Aa\ATrends\Aggregator\CommitAggregator
         lazy: true
         arguments:
             - '@api.github'
@@ -35,7 +35,7 @@ services:
             - { name: aggregator, alias: 'commits'}
 
     aggregator.contributor_country:
-        class: AppBundle\Aggregator\ContributorCountryAggregator
+        class: Aa\ATrends\Aggregator\ContributorCountryAggregator
         lazy: true
         arguments:
             - '@api.geocoder'
@@ -54,7 +54,7 @@ services:
             - { name: aggregator, alias: 'sensiolabs-profiles'}
 
     aggregator.github_issue:
-        class: AppBundle\Aggregator\IssueAggregator
+        class: Aa\ATrends\Aggregator\IssueAggregator
         lazy: true
         arguments:
             - '@api.github'
@@ -63,7 +63,7 @@ services:
             - { name: aggregator, alias: 'issues'}
 
     aggregator.github_pull_request:
-        class: AppBundle\Aggregator\PullRequestAggregator
+        class: Aa\ATrends\Aggregator\PullRequestAggregator
         lazy: true
         arguments:
             - '@api.github'

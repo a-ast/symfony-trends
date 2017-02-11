@@ -1,11 +1,10 @@
 <?php
 
-namespace spec\AppBundle\Aggregator;
+namespace spec\Aa\ATrends\Aggregator;
 
-use AppBundle\Aggregator\AggregatorInterface;
-use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
-use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
-use AppBundle\Aggregator\PullRequestAggregator;
+use Aa\ATrends\Aggregator\PullRequestBodyProcessor;
+use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\PullRequestAggregator;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Repository\PullRequestRepository;
 use PhpSpec\ObjectBehavior;

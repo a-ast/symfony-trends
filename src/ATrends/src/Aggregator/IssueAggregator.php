@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Aggregator;
+namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use AppBundle\Entity\Issue;
-use AppBundle\Helper\ProgressInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\IssueRepository;
 use DateTimeInterface;
