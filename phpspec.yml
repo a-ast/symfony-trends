@@ -1,6 +1,6 @@
 suites:
 
-    default suite:
+    default_suite:
 
     atrends_suite:
         namespace: Aa\ATrends
