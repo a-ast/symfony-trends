@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\GithubCommit;
+use Aa\ATrends\Model\GithubCommit;
 use AppBundle\Util\RegexUtils;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;

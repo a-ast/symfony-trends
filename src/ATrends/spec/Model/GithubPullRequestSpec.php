@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Model;
+namespace spec\Aa\ATrends\Model;
 
-use AppBundle\Model\GithubPullRequest;
+use Aa\ATrends\Model\GithubPullRequest;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

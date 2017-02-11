@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubUser;
+use Aa\ATrends\Model\GithubCommit;
+use Aa\ATrends\Model\GithubUser;
 use AppBundle\Traits\TimestampTrait;
 use AppBundle\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
@@ -42,7 +42,6 @@ class Contributor
      * @ORM\Column(name="github_id", type="integer", nullable=true)
      */
     private $githubId;
-
 
     /**
      * @var string

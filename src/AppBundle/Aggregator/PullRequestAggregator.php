@@ -4,10 +4,9 @@ namespace AppBundle\Aggregator;
 
 use AppBundle\Aggregator\Helper\PullRequestBodyProcessor;
 use AppBundle\Client\Github\GithubApiInterface;
-use AppBundle\Entity\Project;
 use AppBundle\Entity\PullRequest as EntityPullRequest;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\ProjectInterface;
+use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\PullRequestRepository;
 use DateTimeInterface;
 

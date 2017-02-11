@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Model;
+namespace Aa\ATrends\Model;
 
 use DateTimeImmutable;
 use DateTimeInterface;

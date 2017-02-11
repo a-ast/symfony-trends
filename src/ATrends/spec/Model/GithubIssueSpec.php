@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Model;
+namespace spec\Aa\ATrends\Model;
 
-use AppBundle\Model\GithubIssue;
+use Aa\ATrends\Model\GithubIssue;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

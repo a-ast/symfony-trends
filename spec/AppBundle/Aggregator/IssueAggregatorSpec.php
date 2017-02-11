@@ -6,7 +6,7 @@ use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\IssueAggregator;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Entity\Issue;
-use AppBundle\Model\GithubIssue as ModelGithubIssue;
+use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
 use AppBundle\Client\Github\GithubApiInterface;
 use AppBundle\Entity\Project;
 use AppBundle\Repository\IssueRepository;

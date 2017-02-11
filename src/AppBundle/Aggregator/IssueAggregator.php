@@ -3,10 +3,9 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Client\Github\GithubApiInterface;
-use AppBundle\Entity\Project;
 use AppBundle\Entity\Issue;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\ProjectInterface;
+use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\IssueRepository;
 use DateTimeInterface;
 

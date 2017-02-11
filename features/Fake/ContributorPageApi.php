@@ -3,7 +3,7 @@
 
 namespace features\Fake;
 
-use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
+use Aa\ATrends\Api\ContributorPage\ContributorPageApiInterface;
 
 class ContributorPageApi implements ContributorPageApiInterface
 {

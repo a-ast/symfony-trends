@@ -5,7 +5,7 @@ namespace AppBundle\Aggregator;
 use Aa\ATrends\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Entity\SensiolabsUser;
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\ProjectInterface;
+use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 
 class ContributorPageAggregator implements ProjectAwareAggregatorInterface

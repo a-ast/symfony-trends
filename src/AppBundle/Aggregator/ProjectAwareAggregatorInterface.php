@@ -3,7 +3,7 @@
 namespace AppBundle\Aggregator;
 
 use AppBundle\Helper\ProgressInterface;
-use AppBundle\Model\ProjectInterface;
+use Aa\ATrends\Model\ProjectInterface;
 
 interface ProjectAwareAggregatorInterface extends BaseAggregatorInterface
 {

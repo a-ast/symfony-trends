@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\ProjectInterface;
+use Aa\ATrends\Model\ProjectInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AppBundle\Model;
+namespace spec\Aa\ATrends\Model;
 
-use AppBundle\Model\GithubCommit;
+use Aa\ATrends\Model\GithubCommit;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

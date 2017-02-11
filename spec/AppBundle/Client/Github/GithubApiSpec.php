@@ -3,10 +3,10 @@
 namespace spec\AppBundle\Client\Github;
 
 use AppBundle\Client\Github\GithubApi;
-use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubIssue;
-use AppBundle\Model\GithubPullRequest;
-use AppBundle\Model\GithubUser;
+use Aa\ATrends\Model\GithubCommit;
+use Aa\ATrends\Model\GithubIssue;
+use Aa\ATrends\Model\GithubPullRequest;
+use Aa\ATrends\Model\GithubUser;
 use Exception;
 use Github\Api\Issue;
 use Github\Api\PullRequest;

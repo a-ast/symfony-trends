@@ -4,10 +4,10 @@
 namespace features\Fake;
 
 use AppBundle\Client\Github\GithubApiInterface;
-use AppBundle\Model\GithubCommit;
-use AppBundle\Model\GithubIssue;
-use AppBundle\Model\GithubPullRequest;
-use AppBundle\Model\GithubUser;
+use Aa\ATrends\Model\GithubCommit;
+use Aa\ATrends\Model\GithubIssue;
+use Aa\ATrends\Model\GithubPullRequest;
+use Aa\ATrends\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
 

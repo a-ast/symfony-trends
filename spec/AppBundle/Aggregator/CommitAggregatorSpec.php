@@ -2,14 +2,13 @@
 
 namespace spec\AppBundle\Aggregator;
 
-use AppBundle\Aggregator\AggregatorInterface;
 use AppBundle\Aggregator\CommitAggregator;
 use AppBundle\Aggregator\ProjectAwareAggregatorInterface;
 use AppBundle\Client\Github\GithubApi;
 use AppBundle\Entity\Contributor;
 use AppBundle\Entity\Project;
-use AppBundle\Model\GithubCommit as ModelGithubCommit;
-use AppBundle\Model\GithubUser;
+use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
+use Aa\ATrends\Model\GithubUser;
 use AppBundle\Repository\ContributionRepository;
 use AppBundle\Repository\ContributorRepository;
 use PhpSpec\ObjectBehavior;
