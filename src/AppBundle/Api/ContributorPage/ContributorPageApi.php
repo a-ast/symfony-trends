@@ -1,8 +1,8 @@
 <?php
 
-namespace Aa\ATrends\Api\ContributorPage;
+namespace AppBundle\Api\ContributorPage;
 
-use AppBundle\Aggregator\Helper\CrawlerExtractorInterface;
+use Aa\ATrends\Api\CrawlerExtractorInterface;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use Aa\ATrends\Util\StringUtils;
 

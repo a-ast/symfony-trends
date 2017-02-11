@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Aggregator\Helper;
+namespace Aa\ATrends\Api;
 
 use Symfony\Component\DomCrawler\Crawler;
 

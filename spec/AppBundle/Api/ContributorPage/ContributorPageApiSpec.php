@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Aa\ATrends\Api\ContributorPage;
+namespace spec\AppBundle\Api\ContributorPage;
 
-use AppBundle\Aggregator\Helper\ContributorExtractor;
-use Aa\Atrends\Api\ContributorPage\ContributorPageApi;
-use Aa\Atrends\Api\ContributorPage\ContributorPageApiInterface;
+use AppBundle\Api\ContributorPage\ContributorExtractor;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
+use AppBundle\Api\ContributorPage\ContributorPageApi;
+use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DomCrawler\Crawler;

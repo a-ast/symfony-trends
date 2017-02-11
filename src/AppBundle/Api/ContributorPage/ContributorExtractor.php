@@ -1,8 +1,9 @@
 <?php
 
 
-namespace AppBundle\Aggregator\Helper;
+namespace AppBundle\Api\ContributorPage;
 
+use Aa\ATrends\Api\CrawlerExtractorInterface;
 use Aa\ATrends\Util\StringUtils;
 use Symfony\Component\DomCrawler\Crawler;
 

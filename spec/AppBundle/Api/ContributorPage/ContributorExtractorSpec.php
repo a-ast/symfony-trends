@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AppBundle\Aggregator\Helper;
+namespace spec\AppBundle\Api\ContributorPage;
 
-use AppBundle\Aggregator\Helper\ContributorExtractor;
-use AppBundle\Aggregator\Helper\CrawlerExtractorInterface;
+use AppBundle\Api\ContributorPage\ContributorExtractor;
+use Aa\ATrends\Api\CrawlerExtractorInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DomCrawler\Crawler;

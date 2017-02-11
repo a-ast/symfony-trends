@@ -78,7 +78,7 @@ services:
     # Helpers
     #################################
     helper.contributor_extractor:
-        class: AppBundle\Aggregator\Helper\ContributorExtractor
+        class: AppBundle\Api\ContributorPage\ContributorExtractor
         lazy: true
         arguments:
           - ['%sensiolabs_profile_uri%']
