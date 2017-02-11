@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubUser;
-use AppBundle\Traits\TimestampTrait;
+use Aa\ATrends\Traits\TimestampTrait;
 use Aa\ATrends\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
 

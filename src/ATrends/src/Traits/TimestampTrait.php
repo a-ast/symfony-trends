@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Traits;
+namespace Aa\ATrends\Traits;
 
 use DateTime;
 use DateTimeInterface;

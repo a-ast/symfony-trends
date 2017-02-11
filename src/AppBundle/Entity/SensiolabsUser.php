@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Traits\TimestampTrait;
+use Aa\ATrends\Traits\TimestampTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
