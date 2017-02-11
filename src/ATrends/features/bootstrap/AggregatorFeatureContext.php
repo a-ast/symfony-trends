@@ -5,8 +5,8 @@ use AppBundle\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
-use features\Helper\ApiCollection;
-use features\Helper\DoctrineHelper;
+use features\Aa\ATrends\Helper\ApiCollection;
+use features\Aa\ATrends\Helper\DoctrineHelper;
 
 /**
  * Defines application features from the specific context.

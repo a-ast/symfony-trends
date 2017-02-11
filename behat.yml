@@ -1,7 +1,17 @@
 default:
+    autoload:
+        - %paths.base%/src/ATrends/features/bootstrap/
     suites:
         app:
             paths: [ %paths.base%/features ]
+            contexts:
+                - AggregatorFeatureContext:
+                      aggregatorRegistry: '@aggregator_registry'
+                      doctrineHelper: '@behat_doctrine_helper'
+                      projectRepository: '@repository.project'
+                      apis: '@api.list'
+        atrends:
+            paths: [ %paths.base%/src/ATrends/features ]
             contexts:
                 - ApiFeatureContext:
                       client: '@github_api.client'

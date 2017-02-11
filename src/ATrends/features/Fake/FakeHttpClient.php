@@ -1,6 +1,6 @@
 <?php
 
-namespace features\Fake;
+namespace features\Aa\ATrends\Fake;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

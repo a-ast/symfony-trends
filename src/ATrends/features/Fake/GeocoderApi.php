@@ -1,7 +1,7 @@
 <?php
 
 
-namespace features\Fake;
+namespace features\Aa\ATrends\Fake;
 
 use Geocoder\Geocoder;
 use Geocoder\Model\Address;

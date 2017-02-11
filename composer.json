@@ -16,7 +16,8 @@
     "autoload-dev": {
         "psr-4": {
             "features\\": "features/",
-            "spec\\Aa\\ATrends\\": "src/ATrends/spec/"
+            "spec\\Aa\\ATrends\\": "src/ATrends/spec/",
+            "features\\Aa\\ATrends\\": "src/ATrends/features/"
         }
     },
     "require": {

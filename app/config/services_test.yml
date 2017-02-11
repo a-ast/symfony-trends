@@ -1,7 +1,7 @@
 services:
 
     github_api.fake_guzzle_client:
-        class: features\Fake\FakeHttpClient
+        class: features\Aa\ATrends\Fake\FakeHttpClient
 
     api.http_client:
         class: Http\Adapter\Guzzle6\Client
@@ -14,23 +14,23 @@ services:
             - '@doctrine.orm.entity_manager'
 
     behat_doctrine_helper:
-        class: features\Helper\DoctrineHelper
+        class: features\Aa\ATrends\Helper\DoctrineHelper
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@doctrine.orm.purger'
 
     # Fake clients
     api.github:
-        class: features\Fake\GithubApi
+        class: features\Aa\ATrends\Fake\GithubApi
 
     api.geocoder:
-        class: features\Fake\GeocoderApi
+        class: features\Aa\ATrends\Fake\GeocoderApi
 
     api.contributor_page:
         class: features\Fake\ContributorPageApi
 
     api.list:
-        class: features\Helper\ApiCollection
+        class: features\Aa\ATrends\Helper\ApiCollection
         calls:
             - [ add, ['Github', '@api.github']]
             - [ add, ['Geocoder', '@api.geocoder']]

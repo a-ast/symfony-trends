@@ -1,7 +1,7 @@
 <?php
 
 
-namespace features\Helper;
+namespace features\Aa\ATrends\Helper;
 
 class ApiCollection
 {

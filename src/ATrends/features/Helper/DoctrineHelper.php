@@ -1,7 +1,7 @@
 <?php
 
 
-namespace features\Helper;
+namespace features\Aa\ATrends\Helper;
 
 use Aa\ArrayDiff\Calculator;
 use Aa\ArrayDiff\Matcher\SimpleMatcher;

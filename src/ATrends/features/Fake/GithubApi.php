@@ -1,7 +1,7 @@
 <?php
 
 
-namespace features\Fake;
+namespace features\Aa\ATrends\Fake;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Model\GithubCommit;

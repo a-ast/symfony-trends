@@ -4,6 +4,7 @@
 namespace features\Fake;
 
 use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
+use features\Aa\ATrends\Fake\FakeDataAware;
 
 class ContributorPageApi implements ContributorPageApiInterface
 {
