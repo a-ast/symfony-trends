@@ -11,7 +11,7 @@ TODO
 
 1. Rename contribution table??
 1. IMPORTANT: Recheck all issues (can be changed) or only last month, year?
-1. Own implementation of SimpleArray? => fix nullalle issue or/and implement normal array for postgresql 
+1. Own implementation of SimpleArray? => fix nullable issue or/and implement normal array for postgresql 
 1. Find a way to ignore all pull request import (maybe from given date or id)
 
 ### KW 4. Technical dept

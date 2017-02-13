@@ -456,3 +456,16 @@ parameters:
                 - { chart: top_contributors_symfony_docs_2016 }
                 - { chart: top_new_contributors_symfony_2016 }
                 - { chart: top_new_contributors_symfony_docs_2016 }
+
+        issues-and-pull-requests:
+            title: 'Issues and PRs'
+            charts:
+                - { chart: pull_requests_per_date_symfony }
+                - { chart: pull_requests_per_date_symfony_docs }
+                - { chart: issues_per_date_symfony }
+                - { chart: issues_per_date_symfony_docs }
+                - { chart: issues_symfony_per_label_open }
+                - { chart: issues_symfony_per_label_closed }
+                - { chart: issues_symfony_per_label_all }
+                - { chart: issues_symfony_per_label_all_2017 }
+                - { chart: contributors_symfony_with_pr_and_issue_count }

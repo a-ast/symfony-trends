@@ -7,31 +7,31 @@
             "data": [
                 {
                     "name": "Form",
-                    "value": 1115
+                    "value": 1116
                 },
                 {
                     "name": "Bug",
-                    "value": 1098
+                    "value": 1106
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 565
+                    "value": 572
                 },
                 {
                     "name": "Feature",
-                    "value": 548
-                },
-                {
-                    "name": "Enhancement",
-                    "value": 424
+                    "value": 552
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 423
+                    "value": 427
+                },
+                {
+                    "name": "Enhancement",
+                    "value": 425
                 },
                 {
                     "name": "Validator",
-                    "value": 374
+                    "value": 378
                 },
                 {
                     "name": "HttpFoundation",
@@ -39,11 +39,11 @@
                 },
                 {
                     "name": "Security",
-                    "value": 355
+                    "value": 358
                 },
                 {
                     "name": "Console",
-                    "value": 264
+                    "value": 266
                 },
                 {
                     "name": "DependencyInjection",
@@ -51,7 +51,7 @@
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 200
+                    "value": 202
                 },
                 {
                     "name": "Routing",
@@ -59,7 +59,7 @@
                 },
                 {
                     "name": "HttpKernel",
-                    "value": 194
+                    "value": 195
                 },
                 {
                     "name": "Easy Pick",
@@ -67,7 +67,7 @@
                 },
                 {
                     "name": "Translator",
-                    "value": 170
+                    "value": 172
                 },
                 {
                     "name": "WebProfilerBundle",
@@ -79,7 +79,7 @@
                 },
                 {
                     "name": "Process",
-                    "value": 124
+                    "value": 125
                 },
                 {
                     "name": "DX",
@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "Status: Reviewed",
-                    "value": 100
+                    "value": 101
                 }
             ],
             "name": "All issues"

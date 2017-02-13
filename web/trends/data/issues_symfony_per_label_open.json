@@ -7,11 +7,11 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 205
+                    "value": 203
                 },
                 {
                     "name": "Bug",
-                    "value": 184
+                    "value": 183
                 },
                 {
                     "name": "Form",
@@ -19,19 +19,19 @@
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 149
+                    "value": 148
                 },
                 {
                     "name": "Enhancement",
-                    "value": 140
+                    "value": 139
                 },
                 {
                     "name": "Security",
-                    "value": 74
+                    "value": 76
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 58
+                    "value": 57
                 },
                 {
                     "name": "HttpFoundation",
@@ -39,23 +39,23 @@
                 },
                 {
                     "name": "Validator",
-                    "value": 47
+                    "value": 48
                 },
                 {
                     "name": "Console",
-                    "value": 36
+                    "value": 35
                 },
                 {
                     "name": "RFC",
-                    "value": 27
+                    "value": 26
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 23
+                    "value": 22
                 },
                 {
-                    "name": "Routing",
-                    "value": 22
+                    "name": "FrameworkBundle",
+                    "value": 21
                 },
                 {
                     "name": "Translator",
@@ -66,7 +66,7 @@
                     "value": 20
                 },
                 {
-                    "name": "FrameworkBundle",
+                    "name": "Routing",
                     "value": 20
                 },
                 {
