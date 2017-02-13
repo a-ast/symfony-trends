@@ -404,6 +404,27 @@ parameters:
                     criteria:   { project_id: 2, date_format: 'YYYY', year: null }
                     dimensions: { name: date, value: issue_count }
 
+        pull_request_per_state_symfony:
+            title: 'Symfony code pull request count per state'
+            type: pie
+            series:
+                -
+                    title: PR count
+                    data_source: fn_pull_request_per_state
+                    criteria: { project_id: 1 }
+                    dimensions: { name: state, value: pr_count }
+
+        pull_request_per_state_symfony_docs:
+            title: 'Symfony docs pull request count per state'
+            type: pie
+            series:
+                -
+                    title: PR count
+                    data_source: fn_pull_request_per_state
+                    criteria: { project_id: 2 }
+                    dimensions: { name: state, value: pr_count }
+
+
     trends-layout:
         index:
             title: 'Main trends'
@@ -429,6 +450,8 @@ parameters:
                 - { chart: contributors_symfony_with_pr_and_issue_count }
                 - { chart: issues_per_date_symfony }
                 - { chart: issues_per_date_symfony_docs }
+                - { chart: pull_request_per_state_symfony }
+                - { chart: pull_request_per_state_symfony_docs }
 
         symfony:
             title: 'Symfony code'
@@ -464,6 +487,8 @@ parameters:
                 - { chart: pull_requests_per_date_symfony_docs }
                 - { chart: issues_per_date_symfony }
                 - { chart: issues_per_date_symfony_docs }
+                - { chart: pull_request_per_state_symfony }
+                - { chart: pull_request_per_state_symfony_docs }
                 - { chart: issues_symfony_per_label_open }
                 - { chart: issues_symfony_per_label_closed }
                 - { chart: issues_symfony_per_label_all }

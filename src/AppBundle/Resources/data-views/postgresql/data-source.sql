@@ -1,3 +1,31 @@
+--------------------------------------------------------
+-- Pull request state
+-- Parameters:
+-- * v_merged_at
+-- * v_closed_at
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_pull_request_state(timestamp, timestamp) CASCADE;
+CREATE OR REPLACE FUNCTION fn_pull_request_state(v_merged_at timestamp, v_closed_at timestamp) RETURNS text AS $$
+DECLARE
+  result  TEXT;
+BEGIN
+
+      result := CASE
+          WHEN v_merged_at IS NOT NULL THEN 'merged'
+          WHEN v_merged_at IS NULL AND v_closed_at IS NOT NULL THEN 'closed'
+          ELSE 'open'
+      END;
+
+	RETURN result;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+
+--------------------------------------------------------
+-- Converts hex color representation to int
+-- Parameters:
+-- * hexval
+--------------------------------------------------------
 DROP FUNCTION IF EXISTS hex_to_int(varchar) CASCADE;
 CREATE OR REPLACE FUNCTION hex_to_int(hexval varchar) RETURNS integer AS $$
 DECLARE
@@ -401,7 +429,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 --------------------------------------------------------
--- Top0contributors with pr and isuue count
+-- Top-contributors with pr and issue count
 --
 -- Parameters:
 -- * v_project_id
@@ -445,3 +473,22 @@ GROUP BY c.name
 order by pr_count desc
 
  */
+
+--------------------------------------------------------
+-- Pull request count per state
+--
+-- Parameters:
+-- * v_project_id
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_pull_request_per_state(int);
+CREATE FUNCTION fn_pull_request_per_state(v_project_id int)
+    RETURNS table(state text, pr_count bigint) AS $$
+BEGIN
+    RETURN query
+    SELECT
+           fn_pull_request_state(merged_at, closed_at) AS state, count(*)
+    FROM pull_request
+    WHERE project_id = v_project_id
+    GROUP BY fn_pull_request_state(merged_at, closed_at);
+END;
+$$ LANGUAGE plpgsql;
