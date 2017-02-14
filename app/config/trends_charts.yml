@@ -424,6 +424,35 @@ parameters:
                     criteria: { project_id: 2 }
                     dimensions: { name: state, value: pr_count }
 
+        pull_request_lifetime_symfony:
+            title: 'Symfony code pull request average life span (time between the creation and merge or close)'
+            type: column
+            series:
+                -
+                    title: Avg merge time in days
+                    data_source: fn_pull_request_lifetime_per_date
+                    criteria: { project_id: 1, date_format: 'YYYY' }
+                    dimensions: { name: date, value: avg_merge_time }
+                -
+                    title: Avg close time in days
+                    data_source: fn_pull_request_lifetime_per_date
+                    criteria: { project_id: 1, date_format: 'YYYY' }
+                    dimensions: { name: date, value: avg_close_time }
+
+        pull_request_lifetime_symfony_docs:
+            title: 'Symfony docs pull request average life span (time between the creation and merge or close)'
+            type: column
+            series:
+                -
+                    title: Avg merge time in days
+                    data_source: fn_pull_request_lifetime_per_date
+                    criteria: { project_id: 2, date_format: 'YYYY' }
+                    dimensions: { name: date, value: avg_merge_time }
+                -
+                    title: Avg close time in days
+                    data_source: fn_pull_request_lifetime_per_date
+                    criteria: { project_id: 2, date_format: 'YYYY' }
+                    dimensions: { name: date, value: avg_close_time }
 
     trends-layout:
         index:
@@ -447,11 +476,13 @@ parameters:
                 - { chart: issues_symfony_per_label_closed }
                 - { chart: issues_symfony_per_label_all }
                 - { chart: issues_symfony_per_label_all_2017 }
-                - { chart: contributors_symfony_with_pr_and_issue_count }
                 - { chart: issues_per_date_symfony }
                 - { chart: issues_per_date_symfony_docs }
                 - { chart: pull_request_per_state_symfony }
                 - { chart: pull_request_per_state_symfony_docs }
+                - { chart: pull_request_lifetime_symfony }
+                - { chart: pull_request_lifetime_symfony_docs }
+                - { chart: contributors_symfony_with_pr_and_issue_count }
 
         symfony:
             title: 'Symfony code'

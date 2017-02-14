@@ -1,0 +1,24 @@
+{
+    "options": {
+        "type": "pie"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "open",
+                    "value": 125
+                },
+                {
+                    "name": "merged",
+                    "value": 2999
+                },
+                {
+                    "name": "closed",
+                    "value": 2684
+                }
+            ],
+            "name": "PR count"
+        }
+    ]
+}

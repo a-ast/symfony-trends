@@ -1,0 +1,81 @@
+{
+    "options": {
+        "type": "column"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": null
+                },
+                {
+                    "name": "2011",
+                    "value": 5
+                },
+                {
+                    "name": "2012",
+                    "value": 5
+                },
+                {
+                    "name": "2013",
+                    "value": 9
+                },
+                {
+                    "name": "2014",
+                    "value": 10
+                },
+                {
+                    "name": "2015",
+                    "value": 6
+                },
+                {
+                    "name": "2016",
+                    "value": 6
+                },
+                {
+                    "name": "2017",
+                    "value": 2
+                }
+            ],
+            "name": "Avg merge time in days"
+        },
+        {
+            "data": [
+                {
+                    "name": "2010",
+                    "value": 9
+                },
+                {
+                    "name": "2011",
+                    "value": 9
+                },
+                {
+                    "name": "2012",
+                    "value": 23
+                },
+                {
+                    "name": "2013",
+                    "value": 29
+                },
+                {
+                    "name": "2014",
+                    "value": 32
+                },
+                {
+                    "name": "2015",
+                    "value": 19
+                },
+                {
+                    "name": "2016",
+                    "value": 9
+                },
+                {
+                    "name": "2017",
+                    "value": 2
+                }
+            ],
+            "name": "Avg close time in days"
+        }
+    ]
+}

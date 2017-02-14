@@ -10,13 +10,26 @@ DECLARE
   result  TEXT;
 BEGIN
 
-      result := CASE
-          WHEN v_merged_at IS NOT NULL THEN 'merged'
-          WHEN v_merged_at IS NULL AND v_closed_at IS NOT NULL THEN 'closed'
-          ELSE 'open'
-      END;
+  result := CASE
+      WHEN v_merged_at IS NOT NULL THEN 'merged'
+      WHEN v_merged_at IS NULL AND v_closed_at IS NOT NULL THEN 'closed'
+      ELSE 'open'
+  END;
 
 	RETURN result;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+
+--------------------------------------------------------
+-- Get day count from interval
+-- Parameters:
+-- * v_interval
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_interval_to_days(interval) CASCADE;
+CREATE OR REPLACE FUNCTION fn_interval_to_days(v_interval interval) RETURNS numeric(5,1) AS $$
+BEGIN
+    RETURN (date_part('day', v_interval) + date_part('hour', v_interval)/24)::numeric(5,1);
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
@@ -490,5 +503,30 @@ BEGIN
     FROM pull_request
     WHERE project_id = v_project_id
     GROUP BY fn_pull_request_state(merged_at, closed_at);
+END;
+$$ LANGUAGE plpgsql;
+
+--------------------------------------------------------
+-- Pull request avg merge and close time per date
+--
+-- Parameters:
+-- * v_project_id
+-- * v_date_interval_format
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_pull_request_lifetime_per_date(int, text);
+CREATE FUNCTION fn_pull_request_lifetime_per_date(v_project_id int, v_date_interval_format text)
+    RETURNS table(date text, project_id int, avg_merge_time int, avg_close_time int) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        to_char(p.created_at, v_date_interval_format) AS date,
+        p.project_id,
+        round(fn_interval_to_days(AVG(p.merged_at - p.created_at)))::int as avg_merge_time,
+        round(fn_interval_to_days(AVG(p.closed_at - p.created_at)))::int as avg_close_time
+    FROM pull_request p
+    WHERE p.project_id = v_project_id
+    GROUP BY date, p.project_id
+    ORDER BY date ASC;
 END;
 $$ LANGUAGE plpgsql;
