@@ -38,17 +38,16 @@ class CommitAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(GithubApi $githubApi,
+    function it_aggregates(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
         ProjectInterface $project,
         Contributor $contributor,
-        AggregatorOptionsInterface $options,
-        ProgressInterface $progress)
+        AggregatorOptionsInterface $options)
     {
         $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
         $this->setProject($project);
-        $this->aggregate($options, $progress);
+        $this->aggregate($options);
     }
 
     private function initDependencies(GithubApi $githubApi,

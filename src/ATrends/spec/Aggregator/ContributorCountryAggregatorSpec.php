@@ -42,8 +42,8 @@ class ContributorCountryAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(AggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(AggregatorOptionsInterface $options, ProgressInterface $progress)
+    function it_returns_aggregated_data(AggregatorOptionsInterface $options)
     {
-        $this->aggregate($options, $progress);
+        $this->aggregate($options);
     }
 }

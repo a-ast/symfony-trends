@@ -38,13 +38,12 @@ class IssueAggregatorSpec extends ObjectBehavior
         ProjectInterface $project,
         GithubApiInterface $githubApi,
         IssueRepository $issueRepository,
-        AggregatorOptionsInterface $options,
-        ProgressInterface $progress
+        AggregatorOptionsInterface $options
     ) {
         $this->initDependencies($project, $githubApi, $issueRepository);
 
         $this->setProject($project);
-        $this->aggregate($options, $progress);
+        $this->aggregate($options);
     }
 
     /**

@@ -9,10 +9,10 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Event\ProgressAdvanceEvent;
 use Aa\ATrends\Event\ProgressMessageEvent;
-use Aa\ATrends\Progress\ProgressBar;
 use Aa\ATrends\Repository\ProjectRepository;
 use LogicException;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -33,7 +33,7 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
     private $projectRepository;
 
     /**
-     * @var \Symfony\Component\Console\Helper\ProgressBar
+     * @var ProgressBar
      */
     private $progressBar;
 
@@ -124,10 +124,9 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
             $title = $aggregator->getProject()->getName().'/'.$aggregatorAlias;
         }
 
-        $progressBar = new ProgressBar($output);
-        $this->progressBar = new \Symfony\Component\Console\Helper\ProgressBar($output);
+        $this->progressBar = new ProgressBar($output);
 
-        $result = $aggregator->aggregate(new AggregatorOptionBag(), $progressBar);
+        $result = $aggregator->aggregate(new AggregatorOptionBag());
 
         $this->progressBar->finish();
 
