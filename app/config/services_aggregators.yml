@@ -31,6 +31,8 @@ services:
             - '@repository.contributor'
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress_notifier']]
         tags:
             - { name: aggregator, alias: 'commits'}
 
@@ -69,5 +71,7 @@ services:
             - '@api.github'
             - '@repository.pull_request'
             - '@helper.pull_request_body_processor'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress_notifier']]
         tags:
             - { name: aggregator, alias: 'pull-requests'}

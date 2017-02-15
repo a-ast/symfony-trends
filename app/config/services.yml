@@ -90,3 +90,20 @@ services:
     helper.pull_request_body_processor:
         class: Aa\ATrends\Aggregator\PullRequestBodyProcessor
         lazy: true
+
+    trends.progress_notifier:
+        class: Aa\ATrends\Progress\ProgressNotifier
+        arguments:
+            - '@event_dispatcher'
+
+    #################################
+    # Commands
+    #################################
+    trends.command.aggregate:
+        class: AppBundle\Command\AggregateDataCommand
+        arguments:
+            - '@aggregator_registry'
+            - '@repository.project'
+        tags:
+            - { name: console.command }
+            - { name: kernel.event_subscriber }

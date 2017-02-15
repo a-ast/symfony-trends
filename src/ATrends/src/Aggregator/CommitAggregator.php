@@ -5,17 +5,16 @@ namespace Aa\ATrends\Aggregator;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Util\ArrayUtils;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
-use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
 class CommitAggregator implements ProjectAwareAggregatorInterface
 {
-    use ProjectAwareTrait;
+    use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
     /**
      * @var GithubApiInterface
@@ -72,6 +71,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
             $this->createContribution($commit, $this->project->getId(), $contributor->getId());
 
             $progress->advance();
+            $this->progressNotifier->advanceProgress();
         }
     }
 

@@ -2,28 +2,27 @@
 
 namespace Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Aggregator\PullRequestBodyProcessor;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
-use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Repository\PullRequestRepository;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
-use Aa\ATrends\Aggregator\ProjectAwareTrait;
 use DateTimeInterface;
 
 class PullRequestAggregator implements ProjectAwareAggregatorInterface
 {
-    use ProjectAwareTrait;
+    use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
     /**
      * @var GithubApiInterface
      */
     private $githubApi;
+
     /**
      * @var PullRequestRepository
      */
     private $repository;
+
     /**
      * @var PullRequestBodyProcessor
      */
@@ -53,7 +52,6 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
             $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
             if (null === $pullRequest) {
                 $pullRequest = new EntityPullRequest();
-                print 'c';
             }
 
             $issueNumbers = $this->bodyProcessor->getIssueNumbers($apiPullRequest->getBody());
@@ -82,11 +80,11 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
                 ->setIssueNumbers($issueNumbers)
             ;
 
-            print '.';
             $this->repository->persist($pullRequest);
+            $this->progressNotifier->advanceProgress();
         }
 
-        print PHP_EOL.'Flushing...'.PHP_EOL;
+        $this->progressNotifier->setProgressMessage('Flushing...');
         $this->repository->flush();
     }
 

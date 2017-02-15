@@ -5,7 +5,7 @@ TODO
 
 1. ContributorPageAggregator: iterate links, store to sensiolabs_users table.
 2. Implement phpspec and behat scenarios.
-
+3. Implement ProgressAwareInterface to simplify solution similar to ProjectAwareInterface
 
 ### To think:
 
