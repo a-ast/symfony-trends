@@ -25,4 +25,9 @@ interface ProgressInterface
      * @param int $step Number of steps to advance
      */
     public function advance($step = 1);
+
+    /**
+     * Finishes the progress output.
+     */
+    public function finish();
 }

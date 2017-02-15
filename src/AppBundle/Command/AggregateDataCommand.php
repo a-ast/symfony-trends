@@ -2,6 +2,8 @@
 
 namespace AppBundle\Command;
 
+use Aa\ATrends\Aggregator\BaseAggregatorInterface;
+use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\ProgressBar;
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
@@ -53,21 +55,40 @@ class AggregateDataCommand extends ContainerAwareCommand
 
         $aggregator = $aggregatorRegistry->get($aggregatorAlias);
 
-        $progressBar = $this->getProgressBar($output);
-
         if ($aggregator instanceof AggregatorInterface) {
-            $result = $aggregator->aggregate([], $progressBar);
-            $this->dumpResult($output, $aggregatorAlias, $result);
+
+            $this->aggregate($aggregator, $aggregatorAlias, $output, null);
+
 
         } elseif ($aggregator instanceof ProjectAwareAggregatorInterface) {
 
             $projects = $this->getProjects();
             foreach ($projects as $project) {
-                $result = $aggregator->aggregate($project, [], $progressBar);
-
-                $this->dumpResult($output, $project->getName().'/'.$aggregatorAlias, $result);
+                $this->aggregate($aggregator, $aggregatorAlias, $output, $project);
             }
         }
+    }
+
+    private function aggregate(BaseAggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output, ProjectInterface $project)
+    {
+        $result = null;
+
+        $title = $aggregatorAlias;
+        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
+            $title = $project->getName().'/'.$aggregatorAlias;
+        }
+
+        $progressBar = $this->getProgressBar($output);
+
+        if ($aggregator instanceof AggregatorInterface) {
+            $result = $aggregator->aggregate([], $progressBar);
+        } elseif ($aggregator instanceof ProjectAwareAggregatorInterface) {
+            $result = $aggregator->aggregate($project, [], $progressBar);
+        }
+
+        $progressBar->finish();
+
+        $this->dumpResult($output, $title, $result);
     }
 
 
@@ -77,14 +98,7 @@ class AggregateDataCommand extends ContainerAwareCommand
      */
     private function getProgressBar(OutputInterface $output)
     {
-        $progressBar = new ProgressBar($output);
-        $progressBar->setMessage('');
-        $progressBar->setMessage('');
-        $progressBar->setFormat(' %current%/%max% [%bar%] %message%');
-
-        //ProgressBar::getPlaceholderFormatterDefinition('current');
-
-        return $progressBar;
+        return new ProgressBar($output);
     }
 
     /**

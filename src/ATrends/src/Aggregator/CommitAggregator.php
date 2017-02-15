@@ -62,9 +62,13 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
         $projectRepo = $project->getGithubPath();
         $sinceDate = $this->getSinceDate($project->getId());
 
+        $progress->start();
+
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
             $this->createContribution($commit, $project->getId(), $contributor->getId());
+
+            $progress->advance();
         }
     }
 
@@ -116,6 +120,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
         if (null === $contributor) {
             $contributor = new Contributor($email);
         }
+
         $contributor->setFromGithub($commit, $user);
         $this->contributorRepository->saveContributor($contributor);
 
