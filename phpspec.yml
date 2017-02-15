@@ -6,3 +6,4 @@ suites:
         namespace: Aa\ATrends
         psr4_prefix: Aa\ATrends
         spec_path: %paths.config%/src/ATrends
+        src_path: %paths.config%/src/ATrends/src
