@@ -45,7 +45,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         foreach ($this->githubApi->getPullRequests($this->project->getGithubPath()) as $apiPullRequest) {
 

@@ -59,18 +59,15 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         $projectRepo = $this->project->getGithubPath();
         $sinceDate = $this->getSinceDate($this->project->getId());
-
-        $progress->start();
 
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
             $this->createContribution($commit, $this->project->getId(), $contributor->getId());
 
-            $progress->advance();
             $this->progressNotifier->advanceProgress();
         }
     }

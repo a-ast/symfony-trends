@@ -5,12 +5,13 @@ namespace Aa\ATrends\Aggregator;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\IssueRepository;
 use DateTimeInterface;
 
 class IssueAggregator implements ProjectAwareAggregatorInterface
 {
-    use ProjectAwareTrait;
+    use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
     /**
      * @var GithubApiInterface
@@ -36,11 +37,9 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         $sinceDate = $this->getSinceDate($this->project->getId());
-
-        $progress->start();
 
         foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
 
@@ -66,10 +65,11 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
             ;
 
             $this->repository->persist($issue);
-            $progress->advance();
+
+            $this->progressNotifier->advanceProgress();
         }
 
-        $progress->setMessage('flushing...');
+        $this->progressNotifier->setProgressMessage('Flushing...');
         $this->repository->flush();
     }
 

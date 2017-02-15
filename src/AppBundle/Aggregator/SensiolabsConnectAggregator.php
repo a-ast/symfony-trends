@@ -2,16 +2,17 @@
 
 namespace AppBundle\Aggregator;
 
+use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
+use AppBundle\Repository\SensiolabsUserRepository;
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
-use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Progress\ProgressInterface;
-use AppBundle\Repository\SensiolabsUserRepository;
-use GuzzleHttp\Exception\ClientException;
 
 class SensiolabsConnectAggregator implements AggregatorInterface
 {
+    use ProgressNotifierAwareTrait;
 
     /**
      * @var SensiolabsUserRepository
@@ -47,13 +48,13 @@ class SensiolabsConnectAggregator implements AggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         $report = [];
 
         $contributors = $this->repository->findWithSensiolabsLogin();
 
-        $progress->start(count($contributors));
+
 
         foreach ($contributors as $contributor) {
             $progress->advance();

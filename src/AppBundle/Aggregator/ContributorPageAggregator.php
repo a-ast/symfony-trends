@@ -3,17 +3,17 @@
 namespace AppBundle\Aggregator;
 
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Entity\SensiolabsUser;
 use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
 class ContributorPageAggregator implements ProjectAwareAggregatorInterface
 {
-    use ProjectAwareTrait;
+    use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
     /**
      * @var ContributorPageApiInterface
@@ -50,7 +50,7 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         $logins = $this->pageApi->getContributorLogins($this->project->getContributorPageUri(), $this->profileUri);
         $existingLogins = $this->repository->getExistingLogins($logins);

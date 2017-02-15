@@ -8,9 +8,8 @@ interface AggregatorInterface
 {
     /**
      * @param AggregatorOptionsInterface $options
-     * @param ProgressInterface $progress
      *
      * @return AggregatorReportInterface
      */
-    function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress);
+    function aggregate(AggregatorOptionsInterface $options);
 }

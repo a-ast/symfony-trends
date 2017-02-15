@@ -42,6 +42,8 @@ services:
         arguments:
             - '@api.geocoder'
             - '@repository.contributor'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress_notifier']]
         tags:
             - { name: aggregator, alias: 'contributor-countries'}
 
@@ -52,6 +54,8 @@ services:
             - '@page_crawler'
             - '@helper.sensiolabs_data_extractor'
             - '@repository.sensiolabs_user'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress_notifier']]
         tags:
             - { name: aggregator, alias: 'sensiolabs-profiles'}
 
@@ -61,6 +65,8 @@ services:
         arguments:
             - '@api.github'
             - '@repository.issue'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress_notifier']]
         tags:
             - { name: aggregator, alias: 'issues'}
 

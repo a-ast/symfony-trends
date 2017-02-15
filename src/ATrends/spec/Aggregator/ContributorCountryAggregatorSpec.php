@@ -6,12 +6,10 @@ use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use Aa\ATrends\Entity\Contributor;
-use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifier;
 use Aa\ATrends\Repository\ContributorRepository;
-use Geocoder\Collection;
 use Geocoder\Geocoder;
-use Geocoder\Location;
 use Geocoder\Model\Address;
 use Geocoder\Model\Country;
 use PhpSpec\ObjectBehavior;
@@ -22,10 +20,14 @@ use Prophecy\Argument;
  */
 class ContributorCountryAggregatorSpec extends ObjectBehavior
 {
-    function let(Geocoder $geocoder,
-        ContributorRepository $contributorRepository, Contributor $contributor)
-    {
+    function let(
+        Geocoder $geocoder,
+        ContributorRepository $contributorRepository,
+        Contributor $contributor,
+        ProgressNotifier $progressNotifier
+    ) {
         $this->beConstructedWith($geocoder, $contributorRepository);
+        $this->setProgressNotifier($progressNotifier);
 
         $contributorRepository->findWithoutCountry()->willReturn([$contributor]);
 

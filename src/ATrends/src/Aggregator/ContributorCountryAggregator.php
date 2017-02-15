@@ -3,6 +3,7 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Exception;
@@ -10,6 +11,8 @@ use Geocoder\Geocoder;
 
 class ContributorCountryAggregator implements AggregatorInterface
 {
+    use ProgressNotifierAwareTrait;
+
     /**
      * @var Geocoder
      */
@@ -33,7 +36,7 @@ class ContributorCountryAggregator implements AggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options)
     {
         $contributors = $this->contributorRepository->findWithoutCountry();
 
