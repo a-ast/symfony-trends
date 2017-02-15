@@ -7,11 +7,11 @@
             "data": [
                 {
                     "name": "Form",
-                    "value": 1116
+                    "value": 1118
                 },
                 {
                     "name": "Bug",
-                    "value": 1106
+                    "value": 1107
                 },
                 {
                     "name": "Status: Needs Review",
@@ -19,11 +19,11 @@
                 },
                 {
                     "name": "Feature",
-                    "value": 552
+                    "value": 553
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 427
+                    "value": 428
                 },
                 {
                     "name": "Enhancement",
@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "Validator",
-                    "value": 378
+                    "value": 379
                 },
                 {
                     "name": "HttpFoundation",
@@ -74,12 +74,12 @@
                     "value": 130
                 },
                 {
-                    "name": "Doctrine",
+                    "name": "Process",
                     "value": 126
                 },
                 {
-                    "name": "Process",
-                    "value": 125
+                    "name": "Doctrine",
+                    "value": 126
                 },
                 {
                     "name": "DX",

@@ -7,19 +7,19 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 70
+                    "value": 71
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 61
+                    "value": 62
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 37
+                    "value": 38
                 },
                 {
                     "name": "Feature",
-                    "value": 29
+                    "value": 30
                 },
                 {
                     "name": "DependencyInjection",
@@ -31,23 +31,19 @@
                 },
                 {
                     "name": "Form",
-                    "value": 11
+                    "value": 13
+                },
+                {
+                    "name": "Validator",
+                    "value": 9
                 },
                 {
                     "name": "FrameworkBundle",
                     "value": 8
                 },
                 {
-                    "name": "Validator",
-                    "value": 8
-                },
-                {
                     "name": "Security",
                     "value": 7
-                },
-                {
-                    "name": "Routing",
-                    "value": 6
                 },
                 {
                     "name": "Status: Reviewed",
@@ -58,11 +54,15 @@
                     "value": 6
                 },
                 {
-                    "name": "RFC",
-                    "value": 5
+                    "name": "Status: Waiting feedback",
+                    "value": 6
                 },
                 {
-                    "name": "Debug",
+                    "name": "Routing",
+                    "value": 6
+                },
+                {
+                    "name": "RFC",
                     "value": 5
                 },
                 {
@@ -70,7 +70,11 @@
                     "value": 5
                 },
                 {
-                    "name": "Translator",
+                    "name": "Debug",
+                    "value": 5
+                },
+                {
+                    "name": "Process",
                     "value": 4
                 },
                 {
@@ -82,23 +86,11 @@
                     "value": 4
                 },
                 {
-                    "name": "Status: Waiting feedback",
+                    "name": "Translator",
                     "value": 4
                 },
                 {
-                    "name": "HttpKernel",
-                    "value": 3
-                },
-                {
-                    "name": "Ldap",
-                    "value": 3
-                },
-                {
-                    "name": "DoctrineBridge",
-                    "value": 3
-                },
-                {
-                    "name": "Process",
+                    "name": "Yaml",
                     "value": 3
                 },
                 {
@@ -106,11 +98,19 @@
                     "value": 3
                 },
                 {
-                    "name": "Yaml",
+                    "name": "Enhancement",
                     "value": 3
                 },
                 {
-                    "name": "Enhancement",
+                    "name": "BrowserKit",
+                    "value": 3
+                },
+                {
+                    "name": "DoctrineBridge",
+                    "value": 3
+                },
+                {
+                    "name": "Ldap",
                     "value": 3
                 },
                 {
@@ -119,6 +119,10 @@
                 },
                 {
                     "name": "Intl",
+                    "value": 3
+                },
+                {
+                    "name": "HttpKernel",
                     "value": 3
                 }
             ],

@@ -11,11 +11,11 @@
                 },
                 {
                     "name": "Bug",
-                    "value": 923
+                    "value": 925
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 424
+                    "value": 426
                 },
                 {
                     "name": "Unconfirmed",
@@ -23,7 +23,7 @@
                 },
                 {
                     "name": "Feature",
-                    "value": 349
+                    "value": 350
                 },
                 {
                     "name": "Validator",
@@ -47,7 +47,7 @@
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 200
+                    "value": 202
                 },
                 {
                     "name": "FrameworkBundle",
@@ -58,12 +58,12 @@
                     "value": 178
                 },
                 {
-                    "name": "Easy Pick",
+                    "name": "HttpKernel",
                     "value": 176
                 },
                 {
-                    "name": "HttpKernel",
-                    "value": 175
+                    "name": "Easy Pick",
+                    "value": 176
                 },
                 {
                     "name": "Translator",

@@ -11,15 +11,15 @@
                 },
                 {
                     "name": "Bug",
-                    "value": 183
+                    "value": 182
                 },
                 {
                     "name": "Form",
-                    "value": 156
+                    "value": 158
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 148
+                    "value": 146
                 },
                 {
                     "name": "Enhancement",
@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 57
+                    "value": 58
                 },
                 {
                     "name": "HttpFoundation",
@@ -39,7 +39,7 @@
                 },
                 {
                     "name": "Validator",
-                    "value": 48
+                    "value": 49
                 },
                 {
                     "name": "Console",
@@ -47,11 +47,7 @@
                 },
                 {
                     "name": "RFC",
-                    "value": 26
-                },
-                {
-                    "name": "DependencyInjection",
-                    "value": 22
+                    "value": 24
                 },
                 {
                     "name": "FrameworkBundle",
@@ -62,15 +58,15 @@
                     "value": 21
                 },
                 {
-                    "name": "HttpKernel",
+                    "name": "Status: Reviewed",
+                    "value": 20
+                },
+                {
+                    "name": "DependencyInjection",
                     "value": 20
                 },
                 {
                     "name": "Routing",
-                    "value": 20
-                },
-                {
-                    "name": "Status: Reviewed",
                     "value": 20
                 }
             ],
