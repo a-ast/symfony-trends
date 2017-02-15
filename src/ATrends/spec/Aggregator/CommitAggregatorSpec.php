@@ -2,6 +2,7 @@
 
 namespace spec\Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\CommitAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApi;
@@ -9,6 +10,8 @@ use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\GithubUser;
+use Aa\ATrends\Model\ProjectInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use PhpSpec\ObjectBehavior;
@@ -35,17 +38,20 @@ class CommitAggregatorSpec extends ObjectBehavior
     function it_returns_aggregated_data(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
-        Project $project,
-        Contributor $contributor)
+        ProjectInterface $project,
+        Contributor $contributor,
+        AggregatorOptionsInterface $options,
+        ProgressInterface $progress)
     {
         $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
-        $this->aggregate($project, []);
+        $this->setProject($project);
+        $this->aggregate($options, $progress);
     }
 
     private function initDependencies(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
-        Project $project,
+        ProjectInterface $project,
         Contributor $contributor)
     {
         $commit = ModelGithubCommit::createFromResponseData([

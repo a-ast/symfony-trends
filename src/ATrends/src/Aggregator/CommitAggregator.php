@@ -7,13 +7,16 @@ use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
-use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Util\ArrayUtils;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
 class CommitAggregator implements ProjectAwareAggregatorInterface
 {
+    use ProjectAwareTrait;
+
     /**
      * @var GithubApiInterface
      */
@@ -57,16 +60,16 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
     {
-        $projectRepo = $project->getGithubPath();
-        $sinceDate = $this->getSinceDate($project->getId());
+        $projectRepo = $this->project->getGithubPath();
+        $sinceDate = $this->getSinceDate($this->project->getId());
 
         $progress->start();
 
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
-            $this->createContribution($commit, $project->getId(), $contributor->getId());
+            $this->createContribution($commit, $this->project->getId(), $contributor->getId());
 
             $progress->advance();
         }
@@ -77,7 +80,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
      *
      * @return \DateTimeImmutable
      */
-    protected function getSinceDate($projectId)
+    private function getSinceDate($projectId)
     {
         $lastCommitDate = $this->contributionRepository->getLastCommitDate($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');

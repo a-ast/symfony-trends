@@ -3,9 +3,11 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Repository\ContributorRepository;
 use Geocoder\Collection;
 use Geocoder\Geocoder;
@@ -38,8 +40,8 @@ class ContributorCountryAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(AggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data()
+    function it_returns_aggregated_data(AggregatorOptionsInterface $options, ProgressInterface $progress)
     {
-        $this->aggregate([]);
+        $this->aggregate($options, $progress);
     }
 }

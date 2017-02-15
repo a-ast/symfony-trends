@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use Aa\ATrends\Aggregator\AggregatorOptionBag;
 use Aa\ATrends\Aggregator\BaseAggregatorInterface;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\ProgressBar;
@@ -55,50 +56,36 @@ class AggregateDataCommand extends ContainerAwareCommand
 
         $aggregator = $aggregatorRegistry->get($aggregatorAlias);
 
-        if ($aggregator instanceof AggregatorInterface) {
-
-            $this->aggregate($aggregator, $aggregatorAlias, $output, null);
-
-
-        } elseif ($aggregator instanceof ProjectAwareAggregatorInterface) {
+        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
 
             $projects = $this->getProjects();
             foreach ($projects as $project) {
-                $this->aggregate($aggregator, $aggregatorAlias, $output, $project);
+                $aggregator->setProject($project);
+                $this->aggregate($aggregator, $aggregatorAlias, $output);
             }
+
+        } elseif ($aggregator instanceof AggregatorInterface) {
+
+            $this->aggregate($aggregator, $aggregatorAlias, $output);
         }
     }
 
-    private function aggregate(BaseAggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output, ProjectInterface $project)
+    private function aggregate(AggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output)
     {
         $result = null;
 
         $title = $aggregatorAlias;
         if ($aggregator instanceof ProjectAwareAggregatorInterface) {
-            $title = $project->getName().'/'.$aggregatorAlias;
+            $title = $aggregator->getProject()->getName().'/'.$aggregatorAlias;
         }
 
-        $progressBar = $this->getProgressBar($output);
+        $progressBar = new ProgressBar($output);
 
-        if ($aggregator instanceof AggregatorInterface) {
-            $result = $aggregator->aggregate([], $progressBar);
-        } elseif ($aggregator instanceof ProjectAwareAggregatorInterface) {
-            $result = $aggregator->aggregate($project, [], $progressBar);
-        }
+        $result = $aggregator->aggregate(new AggregatorOptionBag(), $progressBar);
 
         $progressBar->finish();
 
         $this->dumpResult($output, $title, $result);
-    }
-
-
-    /**
-     * @param OutputInterface $output
-     * @return ProgressBar
-     */
-    private function getProgressBar(OutputInterface $output)
-    {
-        return new ProgressBar($output);
     }
 
     /**
@@ -116,7 +103,7 @@ class AggregateDataCommand extends ContainerAwareCommand
      * @param $aggregatorRegistry
      * @param OutputInterface $output
      */
-    protected function outputAvailableAggregators($aggregatorRegistry, OutputInterface $output)
+    private function outputAvailableAggregators(AggregatorRegistry $aggregatorRegistry, OutputInterface $output)
     {
         $output->writeln('Available aggregators:');
         foreach ($aggregatorRegistry->getAliases() as $aggregatorAlias) {
@@ -130,7 +117,7 @@ class AggregateDataCommand extends ContainerAwareCommand
      * @param $aggregatorTitle
      * @param $result
      */
-    protected function dumpResult(OutputInterface $output, $aggregatorTitle, $result)
+    private function dumpResult(OutputInterface $output, $aggregatorTitle, $result)
     {
         $output->writeln(PHP_EOL.sprintf('<info>%s: aggregation finished.</info>', $aggregatorTitle));
 

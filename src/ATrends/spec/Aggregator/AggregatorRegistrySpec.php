@@ -3,7 +3,7 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorRegistry;
-use Aa\ATrends\Aggregator\BaseAggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -17,19 +17,19 @@ class AggregatorRegistrySpec extends ObjectBehavior
         $this->shouldHaveType(AggregatorRegistry::class);
     }
 
-    function it_registers_aggregator(BaseAggregatorInterface $aggregator)
+    function it_registers_aggregator(AggregatorInterface $aggregator)
     {
         $this->register($aggregator, 'alias');
     }
 
-    function it_gets_registered_aggregator(BaseAggregatorInterface $aggregator)
+    function it_gets_registered_aggregator(AggregatorInterface $aggregator)
     {
         $this->register($aggregator, 'alias');
 
         $this->get('alias')->shouldReturn($aggregator);
     }
 
-    function it_returns_all_aliases(BaseAggregatorInterface $aggregator1, BaseAggregatorInterface $aggregator2)
+    function it_returns_all_aliases(AggregatorInterface $aggregator1, AggregatorInterface $aggregator2)
     {
         $this->register($aggregator1, 'alias1');
         $this->register($aggregator2, 'alias2');
@@ -37,7 +37,7 @@ class AggregatorRegistrySpec extends ObjectBehavior
         $this->getAliases()->shouldReturn(['alias1', 'alias2']);
     }
 
-    function it_returns_true_if_aggregator_registered(BaseAggregatorInterface $aggregator)
+    function it_returns_true_if_aggregator_registered(AggregatorInterface $aggregator)
     {
         $this->register($aggregator, 'alias');
 

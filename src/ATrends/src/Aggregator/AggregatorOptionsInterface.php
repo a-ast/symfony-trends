@@ -2,6 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
-interface BaseAggregatorInterface
+interface AggregatorOptionsInterface
 {
+
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use AppBundle\Aggregator\Helper\SensiolabsDataExtractor;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use Aa\ATrends\Progress\ProgressInterface;
@@ -46,7 +47,7 @@ class SensiolabsConnectAggregator implements AggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(array $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
     {
         $report = [];
 

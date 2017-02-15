@@ -1,10 +1,12 @@
 <?php
 
+use Aa\ATrends\Aggregator\AggregatorOptionBag;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
+use features\Aa\ATrends\Fake\ProgressBar;
 use features\Aa\ATrends\Helper\ApiCollection;
 use features\Aa\ATrends\Helper\DoctrineHelper;
 
@@ -110,7 +112,8 @@ class AggregatorFeatureContext implements Context
 
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->aggregate($project, []);
+        $aggregator->setProject($project);
+        $aggregator->aggregate(new AggregatorOptionBag(), new ProgressBar());
     }
 
     /**
@@ -120,7 +123,7 @@ class AggregatorFeatureContext implements Context
     {
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->aggregate([]);
+        $aggregator->aggregate(new AggregatorOptionBag(), new ProgressBar());
     }
 
     private function processTableRow(array $data)

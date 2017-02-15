@@ -4,13 +4,13 @@ namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Progress\ProgressInterface;
 
-interface AggregatorInterface extends BaseAggregatorInterface
+interface AggregatorInterface
 {
     /**
-     * @param array $options
+     * @param AggregatorOptionsInterface $options
      * @param ProgressInterface $progress
      *
-     * @return array
+     * @return AggregatorReportInterface
      */
-    function aggregate(array $options, ProgressInterface $progress = null);
+    function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress);
 }

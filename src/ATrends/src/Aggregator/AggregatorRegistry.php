@@ -5,15 +5,15 @@ namespace Aa\ATrends\Aggregator;
 class AggregatorRegistry
 {
     /**
-     * @var BaseAggregatorInterface[]|array
+     * @var AggregatorInterface[]|array
      */
     private $aggregators = [];
 
     /**
-     * @param BaseAggregatorInterface $aggregator
+     * @param AggregatorInterface $aggregator
      * @param string $alias
      */
-    public function register(BaseAggregatorInterface $aggregator, $alias)
+    public function register(AggregatorInterface $aggregator, $alias)
     {
         $this->aggregators[$alias] = $aggregator;
     }
@@ -21,7 +21,7 @@ class AggregatorRegistry
     /**
      * @param $alias
      *
-     * @return BaseAggregatorInterface
+     * @return AggregatorInterface
      */
     public function get($alias)
     {

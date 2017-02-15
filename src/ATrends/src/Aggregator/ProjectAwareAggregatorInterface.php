@@ -5,14 +5,17 @@ namespace Aa\ATrends\Aggregator;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\ProgressInterface;
 
-interface ProjectAwareAggregatorInterface extends BaseAggregatorInterface
+interface ProjectAwareAggregatorInterface extends AggregatorInterface
 {
     /**
      * @param ProjectInterface $project
-     * @param array $options
-     * @param ProgressInterface|null $progress
      *
-     * @return mixed
+     * @return void
      */
-    function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null);
+    function setProject(ProjectInterface $project);
+
+    /**
+     * @return ProjectInterface
+     */
+    function getProject();
 }

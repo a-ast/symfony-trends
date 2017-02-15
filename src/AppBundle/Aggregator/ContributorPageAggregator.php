@@ -8,9 +8,13 @@ use AppBundle\Entity\SensiolabsUser;
 use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Model\ProjectInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
 class ContributorPageAggregator implements ProjectAwareAggregatorInterface
 {
+    use ProjectAwareTrait;
+
     /**
      * @var ContributorPageApiInterface
      */
@@ -46,9 +50,9 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
     {
-        $logins = $this->pageApi->getContributorLogins($project->getContributorPageUri(), $this->profileUri);
+        $logins = $this->pageApi->getContributorLogins($this->project->getContributorPageUri(), $this->profileUri);
         $existingLogins = $this->repository->getExistingLogins($logins);
         $missingLogins = array_diff($logins, $existingLogins);
 
@@ -70,6 +74,4 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
 
         return null;
     }
-
-
 }

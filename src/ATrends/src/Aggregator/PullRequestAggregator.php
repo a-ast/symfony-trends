@@ -8,10 +8,14 @@ use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Repository\PullRequestRepository;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\ProjectAwareTrait;
 use DateTimeInterface;
 
 class PullRequestAggregator implements ProjectAwareAggregatorInterface
 {
+    use ProjectAwareTrait;
+
     /**
      * @var GithubApiInterface
      */
@@ -42,9 +46,9 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
     {
-        foreach ($this->githubApi->getPullRequests($project->getGithubPath()) as $apiPullRequest) {
+        foreach ($this->githubApi->getPullRequests($this->project->getGithubPath()) as $apiPullRequest) {
 
             $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
             if (null === $pullRequest) {
@@ -55,7 +59,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
             $issueNumbers = $this->bodyProcessor->getIssueNumbers($apiPullRequest->getBody());
 
             $pullRequest
-                ->setProjectId($project->getId())
+                ->setProjectId($this->project->getId())
                 ->setGithubId($apiPullRequest->getId())
                 ->setNumber($apiPullRequest->getNumber())
                 ->setState($apiPullRequest->getState())
@@ -91,7 +95,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
      *
      * @return DateTimeInterface
      */
-    protected function getSinceDate($projectId)
+    private function getSinceDate($projectId)
     {
         $lastCommitDate = $this->repository->getLastCreatedAtDate($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');

@@ -2,13 +2,15 @@
 
 namespace spec\Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\IssueAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
-use Aa\ATrends\Entity\Issue;
-use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
 use Aa\ATrends\Api\Github\GithubApiInterface;
+use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
+use Aa\ATrends\Model\ProjectInterface;
+use Aa\ATrends\Progress\ProgressInterface;
 use Aa\ATrends\Repository\IssueRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -29,11 +31,17 @@ class IssueAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(Project $project, GithubApiInterface $githubApi, IssueRepository $issueRepository)
-    {
+    function it_returns_aggregated_data(
+        ProjectInterface $project,
+        GithubApiInterface $githubApi,
+        IssueRepository $issueRepository,
+        AggregatorOptionsInterface $options,
+        ProgressInterface $progress
+    ) {
         $this->initDependencies($project, $githubApi, $issueRepository);
 
-        $this->aggregate($project, []);
+        $this->setProject($project);
+        $this->aggregate($options, $progress);
     }
 
     /**
@@ -41,9 +49,11 @@ class IssueAggregatorSpec extends ObjectBehavior
      * @param GithubApiInterface $githubApi
      * @param IssueRepository $issueRepository
      */
-    protected function initDependencies(Project $project, GithubApiInterface $githubApi,
-        IssueRepository $issueRepository)
-    {
+    protected function initDependencies(
+        ProjectInterface $project,
+        GithubApiInterface $githubApi,
+        IssueRepository $issueRepository
+    ) {
         $project
             ->getId()
             ->willReturn(1);
@@ -67,7 +77,7 @@ class IssueAggregatorSpec extends ObjectBehavior
             'labels' => [
                 ['id' => 1, 'name' => 'Bug'],
                 ['id' => 2, 'name' => 'Feature'],
-            ]
+            ],
         ]);
 
         $githubApi

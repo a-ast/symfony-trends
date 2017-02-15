@@ -5,12 +5,13 @@ namespace Aa\ATrends\Aggregator;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Repository\IssueRepository;
 use DateTimeInterface;
 
 class IssueAggregator implements ProjectAwareAggregatorInterface
 {
+    use ProjectAwareTrait;
+
     /**
      * @var GithubApiInterface
      */
@@ -35,20 +36,21 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(ProjectInterface $project, array $options, ProgressInterface $progress = null)
+    public function aggregate(AggregatorOptionsInterface $options, ProgressInterface $progress = null)
     {
-        $sinceDate = $this->getSinceDate($project->getId());
+        $sinceDate = $this->getSinceDate($this->project->getId());
 
-        foreach ($this->githubApi->getIssues($project->getGithubPath(), $sinceDate) as $apiIssue) {
+        $progress->start();
+
+        foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
 
             $issue = $this->repository->findOneBy(['githubId' => $apiIssue->getId()]);
             if (null === $issue) {
                 $issue = new Issue();
-                print 'c';
             }
 
             $issue
-                ->setProjectId($project->getId())
+                ->setProjectId($this->project->getId())
                 ->setGithubId($apiIssue->getId())
                 ->setNumber($apiIssue->getNumber())
                 ->setState($apiIssue->getState())
@@ -63,11 +65,11 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
                 ->setLabels($apiIssue->getLabels())
             ;
 
-            print '.';
             $this->repository->persist($issue);
+            $progress->advance();
         }
 
-        print PHP_EOL.'Flushing...'.PHP_EOL;
+        $progress->setMessage('flushing...');
         $this->repository->flush();
     }
 
@@ -76,7 +78,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      *
      * @return DateTimeInterface
      */
-    protected function getSinceDate($projectId)
+    private function getSinceDate($projectId)
     {
         $lastCommitDate = $this->repository->getLastCreatedAt($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');
