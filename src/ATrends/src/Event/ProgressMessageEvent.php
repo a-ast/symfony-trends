@@ -1,13 +1,10 @@
 <?php
 
-
 namespace Aa\ATrends\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
-class ProgressMessageEvent extends Event
+class ProgressMessageEvent extends ProgressEvent
 {
-    const NAME = 'trends.message';
+    const NAME = 'trends.progress.message';
 
     /**
      * @var string
@@ -17,10 +14,13 @@ class ProgressMessageEvent extends Event
     /**
      * Constructor.
      *
+     * @param mixed $initiator
      * @param string $message
      */
-    public function __construct($message)
+    public function __construct($initiator, $message)
     {
+        parent::__construct($initiator);
+
         $this->message = $message;
     }
 

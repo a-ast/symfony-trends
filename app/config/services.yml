@@ -59,12 +59,20 @@ services:
         arguments:
             - '@github_api.client'
 
-
-    #####################################
     page_crawler:
         class: Aa\ATrends\Api\PageCrawler\PageCrawler
         arguments:
             - '@api.http_client'
+
+    api.contributor_page:
+        class: AppBundle\Api\ContributorPage\ContributorPageApi
+        lazy: true
+        arguments:
+            - '@helper.contributor_extractor'
+            - '@page_crawler'
+
+    #####################################
+
 
     data_provider:
         class: Aa\ATrends\Provider\DataProvider
@@ -91,8 +99,8 @@ services:
         class: Aa\ATrends\Aggregator\PullRequestBodyProcessor
         lazy: true
 
-    trends.progress_notifier:
-        class: Aa\ATrends\Progress\ProgressNotifier
+    trends.progress.notifier:
+        class: Aa\ATrends\Progress\EventBasedProgressNotifier
         arguments:
             - '@event_dispatcher'
 
@@ -103,7 +111,7 @@ services:
         class: AppBundle\Command\AggregateDataCommand
         arguments:
             - '@aggregator_registry'
-            - '@repository.project'
+            - '@aggregator_runner'
         tags:
             - { name: console.command }
             - { name: kernel.event_subscriber }

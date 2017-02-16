@@ -8,7 +8,6 @@ use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Progress\ProgressInterface;
 
 class SensiolabsConnectAggregator implements AggregatorInterface
 {
@@ -57,11 +56,9 @@ class SensiolabsConnectAggregator implements AggregatorInterface
 
 
         foreach ($contributors as $contributor) {
-            $progress->advance();
 
             $login = $contributor->getSensiolabsLogin();
 
-            $progress->setMessage($login);
 
             $url = $this->getProfileUrl($login);
 

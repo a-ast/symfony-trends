@@ -4,7 +4,7 @@ namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
-use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\IssueRepository;
 use DateTimeInterface;
@@ -66,10 +66,10 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
 
             $this->repository->persist($issue);
 
-            $this->progressNotifier->advanceProgress();
+            $this->progressNotifier->advance();
         }
 
-        $this->progressNotifier->setProgressMessage('Flushing...');
+        $this->progressNotifier->setMessage('Flushing...');
         $this->repository->flush();
     }
 

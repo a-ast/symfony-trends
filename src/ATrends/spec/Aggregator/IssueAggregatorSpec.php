@@ -10,8 +10,8 @@ use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Model\GithubIssue as ModelGithubIssue;
 use Aa\ATrends\Model\ProjectInterface;
-use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Progress\ProgressNotifier;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
+use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\IssueRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -22,7 +22,7 @@ use Prophecy\Argument;
 class IssueAggregatorSpec extends ObjectBehavior
 {
     function let(GithubApiInterface $githubApi, IssueRepository $issueRepository,
-        ProgressNotifier $progressNotifier)
+        EventBasedProgressNotifier $progressNotifier)
     {
         $this->beConstructedWith($githubApi, $issueRepository);
         $this->setProgressNotifier($progressNotifier);

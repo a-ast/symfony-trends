@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;

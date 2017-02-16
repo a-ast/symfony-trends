@@ -3,9 +3,8 @@ TODO
 
 ### Next steps:
 
-1. Fix all aggregators to use new generic approach for progress handling. Remove custom ProgressBar and related classes.
 1. ContributorPageAggregator: iterate links, store to sensiolabs_users table.
-2. Implement phpspec and behat scenarios.
+1. Implement phpspec and behat scenarios.
 1. Implement AggregatorReport
 1. Implement PullRequestBodyProcessor and commit.is_maintenance using events.
 1. Move ATrends to vendor

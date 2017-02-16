@@ -3,11 +3,9 @@
 
 namespace Aa\ATrends\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
-class ProgressAdvanceEvent extends Event
+class ProgressAdvanceEvent extends ProgressEvent
 {
-    const NAME = 'trends.advance';
+    const NAME = 'trends.progress.advance';
 
     /**
      * @var int
@@ -17,10 +15,13 @@ class ProgressAdvanceEvent extends Event
     /**
      * Constructor.
      *
+     * @param mixed $initiator
      * @param int $step
      */
-    public function __construct($step)
+    public function __construct($initiator, $step)
     {
+        parent::__construct($initiator);
+
         $this->advanceStep = $step;
     }
 

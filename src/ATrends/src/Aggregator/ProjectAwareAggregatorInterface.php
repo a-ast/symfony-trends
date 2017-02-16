@@ -3,7 +3,6 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Model\ProjectInterface;
-use Aa\ATrends\Progress\ProgressInterface;
 
 interface ProjectAwareAggregatorInterface extends AggregatorInterface
 {

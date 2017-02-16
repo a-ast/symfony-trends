@@ -6,7 +6,7 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Entity\SensiolabsUser;
-use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ProjectAwareTrait;

@@ -6,7 +6,7 @@ use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
@@ -68,7 +68,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
             $contributor = $this->createContributor($commit);
             $this->createContribution($commit, $this->project->getId(), $contributor->getId());
 
-            $this->progressNotifier->advanceProgress();
+            $this->progressNotifier->advance();
         }
     }
 

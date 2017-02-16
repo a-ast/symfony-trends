@@ -11,8 +11,8 @@ use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Model\GithubUser;
 use Aa\ATrends\Model\ProjectInterface;
-use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Progress\ProgressNotifier;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
+use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use PhpSpec\ObjectBehavior;
@@ -26,7 +26,7 @@ class CommitAggregatorSpec extends ObjectBehavior
     function let(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
-        ProgressNotifier $progressNotifier)
+        EventBasedProgressNotifier $progressNotifier)
     {
         $this->beConstructedWith($githubApi, $contributorRepository, $contributionRepository, []);
         $this->setProgressNotifier($progressNotifier);

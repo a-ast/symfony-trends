@@ -5,10 +5,13 @@ namespace AppBundle\Command;
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorOptionBag;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
+use Aa\ATrends\Aggregator\AggregatorRunner;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Event\ProgressAdvanceEvent;
+use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressMessageEvent;
+use Aa\ATrends\Event\ProgressStartEvent;
 use Aa\ATrends\Repository\ProjectRepository;
 use LogicException;
 use Symfony\Component\Console\Command\Command;
@@ -28,9 +31,9 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
     private $registry;
 
     /**
-     * @var ProjectRepository
+     * @var AggregatorRunner
      */
-    private $projectRepository;
+    private $runner;
 
     /**
      * @var ProgressBar
@@ -38,14 +41,21 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
     private $progressBar;
 
     /**
-     * Constructor.
+     * @var OutputInterface
      */
-    public function __construct(AggregatorRegistry $registry, ProjectRepository $projectRepository)
+    private $currentOutput;
+
+    /**
+     * Constructor.
+     * @param AggregatorRegistry $registry
+     * @param AggregatorRunner $runner
+     */
+    public function __construct(AggregatorRegistry $registry, AggregatorRunner $runner)
     {
         parent::__construct();
         
         $this->registry = $registry;
-        $this->projectRepository = $projectRepository;
+        $this->runner = $runner;
     }
 
 
@@ -79,19 +89,11 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         }
 
         $aggregator = $this->registry->get($aggregatorAlias);
+        $this->currentOutput = $output;
 
-        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
+        $result = $this->runner->run($aggregator, new AggregatorOptionBag());
 
-            $projects = $this->getProjects();
-            foreach ($projects as $project) {
-                $aggregator->setProject($project);
-                $this->aggregate($aggregator, $aggregatorAlias, $output);
-            }
-
-        } elseif ($aggregator instanceof AggregatorInterface) {
-
-            $this->aggregate($aggregator, $aggregatorAlias, $output);
-        }
+        $this->dumpResult($output, $result);
     }
 
     /**
@@ -107,40 +109,35 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         $output->writeln('');
     }
 
-    /**
-     * @return Project[]|array
-     */
-    private function getProjects()
-    {
-        return $this->projectRepository->findAll();
-    }
 
-    private function aggregate(AggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output)
-    {
-        $result = null;
 
-        $title = $aggregatorAlias;
-        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
-            $title = $aggregator->getProject()->getName().'/'.$aggregatorAlias;
-        }
-
-        $this->progressBar = new ProgressBar($output);
-
-        $result = $aggregator->aggregate(new AggregatorOptionBag());
-
-        $this->progressBar->finish();
-
-        $this->dumpResult($output, $title, $result);
-    }
+//    private function aggregate(AggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output)
+//    {
+//        $this->currentOutput = $output;
+//
+//        $result = null;
+//
+//        $title = $aggregatorAlias;
+//        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
+//            $title = $aggregator->getProject()->getName().'/'.$aggregatorAlias;
+//        }
+//
+//        $this->progressBar = new ProgressBar($output);
+//
+//        $result = $aggregator->aggregate(new AggregatorOptionBag());
+//
+//        $this->progressBar->finish();
+//
+//        $this->dumpResult($output, $result);
+//    }
 
     /**
      * @param OutputInterface $output
-     * @param $aggregatorTitle
      * @param $result
      */
-    private function dumpResult(OutputInterface $output, $aggregatorTitle, $result)
+    private function dumpResult(OutputInterface $output, $result)
     {
-        $output->writeln(PHP_EOL.sprintf('<info>%s: aggregation finished.</info>', $aggregatorTitle));
+        $output->writeln(PHP_EOL.sprintf('<info>Aggregation finished.</info>'));
 
         $output->writeln('');
         $yaml = Yaml::dump($result, 4);
@@ -153,22 +150,47 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
+            ProgressStartEvent::NAME => 'onProgressStart',
+            ProgressFinishEvent::NAME => 'onProgressFinish',
             ProgressAdvanceEvent::NAME => 'onProgressAdvance',
             ProgressMessageEvent::NAME => 'onProgressMessage',
         );
     }
 
+    public function onProgressStart(ProgressStartEvent $event)
+    {
+        if (null === $this->currentOutput) {
+            return;
+        }
+
+        $this->progressBar = new ProgressBar($this->currentOutput);
+        $this->progressBar->start();
+    }
+
+    public function onProgressFinish(ProgressFinishEvent $event)
+    {
+        if (null === $this->currentOutput || null === $this->progressBar) {
+            return;
+        }
+
+        $this->progressBar->finish();
+    }
+
     public function onProgressAdvance(ProgressAdvanceEvent $event)
     {
-        if (null !== $this->progressBar) {
-            $this->progressBar->advance($event->getAdvanceStep());
+        if (null === $this->currentOutput || null === $this->progressBar) {
+            return;
         }
+
+        $this->progressBar->advance($event->getAdvanceStep());
     }
 
     public function onProgressMessage(ProgressMessageEvent $event)
     {
-        if (null !== $this->progressBar) {
-            $this->progressBar->setMessage($event->getMessage());
+        if (null === $this->currentOutput || null === $this->progressBar) {
+            return;
         }
+
+        $this->progressBar->setMessage($event->getMessage());
     }
 }

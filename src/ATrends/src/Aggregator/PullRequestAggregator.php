@@ -3,7 +3,7 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Progress\ProgressInterface;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
 use Aa\ATrends\Repository\PullRequestRepository;
@@ -81,10 +81,10 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
             ;
 
             $this->repository->persist($pullRequest);
-            $this->progressNotifier->advanceProgress();
+            $this->progressNotifier->advance();
         }
 
-        $this->progressNotifier->setProgressMessage('Flushing...');
+        $this->progressNotifier->setMessage('Flushing...');
         $this->repository->flush();
     }
 

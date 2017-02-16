@@ -5,15 +5,17 @@ namespace Aa\ATrends\Progress;
 trait ProgressNotifierAwareTrait
 {
     /**
-     * @var ProgressNotifier
+     * @var ProgressNotifierInterface
      */
     private $progressNotifier;
 
     /**
-     * @param ProgressNotifier $progressNotifier
+     * @param ProgressNotifierInterface $progressNotifier
      */
-    public function setProgressNotifier(ProgressNotifier $progressNotifier)
+    public function setProgressNotifier(ProgressNotifierInterface $progressNotifier)
     {
         $this->progressNotifier = $progressNotifier;
+
+        $this->progressNotifier->setInitiator($this);
     }
 }

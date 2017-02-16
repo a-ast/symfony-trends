@@ -6,12 +6,11 @@ services:
     aggregator_registry:
         class: Aa\ATrends\Aggregator\AggregatorRegistry
 
-    api.contributor_page:
-        class: AppBundle\Api\ContributorPage\ContributorPageApi
-        lazy: true
+    aggregator_runner:
+        class: Aa\ATrends\Aggregator\AggregatorRunner
         arguments:
-            - '@helper.contributor_extractor'
-            - '@page_crawler'
+            - '@repository.project'
+            - '@event_dispatcher'
 
     aggregator.contributor_page:
         class: AppBundle\Aggregator\ContributorPageAggregator
@@ -32,7 +31,7 @@ services:
             - '@repository.contribution'
             - '%maintenance_commit_patterns%'
         calls:
-            - ['setProgressNotifier', ['@trends.progress_notifier']]
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'commits'}
 
@@ -43,7 +42,7 @@ services:
             - '@api.geocoder'
             - '@repository.contributor'
         calls:
-            - ['setProgressNotifier', ['@trends.progress_notifier']]
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'contributor-countries'}
 
@@ -55,7 +54,7 @@ services:
             - '@helper.sensiolabs_data_extractor'
             - '@repository.sensiolabs_user'
         calls:
-            - ['setProgressNotifier', ['@trends.progress_notifier']]
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'sensiolabs-profiles'}
 
@@ -66,7 +65,7 @@ services:
             - '@api.github'
             - '@repository.issue'
         calls:
-            - ['setProgressNotifier', ['@trends.progress_notifier']]
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'issues'}
 
@@ -78,6 +77,6 @@ services:
             - '@repository.pull_request'
             - '@helper.pull_request_body_processor'
         calls:
-            - ['setProgressNotifier', ['@trends.progress_notifier']]
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'pull-requests'}

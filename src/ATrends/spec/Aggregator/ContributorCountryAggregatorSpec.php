@@ -6,8 +6,8 @@ use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use Aa\ATrends\Entity\Contributor;
-use Aa\ATrends\Progress\ProgressInterface;
-use Aa\ATrends\Progress\ProgressNotifier;
+use Aa\ATrends\Progress\ProgressNotifierInterface;
+use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\ContributorRepository;
 use Geocoder\Geocoder;
 use Geocoder\Model\Address;
@@ -24,7 +24,7 @@ class ContributorCountryAggregatorSpec extends ObjectBehavior
         Geocoder $geocoder,
         ContributorRepository $contributorRepository,
         Contributor $contributor,
-        ProgressNotifier $progressNotifier
+        EventBasedProgressNotifier $progressNotifier
     ) {
         $this->beConstructedWith($geocoder, $contributorRepository);
         $this->setProgressNotifier($progressNotifier);
