@@ -21,7 +21,13 @@ class SensiolabsUserDataExtractor implements CrawlerExtractorInterface
             'name' => $this->getNodeText($crawler, '//h1[@itemprop="name"]'),
             'city' => $this->getNodeText($crawler, '//p[@itemprop="address"]/span[@itemprop="addressLocality"]'),
             'country' => $this->getNodeText($crawler, '//p[@itemprop="address"]/span[@itemprop="addressCountry"]'),
-            'github_url' => $this->getLinkUrl($linksNode, 'Github'),
+            'github' => $this->getLinkUrl($linksNode, 'Github'),
+            'facebook' => $this->getLinkUrl($linksNode, 'Facebook'),
+            'twitter' => $this->getLinkUrl($linksNode, 'Twitter'),
+            'linkedin' => $this->getLinkUrl($linksNode, 'LinkedIn'),
+            'website' => $this->getLinkUrl($linksNode, 'Website'),
+            'blog' => $this->getLinkUrl($linksNode, 'Blog'),
+            'blog_feed' => $this->getLinkUrl($linksNode, 'Blog feed'),
         ]);
     }
 
