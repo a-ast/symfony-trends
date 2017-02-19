@@ -17,6 +17,11 @@ class SensiolabsUser
     /**
      * @var string
      */
+    private $city;
+
+    /**
+     * @var string
+     */
     private $country;
 
     /**
@@ -58,6 +63,7 @@ class SensiolabsUser
      * Constructor.
      * @param string $login
      * @param string $name
+     * @param string $city
      * @param string $country
      * @param string $githubUrl
      * @param string $facebookUrl
@@ -67,12 +73,13 @@ class SensiolabsUser
      * @param string $blogUrl
      * @param string $blogFeedUrl
      */
-    public function __construct($login, $name, $country,
+    public function __construct($login, $name, $city, $country,
         $githubUrl, $facebookUrl, $twitterUrl, $linkedInUrl, 
         $websiteUrl, $blogUrl, $blogFeedUrl)
     {
         $this->login = $login;
         $this->name = $name;
+        $this->city = $city;
         $this->country = $country;
         $this->githubUrl = $githubUrl;
         $this->facebookUrl = $facebookUrl;
@@ -97,6 +104,14 @@ class SensiolabsUser
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
     /**

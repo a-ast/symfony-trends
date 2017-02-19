@@ -50,5 +50,4 @@ class ContributorPageApi implements ContributorPageApiInterface
             return StringUtils::textAfter($item, $profileUri);
         }, $links);
     }
-
 }

@@ -3,6 +3,7 @@ TODO
 
 ### Next steps:
 
+1. Reimplement Issues aggregator to create pull requests (goal: having labels for PRs)
 1. ContributorPageAggregator: iterate links, store to sensiolabs_users table.
 1. Implement phpspec and behat scenarios.
 1. Implement AggregatorReport
