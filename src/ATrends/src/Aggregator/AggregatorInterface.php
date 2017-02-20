@@ -11,5 +11,5 @@ interface AggregatorInterface
      *
      * @return AggregatorReportInterface
      */
-    function aggregate(AggregatorOptionsInterface $options);
+    public function aggregate(AggregatorOptionsInterface $options);
 }

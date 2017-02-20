@@ -11,10 +11,10 @@ interface ProjectAwareAggregatorInterface extends AggregatorInterface
      *
      * @return void
      */
-    function setProject(ProjectInterface $project);
+    public function setProject(ProjectInterface $project);
 
     /**
      * @return ProjectInterface
      */
-    function getProject();
+    public function getProject();
 }

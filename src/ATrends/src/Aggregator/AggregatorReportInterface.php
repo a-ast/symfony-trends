@@ -7,5 +7,5 @@ interface AggregatorReportInterface
     /**
      * @return void
      */
-    function output();
+    public function output();
 }
