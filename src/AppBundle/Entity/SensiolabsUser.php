@@ -74,6 +74,48 @@ class SensiolabsUser
     private $profilePageError = 0;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_url", type="text", options={"default": ""})
+     */
+    private $facebookUrl = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin_url", type="text", options={"default": ""})
+     */
+    private $linkedInUrl = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter_url", type="text", options={"default": ""})
+     */
+    private $twitterUrl = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="website_url", type="text", options={"default": ""})
+     */
+    private $websiteUrl = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="blog_url", type="text", options={"default": ""})
+     */
+    private $blogUrl = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="blog_feed_url", type="text", options={"default": ""})
+     */
+    private $blogFeedUrl = '';
+
+    /**
      * Get id
      *
      * @return int
@@ -194,5 +236,148 @@ class SensiolabsUser
 
         return $this;
     }
-}
 
+    /**
+     * Set facebookUrl
+     *
+     * @param string $facebookUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setFacebookUrl($facebookUrl)
+    {
+        $this->facebookUrl = $facebookUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookUrl
+     *
+     * @return string
+     */
+    public function getFacebookUrl()
+    {
+        return $this->facebookUrl;
+    }
+
+    /**
+     * Set linkedInUrl
+     *
+     * @param string $linkedInUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setLinkedInUrl($linkedInUrl)
+    {
+        $this->linkedInUrl = $linkedInUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedInUrl
+     *
+     * @return string
+     */
+    public function getLinkedInUrl()
+    {
+        return $this->linkedInUrl;
+    }
+
+    /**
+     * Set twitterUrl
+     *
+     * @param string $twitterUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setTwitterUrl($twitterUrl)
+    {
+        $this->twitterUrl = $twitterUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterUrl
+     *
+     * @return string
+     */
+    public function getTwitterUrl()
+    {
+        return $this->twitterUrl;
+    }
+
+    /**
+     * Set websiteUrl
+     *
+     * @param string $websiteUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setWebsiteUrl($websiteUrl)
+    {
+        $this->websiteUrl = $websiteUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteUrl
+     *
+     * @return string
+     */
+    public function getWebsiteUrl()
+    {
+        return $this->websiteUrl;
+    }
+
+    /**
+     * Set blogUrl
+     *
+     * @param string $blogUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setBlogUrl($blogUrl)
+    {
+        $this->blogUrl = $blogUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get blogUrl
+     *
+     * @return string
+     */
+    public function getBlogUrl()
+    {
+        return $this->blogUrl;
+    }
+
+    /**
+     * Set blogFeedUrl
+     *
+     * @param string $blogFeedUrl
+     *
+     * @return SensiolabsUser
+     */
+    public function setBlogFeedUrl($blogFeedUrl)
+    {
+        $this->blogFeedUrl = $blogFeedUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get blogFeedUrl
+     *
+     * @return string
+     */
+    public function getBlogFeedUrl()
+    {
+        return $this->blogFeedUrl;
+    }
+}
