@@ -62,7 +62,6 @@ class GithubCommit
         $commit->commitAuthorName = isset($data['commitAuthorName']) ? $data['commitAuthorName'] : '';
         $commit->commitAuthorEmail = isset($data['commitAuthorEmail']) ? $data['commitAuthorEmail'] : '';
 
-
         return $commit;
     }
 
