@@ -3,6 +3,7 @@
 namespace spec\AppBundle\Api\Sensiolabs;
 
 use AppBundle\Api\Sensiolabs\SensiolabsUserDataExtractor;
+use AppBundle\Model\SensiolabsUser;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\DomCrawler\Crawler;
@@ -21,35 +22,30 @@ class SensiolabsUserDataExtractorSpec extends ObjectBehavior
     {
         $crawler = new Crawler($this->getPartialProfile(), 'http');
 
-        $this
-            ->extract($crawler)
-            ->shouldReturn([
-                'name' => 'Frodo Baggins',
-                'city' => 'Bag End',
-                'country' => 'Middle Earth',
-                'github' => 'http://valinor-github/frodo',
-            ]);
+        $user = $this->extract($crawler);
+
+        $user->getName()->shouldReturn('Frodo Baggins');
+        $user->getCity()->shouldReturn('Bag End');
+        $user->getCountry()->shouldReturn('Middle Earth');
+        $user->getGithubUrl()->shouldReturn('http://valinor-github/frodo');
     }
 
     public function it_extracts_from_fully_filled_profile_page()
     {
         $crawler = new Crawler($this->getFullProfile(), 'http');
+        $user = $this->extract($crawler);
+        
+        $user->getName()->shouldReturn('Gandalf');
+        $user->getCity()->shouldReturn('Valinor');
+        $user->getCountry()->shouldReturn('Middle Earth');
+        $user->getGithubUrl()->shouldReturn('https://valinor-github/gandalf');
+        $user->getFacebookUrl()->shouldReturn('http://valinor-facebook/gandalf');
+        $user->getTwitterUrl()->shouldReturn('http://valinor-twitter/gandalf');
+        $user->getLinkedInUrl()->shouldReturn('http://valinor-linkedin/gandalf');
 
-        $this
-            ->extract($crawler)
-            ->shouldReturn([
-                'name' => 'Gandalf',
-                'city' => 'Valinor',
-                'country' => 'Middle Earth',
-                'github' => 'https://valinor-github/gandalf',
-                'facebook' => 'http://valinor-facebook/gandalf',
-                'twitter' => 'http://valinor-twitter/gandalf',
-                'linkedin' => 'http://valinor-linkedin/gandalf',
-                
-                'website' => 'http://gandalf.magic',
-                'blog' => 'http://gandalf.magic/blog',
-                'blog_feed' => 'http://rss.gandalf.magic/blog',
-            ]);
+        $user->getWebsiteUrl()->shouldReturn('http://gandalf.magic');
+        $user->getBlogUrl()->shouldReturn('http://gandalf.magic/blog');
+        $user->getBlogFeedUrl()->shouldReturn('http://rss.gandalf.magic/blog');
     }
 
     private function getPartialProfile()

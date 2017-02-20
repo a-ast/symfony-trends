@@ -54,34 +54,22 @@ class SensiolabsUser
      */
     private $blogFeedUrl;
 
-    /**
-     * Constructor.
-     *
-     * @param string $name
-     * @param string $city
-     * @param string $country
-     * @param string $githubUrl
-     * @param string $facebookUrl
-     * @param string $twitterUrl
-     * @param string $linkedInUrl
-     * @param string $websiteUrl
-     * @param string $blogUrl
-     * @param string $blogFeedUrl
-     */
-    public function __construct($name, $city, $country,
-        $githubUrl, $facebookUrl, $twitterUrl, $linkedInUrl, 
-        $websiteUrl, $blogUrl, $blogFeedUrl)
+    public static function createFromArray(array $data)
     {
-        $this->name = $name;
-        $this->city = $city;
-        $this->country = $country;
-        $this->githubUrl = $githubUrl;
-        $this->facebookUrl = $facebookUrl;
-        $this->twitterUrl = $twitterUrl;
-        $this->linkedInUrl = $linkedInUrl;
-        $this->websiteUrl = $websiteUrl;
-        $this->blogUrl = $blogUrl;
-        $this->blogFeedUrl = $blogFeedUrl;
+        $user = new SensiolabsUser();
+
+        $user->name = isset($data['name']) ? $data['name'] : '';
+        $user->city = isset($data['city']) ? $data['city'] : '';
+        $user->country = isset($data['country']) ? $data['country'] : '';
+        $user->githubUrl = isset($data['githubUrl']) ? $data['githubUrl'] : '';
+        $user->facebookUrl = isset($data['facebookUrl']) ? $data['facebookUrl'] : '';
+        $user->twitterUrl = isset($data['twitterUrl']) ? $data['twitterUrl'] : '';
+        $user->linkedInUrl = isset($data['linkedInUrl']) ? $data['linkedInUrl'] : '';
+        $user->websiteUrl = isset($data['websiteUrl']) ? $data['websiteUrl'] : '';
+        $user->blogUrl = isset($data['blogUrl']) ? $data['blogUrl'] : '';
+        $user->blogFeedUrl = isset($data['blogFeedUrl']) ? $data['blogFeedUrl'] : '';
+        
+        return $user;
     }
 
     /**

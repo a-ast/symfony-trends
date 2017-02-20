@@ -8,7 +8,6 @@ use Aa\ATrends\Util\StringUtils;
 
 class ContributorPageApi implements ContributorPageApiInterface
 {
-
     /**
      * @var CrawlerExtractorInterface
      */
@@ -19,10 +18,16 @@ class ContributorPageApi implements ContributorPageApiInterface
      */
     private $pageCrawler;
 
-    public function __construct(CrawlerExtractorInterface $extractor, PageCrawlerInterface $pageCrawler)
+    /**
+     * Constructor.
+     *
+     * @param PageCrawlerInterface $pageCrawler
+     * @param CrawlerExtractorInterface $extractor
+     */
+    public function __construct(PageCrawlerInterface $pageCrawler, CrawlerExtractorInterface $extractor)
     {
-        $this->extractor = $extractor;
         $this->pageCrawler = $pageCrawler;
+        $this->extractor = $extractor;
     }
 
     /**

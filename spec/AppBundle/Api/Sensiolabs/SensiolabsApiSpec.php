@@ -8,15 +8,22 @@ use AppBundle\Api\Sensiolabs\SensiolabsApi;
 use AppBundle\Model\SensiolabsUser;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @mixin SensiolabsApi
  */
 class SensiolabsApiSpec extends ObjectBehavior
 {
-    public function let(PageCrawlerInterface $pageCrawler, CrawlerExtractorInterface $crawlerExtractor)
-    {
-        $this->beConstructedWith($pageCrawler, $crawlerExtractor);
+    public function let(
+        PageCrawlerInterface $pageCrawler,
+        CrawlerExtractorInterface $extractor,
+        Crawler $crawler,
+        SensiolabsUser $user
+    ) {
+        $pageCrawler->getDomCrawler(Argument::type('string'))->willReturn($crawler);
+        $extractor->extract($crawler)->willReturn($user);
+        $this->beConstructedWith($pageCrawler, $extractor);
     }
 
     function it_is_initializable()

@@ -4,6 +4,7 @@
 namespace AppBundle\Api\Sensiolabs;
 
 use Aa\ATrends\Api\CrawlerExtractorInterface;
+use AppBundle\Model\SensiolabsUser;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SensiolabsUserDataExtractor implements CrawlerExtractorInterface
@@ -11,23 +12,23 @@ class SensiolabsUserDataExtractor implements CrawlerExtractorInterface
     /**
      * @param Crawler $crawler
      *
-     * @return array
+     * @return SensiolabsUser
      */
     public function extract(Crawler $crawler)
     {
         $linksNode = $crawler->filterXPath('//section/ul[@class="tags unstyled"]');
 
-        return array_filter([
+        return SensiolabsUser::createFromArray([
             'name' => $this->getNodeText($crawler, '//h1[@itemprop="name"]'),
             'city' => $this->getNodeText($crawler, '//p[@itemprop="address"]/span[@itemprop="addressLocality"]'),
             'country' => $this->getNodeText($crawler, '//p[@itemprop="address"]/span[@itemprop="addressCountry"]'),
-            'github' => $this->getLinkUrl($linksNode, 'Github'),
-            'facebook' => $this->getLinkUrl($linksNode, 'Facebook'),
-            'twitter' => $this->getLinkUrl($linksNode, 'Twitter'),
-            'linkedin' => $this->getLinkUrl($linksNode, 'LinkedIn'),
-            'website' => $this->getLinkUrl($linksNode, 'Website'),
-            'blog' => $this->getLinkUrl($linksNode, 'Blog'),
-            'blog_feed' => $this->getLinkUrl($linksNode, 'Blog feed'),
+            'githubUrl' => $this->getLinkUrl($linksNode, 'Github'),
+            'facebookUrl' => $this->getLinkUrl($linksNode, 'Facebook'),
+            'twitterUrl' => $this->getLinkUrl($linksNode, 'Twitter'),
+            'linkedInUrl' => $this->getLinkUrl($linksNode, 'LinkedIn'),
+            'websiteUrl' => $this->getLinkUrl($linksNode, 'Website'),
+            'blogUrl' => $this->getLinkUrl($linksNode, 'Blog'),
+            'blogFeedUrl' => $this->getLinkUrl($linksNode, 'Blog feed')
         ]);
     }
 

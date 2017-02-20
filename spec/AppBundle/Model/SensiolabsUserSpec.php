@@ -11,21 +11,15 @@ use Prophecy\Argument;
  */
 class SensiolabsUserSpec extends ObjectBehavior
 {
-    public function let()
-    {
-        $this->beConstructedWith('frodo', 'Frodo Baggins', 'Bag End', 'Shire',
-            'github', 'facebook', 'twitter', 'linkedIn',
-            'website', 'blog', 'blogFeed');
-    }
-
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(SensiolabsUser::class);
     }
 
     public function it_returns_property_values()
     {
-        $this->getLogin()->shouldReturn('frodo');
+        $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
+
         $this->getName()->shouldReturn('Frodo Baggins');
         $this->getCity()->shouldReturn('Bag End');
         $this->getCountry()->shouldReturn('Shire');
@@ -37,5 +31,21 @@ class SensiolabsUserSpec extends ObjectBehavior
         $this->getWebsiteUrl()->shouldReturn('website');
         $this->getBlogUrl()->shouldReturn('blog');
         $this->getBlogFeedUrl()->shouldReturn('blogFeed');
+    }
+
+    private function getArrayData()
+    {
+        return [
+            'name' => 'Frodo Baggins',
+            'city' => 'Bag End',
+            'country' => 'Shire',
+            'githubUrl' => 'github',
+            'facebookUrl' => 'facebook',
+            'twitterUrl' => 'twitter',
+            'linkedInUrl' => 'linkedIn',
+            'websiteUrl' => 'website',
+            'blogUrl' => 'blog',
+            'blogFeedUrl' => 'blogFeed',
+        ];
     }
 }

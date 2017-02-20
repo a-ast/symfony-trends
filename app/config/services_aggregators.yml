@@ -17,8 +17,11 @@ services:
         lazy: true
         arguments:
             - '@api.contributor_page'
+            - '@api.sensiolabs_connect'
             - '@repository.sensiolabs_user'
+            - '@repository.contributor'
             - '%sensiolabs_profile_uri%'
+            - '%github_profile_uri%'
         tags:
             - { name: aggregator, alias: 'contributor-pages'}
 
@@ -50,9 +53,9 @@ services:
         class: AppBundle\Aggregator\SensiolabsConnectAggregator
         lazy: true
         arguments:
-            - '@page_crawler'
-            - '@helper.sensiolabs_data_extractor'
+            - '@api.sensiolabs_connect'
             - '@repository.sensiolabs_user'
+            - '@repository.contributor'
         calls:
             - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:

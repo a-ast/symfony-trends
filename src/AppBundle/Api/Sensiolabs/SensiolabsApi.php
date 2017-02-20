@@ -4,10 +4,11 @@ namespace AppBundle\Api\Sensiolabs;
 
 use Aa\ATrends\Api\CrawlerExtractorInterface;
 use Aa\ATrends\Api\PageCrawler\PageCrawlerInterface;
-use AppBundle\Model\SensiolabsUser;
 
-class SensiolabsApi
+class SensiolabsApi implements SensiolabsApiInterface
 {
+    const PROFILE_URL_FORMAT = 'https://connect.sensiolabs.com/profile/%s';
+
     /**
      * @var PageCrawlerInterface
      */
@@ -16,21 +17,21 @@ class SensiolabsApi
     /**
      * @var CrawlerExtractorInterface
      */
-    private $crawlerExtractor;
+    private $extractor;
 
-    public function __construct(PageCrawlerInterface $pageCrawler, CrawlerExtractorInterface $crawlerExtractor)
+    public function __construct(PageCrawlerInterface $pageCrawler, CrawlerExtractorInterface $extractor)
     {
         $this->pageCrawler = $pageCrawler;
-        $this->crawlerExtractor = $crawlerExtractor;
+        $this->extractor = $extractor;
     }
 
     /**
-     * @param string $login
-     *
-     * @return SensiolabsUser
+     * @inheritdoc
      */
     public function getUser($login)
     {
-        return new SensiolabsUser('', '', '','', '', '','', '', '', '', '');
+        $crawler = $this->pageCrawler->getDomCrawler(sprintf(self::PROFILE_URL_FORMAT, $login));
+
+        return $this->extractor->extract($crawler);
     }
 }

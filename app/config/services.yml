@@ -68,8 +68,15 @@ services:
         class: AppBundle\Api\ContributorPage\ContributorPageApi
         lazy: true
         arguments:
-            - '@helper.contributor_extractor'
             - '@page_crawler'
+            - '@helper.contributor_extractor'
+
+    api.sensiolabs_connect:
+        class: AppBundle\Api\Sensiolabs\SensiolabsApi
+        lazy: true
+        arguments:
+            - '@page_crawler'
+            - '@helper.sensiolabs_data_extractor'
 
     #####################################
 
@@ -92,7 +99,7 @@ services:
           - ['%sensiolabs_profile_uri%']
 
     helper.sensiolabs_data_extractor:
-        class: AppBundle\Aggregator\Helper\SensiolabsDataExtractor
+        class: AppBundle\Api\Sensiolabs\SensiolabsUserDataExtractor
         lazy: true
 
     helper.pull_request_body_processor:

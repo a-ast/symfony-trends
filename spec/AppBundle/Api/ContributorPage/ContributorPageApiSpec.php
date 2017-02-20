@@ -17,7 +17,7 @@ class ContributorPageApiSpec extends ObjectBehavior
 {
     function let(ContributorExtractor $contributorExtractor, PageCrawlerInterface $pageCrawler, Crawler $domCrawler)
     {
-        $this->beConstructedWith($contributorExtractor, $pageCrawler);
+        $this->beConstructedWith($pageCrawler, $contributorExtractor);
 
         $pageCrawler->getDomCrawler('uri')->willReturn($domCrawler);
         $contributorExtractor->extract($domCrawler)->willReturn(['valinor://frodo']);

@@ -1,3 +1,6 @@
+parameters:
+    github_profile_uri: 'gh/'
+
 services:
 
     github_api.fake_guzzle_client:
@@ -29,9 +32,13 @@ services:
     api.contributor_page:
         class: features\Fake\ContributorPageApi
 
+    api.sensiolabs_connect:
+        class: features\Fake\SensiolabsApi
+
     api.list:
         class: features\Aa\ATrends\Helper\ApiCollection
         calls:
             - [ add, ['Github', '@api.github']]
             - [ add, ['Geocoder', '@api.geocoder']]
             - [ add, ['ContributorPage', '@api.contributor_page']]
+            - [ add, ['Sensiolabs', '@api.sensiolabs_connect']]

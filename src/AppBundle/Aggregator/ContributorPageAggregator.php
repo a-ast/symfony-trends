@@ -3,10 +3,13 @@
 namespace AppBundle\Aggregator;
 
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
+use Aa\ATrends\Repository\ContributorRepository;
+use Aa\ATrends\Util\StringUtils;
 use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
+use AppBundle\Api\Sensiolabs\SensiolabsApiInterface;
 use AppBundle\Entity\SensiolabsUser;
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use AppBundle\Repository\SensiolabsUserRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ProjectAwareTrait;
@@ -21,30 +24,53 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
     private $pageApi;
 
     /**
+     * @var SensiolabsApiInterface
+     */
+    private $profileApi;
+
+    /**
      * @var SensiolabsUserRepository
      */
-    private $repository;
+    private $sensiolabsUserRepository;
+
+    /**
+     * @var ContributorRepository
+     */
+    private $contributorRepository;
 
     /**
      * @var string
      */
-    private $profileUri;
+    private $sensiolabsProfileUri;
+
+    /**
+     * @var string
+     */
+    private $githubProfileUri;
 
     /**
      * Constructor.
      *
      * @param ContributorPageApiInterface $pageApi
-     * @param SensiolabsUserRepository $repository
-     * @param string $profileUri
+     * @param SensiolabsApiInterface $profileApi
+     * @param SensiolabsUserRepository $sensiolabsUserRepository
+     * @param ContributorRepository $contributorRepository
+     * @param string $sensiolabsProfileUri
+     * @param string $githubProfileUri
      */
     public function __construct(
         ContributorPageApiInterface $pageApi,
-        SensiolabsUserRepository $repository,
-        $profileUri
+        SensiolabsApiInterface $profileApi,
+        SensiolabsUserRepository $sensiolabsUserRepository,
+        ContributorRepository $contributorRepository,
+        $sensiolabsProfileUri, $githubProfileUri
     ) {
-        $this->repository = $repository;
-        $this->profileUri = $profileUri;
         $this->pageApi = $pageApi;
+        $this->profileApi = $profileApi;
+        $this->sensiolabsUserRepository = $sensiolabsUserRepository;
+        $this->contributorRepository = $contributorRepository;
+        $this->sensiolabsProfileUri = $sensiolabsProfileUri;
+        $this->githubProfileUri = $githubProfileUri;
     }
 
     /**
@@ -52,26 +78,72 @@ class ContributorPageAggregator implements ProjectAwareAggregatorInterface
      */
     public function aggregate(AggregatorOptionsInterface $options)
     {
-        $logins = $this->pageApi->getContributorLogins($this->project->getContributorPageUri(), $this->profileUri);
-        $existingLogins = $this->repository->getExistingLogins($logins);
-        $missingLogins = array_diff($logins, $existingLogins);
+        $missingLogins = $this->getNewLogins();
 
         foreach ($missingLogins as $login) {
 
+            $apiUser = $this->profileApi->getUser($login);
+
+            $contributorId = $this->getContributorId($apiUser->getGithubUrl());
+
+            if (0 === $contributorId) {
+                // @todo: add to report
+                continue;
+            }
+
             $user = new SensiolabsUser();
+
             $user
                 ->setLogin($login)
-                ->setName($login)
-                ->setContributorId(0)
-                ->setCreatedAt(new \DateTime())
-                ->setUpdatedAt(new \DateTime())
-            ;
+                ->setName($apiUser->getName())
+                ->setCountry($apiUser->getCountry())
+                ->setContributorId($contributorId)
 
-            $this->repository->persist($user);
+                ->setFacebookUrl($apiUser->getFacebookUrl())
+                ->setLinkedInUrl($apiUser->getLinkedInUrl())
+                ->setTwitterUrl($apiUser->getTwitterUrl())
+                ->setWebsiteUrl($apiUser->getWebsiteUrl())
+                ->setBlogUrl($apiUser->getBlogUrl())
+                ->setBlogFeedUrl($apiUser->getBlogFeedUrl())
+
+                ->setCreatedAt(new \DateTime())
+                ->setUpdatedAt(new \DateTime());
+
+            $this->sensiolabsUserRepository->persist($user);
         }
 
-        $this->repository->flush();
+        $this->sensiolabsUserRepository->flush();
 
         return null;
+    }
+
+    /**
+     * @return array
+     */
+    private function getNewLogins()
+    {
+        $logins = $this->pageApi->getContributorLogins($this->project->getContributorPageUri(), $this->sensiolabsProfileUri);
+        $existingLogins = $this->sensiolabsUserRepository->getExistingLogins($logins);
+        $missingLogins = array_diff($logins, $existingLogins);
+
+        return $missingLogins;
+    }
+
+    private function getContributorId($githubUrl)
+    {
+        if (!StringUtils::startsWith($githubUrl, $this->githubProfileUri)) {
+            return 0;
+        }
+
+        $githubLogin = StringUtils::textAfter($githubUrl, $this->githubProfileUri);
+
+        /** @var Contributor $contributor */
+        $contributor = $this->contributorRepository->findOneBy(['githubLogin' => $githubLogin]);
+
+        if (null !== $contributor) {
+            return $contributor->getId();
+        }
+
+        return 0;
     }
 }
