@@ -1,4 +1,4 @@
-Feature: Contributor Page Aggregator
+Feature: Sensiolabs User Profile Aggregator
 
   Background:
     Given there are "Aa\ATrends\Entity\Project" entities:
@@ -22,29 +22,9 @@ Feature: Contributor Page Aggregator
       | frodo       | Frodo | fr@   | []        | []       |
       | bilbo       | Bilbo | blb@  | []        | []       |
 
-    When I aggregate "contributor-pages" for project 1
+    When I aggregate "sensiolabs-profiles" for project 1
 
     Then I should see "AppBundle\Entity\SensiolabsUser" entities:
       | id | contributorId | login | name          | country | facebookUrl | linkedInUrl | twitterUrl | websiteUrl  | blogUrl    | blogFeedUrl |
       | 1  | 1             | frodo | Frodo Baggins | Shire   | fb/frodo    | link/frodo  | tw/frodo   | frodo.shire | blog/frodo | feed/frodo  |
       | 2  | 2             | bilbo | Bilbo Baggins | Shire   | fb/bilbo    | link/bilbo  | tw/bilbo   | bilbo.shire | blog/bilbo | feed/bilbo  |
-#
-#
-#  Scenario: Aggregate contributor logins to the database with existing sensiolabs users
-#
-#    Given there are "AppBundle\Entity\SensiolabsUser" entities:
-#      | contributorId | name             | login   | createdAt        | updatedAt        |
-#      | 1             | Gandalf the Grey | gandalf | date(2016-11-01) | date(2016-11-02) |
-#
-#    And ContributorPage API returns contributors data:
-#      | login |
-#      | frodo |
-#      | bilbo |
-#
-#    When I aggregate "contributor-pages" for project 1
-#
-#    Then I should see "AppBundle\Entity\SensiolabsUser" entities:
-#      | id | contributorId | name             | login   |
-#      | 1  | 1             | Gandalf the Grey | gandalf |
-#      | 2  | 0             | frodo            | frodo   |
-#      | 3  | 0             | bilbo            | bilbo   |

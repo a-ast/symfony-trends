@@ -12,8 +12,8 @@ services:
             - '@repository.project'
             - '@event_dispatcher'
 
-    aggregator.contributor_page:
-        class: AppBundle\Aggregator\ContributorPageAggregator
+    aggregator.sensiolabs_profile:
+        class: AppBundle\Aggregator\SensiolabsProfileAggregator
         lazy: true
         arguments:
             - '@api.contributor_page'
@@ -23,7 +23,7 @@ services:
             - '%sensiolabs_profile_uri%'
             - '%github_profile_uri%'
         tags:
-            - { name: aggregator, alias: 'contributor-pages'}
+            - { name: aggregator, alias: 'sensiolabs-profiles'}
 
     aggregator.github_commit:
         class: Aa\ATrends\Aggregator\CommitAggregator
@@ -48,18 +48,6 @@ services:
             - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'contributor-countries'}
-
-    aggregator.sensiolabs_connect:
-        class: AppBundle\Aggregator\SensiolabsConnectAggregator
-        lazy: true
-        arguments:
-            - '@api.sensiolabs_connect'
-            - '@repository.sensiolabs_user'
-            - '@repository.contributor'
-        calls:
-            - ['setProgressNotifier', ['@trends.progress.notifier']]
-        tags:
-            - { name: aggregator, alias: 'sensiolabs-profiles'}
 
     aggregator.github_issue:
         class: Aa\ATrends\Aggregator\IssueAggregator

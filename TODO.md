@@ -2,6 +2,7 @@ TODO
 ==============
 
 ### Next steps:
+1. Write second fixture, tests new aggregator, rename, remove unused files
 1. Solve array issues using ArrayType (not ugly SimpleArray) for ATrends and PostgresArray for SymfonyTrends
 1. Correctly rename services (-> trends.*)
 1. Reimplement Issues aggregator to create pull requests (goal: having labels for PRs)

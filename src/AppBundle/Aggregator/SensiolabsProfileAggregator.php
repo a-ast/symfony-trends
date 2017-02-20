@@ -14,7 +14,7 @@ use AppBundle\Repository\SensiolabsUserRepository;
 use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
-class ContributorPageAggregator implements ProjectAwareAggregatorInterface
+class SensiolabsProfileAggregator implements ProjectAwareAggregatorInterface
 {
     use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
