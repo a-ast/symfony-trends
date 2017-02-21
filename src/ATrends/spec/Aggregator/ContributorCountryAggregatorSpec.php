@@ -3,7 +3,7 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierInterface;

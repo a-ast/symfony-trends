@@ -1,6 +1,6 @@
 <?php
 
-use Aa\ATrends\Aggregator\AggregatorOptionBag;
+use Aa\ATrends\Aggregator\AggregatorOptions;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
@@ -112,7 +112,7 @@ class AggregatorFeatureContext implements Context
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
         $aggregator->setProject($project);
-        $aggregator->aggregate(new AggregatorOptionBag());
+        $aggregator->aggregate(new AggregatorOptions());
     }
 
     /**
@@ -122,7 +122,7 @@ class AggregatorFeatureContext implements Context
     {
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->aggregate(new AggregatorOptionBag());
+        $aggregator->aggregate(new AggregatorOptions());
     }
 
     private function processTableRow(array $data)

@@ -2,9 +2,9 @@
 
 namespace Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\IssueRepository;
 use DateTimeInterface;

@@ -3,7 +3,7 @@
 namespace AppBundle\Command;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\AggregatorOptionBag;
+use Aa\ATrends\Aggregator\AggregatorOptions;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\AggregatorRunner;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
@@ -91,7 +91,7 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         $aggregator = $this->registry->get($aggregatorAlias);
         $this->currentOutput = $output;
 
-        $result = $this->runner->run($aggregator, new AggregatorOptionBag());
+        $result = $this->runner->run($aggregator, new AggregatorOptions());
 
         $this->dumpResult($output, $result);
     }

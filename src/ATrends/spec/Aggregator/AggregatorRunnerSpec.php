@@ -3,7 +3,7 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\AggregatorRunner;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;

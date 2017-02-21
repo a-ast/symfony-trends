@@ -2,8 +2,8 @@
 
 namespace Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
 use Aa\ATrends\Repository\PullRequestRepository;

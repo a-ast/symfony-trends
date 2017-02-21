@@ -2,11 +2,11 @@ TODO
 ==============
 
 ### Next steps:
-1. Write second fixture, tests new aggregator, rename, remove unused files
+1. Write to highcharts about a license.
+1. Think: sort api results by updated since given date to keep all updated
 1. Solve array issues using ArrayType (not ugly SimpleArray) for ATrends and PostgresArray for SymfonyTrends
 1. Correctly rename services (-> trends.*)
 1. Reimplement Issues aggregator to create pull requests (goal: having labels for PRs)
-1. ContributorPageAggregator: iterate links, store to sensiolabs_users table.
 1. Implement phpspec and behat scenarios.
 1. Implement AggregatorReport
 1. Implement PullRequestBodyProcessor and commit.is_maintenance using events.
@@ -22,9 +22,6 @@ TODO
 
 ### KW 4. Technical dept
 1. Features for all aggregators
-1. Implement sensiolabs connect agg (index all that have github link (see above), get additional info)
-   * use API https://github.com/sensiolabs/connect/blob/master/src/SensioLabs/Connect/Api/Entity/User.php
-   * https://connect.sensiolabs.com/about/api
 1. Introduce a way increment/full/since aggregate
 1. Think of AggregatorReport
 1. Implement useful aggregator reports
@@ -33,15 +30,15 @@ TODO
 
 
 ### KW 5.
-1. Split bundle to lib + bundle
-1. Review contributions aggregator see https://developer.github.com/v3/pulls/comments/
+1. Review contributions aggregator see https://developer.github.com/v3/pulls/reviews/
+   Example: https://api.github.com/repos/symfony/symfony/pulls/21676/reviews
 
 ## KW 6.
 1. Aggregate commit changes
 
 
 # Charts
-
+- PR count merged/closed/open (stacked chart)
 - Real Contributors: x - commit count, y - age of last commit (frequency?)
 - Contributors vs others: x - issue count, y - smth else(?)
 - PR/Issue Issue closers (rating, avarage time) 

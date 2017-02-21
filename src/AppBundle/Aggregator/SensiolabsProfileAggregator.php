@@ -11,7 +11,7 @@ use AppBundle\Api\ContributorPage\ContributorPageApiInterface;
 use AppBundle\Api\Sensiolabs\SensiolabsApiInterface;
 use AppBundle\Entity\SensiolabsUser;
 use AppBundle\Repository\SensiolabsUserRepository;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\ProjectAwareTrait;
 
 class SensiolabsProfileAggregator implements ProjectAwareAggregatorInterface

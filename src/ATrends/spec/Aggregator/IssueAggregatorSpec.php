@@ -2,7 +2,7 @@
 
 namespace spec\Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Aggregator\IssueAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;

@@ -2,10 +2,9 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\ContributorRepository;
-use Aa\ATrends\Aggregator\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Exception;
 use Geocoder\Geocoder;
 

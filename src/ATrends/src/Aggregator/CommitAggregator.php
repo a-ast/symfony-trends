@@ -2,11 +2,11 @@
 
 namespace Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;

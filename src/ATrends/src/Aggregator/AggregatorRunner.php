@@ -2,6 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
+use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
 use Aa\ATrends\Repository\ProjectRepository;
