@@ -95,10 +95,10 @@ class SensiolabsProfileAggregator implements ProjectAwareAggregatorInterface
 
             $user
                 ->setLogin($login)
+
+                ->setContributorId($contributorId)
                 ->setName($apiUser->getName())
                 ->setCountry($apiUser->getCountry())
-                ->setContributorId($contributorId)
-
                 ->setFacebookUrl($apiUser->getFacebookUrl())
                 ->setLinkedInUrl($apiUser->getLinkedInUrl())
                 ->setTwitterUrl($apiUser->getTwitterUrl())
