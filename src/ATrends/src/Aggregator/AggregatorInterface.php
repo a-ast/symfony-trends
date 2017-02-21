@@ -2,15 +2,15 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
-use Aa\ATrends\Aggregator\Report\AggregatorReportInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\Report\ReportInterface;
 
 interface AggregatorInterface
 {
     /**
-     * @param AggregatorOptionsInterface $options
+     * @param OptionsInterface $options
      *
-     * @return AggregatorReportInterface
+     * @return ReportInterface
      */
-    public function aggregate(AggregatorOptionsInterface $options);
+    public function aggregate(OptionsInterface $options);
 }

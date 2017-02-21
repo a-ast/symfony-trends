@@ -2,17 +2,14 @@
 
 namespace AppBundle\Command;
 
-use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\AggregatorOptions;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\AggregatorRunner;
-use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
-use Aa\ATrends\Entity\Project;
+use Aa\ATrends\Aggregator\Options\Options;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Event\ProgressAdvanceEvent;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressMessageEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
-use Aa\ATrends\Repository\ProjectRepository;
 use LogicException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -91,7 +88,7 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         $aggregator = $this->registry->get($aggregatorAlias);
         $this->currentOutput = $output;
 
-        $result = $this->runner->run($aggregator, new AggregatorOptions());
+        $result = $this->runner->run($aggregator, new Options(OptionsInterface::SINCE_LAST_UPDATE));
 
         $this->dumpResult($output, $result);
     }

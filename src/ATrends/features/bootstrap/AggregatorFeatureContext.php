@@ -1,7 +1,8 @@
 <?php
 
-use Aa\ATrends\Aggregator\AggregatorOptions;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
+use Aa\ATrends\Aggregator\Options\Options;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
@@ -112,7 +113,7 @@ class AggregatorFeatureContext implements Context
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
         $aggregator->setProject($project);
-        $aggregator->aggregate(new AggregatorOptions());
+        $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
     }
 
     /**
@@ -122,7 +123,7 @@ class AggregatorFeatureContext implements Context
     {
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->aggregate(new AggregatorOptions());
+        $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
     }
 
     private function processTableRow(array $data)

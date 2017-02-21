@@ -3,7 +3,7 @@
 
 namespace Aa\ATrends\Aggregator\Options;
 
-class AggregatorOptions implements AggregatorOptionsInterface
+class Options implements OptionsInterface
 {
 
     /**

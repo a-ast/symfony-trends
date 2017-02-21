@@ -2,7 +2,7 @@
 
 namespace spec\Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\CommitAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApi;
@@ -43,7 +43,7 @@ class CommitAggregatorSpec extends ObjectBehavior
         ContributionRepository $contributionRepository,
         ProjectInterface $project,
         Contributor $contributor,
-        AggregatorOptionsInterface $options)
+        OptionsInterface $options)
     {
         $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
         $this->setProject($project);

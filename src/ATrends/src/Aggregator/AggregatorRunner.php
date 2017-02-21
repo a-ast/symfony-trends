@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
 use Aa\ATrends\Repository\ProjectRepository;
@@ -26,7 +26,7 @@ class AggregatorRunner
         $this->dispatcher = $dispatcher;
     }
 
-    public function run(AggregatorInterface $aggregator, AggregatorOptionsInterface $options)
+    public function run(AggregatorInterface $aggregator, OptionsInterface $options)
     {
         if ($aggregator instanceof ProjectAwareAggregatorInterface) {
 
@@ -44,9 +44,9 @@ class AggregatorRunner
 
     /**
      * @param AggregatorInterface $aggregator
-     * @param AggregatorOptionsInterface $options
+     * @param OptionsInterface $options
      */
-    private function runAggregator(AggregatorInterface $aggregator, AggregatorOptionsInterface $options)
+    private function runAggregator(AggregatorInterface $aggregator, OptionsInterface $options)
     {
         $this->notifyProgressStart($aggregator);
 

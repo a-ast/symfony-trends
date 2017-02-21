@@ -3,7 +3,7 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\AggregatorRunner;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
@@ -32,7 +32,7 @@ class AggregatorRunnerSpec extends ObjectBehavior
 
     public function it_runs_aggregator(
         AggregatorInterface $aggregator,
-        AggregatorOptionsInterface $options,
+        OptionsInterface $options,
         EventDispatcherInterface $dispatcher
     ) {
         $dispatcher->dispatch(ProgressStartEvent::NAME, Argument::type(ProgressStartEvent::class))->shouldBeCalled();

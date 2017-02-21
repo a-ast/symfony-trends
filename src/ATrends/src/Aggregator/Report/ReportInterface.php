@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator\Report;
 
-interface AggregatorReportInterface
+interface ReportInterface
 {
 
 }

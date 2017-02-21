@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
@@ -45,7 +45,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options)
+    public function aggregate(OptionsInterface $options)
     {
         foreach ($this->githubApi->getPullRequests($this->project->getGithubPath()) as $apiPullRequest) {
 

@@ -3,7 +3,7 @@
 namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\ContributorCountryAggregator;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierInterface;
@@ -42,7 +42,7 @@ class ContributorCountryAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(AggregatorInterface::class);
     }
 
-    function it_returns_aggregated_data(AggregatorOptionsInterface $options)
+    function it_returns_aggregated_data(OptionsInterface $options)
     {
         $this->aggregate($options);
     }

@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
@@ -59,7 +59,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
     /**
      * @inheritdoc
      */
-    public function aggregate(AggregatorOptionsInterface $options)
+    public function aggregate(OptionsInterface $options)
     {
         $projectRepo = $this->project->getGithubPath();
         $sinceDate = $this->getSinceDate($this->project->getId());

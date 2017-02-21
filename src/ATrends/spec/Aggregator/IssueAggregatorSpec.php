@@ -2,7 +2,7 @@
 
 namespace spec\Aa\ATrends\Aggregator;
 
-use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\IssueAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
@@ -38,7 +38,7 @@ class IssueAggregatorSpec extends ObjectBehavior
         ProjectInterface $project,
         GithubApiInterface $githubApi,
         IssueRepository $issueRepository,
-        AggregatorOptionsInterface $options
+        OptionsInterface $options
     ) {
         $this->initDependencies($project, $githubApi, $issueRepository);
 

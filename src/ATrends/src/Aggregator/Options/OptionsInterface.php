@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Aggregator\Options;
 
-interface AggregatorOptionsInterface
+interface OptionsInterface
 {
     const SINCE_BEGINNING = 'since-beginning';
 
