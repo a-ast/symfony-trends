@@ -3,6 +3,7 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\Options\AggregatorOptionsInterface;
+use Aa\ATrends\Aggregator\Report\AggregatorReportInterface;
 
 interface AggregatorInterface
 {
