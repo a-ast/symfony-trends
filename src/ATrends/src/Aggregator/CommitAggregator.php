@@ -3,6 +3,8 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\Report\Report;
+use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
@@ -64,12 +66,17 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
         $projectRepo = $this->project->getGithubPath();
         $sinceDate = $this->getSinceDate($this->project->getId());
 
+        $processedRecordCount = 0;
+
         foreach ($this->apiClient->getCommits($projectRepo, $sinceDate) as $commit) {
             $contributor = $this->createContributor($commit);
             $this->createContribution($commit, $this->project->getId(), $contributor->getId());
 
             $this->progressNotifier->advance();
+            $processedRecordCount++;
         }
+
+        return $this->createReport($processedRecordCount);
     }
 
     /**
@@ -141,5 +148,18 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
         $this->contributionRepository->store($contribution);
 
         return $contribution;
+    }
+
+    /**
+     * @param int $processedRecordCount
+     *
+     * @return ReportInterface
+     */
+    private function createReport($processedRecordCount)
+    {
+        $report = new Report();
+        $report->setProcessedRecordCount($processedRecordCount);
+
+        return $report;
     }
 }

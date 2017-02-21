@@ -3,12 +3,14 @@
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\Options\Options;
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
 use features\Aa\ATrends\Helper\ApiCollection;
 use features\Aa\ATrends\Helper\DoctrineHelper;
+use Webmozart\Assert\Assert;
 
 /**
  * Defines application features from the specific context.
@@ -34,6 +36,11 @@ class AggregatorFeatureContext implements Context
      * @var array
      */
     private $apis;
+
+    /**
+     * @var ReportInterface
+     */
+    private $report;
 
     /**
      * Initializes context.
@@ -113,7 +120,7 @@ class AggregatorFeatureContext implements Context
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
         $aggregator->setProject($project);
-        $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+        $this->report = $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
     }
 
     /**
@@ -123,7 +130,21 @@ class AggregatorFeatureContext implements Context
     {
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+        $this->report = $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+    }
+
+    /**
+     * @Then I should see the report:
+     */
+    public function iShouldSeeTheReport(TableNode $reportTable)
+    {
+        $expectedReport = $reportTable->getRows();
+
+        $report = [
+            ['processedItemCount', $this->report->getProcessedRecordCount()]
+        ];
+
+        Assert::eq($expectedReport, $report);
     }
 
     private function processTableRow(array $data)

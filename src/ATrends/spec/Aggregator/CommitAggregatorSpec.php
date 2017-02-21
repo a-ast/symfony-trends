@@ -5,6 +5,7 @@ namespace spec\Aa\ATrends\Aggregator;
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\CommitAggregator;
 use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Api\Github\GithubApi;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Entity\Project;
@@ -47,7 +48,7 @@ class CommitAggregatorSpec extends ObjectBehavior
     {
         $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
         $this->setProject($project);
-        $this->aggregate($options);
+        $this->aggregate($options)->shouldHaveType(ReportInterface::class);
     }
 
     private function initDependencies(GithubApi $githubApi,

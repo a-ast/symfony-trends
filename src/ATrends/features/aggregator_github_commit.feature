@@ -18,6 +18,8 @@ Feature: Github Commits Aggregator
     And I should see "Aa\ATrends\Entity\Contribution" entities:
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo-1    |
+    And I should see the report:
+      | processedItemCount | 1 |
 
 
   Scenario: Aggregate commits of one contributor without author information to the empty database
@@ -38,6 +40,8 @@ Feature: Github Commits Aggregator
       | 1         | 1             | Ring?!  | frodo-1    |
       | 1         | 1             | No!!!   | frodo-2    |
       | 1         | 1             | Yes!    | frodo-3    |
+    And I should see the report:
+      | processedItemCount | 3 |
 
 
   Scenario: Aggregate commits of one contributor with and without author information to the empty database
@@ -60,6 +64,8 @@ Feature: Github Commits Aggregator
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo-1    |
       | 1         | 1             | No!!!   | frodo-2    |
+    And I should see the report:
+      | processedItemCount | 2 |
 
 
   Scenario: Aggregate data of the existing contributor found by Github id
@@ -76,6 +82,8 @@ Feature: Github Commits Aggregator
     Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email        | name  | githubId | githubLogin | gitEmails                     | gitNames        |
       | frodo1@shire | frodo | 100      | Frodo1      | [frodo1.1@shire,frodo2@shire] | [frodo1,frodo2] |
+    And I should see the report:
+      | processedItemCount | 1 |
 
 
   Scenario: Aggregate data of the existing contributor found by email
@@ -92,6 +100,8 @@ Feature: Github Commits Aggregator
     Then I should see "Aa\ATrends\Entity\Contributor" entities:
       | email       | name  | gitEmails       | gitNames        |
       | frodo@shire | frodo | [frodo.b@shire] | [frodo1,frodo2] |
+    And I should see the report:
+      | processedItemCount | 1 |
 
 
   Scenario: Aggregate data of the existing contributor found by user email
@@ -112,6 +122,9 @@ Feature: Github Commits Aggregator
       | email       | name  | githubId | githubLogin | gitEmails                    | gitNames                   |
       | frodo@shire | frodo | 100      | Frodo       | [frodo.b@shire,frodo2@shire] | [frodo1,Frodo.user,frodo2] |
 
+    And I should see the report:
+      | processedItemCount | 1 |
+
 
   Scenario: Aggregate commits of different contributors
     Given Github API returns commits data:
@@ -125,3 +138,6 @@ Feature: Github Commits Aggregator
       | projectId | contributorId | message | commitHash |
       | 1         | 1             | Ring?!  | frodo      |
       | 1         | 2             | Frodo?  | sam        |
+
+    And I should see the report:
+      | processedItemCount | 2 |
