@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use LogicException;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\AggregatorRunner;
 use Aa\ATrends\Aggregator\Options\Options;
@@ -10,7 +11,6 @@ use Aa\ATrends\Event\ProgressAdvanceEvent;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressMessageEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
-use LogicException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -105,28 +105,6 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         }
         $output->writeln('');
     }
-
-
-
-//    private function aggregate(AggregatorInterface $aggregator, $aggregatorAlias, OutputInterface $output)
-//    {
-//        $this->currentOutput = $output;
-//
-//        $result = null;
-//
-//        $title = $aggregatorAlias;
-//        if ($aggregator instanceof ProjectAwareAggregatorInterface) {
-//            $title = $aggregator->getProject()->getName().'/'.$aggregatorAlias;
-//        }
-//
-//        $this->progressBar = new ProgressBar($output);
-//
-//        $result = $aggregator->aggregate(new AggregatorOptionBag());
-//
-//        $this->progressBar->finish();
-//
-//        $this->dumpResult($output, $result);
-//    }
 
     /**
      * @param OutputInterface $output
