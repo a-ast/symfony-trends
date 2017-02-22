@@ -4,6 +4,7 @@ namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Aggregator\Report\Report;
+use Aa\ATrends\Aggregator\Report\ReportAwareInterface;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
@@ -14,7 +15,7 @@ use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Util\ArrayUtils;
 
-class CommitAggregator implements ProjectAwareAggregatorInterface
+class CommitAggregator implements ProjectAwareAggregatorInterface, ReportAwareInterface
 {
     use ProjectAwareTrait, ProgressNotifierAwareTrait;
 
@@ -37,6 +38,11 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
      * @var array
      */
     private $maintenanceCommitPatterns;
+
+    /**
+     * @var Report
+     */
+    private $report;
 
     /**
      * Constructor.
@@ -76,7 +82,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
             $processedRecordCount++;
         }
 
-        return $this->createReport($processedRecordCount);
+        $this->report = $this->createReport($processedRecordCount);
     }
 
     /**
@@ -161,5 +167,13 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
         $report->setProcessedItemCount($processedRecordCount);
 
         return $report;
+    }
+
+    /**
+     * @return ReportInterface
+     */
+    public function getReport()
+    {
+        return $this->report;
     }
 }

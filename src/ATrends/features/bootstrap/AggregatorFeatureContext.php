@@ -3,6 +3,7 @@
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\Options\Options;
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\Report\ReportAwareInterface;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Repository\ProjectRepository;
 use Behat\Behat\Context\Context;
@@ -111,16 +112,22 @@ class AggregatorFeatureContext implements Context
     /**
      * @When I aggregate :aggregatorAlias for project :projectId
      *
-     * @param int $projectId
+     * @param int|null $projectId
      */
     public function iAggregateForProject($aggregatorAlias, $projectId)
     {
-        $project = $this->projectRepository->find($projectId);
-
         $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
 
-        $aggregator->setProject($project);
-        $this->report = $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+        if (null !== $projectId) {
+            $project = $this->projectRepository->find($projectId);
+            $aggregator->setProject($project);
+        }
+
+        $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+
+        if ($aggregator instanceof ReportAwareInterface) {
+            $this->report = $aggregator->getReport();
+        }
     }
 
     /**
@@ -128,9 +135,7 @@ class AggregatorFeatureContext implements Context
      */
     public function iAggregate($aggregatorAlias)
     {
-        $aggregator = $this->aggregatorRegistry->get($aggregatorAlias);
-
-        $this->report = $aggregator->aggregate(new Options(OptionsInterface::SINCE_LAST_UPDATE));
+        $this->iAggregateForProject($aggregatorAlias, null);
     }
 
     /**

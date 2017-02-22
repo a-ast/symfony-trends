@@ -10,7 +10,7 @@ interface AggregatorInterface
     /**
      * @param OptionsInterface $options
      *
-     * @return ReportInterface
+     * @return void
      */
     public function aggregate(OptionsInterface $options);
 }

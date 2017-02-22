@@ -3,6 +3,8 @@ TODO
 
 ### Next steps:
 1. Set perPage for every API
+1. Move github model classes to Api/Github
+1. Implement progress and reporting in all aggregators
 1. Create PR to github-api: extend result pager with getResultCount
 1. Write to highcharts about a license.
 1. Think: sort api results by updated since given date to keep all updated
@@ -13,6 +15,7 @@ TODO
 1. Implement AggregatorReport
 1. Implement PullRequestBodyProcessor and commit.is_maintenance using events.
 1. Move ATrends to vendor
+1. Move behat helper to an extension
 1. Integrate deptrack from sensiolabs to check dependencies
 
 ### To think:

@@ -8,11 +8,9 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Api\Github\GithubApi;
 use Aa\ATrends\Entity\Contributor;
-use Aa\ATrends\Entity\Project;
-use Aa\ATrends\Model\GithubCommit as ModelGithubCommit;
+use Aa\ATrends\Model\GithubCommit;
 use Aa\ATrends\Model\GithubUser;
 use Aa\ATrends\Model\ProjectInterface;
-use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
@@ -27,10 +25,16 @@ class CommitAggregatorSpec extends ObjectBehavior
     function let(GithubApi $githubApi,
         ContributorRepository $contributorRepository,
         ContributionRepository $contributionRepository,
-        EventBasedProgressNotifier $progressNotifier)
+        EventBasedProgressNotifier $progressNotifier,
+        ProjectInterface $project,
+        Contributor $contributor)
     {
         $this->beConstructedWith($githubApi, $contributorRepository, $contributionRepository, []);
         $this->setProgressNotifier($progressNotifier);
+
+        $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
+        $this->setProject($project);
+
     }
 
     function it_is_initializable()
@@ -39,16 +43,15 @@ class CommitAggregatorSpec extends ObjectBehavior
         $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }
 
-    function it_aggregates(GithubApi $githubApi,
-        ContributorRepository $contributorRepository,
-        ContributionRepository $contributionRepository,
-        ProjectInterface $project,
-        Contributor $contributor,
-        OptionsInterface $options)
+    function it_aggregates(OptionsInterface $options)
     {
-        $this->initDependencies($githubApi, $contributorRepository, $contributionRepository, $project, $contributor);
-        $this->setProject($project);
-        $this->aggregate($options)->shouldHaveType(ReportInterface::class);
+        $this->aggregate($options);
+    }
+
+    function it_returns_report(OptionsInterface $options)
+    {
+        $this->aggregate($options);
+        $this->getReport()->shouldHaveType(ReportInterface::class);
     }
 
     private function initDependencies(GithubApi $githubApi,
@@ -57,7 +60,7 @@ class CommitAggregatorSpec extends ObjectBehavior
         ProjectInterface $project,
         Contributor $contributor)
     {
-        $commit = ModelGithubCommit::createFromResponseData([
+        $commit = GithubCommit::createFromResponseData([
             'sha' => 'hash-frodo-1',
             'commit' => [
                 'author' => [
@@ -98,7 +101,7 @@ class CommitAggregatorSpec extends ObjectBehavior
 
         $contributorRepository
             ->saveContributor(Argument::type(Contributor::class))
-            ->shouldBeCalled();
+            ->willReturn(null);
 
         $contributor
             ->getId()
@@ -118,6 +121,6 @@ class CommitAggregatorSpec extends ObjectBehavior
 
         $contributionRepository
             ->store(Argument::any())
-            ->shouldBeCalled();
+            ->willReturn(null);
     }
 }

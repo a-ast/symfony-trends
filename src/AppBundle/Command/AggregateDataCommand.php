@@ -2,6 +2,8 @@
 
 namespace AppBundle\Command;
 
+use Aa\ATrends\Aggregator\AggregatorInterface;
+use Aa\ATrends\Aggregator\Report\ReportAwareInterface;
 use LogicException;
 use AppBundle\Aggregator\Report\ReportDumper;
 use Aa\ATrends\Aggregator\Runner\Runner;
@@ -96,9 +98,7 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         $aggregator = $this->registry->get($aggregatorAlias);
         $this->currentOutput = $output;
 
-        $result = $this->runner->run($aggregator, new Options(OptionsInterface::SINCE_LAST_UPDATE));
-
-        $this->dumpResult($output, $result);
+        $this->runner->run($aggregator, new Options(OptionsInterface::SINCE_LAST_UPDATE));
     }
 
     /**
@@ -157,6 +157,14 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
         }
 
         $this->progressBar->finish();
+        $this->currentOutput->writeln('');
+
+        if ($event->getInitiator() instanceof ReportAwareInterface) {
+            /** @var ReportAwareInterface $aggregator */
+            $aggregator = $event->getInitiator();
+
+            $this->reportDumper->dump($aggregator->getReport(), $this->currentOutput);
+        }
     }
 
     public function onProgressAdvance(ProgressAdvanceEvent $event)
