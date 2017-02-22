@@ -6,7 +6,6 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use LogicException;
-use Traversable;
 
 class CombinedReport implements ReportInterface, Countable, IteratorAggregate
 {
