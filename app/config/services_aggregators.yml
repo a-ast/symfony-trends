@@ -7,7 +7,7 @@ services:
         class: Aa\ATrends\Aggregator\AggregatorRegistry
 
     aggregator_runner:
-        class: Aa\ATrends\Aggregator\AggregatorRunner
+        class: Aa\ATrends\Aggregator\Runner\Runner
         arguments:
             - '@repository.project'
             - '@event_dispatcher'

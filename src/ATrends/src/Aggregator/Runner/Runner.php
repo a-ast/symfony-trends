@@ -1,15 +1,18 @@
 <?php
 
-namespace Aa\ATrends\Aggregator;
+namespace Aa\ATrends\Aggregator\Runner;
 
+use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
+use Aa\ATrends\Aggregator\Report\CombinedReport;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
 use Aa\ATrends\Repository\ProjectRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class AggregatorRunner
+class Runner
 {
     /**
      * @var ProjectRepository
@@ -29,13 +32,19 @@ class AggregatorRunner
 
     public function run(AggregatorInterface $aggregator, OptionsInterface $options)
     {
+        $report = null;
+
         if ($aggregator instanceof ProjectAwareAggregatorInterface) {
 
             $projects = $this->repository->findAll();
 
+            $report = new CombinedReport();
+
             foreach ($projects as $project) {
                 $aggregator->setProject($project);
-                $report = $this->runAggregator($aggregator, $options);
+                $projectReport = $this->runAggregator($aggregator, $options);
+
+                $report->addReport($projectReport);
             }
 
         } else {

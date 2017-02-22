@@ -4,7 +4,7 @@ namespace spec\Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\AggregatorInterface;
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
-use Aa\ATrends\Aggregator\AggregatorRunner;
+use Aa\ATrends\Aggregator\Runner\Runner;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
@@ -15,9 +15,9 @@ use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @mixin AggregatorRunner
+ * @mixin Runner
  */
-class AggregatorRunnerSpec extends ObjectBehavior
+class RunnerSpec extends ObjectBehavior
 {
     function let(ProjectRepository $repository, EventDispatcherInterface $dispatcher, ProjectInterface $project)
     {
@@ -28,7 +28,7 @@ class AggregatorRunnerSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(AggregatorRunner::class);
+        $this->shouldHaveType(Runner::class);
     }
 
     public function it_runs_aggregator(
