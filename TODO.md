@@ -2,6 +2,8 @@ TODO
 ==============
 
 ### Next steps:
+1. Set perPage for every API
+1. Create PR to github-api: extend result pager with getResultCount
 1. Write to highcharts about a license.
 1. Think: sort api results by updated since given date to keep all updated
 1. Solve array issues using ArrayType (not ugly SimpleArray) for ATrends and PostgresArray for SymfonyTrends

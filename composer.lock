@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cd1403ec5e2db3cf881182e7de129d54",
-    "content-hash": "1857953113ccdc7bfce8c151673fffb5",
+    "hash": "1aa1aa8d363e38ccd6aa7168bc8a0db9",
+    "content-hash": "7c35162531ef901b69d427c3081ba530",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -4361,6 +4361,55 @@
             "time": "2015-09-28 16:26:35"
         },
         {
+            "name": "bossa/phpspec2-expect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BossaConsulting/phpspec2-expect.git",
+                "reference": "bc4e23a1c6ad61ec91270c21e9419af00898e843"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BossaConsulting/phpspec2-expect/zipball/bc4e23a1c6ad61ec91270c21e9419af00898e843",
+                "reference": "bc4e23a1c6ad61ec91270c21e9419af00898e843",
+                "shasum": ""
+            },
+            "require": {
+                "phpspec/phpspec": "~3.2 <3.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "expect.php"
+                ],
+                "psr-0": {
+                    "Bossa\\PhpSpec\\Expect\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcello Duarte",
+                    "homepage": "http://marcelloduarte.net/"
+                }
+            ],
+            "description": "Helper that decorates any SUS with a phpspec lazy object wrapper",
+            "keywords": [
+                "BDD",
+                "SpecBDD",
+                "TDD",
+                "spec",
+                "specification"
+            ],
+            "time": "2017-02-17 13:08:37"
+        },
+        {
             "name": "container-interop/container-interop",
             "version": "1.1.0",
             "source": {
@@ -4874,7 +4923,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "willdurand/geocoder": 20,
-        "aa/array-diff": 20
+        "aa/array-diff": 20,
+        "bossa/phpspec2-expect": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

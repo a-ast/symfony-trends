@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Aggregator\Report\ReportDumper;
 use LogicException;
 use Aa\ATrends\Aggregator\AggregatorRegistry;
 use Aa\ATrends\Aggregator\AggregatorRunner;
@@ -43,16 +44,23 @@ class AggregateDataCommand extends Command implements EventSubscriberInterface
     private $currentOutput;
 
     /**
+     * @var ReportDumper
+     */
+    private $reportDumper;
+
+    /**
      * Constructor.
      * @param AggregatorRegistry $registry
      * @param AggregatorRunner $runner
+     * @param ReportDumper $reportDumper
      */
-    public function __construct(AggregatorRegistry $registry, AggregatorRunner $runner)
+    public function __construct(AggregatorRegistry $registry, AggregatorRunner $runner, ReportDumper $reportDumper)
     {
         parent::__construct();
         
         $this->registry = $registry;
         $this->runner = $runner;
+        $this->reportDumper = $reportDumper;
     }
 
 

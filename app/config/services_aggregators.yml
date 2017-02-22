@@ -12,6 +12,9 @@ services:
             - '@repository.project'
             - '@event_dispatcher'
 
+    aggregator_report_dumper:
+        class: AppBundle\Aggregator\Report\ReportDumper
+
     aggregator.sensiolabs_profile:
         class: AppBundle\Aggregator\SensiolabsProfileAggregator
         lazy: true

@@ -119,6 +119,7 @@ services:
         arguments:
             - '@aggregator_registry'
             - '@aggregator_runner'
+            - '@aggregator_report_dumper'
         tags:
             - { name: console.command }
             - { name: kernel.event_subscriber }

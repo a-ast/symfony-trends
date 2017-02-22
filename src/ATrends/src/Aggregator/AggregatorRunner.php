@@ -3,6 +3,7 @@
 namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
+use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Event\ProgressFinishEvent;
 use Aa\ATrends\Event\ProgressStartEvent;
 use Aa\ATrends\Repository\ProjectRepository;
@@ -34,25 +35,31 @@ class AggregatorRunner
 
             foreach ($projects as $project) {
                 $aggregator->setProject($project);
-                $this->runAggregator($aggregator, $options);
+                $report = $this->runAggregator($aggregator, $options);
             }
 
         } else {
-            $this->runAggregator($aggregator, $options);
+            $report = $this->runAggregator($aggregator, $options);
         }
+
+        return $report;
     }
 
     /**
      * @param AggregatorInterface $aggregator
      * @param OptionsInterface $options
+     *
+     * @return ReportInterface
      */
     private function runAggregator(AggregatorInterface $aggregator, OptionsInterface $options)
     {
         $this->notifyProgressStart($aggregator);
 
-        $aggregator->aggregate($options);
+        $report = $aggregator->aggregate($options);
 
         $this->notifyProgressFinish($aggregator);
+
+        return $report;
     }
 
     /**

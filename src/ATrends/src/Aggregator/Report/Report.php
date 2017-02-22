@@ -12,7 +12,7 @@ class Report implements ReportInterface
     /**
      * @inheritdoc
      */
-    public function setProcessedRecordCount($count)
+    public function setProcessedItemCount($count)
     {
         $this->count = $count;
     }
@@ -20,7 +20,7 @@ class Report implements ReportInterface
     /**
      * @inheritdoc
      */
-    public function getProcessedRecordCount()
+    public function getProcessedItemCount()
     {
         return $this->count;
     }

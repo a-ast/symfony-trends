@@ -158,7 +158,7 @@ class CommitAggregator implements ProjectAwareAggregatorInterface
     private function createReport($processedRecordCount)
     {
         $report = new Report();
-        $report->setProcessedRecordCount($processedRecordCount);
+        $report->setProcessedItemCount($processedRecordCount);
 
         return $report;
     }

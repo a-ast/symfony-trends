@@ -20,12 +20,12 @@ class ReportSpec extends ObjectBehavior
 
     public function it_sets_processed_record_count()
     {
-        $this->setProcessedRecordCount(10);
+        $this->setProcessedItemCount(10);
     }
 
     public function it_gets_processed_record_count()
     {
-        $this->setProcessedRecordCount(10);
-        $this->getProcessedRecordCount()->shouldReturn(10);
+        $this->setProcessedItemCount(10);
+        $this->getProcessedItemCount()->shouldReturn(10);
     }
 }

@@ -22,6 +22,6 @@ class ReportDumperSpec extends ObjectBehavior
     {
         $this->dump($report, new NullOutput());
 
-        $report->getProcessedRecordCount()->shouldHaveBeenCalled();
+        $report->getProcessedItemCount()->shouldHaveBeenCalled();
     }
 }

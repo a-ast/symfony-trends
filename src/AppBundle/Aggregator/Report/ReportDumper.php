@@ -13,7 +13,7 @@ class ReportDumper
         $table = new Table($output);
 
         $table
-            ->addRow(['Records processed', $report->getProcessedRecordCount()])
+            ->addRow(['Records processed', $report->getProcessedItemCount()])
             ->render();
     }
 }

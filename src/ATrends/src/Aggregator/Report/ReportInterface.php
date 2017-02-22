@@ -7,12 +7,12 @@ interface ReportInterface
     /**
      * @return integer
      */
-    public function getProcessedRecordCount();
+    public function getProcessedItemCount();
 
     /**
      * @param int $count
      *
      * @return void
      */
-    public function setProcessedRecordCount($count);
+    public function setProcessedItemCount($count);
 }

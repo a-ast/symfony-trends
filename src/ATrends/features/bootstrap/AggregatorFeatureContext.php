@@ -141,7 +141,7 @@ class AggregatorFeatureContext implements Context
         $expectedReport = $reportTable->getRows();
 
         $report = [
-            ['processedItemCount', $this->report->getProcessedRecordCount()]
+            ['processedItemCount', $this->report->getProcessedItemCount()]
         ];
 
         Assert::eq($expectedReport, $report);

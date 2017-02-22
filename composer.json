@@ -49,7 +49,8 @@
         "php-mock/php-mock": "^1.0",
         "doctrine/data-fixtures": "^1.2",
         "aa/array-diff": "dev-master",
-        "php-http/mock-client": "^0.3.3"
+        "php-http/mock-client": "^0.3.3",
+        "bossa/phpspec2-expect": "@dev"
     },
     "scripts": {
         "symfony-scripts": [
