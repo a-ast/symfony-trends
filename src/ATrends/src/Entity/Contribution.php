@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Entity;
 
-use Aa\ATrends\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\GithubCommit;
 use Aa\ATrends\Util\RegexUtils;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;

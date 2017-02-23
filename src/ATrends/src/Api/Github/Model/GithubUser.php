@@ -1,6 +1,6 @@
 <?php
 
-namespace Aa\ATrends\Model;
+namespace Aa\ATrends\Api\Github\Model;
 
 class GithubUser
 {

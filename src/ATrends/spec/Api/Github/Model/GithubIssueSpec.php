@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Aa\ATrends\Model;
+namespace spec\Aa\ATrends\Api\Github\Model;
 
-use Aa\ATrends\Model\GithubIssue;
+use Aa\ATrends\Api\Github\Model\GithubIssue;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

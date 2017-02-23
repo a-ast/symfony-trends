@@ -2,8 +2,8 @@
 
 namespace Aa\ATrends\Entity;
 
-use Aa\ATrends\Model\GithubCommit;
-use Aa\ATrends\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\GithubUser;
 use Aa\ATrends\Traits\TimestampTrait;
 use Aa\ATrends\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;

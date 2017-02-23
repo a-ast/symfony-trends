@@ -4,10 +4,10 @@
 namespace features\Aa\ATrends\Fake;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use Aa\ATrends\Model\GithubCommit;
-use Aa\ATrends\Model\GithubIssue;
-use Aa\ATrends\Model\GithubPullRequest;
-use Aa\ATrends\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\GithubIssue;
+use Aa\ATrends\Api\Github\Model\GithubPullRequest;
+use Aa\ATrends\Api\Github\Model\GithubUser;
 use DateTimeInterface;
 use Iterator;
 

@@ -3,10 +3,10 @@
 namespace spec\Aa\ATrends\Api\Github;
 
 use Aa\ATrends\Api\Github\GithubApi;
-use Aa\ATrends\Model\GithubCommit;
-use Aa\ATrends\Model\GithubIssue;
-use Aa\ATrends\Model\GithubPullRequest;
-use Aa\ATrends\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\GithubIssue;
+use Aa\ATrends\Api\Github\Model\GithubPullRequest;
+use Aa\ATrends\Api\Github\Model\GithubUser;
 use Exception;
 use Github\Api\Issue;
 use Github\Api\PullRequest;
