@@ -2,25 +2,25 @@
 
 namespace spec\Aa\ATrends\Api\Github\Model;
 
-use Aa\ATrends\Api\Github\Model\GithubPullRequest;
+use Aa\ATrends\Api\Github\Model\PullRequest;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubPullRequest
+ * @mixin PullRequest
  */
-class GithubPullRequestSpec extends ObjectBehavior
+class PullRequestSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
-        $this->shouldHaveType(GithubPullRequest::class);
+        $this->shouldHaveType(PullRequest::class);
     }
 
     function it_can_be_created_from_response_data()
     {
         $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
-        $this->shouldHaveType(GithubPullRequest::class);
+        $this->shouldHaveType(PullRequest::class);
     }
 
     private function getArrayData()

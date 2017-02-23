@@ -5,7 +5,7 @@ namespace Aa\ATrends\Api\Github\Model;
 use DateTimeImmutable;
 use DateTimeInterface;
 
-class GithubCommit
+class Commit
 {
     /**
      * @var string
@@ -51,7 +51,7 @@ class GithubCommit
 
     public static function createFromArray(array $data)
     {
-        $commit = new GithubCommit();
+        $commit = new Commit();
 
         $commit->sha = $data['sha'];
         $commit->date = new DateTimeImmutable($data['date']);
@@ -68,7 +68,7 @@ class GithubCommit
     /**
      * @param array $responseData
      *
-     * @return GithubCommit
+     * @return Commit
      */
     public static function createFromResponseData(array $responseData)
     {

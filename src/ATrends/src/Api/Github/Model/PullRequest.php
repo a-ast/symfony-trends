@@ -5,7 +5,7 @@ namespace Aa\ATrends\Api\Github\Model;
 use DateTimeImmutable;
 use DateTimeInterface;
 
-class GithubPullRequest
+class PullRequest
 {
     /**
      * @var int
@@ -87,11 +87,11 @@ class GithubPullRequest
     /**
      * @param array $data
      *
-     * @return GithubPullRequest
+     * @return PullRequest
      */
     public static function createFromArray(array $data)
     {
-        $pullRequest = new GithubPullRequest();
+        $pullRequest = new PullRequest();
 
         $pullRequest->id = (int) $data['id'];
         $pullRequest->number = (int) $data['number'];
@@ -117,11 +117,11 @@ class GithubPullRequest
     /**
      * @param array $data
      *
-     * @return GithubPullRequest
+     * @return PullRequest
      */
     public static function createFromResponseData(array $data)
     {
-        $pullRequest = new GithubPullRequest();
+        $pullRequest = new PullRequest();
 
         $pullRequest->id = (int) $data['id'];
         $pullRequest->number = (int) $data['number'];

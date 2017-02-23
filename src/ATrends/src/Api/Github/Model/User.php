@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Api\Github\Model;
 
-class GithubUser
+class User
 {
     /**
      * @var string
@@ -36,7 +36,7 @@ class GithubUser
     /**
      * @param array $responseData
      *
-     * @return GithubUser
+     * @return User
      */
     public static function createFromResponseData(array $responseData)
     {

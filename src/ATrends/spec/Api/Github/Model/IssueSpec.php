@@ -2,25 +2,25 @@
 
 namespace spec\Aa\ATrends\Api\Github\Model;
 
-use Aa\ATrends\Api\Github\Model\GithubIssue;
+use Aa\ATrends\Api\Github\Model\Issue;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubIssue
+ * @mixin Issue
  */
-class GithubIssueSpec extends ObjectBehavior
+class IssueSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
-        $this->shouldHaveType(GithubIssue::class);
+        $this->shouldHaveType(Issue::class);
     }
 
     function it_can_be_created_from_response_data()
     {
         $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
-        $this->shouldHaveType(GithubIssue::class);
+        $this->shouldHaveType(Issue::class);
     }
 
     function it_fails_for_pull_request_response_data()

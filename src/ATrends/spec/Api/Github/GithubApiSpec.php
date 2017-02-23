@@ -3,19 +3,19 @@
 namespace spec\Aa\ATrends\Api\Github;
 
 use Aa\ATrends\Api\Github\GithubApi;
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubIssue;
-use Aa\ATrends\Api\Github\Model\GithubPullRequest;
-use Aa\ATrends\Api\Github\Model\GithubUser;
-use Exception;
-use Github\Api\Issue;
-use Github\Api\PullRequest;
-use Github\Api\Repo;
-use Github\Api\Repository\Commits;
-use Github\Api\User;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\Issue;
+use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\User;
+use Github\Api\User as UserApi;
+use Github\Api\PullRequest as PullRequestApi;
+use Github\Api\Issue as IssueApi;
+use Github\Api\Repository\Commits as CommitApi;
+use Github\Api\Repo as RepoApi;
 use Github\Client;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Exception;
 
 /**
  * @mixin GithubApi
@@ -23,11 +23,11 @@ use Prophecy\Argument;
 class GithubApiSpec extends ObjectBehavior
 {
     function let(Client $client,
-        Repo $repoApi,
-        Commits $commitsApi,
-        User $userApi,
-        PullRequest $pullRequestApi,
-        Issue $issueApi)
+        RepoApi $repoApi,
+        CommitApi $commitsApi,
+        UserApi $userApi,
+        PullRequestApi $pullRequestApi,
+        IssueApi $issueApi)
     {
         $this->beConstructedWith($client);
 
@@ -45,7 +45,7 @@ class GithubApiSpec extends ObjectBehavior
         $this->shouldHaveType(GithubApi::class);
     }
 
-    function it_should_fetch_commits(Commits $commitsApi)
+    function it_should_fetch_commits(CommitApi $commitsApi)
     {
         $githubResponseData = [
             0 => [
@@ -79,10 +79,10 @@ class GithubApiSpec extends ObjectBehavior
             ->willReturn([])
             ;
 
-        $this->getCommits('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29 GMT'))->shouldBeCollectionOf(GithubCommit::class, 4);
+        $this->getCommits('valinor/repo', new \DateTimeImmutable('21 Oct 2015 04:29 GMT'))->shouldBeCollectionOf(Commit::class, 4);
     }
 
-    function it_should_fetch_user(User $userApi)
+    function it_should_fetch_user(UserApi $userApi)
     {
         $responseData = [
             'name' =>'frodo',
@@ -93,10 +93,10 @@ class GithubApiSpec extends ObjectBehavior
         $userApi->show('frodo')->willReturn($responseData);
 
         $user = $this->getUser('frodo');
-        $user->shouldHaveType(GithubUser::class);
+        $user->shouldHaveType(User::class);
     }
 
-    function it_should_fetch_pull_requests(PullRequest $pullRequestApi)
+    function it_should_fetch_pull_requests(PullRequestApi $pullRequestApi)
     {
         $responseData = [
             'id' => 100,
@@ -126,10 +126,10 @@ class GithubApiSpec extends ObjectBehavior
             ->all('valinor', 'repo', Argument::type('array'))
             ->willReturn([$responseData], []);
 
-        $this->getPullRequests('valinor/repo')->shouldBeCollectionOf(GithubPullRequest::class, 1);
+        $this->getPullRequests('valinor/repo')->shouldBeCollectionOf(PullRequest::class, 1);
     }
 
-    function it_should_fetch_issues(Issue $issueApi)
+    function it_should_fetch_issues(IssueApi $issueApi)
     {
         $responseData = [
             'id' => 100,
@@ -153,10 +153,10 @@ class GithubApiSpec extends ObjectBehavior
             ->all('valinor', 'repo', Argument::type('array'))
             ->willReturn([$responseData], []);
 
-        $this->getIssues('valinor/repo')->shouldBeCollectionOf(GithubIssue::class, 1);
+        $this->getIssues('valinor/repo')->shouldBeCollectionOf(Issue::class, 1);
     }
 
-    function it_should_fetch_issues_but_ignore_pull_requests(Issue $issueApi)
+    function it_should_fetch_issues_but_ignore_pull_requests(IssueApi $issueApi)
     {
         $responseData = [
             'id' => 100,

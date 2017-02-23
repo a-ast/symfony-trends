@@ -8,7 +8,7 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Entity\Project;
-use Aa\ATrends\Api\Github\Model\GithubIssue as ModelGithubIssue;
+use Aa\ATrends\Api\Github\Model\Issue as ModelGithubIssue;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\EventBasedProgressNotifier;

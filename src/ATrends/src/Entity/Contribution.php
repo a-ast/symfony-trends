@@ -2,7 +2,7 @@
 
 namespace Aa\ATrends\Entity;
 
-use Aa\ATrends\Api\Github\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\Commit;
 use Aa\ATrends\Util\RegexUtils;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -245,12 +245,12 @@ class Contribution
     }
 
     /**
-     * @param GithubCommit $commit
+     * @param Commit $commit
      * @param array $maintenanceCommitPatterns
      *
      * @return $this
      */
-    public function setFromGithubCommit(GithubCommit $commit, array $maintenanceCommitPatterns)
+    public function setFromGithubCommit(Commit $commit, array $maintenanceCommitPatterns)
     {
         $isMaintenanceCommit = RegexUtils::match($commit->getMessage(), $maintenanceCommitPatterns);
 

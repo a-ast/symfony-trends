@@ -2,8 +2,8 @@
 
 namespace Aa\ATrends\Entity;
 
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\User;
 use Aa\ATrends\Traits\TimestampTrait;
 use Aa\ATrends\Util\ArrayUtils;
 use Doctrine\ORM\Mapping as ORM;
@@ -405,11 +405,11 @@ class Contributor
     }
 
     /**
-     * @param GithubCommit $commit
+     * @param Commit $commit
      *
      * @return $this
      */
-    public function setFromGithubCommit(GithubCommit $commit)
+    public function setFromGithubCommit(Commit $commit)
     {
         if (!$this->githubLogin) {
             $this->setGithubLogin($commit->getAuthorLogin());
@@ -431,11 +431,11 @@ class Contributor
     }
 
     /**
-     * @param GithubUser $user
+     * @param User $user
      *
      * @return $this
      */
-    public function setFromGithubUser(GithubUser $user)
+    public function setFromGithubUser(User $user)
     {
         if (!$this->getName()) {
             $this->setName($user->getName());
@@ -452,12 +452,12 @@ class Contributor
     }
 
     /**
-     * @param GithubCommit $commit
-     * @param GithubUser|null $user
+     * @param Commit $commit
+     * @param User|null $user
      *
      * @return $this
      */
-    public function setFromGithub(GithubCommit $commit, GithubUser $user = null)
+    public function setFromGithub(Commit $commit, User $user = null)
     {
         if (null !== $user) {
             $this->setFromGithubUser($user);

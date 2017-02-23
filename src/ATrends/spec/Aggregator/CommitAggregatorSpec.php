@@ -8,8 +8,8 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Aggregator\Report\ReportInterface;
 use Aa\ATrends\Api\Github\GithubApi;
 use Aa\ATrends\Entity\Contributor;
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\User;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\ContributionRepository;
@@ -60,7 +60,7 @@ class CommitAggregatorSpec extends ObjectBehavior
         ProjectInterface $project,
         Contributor $contributor)
     {
-        $commit = GithubCommit::createFromResponseData([
+        $commit = Commit::createFromResponseData([
             'sha' => 'hash-frodo-1',
             'commit' => [
                 'author' => [
@@ -76,7 +76,7 @@ class CommitAggregatorSpec extends ObjectBehavior
             ],
         ]);
 
-        $user = GithubUser::createFromResponseData([
+        $user = User::createFromResponseData([
             'name' => 'Frodo Baggins',
             'email' => 'frodo@shire',
             'location' => 'Bag End',

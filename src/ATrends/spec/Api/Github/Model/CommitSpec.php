@@ -2,25 +2,25 @@
 
 namespace spec\Aa\ATrends\Api\Github\Model;
 
-use Aa\ATrends\Api\Github\Model\GithubCommit;
+use Aa\ATrends\Api\Github\Model\Commit;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubCommit
+ * @mixin Commit
  */
-class GithubCommitSpec extends ObjectBehavior
+class CommitSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedThrough('createFromArray', [$this->getArrayData()]);
-        $this->shouldHaveType(GithubCommit::class);
+        $this->shouldHaveType(Commit::class);
     }
 
     function it_can_be_created_from_response_data()
     {
         $this->beConstructedThrough('createFromResponseData', [$this->getResponseData()]);
-        $this->shouldHaveType(GithubCommit::class);
+        $this->shouldHaveType(Commit::class);
     }
 
     private function getArrayData()
@@ -35,7 +35,6 @@ class GithubCommitSpec extends ObjectBehavior
             'committer_login' => 'Frodo.B',
         ];
     }
-
 
     private function getResponseData()
     {

@@ -1,10 +1,10 @@
 <?php
 namespace Aa\ATrends\Api\Github;
 
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubIssue;
-use Aa\ATrends\Api\Github\Model\GithubPullRequest;
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\Issue;
+use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 
 interface GithubApiInterface
@@ -13,21 +13,21 @@ interface GithubApiInterface
      * @param string $repositoryPath
      * @param DateTimeInterface|null $since
      *
-     * @return GithubCommit[]|\Iterator
+     * @return Commit[]|\Iterator
      */
     public function getCommits($repositoryPath, DateTimeInterface $since = null);
 
     /**
      * @param string $login
      *
-     * @return GithubUser
+     * @return User
      */
     public function getUser($login);
 
     /**
      * @param $repositoryPath
      *
-     * @return GithubPullRequest[]|\Iterator
+     * @return PullRequest[]|\Iterator
      */
     public function getPullRequests($repositoryPath);
 
@@ -35,7 +35,7 @@ interface GithubApiInterface
      * @param $repositoryPath
      * @param DateTimeInterface $since
      *
-     * @return GithubIssue[]|\Iterator
+     * @return Issue[]|\Iterator
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null);
 }

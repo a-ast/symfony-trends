@@ -10,7 +10,7 @@ use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Contribution;
 use Aa\ATrends\Entity\Contributor;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
-use Aa\ATrends\Api\Github\Model\GithubCommit as ModelGithubCommit;
+use Aa\ATrends\Api\Github\Model\Commit as ModelGithubCommit;
 use Aa\ATrends\Repository\ContributionRepository;
 use Aa\ATrends\Repository\ContributorRepository;
 use Aa\ATrends\Util\ArrayUtils;

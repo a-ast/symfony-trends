@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use RuntimeException;
 
-class GithubIssue
+class Issue
 {
     /**
      * @var int
@@ -68,11 +68,11 @@ class GithubIssue
     /**
      * @param array $data
      *
-     * @return GithubIssue
+     * @return Issue
      */
     public static function createFromArray(array $data)
     {
-        $issue = new GithubIssue();
+        $issue = new Issue();
 
         $issue->id = (int) $data['id'];
         $issue->number = (int) $data['number'];
@@ -92,7 +92,7 @@ class GithubIssue
     /**
      * @param array $data
      *
-     * @return GithubIssue
+     * @return Issue
      */
     public static function createFromResponseData(array $data)
     {
@@ -100,7 +100,7 @@ class GithubIssue
             throw new RuntimeException('Response must not contain pull request data.');
         }
 
-        $issue = new GithubIssue();
+        $issue = new Issue();
 
         $issue->id = (int) $data['id'];
         $issue->number = (int) $data['number'];

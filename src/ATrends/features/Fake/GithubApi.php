@@ -4,10 +4,10 @@
 namespace features\Aa\ATrends\Fake;
 
 use Aa\ATrends\Api\Github\GithubApiInterface;
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubIssue;
-use Aa\ATrends\Api\Github\Model\GithubPullRequest;
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\Issue;
+use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 use Iterator;
 
@@ -19,13 +19,13 @@ class GithubApi implements GithubApiInterface
      * @param string $repositoryPath
      * @param DateTimeInterface|null $since
      *
-     * @return GithubCommit[]|Iterator
+     * @return Commit[]|Iterator
      */
     public function getCommits($repositoryPath, DateTimeInterface $since = null)
     {
         $commits = [];
         foreach ($this->fakeData['commits'] as $item) {
-            $commits[] = GithubCommit::createFromArray($item);
+            $commits[] = Commit::createFromArray($item);
         }
 
         return new \ArrayIterator($commits);
@@ -34,13 +34,13 @@ class GithubApi implements GithubApiInterface
     /**
      * @param string $login
      *
-     * @return GithubUser
+     * @return User
      */
     public function getUser($login)
     {
         $data = $this->findDataItemByPropertyValue('users', 'login', $login);
 
-        return GithubUser::createFromResponseData($data);
+        return User::createFromResponseData($data);
     }
 
     /**
@@ -50,7 +50,7 @@ class GithubApi implements GithubApiInterface
     {
         $commits = [];
         foreach ($this->fakeData['issues'] as $item) {
-            $commits[] = GithubIssue::createFromArray($item);
+            $commits[] = Issue::createFromArray($item);
         }
 
         return new \ArrayIterator($commits);
@@ -63,7 +63,7 @@ class GithubApi implements GithubApiInterface
     {
         $commits = [];
         foreach ($this->fakeData['pull-requests'] as $item) {
-            $commits[] = GithubPullRequest::createFromArray($item);
+            $commits[] = PullRequest::createFromArray($item);
         }
 
         return new \ArrayIterator($commits);

@@ -2,19 +2,19 @@
 
 namespace spec\Aa\ATrends\Api\Github\Model;
 
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\User;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * @mixin GithubUser
+ * @mixin User
  */
 class GithubUserSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
         $this->beConstructedWith('frodo', 'frodo@shire', 'Bag End');
-        $this->shouldHaveType(GithubUser::class);
+        $this->shouldHaveType(User::class);
     }
 
     function it_can_be_created_from_resonse_data()
@@ -25,6 +25,6 @@ class GithubUserSpec extends ObjectBehavior
             'location' => 'Bag End'
         ]]);
 
-        $this->shouldHaveType(GithubUser::class);
+        $this->shouldHaveType(User::class);
     }
 }

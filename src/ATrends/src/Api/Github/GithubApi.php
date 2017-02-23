@@ -2,10 +2,10 @@
 
 namespace Aa\ATrends\Api\Github;
 
-use Aa\ATrends\Api\Github\Model\GithubCommit;
-use Aa\ATrends\Api\Github\Model\GithubIssue;
-use Aa\ATrends\Api\Github\Model\GithubPullRequest;
-use Aa\ATrends\Api\Github\Model\GithubUser;
+use Aa\ATrends\Api\Github\Model\Commit;
+use Aa\ATrends\Api\Github\Model\Issue;
+use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 use Github\Client;
 use Iterator;
@@ -31,7 +31,7 @@ class GithubApi implements GithubApiInterface
      * @param string $repositoryPath
      * @param DateTimeInterface|null $since
      *
-     * @return GithubCommit[]|Iterator
+     * @return Commit[]|Iterator
      */
     public function getCommits($repositoryPath, DateTimeInterface $since = null)
     {
@@ -40,7 +40,7 @@ class GithubApi implements GithubApiInterface
         while ($commits = $this->getCommitsByPage($repositoryPath, $since, $page)) {
 
             foreach ($commits as $commit) {
-                yield GithubCommit::createFromResponseData($commit);
+                yield Commit::createFromResponseData($commit);
             }
 
             $page++;
@@ -65,13 +65,13 @@ class GithubApi implements GithubApiInterface
     /**
      * @param string $login
      *
-     * @return GithubUser
+     * @return User
      */
     public function getUser($login)
     {
         $data = $this->client->user()->show($login);
 
-        return GithubUser::createFromResponseData($data);
+        return User::createFromResponseData($data);
     }
 
     private function getOwner($repositoryPath)
@@ -98,7 +98,7 @@ class GithubApi implements GithubApiInterface
         while ($items = $this->getPullRequestsByPage($repositoryPath, $page)) {
 
             foreach ($items as $item) {
-                yield GithubPullRequest::createFromResponseData($item);
+                yield PullRequest::createFromResponseData($item);
             }
 
             $page++;
@@ -136,7 +136,7 @@ class GithubApi implements GithubApiInterface
                     continue;
                 }
 
-                yield GithubIssue::createFromResponseData($item);
+                yield Issue::createFromResponseData($item);
             }
 
             $page++;
