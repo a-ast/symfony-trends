@@ -7,19 +7,19 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 203
+                    "value": 202
                 },
                 {
                     "name": "Bug",
-                    "value": 182
+                    "value": 185
                 },
                 {
                     "name": "Form",
-                    "value": 158
+                    "value": 159
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 146
+                    "value": 147
                 },
                 {
                     "name": "Enhancement",
@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 58
+                    "value": 59
                 },
                 {
                     "name": "HttpFoundation",
@@ -39,18 +39,22 @@
                 },
                 {
                     "name": "Validator",
-                    "value": 49
+                    "value": 47
                 },
                 {
                     "name": "Console",
-                    "value": 35
+                    "value": 32
                 },
                 {
-                    "name": "RFC",
-                    "value": 24
+                    "name": "Status: Reviewed",
+                    "value": 23
                 },
                 {
                     "name": "FrameworkBundle",
+                    "value": 22
+                },
+                {
+                    "name": "DependencyInjection",
                     "value": 21
                 },
                 {
@@ -58,12 +62,8 @@
                     "value": 21
                 },
                 {
-                    "name": "Status: Reviewed",
-                    "value": 20
-                },
-                {
-                    "name": "DependencyInjection",
-                    "value": 20
+                    "name": "RFC",
+                    "value": 21
                 },
                 {
                     "name": "Routing",

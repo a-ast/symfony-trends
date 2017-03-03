@@ -38,6 +38,10 @@
                     "value": 5
                 },
                 {
+                    "name": "Dany Maillard",
+                    "value": 5
+                },
+                {
                     "name": "Adil YASSINE",
                     "value": 4
                 },
@@ -60,10 +64,6 @@
                 {
                     "name": "NateC",
                     "value": 4
-                },
-                {
-                    "name": "alchimik",
-                    "value": 3
                 }
             ],
             "name": "Commit count",

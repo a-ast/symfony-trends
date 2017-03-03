@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "2016",
-                    "value": 11
+                    "value": 12
                 },
                 {
                     "name": "2017",
@@ -68,11 +68,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 17
+                    "value": 18
                 },
                 {
                     "name": "2017",
-                    "value": 8
+                    "value": 10
                 }
             ],
             "name": "Avg close time in days"
