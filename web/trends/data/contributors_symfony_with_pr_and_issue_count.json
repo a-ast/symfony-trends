@@ -13,7 +13,7 @@
             "data": [
                 {
                     "name": "Nicolas Grekas",
-                    "x": 904,
+                    "x": 907,
                     "y": 41
                 },
                 {
@@ -48,7 +48,7 @@
                 },
                 {
                     "name": "K\u00e9vin Dunglas",
-                    "x": 209,
+                    "x": 210,
                     "y": 1
                 },
                 {
@@ -73,8 +73,13 @@
                 },
                 {
                     "name": "Abdellatif Ait boudad",
-                    "x": 152,
+                    "x": 153,
                     "y": 4
+                },
+                {
+                    "name": "Maxime Steinhausser",
+                    "x": 146,
+                    "y": 10
                 },
                 {
                     "name": "Wouter J",
@@ -85,11 +90,6 @@
                     "name": "Romain Neutron",
                     "x": 144,
                     "y": 19
-                },
-                {
-                    "name": "Maxime Steinhausser",
-                    "x": 144,
-                    "y": 10
                 },
                 {
                     "name": "Hugo Hamon",

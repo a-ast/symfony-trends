@@ -335,19 +335,19 @@
                 },
                 {
                     "date": "2016-11-01",
-                    "value": 163
+                    "value": 165
                 },
                 {
                     "date": "2016-12-01",
-                    "value": 189
+                    "value": 190
                 },
                 {
                     "date": "2017-01-01",
-                    "value": 176
+                    "value": 178
                 },
                 {
                     "date": "2017-02-01",
-                    "value": 35
+                    "value": 96
                 }
             ],
             "name": "All contributors",
@@ -693,11 +693,11 @@
                 },
                 {
                     "date": "2017-01-01",
-                    "value": 122
+                    "value": 123
                 },
                 {
                     "date": "2017-02-01",
-                    "value": 17
+                    "value": 55
                 }
             ],
             "name": "Core team",

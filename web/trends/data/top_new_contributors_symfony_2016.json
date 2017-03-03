@@ -7,7 +7,7 @@
             "data": [
                 {
                     "name": "Robin Chalas",
-                    "value": 85
+                    "value": 88
                 },
                 {
                     "name": "Par\u00e1da J\u00f3zsef",
@@ -22,11 +22,15 @@
                     "value": 5
                 },
                 {
+                    "name": "David Maicher",
+                    "value": 4
+                },
+                {
                     "name": "Andrey Astakhov",
                     "value": 3
                 },
                 {
-                    "name": "David Maicher",
+                    "name": "Dany Maillard",
                     "value": 3
                 },
                 {
@@ -60,10 +64,6 @@
                 {
                     "name": "Valentin Jonovs",
                     "value": 3
-                },
-                {
-                    "name": "Alessandro Lai",
-                    "value": 2
                 }
             ],
             "name": "Commit count",

@@ -11,11 +11,11 @@
                 },
                 {
                     "name": "30-200",
-                    "value": 47
+                    "value": 48
                 },
                 {
                     "name": "10-30",
-                    "value": 92
+                    "value": 91
                 },
                 {
                     "name": "5-10",
@@ -23,11 +23,11 @@
                 },
                 {
                     "name": "3-5",
-                    "value": 203
+                    "value": 204
                 },
                 {
                     "name": "2",
-                    "value": 242
+                    "value": 244
                 },
                 {
                     "name": "1",
@@ -61,11 +61,11 @@
                 },
                 {
                     "name": "2",
-                    "value": 211
+                    "value": 213
                 },
                 {
                     "name": "1",
-                    "value": 677
+                    "value": 679
                 }
             ],
             "name": "Symfony docs",

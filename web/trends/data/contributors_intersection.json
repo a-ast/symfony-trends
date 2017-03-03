@@ -7,18 +7,18 @@
             "data": [
                 {
                     "name": "Symfony code",
-                    "value": 1130,
+                    "value": 1132,
                     "color": "#4cacdb"
                 },
                 {
-                    "name": "Symfony code and Symfony docs",
-                    "value": 516,
-                    "color": "#63b37e"
+                    "name": "Symfony docs",
+                    "value": 810,
+                    "color": "#7aba20"
                 },
                 {
-                    "name": "Symfony docs",
-                    "value": 807,
-                    "color": "#7aba20"
+                    "name": "Symfony code and Symfony docs",
+                    "value": 517,
+                    "color": "#63b37e"
                 }
             ],
             "name": "Contributor count"
