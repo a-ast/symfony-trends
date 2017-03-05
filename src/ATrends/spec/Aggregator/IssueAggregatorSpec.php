@@ -9,10 +9,12 @@ use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\Issue;
 use Aa\ATrends\Entity\Project;
 use Aa\ATrends\Api\Github\Model\Issue as ModelGithubIssue;
+use Aa\ATrends\Entity\PullRequest;
 use Aa\ATrends\Model\ProjectInterface;
 use Aa\ATrends\Progress\ProgressNotifierInterface;
 use Aa\ATrends\Progress\EventBasedProgressNotifier;
 use Aa\ATrends\Repository\IssueRepository;
+use Aa\ATrends\Repository\PullRequestRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -21,10 +23,10 @@ use Prophecy\Argument;
  */
 class IssueAggregatorSpec extends ObjectBehavior
 {
-    function let(GithubApiInterface $githubApi, IssueRepository $issueRepository,
+    function let(GithubApiInterface $githubApi, IssueRepository $issueRepository, PullRequestRepository $pullRequestRepository,
         EventBasedProgressNotifier $progressNotifier)
     {
-        $this->beConstructedWith($githubApi, $issueRepository);
+        $this->beConstructedWith($githubApi, $issueRepository, $pullRequestRepository);
         $this->setProgressNotifier($progressNotifier);
     }
 
@@ -38,9 +40,10 @@ class IssueAggregatorSpec extends ObjectBehavior
         ProjectInterface $project,
         GithubApiInterface $githubApi,
         IssueRepository $issueRepository,
+        PullRequestRepository $pullRequestRepository,
         OptionsInterface $options
     ) {
-        $this->initDependencies($project, $githubApi, $issueRepository);
+        $this->initDependencies($project, $githubApi, $issueRepository, $pullRequestRepository);
 
         $this->setProject($project);
         $this->aggregate($options);
@@ -54,7 +57,8 @@ class IssueAggregatorSpec extends ObjectBehavior
     protected function initDependencies(
         ProjectInterface $project,
         GithubApiInterface $githubApi,
-        IssueRepository $issueRepository
+        IssueRepository $issueRepository,
+        PullRequestRepository $pullRequestRepository
     ) {
         $project
             ->getId()
@@ -94,6 +98,10 @@ class IssueAggregatorSpec extends ObjectBehavior
         $issueRepository
             ->findOneBy(Argument::type('array'))
             ->willReturn(new Issue());
+
+        $pullRequestRepository
+            ->findOneBy(Argument::type('array'))
+            ->willReturn(new PullRequest());
 
         $issueRepository
             ->persist(Argument::type(Issue::class))

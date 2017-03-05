@@ -131,11 +131,6 @@ class GithubApi implements GithubApiInterface
         while ($items = $this->getIssuesByPage($repositoryPath, $since, $page)) {
 
             foreach ($items as $item) {
-
-                if (isset($item['pull_request'])) {
-                    continue;
-                }
-
                 yield Issue::createFromResponseData($item);
             }
 

@@ -1,6 +1,12 @@
 TODO
 ==============
 
+Extend iisue agg
+1. Run all from beginning
+2. Fix behat scenarios
+3.
+
+
 ### Next steps:
 1. Set perPage for every API
 1. Move github model classes to Api/Github

@@ -4,9 +4,12 @@ namespace Aa\ATrends\Aggregator;
 
 use Aa\ATrends\Aggregator\Options\OptionsInterface;
 use Aa\ATrends\Api\Github\GithubApiInterface;
+use Aa\ATrends\Api\Github\Model\Issue as ApiIssue;
 use Aa\ATrends\Entity\Issue;
+use Aa\ATrends\Entity\PullRequest;
 use Aa\ATrends\Progress\ProgressNotifierAwareTrait;
 use Aa\ATrends\Repository\IssueRepository;
+use Aa\ATrends\Repository\PullRequestRepository;
 use DateTimeInterface;
 
 class IssueAggregator implements ProjectAwareAggregatorInterface
@@ -17,21 +20,29 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      * @var GithubApiInterface
      */
     private $githubApi;
+
     /**
      * @var IssueRepository
      */
-    private $repository;
+    private $issueRepository;
+
+    /**
+     * @var PullRequestRepository
+     */
+    private $pullRequestRepository;
 
     /**
      * Constructor.
      *
-     * @param GithubApiInterface $githubApi
-     * @param IssueRepository $repository
+     * @param GithubApiInterface    $githubApi
+     * @param IssueRepository       $issueRepository
+     * @param PullRequestRepository $pullRequestRepository
      */
-    public function __construct(GithubApiInterface $githubApi, IssueRepository $repository)
+    public function __construct(GithubApiInterface $githubApi, IssueRepository $issueRepository, PullRequestRepository $pullRequestRepository)
     {
         $this->githubApi = $githubApi;
-        $this->repository = $repository;
+        $this->issueRepository = $issueRepository;
+        $this->pullRequestRepository = $pullRequestRepository;
     }
 
     /**
@@ -39,14 +50,17 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     public function aggregate(OptionsInterface $options)
     {
+        // @todo: which date to choose? min from 2 tables?
         $sinceDate = $this->getSinceDate($this->project->getId());
 
         foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
 
-            $issue = $this->repository->findOneBy(['githubId' => $apiIssue->getId()]);
-            if (null === $issue) {
-                $issue = new Issue();
+            if ($apiIssue->isPullRequest()) {
+                $issue = $this->findOrCreatePullRequest($apiIssue);
+            } else {
+                $issue = $this->findOrCreateIssue($apiIssue);
             }
+
 
             $issue
                 ->setProjectId($this->project->getId())
@@ -64,13 +78,13 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
                 ->setLabels($apiIssue->getLabels())
             ;
 
-            $this->repository->persist($issue);
+            $this->issueRepository->persist($issue);
 
             $this->progressNotifier->advance();
         }
 
         $this->progressNotifier->setMessage('Flushing...');
-        $this->repository->flush();
+        $this->issueRepository->flush();
     }
 
     /**
@@ -80,9 +94,45 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     private function getSinceDate($projectId)
     {
-        $lastCommitDate = $this->repository->getLastCreatedAt($projectId);
+        $lastCommitDate = $this->issueRepository->getLastCreatedAt($projectId);
         $sinceDate = $lastCommitDate->modify('+1 sec');
 
         return $sinceDate;
+    }
+
+    /**
+     * @param ApiIssue $apiIssue
+     *
+     * @return Issue
+     */
+    private function findOrCreateIssue(ApiIssue $apiIssue)
+    {
+        $issue = $this->issueRepository->findOneBy(['githubId' => $apiIssue->getId()]);
+        if (null === $issue) {
+            $issue = new Issue();
+        }
+
+        return $issue;
+    }
+
+    /**
+     * @param ApiIssue $apiIssue
+     *
+     * @return PullRequest
+     */
+    private function findOrCreatePullRequest(ApiIssue $apiIssue)
+    {
+        $pullRequest = $this->pullRequestRepository->findOneBy(['githubId' => $apiIssue->getId()]);
+        if (null === $pullRequest) {
+            $pullRequest = new PullRequest();
+            $pullRequest
+                ->setBaseRef('')
+                ->setMergeSha('')
+                ->setHeadSha('')
+                ->setBaseSha('')
+            ;
+        }
+
+        return $pullRequest;
     }
 }

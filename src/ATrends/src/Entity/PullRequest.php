@@ -131,6 +131,13 @@ class PullRequest
     /**
      * @var array
      *
+     * @ORM\Column(name="labels", type="simple_array", nullable=true)
+     */
+    private $labels = [];
+
+    /**
+     * @var array
+     *
      * @ORM\Column(name="issue_numbers", type="simple_array", nullable=true)
      */
     private $issueNumbers = [];
@@ -504,6 +511,26 @@ class PullRequest
     public function getBaseRef()
     {
         return $this->baseRef;
+    }
+
+    /**
+     * @param array $labels
+     *
+     * @return $this
+     */
+    public function setLabels($labels)
+    {
+        $this->labels = $labels;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLabels()
+    {
+        return $this->labels;
     }
 
     /**

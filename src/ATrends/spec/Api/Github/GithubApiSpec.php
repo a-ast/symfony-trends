@@ -156,34 +156,6 @@ class GithubApiSpec extends ObjectBehavior
         $this->getIssues('valinor/repo')->shouldBeCollectionOf(Issue::class, 1);
     }
 
-    function it_should_fetch_issues_but_ignore_pull_requests(IssueApi $issueApi)
-    {
-        $responseData = [
-            'id' => 100,
-            'number' => 200,
-            'state' => 'closed',
-            'title' => '[Ring] I will take the Ring...',
-            'user' => [
-                'id' => 200,
-            ],
-            'body' => '...though I do not know the way.',
-            'created_at' => '2010-01-01T00:00:00Z',
-            'updated_at' => '2010-01-02T00:00:00Z',
-            'closed_at' => '2010-01-03T00:00:00Z',
-            'labels' => [
-                ['id' => 1, 'name' => 'Bug'],
-                ['id' => 2, 'name' => 'Feature'],
-            ],
-            'pull_request' => []
-        ];
-
-        $issueApi
-            ->all('valinor', 'repo', Argument::type('array'))
-            ->willReturn([$responseData], []);
-
-        $this->getIssues('valinor/repo')->shouldHaveCount(0);
-    }
-
     public function getMatchers()
     {
         return [

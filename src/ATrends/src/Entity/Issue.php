@@ -99,7 +99,6 @@ class Issue
      */
     private $labels = [];
 
-
     /**
      * Get id
      *

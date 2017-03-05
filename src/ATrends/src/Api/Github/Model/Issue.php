@@ -59,6 +59,11 @@ class Issue
     private $labels;
 
     /**
+     * @var bool
+     */
+    private $isPullRequest;
+
+    /**
      * Constructor.
      */
     private function __construct()
@@ -96,10 +101,6 @@ class Issue
      */
     public static function createFromResponseData(array $data)
     {
-        if (isset($data['pull_request'])) {
-            throw new RuntimeException('Response must not contain pull request data.');
-        }
-
         $issue = new Issue();
 
         $issue->id = (int) $data['id'];
@@ -114,6 +115,7 @@ class Issue
         $issue->closedAt = isset($data['closed_at']) ? new DateTimeImmutable($data['closed_at']) : null;
 
         $issue->labels = array_column($data['labels'], 'name');
+        $issue->isPullRequest = isset($data['pull_request']);
 
         return $issue;
     }
@@ -196,5 +198,13 @@ class Issue
     public function getLabels()
     {
         return $this->labels;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPullRequest()
+    {
+        return $this->isPullRequest;
     }
 }
