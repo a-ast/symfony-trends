@@ -413,6 +413,8 @@ $$ LANGUAGE plpgsql;
 -- Parameters:
 -- * v_project_id
 -- * v_state
+-- * v_year
+-- * v_min_count
 --------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_issue_labels(int, text, int, int);
 CREATE FUNCTION fn_issue_labels(v_project_id int, v_state text, v_year int, v_min_count int)
