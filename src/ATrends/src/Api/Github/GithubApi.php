@@ -12,6 +12,7 @@ use Iterator;
 
 class GithubApi implements GithubApiInterface
 {
+    const MAX_ITEMS_PER_PAGE = 100;
     /**
      * @var Client
      */
@@ -113,7 +114,7 @@ class GithubApi implements GithubApiInterface
      */
     private function getPullRequestsByPage($repositoryPath, $page = 1)
     {
-        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc'];
+        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc', 'per_page' => self::MAX_ITEMS_PER_PAGE];
 
         return $this->client->pullRequests()->all(
             $this->getOwner($repositoryPath),
@@ -147,10 +148,12 @@ class GithubApi implements GithubApiInterface
      */
     private function getIssuesByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
     {
-        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc'];
+        $options = ['page' => $page, 'state' => 'all', 'direction' => 'asc', 'per_page' => self::MAX_ITEMS_PER_PAGE];
         $options = $this->addSinceOption($options, $since);
 
-        return $this->client->issues()->all($this->getOwner($repositoryPath), $this->getRepo($repositoryPath),
+        return $this->client->issues()->all(
+            $this->getOwner($repositoryPath),
+            $this->getRepo($repositoryPath),
             $options);
     }
 
