@@ -51,7 +51,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
     public function aggregate(OptionsInterface $options)
     {
         // @todo: which date to choose? min from 2 tables?
-        $sinceDate = null; $this->getSinceDate($this->project->getId());
+        $sinceDate = $this->getSinceDate($this->project->getId());
 
         foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
 
@@ -107,7 +107,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     private function findOrCreateIssue(ApiIssue $apiIssue)
     {
-        $issue = $this->issueRepository->findOneBy(['number' => $apiIssue->getNumber(), 'projectId' => $this->getProject()->getId()]);
+        $issue = $this->issueRepository->findOneBy(['githubId' => $apiIssue->getId()]);
         if (null === $issue) {
             $issue = new Issue();
             $issue->setGithubId($apiIssue->getId());

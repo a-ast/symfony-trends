@@ -50,9 +50,7 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     {
         foreach ($this->githubApi->getPullRequests($this->project->getGithubPath()) as $apiPullRequest) {
 
-            // @todo: find by number
-            throw new Exception('find by number');
-            $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
+            $pullRequest = $this->repository->findOneBy(['number' => $apiPullRequest->getNumber(), 'projectId' => $this->getProject()->getId()]);
             if (null === $pullRequest) {
                 $pullRequest = new EntityPullRequest();
             }

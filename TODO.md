@@ -2,13 +2,18 @@ TODO
 ==============
 
 Extend iisue agg
+* Problem: PR with 0 id
+1. change uniquenes
+2. set indexes
+3/ Change API page number
 * Problem: id of issue and pr in different apis dont match. It must be found by number!!
 1. Run all from beginning
-2. Fix behat scenarios
+2.
 3.
 
 
 ### Next steps:
+1. Fix behat scenarios for issues and pull-requests
 1. Set perPage for every API
 1. Move github model classes to Api/Github
 1. Implement progress and reporting in all aggregators
