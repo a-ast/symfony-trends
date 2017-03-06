@@ -51,7 +51,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
     public function aggregate(OptionsInterface $options)
     {
         // @todo: which date to choose? min from 2 tables?
-        $sinceDate = $this->getSinceDate($this->project->getId());
+        $sinceDate = null; $this->getSinceDate($this->project->getId());
 
         foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
 
@@ -61,10 +61,10 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
                 $issue = $this->findOrCreateIssue($apiIssue);
             }
 
-
             $issue
                 ->setProjectId($this->project->getId())
-                ->setGithubId($apiIssue->getId())
+                // @todo: does it make sense to set githubid which is wrong???
+                //->setGithubId($apiIssue->getId())
                 ->setNumber($apiIssue->getNumber())
                 ->setState($apiIssue->getState())
                 ->setGithubUserId($apiIssue->getUserId())
@@ -107,9 +107,10 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     private function findOrCreateIssue(ApiIssue $apiIssue)
     {
-        $issue = $this->issueRepository->findOneBy(['githubId' => $apiIssue->getId()]);
+        $issue = $this->issueRepository->findOneBy(['number' => $apiIssue->getNumber(), 'projectId' => $this->getProject()->getId()]);
         if (null === $issue) {
             $issue = new Issue();
+            $issue->setGithubId($apiIssue->getId());
         }
 
         return $issue;
@@ -122,10 +123,11 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     private function findOrCreatePullRequest(ApiIssue $apiIssue)
     {
-        $pullRequest = $this->pullRequestRepository->findOneBy(['githubId' => $apiIssue->getId()]);
+        $pullRequest = $this->pullRequestRepository->findOneBy(['number' => $apiIssue->getNumber(), 'projectId' => $this->getProject()->getId()]);
         if (null === $pullRequest) {
             $pullRequest = new PullRequest();
             $pullRequest
+                ->setGithubId(0)
                 ->setBaseRef('')
                 ->setMergeSha('')
                 ->setHeadSha('')

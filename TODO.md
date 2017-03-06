@@ -2,6 +2,7 @@ TODO
 ==============
 
 Extend iisue agg
+* Problem: id of issue and pr in different apis dont match. It must be found by number!!
 1. Run all from beginning
 2. Fix behat scenarios
 3.

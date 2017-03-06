@@ -8,6 +8,7 @@ use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Entity\PullRequest as EntityPullRequest;
 use Aa\ATrends\Repository\PullRequestRepository;
 use DateTimeInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class PullRequestAggregator implements ProjectAwareAggregatorInterface
 {
@@ -49,6 +50,8 @@ class PullRequestAggregator implements ProjectAwareAggregatorInterface
     {
         foreach ($this->githubApi->getPullRequests($this->project->getGithubPath()) as $apiPullRequest) {
 
+            // @todo: find by number
+            throw new Exception('find by number');
             $pullRequest = $this->repository->findOneBy(['githubId' => $apiPullRequest->getId()]);
             if (null === $pullRequest) {
                 $pullRequest = new EntityPullRequest();
