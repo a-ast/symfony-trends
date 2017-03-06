@@ -9,7 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PullRequest
  *
- * @ORM\Table(name="pull_request")
+ * @ORM\Table(
+ *      name="pull_request",
+ *      indexes={
+ *          @ORM\Index(name="pull_request_github_id_idx", columns={"github_id"}),
+ *          @ORM\Index(name="pull_request_number_idx", columns={"number"})
+ *      }
+ * )
  * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\PullRequestRepository")
  */
 class PullRequest
@@ -33,7 +39,7 @@ class PullRequest
     /**
      * @var int
      *
-     * @ORM\Column(name="github_id", type="integer", unique=true)
+     * @ORM\Column(name="github_id", type="integer")
      */
     private $githubId;
 

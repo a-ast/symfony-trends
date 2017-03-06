@@ -8,7 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Issue
  *
- * @ORM\Table(name="issue")
+ * @ORM\Table(name="issue",
+ *      indexes={
+ *          @ORM\Index(name="issue_number_idx", columns={"number"})
+ *      }
+ * )
+ *
  * @ORM\Entity(repositoryClass="Aa\ATrends\Repository\IssueRepository")
  */
 class Issue
