@@ -454,6 +454,17 @@ parameters:
                     criteria: { project_id: 2, date_format: 'YYYY' }
                     dimensions: { name: date, value: avg_close_time }
 
+        pull_request_with_di_label_per_date:
+            title: 'Symfony code pull request count with the "Dependency Injection" label per month'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: Pull request count
+                    color: '#4cacdb'
+                    data_source: fn_pull_request_labels
+                    criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'DependencyInjection' }
+                    dimensions: { date: date, value: pull_request_count }
+
     trends-layout:
         index:
             title: 'Main trends'
@@ -525,3 +536,4 @@ parameters:
                 - { chart: issues_symfony_per_label_all }
                 - { chart: issues_symfony_per_label_all_2017 }
                 - { chart: contributors_symfony_with_pr_and_issue_count }
+                - { chart: pull_request_with_di_label_per_date }

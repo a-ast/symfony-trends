@@ -7,11 +7,11 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 97
+                    "value": 104
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 84
+                    "value": 89
                 },
                 {
                     "name": "Unconfirmed",
@@ -19,27 +19,27 @@
                 },
                 {
                     "name": "Feature",
-                    "value": 44
+                    "value": 45
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 21
+                    "value": 22
                 },
                 {
                     "name": "Form",
-                    "value": 18
+                    "value": 21
                 },
                 {
                     "name": "Console",
-                    "value": 16
-                },
-                {
-                    "name": "Security",
-                    "value": 12
+                    "value": 19
                 },
                 {
                     "name": "Status: Waiting feedback",
-                    "value": 12
+                    "value": 15
+                },
+                {
+                    "name": "Security",
+                    "value": 14
                 },
                 {
                     "name": "FrameworkBundle",
@@ -55,7 +55,7 @@
                 },
                 {
                     "name": "Status: Reviewed",
-                    "value": 8
+                    "value": 9
                 },
                 {
                     "name": "Process",
@@ -82,11 +82,11 @@
                     "value": 5
                 },
                 {
-                    "name": "Debug",
+                    "name": "Translator",
                     "value": 5
                 },
                 {
-                    "name": "Translator",
+                    "name": "Debug",
                     "value": 5
                 },
                 {
@@ -98,15 +98,15 @@
                     "value": 5
                 },
                 {
-                    "name": "ExpressionLanguage",
+                    "name": "Cache",
+                    "value": 5
+                },
+                {
+                    "name": "PropertyAccess",
                     "value": 4
                 },
                 {
                     "name": "BrowserKit",
-                    "value": 4
-                },
-                {
-                    "name": "TwigBundle",
                     "value": 4
                 },
                 {
@@ -122,8 +122,16 @@
                     "value": 4
                 },
                 {
-                    "name": "Cache",
+                    "name": "ExpressionLanguage",
                     "value": 4
+                },
+                {
+                    "name": "TwigBundle",
+                    "value": 4
+                },
+                {
+                    "name": "Intl",
+                    "value": 3
                 },
                 {
                     "name": "DX",
@@ -135,14 +143,6 @@
                 },
                 {
                     "name": "Ldap",
-                    "value": 3
-                },
-                {
-                    "name": "Intl",
-                    "value": 3
-                },
-                {
-                    "name": "PropertyAccess",
                     "value": 3
                 }
             ],

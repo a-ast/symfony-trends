@@ -11,15 +11,15 @@
                 },
                 {
                     "name": "Bug",
-                    "value": 185
+                    "value": 177
                 },
                 {
                     "name": "Form",
-                    "value": 159
+                    "value": 157
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 147
+                    "value": 143
                 },
                 {
                     "name": "Enhancement",
@@ -27,15 +27,15 @@
                 },
                 {
                     "name": "Security",
-                    "value": 76
-                },
-                {
-                    "name": "Unconfirmed",
-                    "value": 59
+                    "value": 77
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 55
+                    "value": 54
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 48
                 },
                 {
                     "name": "Validator",
@@ -46,19 +46,11 @@
                     "value": 32
                 },
                 {
-                    "name": "Status: Reviewed",
-                    "value": 23
-                },
-                {
-                    "name": "FrameworkBundle",
-                    "value": 22
-                },
-                {
-                    "name": "DependencyInjection",
+                    "name": "Translator",
                     "value": 21
                 },
                 {
-                    "name": "Translator",
+                    "name": "DependencyInjection",
                     "value": 21
                 },
                 {
@@ -66,7 +58,11 @@
                     "value": 21
                 },
                 {
-                    "name": "Routing",
+                    "name": "FrameworkBundle",
+                    "value": 20
+                },
+                {
+                    "name": "Status: Reviewed",
                     "value": 20
                 }
             ],

@@ -471,6 +471,46 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
+--------------------------------------------------------
+-- Pull request labels
+--
+-- Parameters:
+-- * v_project_id
+-- * v_state
+-- * v_year
+-- * v_min_count
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_pull_request_labels(int, text, text, int, int, text);
+CREATE FUNCTION fn_pull_request_labels(v_project_id int, v_state text, v_date_interval_format text, v_year int, v_min_count int, v_label text)
+  RETURNS table(date text, label text, project_id int, pull_request_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+        to_char(labels.created_at, v_date_interval_format) AS date,
+        labels.label,
+        labels.project_id,
+        count(*) as pull_request_count
+    FROM
+    (
+        SELECT
+            i.id, i.project_id, i.state, i.created_at, unnest(string_to_array(i.labels, ',')) AS label
+        FROM pull_request i
+    ) labels
+    WHERE
+        (v_project_id IS NULL OR v_project_id = labels.project_id)
+        AND (v_state IS NULL OR v_state = labels.state)
+        AND (v_label IS NULL OR v_label = labels.label)
+        AND (v_year IS NULL OR v_year = date_part('year', labels.created_at))
+    GROUP BY date, labels.label, labels.project_id
+    HAVING count(*) >= COALESCE(v_min_count, 1)
+    ORDER BY date, pull_request_count DESC;
+
+END;
+$$ LANGUAGE plpgsql;
+
+
 /*
 
 PRs made by own issues

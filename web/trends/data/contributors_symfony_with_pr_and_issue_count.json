@@ -13,17 +13,17 @@
             "data": [
                 {
                     "name": "Nicolas Grekas",
-                    "x": 927,
+                    "x": 935,
                     "y": 42
                 },
                 {
                     "name": "Fabien Potencier",
-                    "x": 675,
+                    "x": 678,
                     "y": 50
                 },
                 {
                     "name": "Christian Flothmann",
-                    "x": 528,
+                    "x": 537,
                     "y": 12
                 },
                 {
@@ -82,14 +82,14 @@
                     "y": 10
                 },
                 {
+                    "name": "Wouter J",
+                    "x": 149,
+                    "y": 48
+                },
+                {
                     "name": "Romain Neutron",
                     "x": 148,
                     "y": 19
-                },
-                {
-                    "name": "Wouter J",
-                    "x": 147,
-                    "y": 48
                 },
                 {
                     "name": "Hugo Hamon",
@@ -104,7 +104,7 @@
                 {
                     "name": "Gr\u00e9goire Pineau",
                     "x": 134,
-                    "y": 31
+                    "y": 32
                 },
                 {
                     "name": "Martin Haso\u0148",
@@ -117,14 +117,14 @@
                     "y": 33
                 },
                 {
-                    "name": "Javier Eguiluz",
-                    "x": 106,
-                    "y": 179
+                    "name": "Jules Pietri",
+                    "x": 108,
+                    "y": 9
                 },
                 {
-                    "name": "Jules Pietri",
-                    "x": 103,
-                    "y": 9
+                    "name": "Javier Eguiluz",
+                    "x": 108,
+                    "y": 179
                 },
                 {
                     "name": "Johannes",

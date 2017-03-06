@@ -15,14 +15,12 @@ Extend iisue agg
 ### Next steps:
 1. Fix behat scenarios for issues and pull-requests
 1. Set perPage for every API
-1. Move github model classes to Api/Github
 1. Implement progress and reporting in all aggregators
 1. Create PR to github-api: extend result pager with getResultCount
 1. Write to highcharts about a license.
 1. Think: sort api results by updated since given date to keep all updated
 1. Solve array issues using ArrayType (not ugly SimpleArray) for ATrends and PostgresArray for SymfonyTrends
 1. Correctly rename services (-> trends.*)
-1. Reimplement Issues aggregator to create pull requests (goal: having labels for PRs)
 1. Implement phpspec and behat scenarios.
 1. Implement AggregatorReport
 1. Implement PullRequestBodyProcessor and commit.is_maintenance using events.

@@ -7,27 +7,27 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 1135
+                    "value": 1142
                 },
                 {
                     "name": "Form",
-                    "value": 1123
+                    "value": 1126
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 589
+                    "value": 594
                 },
                 {
                     "name": "Feature",
-                    "value": 567
+                    "value": 568
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 438
+                    "value": 435
                 },
                 {
                     "name": "Enhancement",
-                    "value": 427
+                    "value": 428
                 },
                 {
                     "name": "Validator",
@@ -35,7 +35,7 @@
                 },
                 {
                     "name": "Security",
-                    "value": 363
+                    "value": 365
                 },
                 {
                     "name": "HttpFoundation",
@@ -43,11 +43,11 @@
                 },
                 {
                     "name": "Console",
-                    "value": 268
+                    "value": 271
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 229
+                    "value": 230
                 },
                 {
                     "name": "FrameworkBundle",
@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "Status: Reviewed",
-                    "value": 108
+                    "value": 109
                 }
             ],
             "name": "All issues"

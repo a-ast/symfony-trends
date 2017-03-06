@@ -7,23 +7,23 @@
             "data": [
                 {
                     "name": "Form",
-                    "value": 964
+                    "value": 969
                 },
                 {
                     "name": "Bug",
-                    "value": 950
+                    "value": 965
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 442
+                    "value": 451
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 379
+                    "value": 387
                 },
                 {
                     "name": "Feature",
-                    "value": 365
+                    "value": 366
                 },
                 {
                     "name": "Validator",
@@ -31,39 +31,39 @@
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 305
+                    "value": 306
                 },
                 {
                     "name": "Enhancement",
-                    "value": 288
+                    "value": 289
                 },
                 {
                     "name": "Security",
-                    "value": 287
+                    "value": 288
                 },
                 {
                     "name": "Console",
-                    "value": 236
+                    "value": 239
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 208
+                    "value": 209
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 183
+                    "value": 185
                 },
                 {
                     "name": "HttpKernel",
-                    "value": 179
+                    "value": 181
                 },
                 {
                     "name": "Routing",
-                    "value": 178
+                    "value": 179
                 },
                 {
                     "name": "Easy Pick",
-                    "value": 176
+                    "value": 177
                 },
                 {
                     "name": "Translator",
@@ -75,7 +75,7 @@
                 },
                 {
                     "name": "Process",
-                    "value": 116
+                    "value": 117
                 },
                 {
                     "name": "Doctrine",
@@ -87,7 +87,7 @@
                 },
                 {
                     "name": "DX",
-                    "value": 103
+                    "value": 104
                 }
             ],
             "name": "Closed issues"
