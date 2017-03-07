@@ -50,7 +50,7 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
      */
     public function aggregate(OptionsInterface $options)
     {
-        // @todo: which date to choose? min from 2 tables?
+        // @todo: which date to choose? min from 2 tables issiea and pull request?
         $sinceDate = $this->getSinceDate($this->project->getId());
 
         foreach ($this->githubApi->getIssues($this->project->getGithubPath(), $sinceDate) as $apiIssue) {
@@ -63,8 +63,6 @@ class IssueAggregator implements ProjectAwareAggregatorInterface
 
             $issue
                 ->setProjectId($this->project->getId())
-                // @todo: does it make sense to set githubid which is wrong???
-                //->setGithubId($apiIssue->getId())
                 ->setNumber($apiIssue->getNumber())
                 ->setState($apiIssue->getState())
                 ->setGithubUserId($apiIssue->getUserId())

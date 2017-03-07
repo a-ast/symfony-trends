@@ -90,6 +90,7 @@ class Issue
         $issue->updatedAt = isset($data['updatedAt']) ? new DateTimeImmutable($data['updatedAt']) : null;
         $issue->closedAt = isset($data['closedAt']) ? new DateTimeImmutable($data['closedAt']) : null;
         $issue->labels = isset($data['labels']) ? $data['labels'] : [];
+        $issue->isPullRequest = isset($data['pullRequest']);
 
         return $issue;
     }
