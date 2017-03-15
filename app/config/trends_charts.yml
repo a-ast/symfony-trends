@@ -482,6 +482,24 @@ parameters:
                     criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'Feature' }
                     dimensions: { date: date, value: pull_request_count }
 
+        pull_request_reviewed_vs_needs_review_per_date:
+            title: 'Symfony code pull requests labeled as Reviewed and Needs Review'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: 'Needs Review'
+                    color: '#4cacdb'
+                    data_source: fn_pull_request_labels
+                    criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'Status: Needs Review' }
+                    dimensions: { date: date, value: pull_request_count }
+                -
+                    title: 'Reviewed'
+                    color: '#20037c'
+                    data_source: fn_pull_request_labels
+                    criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'Status: Reviewed' }
+                    dimensions: { date: date, value: pull_request_count }
+
+
     trends-layout:
         index:
             title: 'Main trends'
@@ -556,3 +574,4 @@ parameters:
                 - { chart: contributors_symfony_with_pr_and_issue_count }
                 - { chart: pull_request_with_di_label_per_date }
                 - { chart: pull_request_bugs_vs_features_per_date }
+                - { chart: pull_request_reviewed_vs_needs_review_per_date }
