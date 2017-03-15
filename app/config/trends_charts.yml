@@ -465,6 +465,23 @@ parameters:
                     criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'DependencyInjection' }
                     dimensions: { date: date, value: pull_request_count }
 
+        pull_request_bugs_vs_features_per_date:
+            title: 'Symfony code pull requests labeled as bugs and features'
+            type: stairAreaDateTime
+            series:
+                -
+                    title: Bugs
+                    color: '#e81937'
+                    data_source: fn_pull_request_labels
+                    criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'Bug' }
+                    dimensions: { date: date, value: pull_request_count }
+                -
+                    title: Features
+                    color: '#20037c'
+                    data_source: fn_pull_request_labels
+                    criteria: { project_id: 1, state: null, date_format: 'YYYY-MM-01', year: null, min_count: null, 'label': 'Feature' }
+                    dimensions: { date: date, value: pull_request_count }
+
     trends-layout:
         index:
             title: 'Main trends'
@@ -494,6 +511,7 @@ parameters:
                 - { chart: pull_request_lifetime_symfony }
                 - { chart: pull_request_lifetime_symfony_docs }
                 - { chart: contributors_symfony_with_pr_and_issue_count }
+
 
         symfony:
             title: 'Symfony code'
@@ -537,3 +555,4 @@ parameters:
                 - { chart: issues_symfony_per_label_all_2017 }
                 - { chart: contributors_symfony_with_pr_and_issue_count }
                 - { chart: pull_request_with_di_label_per_date }
+                - { chart: pull_request_bugs_vs_features_per_date }
