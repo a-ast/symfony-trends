@@ -7,43 +7,47 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 202
+                    "value": 205
                 },
                 {
                     "name": "Bug",
-                    "value": 177
+                    "value": 185
                 },
                 {
                     "name": "Form",
-                    "value": 157
+                    "value": 156
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 143
+                    "value": 149
                 },
                 {
                     "name": "Enhancement",
-                    "value": 139
+                    "value": 137
                 },
                 {
                     "name": "Security",
-                    "value": 77
+                    "value": 78
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 54
+                    "value": 57
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 48
+                    "value": 49
                 },
                 {
                     "name": "Validator",
-                    "value": 47
+                    "value": 48
                 },
                 {
                     "name": "Console",
-                    "value": 32
+                    "value": 33
+                },
+                {
+                    "name": "Status: Reviewed",
+                    "value": 22
                 },
                 {
                     "name": "Translator",
@@ -54,7 +58,7 @@
                     "value": 21
                 },
                 {
-                    "name": "RFC",
+                    "name": "Routing",
                     "value": 21
                 },
                 {
@@ -62,7 +66,7 @@
                     "value": 20
                 },
                 {
-                    "name": "Status: Reviewed",
+                    "name": "RFC",
                     "value": 20
                 }
             ],

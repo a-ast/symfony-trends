@@ -1,0 +1,73 @@
+{
+    "options": {
+        "type": "column"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Michael COULLERET",
+                    "value": 4
+                },
+                {
+                    "name": "matthieu88160",
+                    "value": 3
+                },
+                {
+                    "name": "Piet Bijl",
+                    "value": 2
+                },
+                {
+                    "name": "ahmed lebbada",
+                    "value": 1
+                },
+                {
+                    "name": "Ahmed TAILOULOUTE",
+                    "value": 1
+                },
+                {
+                    "name": "Arnaud",
+                    "value": 1
+                },
+                {
+                    "name": "Attila Egyed",
+                    "value": 1
+                },
+                {
+                    "name": "Behram \u00c7ELEN",
+                    "value": 1
+                },
+                {
+                    "name": "Benjamin Porquet",
+                    "value": 1
+                },
+                {
+                    "name": "Catalin Minovici",
+                    "value": 1
+                },
+                {
+                    "name": "Cesare",
+                    "value": 1
+                },
+                {
+                    "name": "Chase Noel",
+                    "value": 1
+                },
+                {
+                    "name": "Christophe Poulette",
+                    "value": 1
+                },
+                {
+                    "name": "Dave Www",
+                    "value": 1
+                },
+                {
+                    "name": "Florian Rusch",
+                    "value": 1
+                }
+            ],
+            "name": "Commit count",
+            "color": "#7aba20"
+        }
+    ]
+}

@@ -7,7 +7,7 @@
             "data": [
                 {
                     "name": "Robin Chalas",
-                    "value": 97
+                    "value": 104
                 },
                 {
                     "name": "Par\u00e1da J\u00f3zsef",
@@ -27,6 +27,10 @@
                 },
                 {
                     "name": "Andrey Astakhov",
+                    "value": 3
+                },
+                {
+                    "name": "Arthur de Moulins",
                     "value": 3
                 },
                 {
@@ -59,10 +63,6 @@
                 },
                 {
                     "name": "Thomas Calvet",
-                    "value": 3
-                },
-                {
-                    "name": "Valentin Jonovs",
                     "value": 3
                 }
             ],

@@ -1,0 +1,43 @@
+{
+    "options": {
+        "type": "stairAreaDateTime"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "date": "2017-01-01",
+                    "value": 185
+                },
+                {
+                    "date": "2017-02-01",
+                    "value": 146
+                },
+                {
+                    "date": "2017-03-01",
+                    "value": 102
+                }
+            ],
+            "name": "All contributors",
+            "color": "#4cacdb"
+        },
+        {
+            "data": [
+                {
+                    "date": "2017-01-01",
+                    "value": 124
+                },
+                {
+                    "date": "2017-02-01",
+                    "value": 76
+                },
+                {
+                    "date": "2017-03-01",
+                    "value": 66
+                }
+            ],
+            "name": "Core team",
+            "color": "#323038"
+        }
+    ]
+}

@@ -24,14 +24,14 @@ parameters:
                     criteria: { year: null }
                     dimensions: { iso: iso, value: contributor_count }
 
-        contributors_per_country_symfony_2016:
-            title: 'Where Symfony contributors live and work in 2016'
+        contributors_per_country_symfony_2017:
+            title: 'Where Symfony contributors live and work in 2017'
             type: map
             series:
                 -
                     title: Contributor count
                     data_source: fn_contributor_countries
-                    criteria: { year: 2016 }
+                    criteria: { year: 2017 }
                     dimensions: { iso: iso, value: contributor_count }
 
         contributions_per_year:
@@ -139,40 +139,40 @@ parameters:
                     criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: null }
                     dimensions: { date: date, value: core_team_contribution_count }
 
-        contributions_per_month_symfony_2016:
-            title: 'Commit count to Symfony code per month in 2016'
+        contributions_per_month_symfony_2017:
+            title: 'Commit count to Symfony code per month in 2017'
             type: stairAreaDateTime
             series:
                 -
                     title: All contributors
                     color: '#4cacdb'
                     data_source: fn_contributions
-                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2016 }
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2017 }
                     dimensions: { date: date, value: contribution_count }
 
                 -
                     title: Core team
                     color: '#323038'
                     data_source: fn_contributions
-                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2016 }
+                    criteria:   { project_id: 1, date_format: 'YYYY-MM-01', year: 2017 }
                     dimensions: { date: date, value: core_team_contribution_count }
 
-        contributions_per_month_symfony_docs_2016:
-            title: 'Commit count to Symfony docs per month in 2016'
+        contributions_per_month_symfony_docs_2017:
+            title: 'Commit count to Symfony docs per month in 2017'
             type: stairAreaDateTime
             series:
                 -
                     title: All contributors
                     color: '#7aba20'
                     data_source: fn_contributions
-                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2016 }
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2017 }
                     dimensions: { date: date, value: contribution_count }
 
                 -
                     title: Core team
                     color: '#323038'
                     data_source: fn_contributions
-                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2016 }
+                    criteria:   { project_id: 2, date_format: 'YYYY-MM-01', year: 2017 }
                     dimensions: { date: date, value: core_team_contribution_count }
 
 
@@ -244,53 +244,53 @@ parameters:
                     criteria:   { project_id: 2 }
                     dimensions: { name: date, value: contributor_count }
 
-        # Top-15 contributors to Symfony code by commit counts in 2016
-        top_contributors_symfony_2016:
-            title: 'Top-15 contributors to Symfony code by commit counts in 2016'
+        # Top-15 contributors to Symfony code by commit counts in 2017
+        top_contributors_symfony_2017:
+            title: 'Top-15 contributors to Symfony code by commit counts in 2017'
             type: column
             series:
                 -
                     title: Commit count
                     color: '#4cacdb'
                     data_source: fn_contributor_contribution_counts
-                    criteria:   { project_id: 1, year: 2016 }
+                    criteria:   { project_id: 1, year: 2017 }
                     dimensions: { name: name, value: contribution_count }
                     limit: 15
 
-        top_contributors_symfony_docs_2016:
-            title: 'Top-15 contributors to Symfony docs by commit counts in 2016'
+        top_contributors_symfony_docs_2017:
+            title: 'Top-15 contributors to Symfony docs by commit counts in 2017'
             type: column
             series:
                 -
                     title: Commit count
                     color: '#7aba20'
                     data_source: fn_contributor_contribution_counts
-                    criteria:   { project_id: 2, year: 2016 }
+                    criteria:   { project_id: 2, year: 2017 }
                     dimensions: { name: name, value: contribution_count }
                     limit: 15
 
 
-        top_new_contributors_symfony_2016:
-            title: 'Top-15 new contributors to Symfony code by commit counts in 2016'
+        top_new_contributors_symfony_2017:
+            title: 'Top-15 new contributors to Symfony code by commit counts in 2017'
             type: column
             series:
                 -
                     title: Commit count
                     color: '#4cacdb'
                     data_source: fn_new_contributor_contribution_counts
-                    criteria:   { project_id: 1, year: 2016 }
+                    criteria:   { project_id: 1, year: 2017 }
                     dimensions: { name: name, value: contribution_count }
                     limit: 15
 
-        top_new_contributors_symfony_docs_2016:
-            title: 'Top-15 new contributors to Symfony docs by commit counts in 2016'
+        top_new_contributors_symfony_docs_2017:
+            title: 'Top-15 new contributors to Symfony docs by commit counts in 2017'
             type: column
             series:
                 -
                     title: Commit count
                     color: '#7aba20'
                     data_source: fn_new_contributor_contribution_counts
-                    criteria:   { project_id: 2, year: 2016 }
+                    criteria:   { project_id: 2, year: 2017 }
                     limit: 15
                     dimensions: { name: name, value: contribution_count }
 
@@ -547,16 +547,16 @@ parameters:
                 - { chart: maintenance_commits_per_year_symfony_docs }
                 - { chart: contributor_count_per_year_symfony_docs }
 
-        symfony-2016:
-            title: 'Symfony in 2016'
+        symfony-2017:
+            title: 'Symfony in 2017'
             charts:
-                - { chart: contributors_per_country_symfony_2016 }
-                - { chart: contributions_per_month_symfony_2016 }
-                - { chart: contributions_per_month_symfony_docs_2016 }
-                - { chart: top_contributors_symfony_2016 }
-                - { chart: top_contributors_symfony_docs_2016 }
-                - { chart: top_new_contributors_symfony_2016 }
-                - { chart: top_new_contributors_symfony_docs_2016 }
+                - { chart: contributors_per_country_symfony_2017 }
+                - { chart: contributions_per_month_symfony_2017 }
+                - { chart: contributions_per_month_symfony_docs_2017 }
+                - { chart: top_contributors_symfony_2017 }
+                - { chart: top_contributors_symfony_docs_2017 }
+                - { chart: top_new_contributors_symfony_2017 }
+                - { chart: top_new_contributors_symfony_docs_2017 }
 
         issues-and-pull-requests:
             title: 'Issues and PRs'

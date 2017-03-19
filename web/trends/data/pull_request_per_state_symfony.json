@@ -7,15 +7,15 @@
             "data": [
                 {
                     "name": "open",
-                    "value": 207
+                    "value": 231
                 },
                 {
                     "name": "merged",
-                    "value": 7566
+                    "value": 7652
                 },
                 {
                     "name": "closed",
-                    "value": 5976
+                    "value": 5959
                 }
             ],
             "name": "PR count"

@@ -31,11 +31,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 12
+                    "value": 13
                 },
                 {
                     "name": "2017",
-                    "value": 8
+                    "value": 7
                 }
             ],
             "name": "Avg merge time in days"

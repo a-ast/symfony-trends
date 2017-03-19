@@ -1,0 +1,73 @@
+{
+    "options": {
+        "type": "column"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Gabriel Ostroluck\u00fd",
+                    "value": 4
+                },
+                {
+                    "name": "Alexey Pyltsyn",
+                    "value": 1
+                },
+                {
+                    "name": "Angel Koilov (po_taka)",
+                    "value": 1
+                },
+                {
+                    "name": "Bertalan Attila",
+                    "value": 1
+                },
+                {
+                    "name": "ChS",
+                    "value": 1
+                },
+                {
+                    "name": "Dave Www",
+                    "value": 1
+                },
+                {
+                    "name": "Dmitry",
+                    "value": 1
+                },
+                {
+                    "name": "Frank de Jonge",
+                    "value": 1
+                },
+                {
+                    "name": "GuillaumeVerdon",
+                    "value": 1
+                },
+                {
+                    "name": "izzyp",
+                    "value": 1
+                },
+                {
+                    "name": "Jean pasqualini",
+                    "value": 1
+                },
+                {
+                    "name": "Jules Lamur",
+                    "value": 1
+                },
+                {
+                    "name": "Kevin",
+                    "value": 1
+                },
+                {
+                    "name": "Markus Fasselt",
+                    "value": 1
+                },
+                {
+                    "name": "Matt Fields",
+                    "value": 1
+                }
+            ],
+            "name": "Commit count",
+            "color": "#4cacdb"
+        }
+    ]
+}

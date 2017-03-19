@@ -1,0 +1,108 @@
+{
+    "options": {
+        "type": "map"
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "iso": "CH",
+                    "value": 3
+                },
+                {
+                    "iso": "IT",
+                    "value": 2
+                },
+                {
+                    "iso": "SK",
+                    "value": 1
+                },
+                {
+                    "iso": "CA",
+                    "value": 1
+                },
+                {
+                    "iso": "FR",
+                    "value": 35
+                },
+                {
+                    "iso": "ZA",
+                    "value": 1
+                },
+                {
+                    "iso": "CY",
+                    "value": 1
+                },
+                {
+                    "iso": "DE",
+                    "value": 10
+                },
+                {
+                    "iso": "JP",
+                    "value": 1
+                },
+                {
+                    "iso": "ES",
+                    "value": 3
+                },
+                {
+                    "iso": "GB",
+                    "value": 7
+                },
+                {
+                    "iso": "UA",
+                    "value": 1
+                },
+                {
+                    "iso": "CZ",
+                    "value": 2
+                },
+                {
+                    "iso": "TR",
+                    "value": 1
+                },
+                {
+                    "iso": "CU",
+                    "value": 1
+                },
+                {
+                    "iso": "MA",
+                    "value": 1
+                },
+                {
+                    "iso": "BE",
+                    "value": 2
+                },
+                {
+                    "iso": "NL",
+                    "value": 9
+                },
+                {
+                    "iso": "RU",
+                    "value": 3
+                },
+                {
+                    "iso": "BG",
+                    "value": 1
+                },
+                {
+                    "iso": "US",
+                    "value": 4
+                },
+                {
+                    "iso": "PL",
+                    "value": 3
+                },
+                {
+                    "iso": "HU",
+                    "value": 1
+                },
+                {
+                    "iso": "SE",
+                    "value": 1
+                }
+            ],
+            "name": "Contributor count"
+        }
+    ]
+}
