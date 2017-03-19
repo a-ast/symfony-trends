@@ -1,6 +1,12 @@
 TODO
 ==============
 
+### Pull request review ggregator
+1. Chunked Repository (Batch) Iterator to iteratte all pull requests
+2. Fetaures for aggregator
+3. Agregator API
+
+
 ### Next steps:
 1. Set perPage for every API
 1. Implement progress and reporting in all aggregators

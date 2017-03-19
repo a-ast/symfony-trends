@@ -75,3 +75,14 @@ services:
             - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'pull-requests'}
+
+    aggregator.github_pull_request_review:
+        class: Aa\ATrends\Aggregator\PullRequestReviewAggregator
+        lazy: true
+        arguments:
+            - '@api.github'
+            - '@repository.pull_request'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
+        tags:
+            - { name: aggregator, alias: 'pull-request-reviews'}
