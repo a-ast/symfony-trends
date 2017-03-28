@@ -4,6 +4,7 @@ namespace Aa\ATrends\Api\Github;
 use Aa\ATrends\Api\Github\Model\Commit;
 use Aa\ATrends\Api\Github\Model\Issue;
 use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\PullRequestReview;
 use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 
@@ -38,4 +39,12 @@ interface GithubApiInterface
      * @return Issue[]|\Iterator
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null);
+
+    /**
+     * @param string $repositoryPath
+     * @param int $pullRequestId
+     *
+     * @return PullRequestReview[]|\Iterator
+     */
+    public function getPullRequestReviews($repositoryPath, $pullRequestId);
 }

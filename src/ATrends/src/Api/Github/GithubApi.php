@@ -158,6 +158,18 @@ class GithubApi implements GithubApiInterface
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getPullRequestReviews($repositoryPath, $pullRequestId)
+    {
+        return $this->client->pullRequests()->reviews()->all(
+            $this->getOwner($repositoryPath),
+            $this->getRepo($repositoryPath),
+            $pullRequestId
+        );
+    }
+
+    /**
      * @param array $options
      * @param DateTimeInterface $since
      * @return mixed
