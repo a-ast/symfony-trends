@@ -44,6 +44,8 @@ class PullRequestReviewAggregator implements ProjectAwareAggregatorInterface
         $count = 0;
 
         foreach ($this->repository->findAllPullRequests($this->getProject()->getId()) as $pullRequest) {
+            //$this->githubApi->getPullRequests()
+
             $count++;
         }
 
