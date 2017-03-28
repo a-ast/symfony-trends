@@ -1228,16 +1228,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "a86aa7afb3bcb06703ecf9e917df61ad341cd991"
+                "reference": "0feb0760f1f04197ccfd02d377eddb0a31f26d5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/a86aa7afb3bcb06703ecf9e917df61ad341cd991",
-                "reference": "a86aa7afb3bcb06703ecf9e917df61ad341cd991",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/0feb0760f1f04197ccfd02d377eddb0a31f26d5e",
+                "reference": "0feb0760f1f04197ccfd02d377eddb0a31f26d5e",
                 "shasum": ""
             },
             "require": {
@@ -1259,7 +1259,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -1290,7 +1290,7 @@
                 "gist",
                 "github"
             ],
-            "time": "2016-12-13T13:09:53+00:00"
+            "time": "2017-03-23T08:15:40+00:00"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -4122,7 +4122,7 @@
             ],
             "description": "Component for calculating difference of arrays",
             "homepage": "https://github.com/AAstakhov/array-diff",
-            "time": "2017-02-05T16:34:46+00:00"
+            "time": "2017-02-05 16:34:46"
         },
         {
             "name": "behat/behat",
