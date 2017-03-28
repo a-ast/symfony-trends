@@ -2,9 +2,11 @@ TODO
 ==============
 
 ### Pull request review ggregator
-1. Chunked Repository (Batch) Iterator to iteratte all pull requests
+1!. Chunked Repository (Batch) Iterator to iterate all pull requests
 2. Fetaures for aggregator
+2. API Model
 3. Agregator API
+4. Entity
 
 
 ### Next steps:
