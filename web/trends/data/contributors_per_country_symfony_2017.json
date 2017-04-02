@@ -35,7 +35,7 @@
                 },
                 {
                     "iso": "DE",
-                    "value": 10
+                    "value": 11
                 },
                 {
                     "iso": "JP",
@@ -51,7 +51,7 @@
                 },
                 {
                     "iso": "UA",
-                    "value": 1
+                    "value": 2
                 },
                 {
                     "iso": "CZ",
@@ -91,7 +91,7 @@
                 },
                 {
                     "iso": "PL",
-                    "value": 3
+                    "value": 4
                 },
                 {
                     "iso": "HU",

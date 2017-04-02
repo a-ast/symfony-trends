@@ -7,71 +7,83 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 127
+                    "value": 150
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 109
+                    "value": 129
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 56
+                    "value": 64
                 },
                 {
                     "name": "Feature",
-                    "value": 50
-                },
-                {
-                    "name": "Form",
-                    "value": 26
+                    "value": 62
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 26
+                    "value": 35
+                },
+                {
+                    "name": "Form",
+                    "value": 33
                 },
                 {
                     "name": "Console",
-                    "value": 22
-                },
-                {
-                    "name": "Status: Waiting feedback",
-                    "value": 18
+                    "value": 23
                 },
                 {
                     "name": "Security",
-                    "value": 18
+                    "value": 20
                 },
                 {
-                    "name": "Status: Reviewed",
-                    "value": 12
-                },
-                {
-                    "name": "Validator",
-                    "value": 12
+                    "name": "Status: Waiting feedback",
+                    "value": 20
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 11
+                    "value": 15
+                },
+                {
+                    "name": "Validator",
+                    "value": 14
+                },
+                {
+                    "name": "Status: Reviewed",
+                    "value": 14
+                },
+                {
+                    "name": "RFC",
+                    "value": 12
                 },
                 {
                     "name": "HttpFoundation",
                     "value": 11
                 },
                 {
-                    "name": "RFC",
+                    "name": "Routing",
                     "value": 11
                 },
                 {
-                    "name": "Routing",
+                    "name": "Cache",
                     "value": 9
+                },
+                {
+                    "name": "Serializer",
+                    "value": 9
+                },
+                {
+                    "name": "WebProfilerBundle",
+                    "value": 9
+                },
+                {
+                    "name": "HttpKernel",
+                    "value": 8
                 },
                 {
                     "name": "Workflow",
                     "value": 8
-                },
-                {
-                    "name": "HttpKernel",
-                    "value": 7
                 },
                 {
                     "name": "Process",
@@ -82,19 +94,7 @@
                     "value": 7
                 },
                 {
-                    "name": "Cache",
-                    "value": 7
-                },
-                {
-                    "name": "Serializer",
-                    "value": 7
-                },
-                {
-                    "name": "WebProfilerBundle",
-                    "value": 6
-                },
-                {
-                    "name": "Translator",
+                    "name": "DX",
                     "value": 6
                 },
                 {
@@ -102,7 +102,19 @@
                     "value": 6
                 },
                 {
+                    "name": "Translator",
+                    "value": 6
+                },
+                {
                     "name": "Debug",
+                    "value": 5
+                },
+                {
+                    "name": "BC Break",
+                    "value": 5
+                },
+                {
+                    "name": "Yaml",
                     "value": 5
                 },
                 {
@@ -118,27 +130,23 @@
                     "value": 5
                 },
                 {
-                    "name": "BrowserKit",
-                    "value": 4
+                    "name": "TwigBundle",
+                    "value": 5
                 },
                 {
                     "name": "PropertyAccess",
                     "value": 4
                 },
                 {
-                    "name": "DX",
+                    "name": "BrowserKit",
                     "value": 4
                 },
                 {
-                    "name": "TwigBundle",
-                    "value": 4
+                    "name": "Config",
+                    "value": 3
                 },
                 {
-                    "name": "BC Break",
-                    "value": 4
-                },
-                {
-                    "name": "Ldap",
+                    "name": "WebServerBundle",
                     "value": 3
                 },
                 {
@@ -146,7 +154,7 @@
                     "value": 3
                 },
                 {
-                    "name": "Yaml",
+                    "name": "Ldap",
                     "value": 3
                 }
             ],

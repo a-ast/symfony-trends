@@ -7,15 +7,15 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 205
+                    "value": 213
                 },
                 {
                     "name": "Bug",
-                    "value": 185
+                    "value": 186
                 },
                 {
                     "name": "Form",
-                    "value": 156
+                    "value": 155
                 },
                 {
                     "name": "Status: Needs Review",
@@ -23,46 +23,46 @@
                 },
                 {
                     "name": "Enhancement",
-                    "value": 137
+                    "value": 132
                 },
                 {
                     "name": "Security",
-                    "value": 78
+                    "value": 77
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 57
-                },
-                {
-                    "name": "Unconfirmed",
-                    "value": 49
+                    "value": 56
                 },
                 {
                     "name": "Validator",
-                    "value": 48
+                    "value": 47
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 46
                 },
                 {
                     "name": "Console",
-                    "value": 33
+                    "value": 31
+                },
+                {
+                    "name": "DependencyInjection",
+                    "value": 28
                 },
                 {
                     "name": "Status: Reviewed",
-                    "value": 22
+                    "value": 23
+                },
+                {
+                    "name": "FrameworkBundle",
+                    "value": 21
                 },
                 {
                     "name": "Translator",
                     "value": 21
                 },
                 {
-                    "name": "DependencyInjection",
-                    "value": 21
-                },
-                {
                     "name": "Routing",
-                    "value": 21
-                },
-                {
-                    "name": "FrameworkBundle",
                     "value": 20
                 },
                 {

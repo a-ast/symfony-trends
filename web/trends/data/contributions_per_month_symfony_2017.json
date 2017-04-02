@@ -7,15 +7,15 @@
             "data": [
                 {
                     "date": "2017-01-01",
-                    "value": 185
+                    "value": 186
                 },
                 {
                     "date": "2017-02-01",
-                    "value": 146
+                    "value": 151
                 },
                 {
                     "date": "2017-03-01",
-                    "value": 102
+                    "value": 187
                 }
             ],
             "name": "All contributors",
@@ -29,11 +29,11 @@
                 },
                 {
                     "date": "2017-02-01",
-                    "value": 76
+                    "value": 80
                 },
                 {
                     "date": "2017-03-01",
-                    "value": 66
+                    "value": 108
                 }
             ],
             "name": "Core team",

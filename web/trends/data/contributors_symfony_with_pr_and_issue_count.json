@@ -13,17 +13,17 @@
             "data": [
                 {
                     "name": "Nicolas Grekas",
-                    "x": 951,
-                    "y": 42
+                    "x": 972,
+                    "y": 43
                 },
                 {
                     "name": "Fabien Potencier",
-                    "x": 681,
+                    "x": 682,
                     "y": 51
                 },
                 {
                     "name": "Christian Flothmann",
-                    "x": 547,
+                    "x": 555,
                     "y": 12
                 },
                 {
@@ -37,14 +37,14 @@
                     "y": 71
                 },
                 {
+                    "name": "Christophe Coevoet",
+                    "x": 234,
+                    "y": 107
+                },
+                {
                     "name": "Victor Berchet",
                     "x": 234,
                     "y": 34
-                },
-                {
-                    "name": "Christophe Coevoet",
-                    "x": 228,
-                    "y": 107
                 },
                 {
                     "name": "K\u00e9vin Dunglas",
@@ -72,18 +72,23 @@
                     "y": 9
                 },
                 {
+                    "name": "Robin Chalas",
+                    "x": 157,
+                    "y": 12
+                },
+                {
+                    "name": "Maxime Steinhausser",
+                    "x": 154,
+                    "y": 10
+                },
+                {
                     "name": "Abdellatif Ait boudad",
                     "x": 153,
                     "y": 4
                 },
                 {
-                    "name": "Maxime Steinhausser",
-                    "x": 152,
-                    "y": 10
-                },
-                {
                     "name": "Romain Neutron",
-                    "x": 149,
+                    "x": 151,
                     "y": 19
                 },
                 {
@@ -92,13 +97,8 @@
                     "y": 49
                 },
                 {
-                    "name": "Robin Chalas",
-                    "x": 146,
-                    "y": 11
-                },
-                {
                     "name": "Gr\u00e9goire Pineau",
-                    "x": 142,
+                    "x": 146,
                     "y": 32
                 },
                 {
@@ -113,8 +113,13 @@
                 },
                 {
                     "name": "Ryan Weaver",
-                    "x": 110,
+                    "x": 111,
                     "y": 33
+                },
+                {
+                    "name": "Jules Pietri",
+                    "x": 110,
+                    "y": 9
                 },
                 {
                     "name": "Javier Eguiluz",
@@ -122,19 +127,14 @@
                     "y": 180
                 },
                 {
-                    "name": "Jules Pietri",
-                    "x": 109,
-                    "y": 9
+                    "name": "Roland Franssen",
+                    "x": 105,
+                    "y": 30
                 },
                 {
                     "name": "Johannes",
                     "x": 97,
                     "y": 36
-                },
-                {
-                    "name": "Roland Franssen",
-                    "x": 91,
-                    "y": 26
                 }
             ],
             "name": "Contributors"
