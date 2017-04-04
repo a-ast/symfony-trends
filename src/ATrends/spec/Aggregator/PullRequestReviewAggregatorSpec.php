@@ -6,6 +6,7 @@ use Aa\ATrends\Aggregator\ProjectAwareAggregatorInterface;
 use Aa\ATrends\Aggregator\PullRequestReviewAggregator;
 use Aa\ATrends\Api\Github\GithubApiInterface;
 use Aa\ATrends\Repository\PullRequestRepository;
+use Aa\ATrends\Repository\PullRequestReviewRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -14,9 +15,9 @@ use Prophecy\Argument;
  */
 class PullRequestReviewAggregatorSpec extends ObjectBehavior
 {
-    function it_is_initializable(GithubApiInterface $githubApi, PullRequestRepository $repository)
+    function it_is_initializable(GithubApiInterface $githubApi, PullRequestRepository $pullRequestRepository, PullRequestReviewRepository $reviewRepository)
     {
-        $this->beConstructedWith($githubApi, $repository);
+        $this->beConstructedWith($githubApi, $pullRequestRepository, $reviewRepository);
         $this->shouldHaveType(PullRequestReviewAggregator::class);
         $this->shouldImplement(ProjectAwareAggregatorInterface::class);
     }

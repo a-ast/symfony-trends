@@ -78,7 +78,7 @@ class PullRequestReview
      *
      * @param integer $githubId
      *
-     * @return PullRequest
+     * @return PullRequestReview
      */
     public function setGithubId($githubId)
     {
@@ -102,7 +102,7 @@ class PullRequestReview
      *
      * @param string $state
      *
-     * @return PullRequest
+     * @return PullRequestReview
      */
     public function setState($state)
     {
@@ -126,7 +126,7 @@ class PullRequestReview
      *
      * @param integer $githubUserId
      *
-     * @return PullRequest
+     * @return PullRequestReview
      */
     public function setGithubUserId($githubUserId)
     {
@@ -150,7 +150,7 @@ class PullRequestReview
      *
      * @param DateTimeInterface $submittedAt
      *
-     * @return PullRequest
+     * @return PullRequestReview
      */
     public function setSubmittedAt($submittedAt)
     {
@@ -180,7 +180,7 @@ class PullRequestReview
     /**
      * @param int $pulRequestId
      *
-     * @return PullRequest
+     * @return PullRequestReview
      */
     public function setPulRequestId($pulRequestId)
     {

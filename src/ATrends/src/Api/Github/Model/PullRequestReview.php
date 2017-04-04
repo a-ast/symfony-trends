@@ -3,6 +3,7 @@
 namespace Aa\ATrends\Api\Github\Model;
 
 use DateTimeImmutable;
+use DateTimeInterface;
 
 class PullRequestReview
 {
@@ -89,5 +90,13 @@ class PullRequestReview
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getSubmittedAt()
+    {
+        return $this->submittedAt;
     }
 }

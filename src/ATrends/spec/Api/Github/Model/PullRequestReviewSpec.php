@@ -39,7 +39,7 @@ class PullRequestReviewSpec extends ObjectBehavior
             'id' => 100,
             'state' => 'reviewed ',
             'user' => ['id' => 111],
-            'submittedAt' => '2010-01-01T00:00:00Z',
+            'submitted_at' => '2010-01-01T00:00:00Z',
         ];
     }
 

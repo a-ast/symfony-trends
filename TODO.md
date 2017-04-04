@@ -3,10 +3,14 @@ TODO
 
 ### Pull request review ggregator
 1!. Chunked Repository (Batch) Iterator to iterate all pull requests
-2. Fetaures for aggregator
-2. API Model
+2!. Fetaures for aggregator
+2!. API Model
+
 3. Agregator API
-4. Entity
+
+4!. Entity
+
+Idea: replace static named constructors with serializers.
 
 
 ### Next steps:

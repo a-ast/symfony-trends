@@ -169,6 +169,7 @@ class GithubApiSpec extends ObjectBehavior
             'user' => [
                 'id' => 200,
             ],
+            'submitted_at' => '2010-01-01T00:00:00Z',
         ];
 
         $reviewApi
