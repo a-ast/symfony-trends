@@ -2,6 +2,8 @@
 
 namespace Aa\ATrends\Api\Github\Model;
 
+use DateTimeImmutable;
+
 class PullRequestReview
 {
     /**
@@ -18,6 +20,11 @@ class PullRequestReview
      * @var int
      */
     private $userId;
+
+    /**
+     * @var DateTimeInterface
+     */
+    private $submittedAt;
 
     /**
      * Constructor.
@@ -38,6 +45,7 @@ class PullRequestReview
         $pullRequest->id = (int)$data['id'];
         $pullRequest->state = $data['state'];
         $pullRequest->userId = (int)$data['userId'];
+        $pullRequest->submittedAt = new DateTimeImmutable($data['submittedAt']);
 
         return $pullRequest;
     }
@@ -54,6 +62,7 @@ class PullRequestReview
         $pullRequest->id = (int)$data['id'];
         $pullRequest->state = $data['state'];
         $pullRequest->userId = (int)$data['user']['id'];
+        $pullRequest->submittedAt = new DateTimeImmutable($data['submitted_at']);
 
         return $pullRequest;
     }
