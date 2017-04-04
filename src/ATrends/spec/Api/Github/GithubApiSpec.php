@@ -6,9 +6,11 @@ use Aa\ATrends\Api\Github\GithubApi;
 use Aa\ATrends\Api\Github\Model\Commit;
 use Aa\ATrends\Api\Github\Model\Issue;
 use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\PullRequestReview;
 use Aa\ATrends\Api\Github\Model\User;
 use Github\Api\User as UserApi;
 use Github\Api\PullRequest as PullRequestApi;
+use Github\Api\PullRequest\Review as ReviewApi;
 use Github\Api\Issue as IssueApi;
 use Github\Api\Repository\Commits as CommitApi;
 use Github\Api\Repo as RepoApi;
@@ -27,7 +29,8 @@ class GithubApiSpec extends ObjectBehavior
         CommitApi $commitsApi,
         UserApi $userApi,
         PullRequestApi $pullRequestApi,
-        IssueApi $issueApi)
+        IssueApi $issueApi,
+        ReviewApi $reviewApi)
     {
         $this->beConstructedWith($client);
 
@@ -35,6 +38,8 @@ class GithubApiSpec extends ObjectBehavior
         $repoApi->commits()->willReturn($commitsApi);
 
         $client->pullRequests()->willReturn($pullRequestApi);
+        $pullRequestApi->reviews()->willReturn($reviewApi);
+
         $client->issues()->willReturn($issueApi);
 
         $client->user()->willReturn($userApi);
@@ -154,6 +159,23 @@ class GithubApiSpec extends ObjectBehavior
             ->willReturn([$responseData], []);
 
         $this->getIssues('valinor/repo')->shouldBeCollectionOf(Issue::class, 1);
+    }
+
+    public function it_should_fetch_pull_request_reviews(ReviewApi $reviewApi)
+    {
+        $responseData = [
+            'id' => 100,
+            'state' => 'REVIEWED',
+            'user' => [
+                'id' => 200,
+            ],
+        ];
+
+        $reviewApi
+            ->all('valinor', 'repo', Argument::type('int'))
+            ->willReturn([$responseData], []);
+
+        $this->getPullRequestReviews('valinor/repo', 200)->shouldBeCollectionOf(PullRequestReview::class, 1);
     }
 
     public function getMatchers()

@@ -5,6 +5,7 @@ namespace Aa\ATrends\Api\Github;
 use Aa\ATrends\Api\Github\Model\Commit;
 use Aa\ATrends\Api\Github\Model\Issue;
 use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\PullRequestReview;
 use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 use Github\Client;
@@ -162,11 +163,15 @@ class GithubApi implements GithubApiInterface
      */
     public function getPullRequestReviews($repositoryPath, $pullRequestId)
     {
-        return $this->client->pullRequests()->reviews()->all(
+        $reviews = $this->client->pullRequests()->reviews()->all(
             $this->getOwner($repositoryPath),
             $this->getRepo($repositoryPath),
             $pullRequestId
         );
+
+        foreach ($reviews as $item) {
+            yield PullRequestReview::createFromResponseData($item);
+        }
     }
 
     /**
