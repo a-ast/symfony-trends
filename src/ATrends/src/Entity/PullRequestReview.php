@@ -40,7 +40,7 @@ class PullRequestReview
      *
      * @ORM\Column(name="pull_request_id", type="integer")
      */
-    private $pulRequestId;
+    private $pullRequestId;
 
     /**
      * @var string
@@ -172,19 +172,19 @@ class PullRequestReview
     /**
      * @return int
      */
-    public function getPulRequestId()
+    public function getPullRequestId()
     {
-        return $this->pulRequestId;
+        return $this->pullRequestId;
     }
 
     /**
-     * @param int $pulRequestId
+     * @param int $pullRequestId
      *
      * @return PullRequestReview
      */
-    public function setPulRequestId($pulRequestId)
+    public function setPullRequestId($pullRequestId)
     {
-        $this->pulRequestId = $pulRequestId;
+        $this->pullRequestId = $pullRequestId;
 
         return $this;
     }

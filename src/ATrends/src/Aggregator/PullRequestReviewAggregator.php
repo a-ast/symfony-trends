@@ -57,24 +57,26 @@ class PullRequestReviewAggregator implements ProjectAwareAggregatorInterface
         foreach ($this->pullRequestRepository->findAllPullRequests($this->getProject()->getId()) as $pullRequest) {
             $reviews = $this->githubApi->getPullRequestReviews($this->getProject()->getGithubPath(), $pullRequest->getId());
 
+            //$this->reviewRepository->removeByPullRequestId($pullRequest->getId());
+
             foreach ($reviews as $apiReview) {
-                // @todo: check if review exists
 
                 $review = new PullRequestReview();
 
                 $review
-                    ->setPulRequestId($pullRequest->getId())
+                    ->setPullRequestId($pullRequest->getId())
                     ->setGithubId($apiReview->getId())
                     ->setState($apiReview->getState())
                     ->setSubmittedAt($apiReview->getSubmittedAt());
 
                 $this->reviewRepository->persist($review);
-
+                $count++;
+                $this->progressNotifier->setMessage($count);
             }
-
-            $count++;
+            $this->progressNotifier->advance();
         }
 
+        $this->progressNotifier->setMessage('Flushing...');
         $this->reviewRepository->flush();
 
         print $count;
