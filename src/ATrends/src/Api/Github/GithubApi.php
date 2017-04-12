@@ -140,6 +140,16 @@ class GithubApi implements GithubApiInterface
     }
 
     /**
+     * @param string $organizationName
+     *
+     * @return array
+     */
+    public function getOrganizationMembers($organizationName)
+    {
+        return $this->client->organization()->members()->all($organizationName);
+    }
+
+    /**
      * @param $repositoryPath
      * @param DateTimeInterface $since
      * @param integer $page

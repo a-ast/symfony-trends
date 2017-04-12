@@ -25,17 +25,24 @@ interface GithubApiInterface
     public function getUser($login);
 
     /**
-     * @param $repositoryPath
+     * @param string $repositoryPath
      *
      * @return PullRequest[]|\Iterator
      */
     public function getPullRequests($repositoryPath);
 
     /**
-     * @param $repositoryPath
+     * @param string $repositoryPath
      * @param DateTimeInterface $since
      *
      * @return Issue[]|\Iterator
      */
     public function getIssues($repositoryPath, DateTimeInterface $since = null);
+
+    /**
+     * @param string $organizationName
+     *
+     * @return array
+     */
+    public function getOrganizationMembers($organizationName);
 }
