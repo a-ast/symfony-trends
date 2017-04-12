@@ -39,6 +39,12 @@ services:
         arguments:
             - Aa\ATrends\Entity\PullRequest
 
+    repository.pull_request_review:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - Aa\ATrends\Entity\PullRequestReview
+
     repository.issue:
         class: Doctrine\ORM\EntityRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]

@@ -82,6 +82,7 @@ services:
         arguments:
             - '@api.github'
             - '@repository.pull_request'
+            - '@repository.pull_request_review'
         calls:
             - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
