@@ -9,6 +9,7 @@ use Aa\ATrends\Api\Github\Model\PullRequestReview;
 use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
 use Github\Client;
+use Github\Exception\RuntimeException;
 use Iterator;
 
 class GithubApi implements GithubApiInterface
@@ -163,14 +164,22 @@ class GithubApi implements GithubApiInterface
      */
     public function getPullRequestReviews($repositoryPath, $pullRequestId)
     {
-        $reviews = $this->client->pullRequests()->reviews()->all(
-            $this->getOwner($repositoryPath),
-            $this->getRepo($repositoryPath),
-            $pullRequestId
-        );
+        try {
+            $reviews = $this->client->pullRequests()->reviews()->configure()
+                ->all(
+                    $this->getOwner($repositoryPath),
+                    $this->getRepo($repositoryPath),
+                    $pullRequestId,
+                    ['per_page' => self::MAX_ITEMS_PER_PAGE]
+                );
 
-        foreach ($reviews as $item) {
-            yield PullRequestReview::createFromResponseData($item);
+            foreach ($reviews as $item) {
+                yield PullRequestReview::createFromResponseData($item);
+            }
+        } catch (RuntimeException $e) {
+            if (404 !== $e->getCode()) {
+                throw $e;
+            }
         }
     }
 
