@@ -42,9 +42,9 @@ interface GithubApiInterface
 
     /**
      * @param string $repositoryPath
-     * @param int $pullRequestId
+     * @param int $pullRequestNumber
      *
      * @return PullRequestReview[]|\Iterator
      */
-    public function getPullRequestReviews($repositoryPath, $pullRequestId);
+    public function getPullRequestReviews($repositoryPath, $pullRequestNumber);
 }

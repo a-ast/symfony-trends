@@ -162,14 +162,14 @@ class GithubApi implements GithubApiInterface
     /**
      * @inheritdoc
      */
-    public function getPullRequestReviews($repositoryPath, $pullRequestId)
+    public function getPullRequestReviews($repositoryPath, $pullRequestNumber)
     {
         try {
             $reviews = $this->client->pullRequests()->reviews()->configure()
                 ->all(
                     $this->getOwner($repositoryPath),
                     $this->getRepo($repositoryPath),
-                    $pullRequestId,
+                    $pullRequestNumber,
                     ['per_page' => self::MAX_ITEMS_PER_PAGE]
                 );
 

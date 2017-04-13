@@ -55,7 +55,7 @@ class PullRequestReviewAggregator implements ProjectAwareAggregatorInterface
         $count = 0;
 
         foreach ($this->pullRequestRepository->findAllPullRequests($this->getProject()->getId()) as $pullRequest) {
-            $reviews = $this->githubApi->getPullRequestReviews($this->getProject()->getGithubPath(), $pullRequest->getId());
+            $reviews = $this->githubApi->getPullRequestReviews($this->getProject()->getGithubPath(), $pullRequest->getNumber());
 
             //$this->reviewRepository->removeByPullRequestId($pullRequest->getId());
 
@@ -67,12 +67,18 @@ class PullRequestReviewAggregator implements ProjectAwareAggregatorInterface
                     ->setPullRequestId($pullRequest->getId())
                     ->setGithubId($apiReview->getId())
                     ->setState($apiReview->getState())
+                    ->setGithubUserId($apiReview->getUserId())
                     ->setSubmittedAt($apiReview->getSubmittedAt());
 
                 $this->reviewRepository->persist($review);
                 $count++;
-                $this->progressNotifier->setMessage($count);
             }
+
+
+            if (0 === ($count % 100)) {
+                $this->reviewRepository->flush();
+            }
+
             $this->progressNotifier->advance();
         }
 
