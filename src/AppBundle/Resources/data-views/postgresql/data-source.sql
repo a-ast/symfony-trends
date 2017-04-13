@@ -471,6 +471,57 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--------------------------------------------------------
+-- Top-contributors with pr and pr review count
+--
+-- Parameters:
+-- * v_project_id
+--------------------------------------------------------
+DROP FUNCTION IF EXISTS fn_contributor_pull_request_and_issue_count(int);
+CREATE FUNCTION fn_contributor_pull_request_and_issue_count(v_project_id int)
+  RETURNS table(name text, pr_count bigint, issue_count bigint) AS $$
+BEGIN
+    RETURN query
+
+    SELECT
+      c.name,
+      count(DISTINCT pr.number) AS pr_count,
+      count(distinct prr.id) AS pr_review_count
+
+    FROM contributor c
+      LEFT JOIN pull_request pr ON pr.github_user_id = c.github_id
+      LEFT JOIN pull_request_review prr ON prr.github_user_id = c.github_id
+      LEFT JOIN pull_request prr_pr ON prr_pr.id = prr.pull_request_id
+
+    -- todo: fix vars
+    WHERE pr.project_id = 1 AND prr_pr.project_id = 1
+    GROUP BY c.name
+    ORDER BY pr_review_count DESC;
+
+
+  -- double check with
+  /*
+
+      SELECT
+        c.name,
+        count(prr.id) AS pr_review_count
+
+    FROM contributor c
+    LEFT JOIN pull_request_review prr ON prr.github_user_id = c.github_id
+    LEFT JOIN pull_request prr_pr ON prr_pr.id = prr.pull_request_id
+
+
+    WHERE prr_pr.project_id = 1
+    GROUP BY c.name
+    ORDER BY pr_review_count DESC;
+
+
+   */
+
+
+END;
+$$ LANGUAGE plpgsql;
+
 
 --------------------------------------------------------
 -- Pull request labels
