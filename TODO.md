@@ -9,6 +9,7 @@ TODO
 3. Agregator API
 
 4!. Entity
+5. Create index
 
 Idea: replace static named constructors with serializers.
 
