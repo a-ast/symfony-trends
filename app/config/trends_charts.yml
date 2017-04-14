@@ -358,7 +358,7 @@ parameters:
                     dimensions: { name: label, value: issue_count }
 
         contributors_symfony_with_pr_and_issue_count:
-            title: 'Top-25 contributors to Symfony code with their pr and issue counts'
+            title: 'Top-25 Symfony code contributors by Pull Request and Issue activity'
             type: bubble
             x_axis: { title: 'Pull request count' }
             y_axis: { title: 'Issue count' }
@@ -369,6 +369,20 @@ parameters:
                     criteria:   { project_id: 1 }
                     limit: 25
                     dimensions: { name: name, x: pr_count, y: issue_count }
+
+        contributors_symfony_with_pr_and_review_count:
+            title: 'Top-25 Symfony code contributors by Pull Request activity'
+            type: bubble
+            x_axis: { title: 'Number of PRs created' }
+            y_axis: { title: 'Number of PRs reviewed' }
+            series:
+                -
+                    title: Contributors
+                    data_source: fn_contributor_pull_request_and_review_count
+                    criteria:   { project_id: 1 }
+                    limit: 25
+                    dimensions: { name: name, x: pr_count, y: pr_review_count }
+                    color: '#4e308e'
 
         issues_per_date_symfony:
             title: 'Symfony code issues per year'
@@ -529,6 +543,7 @@ parameters:
                 - { chart: pull_request_lifetime_symfony }
                 - { chart: pull_request_lifetime_symfony_docs }
                 - { chart: contributors_symfony_with_pr_and_issue_count }
+                - { chart: contributors_symfony_with_pr_and_review_count }
 
 
         symfony:
