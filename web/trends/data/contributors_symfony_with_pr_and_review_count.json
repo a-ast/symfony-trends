@@ -2,10 +2,10 @@
     "options": {
         "type": "bubble",
         "xAxis": {
-            "title": "Pull request count"
+            "title": "Number of PRs created"
         },
         "yAxis": {
-            "title": "Issue count"
+            "title": "Number of PRs reviewed"
         }
     },
     "series": [
@@ -14,130 +14,131 @@
                 {
                     "name": "Nicolas Grekas",
                     "x": 1003,
-                    "y": 43
+                    "y": 991
                 },
                 {
                     "name": "Fabien Potencier",
                     "x": 688,
-                    "y": 51
+                    "y": 403
                 },
                 {
                     "name": "Christian Flothmann",
                     "x": 571,
-                    "y": 12
-                },
-                {
-                    "name": "Bernhard Schussek",
-                    "x": 355,
-                    "y": 140
+                    "y": 538
                 },
                 {
                     "name": "Tobias Schultze",
                     "x": 312,
-                    "y": 71
+                    "y": 28
                 },
                 {
                     "name": "Christophe Coevoet",
                     "x": 234,
-                    "y": 107
-                },
-                {
-                    "name": "Victor Berchet",
-                    "x": 234,
-                    "y": 34
+                    "y": 426
                 },
                 {
                     "name": "K\u00e9vin Dunglas",
                     "x": 218,
-                    "y": 1
+                    "y": 155
                 },
                 {
                     "name": "Jakub Zalas",
                     "x": 209,
-                    "y": 9
+                    "y": 41
                 },
                 {
                     "name": "Joseph Bielawski",
                     "x": 191,
-                    "y": 3
+                    "y": 6
                 },
                 {
                     "name": "Robin Chalas",
                     "x": 172,
-                    "y": 13
+                    "y": 318
                 },
                 {
                     "name": "Jordi Boggiano",
                     "x": 162,
-                    "y": 20
-                },
-                {
-                    "name": "Kris Wallsmith",
-                    "x": 160,
-                    "y": 9
+                    "y": 2
                 },
                 {
                     "name": "Abdellatif Ait boudad",
                     "x": 154,
-                    "y": 4
+                    "y": 22
                 },
                 {
                     "name": "Maxime Steinhausser",
                     "x": 154,
-                    "y": 10
+                    "y": 203
                 },
                 {
                     "name": "Romain Neutron",
                     "x": 151,
-                    "y": 19
+                    "y": 18
                 },
                 {
                     "name": "Gr\u00e9goire Pineau",
                     "x": 149,
-                    "y": 32
+                    "y": 111
                 },
                 {
                     "name": "Wouter J",
                     "x": 149,
-                    "y": 49
+                    "y": 23
                 },
                 {
                     "name": "Hugo Hamon",
                     "x": 141,
-                    "y": 22
+                    "y": 43
                 },
                 {
                     "name": "Martin Haso\u0148",
                     "x": 132,
-                    "y": 18
+                    "y": 8
                 },
                 {
                     "name": "Ryan Weaver",
                     "x": 113,
-                    "y": 33
+                    "y": 18
                 },
                 {
                     "name": "Roland Franssen",
                     "x": 110,
-                    "y": 30
-                },
-                {
-                    "name": "Javier Eguiluz",
-                    "x": 110,
-                    "y": 182
+                    "y": 327
                 },
                 {
                     "name": "Jules Pietri",
                     "x": 110,
-                    "y": 9
+                    "y": 170
                 },
                 {
-                    "name": "Johannes",
-                    "x": 97,
-                    "y": 36
+                    "name": "Javier Eguiluz",
+                    "x": 110,
+                    "y": 133
+                },
+                {
+                    "name": "Lukas Kahwe Smith",
+                    "x": 80,
+                    "y": 11
+                },
+                {
+                    "name": "Guilhem N",
+                    "x": 77,
+                    "y": 228
+                },
+                {
+                    "name": "Diego Saint Esteben",
+                    "x": 67,
+                    "y": 4
+                },
+                {
+                    "name": "Dariusz Rumi\u0144ski",
+                    "x": 46,
+                    "y": 21
                 }
             ],
-            "name": "Contributors"
+            "name": "Contributors",
+            "color": "#b238ff"
         }
     ]
 }

@@ -1,0 +1,68 @@
+{
+    "options": {
+        "type": "bubble",
+        "xAxis": {
+            "title": "Pull request count"
+        },
+        "yAxis": {
+            "title": "Issue count"
+        }
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Christian Flothmann",
+                    "x": 420,
+                    "y": 121
+                },
+                {
+                    "name": "Wouter J",
+                    "x": 400,
+                    "y": 123
+                },
+                {
+                    "name": "Javier Eguiluz",
+                    "x": 364,
+                    "y": 198
+                },
+                {
+                    "name": "Richard Miller",
+                    "x": 161,
+                    "y": 4
+                },
+                {
+                    "name": "Ryan Weaver",
+                    "x": 139,
+                    "y": 154
+                },
+                {
+                    "name": "Andrew Marcinkevi\u010dius",
+                    "x": 120,
+                    "y": 11
+                },
+                {
+                    "name": "Philipp Rieber",
+                    "x": 105,
+                    "y": 7
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "x": 81,
+                    "y": 31
+                },
+                {
+                    "name": "Luis Cordova",
+                    "x": 46,
+                    "y": 17
+                },
+                {
+                    "name": "Hugo Hamon",
+                    "x": 42,
+                    "y": 1
+                }
+            ],
+            "name": "Contributors"
+        }
+    ]
+}

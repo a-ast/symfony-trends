@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "2017",
-                    "value": 394
+                    "value": 456
                 }
             ],
             "name": "Issue count",
@@ -61,11 +61,11 @@
                 },
                 {
                     "name": "2016",
-                    "value": 501
+                    "value": 504
                 },
                 {
                     "name": "2017",
-                    "value": 143
+                    "value": 168
                 }
             ],
             "name": "Contributor issue count",

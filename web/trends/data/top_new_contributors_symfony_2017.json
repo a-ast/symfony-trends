@@ -6,11 +6,23 @@
         {
             "data": [
                 {
+                    "name": "apetitpa",
+                    "value": 8
+                },
+                {
+                    "name": "Arnaud",
+                    "value": 8
+                },
+                {
                     "name": "Gabriel Ostroluck\u00fd",
-                    "value": 4
+                    "value": 5
                 },
                 {
                     "name": "Jordan Samouh",
+                    "value": 5
+                },
+                {
+                    "name": "Niels Keurentjes",
                     "value": 3
                 },
                 {
@@ -18,11 +30,19 @@
                     "value": 3
                 },
                 {
+                    "name": "Douglas Reith",
+                    "value": 2
+                },
+                {
                     "name": "Frank de Jonge",
                     "value": 2
                 },
                 {
                     "name": "Patrick Dawkins",
+                    "value": 2
+                },
+                {
+                    "name": "Sanpi",
                     "value": 2
                 },
                 {
@@ -43,26 +63,6 @@
                 },
                 {
                     "name": "Anton A. Sumin",
-                    "value": 1
-                },
-                {
-                    "name": "Bertalan Attila",
-                    "value": 1
-                },
-                {
-                    "name": "ChS",
-                    "value": 1
-                },
-                {
-                    "name": "Dave Www",
-                    "value": 1
-                },
-                {
-                    "name": "Dmitry",
-                    "value": 1
-                },
-                {
-                    "name": "GuillaumeVerdon",
                     "value": 1
                 }
             ],

@@ -7,11 +7,11 @@
             "data": [
                 {
                     "name": "200+",
-                    "value": 11
+                    "value": 12
                 },
                 {
                     "name": "30-200",
-                    "value": 48
+                    "value": 47
                 },
                 {
                     "name": "10-30",
@@ -19,19 +19,19 @@
                 },
                 {
                     "name": "5-10",
-                    "value": 132
+                    "value": 137
                 },
                 {
                     "name": "3-5",
-                    "value": 209
+                    "value": 208
                 },
                 {
                     "name": "2",
-                    "value": 244
+                    "value": 245
                 },
                 {
                     "name": "1",
-                    "value": 924
+                    "value": 929
                 }
             ],
             "name": "Symfony code",
@@ -57,15 +57,15 @@
                 },
                 {
                     "name": "3-5",
-                    "value": 198
+                    "value": 201
                 },
                 {
                     "name": "2",
-                    "value": 208
+                    "value": 206
                 },
                 {
                     "name": "1",
-                    "value": 688
+                    "value": 695
                 }
             ],
             "name": "Symfony docs",

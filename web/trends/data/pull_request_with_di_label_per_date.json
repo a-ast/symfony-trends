@@ -192,6 +192,10 @@
                 {
                     "date": "2017-03-01",
                     "value": 36
+                },
+                {
+                    "date": "2017-04-01",
+                    "value": 20
                 }
             ],
             "name": "Pull request count",

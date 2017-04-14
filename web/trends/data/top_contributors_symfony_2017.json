@@ -7,39 +7,47 @@
             "data": [
                 {
                     "name": "Nicolas Grekas",
-                    "value": 131
+                    "value": 160
                 },
                 {
                     "name": "Fabien Potencier",
-                    "value": 69
+                    "value": 76
                 },
                 {
                     "name": "Christian Flothmann",
-                    "value": 51
+                    "value": 65
                 },
                 {
                     "name": "Robin Chalas",
-                    "value": 44
+                    "value": 57
+                },
+                {
+                    "name": "K\u00e9vin Dunglas",
+                    "value": 23
+                },
+                {
+                    "name": "Gr\u00e9goire Pineau",
+                    "value": 21
                 },
                 {
                     "name": "Maxime Steinhausser",
                     "value": 21
                 },
                 {
-                    "name": "Gr\u00e9goire Pineau",
-                    "value": 20
-                },
-                {
-                    "name": "K\u00e9vin Dunglas",
-                    "value": 19
-                },
-                {
                     "name": "Guilhem N",
-                    "value": 15
+                    "value": 17
                 },
                 {
                     "name": "Roland Franssen",
-                    "value": 9
+                    "value": 13
+                },
+                {
+                    "name": "Arnaud",
+                    "value": 8
+                },
+                {
+                    "name": "apetitpa",
+                    "value": 8
                 },
                 {
                     "name": "Peter Rehm",
@@ -51,19 +59,11 @@
                 },
                 {
                     "name": "Javier Eguiluz",
-                    "value": 6
+                    "value": 7
                 },
                 {
                     "name": "Romain Neutron",
                     "value": 6
-                },
-                {
-                    "name": "Wouter J",
-                    "value": 6
-                },
-                {
-                    "name": "Hugo Hamon",
-                    "value": 5
                 }
             ],
             "name": "Commit count",

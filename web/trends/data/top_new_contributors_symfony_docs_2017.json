@@ -6,6 +6,10 @@
         {
             "data": [
                 {
+                    "name": "Ahmed TAILOULOUTE",
+                    "value": 4
+                },
+                {
                     "name": "Michael COULLERET",
                     "value": 4
                 },
@@ -22,7 +26,7 @@
                     "value": 1
                 },
                 {
-                    "name": "Ahmed TAILOULOUTE",
+                    "name": "Andrey",
                     "value": 1
                 },
                 {
@@ -58,11 +62,7 @@
                     "value": 1
                 },
                 {
-                    "name": "Dave Www",
-                    "value": 1
-                },
-                {
-                    "name": "Florian Rusch",
+                    "name": "Christopher Hertel",
                     "value": 1
                 }
             ],

@@ -1,0 +1,69 @@
+{
+    "options": {
+        "type": "bubble",
+        "xAxis": {
+            "title": "Number of PRs created"
+        },
+        "yAxis": {
+            "title": "Number of PRs reviewed"
+        }
+    },
+    "series": [
+        {
+            "data": [
+                {
+                    "name": "Christian Flothmann",
+                    "x": 420,
+                    "y": 397
+                },
+                {
+                    "name": "Wouter J",
+                    "x": 400,
+                    "y": 62
+                },
+                {
+                    "name": "Javier Eguiluz",
+                    "x": 364,
+                    "y": 311
+                },
+                {
+                    "name": "Ryan Weaver",
+                    "x": 139,
+                    "y": 15
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "x": 81,
+                    "y": 39
+                },
+                {
+                    "name": "Ahmed TAILOULOUTE",
+                    "x": 60,
+                    "y": 8
+                },
+                {
+                    "name": "Christophe Coevoet",
+                    "x": 37,
+                    "y": 20
+                },
+                {
+                    "name": "Henry Snoek",
+                    "x": 36,
+                    "y": 9
+                },
+                {
+                    "name": "K\u00e9vin Dunglas",
+                    "x": 32,
+                    "y": 6
+                },
+                {
+                    "name": "Gr\u00e9goire Paris",
+                    "x": 29,
+                    "y": 21
+                }
+            ],
+            "name": "Contributors",
+            "color": "#b238ff"
+        }
+    ]
+}

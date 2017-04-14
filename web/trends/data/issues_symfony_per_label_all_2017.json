@@ -7,50 +7,54 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 150
+                    "value": 170
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 129
-                },
-                {
-                    "name": "Unconfirmed",
-                    "value": 64
+                    "value": 143
                 },
                 {
                     "name": "Feature",
-                    "value": 62
+                    "value": 76
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 61
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 35
+                    "value": 41
                 },
                 {
                     "name": "Form",
-                    "value": 33
+                    "value": 38
+                },
+                {
+                    "name": "Status: Waiting feedback",
+                    "value": 26
+                },
+                {
+                    "name": "Security",
+                    "value": 24
                 },
                 {
                     "name": "Console",
                     "value": 23
                 },
                 {
-                    "name": "Security",
-                    "value": 20
-                },
-                {
-                    "name": "Status: Waiting feedback",
-                    "value": 20
-                },
-                {
-                    "name": "FrameworkBundle",
-                    "value": 15
+                    "name": "Status: Reviewed",
+                    "value": 18
                 },
                 {
                     "name": "Validator",
-                    "value": 14
+                    "value": 16
                 },
                 {
-                    "name": "Status: Reviewed",
+                    "name": "FrameworkBundle",
+                    "value": 16
+                },
+                {
+                    "name": "HttpFoundation",
                     "value": 14
                 },
                 {
@@ -58,27 +62,31 @@
                     "value": 12
                 },
                 {
-                    "name": "HttpFoundation",
+                    "name": "Routing",
                     "value": 11
                 },
                 {
-                    "name": "Routing",
+                    "name": "WebProfilerBundle",
                     "value": 11
+                },
+                {
+                    "name": "Serializer",
+                    "value": 10
+                },
+                {
+                    "name": "HttpKernel",
+                    "value": 9
                 },
                 {
                     "name": "Cache",
                     "value": 9
                 },
                 {
-                    "name": "Serializer",
-                    "value": 9
+                    "name": "Process",
+                    "value": 8
                 },
                 {
-                    "name": "WebProfilerBundle",
-                    "value": 9
-                },
-                {
-                    "name": "HttpKernel",
+                    "name": "DX",
                     "value": 8
                 },
                 {
@@ -86,7 +94,15 @@
                     "value": 8
                 },
                 {
-                    "name": "Process",
+                    "name": "Translator",
+                    "value": 8
+                },
+                {
+                    "name": "ExpressionLanguage",
+                    "value": 7
+                },
+                {
+                    "name": "DoctrineBridge",
                     "value": 7
                 },
                 {
@@ -94,27 +110,27 @@
                     "value": 7
                 },
                 {
-                    "name": "DX",
+                    "name": "TwigBridge",
                     "value": 6
                 },
                 {
-                    "name": "DoctrineBridge",
+                    "name": "Yaml",
                     "value": 6
                 },
                 {
-                    "name": "Translator",
+                    "name": "TwigBundle",
                     "value": 6
-                },
-                {
-                    "name": "Debug",
-                    "value": 5
                 },
                 {
                     "name": "BC Break",
                     "value": 5
                 },
                 {
-                    "name": "Yaml",
+                    "name": "Debug",
+                    "value": 5
+                },
+                {
+                    "name": "BrowserKit",
                     "value": 5
                 },
                 {
@@ -122,27 +138,23 @@
                     "value": 5
                 },
                 {
-                    "name": "TwigBridge",
-                    "value": 5
-                },
-                {
-                    "name": "ExpressionLanguage",
-                    "value": 5
-                },
-                {
-                    "name": "TwigBundle",
-                    "value": 5
+                    "name": "Status: Works for me",
+                    "value": 4
                 },
                 {
                     "name": "PropertyAccess",
                     "value": 4
                 },
                 {
-                    "name": "BrowserKit",
-                    "value": 4
+                    "name": "PropertyInfo",
+                    "value": 3
                 },
                 {
-                    "name": "Config",
+                    "name": "SecurityBundle",
+                    "value": 3
+                },
+                {
+                    "name": "Ldap",
                     "value": 3
                 },
                 {
@@ -150,11 +162,15 @@
                     "value": 3
                 },
                 {
+                    "name": "VarDumper",
+                    "value": 3
+                },
+                {
                     "name": "Intl",
                     "value": 3
                 },
                 {
-                    "name": "Ldap",
+                    "name": "Config",
                     "value": 3
                 }
             ],

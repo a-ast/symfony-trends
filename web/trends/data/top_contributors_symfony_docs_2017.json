@@ -7,22 +7,22 @@
             "data": [
                 {
                     "name": "Javier Eguiluz",
-                    "value": 39
+                    "value": 40
                 },
                 {
                     "name": "Christian Flothmann",
-                    "value": 29
+                    "value": 35
                 },
                 {
                     "name": "Ahmed TAILOULOUTE",
-                    "value": 14
-                },
-                {
-                    "name": "Ryan Weaver",
-                    "value": 5
+                    "value": 19
                 },
                 {
                     "name": "Dany Maillard",
+                    "value": 5
+                },
+                {
+                    "name": "Ryan Weaver",
                     "value": 5
                 },
                 {
@@ -34,10 +34,6 @@
                     "value": 4
                 },
                 {
-                    "name": "Matthias Pigulla",
-                    "value": 3
-                },
-                {
                     "name": "Fabien Potencier",
                     "value": 3
                 },
@@ -46,11 +42,11 @@
                     "value": 3
                 },
                 {
-                    "name": "Wouter J",
-                    "value": 2
+                    "name": "Matthias Pigulla",
+                    "value": 3
                 },
                 {
-                    "name": "Gr\u00e9goire Paris",
+                    "name": "Alexis Lefebvre",
                     "value": 2
                 },
                 {
@@ -58,12 +54,16 @@
                     "value": 2
                 },
                 {
-                    "name": "Gabriel Theron",
-                    "value": 1
+                    "name": "Gr\u00e9goire Paris",
+                    "value": 2
                 },
                 {
-                    "name": "ahmed lebbada",
-                    "value": 1
+                    "name": "Jules Pietri",
+                    "value": 2
+                },
+                {
+                    "name": "Wouter J",
+                    "value": 2
                 }
             ],
             "name": "Commit count",

@@ -7,58 +7,54 @@
             "data": [
                 {
                     "name": "Feature",
-                    "value": 213
+                    "value": 216
                 },
                 {
                     "name": "Bug",
-                    "value": 186
+                    "value": 179
                 },
                 {
                     "name": "Form",
-                    "value": 155
+                    "value": 159
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 149
+                    "value": 141
                 },
                 {
                     "name": "Enhancement",
-                    "value": 132
+                    "value": 129
                 },
                 {
                     "name": "Security",
-                    "value": 77
+                    "value": 79
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 56
+                    "value": 54
                 },
                 {
                     "name": "Validator",
-                    "value": 47
-                },
-                {
-                    "name": "Unconfirmed",
-                    "value": 46
+                    "value": 48
                 },
                 {
                     "name": "Console",
-                    "value": 31
+                    "value": 29
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 28
+                    "value": 26
+                },
+                {
+                    "name": "Unconfirmed",
+                    "value": 26
                 },
                 {
                     "name": "Status: Reviewed",
-                    "value": 23
+                    "value": 22
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 21
-                },
-                {
-                    "name": "Translator",
                     "value": 21
                 },
                 {

@@ -7,59 +7,59 @@
             "data": [
                 {
                     "name": "Bug",
-                    "value": 1002
+                    "value": 1029
                 },
                 {
                     "name": "Form",
-                    "value": 983
+                    "value": 984
                 },
                 {
                     "name": "Status: Needs Review",
-                    "value": 484
+                    "value": 504
                 },
                 {
                     "name": "Unconfirmed",
-                    "value": 403
+                    "value": 416
                 },
                 {
                     "name": "Feature",
-                    "value": 372
+                    "value": 383
                 },
                 {
                     "name": "Validator",
-                    "value": 337
+                    "value": 338
                 },
                 {
                     "name": "HttpFoundation",
-                    "value": 308
+                    "value": 313
                 },
                 {
                     "name": "Enhancement",
-                    "value": 298
+                    "value": 301
                 },
                 {
                     "name": "Security",
-                    "value": 294
+                    "value": 296
                 },
                 {
                     "name": "Console",
-                    "value": 244
+                    "value": 246
                 },
                 {
                     "name": "DependencyInjection",
-                    "value": 215
+                    "value": 223
                 },
                 {
                     "name": "FrameworkBundle",
-                    "value": 188
+                    "value": 189
+                },
+                {
+                    "name": "HttpKernel",
+                    "value": 186
                 },
                 {
                     "name": "Routing",
                     "value": 183
-                },
-                {
-                    "name": "HttpKernel",
-                    "value": 182
                 },
                 {
                     "name": "Easy Pick",
@@ -67,27 +67,27 @@
                 },
                 {
                     "name": "Translator",
-                    "value": 154
+                    "value": 158
                 },
                 {
                     "name": "WebProfilerBundle",
-                    "value": 125
+                    "value": 127
                 },
                 {
                     "name": "Process",
                     "value": 118
                 },
                 {
-                    "name": "Doctrine",
-                    "value": 113
-                },
-                {
                     "name": "Yaml",
                     "value": 113
                 },
                 {
+                    "name": "Doctrine",
+                    "value": 113
+                },
+                {
                     "name": "DX",
-                    "value": 107
+                    "value": 108
                 }
             ],
             "name": "Closed issues"

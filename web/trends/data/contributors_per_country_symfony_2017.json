@@ -6,6 +6,10 @@
         {
             "data": [
                 {
+                    "iso": null,
+                    "value": 1
+                },
+                {
                     "iso": "CH",
                     "value": 3
                 },
@@ -19,11 +23,15 @@
                 },
                 {
                     "iso": "CA",
-                    "value": 1
+                    "value": 2
                 },
                 {
                     "iso": "FR",
-                    "value": 35
+                    "value": 40
+                },
+                {
+                    "iso": "AT",
+                    "value": 1
                 },
                 {
                     "iso": "ZA",
@@ -35,7 +43,7 @@
                 },
                 {
                     "iso": "DE",
-                    "value": 11
+                    "value": 16
                 },
                 {
                     "iso": "JP",
@@ -47,11 +55,11 @@
                 },
                 {
                     "iso": "GB",
-                    "value": 7
+                    "value": 11
                 },
                 {
                     "iso": "UA",
-                    "value": 2
+                    "value": 3
                 },
                 {
                     "iso": "CZ",
@@ -67,15 +75,19 @@
                 },
                 {
                     "iso": "MA",
+                    "value": 2
+                },
+                {
+                    "iso": "AU",
                     "value": 1
                 },
                 {
                     "iso": "BE",
-                    "value": 2
+                    "value": 3
                 },
                 {
                     "iso": "NL",
-                    "value": 9
+                    "value": 13
                 },
                 {
                     "iso": "RU",
@@ -87,7 +99,7 @@
                 },
                 {
                     "iso": "US",
-                    "value": 4
+                    "value": 5
                 },
                 {
                     "iso": "PL",
