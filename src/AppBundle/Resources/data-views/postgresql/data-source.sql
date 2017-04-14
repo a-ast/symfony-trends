@@ -479,7 +479,7 @@ $$ LANGUAGE plpgsql;
 --------------------------------------------------------
 DROP FUNCTION IF EXISTS fn_contributor_pull_request_and_review_count(int);
 CREATE FUNCTION fn_contributor_pull_request_and_review_count(v_project_id int)
-  RETURNS table(name text, pr_count bigint, issue_count bigint) AS $$
+  RETURNS table(name text, pr_count bigint, pr_review_count bigint) AS $$
 BEGIN
     RETURN query
 
