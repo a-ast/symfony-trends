@@ -57,7 +57,7 @@ class PullRequestComment
 
         $comment->id = (int)$data['id'];
         $comment->userId = (int)$data['userId'];
-        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_id'], self::GITHUB_API_PULLS_URL);
+        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_url'], self::GITHUB_API_PULLS_URL);
 
         $comment->createdAt = new DateTimeImmutable($data['createdAt']);
         $comment->updatedAt = new DateTimeImmutable($data['updatedAt']);
@@ -76,7 +76,7 @@ class PullRequestComment
 
         $comment->id = (int)$data['id'];
         $comment->userId = (int)$data['user']['id'];
-        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_id'], self::GITHUB_API_PULLS_URL);
+        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_url'], self::GITHUB_API_PULLS_URL);
         $comment->pullRequestReviewId = $data['pull_request_review_id'];
 
         $comment->createdAt = new DateTimeImmutable($data['created_at']);
