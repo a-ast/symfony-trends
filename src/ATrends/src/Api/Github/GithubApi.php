@@ -5,6 +5,7 @@ namespace Aa\ATrends\Api\Github;
 use Aa\ATrends\Api\Github\Model\Commit;
 use Aa\ATrends\Api\Github\Model\Issue;
 use Aa\ATrends\Api\Github\Model\PullRequest;
+use Aa\ATrends\Api\Github\Model\PullRequestComment;
 use Aa\ATrends\Api\Github\Model\PullRequestReview;
 use Aa\ATrends\Api\Github\Model\User;
 use DateTimeInterface;
@@ -184,6 +185,43 @@ class GithubApi implements GithubApiInterface
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getPullRequestComments($repositoryPath, DateTimeInterface $since = null)
+    {
+        $page = 1;
+
+        while ($items = $this->getPullRequestCommentsByPage($repositoryPath, $since, $page)) {
+
+            foreach ($items as $item) {
+                yield PullRequestComment::createFromResponseData($item);
+            }
+
+            $page++;
+        }
+    }
+
+    /**
+     * @param string $repositoryPath
+     * @param DateTimeInterface $since
+     * @param int $page
+     *
+     * @return array
+     */
+    private function getPullRequestCommentsByPage($repositoryPath, DateTimeInterface $since = null, $page = 1)
+    {
+        $options = ['page' => $page, 'sort' => 'updated', 'direction' => 'asc', 'per_page' => self::MAX_ITEMS_PER_PAGE];
+        $options = $this->addSinceOption($options, $since);
+
+        return $this->client->pullRequests()->comments()->configure()
+            ->all(
+                $this->getOwner($repositoryPath),
+                $this->getRepo($repositoryPath),
+                null,
+                $options);
+    }
+
+    /**
      * @param array $options
      * @param DateTimeInterface $since
      * @return mixed
@@ -196,4 +234,5 @@ class GithubApi implements GithubApiInterface
 
         return $options;
     }
+
 }
