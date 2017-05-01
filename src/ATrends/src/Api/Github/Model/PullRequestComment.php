@@ -2,11 +2,13 @@
 
 namespace Aa\ATrends\Api\Github\Model;
 
+use Aa\ATrends\Util\StringUtils;
 use DateTimeImmutable;
 use DateTimeInterface;
 
 class PullRequestComment
 {
+    const GITHUB_API_PULLS_URL = 'https://api.github.com/repos/symfony/symfony/pulls/';
     /**
      * @var int
      */
@@ -21,6 +23,11 @@ class PullRequestComment
      * @var int
      */
     private $pullRequestId;
+
+    /**
+     * @var int
+     */
+    private $pullRequestReviewId;
 
     /**
      * @var DateTimeInterface
@@ -50,6 +57,8 @@ class PullRequestComment
 
         $comment->id = (int)$data['id'];
         $comment->userId = (int)$data['userId'];
+        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_id'], self::GITHUB_API_PULLS_URL);
+
         $comment->createdAt = new DateTimeImmutable($data['createdAt']);
         $comment->updatedAt = new DateTimeImmutable($data['updatedAt']);
 
@@ -67,6 +76,9 @@ class PullRequestComment
 
         $comment->id = (int)$data['id'];
         $comment->userId = (int)$data['user']['id'];
+        $comment->pullRequestId = (int)StringUtils::textAfter($data['pull_request_id'], self::GITHUB_API_PULLS_URL);
+        $comment->pullRequestReviewId = $data['pull_request_review_id'];
+
         $comment->createdAt = new DateTimeImmutable($data['created_at']);
         $comment->updatedAt = new DateTimeImmutable($data['updated_at']);
 
@@ -111,5 +123,13 @@ class PullRequestComment
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPullRequestReviewId()
+    {
+        return $this->pullRequestReviewId;
     }
 }
