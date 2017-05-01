@@ -87,3 +87,14 @@ services:
             - ['setProgressNotifier', ['@trends.progress.notifier']]
         tags:
             - { name: aggregator, alias: 'pull-request-reviews'}
+
+    aggregator.github_pull_request_comment:
+        class: Aa\ATrends\Aggregator\PullRequestCommentAggregator
+        lazy: true
+        arguments:
+            - '@api.github'
+            - '@repository.pull_request_comment'
+        calls:
+            - ['setProgressNotifier', ['@trends.progress.notifier']]
+        tags:
+            - { name: aggregator, alias: 'pull-request-comments'}
