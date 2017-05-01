@@ -45,7 +45,7 @@ class PullRequestComment
     /**
      * @var string
      *
-     * @ORM\Column(name="pull_request_review_id", type="integer")
+     * @ORM\Column(name="pull_request_review_id", type="integer", nullable=true)
      */
     private $pullRequestReviewId;
 
