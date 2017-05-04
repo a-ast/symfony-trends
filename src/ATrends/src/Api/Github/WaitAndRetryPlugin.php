@@ -38,6 +38,13 @@ class WaitAndRetryPlugin implements Plugin
         return $next($request)->then(
             function (ResponseInterface $response) use ($request, $next, $first) {
 
+                if (500 === $response->getStatusCode()) {
+                    // @todo: counter
+                    $promise = $this->handleRequest($request, $next, $first);
+
+                    return $promise->wait();
+                }
+
                 if (403 !== $response->getStatusCode()) {
                     return $response;
                 }

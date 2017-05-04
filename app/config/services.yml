@@ -34,6 +34,11 @@ services:
             - '%env(GITHUB_CLIENT_SECRET)%'
             - 'url_client_id'
 
+    github_api.plugin.retry:
+        class: Http\Client\Common\Plugin\RetryPlugin
+        arguments:
+            -
+              retries: 3
 
     github_api.http_client_builder:
         class: Github\HttpClient\Builder
@@ -46,7 +51,7 @@ services:
         class: Aa\ATrends\Api\Github\ClientConfigurator
         arguments:
             - '@github_api.http_client_builder'
-            - ['@github_api.plugin.wait_and_retry', '@github_api.plugin.authentication']
+            - ['@github_api.plugin.wait_and_retry', '@github_api.plugin.authentication', '@github_api.plugin.retry']
 
     github_api.client:
         class: Github\Client

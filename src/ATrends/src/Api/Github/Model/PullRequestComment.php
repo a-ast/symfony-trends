@@ -21,6 +21,9 @@ class PullRequestComment
 
     /**
      * @var int
+     *
+     *
+     * @todo: rename to pull_request_number
      */
     private $pullRequestId;
 

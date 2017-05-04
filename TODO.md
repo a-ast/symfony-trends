@@ -2,6 +2,11 @@ TODO
 ==============
 
 ### Pull request review ggregator
+
+Urgent:
+1. Rename comment.pullRequestId to number!!!!
+2. Fix calculation of pull request number
+
 1!. Chunked Repository (Batch) Iterator to iterate all pull requests
 2!. Features for aggregator
 2!. API Model
@@ -11,7 +16,7 @@ TODO
 4!. Entity
 5. Create index
 
-Idea: replace static named constructors with serializers.
+Idea: replace static named constructors with serializers (or better keep only createFromresponse and flatten array for creatFromArray).
 
 
 ### Next steps:
